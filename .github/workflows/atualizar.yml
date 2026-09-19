@@ -30,14 +30,18 @@ jobs:
           python-version: "3.12"
           # o projeto não usa nenhuma biblioteca de fora: nada a instalar
 
+      # O relatorio vai para um arquivo versionado: assim da para ver quais
+      # fontes responderam sem precisar abrir os logs do Actions.
       - name: Coletar as fontes e gerar a página
-        run: python -u atualizar.py
+        run: |
+          set -o pipefail
+          python -u atualizar.py 2>&1 | tee ultima-coleta.txt
 
       - name: Publicar se algo mudou
         run: |
           git config user.name "largada-sc"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add corridas.json index.html coletado_em.txt municipios.json
+          git add corridas.json index.html coletado_em.txt municipios.json ultima-coleta.txt
           if git diff --staged --quiet; then
             echo "Nada mudou nesta rodada."
           else
