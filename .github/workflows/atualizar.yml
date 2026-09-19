@@ -1,0 +1,42 @@
+name: Atualizar calendário
+
+on:
+  schedule:
+    # 11:00 UTC = 08:00 de Brasília. O GitHub costuma atrasar alguns minutos.
+    - cron: "0 11 * * *"
+  workflow_dispatch:        # permite rodar na mão pela aba Actions
+
+permissions:
+  contents: write           # necessário para commitar o resultado da coleta
+
+concurrency:
+  group: coleta             # nunca duas coletas ao mesmo tempo
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          # o projeto não usa nenhuma biblioteca de fora, então não há o que instalar
+
+      - name: Coletar as fontes e gerar a página
+        run: python -u atualizar.py
+
+      - name: Publicar se algo mudou
+        run: |
+          git config user.name "largada-sc"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add corridas.json index.html coletado_em.txt municipios.json
+          if git diff --staged --quiet; then
+            echo "Nada mudou nesta rodada."
+            exit 0
+          fi
+          git commit -m "coleta de $(TZ=America/Sao_Paulo date +%d/%m/%Y)"
+          git push

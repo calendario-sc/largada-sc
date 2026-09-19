@@ -1,0 +1,622 @@
+<title>Largada SC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F3F5FA; --surface:#FFFFFF; --surface-2:#EEF2F8;
+  --line:#D5DCE8; --line-soft:#E4E9F2;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880;
+  --accent:#EF4E16; --accent-ink:#B5360A; --accent-wash:#FFE6DA;
+  --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD; --sobre-azul:#FFFFFF;
+  --sol:#FFC21A; --sol-ink:#3A2A00;
+  --trail:#07734F; --trail-wash:#DAF3E8;
+  --ultra:#B81C26; --ultra-wash:#FDE1E3;
+  --noite:#4A2FBF; --noite-wash:#E9E4FF;
+  --agua:#08667E; --agua-wash:#DCF2F8;
+  --reve:#961268; --reve-wash:#FBE0F1;
+  --kids:#7E4A00; --kids-wash:#FFF0C7;
+  /* quanto da cor da regiao entra no texto: mais no claro, menos no escuro */
+  --mix-rc:88%;
+  --shadow:0 1px 2px rgba(14,23,38,.06), 0 12px 26px -16px rgba(14,23,38,.38);
+  --r:14px;
+  --bar-h:0px;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628;
+    --line:#26324C; --line-soft:#1B2539;
+    --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3;
+    --accent:#FF7143; --accent-ink:#FF9E7D; --accent-wash:#3B1A0E;
+    --azul:#6B97FF; --azul-ink:#A9C2FF; --azul-wash:#15234A; --sobre-azul:#07112B;
+    --sol:#FFC940; --sol-ink:#2A1E00;
+    --trail:#46D6A0; --trail-wash:#0F2E23;
+    --ultra:#FF7880; --ultra-wash:#3A1216;
+    --noite:#B09BFF; --noite-wash:#221A46;
+    --agua:#5CCBE6; --agua-wash:#0D2A33;
+    --reve:#F27BCB; --reve-wash:#3A1030;
+    --kids:#F5BD55; --kids-wash:#33260B;
+    --mix-rc:52%;
+    --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628;
+  --line:#26324C; --line-soft:#1B2539;
+  --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3;
+  --accent:#FF7143; --accent-ink:#FF9E7D; --accent-wash:#3B1A0E;
+  --azul:#6B97FF; --azul-ink:#A9C2FF; --azul-wash:#15234A; --sobre-azul:#07112B;
+  --sol:#FFC940; --sol-ink:#2A1E00;
+  --trail:#46D6A0; --trail-wash:#0F2E23;
+  --ultra:#FF7880; --ultra-wash:#3A1216;
+  --noite:#B09BFF; --noite-wash:#221A46;
+  --agua:#5CCBE6; --agua-wash:#0D2A33;
+  --reve:#F27BCB; --reve-wash:#3A1030;
+  --kids:#F5BD55; --kids-wash:#33260B;
+  --mix-rc:52%;
+  --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--f-body); font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+.wrap{width:min(1120px,100% - 2.5rem); margin-inline:auto}
+
+/* ---------- cabecalho: faixa oceano com raias de pista ----------
+   As cores daqui sao fixas: a faixa e a mesma nos dois temas. */
+.top{
+  position:relative; overflow:hidden; color:#FFFFFF;
+  background:
+    radial-gradient(90% 130% at 100% 0%, rgba(255,194,26,.26), transparent 58%),
+    linear-gradient(135deg,#0A2F73 0%,#1450C8 100%);
+}
+.top::before{
+  content:""; position:absolute; inset:0 0 0 42%; pointer-events:none;
+  background:repeating-linear-gradient(-62deg,rgba(255,255,255,.08) 0 2px,transparent 2px 40px);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 35%);
+          mask-image:linear-gradient(90deg,transparent,#000 35%);
+}
+.top::after{ /* faixa de largada */
+  content:""; position:absolute; inset:auto 0 0 0; height:8px;
+  background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px);
+}
+.top__inner{position:relative; display:flex; flex-wrap:wrap; gap:2rem 3rem; align-items:flex-end; justify-content:space-between; padding:2.8rem 0 2.6rem}
+.eyebrow{
+  font-family:var(--f-mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(255,255,255,.75); margin:0 0 .7rem;
+}
+h1{
+  font-family:var(--f-display); font-weight:800; margin:0; color:#FFFFFF;
+  font-size:clamp(2.6rem,7vw,4.6rem); line-height:.92; letter-spacing:-.035em;
+  text-wrap:balance;
+}
+h1 em{font-style:normal; color:#FFC21A}
+.lede{margin:.9rem 0 0; max-width:38ch; color:rgba(255,255,255,.85); font-size:1.02rem}
+.stats{display:flex; gap:1.2rem; flex-wrap:wrap}
+.stat{
+  padding:.75rem 1rem .7rem; border-radius:12px; min-width:108px;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18);
+}
+.stat b{
+  display:block; font-family:var(--f-display); font-weight:800; font-size:2rem; color:#FFFFFF;
+  line-height:1; letter-spacing:-.02em; font-variant-numeric:tabular-nums;
+}
+.stat span{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.72)}
+.stat:first-child b{color:#FFC21A}
+
+/* ---------- ritmo do ano ---------- */
+.pulse{padding:1.9rem 0 1.6rem}
+.pulse__head{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:.9rem}
+.sec-label{font-family:var(--f-mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0}
+.pulse__scroll{overflow-x:auto; padding-bottom:.4rem; scrollbar-width:thin}
+.months{display:flex; gap:.4rem; min-width:max-content}
+.month-btn{
+  flex:1 0 74px; display:flex; flex-direction:column; justify-content:flex-end; gap:.45rem;
+  min-width:74px; height:100px; padding:.55rem .55rem .5rem; cursor:pointer;
+  background:var(--surface); border:1px solid var(--line-soft); border-radius:10px;
+  color:var(--ink); font:inherit; text-align:left; transition:border-color .15s, background .15s, transform .15s;
+}
+.month-btn:hover{border-color:var(--accent); transform:translateY(-1px)}
+.month-btn[aria-pressed="true"]{background:var(--accent-wash); border-color:var(--accent)}
+.month-btn .bar{
+  width:100%; min-height:3px; border-radius:4px 4px 1px 1px;
+  background:linear-gradient(180deg,var(--sol),var(--accent));
+}
+/* Mes ja vencido aparece hachurado em azul: e arquivo, nao agenda. */
+.month-btn.passado .bar{background:repeating-linear-gradient(45deg,var(--azul) 0 3px,transparent 3px 6px); opacity:.55}
+.month-btn .lbl{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:flex; justify-content:space-between; gap:.3rem}
+.month-btn .lbl i{font-style:normal; font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums}
+
+/* ---------- filtros ---------- */
+.filters{
+  position:sticky; top:0; z-index:30;
+  background:color-mix(in srgb,var(--ground) 90%,transparent);
+  backdrop-filter:blur(10px);
+  border-block:1px solid var(--line);
+}
+.filters__inner{display:flex; flex-wrap:wrap; gap:.6rem 1.3rem; align-items:center; padding:.8rem 0}
+.groups{flex:1 1 auto; display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1.3rem; min-width:0}
+.search{position:relative; flex:0 1 250px; min-width:0}
+.search input{
+  width:100%; padding:.62rem .9rem .62rem 2.3rem; font:inherit; font-size:.95rem;
+  color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:9px;
+}
+.search input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-wash)}
+.search input::placeholder{color:var(--muted)}
+.search svg{position:absolute; left:.72rem; top:50%; transform:translateY(-50%); width:16px; height:16px; stroke:var(--accent); fill:none; stroke-width:2.2}
+.group{display:flex; align-items:center; gap:.35rem; flex-wrap:wrap}
+.group > b{font-family:var(--f-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:400; margin-right:.15rem}
+.chip{
+  font:inherit; font-size:.82rem; line-height:1; cursor:pointer;
+  padding:.42rem .68rem; border-radius:999px; color:var(--ink-2);
+  background:var(--surface); border:1px solid var(--line); transition:.15s;
+}
+.chip:hover{border-color:var(--cc,var(--accent)); color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--ground)}
+/* Chip com cor propria (regiao, tipo, distancia): bolinha quando solto,
+   preenchido quando marcado. A cor vem do JS em --cc e aceita texto branco. */
+.chip[data-cor]::before{
+  content:""; display:inline-block; width:.6em; height:.6em; border-radius:50%;
+  background:var(--cc); margin-right:.42em; vertical-align:.02em;
+}
+.chip[data-cor][aria-pressed="true"]{background:var(--cc); border-color:var(--cc); color:#FFFFFF}
+.chip[data-cor][aria-pressed="true"]::before{background:#FFFFFF}
+.chip--reset{border-style:dashed; color:var(--muted)}
+/* O periodo e escolha unica, entao vira um seletor segmentado. */
+.escopo{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--surface)}
+.escopo .chip{border:0; border-radius:0; padding:.42rem .8rem}
+.escopo .chip + .chip{border-left:1px solid var(--line)}
+.escopo .chip[aria-pressed="true"]{background:var(--azul); color:var(--sobre-azul)}
+
+/* ---------- resultados ---------- */
+.results{padding:1.6rem 0 4rem}
+.count{font-family:var(--f-mono); font-size:.75rem; letter-spacing:.06em; color:var(--muted); margin:0 0 1.2rem}
+.count b{color:var(--accent-ink); font-weight:500}
+
+.month-head{
+  position:sticky; top:var(--bar-h); z-index:10;
+  display:flex; align-items:center; gap:.8rem;
+  margin:2rem 0 .6rem; padding:.7rem 0 .6rem;
+  background:var(--ground);
+}
+.month-head h2{
+  font-family:var(--f-display); font-weight:800; font-size:1.15rem; letter-spacing:.01em;
+  text-transform:uppercase; margin:0; color:var(--azul-ink);
+}
+.month-head span{
+  font-family:var(--f-mono); font-size:.7rem; color:var(--azul-ink); font-variant-numeric:tabular-nums;
+  background:var(--azul-wash); padding:.2rem .55rem; border-radius:999px;
+}
+.month-head hr{flex:1; height:0; border:0; border-top:2px solid var(--line-soft); margin:0}
+
+/* Cada prova e um cartao; o bloco da data leva a cor da regiao (--rc). */
+.race{
+  display:grid; gap:.2rem 1.1rem; align-items:center;
+  grid-template-columns:64px minmax(0,1fr) auto;
+  grid-template-areas:"date main dist";
+  padding:.7rem .95rem .7rem .7rem; margin:0 0 .5rem;
+  background:var(--surface); border:1px solid var(--line-soft); border-radius:12px;
+  transition:box-shadow .15s, border-color .15s, transform .15s, opacity .15s;
+}
+.race:hover{border-color:var(--rc); box-shadow:var(--shadow); transform:translateY(-1px)}
+.race.is-next{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-wash), var(--shadow)}
+/* Prova realizada perde a saturacao: continua legivel, mas nao compete com a agenda. */
+.race.passada{opacity:.78}
+.race.passada .race__date{filter:saturate(.2)}
+.race.passada:hover{opacity:1}
+.race.passada:hover .race__date{filter:none}
+
+.race__date{
+  grid-area:date; align-self:stretch; display:flex; flex-direction:column; justify-content:center;
+  background:var(--rc); color:#FFFFFF; border-radius:10px; padding:.45rem 0 .4rem;
+  text-align:center; font-variant-numeric:tabular-nums;
+}
+.race__date .d{display:block; font-family:var(--f-display); font-weight:800; font-size:1.6rem; line-height:1; letter-spacing:-.03em}
+.race__date .m{display:block; font-family:var(--f-mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.88); margin-top:.2rem}
+.race__date .w{display:block; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.06em; color:rgba(255,255,255,.7)}
+
+.race__main{grid-area:main; min-width:0}
+.race__name{font-family:var(--f-display); font-weight:700; font-size:1.06rem; letter-spacing:-.012em; margin:0; line-height:1.25}
+.race__meta{display:flex; align-items:center; flex-wrap:wrap; gap:.45rem; margin:.3rem 0 0; font-size:.83rem; color:var(--muted)}
+.city{
+  font:inherit; cursor:pointer; padding:0; border:0; background:none; color:var(--ink-2);
+  border-bottom:1px solid var(--line); text-align:left;
+}
+.city:hover{color:var(--accent-ink); border-color:var(--accent)}
+.dot{opacity:.45}
+.regiao{color:color-mix(in srgb,var(--rc) var(--mix-rc),var(--ink)); font-weight:600}
+.tag{
+  font-family:var(--f-mono); font-size:.6rem; letter-spacing:.09em; text-transform:uppercase; font-weight:500;
+  padding:.2rem .45rem; border-radius:4px; background:var(--surface-2); color:var(--muted);
+}
+.tag--trail{background:var(--trail-wash); color:var(--trail)}
+.tag--ultra{background:var(--ultra-wash); color:var(--ultra)}
+.tag--noturna,.tag--vertical{background:var(--noite-wash); color:var(--noite)}
+.tag--caminhada{background:var(--agua-wash); color:var(--agua)}
+.tag--revezamento{background:var(--reve-wash); color:var(--reve)}
+.tag--kids{background:var(--kids-wash); color:var(--kids)}
+.flag{
+  font-family:var(--f-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
+  background:var(--sol); color:var(--sol-ink); padding:.2rem .45rem; border-radius:4px;
+}
+/* Procedencia: quais fontes anunciam a prova. */
+.fontes{font-family:var(--f-mono); font-size:.58rem; letter-spacing:.04em; color:var(--muted); opacity:.75;
+  margin-left:auto; min-width:0; overflow-wrap:anywhere}  /* com 5-6 fontes a lista precisa quebrar */
+
+.race__dists{grid-area:dist; display:flex; gap:.3rem; flex-wrap:wrap; justify-content:flex-end; margin:0; padding:0; list-style:none}
+.race__dists li{
+  font-family:var(--f-mono); font-size:.76rem; font-variant-numeric:tabular-nums;
+  padding:.28rem .5rem; border-radius:6px; background:var(--surface-2);
+  border:1px solid var(--line-soft); color:var(--ink-2); white-space:nowrap;
+}
+/* A maior distancia de cada prova vai em laranja, com texto escuro nos dois temas. */
+.race__dists li.big{background:var(--accent); border-color:var(--accent); color:#1C0A03; font-weight:500}
+.race__dists li.tbd{background:none; border-style:dashed; color:var(--muted)}
+
+.empty{padding:4rem 1rem; text-align:center; border:1px dashed var(--line); border-radius:var(--r); background:var(--surface)}
+.empty h3{font-family:var(--f-display); font-size:1.2rem; margin:0 0 .4rem}
+.empty p{margin:0; color:var(--muted)}
+
+.foot{position:relative; padding:2rem 0 3rem; color:var(--muted); font-size:.8rem}
+.foot::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:4px;
+  background:repeating-linear-gradient(90deg,var(--sol) 0 20px,var(--accent) 20px 40px);
+}
+.foot p{margin:0 0 .5rem; max-width:72ch}
+.foot b{color:var(--ink-2); font-weight:500}
+
+@media (max-width:900px){
+  .search{flex:1 0 100%}
+  .groups{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; padding-bottom:.1rem}
+  .groups::-webkit-scrollbar{display:none}
+  .group,.chip--reset,.escopo{flex:0 0 auto}
+  .groups::after{content:""; flex:0 0 .5rem}
+}
+@media (max-width:720px){
+  .wrap{width:min(1120px,100% - 1.6rem)}
+  .top__inner{padding:2rem 0 2rem; gap:1.4rem}
+  .stats{gap:.6rem}
+  .stat{min-width:0; flex:1 1 0; padding:.6rem .7rem}
+  .stat b{font-size:1.6rem}
+  .race{grid-template-columns:56px minmax(0,1fr); grid-template-areas:"date main" "date dist"; row-gap:.55rem}
+  .race__dists{justify-content:flex-start}
+  .fontes{margin-left:0; flex-basis:100%}
+  .filters__inner{padding:.7rem 0}
+  .group{gap:.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
+}
+</style>
+
+<header class="top">
+  <div class="wrap top__inner">
+    <div>
+      <p class="eyebrow">Santa Catarina &middot; corridas de rua e trail</p>
+      <h1>Largada <em>SC</em></h1>
+      <p class="lede">Filtre por mês, região, distância e tipo.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
+      <div class="stat"><b id="s-cidades">0</b><span>cidades</span></div>
+      <div class="stat"><b id="s-km">0</b><span>km mais longo</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="wrap pulse">
+  <div class="pulse__head">
+    <p class="sec-label">Ritmo do ano &mdash; provas por mês</p>
+    <p class="sec-label">clique para filtrar</p>
+  </div>
+  <div class="pulse__scroll"><div class="months" id="months"></div></div>
+</section>
+
+<div class="filters" id="bar">
+  <div class="wrap filters__inner">
+    <label class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <input id="q" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade">
+    </label>
+    <div class="groups">
+      <div class="escopo" id="g-escopo" role="group" aria-label="Período"></div>
+      <div class="group" id="g-regiao"><b>Região</b></div>
+      <div class="group" id="g-faixa"><b>Distância</b></div>
+      <div class="group" id="g-tipo"><b>Tipo</b></div>
+      <button class="chip chip--reset" id="reset" type="button">Limpar</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap results">
+  <p class="count" id="count" role="status" aria-live="polite"></p>
+  <div id="list"></div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><b>Largada SC</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b> e <b>atletis.com.br</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
+    <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
+    <p>Confirme datas, percursos e inscrições direto com a organização do evento antes de se programar.</p>
+  </div>
+</footer>
+
+<script>
+const RACES = __DATA__;
+
+const MES_ABBR = ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];
+const MES_NOME = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+const DIA_ABBR = ["dom","seg","ter","qua","qui","sex","sáb"];
+const FAIXAS = [["5k","até 6 km"],["10k","10 km"],["21k","meia"],["42k","maratona"],["ultra","ultra"]];
+const ESCOPOS = [["proximas","Próximas"],["realizadas","Realizadas"],["todas","Todas"]];
+
+const hoje = new Date(); hoje.setHours(0,0,0,0);
+/* Cor por regiao: fixa para as de SC, sorteada por hash para as outras
+   (a expansao nacional ganha cores sem configurar nada). Todas aceitam
+   texto branco em cima. */
+const PALETA = ["#1D5FD8","#07734F","#6D3FD6","#C2540A","#C81E4A","#08667E","#961268","#5E7D0A"];
+const REGIAO_FIXA = {"Grande Florianópolis":0, "Vale do Itajaí":1, "Norte Catarinense":2,
+                     "Sul Catarinense":3, "Oeste Catarinense":4, "Serrana":5};
+function corRegiao(nome){
+  if (nome in REGIAO_FIXA) return PALETA[REGIAO_FIXA[nome]];
+  let h = 0;
+  for (const c of nome || "") h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return PALETA[h % PALETA.length];
+}
+const TAG_COR = {Trail:"#07734F", Ultra:"#B81C26", Noturna:"#4A2FBF", Vertical:"#4A2FBF",
+                 Caminhada:"#08667E", Revezamento:"#961268", Kids:"#7E4A00", Rua:"#2E3A50"};
+
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+
+RACES.forEach(r => {
+  r._d = new Date(r.ano, r.mes - 1, r.dia);
+  r._key = r.ano * 100 + r.mes;
+  r._busca = norm(r.nome + " " + r.cidade + " " + r.regiao);
+  r._passada = r._d < hoje;
+});
+
+const state = { escopo:"proximas", q:"", meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
+
+const el = (tag, props = {}, kids = []) => {
+  const n = Object.assign(document.createElement(tag), props);
+  kids.forEach(k => n.append(k));
+  return n;
+};
+const toggle = (set, v) => { set.has(v) ? set.delete(v) : set.add(v); };
+
+/* Regiões e tipos saem dos próprios dados: se a coleta trouxer algo novo,
+   o filtro aparece sozinho. A ordem preferida vem primeiro, o resto no fim. */
+const ordenar = (valores, preferida) => {
+  const vistos = [...new Set(valores)];
+  return preferida.filter(v => vistos.includes(v))
+    .concat(vistos.filter(v => !preferida.includes(v)).sort((a, b) => a.localeCompare(b, "pt-BR")));
+};
+
+function chipGroup(containerId, items, set, cor){
+  const box = document.getElementById(containerId);
+  items.forEach(([val, label]) => {
+    const b = el("button", { className:"chip", type:"button", textContent:label });
+    if (cor){ b.dataset.cor = ""; b.style.setProperty("--cc", cor(val)); }
+    b.setAttribute("aria-pressed","false");
+    b.onclick = () => { toggle(set, val); b.setAttribute("aria-pressed", String(set.has(val))); render(); };
+    box.append(b);
+  });
+}
+
+/* Período é escolha única: clicar num troca, não acumula. */
+const caixaEscopo = document.getElementById("g-escopo");
+ESCOPOS.forEach(([val, label]) => {
+  const b = el("button", { className:"chip", type:"button", textContent:label });
+  b.dataset.escopo = val;
+  b.setAttribute("aria-pressed", String(state.escopo === val));
+  b.onclick = () => {
+    state.escopo = val;
+    caixaEscopo.querySelectorAll(".chip").forEach(c =>
+      c.setAttribute("aria-pressed", String(c.dataset.escopo === val)));
+    montarMeses();
+    render();
+  };
+  caixaEscopo.append(b);
+});
+
+// Regiões vêm da malha do IBGE e mudam conforme o estado, então a ordem sai
+// da própria contagem: a que tem mais provas aparece primeiro.
+const porRegiao = new Map();
+RACES.forEach(r => porRegiao.set(r.regiao, (porRegiao.get(r.regiao) || 0) + 1));
+const REGIOES = [...porRegiao.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"))
+  .map(([nome]) => nome);
+const TIPOS = ordenar(RACES.flatMap(r => r.tags),
+  ["Trail","Ultra","Noturna","Revezamento","Rua"]);
+
+chipGroup("g-regiao", REGIOES.map(r => [r, r]), state.regioes, corRegiao);
+chipGroup("g-faixa", FAIXAS.filter(([f]) => RACES.some(r => r.faixas.includes(f))), state.faixas,
+          () => "#1250C4");
+chipGroup("g-tipo", TIPOS.map(t => [t, t]), state.tipos, t => TAG_COR[t] || "#2E3A50");
+
+/* ---- barras por mês, redesenhadas a cada troca de período ---- */
+const monthsBox = document.getElementById("months");
+
+function noEscopo(r){
+  if (state.escopo === "proximas") return !r._passada;
+  if (state.escopo === "realizadas") return r._passada;
+  return true;
+}
+
+function montarMeses(){
+  monthsBox.replaceChildren();
+  const porMes = new Map();
+  RACES.filter(noEscopo).forEach(r => porMes.set(r._key, (porMes.get(r._key) || 0) + 1));
+  const chaves = [...porMes.keys()].sort((a, b) => a - b);
+  if (!chaves.length) return;
+  const maxMes = Math.max(...porMes.values());
+
+  chaves.forEach(k => {
+    const n = porMes.get(k), mes = k % 100, ano = Math.floor(k / 100);
+    const passado = new Date(ano, mes, 0) < hoje;
+    const b = el("button", { className:"month-btn" + (passado ? " passado" : ""), type:"button" });
+    b.setAttribute("aria-pressed", String(state.meses.has(k)));
+    b.setAttribute("aria-label", MES_NOME[mes - 1] + " de " + ano + ", " + n + " corridas");
+    const bar = el("div", { className:"bar" });
+    bar.style.height = Math.max(4, Math.round(n / maxMes * 56)) + "px";
+    const lbl = el("div", { className:"lbl" });
+    lbl.append(document.createTextNode(MES_ABBR[mes - 1]), el("i", { textContent:String(n) }));
+    b.append(bar, lbl);
+    b.onclick = () => { toggle(state.meses, k); b.setAttribute("aria-pressed", String(state.meses.has(k))); render(); };
+    monthsBox.append(b);
+  });
+}
+
+/* ---- busca ---- */
+const input = document.getElementById("q");
+let t;
+input.oninput = () => {
+  clearTimeout(t);
+  t = setTimeout(() => { state.q = norm(input.value.trim()); render(); }, 120);
+};
+
+document.getElementById("reset").onclick = () => {
+  state.q = ""; input.value = "";
+  [state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
+  document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
+  montarMeses();
+  render();
+};
+
+function filtrarPorCidade(cidade){
+  input.value = cidade;
+  state.q = norm(cidade);
+  render();
+  document.getElementById("bar").scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+const listBox = document.getElementById("list");
+const countBox = document.getElementById("count");
+
+function passa(r){
+  if (!noEscopo(r)) return false;
+  if (state.q && !r._busca.includes(state.q)) return false;
+  if (state.meses.size && !state.meses.has(r._key)) return false;
+  if (state.regioes.size && !state.regioes.has(r.regiao)) return false;
+  if (state.tipos.size && !r.tags.some(x => state.tipos.has(x))) return false;
+  if (state.faixas.size && !r.faixas.some(f => state.faixas.has(f))) return false;
+  return true;
+}
+
+function render(){
+  const res = RACES.filter(passa);
+  // No arquivo o mais recente interessa primeiro; na agenda, o mais próximo.
+  const recente = state.escopo === "realizadas";
+  res.sort((a, b) => recente ? b._d - a._d : a._d - b._d);
+
+  listBox.replaceChildren();
+
+  const cidades = new Set(res.map(r => r.cidade));
+  const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
+  document.getElementById("s-corridas").textContent = String(res.length);
+  document.getElementById("s-cidades").textContent = String(cidades.size);
+  document.getElementById("s-km").textContent = maiorKm ? String(Math.round(maiorKm)) : "—";
+
+  const filtros = state.meses.size + state.regioes.size + state.faixas.size + state.tipos.size + (state.q ? 1 : 0);
+  countBox.innerHTML = res.length
+    ? "<b>" + res.length + "</b> " + (res.length === 1 ? "prova" : "provas") +
+      " em <b>" + cidades.size + "</b> " + (cidades.size === 1 ? "cidade" : "cidades") +
+      (filtros ? " &middot; filtros ativos" : "")
+    : "";
+
+  if (!res.length){
+    const arquivo = state.escopo === "realizadas" && !filtros;
+    listBox.append(el("div", { className:"empty" }, [
+      el("h3", { textContent: arquivo ? "O histórico ainda está vazio" : "Nenhuma prova com esses filtros" }),
+      el("p", { textContent: arquivo
+        ? "As provas entram aqui conforme suas datas passam."
+        : "Tente ampliar a distância, mudar a região ou limpar a busca." })
+    ]));
+    return;
+  }
+
+  const porMesRes = new Map();
+  res.forEach(r => porMesRes.set(r._key, (porMesRes.get(r._key) || 0) + 1));
+
+  const proxima = res.find(r => !r._passada);
+  let mesAtual = null;
+  const frag = document.createDocumentFragment();
+  res.forEach(r => {
+    if (r._key !== mesAtual){
+      mesAtual = r._key;
+      const n = porMesRes.get(mesAtual);
+      frag.append(el("div", { className:"month-head" }, [
+        el("h2", { textContent:MES_NOME[r.mes - 1] + " " + r.ano }),
+        el("hr"),
+        el("span", { textContent:n + " " + (n === 1 ? "prova" : "provas") })
+      ]));
+    }
+    frag.append(linha(r, r === proxima));
+  });
+  listBox.append(frag);
+}
+
+function linha(r, destaque){
+  const art = el("article", {
+    className: "race" + (destaque ? " is-next" : "") + (r._passada ? " passada" : "")
+  });
+  art.style.setProperty("--rc", corRegiao(r.regiao));
+
+  const date = el("div", { className:"race__date" }, [
+    el("span", { className:"d", textContent:String(r.dia).padStart(2, "0") }),
+    el("span", { className:"m", textContent:MES_ABBR[r.mes - 1] }),
+    el("span", { className:"w", textContent:DIA_ABBR[r._d.getDay()] })
+  ]);
+
+  const nome = el("h3", { className:"race__name", textContent:r.nome });
+
+  const meta = el("p", { className:"race__meta" });
+  const btnCidade = el("button", { className:"city", type:"button", textContent:r.cidade, title:"Ver provas em " + r.cidade });
+  btnCidade.onclick = () => filtrarPorCidade(r.cidade);
+  meta.append(btnCidade, el("span", { className:"dot", textContent:"·" }), el("span", { className:"regiao", textContent:r.regiao }));
+
+  r.tags.filter(x => x !== "Rua").forEach(x =>
+    meta.append(el("span", { className:"tag tag--" + norm(x), textContent:x })));
+
+  if (!r._passada){
+    const dias = Math.round((r._d - hoje) / 86400000);
+    if (dias === 0) meta.append(el("span", { className:"flag", textContent:"é hoje" }));
+    else if (dias <= 7) meta.append(el("span", { className:"flag", textContent:"em " + dias + (dias === 1 ? " dia" : " dias") }));
+  }
+
+  const fontes = r.fontes || [];
+  if (fontes.length) meta.append(el("span", { className:"fontes", textContent:fontes.join(" · ") }));
+
+  const main = el("div", { className:"race__main" }, [nome, meta]);
+
+  const dists = el("ul", { className:"race__dists" });
+  if (r.pills.length){
+    r.pills.forEach((d, i) => dists.append(el("li", { className: i === 0 ? "big" : "", textContent:d })));
+  } else {
+    // Prova passada sem distancia veio do arquivo, que nao registra percurso;
+    // prova futura sem distancia ainda nao teve o percurso anunciado.
+    dists.append(el("li", { className:"tbd",
+      textContent: r._passada ? "sem registro" : "a confirmar" }));
+  }
+
+  art.append(date, main, dists);
+  return art;
+}
+
+/* deslocamento das âncoras de mês sob a barra fixa */
+const bar = document.getElementById("bar");
+const setOffset = () => document.documentElement.style.setProperty("--bar-h", bar.offsetHeight + "px");
+setOffset();
+if (window.ResizeObserver) new ResizeObserver(setOffset).observe(bar);
+window.addEventListener("resize", setOffset);
+
+montarMeses();
+render();
+</script>

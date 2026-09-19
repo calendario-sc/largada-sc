@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# Versão da página usada só para publicar no Claude; o site é o index.html.
+artifact.html
