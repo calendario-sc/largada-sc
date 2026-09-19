@@ -34,8 +34,10 @@ versionado no git justamente por isso — cada coleta vira um commit.
 
 ## Atualização automática
 
-`.github/workflows/atualizar.yml` roda todo dia às 8h de Brasília, commita o
-resultado e publica. Também dá para rodar na mão pela aba **Actions**.
+`.github/workflows/atualizar.yml` roda todo dia às 8h de Brasília e commita o
+resultado. O GitHub Pages serve o `index.html` direto do branch `main`, então a
+publicação acontece sozinha a cada commit. Também dá para rodar na mão pela aba
+**Actions**.
 
 Se a coleta falhar (rede fora, ou menos de 60 provas no total), o script sai com
 erro, nada é commitado e o histórico fica intacto.

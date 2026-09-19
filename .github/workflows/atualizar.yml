@@ -1,17 +1,17 @@
 name: Atualizar calendário
 
+# O site é servido pelo GitHub Pages direto do branch main (Settings > Pages >
+# Deploy from a branch > main > /root), entao esta rotina so precisa coletar e
+# commitar: a publicacao acontece sozinha a cada commit.
+
 on:
   schedule:
     # 11:00 UTC = 08:00 de Brasília. O GitHub costuma atrasar alguns minutos.
     - cron: "0 11 * * *"
   workflow_dispatch:        # permite rodar na mão pela aba Actions
-  push:
-    branches: [main]        # publica também a cada mudança no template
 
 permissions:
   contents: write           # commitar o resultado da coleta
-  pages: write              # publicar no GitHub Pages
-  id-token: write           # exigido pelo deploy-pages
 
 concurrency:
   group: coleta             # nunca duas coletas ao mesmo tempo
@@ -21,9 +21,6 @@ jobs:
   coletar:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    environment:
-      name: github-pages
-      url: ${{ steps.publicar.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -33,17 +30,10 @@ jobs:
           python-version: "3.12"
           # o projeto não usa nenhuma biblioteca de fora: nada a instalar
 
-      # Na coleta agendada, busca as fontes. Num push, só remonta a página a
-      # partir do corridas.json que já está no repositório.
       - name: Coletar as fontes e gerar a página
-        if: github.event_name != 'push'
         run: python -u atualizar.py
 
-      - name: Apenas remontar a página
-        if: github.event_name == 'push'
-        run: python -u build.py
-
-      - name: Guardar o resultado da coleta
+      - name: Publicar se algo mudou
         run: |
           git config user.name "largada-sc"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -54,20 +44,3 @@ jobs:
             git commit -m "coleta de $(TZ=America/Sao_Paulo date +%d/%m/%Y)"
             git push
           fi
-
-      # O site é um arquivo só; sobe apenas ele, não o código do coletor.
-      - name: Separar os arquivos do site
-        run: |
-          mkdir -p _site
-          cp index.html _site/index.html
-
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true   # liga o Pages na primeira vez, sem passar em Settings
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - id: publicar
-        uses: actions/deploy-pages@v4
