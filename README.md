@@ -1,5 +1,7 @@
 # Largada SC
 
+Site no ar: https://calendario-sc.github.io/largada-sc/
+
 Calendário de corridas de rua e trail de Santa Catarina. O site é um arquivo
 único (`index.html`, ~230 KB) com os dados embutidos: não precisa de servidor,
 banco nem build. Qualquer hospedagem estática serve.
