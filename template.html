@@ -404,6 +404,7 @@ h1 em{font-style:normal; color:#FFC21A}
       <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
       <div class="stat"><b id="s-cidades">0</b><span>cidades</span></div>
       <div class="stat"><b id="s-orgs">0</b><span>organizadoras</span></div>
+      <div class="stat"><b id="s-conc">0</b><span>concluintes</span></div>
       <div class="stat"><b id="s-km">0</b><span>km mais longo</span></div>
     </div>
   </div>
@@ -876,6 +877,9 @@ function render(){
   document.getElementById("s-corridas").textContent = String(res.length);
   document.getElementById("s-cidades").textContent = String(cidades.size);
   document.getElementById("s-orgs").textContent = String(organizadoras.size);
+  // Só provas com resultado publicado entram nesta soma.
+  const concluintes = res.reduce((s, r) => s + (r.concluintes_total || 0), 0);
+  document.getElementById("s-conc").textContent = concluintes ? num(concluintes) : "—";
   document.getElementById("s-km").textContent = maiorKm ? String(Math.round(maiorKm)) : "—";
 
   const filtros = state.anos.size + state.meses.size + state.regioes.size + state.faixas.size
