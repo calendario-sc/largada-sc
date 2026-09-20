@@ -1,0 +1,34 @@
+== coleta ==
+== fontes ==
+  corridasbr: 223 provas
+  corridasbr/arquivo: 317 provas
+  ticketsports: 78 provas
+  roadrunners: 217 provas
+  movnow: 17 provas
+  atletis: 0 provas
+
+594 provas distintas depois de fundir as fontes
+descartadas (10): fora de SC ou nao sao corrida
+  - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
+  - 2026-09-20  Braço do Trombudo - 2º Pedal da Integração [pedal]
+  - 2026-09-20  Palhoça - Corrida Virtual CBCR - Campeonato Brasileiro [corrida virtual]
+  - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
+  - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
+  - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
+  - 2026-11-07  Rio Negrinho - Volta Grande Cross Aquathlon Rio Negrinho [aquathlon]
+  - 2026-11-29  Morrinhos do Sul - 5ª RÚstica Recanto dos Canyons [é de RS]
+  - ... e mais 2
+restam 584 provas
+concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+organizador: 17 provas tiveram a grafia padronizada
+historico: 1394 provas (1124 ja realizadas) | 175 cidades
+novas nesta rodada: 0
+
+futuras que nao apareceram hoje (2) - possivel cancelamento, mantidas no historico:
+  ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
+  ? 2026-11-01  Florianópolis - 16ª VOLTA a LAGOA da CONCEIÇÃO (visto pela ultima vez em 2026-09-19)
+
+== build ==
+artifact.html e index.html gerados (714,463 bytes)
+
+RESULTADO: pronto para publicar (coleta de 20/09/2026).
