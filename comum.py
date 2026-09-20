@@ -272,6 +272,10 @@ def classificar(nome, km, extras=()):
         tags.append("Kids")
     if "caminhada" in n and "Caminhada" not in tags:
         tags.append("Caminhada")
+    # Treinao nao e prova: nao tem concluintes para contabilizar, entao fica
+    # num calendario a parte. "treinadores" nao entra: nao e treino.
+    if re.search(r"\btreina[oõ]\b|\btreinos?\b|\btreinao\b", n) and "Treino" not in tags:
+        tags.append("Treino")
     return tags or ["Rua"]
 
 

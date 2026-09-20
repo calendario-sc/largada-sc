@@ -449,6 +449,7 @@ h1 em{font-style:normal; color:#FFC21A}
           </div>
         </div>
       </div>
+      <button class="chip" id="btn-treinos" type="button" aria-pressed="false">Treinos</button>
       <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
       <button class="chip chip--reset" id="reset" type="button">Limpar</button>
     </div>
@@ -520,7 +521,8 @@ RACES.forEach(r => {
   r._passada = r._d < hoje;
 });
 
-const state = { escopo:"proximas", q:"", organizador:"", cidade:"", comparativo:false, anoRanking:"",
+const state = { escopo:"proximas", q:"", organizador:"", cidade:"", treinos:false,
+                comparativo:false, anoRanking:"",
                 anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
@@ -730,6 +732,8 @@ document.getElementById("reset").onclick = () => {
   [state.anos, state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
   seletorEmpresa.limpar();
   seletorCidade.limpar();
+  state.treinos = false;
+  btnTreinos.setAttribute("aria-pressed", "false");
   document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
   montarMeses();
   render();
@@ -740,6 +744,9 @@ const countBox = document.getElementById("count");
 
 // Filtros que valem em qualquer recorte de tempo. O comparativo usa só estes.
 function passaFiltrosGerais(r){
+  // Treinão não é prova: não entra no calendário nem nos rankings, a não ser
+  // que se peça o calendário de treinos.
+  if ((r.tags || []).includes("Treino") !== state.treinos) return false;
   if (state.q && !r._busca.includes(state.q)) return false;
   if (state.regioes.size && !state.regioes.has(r.regiao)) return false;
   if (state.cidade && r.cidade !== state.cidade) return false;
@@ -821,7 +828,9 @@ function montarComparativo(){
 
   // --- maiores em concluintes
   const maiores = [...doAno].sort((a, b) => b.concluintes_total - a.concluintes_total).slice(0, 10);
-  grade.append(bloco("Maiores em concluintes" + (state.anoRanking ? " em " + state.anoRanking : ""),
+  const ondeQuando = (state.cidade ? " em " + state.cidade : "")
+    + (state.anoRanking ? " em " + state.anoRanking : "");
+  grade.append(bloco("Maiores em concluintes" + ondeQuando,
     maiores.map(r => ({
     nome: r.nome, sub: r.cidade + " · " + r.ano, valor: num(r.concluintes_total)
   }))));
@@ -837,7 +846,7 @@ function montarComparativo(){
   const empresas = [...porEmpresa.entries()]
     .sort((a, b) => b[1].concluintes - a[1].concluintes).slice(0, 10);
   if (empresas.length)
-    grade.append(bloco("Empresas com mais concluintes" + (state.anoRanking ? " em " + state.anoRanking : ""),
+    grade.append(bloco("Empresas com mais concluintes" + ondeQuando,
       empresas.map(([nome, v]) => ({
       nome, sub: v.provas + (v.provas === 1 ? " prova" : " provas"), valor: num(v.concluintes)
     }))));
@@ -869,7 +878,8 @@ function montarComparativo(){
   }
 
   const porDelta = [...evolucao].sort((a, b) => b.delta - a.delta).slice(0, 10);
-  grade.append(bloco("Mais cresceram desde 2024 (absoluto)", porDelta.map(e => ({
+  grade.append(bloco("Mais cresceram desde 2024 (absoluto)"
+    + (state.cidade ? " em " + state.cidade : ""), porDelta.map(e => ({
     nome: e.nome, sub: e.cidade + " · " + num(e.base) + " em 2024 → " + num(e.atual) + " em " + e.ultimo,
     valor: (e.delta >= 0 ? "+" : "") + num(e.delta), classe: e.delta >= 0 ? "sobe" : "desce"
   }))));
@@ -922,8 +932,11 @@ function render(){
 
   const filtros = state.anos.size + state.meses.size + state.regioes.size + state.faixas.size
     + state.tipos.size + (state.q ? 1 : 0) + (state.organizador ? 1 : 0) + (state.cidade ? 1 : 0);
+  const palavra = state.treinos
+    ? (res.length === 1 ? "treino" : "treinos")
+    : (res.length === 1 ? "prova" : "provas");
   countBox.innerHTML = res.length
-    ? "<b>" + res.length + "</b> " + (res.length === 1 ? "prova" : "provas") +
+    ? "<b>" + res.length + "</b> " + palavra +
       " em <b>" + cidades.size + "</b> " + (cidades.size === 1 ? "cidade" : "cidades") +
       (filtros ? " &middot; filtros ativos" : "")
     : "";
@@ -934,7 +947,9 @@ function render(){
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
     listBox.append(el("div", { className:"empty" }, [
-      el("h3", { textContent: arquivo ? "O histórico ainda está vazio" : "Nenhuma prova com esses filtros" }),
+      el("h3", { textContent: arquivo ? "O histórico ainda está vazio"
+        : state.treinos ? "Nenhum treino com esses filtros"
+        : "Nenhuma prova com esses filtros" }),
       el("p", { textContent: arquivo
         ? "As provas entram aqui conforme suas datas passam."
         : "Tente ampliar a distância, mudar a região ou limpar a busca." })
@@ -965,6 +980,16 @@ function render(){
 
 /* Painel da empresa escolhida: os numeros sempre refletem o que está
    filtrado, então mudar ano ou região muda o painel junto. */
+const btnTreinos = document.getElementById("btn-treinos");
+const TOTAL_TREINOS = RACES.filter(r => (r.tags || []).includes("Treino")).length;
+btnTreinos.textContent = "Treinos (" + TOTAL_TREINOS + ")";
+btnTreinos.onclick = () => {
+  state.treinos = !state.treinos;
+  btnTreinos.setAttribute("aria-pressed", String(state.treinos));
+  montarMeses();
+  render();
+};
+
 const btnComparativo = document.getElementById("btn-comparativo");
 btnComparativo.onclick = () => {
   state.comparativo = !state.comparativo;

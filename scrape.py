@@ -27,7 +27,7 @@ SAIDA = AQUI / "corridas.json"
 # historico fica intacto.
 MINIMO = 60
 
-ORDEM_TAGS = ["Trail", "Ultra", "Noturna", "Vertical", "Revezamento",
+ORDEM_TAGS = ["Treino", "Trail", "Ultra", "Noturna", "Vertical", "Revezamento",
               "Caminhada", "Kids", "Rua"]
 
 # Quantas paginas de resultado consultar por rodada, e a pausa entre elas.
