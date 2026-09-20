@@ -7,6 +7,7 @@ O merge fica em scrape.py.
 """
 
 import datetime
+import functools
 import json
 import re
 
@@ -125,7 +126,13 @@ def corridasbr_arquivo(ano=None, ate_mes=None):
 CBR_ORGANIZADOR = re.compile(r"Organizador:\s*(.+?)\s+(?:Mais Informa|Compartilhar|Resultados|Publicidade|$)")
 
 
+@functools.lru_cache(maxsize=4096)
 def _texto_corridasbr(caminho):
+    """Texto limpo de uma pagina do corridasbr, com cache.
+
+    A mesma pagina de resultado traz o percurso E o organizador; sem o cache,
+    cada prova passada seria baixada duas vezes.
+    """
     html = baixar(CBR_BASE + caminho)
     return limpar(re.sub(r"<script.*?</script>", " ", html, flags=re.S))
 
@@ -151,8 +158,7 @@ def distancias_do_resultado(resultado_id):
 
     O arquivo mensal nao traz percurso; a pagina de cada prova traz.
     """
-    html = baixar(CBR_ARQUIVO.rsplit("/", 1)[0] + f"/mostraresultado.asp?escolha={resultado_id}")
-    texto = limpar(re.sub(r"<script.*?</script>", " ", html, flags=re.S))
+    texto = _texto_corridasbr(f"mostraresultado.asp?escolha={resultado_id}")
     achado = CBR_DISTANCIA.search(texto)
     if not achado:
         return [], []

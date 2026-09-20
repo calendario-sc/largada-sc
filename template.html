@@ -182,6 +182,56 @@ h1 em{font-style:normal; color:#FFC21A}
 .escopo .chip + .chip{border-left:1px solid var(--line)}
 .escopo .chip[aria-pressed="true"]{background:var(--azul); color:var(--sobre-azul)}
 
+
+/* ---- seletor de empresa: sao ~200, entao botao que abre lista com busca ---- */
+.org-picker{position:relative}
+.org-menu{
+  position:absolute; top:calc(100% + .4rem); left:0; z-index:40; width:min(20rem,80vw);
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  box-shadow:var(--shadow); padding:.5rem; display:flex; flex-direction:column; gap:.4rem;
+}
+.org-menu[hidden]{display:none}
+.org-menu input{
+  font:inherit; font-size:.85rem; padding:.45rem .6rem; color:var(--ink);
+  background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
+}
+.org-menu ul{list-style:none; margin:0; padding:0; max-height:15rem; overflow-y:auto}
+.org-menu li button{
+  width:100%; text-align:left; font:inherit; font-size:.85rem; cursor:pointer;
+  padding:.35rem .5rem; border:0; border-radius:6px; background:none; color:var(--ink-2);
+  display:flex; justify-content:space-between; gap:.6rem;
+}
+.org-menu li button:hover{background:var(--accent-wash); color:var(--ink)}
+.org-menu li button i{font-style:normal; color:var(--muted); font-family:var(--f-mono); font-size:.75rem}
+.org-menu .vazio{color:var(--muted); font-size:.82rem; padding:.4rem .5rem}
+#org-btn[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:var(--sobre-azul)}
+
+/* ---- painel da empresa escolhida ---- */
+.painel{
+  margin:0 0 1.4rem; padding:1.1rem 1.2rem; border-radius:var(--r);
+  background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
+  border-left:4px solid var(--azul);
+}
+.painel[hidden]{display:none}
+.painel__topo{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+.painel h2{font-family:var(--f-display); font-weight:800; font-size:1.3rem; margin:0; letter-spacing:-.015em}
+.painel__nums{display:flex; gap:1.8rem; flex-wrap:wrap; margin:.9rem 0 0}
+.painel__nums div b{
+  display:block; font-family:var(--f-display); font-weight:800; font-size:1.7rem; line-height:1;
+  color:var(--azul-ink); font-variant-numeric:tabular-nums;
+}
+.painel__nums div span{font-family:var(--f-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.painel__anos{display:flex; gap:.4rem; flex-wrap:wrap; margin:.9rem 0 0}
+.painel__anos span{
+  font-family:var(--f-mono); font-size:.72rem; padding:.25rem .55rem; border-radius:999px;
+  background:var(--azul-wash); color:var(--azul-ink); font-variant-numeric:tabular-nums;
+}
+.painel__fechar{
+  font:inherit; font-size:.8rem; cursor:pointer; color:var(--muted);
+  background:none; border:1px dashed var(--line); border-radius:999px; padding:.3rem .7rem;
+}
+.painel__fechar:hover{border-color:var(--accent); color:var(--ink)}
+
 /* ---------- resultados ---------- */
 .results{padding:1.6rem 0 4rem}
 .count{font-family:var(--f-mono); font-size:.75rem; letter-spacing:.06em; color:var(--muted); margin:0 0 1.2rem}
@@ -343,10 +393,15 @@ h1 em{font-style:normal; color:#FFC21A}
       <div class="group" id="g-regiao"><b>Região</b></div>
       <div class="group" id="g-faixa"><b>Distância</b></div>
       <div class="group" id="g-tipo"><b>Tipo</b></div>
+      <div class="group"><b>Ano</b><span id="g-ano"></span></div>
       <div class="group"><b>Organizador</b>
-        <select id="g-organizador" aria-label="Filtrar por organizador">
-          <option value="">todos</option>
-        </select>
+        <div class="org-picker">
+          <button class="chip" id="org-btn" type="button" aria-expanded="false" aria-pressed="false">Todas as empresas</button>
+          <div class="org-menu" id="org-menu" hidden>
+            <input id="org-busca" type="search" placeholder="Buscar empresa…" aria-label="Buscar empresa organizadora">
+            <ul id="org-lista"></ul>
+          </div>
+        </div>
       </div>
       <button class="chip chip--reset" id="reset" type="button">Limpar</button>
     </div>
@@ -354,6 +409,14 @@ h1 em{font-style:normal; color:#FFC21A}
 </div>
 
 <main class="wrap results">
+  <section class="painel" id="painel" hidden>
+    <div class="painel__topo">
+      <h2 id="painel-nome"></h2>
+      <button class="painel__fechar" id="painel-fechar" type="button">Limpar empresa</button>
+    </div>
+    <div class="painel__nums" id="painel-nums"></div>
+    <div class="painel__anos" id="painel-anos"></div>
+  </section>
   <p class="count" id="count" role="status" aria-live="polite"></p>
   <div id="list"></div>
 </main>
@@ -401,7 +464,7 @@ RACES.forEach(r => {
 });
 
 const state = { escopo:"proximas", q:"", organizador:"",
-                meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
+                anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
   const n = Object.assign(document.createElement(tag), props);
@@ -418,13 +481,18 @@ const ordenar = (valores, preferida) => {
     .concat(vistos.filter(v => !preferida.includes(v)).sort((a, b) => a.localeCompare(b, "pt-BR")));
 };
 
-function chipGroup(containerId, items, set, cor){
+function chipGroup(containerId, items, set, cor, aoClicar){
   const box = document.getElementById(containerId);
   items.forEach(([val, label]) => {
     const b = el("button", { className:"chip", type:"button", textContent:label });
     if (cor){ b.dataset.cor = ""; b.style.setProperty("--cc", cor(val)); }
     b.setAttribute("aria-pressed","false");
-    b.onclick = () => { toggle(set, val); b.setAttribute("aria-pressed", String(set.has(val))); render(); };
+    b.onclick = () => {
+      toggle(set, val);
+      b.setAttribute("aria-pressed", String(set.has(val)));
+      if (aoClicar) aoClicar();
+      render();
+    };
     box.append(b);
   });
 }
@@ -435,15 +503,16 @@ ESCOPOS.forEach(([val, label]) => {
   const b = el("button", { className:"chip", type:"button", textContent:label });
   b.dataset.escopo = val;
   b.setAttribute("aria-pressed", String(state.escopo === val));
-  b.onclick = () => {
-    state.escopo = val;
-    caixaEscopo.querySelectorAll(".chip").forEach(c =>
-      c.setAttribute("aria-pressed", String(c.dataset.escopo === val)));
-    montarMeses();
-    render();
-  };
+  b.onclick = () => { trocarEscopo(val); render(); };
   caixaEscopo.append(b);
 });
+
+function trocarEscopo(val){
+  state.escopo = val;
+  caixaEscopo.querySelectorAll(".chip").forEach(c =>
+    c.setAttribute("aria-pressed", String(c.dataset.escopo === val)));
+  montarMeses();
+}
 
 // Regiões vêm da malha do IBGE e mudam conforme o estado, então a ordem sai
 // da própria contagem: a que tem mais provas aparece primeiro.
@@ -454,6 +523,12 @@ const REGIOES = [...porRegiao.entries()]
   .map(([nome]) => nome);
 const TIPOS = ordenar(RACES.flatMap(r => r.tags),
   ["Trail","Ultra","Noturna","Revezamento","Rua"]);
+
+const ANOS = [...new Set(RACES.map(r => r.ano))].sort();
+chipGroup("g-ano", ANOS.map(a => [a, String(a)]), state.anos, null, () => {
+  // Ano passado com o período em "Próximas" não mostraria nada.
+  if (state.anos.size) trocarEscopo("todas");
+});
 
 chipGroup("g-regiao", REGIOES.map(r => [r, r]), state.regioes, corRegiao);
 chipGroup("g-faixa", FAIXAS.filter(([f]) => RACES.some(r => r.faixas.includes(f))), state.faixas,
@@ -466,25 +541,57 @@ const porOrganizador = new Map();
 RACES.forEach(r => (r.organizadores || []).forEach(o =>
   porOrganizador.set(o, (porOrganizador.get(o) || 0) + 1)));
 
-const selectOrg = document.getElementById("g-organizador");
-[...porOrganizador.entries()]
-  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"))
-  .forEach(([nome, n]) => selectOrg.append(
-    el("option", { value:nome, textContent:nome + " (" + n + ")" })));
+const EMPRESAS = [...porOrganizador.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
 
-selectOrg.onchange = () => {
-  state.organizador = selectOrg.value;
-  selectOrg.classList.toggle("ativo", Boolean(state.organizador));
-  render();
-};
+const orgBtn = document.getElementById("org-btn");
+const orgMenu = document.getElementById("org-menu");
+const orgBusca = document.getElementById("org-busca");
+const orgLista = document.getElementById("org-lista");
+
+function listarEmpresas(termo = ""){
+  const alvo = norm(termo);
+  const achadas = EMPRESAS.filter(([nome]) => !alvo || norm(nome).includes(alvo));
+  orgLista.replaceChildren();
+  if (!achadas.length){
+    orgLista.append(el("li", {}, [el("div", { className:"vazio", textContent:"Nenhuma empresa com esse nome." })]));
+    return;
+  }
+  achadas.slice(0, 200).forEach(([nome, n]) => {
+    const b = el("button", { type:"button" }, [
+      el("span", { textContent:nome }), el("i", { textContent:String(n) })
+    ]);
+    b.onclick = () => { abrirMenuOrg(false); filtrarPorOrganizador(nome); };
+    orgLista.append(el("li", {}, [b]));
+  });
+}
+
+function abrirMenuOrg(abrir){
+  orgMenu.hidden = !abrir;
+  orgBtn.setAttribute("aria-expanded", String(abrir));
+  if (abrir){ listarEmpresas(orgBusca.value); orgBusca.focus(); }
+}
+
+orgBtn.onclick = () => abrirMenuOrg(orgMenu.hidden);
+orgBusca.oninput = () => listarEmpresas(orgBusca.value);
+document.addEventListener("click", e => {
+  if (!orgMenu.hidden && !e.target.closest(".org-picker")) abrirMenuOrg(false);
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !orgMenu.hidden) abrirMenuOrg(false);
+});
 
 function filtrarPorOrganizador(nome){
   state.organizador = nome;
-  selectOrg.value = nome;
-  selectOrg.classList.toggle("ativo", Boolean(nome));
+  orgBtn.textContent = nome || "Todas as empresas";
+  orgBtn.setAttribute("aria-pressed", String(Boolean(nome)));
+  // Uma empresa costuma ter provas em anos diferentes: mostra a trajetoria toda.
+  if (nome) trocarEscopo("todas");
   render();
   document.getElementById("bar").scrollIntoView({ behavior:"smooth", block:"start" });
 }
+
+document.getElementById("painel-fechar").onclick = () => filtrarPorOrganizador("");
 
 /* ---- barras por mês, redesenhadas a cada troca de período ---- */
 const monthsBox = document.getElementById("months");
@@ -529,8 +636,11 @@ input.oninput = () => {
 
 document.getElementById("reset").onclick = () => {
   state.q = ""; input.value = "";
-  [state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
-  state.organizador = ""; selectOrg.value = ""; selectOrg.classList.remove("ativo");
+  [state.anos, state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
+  state.organizador = "";
+  orgBtn.textContent = "Todas as empresas";
+  orgBtn.setAttribute("aria-pressed", "false");
+  orgBusca.value = "";
   document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
   montarMeses();
   render();
@@ -549,6 +659,7 @@ const countBox = document.getElementById("count");
 function passa(r){
   if (!noEscopo(r)) return false;
   if (state.q && !r._busca.includes(state.q)) return false;
+  if (state.anos.size && !state.anos.has(r.ano)) return false;
   if (state.meses.size && !state.meses.has(r._key)) return false;
   if (state.regioes.size && !state.regioes.has(r.regiao)) return false;
   if (state.organizador && !(r.organizadores || []).includes(state.organizador)) return false;
@@ -574,13 +685,15 @@ function render(){
   document.getElementById("s-orgs").textContent = String(organizadoras.size);
   document.getElementById("s-km").textContent = maiorKm ? String(Math.round(maiorKm)) : "—";
 
-  const filtros = state.meses.size + state.regioes.size + state.faixas.size + state.tipos.size
-    + (state.q ? 1 : 0) + (state.organizador ? 1 : 0);
+  const filtros = state.anos.size + state.meses.size + state.regioes.size + state.faixas.size
+    + state.tipos.size + (state.q ? 1 : 0) + (state.organizador ? 1 : 0);
   countBox.innerHTML = res.length
     ? "<b>" + res.length + "</b> " + (res.length === 1 ? "prova" : "provas") +
       " em <b>" + cidades.size + "</b> " + (cidades.size === 1 ? "cidade" : "cidades") +
       (filtros ? " &middot; filtros ativos" : "")
     : "";
+
+  montarPainel(res);
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -612,6 +725,36 @@ function render(){
     frag.append(linha(r, r === proxima));
   });
   listBox.append(frag);
+}
+
+/* Painel da empresa escolhida: os numeros sempre refletem o que está
+   filtrado, então mudar ano ou região muda o painel junto. */
+function montarPainel(res){
+  const painel = document.getElementById("painel");
+  if (!state.organizador){ painel.hidden = true; return; }
+  painel.hidden = false;
+  document.getElementById("painel-nome").textContent = state.organizador;
+
+  const cidades = new Set(res.map(r => r.cidade));
+  const regioes = new Set(res.map(r => r.regiao));
+  const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
+  const numeros = [
+    [res.length, res.length === 1 ? "prova" : "provas"],
+    [cidades.size, cidades.size === 1 ? "cidade" : "cidades"],
+    [regioes.size, regioes.size === 1 ? "região" : "regiões"],
+    [maiorKm ? Math.round(maiorKm) : "—", "km mais longo"],
+  ];
+  const caixa = document.getElementById("painel-nums");
+  caixa.replaceChildren();
+  numeros.forEach(([valor, rotulo]) => caixa.append(
+    el("div", {}, [el("b", { textContent:String(valor) }), el("span", { textContent:rotulo })])));
+
+  const porAno = new Map();
+  res.forEach(r => porAno.set(r.ano, (porAno.get(r.ano) || 0) + 1));
+  const anos = document.getElementById("painel-anos");
+  anos.replaceChildren();
+  [...porAno.entries()].sort((a, b) => a[0] - b[0]).forEach(([ano, n]) =>
+    anos.append(el("span", { textContent:ano + ": " + n + (n === 1 ? " prova" : " provas") })));
 }
 
 function linha(r, destaque){
