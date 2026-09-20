@@ -228,6 +228,39 @@ def padronizar_organizadores(historico):
     return ajustados
 
 
+def vincular_concluintes(historico, desde=None):
+    """Anexa a cada prova realizada quantos atletas concluiram, por distancia.
+
+    O Open Results e portal de resultados, nao calendario: nunca cria prova
+    aqui, so completa as que ja existem. Casamento por data + nome + cidade,
+    a mesma regra usada para fundir as fontes.
+    """
+    if desde is None:
+        # Na rodada diaria so interessam as provas recentes; numeros antigos
+        # nao mudam. O historico completo vem pelo importar_concluintes.py.
+        desde = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
+
+    eventos = fontes.openresults(desde=desde)
+    por_data = {}
+    for p in historico:
+        por_data.setdefault(p["data"], []).append(p)
+
+    ligados, atualizados = 0, 0
+    for e in eventos:
+        if not e["concluintes_total"]:
+            continue          # prova sem resultado publicado ainda
+        alvo = next((p for p in por_data.get(e["data"], []) if mesma_prova(e, p)), None)
+        if not alvo:
+            continue
+        ligados += 1
+        if alvo.get("concluintes_total") != e["concluintes_total"]:
+            atualizados += 1
+        alvo["concluintes"] = e["concluintes"]
+        alvo["concluintes_total"] = e["concluintes_total"]
+        alvo["or_slug"] = e["slug"]
+    return len(eventos), ligados, atualizados
+
+
 def coletar():
     """Roda as tres fontes. Uma fonte que falha nao derruba as outras."""
     registros, relatorio = [], []
@@ -347,6 +380,8 @@ def main():
             tentada = antiga.get("dist_tentada")
             org_tentado = antiga.get("org_tentado")
             organizadores = antiga.get("organizadores") or []
+            resultado = {c: antiga[c] for c in ("concluintes", "concluintes_total", "or_slug")
+                         if antiga.get(c)}
             antiga.clear()
             antiga.update(prova)
             antiga["fontes"] = creditos
@@ -358,6 +393,7 @@ def main():
                 antiga["org_tentado"] = True
             if organizadores and not antiga.get("organizadores"):
                 antiga["organizadores"] = organizadores
+            antiga.update(resultado)
             antiga["primeira_vez"] = primeira
             antiga["visto_em"] = hoje
         else:
@@ -370,6 +406,13 @@ def main():
     ajustadas = normalizar_historico(historico)
     if ajustadas:
         print(f"malha do IBGE: {ajustadas} registros com cidade ou regiao corrigida")
+
+    try:
+        vistos, ligados, atualizados = vincular_concluintes(historico)
+        print(f"concluintes: {vistos} provas no Open Results, {ligados} casadas, "
+              f"{atualizados} com numero novo")
+    except Exception as erro:
+        print(f"concluintes: FALHOU ({erro.__class__.__name__}: {erro})")
 
     tentados, achados = completar_organizadores(historico)
     if tentados:

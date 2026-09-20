@@ -12,8 +12,8 @@ import json
 import re
 
 from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, arrumar_titulo, baixar,
-                   canonizar_cidade, classificar, distancias, limpar,
-                   separar_organizadores, sem_acento)
+                   canonizar_cidade, classificar, consertar_mojibake,
+                   distancias, limpar, separar_organizadores, sem_acento)
 
 # ---------------------------------------------------------------- corridasbr
 
@@ -468,6 +468,85 @@ def atletis():
             "tags": classificar(nome, [], extras),
         })
     return provas
+
+
+# --------------------------------------------------- open results (RunnerHub)
+
+# Portal de resultados do mesmo grupo do roadrunners ("Powered by RunnerHub").
+# Nao e um calendario: entra so para dizer quantos atletas CONCLUIRAM cada
+# prova, por distancia. A listagem por estado ja traz essa quebra, entao nao e
+# preciso abrir a pagina de cada evento.
+OR_LISTA = ("https://openresults.run/api/eventos_por_estado.cfm"
+            "?filtro=&tag={uf}&page={page}&lastWeek=0&lastMonth=0"
+            "&lastMonthKey=&distancia=&tempo=")
+OR_MAX_PAGINAS = 60
+
+OR_CARD = re.compile(r'<article class="or-event-card".*?(?=<article class="or-event-card"|\Z)', re.S)
+OR_DISTANCIA = re.compile(r'or-event-distance">.*?([\d.,]+)\s*k\s*<span[^>]*>\s*\|\s*([\d.]+)', re.S)
+
+
+def _numero(texto):
+    """'1.098' -> 1098."""
+    try:
+        return int(re.sub(r"[^\d]", "", texto or "") or 0)
+    except ValueError:
+        return 0
+
+
+def openresults(desde="2024-01-01", uf=None):
+    """Concluintes por distancia das provas ja realizadas na UF alvo."""
+    uf = uf or UF_ALVO
+    eventos = []
+    vistos = set()
+
+    for pagina in range(OR_MAX_PAGINAS):
+        html = baixar(OR_LISTA.format(uf=uf, page=pagina), {"Accept": "application/json"})
+        cards = OR_CARD.findall(html)
+        if not cards:
+            break
+
+        mais_antiga = None
+        for card in cards:
+            slug = re.search(r'href="/evento/([^"]+)/"', card)
+            dia = re.search(r'<span class="day">\s*(\d{1,2})', card)
+            mes = re.search(r'<span class="month">\s*([a-zç]{3})', card, re.I)
+            ano = re.search(r'<span class="year">\s*(\d{4})', card)
+            titulo = re.search(r'or-event-card-title">(.*?)</h2>', card, re.S)
+            if not (slug and dia and mes and ano and titulo):
+                continue
+            mes_num = MESES_ABBR.get(mes.group(1)[:3].lower())
+            if not mes_num:
+                continue
+
+            data = f"{int(ano.group(1)):04d}-{mes_num:02d}-{int(dia.group(1)):02d}"
+            mais_antiga = data if mais_antiga is None else min(mais_antiga, data)
+            if slug.group(1) in vistos:
+                continue
+            vistos.add(slug.group(1))
+
+            local = re.search(r'location-dot[^>]*></i>(.*?)</span>', card, re.S)
+            cidade = limpar(local.group(1)).split("-")[0].strip() if local else ""
+            total = re.search(r'([\d.]+)\s*concluintes', limpar(card))
+
+            por_distancia = {}
+            for km, n in OR_DISTANCIA.findall(card):
+                km = km.replace(",", ".").rstrip(".")
+                por_distancia[km] = por_distancia.get(km, 0) + _numero(n)
+
+            cidade, regiao, uf_achada = canonizar_cidade(cidade)
+            eventos.append({
+                "slug": slug.group(1),
+                "data": data,
+                "nome": consertar_mojibake(limpar(titulo.group(1))),
+                "cidade": cidade, "regiao": regiao, "uf": uf_achada,
+                "concluintes": por_distancia,
+                "concluintes_total": _numero(total.group(1)) if total else 0,
+            })
+
+        if mais_antiga and mais_antiga < desde:
+            break
+
+    return eventos
 
 
 # -------------------------------------------------------------- roadrunners

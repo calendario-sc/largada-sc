@@ -232,6 +232,39 @@ h1 em{font-style:normal; color:#FFC21A}
 }
 .painel__fechar:hover{border-color:var(--accent); color:var(--ink)}
 
+
+/* ---- concluintes ---- */
+.race__dists li i{font-style:normal; color:var(--muted); margin-left:.3rem}
+.race__dists li.big i{color:rgba(28,10,3,.65)}
+.conc{
+  font-family:var(--f-mono); font-size:.6rem; letter-spacing:.06em; text-transform:uppercase;
+  font-weight:500; padding:.2rem .45rem; border-radius:4px;
+  background:var(--trail-wash); color:var(--trail);
+}
+
+/* ---- comparativo ---- */
+.comparativo{
+  margin:0 0 1.4rem; padding:1.1rem 1.2rem; border-radius:var(--r);
+  background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
+  border-left:4px solid var(--accent);
+}
+.comparativo[hidden]{display:none}
+.comparativo h2{font-family:var(--f-display); font-weight:800; font-size:1.3rem; margin:0 0 .2rem}
+.comparativo .nota{color:var(--muted); font-size:.8rem; margin:0 0 1rem; max-width:70ch}
+.comparativo__grade{display:grid; gap:1.4rem; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
+.comparativo h3{
+  font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 .6rem; font-weight:400;
+}
+.rank{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.3rem}
+.rank li{display:flex; align-items:baseline; gap:.5rem; font-size:.85rem}
+.rank .pos{font-family:var(--f-mono); font-size:.7rem; color:var(--muted); min-width:1.4rem}
+.rank .nome{flex:1; min-width:0; color:var(--ink-2)}
+.rank .nome small{display:block; color:var(--muted); font-size:.72rem}
+.rank .valor{font-family:var(--f-mono); font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums; white-space:nowrap}
+.rank .sobe{color:var(--trail)}
+.rank .desce{color:var(--ultra)}
+
 /* ---------- resultados ---------- */
 .results{padding:1.6rem 0 4rem}
 .count{font-family:var(--f-mono); font-size:.75rem; letter-spacing:.06em; color:var(--muted); margin:0 0 1.2rem}
@@ -403,12 +436,19 @@ h1 em{font-style:normal; color:#FFC21A}
           </div>
         </div>
       </div>
+      <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
       <button class="chip chip--reset" id="reset" type="button">Limpar</button>
     </div>
   </div>
 </div>
 
 <main class="wrap results">
+  <section class="comparativo" id="comparativo" hidden>
+    <h2>Comparativo entre as provas</h2>
+    <p class="nota" id="comparativo-nota"></p>
+    <div class="comparativo__grade" id="comparativo-grade"></div>
+  </section>
+
   <section class="painel" id="painel" hidden>
     <div class="painel__topo">
       <h2 id="painel-nome"></h2>
@@ -439,6 +479,7 @@ const FAIXAS = [["5k","até 6 km"],["10k","10 km"],["21k","meia"],["42k","marato
 const ESCOPOS = [["proximas","Próximas"],["realizadas","Realizadas"],["todas","Todas"]];
 
 const hoje = new Date(); hoje.setHours(0,0,0,0);
+const num = n => n.toLocaleString("pt-BR");
 /* Cor por regiao: fixa para as de SC, sorteada por hash para as outras
    (a expansao nacional ganha cores sem configurar nada). Todas aceitam
    texto branco em cima. */
@@ -463,7 +504,7 @@ RACES.forEach(r => {
   r._passada = r._d < hoje;
 });
 
-const state = { escopo:"proximas", q:"", organizador:"",
+const state = { escopo:"proximas", q:"", organizador:"", comparativo:false,
                 anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
@@ -656,17 +697,125 @@ function filtrarPorCidade(cidade){
 const listBox = document.getElementById("list");
 const countBox = document.getElementById("count");
 
-function passa(r){
-  if (!noEscopo(r)) return false;
+// Filtros que valem em qualquer recorte de tempo. O comparativo usa só estes.
+function passaFiltrosGerais(r){
   if (state.q && !r._busca.includes(state.q)) return false;
-  if (state.anos.size && !state.anos.has(r.ano)) return false;
-  if (state.meses.size && !state.meses.has(r._key)) return false;
   if (state.regioes.size && !state.regioes.has(r.regiao)) return false;
   if (state.organizador && !(r.organizadores || []).includes(state.organizador)) return false;
   if (state.tipos.size && !r.tags.some(x => state.tipos.has(x))) return false;
   if (state.faixas.size && !r.faixas.some(f => state.faixas.has(f))) return false;
   return true;
 }
+
+function passa(r){
+  if (!noEscopo(r)) return false;
+  if (state.anos.size && !state.anos.has(r.ano)) return false;
+  if (state.meses.size && !state.meses.has(r._key)) return false;
+  return passaFiltrosGerais(r);
+}
+
+/* ---------- comparativo entre provas ----------
+   "Maiores" olha o que está filtrado. "Crescimento" precisa de várias edições
+   da mesma prova, então ignora os filtros de período, ano e mês. */
+
+// Palavras que não distinguem uma prova de outra (espelha o tokens_nome do Python).
+const VAZIAS = new Set(["a","as","o","os","de","da","do","das","dos","e","em","no","na",
+  "nos","nas","para","por","com","corrida","corridas","caminhada","prova","etapa",
+  "edicao","run","running","race","sc","santa","catarina"]);
+
+function palavrasProva(nome){
+  return norm(nome)
+    .replace(/\b\d+\s*[oa]?\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(" ")
+    .filter(w => w.length > 1 && !VAZIAS.has(w) && !/^20\d\d$/.test(w))
+    .sort();
+}
+
+// Uma "série" é a mesma prova ao longo dos anos: mesma cidade, mesmas palavras.
+function chaveSerie(r){
+  return norm(r.cidade) + "|" + palavrasProva(r.nome).join(" ");
+}
+
+function montarComparativo(){
+  const caixa = document.getElementById("comparativo");
+  if (!state.comparativo){ caixa.hidden = true; return; }
+  caixa.hidden = false;
+
+  const comResultado = RACES.filter(r => r.concluintes_total && passaFiltrosGerais(r));
+  const grade = document.getElementById("comparativo-grade");
+  grade.replaceChildren();
+
+  document.getElementById("comparativo-nota").textContent =
+    comResultado.length
+      ? "Considera as " + num(comResultado.length) + " provas com resultado publicado. " +
+        "O crescimento compara edições da mesma prova e por isso ignora os filtros de período, ano e mês."
+      : "Nenhuma prova com resultado publicado dentro dos filtros atuais.";
+  if (!comResultado.length) return;
+
+  // --- maiores em concluintes
+  const maiores = [...comResultado].sort((a, b) => b.concluintes_total - a.concluintes_total).slice(0, 10);
+  grade.append(bloco("Maiores em concluintes", maiores.map(r => ({
+    nome: r.nome, sub: r.cidade + " · " + r.ano, valor: num(r.concluintes_total)
+  }))));
+
+  // --- crescimento desde 2024, por série
+  const series = new Map();
+  comResultado.forEach(r => {
+    const k = chaveSerie(r);
+    if (!series.has(k)) series.set(k, { nome:r.nome, cidade:r.cidade, anos:new Map() });
+    const s = series.get(k);
+    s.anos.set(r.ano, (s.anos.get(r.ano) || 0) + r.concluintes_total);
+    if (r.ano >= (s.anoMaisNovo || 0)){ s.anoMaisNovo = r.ano; s.nome = r.nome; }
+  });
+
+  const evolucao = [];
+  series.forEach(s => {
+    const base = s.anos.get(2024);
+    const ultimo = s.anoMaisNovo;
+    if (!base || !ultimo || ultimo === 2024) return;
+    const atual = s.anos.get(ultimo);
+    evolucao.push({ nome:s.nome, cidade:s.cidade, base, atual, ultimo,
+                    delta: atual - base, pct: (atual - base) / base * 100 });
+  });
+
+  if (!evolucao.length){
+    grade.append(bloco("Crescimento desde 2024",
+      [{ nome:"Sem provas com edições de 2024 e de um ano mais recente", sub:"", valor:"—" }]));
+    return;
+  }
+
+  const porDelta = [...evolucao].sort((a, b) => b.delta - a.delta).slice(0, 10);
+  grade.append(bloco("Mais cresceram desde 2024 (absoluto)", porDelta.map(e => ({
+    nome: e.nome, sub: e.cidade + " · " + num(e.base) + " em 2024 → " + num(e.atual) + " em " + e.ultimo,
+    valor: (e.delta >= 0 ? "+" : "") + num(e.delta), classe: e.delta >= 0 ? "sobe" : "desce"
+  }))));
+
+  // Base pequena vira percentual enganoso: 12 -> 60 seria +400%.
+  const porPct = evolucao.filter(e => e.base >= 100)
+    .sort((a, b) => b.pct - a.pct).slice(0, 10);
+  grade.append(bloco("Mais cresceram desde 2024 (%)", porPct.map(e => ({
+    nome: e.nome, sub: e.cidade + " · " + num(e.base) + " → " + num(e.atual) + " em " + e.ultimo,
+    valor: (e.pct >= 0 ? "+" : "") + e.pct.toFixed(0) + "%", classe: e.pct >= 0 ? "sobe" : "desce"
+  })), "só provas com 100 ou mais concluintes em 2024"));
+}
+
+function bloco(titulo, itens, rodape){
+  const lista = el("ul", { className:"rank" });
+  itens.forEach((it, i) => lista.append(el("li", {}, [
+    el("span", { className:"pos", textContent:String(i + 1) }),
+    el("span", { className:"nome" }, [
+      document.createTextNode(it.nome),
+      ...(it.sub ? [el("small", { textContent:it.sub })] : [])
+    ]),
+    el("span", { className:"valor " + (it.classe || ""), textContent:it.valor })
+  ])));
+  const caixa = el("div", {}, [el("h3", { textContent:titulo }), lista]);
+  if (rodape) caixa.append(el("p", { className:"nota", textContent:rodape }));
+  return caixa;
+}
+
+
 
 function render(){
   const res = RACES.filter(passa);
@@ -694,6 +843,7 @@ function render(){
     : "";
 
   montarPainel(res);
+  montarComparativo();
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -729,6 +879,15 @@ function render(){
 
 /* Painel da empresa escolhida: os numeros sempre refletem o que está
    filtrado, então mudar ano ou região muda o painel junto. */
+const btnComparativo = document.getElementById("btn-comparativo");
+btnComparativo.onclick = () => {
+  state.comparativo = !state.comparativo;
+  btnComparativo.setAttribute("aria-pressed", String(state.comparativo));
+  montarComparativo();
+  if (state.comparativo)
+    document.getElementById("comparativo").scrollIntoView({ behavior:"smooth", block:"start" });
+};
+
 function montarPainel(res){
   const painel = document.getElementById("painel");
   if (!state.organizador){ painel.hidden = true; return; }
@@ -738,10 +897,12 @@ function montarPainel(res){
   const cidades = new Set(res.map(r => r.cidade));
   const regioes = new Set(res.map(r => r.regiao));
   const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
+  const concluintes = res.reduce((s, r) => s + (r.concluintes_total || 0), 0);
   const numeros = [
     [res.length, res.length === 1 ? "prova" : "provas"],
     [cidades.size, cidades.size === 1 ? "cidade" : "cidades"],
     [regioes.size, regioes.size === 1 ? "região" : "regiões"],
+    [concluintes ? num(concluintes) : "—", "concluintes"],
     [maiorKm ? Math.round(maiorKm) : "—", "km mais longo"],
   ];
   const caixa = document.getElementById("painel-nums");
@@ -793,6 +954,9 @@ function linha(r, destaque){
     meta.append(b);
   });
 
+  if (r.concluintes_total)
+    meta.append(el("span", { className:"conc", textContent:num(r.concluintes_total) + " concluintes" }));
+
   const fontes = r.fontes || [];
   if (fontes.length) meta.append(el("span", { className:"fontes", textContent:fontes.join(" · ") }));
 
@@ -800,7 +964,14 @@ function linha(r, destaque){
 
   const dists = el("ul", { className:"race__dists" });
   if (r.pills.length){
-    r.pills.forEach((d, i) => dists.append(el("li", { className: i === 0 ? "big" : "", textContent:d })));
+    r.pills.forEach((d, i) => {
+      const li = el("li", { className: i === 0 ? "big" : "", textContent:d });
+      // Concluintes daquela distância, quando o resultado já foi publicado.
+      const km = d.replace(/km.*/i, "").replace(",", ".");
+      const n = (r.concluintes || {})[km];
+      if (n) li.append(el("i", { textContent:num(n) }));
+      dists.append(li);
+    });
   } else {
     // Prova passada sem distancia veio do arquivo, que nao registra percurso;
     // prova futura sem distancia ainda nao teve o percurso anunciado.

@@ -81,6 +81,19 @@ def sem_acento(s):
                    if unicodedata.category(c) != "Mn").lower()
 
 
+def consertar_mojibake(s):
+    """'TubarÃo' -> 'Tubarão'.
+
+    Alguns titulos do Open Results vem com UTF-8 lido como latin-1.
+    """
+    if not s or "Ã" not in s and "Â" not in s:
+        return s
+    try:
+        return s.encode("latin-1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return s
+
+
 def arrumar_caixa(nome):
     """'JACINTO MACHADO' -> 'Jacinto Machado'. Preserva nomes ja bem escritos."""
     if not nome.isupper() and not nome.islower():
