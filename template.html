@@ -1159,25 +1159,53 @@ function montarComparativo(){
       nome, sub: v.provas + (v.provas === 1 ? " prova" : " provas"), valor: num(v.concluintes)
     }))));
 
-  // --- crescimento desde 2024, por série
+  // --- evolução por série (as edições de uma mesma prova)
   const series = new Map();
   comResultado.forEach(r => {
     const k = r.serie || chaveSerie(r);
-    if (!series.has(k)) series.set(k, { nome:r.nome, cidade:r.cidade, anos:new Map() });
+    if (!series.has(k)) series.set(k, { cidade:r.cidade, anos:new Map(), nomes:new Map() });
     const s = series.get(k);
-    s.anos.set(r.ano, (s.anos.get(r.ano) || 0) + r.concluintes_total);
-    if (r.ano >= (s.anoMaisNovo || 0)){ s.anoMaisNovo = r.ano; s.nome = r.nome; }
+    // Com uma distância escolhida, o ano em que ela não existiu fica de fora:
+    // "encolheu" não pode sair de uma edição que simplesmente não teve 42km.
+    const n = contarDaFaixa(r, "total");
+    if (!n) return;
+    s.anos.set(r.ano, (s.anos.get(r.ano) || 0) + n);
+    s.nomes.set(r.ano, r.nome);
   });
 
-  const evolucao = [];
+  const evolucao = [], ultimaEdicao = [];
   series.forEach(s => {
-    const base = s.anos.get(2024);
-    const ultimo = s.anoMaisNovo;
-    if (!base || !ultimo || ultimo === 2024) return;
+    const anos = [...s.anos.keys()].sort((a, b) => a - b);
+    if (!anos.length) return;
+    const ultimo = anos[anos.length - 1];
     const atual = s.anos.get(ultimo);
-    evolucao.push({ nome:s.nome, cidade:s.cidade, base, atual, ultimo,
-                    delta: atual - base, pct: (atual - base) / base * 100 });
+    // O rótulo é o nome da edição mais recente: é assim que a prova se chama hoje.
+    const nome = s.nomes.get(ultimo);
+
+    const base = s.anos.get(2024);
+    if (base && ultimo !== 2024)
+      evolucao.push({ nome, cidade:s.cidade, base, atual, ultimo,
+                      delta: atual - base, pct: (atual - base) / base * 100 });
+
+    if (anos.length > 1){
+      const anterior = anos[anos.length - 2];
+      const antes = s.anos.get(anterior);
+      ultimaEdicao.push({ nome, cidade:s.cidade, antes, atual, anterior, ultimo,
+                          delta: atual - antes, pct: (atual - antes) / antes * 100 });
+    }
   });
+
+  // --- as que mais encolheram de uma edição para a seguinte
+  const encolheram = ultimaEdicao.filter(e => e.delta < 0)
+    .sort((a, b) => a.delta - b.delta).slice(0, 10);
+  if (encolheram.length)
+    grade.append(bloco("Mais encolheram na última edição"
+      + (state.cidade ? " em " + state.cidade : ""), encolheram.map(e => ({
+      nome: e.nome,
+      sub: e.cidade + " · " + num(e.antes) + " em " + e.anterior + " → "
+           + num(e.atual) + " em " + e.ultimo + " (" + e.pct.toFixed(0) + "%)",
+      valor: num(e.delta), classe: "desce"
+    })), "compara a última edição com a anterior, seja qual for o intervalo entre elas"));
 
   if (!evolucao.length){
     grade.append(bloco("Crescimento desde 2024",
