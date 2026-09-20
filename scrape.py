@@ -8,6 +8,7 @@ Uso:  python scrape.py
 """
 
 import datetime
+import difflib
 import json
 import re
 import sys
@@ -18,8 +19,8 @@ import fontes
 from comum import (FAIXAS, NAO_CORRIDA, ORG_ALIAS, UF_ALVO, arrumar_titulo,
                    canonizar_cidade,
                    classificar, esta_excluida, faixas_de, mesma_prova,
-                   mesmo_evento_renomeado, parecidos, separar_organizadores,
-                   sem_acento)
+                   mesmo_evento_renomeado, palavras_distintivas, parecidos,
+                   separar_organizadores, sem_acento)
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI / "corridas.json"
@@ -546,16 +547,50 @@ def completar_runking(historico, limite=60):
         consultadas += 1
         p["runking_tentado"] = True
         try:
-            por_distancia, total = fontes.runking_concluintes(alvo["empresa"], alvo["slug"])
+            por_distancia, total, por_genero = fontes.runking_concluintes(
+                alvo["empresa"], alvo["slug"])
         except Exception:
             continue
         if total:
             p["concluintes"] = por_distancia
             p["concluintes_total"] = total
             p["fonte_resultado"] = "runking"
+            if por_genero:
+                p["concluintes_genero"] = por_genero
+                p["concluintes_f"] = sum(v["f"] for v in por_genero.values())
+                p["concluintes_m"] = sum(v["m"] for v in por_genero.values())
+                p["genero_tentado"] = True
             achados += 1
         time.sleep(PAUSA_DETALHES)
     return consultadas, achados
+
+
+def completar_generos(historico, limite=LIMITE_DETALHES):
+    """Busca a divisao entre mulheres e homens, prova a prova.
+
+    So a pagina do evento no Open Results traz esse recorte; a listagem por
+    estado nao. Cada prova e consultada uma unica vez.
+    """
+    pendentes = [p for p in historico
+                 if p.get("or_slug") and not p.get("genero_tentado")
+                 and p.get("concluintes_total")]
+    if not pendentes:
+        return 0, 0
+
+    achadas = 0
+    for p in pendentes[:limite]:
+        try:
+            por_distancia, total_f, total_m = fontes.openresults_generos(p["or_slug"])
+        except Exception:
+            continue          # tenta de novo numa proxima rodada
+        p["genero_tentado"] = True
+        if total_f or total_m:
+            p["concluintes_genero"] = por_distancia
+            p["concluintes_f"] = total_f
+            p["concluintes_m"] = total_m
+            achadas += 1
+        time.sleep(PAUSA_DETALHES)
+    return len(pendentes[:limite]), achadas
 
 
 def coletar():
@@ -692,7 +727,9 @@ def main():
             organizadores = antiga.get("organizadores") or []
             resultado = {c: antiga[c] for c in
                          ("concluintes", "concluintes_total", "or_slug",
-                          "fonte_resultado", "runking_tentado")
+                          "fonte_resultado", "runking_tentado",
+                          "concluintes_genero", "concluintes_f", "concluintes_m",
+                          "genero_tentado")
                          if antiga.get(c)}
             antiga.clear()
             antiga.update(prova)
@@ -734,6 +771,10 @@ def main():
     except Exception as erro:
         print(f"concluintes (runking): FALHOU ({erro.__class__.__name__}: {erro})")
 
+    tentadas_g, achadas_g = completar_generos(historico)
+    if tentadas_g:
+        print(f"genero: {tentadas_g} provas consultadas, {achadas_g} preenchidas")
+
     tentados, achados = completar_organizadores(historico)
     if tentados:
         print(f"organizador: {tentados} provas consultadas, {achados} preenchidas")
@@ -744,6 +785,9 @@ def main():
     tentadas, achadas = completar_distancias(historico)
     if tentadas:
         print(f"percurso: {tentadas} provas consultadas no arquivo, {achadas} preenchidas")
+
+    series = agrupar_series(historico)
+    print(f"series: {series} eventos com uma ou mais edicoes")
 
     historico.sort(key=lambda p: (p["data"], sem_acento(p["cidade"]), p["nome"]))
     SAIDA.write_text(json.dumps(historico, ensure_ascii=False, separators=(",", ":")),
@@ -777,3 +821,121 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# ------------------------------------------------------- series (as edicoes)
+
+# Folga entre uma edicao e a seguinte. Uma prova anual volta por volta da
+# mesma data, mas o dia exato anda: feriado, calendario do organizador, chuva.
+JANELA_SERIE = 35
+
+
+def _dia_do_ano(data):
+    ano, mes, dia = (int(x) for x in data.split("-"))
+    return datetime.date(ano, mes, dia).timetuple().tm_yday
+
+
+def _mesma_epoca(a, b):
+    """As duas edicoes caem na mesma epoca do ano? (dezembro e janeiro sim)"""
+    d = abs(_dia_do_ano(a["data"]) - _dia_do_ano(b["data"]))
+    return min(d, 365 - d) <= JANELA_SERIE
+
+
+def _so_letras(s):
+    return re.sub(r"[^a-z]", "", sem_acento(s))
+
+
+def _evidencia_de_serie(a, b):
+    """O nome sustenta que sao duas edicoes do mesmo evento?
+
+    Mais exigente que o casamento entre fontes: aqui uma ligacao errada
+    contamina a serie inteira, porque as edicoes se ligam em cadeia.
+    Uma palavra em comum nao basta -- "Sicredi Lagoa Run" e "Trail Run
+    Praias - Lagoa do Peri" dividem "lagoa" e nao tem nada a ver.
+    """
+    if difflib.SequenceMatcher(None, _so_letras(a["nome"]),
+                               _so_letras(b["nome"])).ratio() >= 0.8:
+        return True
+    da = palavras_distintivas(a["nome"], a.get("cidade", ""))
+    db = palavras_distintivas(b["nome"], b.get("cidade", ""))
+    comuns = da & db
+    if not comuns:
+        return False
+    if len(comuns) / len(da | db) >= 0.5:
+        return True
+    # Uma edicao ganhou patrocinador no nome ("Jurere Night Run" virou
+    # "Jurere Night Run - Hard Rock Cafe"): so vale se a mesma empresa
+    # assina as duas.
+    if da <= db or db <= da:
+        oa = set(a.get("organizadores") or [])
+        ob = set(b.get("organizadores") or [])
+        return bool(oa & ob)
+    return False
+
+
+def mesma_serie(a, b):
+    """Duas edicoes da mesma prova, em anos diferentes?
+
+    Nome parecido nao basta numa cidade grande: "Jurere Night Run" e "Sunset
+    Jurere - Corrida & Vinho" dividem a palavra que identifica o lugar. A
+    epoca do ano desempata -- e duas provas do MESMO ano nunca sao edicoes
+    uma da outra.
+    """
+    if a["ano"] == b["ano"] or a.get("cidade") != b.get("cidade"):
+        return False
+    return _mesma_epoca(a, b) and _evidencia_de_serie(a, b)
+
+
+ANO_NO_NOME = re.compile(r"\b(?:19|20)\d{2}\b")
+ABERTURA = re.compile(r"^\s*(?:\d{1,3}\s*[\u00ba\u00aa\u00b0]?|[IVXLivxl]{1,6})\s+")
+
+
+def nome_da_serie(nome):
+    """O nome da prova sem o que muda a cada edicao: o ano e o ordinal."""
+    limpo = ABERTURA.sub("", ANO_NO_NOME.sub(" ", nome))
+    # Evento de dois dias: o rotulo da serie nao precisa dizer qual deles.
+    limpo = re.sub(r"[-–|]?\s*\d{1,2}\s*[ºª°oa]?\s*dia\b",
+                   "", limpo, flags=re.I)
+    limpo = re.sub(r"\s{2,}", " ", limpo).strip(" -\u2013|\u00b7")
+    return limpo or nome
+
+
+def agrupar_series(historico):
+    """Marca cada prova com a serie a que pertence (as edicoes de um evento).
+
+    A serie e o que permite mostrar a evolucao ano a ano. O identificador sai
+    do nome da edicao mais recente, para a serie nao mudar de rotulo quando
+    uma edicao antiga e corrigida.
+    """
+    por_cidade = {}
+    for p in historico:
+        por_cidade.setdefault(p.get("cidade", ""), []).append(p)
+
+    series = 0
+    for provas in por_cidade.values():
+        dono = list(range(len(provas)))
+
+        def raiz(i):
+            while dono[i] != i:
+                dono[i] = dono[dono[i]]
+                i = dono[i]
+            return i
+
+        for i in range(len(provas)):
+            for j in range(i + 1, len(provas)):
+                if raiz(i) != raiz(j) and mesma_serie(provas[i], provas[j]):
+                    dono[raiz(j)] = raiz(i)
+
+        grupos = {}
+        for i, p in enumerate(provas):
+            grupos.setdefault(raiz(i), []).append(p)
+        for grupo in grupos.values():
+            recente = max(grupo, key=lambda p: p["data"])
+            rotulo = nome_da_serie(recente["nome"])
+            chave = sem_acento(f"{recente.get('cidade','')} {rotulo}")
+            chave = re.sub(r"[^a-z0-9]+", "-", chave).strip("-")
+            for p in grupo:
+                p["serie"] = chave
+                p["serie_nome"] = rotulo
+            series += 1
+    return series

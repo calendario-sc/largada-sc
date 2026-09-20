@@ -10,6 +10,7 @@ import datetime
 import functools
 import json
 import re
+import urllib.parse
 
 from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, arrumar_titulo, baixar,
                    canonizar_cidade, classificar, consertar_mojibake,
@@ -481,7 +482,8 @@ OR_LISTA = ("https://openresults.run/api/eventos_por_estado.cfm"
             "&lastMonthKey=&distancia=&tempo=")
 OR_MAX_PAGINAS = 60
 
-OR_CARD = re.compile(r'<article class="or-event-card".*?(?=<article class="or-event-card"|\Z)', re.S)
+OR_CARD = re.compile(
+    r'<a href="/evento/[^"]+/" class="or-event-card-link">.*?</article>', re.S)
 OR_DISTANCIA = re.compile(r'or-event-distance">.*?([\d.,]+)\s*k\s*<span[^>]*>\s*\|\s*([\d.]+)', re.S)
 
 
@@ -549,6 +551,47 @@ def openresults(desde="2024-01-01", uf=None):
     return eventos
 
 
+OR_CARTAO = re.compile(r'<div class="card or-event-card">.*?</table>', re.S)
+OR_TOTAIS = re.compile(r"Totais:.*?</tr>", re.S)
+
+
+def openresults_generos(slug):
+    """Concluintes por genero de um evento, por distancia.
+
+    A listagem por estado so traz o total de cada distancia; a divisao entre
+    feminino e masculino esta na pagina do evento. As colunas sao
+    identificadas pelos links genero=F e genero=M, nao pela ordem.
+    """
+    # Ha slugs com acento e aspas tipograficas; a URL precisa vir codificada.
+    endereco = urllib.parse.quote(slug, safe="")
+    html = baixar(f"https://openresults.run/evento/{endereco}/")
+    por_distancia, total_f, total_m = {}, 0, 0
+
+    for cartao in OR_CARTAO.findall(html):
+        rotulo = re.search(r'<span class="h5">([^<]+)</span>', cartao)
+        totais = OR_TOTAIS.search(cartao)
+        if not (rotulo and totais):
+            continue
+        linha = totais.group(0)
+        # O numero vem com separador de milhar ("1.203"): exigir so digitos
+        # zerava justamente as provas grandes.
+        f = re.search(r'genero=F">([\d.,]+)</a>', linha)
+        m = re.search(r'genero=M">([\d.,]+)</a>', linha)
+        if not (f or m):
+            continue
+        nf, nm = _numero(f.group(1) if f else ""), _numero(m.group(1) if m else "")
+        total_f += nf
+        total_m += nm
+
+        km = re.search(r"(\d+(?:[.,]\d+)?)\s*k", rotulo.group(1), re.I)
+        if km:
+            chave = km.group(1).replace(",", ".").rstrip(".")
+            anterior = por_distancia.get(chave, {"f": 0, "m": 0})
+            por_distancia[chave] = {"f": anterior["f"] + nf, "m": anterior["m"] + nm}
+
+    return por_distancia, total_f, total_m
+
+
 # ------------------------------------------------- runking (Chronomax)
 
 # Cronometragem que publica resultados em resultados.runking.com.br/<empresa>/
@@ -603,8 +646,9 @@ def runking_concluintes(empresa, slug):
     # genero e pedido em separado e somado. Sem isso o total sai pela metade.
     generos = json.loads(generos.group(1)) if generos else []
 
-    por_distancia, total = {}, 0
+    por_distancia, por_genero, total = {}, {}, 0
     for modalidade in json.loads(achado.group(1)):
+        contagem = {"f": 0, "m": 0}
         n_modalidade = 0
         for genero in (generos or [None]):
             url = f"{empresa}/{slug}?modality={urllib.parse.quote(modalidade)}"
@@ -612,7 +656,12 @@ def runking_concluintes(empresa, slug):
                 url += f"&gender={urllib.parse.quote(genero)}"
             pagina = _rk_payload(url)
             resultado = re.search(r'"totalAthletesResults":(\d+)', pagina)
-            n_modalidade += int(resultado.group(1)) if resultado else 0
+            n = int(resultado.group(1)) if resultado else 0
+            n_modalidade += n
+            if genero and genero.upper().startswith("F"):
+                contagem["f"] += n
+            elif genero:
+                contagem["m"] += n
         if not n_modalidade:
             continue
         total += n_modalidade
@@ -620,7 +669,10 @@ def runking_concluintes(empresa, slug):
         if km:
             chave = km.group(1).replace(",", ".").rstrip(".")
             por_distancia[chave] = por_distancia.get(chave, 0) + n_modalidade
-    return por_distancia, total
+            anterior = por_genero.get(chave, {"f": 0, "m": 0})
+            por_genero[chave] = {"f": anterior["f"] + contagem["f"],
+                                 "m": anterior["m"] + contagem["m"]}
+    return por_distancia, total, por_genero
 
 
 # -------------------------------------------------------------- roadrunners

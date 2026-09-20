@@ -206,6 +206,53 @@ h1 em{font-style:normal; color:#FFC21A}
 .org-menu .vazio{color:var(--muted); font-size:.82rem; padding:.4rem .5rem}
 #org-btn[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:var(--sobre-azul)}
 
+.serie{
+  margin:.2rem 0 1.5rem; padding:1.1rem 1.2rem; border-radius:var(--r);
+  background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--accent);
+}
+.serie[hidden]{display:none}
+.serie__topo{display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+.serie h3{font-family:var(--f-display); font-weight:800; font-size:1.2rem; margin:0; letter-spacing:-.015em}
+.serie h3 small{
+  display:block; margin-top:.3rem; font-family:var(--f-mono); font-weight:400;
+  font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+}
+.serie__veredito{margin:.8rem 0 0; font-size:.92rem; color:var(--ink-2); max-width:70ch}
+.serie__veredito b.sobe{color:var(--trail)}
+.serie__veredito b.desce{color:var(--ultra)}
+.serie__nums{display:flex; gap:1.7rem; flex-wrap:wrap; margin:1rem 0 .2rem}
+.serie__nums div b{
+  display:block; font-family:var(--f-display); font-weight:800; font-size:1.55rem; line-height:1;
+  color:var(--azul-ink); font-variant-numeric:tabular-nums;
+}
+.serie__nums div b.f{color:var(--reve)}
+.serie__nums div b.sobe{color:var(--trail)}
+.serie__nums div b.desce{color:var(--ultra)}
+.serie__nums div span{
+  font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted);
+}
+.serie__grafico{display:flex; flex-direction:column; gap:.45rem; margin:1.2rem 0 .3rem}
+.serie__linha{display:grid; grid-template-columns:3.2rem 1fr auto; align-items:center; gap:.7rem}
+.serie__linha > .ano{font-family:var(--f-mono); font-size:.8rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.serie__trilho{background:var(--surface-2); border-radius:999px; height:1.35rem; overflow:hidden}
+.serie__barra{display:flex; height:100%; border-radius:999px; overflow:hidden; min-width:2px}
+.serie__barra i{display:block; height:100%}
+.serie__barra i.f{background:var(--reve)}
+.serie__barra i.m{background:var(--azul)}
+.serie__barra i.sem{background:var(--muted); opacity:.45}
+.serie__valor{font-family:var(--f-mono); font-size:.8rem; font-variant-numeric:tabular-nums; white-space:nowrap}
+.serie__valor em{font-style:normal; color:var(--muted); margin-left:.45rem; font-size:.74rem}
+.serie__valor em.sobe{color:var(--trail)}
+.serie__valor em.desce{color:var(--ultra)}
+.serie__legenda{display:flex; gap:1rem; flex-wrap:wrap; margin:.6rem 0 0; font-size:.75rem; color:var(--muted)}
+.serie__legenda span::before{
+  content:""; display:inline-block; width:.6rem; height:.6rem; border-radius:2px; margin-right:.35rem;
+}
+.serie__legenda span.f::before{background:var(--reve)}
+.serie__legenda span.m::before{background:var(--azul)}
+#serie-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff}
+
 /* ---- painel da empresa escolhida ---- */
 .painel{
   margin:0 0 1.4rem; padding:1.1rem 1.2rem; border-radius:var(--r);
@@ -237,6 +284,8 @@ h1 em{font-style:normal; color:#FFC21A}
 .race__dists li i{font-style:normal; color:var(--muted); margin-left:.3rem}
 .race__dists li.big i{color:rgba(28,10,3,.65)}
 .conc--vazio{background:none; border:1px dashed var(--line); color:var(--muted)}
+.conc--f{background:var(--reve-wash); color:var(--reve)}
+.conc--m{background:var(--azul-wash); color:var(--azul-ink)}
 .conc{
   font-family:var(--f-mono); font-size:.6rem; letter-spacing:.06em; text-transform:uppercase;
   font-weight:500; padding:.2rem .45rem; border-radius:4px;
@@ -252,7 +301,15 @@ h1 em{font-style:normal; color:#FFC21A}
 .comparativo[hidden]{display:none}
 .comparativo h2{font-family:var(--f-display); font-weight:800; font-size:1.3rem; margin:0 0 .2rem}
 .comparativo .nota{color:var(--muted); font-size:.8rem; margin:0 0 1rem; max-width:70ch}
-#comparativo-anos{display:inline-flex; margin:.7rem 0 .8rem}
+/* Sao muitos botoes para a largura de um celular: a fila rola de lado em
+   vez de empurrar a pagina inteira. */
+#comparativo-anos,#comparativo-faixas{
+  display:flex; width:max-content; max-width:100%; margin:.7rem .5rem .8rem 0;
+  overflow-x:auto; scrollbar-width:none;
+}
+#comparativo-anos::-webkit-scrollbar,#comparativo-faixas::-webkit-scrollbar{display:none}
+#comparativo-anos .chip,#comparativo-faixas .chip{flex:0 0 auto}
+#serie-picker{margin:0 0 .9rem}
 .comparativo__grade{display:grid; gap:1.4rem; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
 .comparativo h3{
   font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
@@ -460,6 +517,15 @@ h1 em{font-style:normal; color:#FFC21A}
   <section class="comparativo" id="comparativo" hidden>
     <h2>Comparativo entre as provas</h2>
     <div class="escopo" id="comparativo-anos" role="group" aria-label="Ano do ranking"></div>
+    <div class="escopo" id="comparativo-faixas" role="group" aria-label="Distância do ranking"></div>
+    <div class="org-picker" id="serie-picker">
+      <button class="chip" id="serie-btn" type="button" aria-expanded="false" aria-pressed="false">Escolher uma prova</button>
+      <div class="org-menu" id="serie-menu" hidden>
+        <input id="serie-busca" type="search" placeholder="Buscar prova ou empresa…" aria-label="Buscar prova ou empresa organizadora">
+        <ul id="serie-lista"></ul>
+      </div>
+    </div>
+    <div class="serie" id="serie-painel" hidden></div>
     <p class="nota" id="comparativo-nota"></p>
     <div class="comparativo__grade" id="comparativo-grade"></div>
   </section>
@@ -522,7 +588,7 @@ RACES.forEach(r => {
 });
 
 const state = { escopo:"proximas", q:"", organizador:"", cidade:"", treinos:false,
-                comparativo:false, anoRanking:"",
+                comparativo:false, anoRanking:"", faixaRanking:"", serie:"",
                 anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
@@ -610,7 +676,10 @@ function criarSeletor({ botao, menu, busca, lista, itens, vazio, rotuloNeutro, a
 
   function listar(termo = ""){
     const alvo = norm(termo);
-    const achados = itens.filter(([nome]) => !alvo || norm(nome).includes(alvo));
+    // O terceiro campo, quando existe, amplia a busca sem poluir o rotulo:
+    // e por ele que se acha uma prova pelo nome da empresa que organiza.
+    const achados = itens.filter(([nome, , busca]) =>
+      !alvo || norm(busca || nome).includes(alvo));
     li.replaceChildren();
     if (!achados.length){
       li.append(el("li", {}, [el("div", { className:"vazio", textContent:vazio })]));
@@ -732,6 +801,7 @@ document.getElementById("reset").onclick = () => {
   [state.anos, state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
   seletorEmpresa.limpar();
   seletorCidade.limpar();
+  seletorProva.limpar();
   state.treinos = false;
   btnTreinos.setAttribute("aria-pressed", "false");
   document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
@@ -803,17 +873,240 @@ const ANOS_COM_RESULTADO = [...new Set(RACES.filter(r => r.concluintes_total).ma
     caixaAnosRanking.append(b);
   });
 
+const caixaFaixasRanking = document.getElementById("comparativo-faixas");
+[["", "Todas as distâncias"], ...FAIXAS.map(([f, rotulo]) => [f, rotulo])]
+  .forEach(([val, rotulo]) => {
+    const b = el("button", { className:"chip", type:"button", textContent:rotulo });
+    b.dataset.faixa = val;
+    b.setAttribute("aria-pressed", String(state.faixaRanking === val));
+    b.onclick = () => {
+      state.faixaRanking = val;
+      caixaFaixasRanking.querySelectorAll(".chip").forEach(c =>
+        c.setAttribute("aria-pressed", String(c.dataset.faixa === val)));
+      montarComparativo();
+    };
+    caixaFaixasRanking.append(b);
+  });
+
+/* Com uma distância escolhida, o ranking passa a contar só quem concluiu
+   AQUELA distância — senão "maiores nos 42km" mostraria provas grandes por
+   causa dos 5km delas. */
+const LIMITES = { "5k":[0,6], "10k":[6.01,12], "21k":[12.01,25], "42k":[25.01,45], "ultra":[45.01,999] };
+
+function naFaixa(km){
+  const faixa = LIMITES[state.faixaRanking];
+  const v = Number(km);
+  return !faixa || (v >= faixa[0] && v <= faixa[1]);
+}
+
+function contarDaFaixa(r, campo){
+  if (!state.faixaRanking) return campo === "total" ? (r.concluintes_total || 0)
+    : (campo === "f" ? (r.concluintes_f || 0) : (r.concluintes_m || 0));
+  let soma = 0;
+  if (campo === "total"){
+    Object.entries(r.concluintes || {}).forEach(([km, n]) => { if (naFaixa(km)) soma += n; });
+  } else {
+    Object.entries(r.concluintes_genero || {}).forEach(([km, v]) => { if (naFaixa(km)) soma += (v[campo] || 0); });
+  }
+  return soma;
+}
+
+/* ---------- uma prova ao longo dos anos ----------
+   A série já vem pronta do coletor (campo `serie`): agrupar edições pelo
+   nome no navegador erraria, porque patrocinador entra e sai do título. */
+
+const SERIES = new Map();
+RACES.forEach(r => {
+  if (!r.serie) return;
+  if (!SERIES.has(r.serie))
+    SERIES.set(r.serie, { nome:r.serie_nome, cidade:r.cidade, edicoes:[] });
+  const s = SERIES.get(r.serie);
+  s.edicoes.push(r);
+  // O rótulo é o da edição mais recente: é assim que a prova se chama hoje.
+  if (r.ano >= (s.anoMaisNovo || 0)){ s.anoMaisNovo = r.ano; s.nome = r.serie_nome; }
+});
+
+// Sem resultado publicado não há evolução para mostrar.
+const SERIES_LISTADAS = [...SERIES.entries()]
+  .filter(([, s]) => s.edicoes.some(r => r.concluintes_total))
+  .map(([chave, s]) => ({
+    chave, s, rotulo: s.nome + " · " + s.cidade,
+    edicoes: s.edicoes.filter(r => r.concluintes_total).length,
+    // Procurar pelo nome da empresa traz todas as provas dela.
+    busca: s.nome + " " + s.cidade + " "
+           + [...new Set(s.edicoes.flatMap(r => r.organizadores || []))].join(" "),
+  }));
+
+const chaveDoRotulo = new Map(SERIES_LISTADAS.map(x => [x.rotulo, x.chave]));
+
+const seletorProva = criarSeletor({
+  botao:"serie-btn", menu:"serie-menu", busca:"serie-busca", lista:"serie-lista",
+  itens: SERIES_LISTADAS
+    .map(x => [x.rotulo, x.edicoes, x.busca])
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR")),
+  vazio:"Nenhuma prova com esse nome.",
+  rotuloNeutro:"Escolher uma prova",
+  aoEscolher: rotulo => {
+    state.serie = chaveDoRotulo.get(rotulo) || "";
+    montarSerie();
+    if (state.serie)
+      document.getElementById("serie-painel").scrollIntoView({ behavior:"smooth", block:"center" });
+  },
+});
+
+const pluralAtletas = n => num(n) + (n === 1 ? " concluinte" : " concluintes");
+
+function variacao(de, para){
+  const delta = para - de;
+  return { delta, pct: de ? delta / de * 100 : null,
+           classe: delta > 0 ? "sobe" : (delta < 0 ? "desce" : "") };
+}
+
+const comSinal = n => (n > 0 ? "+" : "") + num(n);
+const pctComSinal = p => (p > 0 ? "+" : "") + p.toFixed(0) + "%";
+
+function montarSerie(){
+  const caixa = document.getElementById("serie-painel");
+  const s = SERIES.get(state.serie);
+  if (!s){ caixa.hidden = true; return; }
+  caixa.hidden = false;
+  caixa.replaceChildren();
+
+  // Evento de dois dias conta como uma edição só: os dois dias somam.
+  const porAno = new Map();
+  s.edicoes.forEach(r => {
+    const a = porAno.get(r.ano) || { total:0, f:0, m:0, genero:false };
+    a.total += contarDaFaixa(r, "total");
+    a.f += contarDaFaixa(r, "f");
+    a.m += contarDaFaixa(r, "m");
+    a.genero = a.genero || Boolean(r.concluintes_f || r.concluintes_m);
+    porAno.set(r.ano, a);
+  });
+  const anos = [...porAno.entries()].filter(([, v]) => v.total > 0)
+                                    .sort((a, b) => a[0] - b[0]);
+
+  const rotuloFaixa = state.faixaRanking
+    ? (FAIXAS.find(([f]) => f === state.faixaRanking) || ["", ""])[1] : "";
+
+  caixa.append(el("div", { className:"serie__topo" }, [
+    el("h3", {}, [
+      document.createTextNode(s.nome),
+      el("small", { textContent: s.cidade + (rotuloFaixa ? " · " + rotuloFaixa : "") })
+    ]),
+    (() => {
+      const b = el("button", { className:"painel__fechar", type:"button", textContent:"Fechar" });
+      b.onclick = () => seletorProva.limpar();
+      return b;
+    })(),
+  ]));
+
+  if (!anos.length){
+    caixa.append(el("p", { className:"nota",
+      textContent:"Nenhuma edição desta prova tem resultado publicado"
+                  + (rotuloFaixa ? " na distância " + rotuloFaixa + "." : ".") }));
+    return;
+  }
+
+  const [anoFim, fim] = anos[anos.length - 1];
+  const [anoIni, ini] = anos[0];
+  const generoFim = fim.f + fim.m;
+
+  // --- veredito: cresceu ou encolheu?
+  const frase = el("p", { className:"serie__veredito" });
+  if (anos.length < 2){
+    frase.append(document.createTextNode(
+      "Só uma edição com resultado (" + anoFim + ", " + pluralAtletas(fim.total)
+      + "): ainda não dá para comparar."));
+  } else {
+    const v = variacao(ini.total, fim.total);
+    const verbo = v.delta > 0 ? "cresceu" : (v.delta < 0 ? "encolheu" : "ficou estável");
+    frase.append(document.createTextNode("De " + anoIni + " a " + anoFim + " a prova "));
+    frase.append(el("b", { className:v.classe,
+      textContent: verbo + (v.pct === null ? "" : " " + Math.abs(v.pct).toFixed(0) + "%") }));
+    frase.append(document.createTextNode(
+      ", de " + num(ini.total) + " para " + pluralAtletas(fim.total) + "."));
+    if (anos.length > 2){
+      const anterior = anos[anos.length - 2];
+      const va = variacao(anterior[1].total, fim.total);
+      frase.append(document.createTextNode(
+        " Contra " + anterior[0] + ", " + (va.delta >= 0 ? "ganhou " : "perdeu ")
+        + num(Math.abs(va.delta)) + "."));
+    }
+  }
+  caixa.append(frase);
+
+  // --- números da última edição
+  const nums = el("div", { className:"serie__nums" });
+  const numero = (valor, rotulo, classe) => el("div", {}, [
+    el("b", { className: classe || "", textContent: valor }),
+    el("span", { textContent: rotulo }),
+  ]);
+  nums.append(numero(num(fim.total), "concluintes em " + anoFim));
+  if (generoFim){
+    nums.append(numero(num(fim.f), "mulheres · " + Math.round(100 * fim.f / generoFim) + "%", "f"));
+    nums.append(numero(num(fim.m), "homens · " + Math.round(100 * fim.m / generoFim) + "%"));
+  }
+  if (anos.length > 1){
+    const v = variacao(ini.total, fim.total);
+    nums.append(numero(comSinal(v.delta), "desde " + anoIni, v.classe));
+    if (v.pct !== null) nums.append(numero(pctComSinal(v.pct), "desde " + anoIni, v.classe));
+  }
+  caixa.append(nums);
+
+  // --- evolução ano a ano
+  const maior = Math.max(...anos.map(([, v]) => v.total));
+  const grafico = el("div", { className:"serie__grafico" });
+  anos.forEach(([ano, v], i) => {
+    const barra = el("span", { className:"serie__barra" });
+    const dupla = v.f + v.m;
+    if (dupla){
+      barra.append(el("i", { className:"f", style:"width:" + (100 * v.f / dupla) + "%" }));
+      barra.append(el("i", { className:"m", style:"width:" + (100 * v.m / dupla) + "%" }));
+    } else {
+      barra.append(el("i", { className:"sem", style:"width:100%" }));
+    }
+    const trilho = el("span", { className:"serie__trilho" }, [barra]);
+    barra.style.width = Math.max(1.5, 100 * v.total / maior) + "%";
+
+    const valor = el("span", { className:"serie__valor" }, [document.createTextNode(num(v.total))]);
+    if (i > 0){
+      const va = variacao(anos[i - 1][1].total, v.total);
+      valor.append(el("em", { className:va.classe, textContent:"(" + comSinal(va.delta) + ")" }));
+    }
+    grafico.append(el("div", { className:"serie__linha" }, [
+      el("span", { className:"ano", textContent:String(ano) }), trilho, valor,
+    ]));
+  });
+  caixa.append(grafico);
+
+  if (anos.some(([, v]) => v.f + v.m))
+    caixa.append(el("div", { className:"serie__legenda" }, [
+      el("span", { className:"f", textContent:"mulheres" }),
+      el("span", { className:"m", textContent:"homens" }),
+    ]));
+
+  const semGenero = anos.filter(([, v]) => !(v.f + v.m)).map(([a]) => a);
+  const recados = [];
+  if (semGenero.length)
+    recados.push("Sem divisão por sexo em " + semGenero.join(", ") + ".");
+  recados.push("O filtro de ano não vale aqui: o quadro existe para comparar os anos.");
+  caixa.append(el("p", { className:"nota", textContent:recados.join(" ") }));
+}
+
 function montarComparativo(){
   const caixa = document.getElementById("comparativo");
   if (!state.comparativo){ caixa.hidden = true; return; }
   caixa.hidden = false;
 
+  montarSerie();
+
   const comResultado = RACES.filter(r => r.concluintes_total && passaFiltrosGerais(r));
   // O ano escolhido vale para os rankings; o crescimento precisa de vários
   // anos e por isso usa sempre a base inteira.
-  const doAno = state.anoRanking
+  let doAno = state.anoRanking
     ? comResultado.filter(r => String(r.ano) === state.anoRanking)
     : comResultado;
+  if (state.faixaRanking) doAno = doAno.filter(r => contarDaFaixa(r, "total") > 0);
   const grade = document.getElementById("comparativo-grade");
   grade.replaceChildren();
 
@@ -827,20 +1120,35 @@ function montarComparativo(){
   if (!comResultado.length) return;
 
   // --- maiores em concluintes
-  const maiores = [...doAno].sort((a, b) => b.concluintes_total - a.concluintes_total).slice(0, 10);
+  const maiores = [...doAno].sort((a, b) => contarDaFaixa(b, "total") - contarDaFaixa(a, "total")).slice(0, 10);
   const ondeQuando = (state.cidade ? " em " + state.cidade : "")
     + (state.anoRanking ? " em " + state.anoRanking : "");
-  grade.append(bloco("Maiores em concluintes" + ondeQuando,
+  const rotuloFaixa = state.faixaRanking
+    ? " (" + (FAIXAS.find(([f]) => f === state.faixaRanking) || ["", ""])[1] + ")" : "";
+  grade.append(bloco("Maiores em concluintes" + rotuloFaixa + ondeQuando,
     maiores.map(r => ({
-    nome: r.nome, sub: r.cidade + " · " + r.ano, valor: num(r.concluintes_total)
+    nome: r.nome, sub: r.cidade + " · " + r.ano, valor: num(contarDaFaixa(r, "total"))
   }))));
+
+  // --- maiores em número de mulheres
+  const comMulheres = doAno.filter(r => contarDaFaixa(r, "f") > 0);
+  if (comMulheres.length){
+    const porMulheres = [...comMulheres]
+      .sort((a, b) => contarDaFaixa(b, "f") - contarDaFaixa(a, "f")).slice(0, 10);
+    grade.append(bloco("Maiores em mulheres" + rotuloFaixa + ondeQuando, porMulheres.map(r => {
+      const f = contarDaFaixa(r, "f"), m = contarDaFaixa(r, "m");
+      return { nome: r.nome,
+               sub: r.cidade + " · " + r.ano + " · " + Math.round(100 * f / (f + m)) + "% do total",
+               valor: num(f) };
+    })));
+  }
 
   // --- empresas por concluintes somados
   const porEmpresa = new Map();
   doAno.forEach(r => (r.organizadores || []).forEach(o => {
     const atual = porEmpresa.get(o) || { provas:0, concluintes:0 };
     atual.provas += 1;
-    atual.concluintes += r.concluintes_total;
+    atual.concluintes += contarDaFaixa(r, "total");
     porEmpresa.set(o, atual);
   }));
   const empresas = [...porEmpresa.entries()]
@@ -854,7 +1162,7 @@ function montarComparativo(){
   // --- crescimento desde 2024, por série
   const series = new Map();
   comResultado.forEach(r => {
-    const k = chaveSerie(r);
+    const k = r.serie || chaveSerie(r);
     if (!series.has(k)) series.set(k, { nome:r.nome, cidade:r.cidade, anos:new Map() });
     const s = series.get(k);
     s.anos.set(r.ano, (s.anos.get(r.ano) || 0) + r.concluintes_total);
@@ -1073,6 +1381,11 @@ function linha(r, destaque){
   else if (r._passada)
     // Deixa explícito que falta o resultado, em vez de parecer esquecimento.
     meta.append(el("span", { className:"conc conc--vazio", textContent:"sem resultado publicado" }));
+
+  if (r.concluintes_f || r.concluintes_m){
+    meta.append(el("span", { className:"conc conc--f", textContent:num(r.concluintes_f || 0) + " mulheres" }));
+    meta.append(el("span", { className:"conc conc--m", textContent:num(r.concluintes_m || 0) + " homens" }));
+  }
 
   const fontes = r.fontes || [];
   if (fontes.length) meta.append(el("span", { className:"fontes", textContent:fontes.join(" · ") }));
