@@ -16,8 +16,9 @@ from pathlib import Path
 
 import fontes
 from comum import (FAIXAS, NAO_CORRIDA, UF_ALVO, arrumar_titulo, canonizar_cidade,
-                   classificar, faixas_de, mesma_prova, mesmo_evento_renomeado,
-                   parecidos, separar_organizadores, sem_acento)
+                   classificar, esta_excluida, faixas_de, mesma_prova,
+                   mesmo_evento_renomeado, parecidos, separar_organizadores,
+                   sem_acento)
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI / "corridas.json"
@@ -116,6 +117,9 @@ def peneirar(provas):
     """
     ficam, saem = [], []
     for p in provas:
+        if esta_excluida(p):
+            saem.append((p, "retirada a pedido"))
+            continue
         if p["regiao"].startswith("Fora de"):
             saem.append((p, f"é de {p.get('uf') or 'outro estado'}"))
             continue
@@ -637,6 +641,13 @@ def main():
         print(f"restam {len(atuais)} provas")
 
     historico = json.loads(SAIDA.read_text(encoding="utf-8")) if SAIDA.exists() else []
+    retiradas = [p for p in historico if esta_excluida(p)]
+    if retiradas:
+        historico[:] = [p for p in historico if p not in retiradas]
+        print(f"retiradas a pedido: {len(retiradas)}")
+        for p in retiradas:
+            print(f"  - {p['data']}  {p['cidade']} - {p['nome'][:44]}")
+
     renomeadas = unificar_openresults(historico)
     if renomeadas:
         print(f"provas que mudaram de nome: {len(renomeadas)} registros unificados")

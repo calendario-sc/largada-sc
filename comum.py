@@ -292,6 +292,26 @@ def tokens_nome(nome):
     return {p for p in n.split() if p and p not in VAZIAS and len(p) > 1}
 
 
+# Provas retiradas do calendario a pedido: viraram treinao, foram canceladas
+# sem sair das fontes, ou nao sao corrida. Guardadas com data porque o mesmo
+# nome se repete entre edicoes, e so a edicao indicada deve sair.
+EXCLUIDAS = [
+    ("2025-03-23", "Corrida do Desterro - Floripa 352 Anos"),   # virou treinao
+]
+
+
+def esta_excluida(prova):
+    """A prova consta na lista de exclusao?"""
+    for data, nome in EXCLUIDAS:
+        if prova.get("data") != data:
+            continue
+        if (parecidos(prova.get("nome", ""), nome)
+                or mesmo_evento_renomeado(prova.get("nome", ""), nome,
+                                          prova.get("cidade", ""))):
+            return True
+    return False
+
+
 # Palavras que aparecem em quase toda prova e por isso nao identificam
 # nenhuma: duas provas no mesmo dia e cidade podem compartilhar todas elas.
 GENERICOS = {"maratona", "meia", "night", "sunset", "trail", "circuito",
