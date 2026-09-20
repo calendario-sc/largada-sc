@@ -296,6 +296,14 @@ def tokens_nome(nome):
     return {p for p in n.split() if p and p not in VAZIAS and len(p) > 1}
 
 
+# Grafias de organizador que nenhuma regra automatica junta com seguranca:
+# abreviacao no meio do nome ("MKT" x "Marketing"), sigla trocada, nome antigo
+# da empresa. A chave e a grafia a corrigir, ja sem acento e em minusculas.
+ORG_ALIAS = {
+    "norte mkt esportivo": "Norte Marketing Esportivo",
+}
+
+
 # Provas retiradas do calendario a pedido: viraram treinao, foram canceladas
 # sem sair das fontes, ou nao sao corrida. Guardadas com data porque o mesmo
 # nome se repete entre edicoes, e so a edicao indicada deve sair.

@@ -15,7 +15,8 @@ import time
 from pathlib import Path
 
 import fontes
-from comum import (FAIXAS, NAO_CORRIDA, UF_ALVO, arrumar_titulo, canonizar_cidade,
+from comum import (FAIXAS, NAO_CORRIDA, ORG_ALIAS, UF_ALVO, arrumar_titulo,
+                   canonizar_cidade,
                    classificar, esta_excluida, faixas_de, mesma_prova,
                    mesmo_evento_renomeado, parecidos, separar_organizadores,
                    sem_acento)
@@ -269,6 +270,15 @@ def padronizar_organizadores(historico):
        "Rede Feminina ... de Guaramirim" e "... de Pinhalzinho" sao duas
        entidades, e "Prefeitura Municipal" sozinha nao representa nenhuma.
     """
+    # Apelidos declarados a mao valem antes de qualquer regra automatica.
+    por_apelido = 0
+    for p in historico:
+        nomes = p.get("organizadores", [])
+        trocados = [ORG_ALIAS.get(_chave_org(n), n) for n in nomes]
+        if trocados != nomes:
+            p["organizadores"] = sorted(set(trocados), key=sem_acento)
+            por_apelido += 1
+
     contagem = {}
     for p in historico:
         for nome in p.get("organizadores", []):
@@ -363,7 +373,7 @@ def padronizar_organizadores(historico):
         if finais != atuais:
             p["organizadores"] = finais
             ajustados += 1
-    return ajustados
+    return ajustados + por_apelido
 
 
 def vincular_concluintes(historico, desde=None):
