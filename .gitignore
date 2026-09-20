@@ -7,3 +7,6 @@ _*.py
 
 # Configuracao local do servidor de conferencia; nao faz parte do site.
 .claude/
+
+# Copias temporarias para conferir o layout de impressao.
+_*.html

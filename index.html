@@ -315,7 +315,9 @@ h1 em{font-style:normal; color:#FFC21A}
 }
 #comparativo-anos::-webkit-scrollbar,#comparativo-faixas::-webkit-scrollbar{display:none}
 #comparativo-anos .chip,#comparativo-faixas .chip{flex:0 0 auto}
-#serie-picker{margin:0 0 .9rem}
+.comparativo__acoes{display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin:0 0 .9rem}
+#btn-pdf::before{content:"\2193\00a0"}
+.imp{display:none}
 .comparativo__grade{display:grid; gap:1.4rem; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
 .comparativo h3{
   font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
@@ -455,6 +457,51 @@ h1 em{font-style:normal; color:#FFC21A}
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
 }
+
+/* ---------- impressao: so o comparativo, em papel ----------
+   Nao ha gerador de PDF embutido aqui; quem gera o arquivo e o proprio
+   navegador, pelo "Salvar como PDF" da caixa de impressao. Em troca, o PDF
+   sai com texto selecionavel e acentuado, sem depender de nenhuma
+   biblioteca externa. */
+@media print{
+  @page{size:A4; margin:14mm 12mm}
+
+  /* O tema escuro do sistema nao pode ir para o papel. Os seletores repetem
+     os do tema escuro para empatar em especificidade; o que decide e a ordem. */
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){
+    --ground:#FFFFFF; --surface:#FFFFFF; --surface-2:#EFF1F5;
+    --line:#BFC7D4; --line-soft:#D8DEE8;
+    --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880;
+    --accent:#C93F10; --accent-ink:#8F2A08;
+    --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD;
+    --trail:#07734F; --ultra:#B81C26; --reve:#961268;
+    --shadow:none; --mix-rc:88%;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  html,body{background:#FFFFFF}
+
+  /* Fica so o relatorio: agenda, filtros e cabecalho sao da tela. */
+  .top,.pulse,.filters,.foot,.painel,#list,.count{display:none !important}
+  #comparativo-anos,#comparativo-faixas,.comparativo__acoes,.painel__fechar,
+  .serie__topo button{display:none !important}
+
+  .results{padding:0}
+  .wrap{width:100%}
+  .comparativo{margin:0; padding:0; border:0; border-radius:0; box-shadow:none; background:none}
+  .comparativo h2{font-size:1.45rem; margin:0}
+  .comparativo > .nota{margin:.6rem 0 1.1rem}
+
+  .imp{display:block; margin:.25rem 0 0; border-bottom:1px solid var(--line); padding-bottom:.7rem}
+  .imp p{margin:.15rem 0; font-size:.78rem; color:var(--muted)}
+  .imp p b{color:var(--ink-2); font-weight:500}
+
+  /* Nenhum quadro pode ser partido ao meio pela quebra de pagina. */
+  .comparativo__grade{grid-template-columns:1fr 1fr; gap:1.1rem 1.8rem}
+  .comparativo__grade > div,.serie,.serie__linha{break-inside:avoid; page-break-inside:avoid}
+  .serie{border:1px solid var(--line); border-left-width:3px; box-shadow:none; padding:.9rem 1rem}
+  .rank li{font-size:.8rem}
+  .rank .nome small{font-size:.68rem}
+}
 </style>
 </head>
 <body>
@@ -527,13 +574,17 @@ h1 em{font-style:normal; color:#FFC21A}
     <h2>Comparativo entre as provas</h2>
     <div class="escopo" id="comparativo-anos" role="group" aria-label="Ano do ranking"></div>
     <div class="escopo" id="comparativo-faixas" role="group" aria-label="Distância do ranking"></div>
-    <div class="org-picker" id="serie-picker">
-      <button class="chip" id="serie-btn" type="button" aria-expanded="false" aria-pressed="false">Escolher uma prova</button>
-      <div class="org-menu" id="serie-menu" hidden>
-        <input id="serie-busca" type="search" placeholder="Buscar prova ou empresa…" aria-label="Buscar prova ou empresa organizadora">
-        <ul id="serie-lista"></ul>
+    <div class="comparativo__acoes">
+      <div class="org-picker" id="serie-picker">
+        <button class="chip" id="serie-btn" type="button" aria-expanded="false" aria-pressed="false">Escolher uma prova</button>
+        <div class="org-menu" id="serie-menu" hidden>
+          <input id="serie-busca" type="search" placeholder="Buscar prova ou empresa…" aria-label="Buscar prova ou empresa organizadora">
+          <ul id="serie-lista"></ul>
+        </div>
       </div>
+      <button class="chip" id="btn-pdf" type="button">Baixar PDF</button>
     </div>
+    <div class="imp" id="imp" aria-hidden="true"></div>
     <div class="serie" id="serie-painel" hidden></div>
     <p class="nota" id="comparativo-nota"></p>
     <div class="comparativo__grade" id="comparativo-grade"></div>
@@ -569,6 +620,7 @@ const DIA_ABBR = ["dom","seg","ter","qua","qui","sex","sáb"];
 const FAIXAS = [["5k","até 6 km"],["10k","10 km"],["21k","meia"],["42k","maratona"],["ultra","ultra"]];
 const ESCOPOS = [["proximas","Próximas"],["realizadas","Realizadas"],["todas","Todas"]];
 
+const COLETA = "20/09/2026";
 const hoje = new Date(); hoje.setHours(0,0,0,0);
 const num = n => n.toLocaleString("pt-BR");
 /* Cor por regiao: fixa para as de SC, sorteada por hash para as outras
@@ -1238,6 +1290,57 @@ function montarComparativo(){
     valor: (e.pct >= 0 ? "+" : "") + e.pct.toFixed(0) + "%", classe: e.pct >= 0 ? "sobe" : "desce"
   })), "só provas com 100 ou mais concluintes em 2024"));
 }
+
+/* ---------- exportar o comparativo em PDF ----------
+   Quem gera o arquivo e o navegador: o botao so prepara o recorte e abre a
+   caixa de impressao, onde se escolhe "Salvar como PDF". Sai texto de
+   verdade, pesquisavel, e a pagina continua sem nenhuma biblioteca externa. */
+
+function recorteAtual(){
+  const partes = [];
+  partes.push(state.anoRanking || "todos os anos");
+  if (state.faixaRanking)
+    partes.push((FAIXAS.find(([f]) => f === state.faixaRanking) || ["", ""])[1]);
+  else partes.push("todas as distâncias");
+  if (state.cidade) partes.push(state.cidade);
+  if (state.organizador) partes.push(state.organizador);
+  if (state.regioes.size) partes.push([...state.regioes].join(", "));
+  if (state.tipos.size) partes.push([...state.tipos].join(", "));
+  if (state.faixas.size)
+    partes.push([...state.faixas].map(f => (FAIXAS.find(([x]) => x === f) || ["", f])[1]).join(", "));
+  if (state.treinos) partes.push("treinos");
+  if (state.q) partes.push("busca por “" + state.q + "”");
+  return partes;
+}
+
+function montarCabecalhoImpressao(){
+  const caixa = document.getElementById("imp");
+  const hojeTxt = new Date().toLocaleDateString("pt-BR");
+  caixa.replaceChildren(
+    el("p", {}, [el("b", { textContent:"Recorte: " }),
+                 document.createTextNode(recorteAtual().join(" · "))]),
+    el("p", {}, [el("b", { textContent:"Largada SC" }),
+                 document.createTextNode(" · dados da coleta de " + COLETA
+                   + " · relatório gerado em " + hojeTxt)]),
+  );
+}
+
+// O nome do arquivo sugerido pelo navegador sai do título da página.
+const TITULO = document.title;
+function nomeDoArquivo(){
+  const pedacos = ["Largada SC - Comparativo"];
+  if (state.cidade) pedacos.push(state.cidade);
+  if (state.organizador) pedacos.push(state.organizador);
+  if (state.anoRanking) pedacos.push(state.anoRanking);
+  return pedacos.join(" - ").replace(/[\\/:*?"<>|]/g, "");
+}
+
+document.getElementById("btn-pdf").onclick = () => {
+  montarCabecalhoImpressao();
+  document.title = nomeDoArquivo();
+  window.print();
+};
+window.addEventListener("afterprint", () => { document.title = TITULO; });
 
 function bloco(titulo, itens, rodape){
   const lista = el("ul", { className:"rank" });
