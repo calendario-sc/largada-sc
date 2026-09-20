@@ -394,6 +394,53 @@ def vincular_concluintes(historico, desde=None):
     return len(eventos), ligados, atualizados
 
 
+def completar_runking(historico, limite=60):
+    """Completa os concluintes pelas paginas do RunKing (Chronomax).
+
+    O Open Results nao cobre tudo. Onde ele falta, a cronometragem publica os
+    numeros no proprio site. So consulta prova que ainda esta sem resultado, e
+    so marca como tentada quando houve consulta de verdade -- assim, incluir
+    uma empresa nova em fontes.RK_EMPRESAS faz as pendentes serem revistas.
+    """
+    hoje = datetime.date.today().isoformat()
+    pendentes = [p for p in historico
+                 if p["data"] < hoje and not p.get("concluintes_total")
+                 and not p.get("runking_tentado")]
+    if not pendentes:
+        return 0, 0
+
+    por_data = {}
+    for empresa in fontes.RK_EMPRESAS:
+        try:
+            for e in fontes.runking_eventos(empresa):
+                por_data.setdefault(e["data"], []).append(e)
+        except Exception as erro:
+            print(f"  runking/{empresa}: FALHOU ({erro.__class__.__name__}: {erro})")
+    if not por_data:
+        return 0, 0
+
+    consultadas = achados = 0
+    for p in pendentes:
+        if consultadas >= limite:
+            break
+        alvo = next((e for e in por_data.get(p["data"], []) if mesma_prova(e, p)), None)
+        if not alvo:
+            continue          # sem candidato: nao marca, para rever depois
+        consultadas += 1
+        p["runking_tentado"] = True
+        try:
+            por_distancia, total = fontes.runking_concluintes(alvo["empresa"], alvo["slug"])
+        except Exception:
+            continue
+        if total:
+            p["concluintes"] = por_distancia
+            p["concluintes_total"] = total
+            p["fonte_resultado"] = "runking"
+            achados += 1
+        time.sleep(PAUSA_DETALHES)
+    return consultadas, achados
+
+
 def coletar():
     """Roda as tres fontes. Uma fonte que falha nao derruba as outras."""
     registros, relatorio = [], []
@@ -513,7 +560,9 @@ def main():
             tentada = antiga.get("dist_tentada")
             org_tentado = antiga.get("org_tentado")
             organizadores = antiga.get("organizadores") or []
-            resultado = {c: antiga[c] for c in ("concluintes", "concluintes_total", "or_slug")
+            resultado = {c: antiga[c] for c in
+                         ("concluintes", "concluintes_total", "or_slug",
+                          "fonte_resultado", "runking_tentado")
                          if antiga.get(c)}
             antiga.clear()
             antiga.update(prova)
@@ -546,6 +595,14 @@ def main():
               f"{atualizados} com numero novo")
     except Exception as erro:
         print(f"concluintes: FALHOU ({erro.__class__.__name__}: {erro})")
+
+    try:
+        consultadas, achadas_rk = completar_runking(historico)
+        if consultadas:
+            print(f"concluintes (runking): {consultadas} provas consultadas, "
+                  f"{achadas_rk} preenchidas")
+    except Exception as erro:
+        print(f"concluintes (runking): FALHOU ({erro.__class__.__name__}: {erro})")
 
     tentados, achados = completar_organizadores(historico)
     if tentados:
