@@ -14,7 +14,12 @@ banco nem build. Qualquer hospedagem estática serve.
    e arquivo de resultados —, ticketsports.com.br, roadrunners.run,
    movnow.com.br e atletis.com.br), funde as provas anunciadas em mais de um
    lugar e acumula em `corridas.json`.
-2. `build.py` injeta esses dados em `template.html` e gera `index.html`.
+2. Para as provas já realizadas, busca quantos atletas concluíram: primeiro em
+   openresults.run, que publica a quebra por distância de uma vez só, e depois
+   nas cronometragens, uma prova por vez — supercrono.com.br, chiprun.com.br e
+   resultados.runking.com.br. Concluinte é quem tem tempo de chegada; quem se
+   inscreveu e não largou não entra.
+3. `build.py` injeta esses dados em `template.html` e gera `index.html`.
 
 Cidades e regiões saem da malha municipal do IBGE, guardada em
 `municipios.json` e renovada sozinha a cada 180 dias.

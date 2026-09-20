@@ -8,6 +8,7 @@ O merge fica em scrape.py.
 
 import datetime
 import functools
+import html as entidades
 import json
 import re
 import urllib.parse
@@ -760,3 +761,177 @@ TODAS = [("corridasbr", corridasbr),
          ("roadrunners", roadrunners),
          ("movnow", movnow),
          ("atletis", atletis)]
+
+
+# ----------------------------------------------- super crono (cronometragem)
+
+# Cronometragem de Santa Catarina. Publica os resultados num aplicativo que
+# le arquivos JSON estaticos -- os mesmos que a pagina busca -- com a lista
+# completa de atletas. Nao e calendario: entra so para completar os
+# concluintes das provas que o Open Results nao cobre, principalmente trail.
+SC_BASE = "https://www.supercrono.com.br/resultados/result/data/"
+SC_NAO_CONCLUIU = {"DSQ", "DQ"}
+SC_KM = re.compile(r"(\d+(?:[.,]\d+)?)\s*k", re.I)
+
+
+def supercrono_eventos():
+    """Provas cronometradas pela Super Crono, so as da UF alvo."""
+    eventos = []
+    for e in json.loads(baixar(SC_BASE + "events.json")):
+        cidade, regiao, uf = canonizar_cidade(e.get("place") or "")
+        if uf != UF_ALVO or not e.get("startDate"):
+            continue
+        eventos.append({
+            "id": e["id"], "data": e["startDate"][:10],
+            "nome": arrumar_titulo(e.get("name") or ""),
+            "cidade": cidade, "regiao": regiao, "uf": uf,
+            "organizadores": separar_organizadores(e.get("organizer") or ""),
+        })
+    return eventos
+
+
+def _supercrono_rotas(ident):
+    """Percurso -> distancia em km, lida do nome ("29KM - TTR-VA Via Alpina").
+
+    A distancia medida vem em metros e nao serve de rotulo: 10.600 m e a
+    aferricao de uma prova que todo mundo chama de 10 km.
+    """
+    evento = json.loads(baixar(f"{SC_BASE}{ident}/event.json"))
+    rotas = {}
+    for r in evento.get("routes", []):
+        achado = SC_KM.search(r.get("n") or "")
+        if achado:
+            rotas[r["i"]] = achado.group(1).replace(",", ".").rstrip(".")
+        else:
+            km = round((r.get("d") or 0) / 1000)
+            rotas[r["i"]] = str(km) if km else ""
+    return rotas
+
+
+def supercrono_concluintes(ident):
+    """Concluintes por distancia e por sexo.
+
+    Concluiu quem tem tempo de chegada. Olhar so o campo de status contaria
+    tambem quem se inscreveu e nao largou: na Corrida do Trabalhador isso
+    daria 520 em vez dos 437 que o Open Results publica.
+    """
+    rotas = _supercrono_rotas(ident)
+    por_distancia, por_genero = {}, {}
+    for a in json.loads(baixar(f"{SC_BASE}{ident}/results.json")):
+        if not (a.get("tn") or a.get("tg")):
+            continue
+        if (a.get("s") or "").upper() in SC_NAO_CONCLUIU:
+            continue
+        km = rotas.get(a.get("r"))
+        if not km:
+            continue
+        por_distancia[km] = por_distancia.get(km, 0) + 1
+        sexo = (a.get("g") or "").upper()
+        if sexo in ("F", "M"):
+            atual = por_genero.setdefault(km, {"f": 0, "m": 0})
+            atual["f" if sexo == "F" else "m"] += 1
+    return por_distancia, sum(por_distancia.values()), por_genero
+
+
+# --------------------------------------------------- chiprun (cronometragem)
+
+# Outra cronometragem catarinense. Aqui nao ha API: a pagina do evento monta
+# a lista de atletas no servidor e pagina de 20 em 20, filtrando por
+# modalidade e sexo pela query string. Contam-se as paginas em vez de baixar
+# a lista inteira. O catalogo de eventos, esse sim, sai da API do WordPress.
+CR_BASE = "https://chiprun.com.br/"
+CR_EVENTOS = CR_BASE + "wp-json/wp/v2/evento?per_page=100&page={pagina}"
+CR_POR_PAGINA = 20
+CR_LINHA = re.compile(r'class="nome-atleta"')
+CR_PAGINA = re.compile(r"pagina=(\d+)")
+CR_DATA = re.compile(r"(\d{2})/(\d{2})/(\d{4})")
+CR_MODALIDADE = re.compile(r'<option[^>]*value="([^"]+)"')
+# Cidade e data ficam lado a lado no cabecalho, cada uma num <span> destacado.
+CR_DESTAQUE = re.compile(r'<span class="font-bold">([^<]+)</span>')
+CR_MAX_PAGINAS = 60
+
+
+def chiprun_eventos():
+    """Catalogo de eventos: so nome e identificador, que e o que a API traz.
+
+    Data e modalidades ficam na pagina de cada evento, e sao caras demais
+    para buscar de todos: quem precisa chama chiprun_evento no candidato.
+    """
+    eventos, vistos = [], set()
+    for pagina in range(1, 8):
+        try:
+            lote = json.loads(baixar(CR_EVENTOS.format(pagina=pagina)))
+        except Exception:
+            break
+        if not lote:
+            break
+        for e in lote:
+            slug = e.get("slug")
+            if not slug or slug in vistos:
+                continue
+            vistos.add(slug)
+            eventos.append({
+                "slug": slug,
+                "nome": entidades.unescape((e.get("title") or {}).get("rendered") or ""),
+            })
+        if len(lote) < 100:
+            break
+    return eventos
+
+
+def chiprun_evento(slug):
+    """Data, cidade e modalidades de um evento, lidas da pagina dele."""
+    pagina = baixar(f"{CR_BASE}evento/{slug}/")
+    achado = CR_DATA.search(pagina)
+    data = (f"{achado.group(3)}-{achado.group(2)}-{achado.group(1)}"
+            if achado else "")
+    cidade = next((d for d in CR_DESTAQUE.findall(pagina)
+                   if not CR_DATA.fullmatch(d.strip())), "")
+    return data, limpar(cidade), [m for m in CR_MODALIDADE.findall(pagina) if m.strip()]
+
+
+def _chiprun_total(url):
+    """Quantos atletas a consulta devolve, sem baixar a lista inteira.
+
+    O rodape linka a ultima pagina, mas nem sempre a ultima de verdade --
+    numa lista longa ele mostra uma janela. Por isso a contagem segue adiante
+    enquanto a pagina vier cheia.
+    """
+    html_pagina = baixar(url)
+    linhas = len(CR_LINHA.findall(html_pagina))
+    if linhas < CR_POR_PAGINA:
+        return linhas
+    paginas = [int(p) for p in CR_PAGINA.findall(html_pagina)]
+    numero = max(paginas) if paginas else 1
+    for _ in range(CR_MAX_PAGINAS):
+        fim = baixar(f"{url}&pagina={numero}")
+        linhas = len(CR_LINHA.findall(fim))
+        if linhas < CR_POR_PAGINA:
+            return (numero - 1) * CR_POR_PAGINA + linhas
+        numero += 1
+    return (numero - 1) * CR_POR_PAGINA
+
+
+def chiprun_concluintes(slug, modalidades):
+    """Concluintes por distancia e por sexo.
+
+    Modalidade sem quilometragem no nome ("ELITE", "DUPLA MISTA") fica de
+    fora: sem distancia ela nao entra em nenhum recorte do site.
+    """
+    base = f"{CR_BASE}evento/{slug}/"
+    por_distancia, por_genero = {}, {}
+    for modalidade in modalidades:
+        km = SC_KM.search(modalidade)
+        if not km:
+            continue
+        chave = km.group(1).replace(",", ".").rstrip(".")
+        consulta = base + "?modalidade=" + urllib.parse.quote_plus(modalidade)
+        total = _chiprun_total(consulta)
+        if not total:
+            continue
+        feminino = _chiprun_total(consulta + "&sexo=F")
+        por_distancia[chave] = por_distancia.get(chave, 0) + total
+        atual = por_genero.setdefault(chave, {"f": 0, "m": 0})
+        atual["f"] += feminino
+        atual["m"] += total - feminino
+    return por_distancia, sum(por_distancia.values()), por_genero

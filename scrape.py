@@ -552,16 +552,128 @@ def completar_runking(historico, limite=60):
         except Exception:
             continue
         if total:
-            p["concluintes"] = por_distancia
-            p["concluintes_total"] = total
-            p["fonte_resultado"] = "runking"
-            if por_genero:
-                p["concluintes_genero"] = por_genero
-                p["concluintes_f"] = sum(v["f"] for v in por_genero.values())
-                p["concluintes_m"] = sum(v["m"] for v in por_genero.values())
-                p["genero_tentado"] = True
+            _guardar_resultado(p, por_distancia, total, por_genero, "runking")
             achados += 1
         time.sleep(PAUSA_DETALHES)
+    return consultadas, achados
+
+
+def _guardar_resultado(prova, por_distancia, total, por_genero, fonte):
+    """Grava os numeros de uma cronometragem na prova."""
+    prova["concluintes"] = por_distancia
+    prova["concluintes_total"] = total
+    prova["fonte_resultado"] = fonte
+    if por_genero:
+        prova["concluintes_genero"] = por_genero
+        prova["concluintes_f"] = sum(v["f"] for v in por_genero.values())
+        prova["concluintes_m"] = sum(v["m"] for v in por_genero.values())
+        prova["genero_tentado"] = True
+
+
+def _sem_resultado(historico, marca):
+    """Provas ja realizadas que continuam sem numeros e ainda nao foram
+    procuradas nesta cronometragem."""
+    hoje = datetime.date.today().isoformat()
+    return [p for p in historico
+            if p["data"] < hoje and not p.get("concluintes_total")
+            and not p.get(marca)]
+
+
+def completar_supercrono(historico, limite=30):
+    """Completa os concluintes pelos arquivos da Super Crono.
+
+    A cronometragem publica a lista inteira de atletas em JSON, entao o
+    casamento e barato: uma consulta traz o catalogo, e so as provas que
+    batem em data, nome e cidade fazem o resto.
+    """
+    pendentes = _sem_resultado(historico, "supercrono_tentado")
+    if not pendentes:
+        return 0, 0
+    por_data = {}
+    for e in fontes.supercrono_eventos():
+        por_data.setdefault(e["data"], []).append(e)
+    if not por_data:
+        return 0, 0
+
+    consultadas = achados = 0
+    for p in pendentes:
+        if consultadas >= limite:
+            break
+        alvo = next((e for e in por_data.get(p["data"], []) if mesma_prova(e, p)), None)
+        if not alvo:
+            continue          # sem candidato: nao marca, para rever depois
+        consultadas += 1
+        p["supercrono_tentado"] = True
+        try:
+            por_distancia, total, por_genero = fontes.supercrono_concluintes(alvo["id"])
+        except Exception:
+            continue
+        if total:
+            _guardar_resultado(p, por_distancia, total, por_genero, "supercrono")
+            achados += 1
+        time.sleep(PAUSA_DETALHES)
+    return consultadas, achados
+
+
+def _mesma_praca(cidade, prova):
+    """A cidade que a cronometragem informa cabe na da prova?
+
+    Cidade igual nao da para exigir: a Corrida Outubro Rosa sai como
+    Florianopolis num lado e Sao Jose no outro, e e a mesma prova. Mas a
+    regiao tem de bater, senao duas provas de mesmo nome e mesma data em
+    pontas opostas do estado virariam uma so.
+    """
+    if not cidade:
+        return True
+    achada, regiao, uf = canonizar_cidade(cidade)
+    if uf and uf != UF_ALVO:
+        return False
+    if not achada or regiao in ("Outras", ""):
+        return True
+    return achada == prova.get("cidade") or regiao == prova.get("regiao")
+
+
+def completar_chiprun(historico, limite=8):
+    """Completa os concluintes pelas paginas do ChipRun.
+
+    Aqui cada contagem custa varias paginas, entao o limite e baixo de
+    proposito: o que faltar hoje entra amanha. O catalogo da API so tem
+    nome, entao o candidato e escolhido pelo nome e confirmado pela data da
+    pagina do evento -- o nome sozinho casaria edicoes de anos diferentes.
+    """
+    pendentes = _sem_resultado(historico, "chiprun_tentado")
+    if not pendentes:
+        return 0, 0
+    eventos = fontes.chiprun_eventos()
+    if not eventos:
+        return 0, 0
+
+    consultadas = achados = 0
+    for p in pendentes:
+        if consultadas >= limite:
+            break
+        candidatos = [e for e in eventos if parecidos(e["nome"], p["nome"])]
+        for candidato in candidatos[:3]:
+            try:
+                data, cidade, modalidades = fontes.chiprun_evento(candidato["slug"])
+            except Exception:
+                continue
+            if data != p["data"] or not modalidades:
+                continue
+            if not _mesma_praca(cidade, p):
+                continue
+            consultadas += 1
+            p["chiprun_tentado"] = True
+            try:
+                por_distancia, total, por_genero = fontes.chiprun_concluintes(
+                    candidato["slug"], modalidades)
+            except Exception:
+                break
+            if total:
+                _guardar_resultado(p, por_distancia, total, por_genero, "chiprun")
+                achados += 1
+            time.sleep(PAUSA_DETALHES)
+            break
     return consultadas, achados
 
 
@@ -771,6 +883,16 @@ def main():
     except Exception as erro:
         print(f"concluintes (runking): FALHOU ({erro.__class__.__name__}: {erro})")
 
+    for nome, funcao in (("supercrono", completar_supercrono),
+                         ("chiprun", completar_chiprun)):
+        try:
+            consultadas, achadas = funcao(historico)
+            if consultadas:
+                print(f"concluintes ({nome}): {consultadas} provas consultadas, "
+                      f"{achadas} preenchidas")
+        except Exception as erro:
+            print(f"concluintes ({nome}): FALHOU ({erro.__class__.__name__}: {erro})")
+
     tentadas_g, achadas_g = completar_generos(historico)
     if tentadas_g:
         print(f"genero: {tentadas_g} provas consultadas, {achadas_g} preenchidas")
@@ -827,7 +949,12 @@ if __name__ == "__main__":
 
 # Folga entre uma edicao e a seguinte. Uma prova anual volta por volta da
 # mesma data, mas o dia exato anda: feriado, calendario do organizador, chuva.
+# Quando os dois nomes sao praticamente o mesmo, a data pode andar mais: a
+# Trilha das Bruxas saiu de fim de julho para inicio de junho e continua a
+# mesma prova. Com nome so parecido, a janela fecha -- e ela que separa a
+# "Jurere Night Run" da "One Day Run - Jurere", a 49 dias de distancia.
 JANELA_SERIE = 35
+JANELA_MESMO_NOME = 75
 
 
 def _dia_do_ano(data):
@@ -835,14 +962,19 @@ def _dia_do_ano(data):
     return datetime.date(ano, mes, dia).timetuple().tm_yday
 
 
-def _mesma_epoca(a, b):
+def _mesma_epoca(a, b, janela=JANELA_SERIE):
     """As duas edicoes caem na mesma epoca do ano? (dezembro e janeiro sim)"""
     d = abs(_dia_do_ano(a["data"]) - _dia_do_ano(b["data"]))
-    return min(d, 365 - d) <= JANELA_SERIE
+    return min(d, 365 - d) <= janela
 
 
 def _so_letras(s):
     return re.sub(r"[^a-z]", "", sem_acento(s))
+
+
+def _quase_o_mesmo_nome(a, b):
+    return difflib.SequenceMatcher(None, _so_letras(a["nome"]),
+                                   _so_letras(b["nome"])).ratio() >= 0.8
 
 
 def _evidencia_de_serie(a, b):
@@ -853,8 +985,7 @@ def _evidencia_de_serie(a, b):
     Uma palavra em comum nao basta -- "Sicredi Lagoa Run" e "Trail Run
     Praias - Lagoa do Peri" dividem "lagoa" e nao tem nada a ver.
     """
-    if difflib.SequenceMatcher(None, _so_letras(a["nome"]),
-                               _so_letras(b["nome"])).ratio() >= 0.8:
+    if _quase_o_mesmo_nome(a, b):
         return True
     da = palavras_distintivas(a["nome"], a.get("cidade", ""))
     db = palavras_distintivas(b["nome"], b.get("cidade", ""))
@@ -883,7 +1014,8 @@ def mesma_serie(a, b):
     """
     if a["ano"] == b["ano"] or a.get("cidade") != b.get("cidade"):
         return False
-    return _mesma_epoca(a, b) and _evidencia_de_serie(a, b)
+    janela = JANELA_MESMO_NOME if _quase_o_mesmo_nome(a, b) else JANELA_SERIE
+    return _mesma_epoca(a, b, janela) and _evidencia_de_serie(a, b)
 
 
 ANO_NO_NOME = re.compile(r"\b(?:19|20)\d{2}\b")
