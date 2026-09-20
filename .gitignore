@@ -3,3 +3,4 @@ __pycache__/
 
 # Versão da página usada só para publicar no Claude; o site é o index.html.
 artifact.html
+_*.py
