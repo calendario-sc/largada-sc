@@ -301,6 +301,9 @@ def tokens_nome(nome):
 # da empresa. A chave e a grafia a corrigir, ja sem acento e em minusculas.
 ORG_ALIAS = {
     "norte mkt esportivo": "Norte Marketing Esportivo",
+    # A sigla e o nome por extenso, sem nada em comum para uma regra pegar.
+    "associacao corredores de rua de sao jose": "ACORSJ",
+    "associacao dos corredores de rua de sao jose": "ACORSJ",
 }
 
 
