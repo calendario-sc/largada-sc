@@ -1054,11 +1054,20 @@ function linha(r, destaque){
   const main = el("div", { className:"race__main" }, [nome, meta]);
 
   const dists = el("ul", { className:"race__dists" });
-  if (r.pills.length){
-    r.pills.forEach((d, i) => {
-      const li = el("li", { className: i === 0 ? "big" : "", textContent:d });
+  // O que foi anunciado nem sempre é o que teve resultado: a prova pode ter
+  // largado distâncias diferentes das divulgadas. Mostra a união das duas.
+  const anunciadas = r.pills.map(d => [d, d.replace(/km.*/i, "").replace(",", ".")]);
+  const jaListadas = new Set(anunciadas.map(([, km]) => km));
+  const soNoResultado = Object.keys(r.concluintes || {})
+    .filter(km => !jaListadas.has(km))
+    .sort((a, b) => Number(b) - Number(a))
+    .map(km => [km + "km", km]);
+  const distancias = [...anunciadas, ...soNoResultado];
+
+  if (distancias.length){
+    distancias.forEach(([rotulo, km], i) => {
+      const li = el("li", { className: i === 0 ? "big" : "", textContent:rotulo });
       // Concluintes daquela distância, quando o resultado já foi publicado.
-      const km = d.replace(/km.*/i, "").replace(",", ".");
       const n = (r.concluintes || {})[km];
       if (n) li.append(el("i", { textContent:" " + num(n) }));   // espaço: sem ele vira "21km277"
       dists.append(li);
