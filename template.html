@@ -430,6 +430,15 @@ h1 em{font-style:normal; color:#FFC21A}
       <div class="group" id="g-faixa"><b>Distância</b></div>
       <div class="group" id="g-tipo"><b>Tipo</b></div>
       <div class="group"><b>Ano</b><span id="g-ano"></span></div>
+      <div class="group"><b>Cidade</b>
+        <div class="org-picker">
+          <button class="chip" id="cid-btn" type="button" aria-expanded="false" aria-pressed="false">Todas as cidades</button>
+          <div class="org-menu" id="cid-menu" hidden>
+            <input id="cid-busca" type="search" placeholder="Buscar cidade…" aria-label="Buscar cidade">
+            <ul id="cid-lista"></ul>
+          </div>
+        </div>
+      </div>
       <div class="group"><b>Organizador</b>
         <div class="org-picker">
           <button class="chip" id="org-btn" type="button" aria-expanded="false" aria-pressed="false">Todas as empresas</button>
@@ -508,7 +517,7 @@ RACES.forEach(r => {
   r._passada = r._d < hoje;
 });
 
-const state = { escopo:"proximas", q:"", organizador:"", comparativo:false, anoRanking:"",
+const state = { escopo:"proximas", q:"", organizador:"", cidade:"", comparativo:false, anoRanking:"",
                 anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
@@ -586,55 +595,89 @@ const porOrganizador = new Map();
 RACES.forEach(r => (r.organizadores || []).forEach(o =>
   porOrganizador.set(o, (porOrganizador.get(o) || 0) + 1)));
 
-const EMPRESAS = [...porOrganizador.entries()]
+/* Empresas e cidades são muitas para caber em botões, então as duas usam o
+   mesmo seletor: um botão que abre lista com busca e contagem. */
+function criarSeletor({ botao, menu, busca, lista, itens, vazio, rotuloNeutro, aoEscolher }){
+  const bt = document.getElementById(botao);
+  const mn = document.getElementById(menu);
+  const bu = document.getElementById(busca);
+  const li = document.getElementById(lista);
+
+  function listar(termo = ""){
+    const alvo = norm(termo);
+    const achados = itens.filter(([nome]) => !alvo || norm(nome).includes(alvo));
+    li.replaceChildren();
+    if (!achados.length){
+      li.append(el("li", {}, [el("div", { className:"vazio", textContent:vazio })]));
+      return;
+    }
+    achados.slice(0, 200).forEach(([nome, n]) => {
+      const b = el("button", { type:"button" }, [
+        el("span", { textContent:nome }), el("i", { textContent:String(n) })
+      ]);
+      b.onclick = () => { abrir(false); escolher(nome); };
+      li.append(el("li", {}, [b]));
+    });
+  }
+
+  function abrir(mostrar){
+    mn.hidden = !mostrar;
+    bt.setAttribute("aria-expanded", String(mostrar));
+    if (mostrar){ listar(bu.value); bu.focus(); }
+  }
+
+  function escolher(nome){
+    bt.textContent = nome || rotuloNeutro;
+    bt.setAttribute("aria-pressed", String(Boolean(nome)));
+    aoEscolher(nome);
+  }
+
+  bt.onclick = () => abrir(mn.hidden);
+  bu.oninput = () => listar(bu.value);
+  document.addEventListener("click", e => {
+    if (!mn.hidden && !e.target.closest(".org-picker") ) abrir(false);
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !mn.hidden) abrir(false);
+  });
+
+  return { escolher, limpar: () => { bu.value = ""; escolher(""); } };
+}
+
+const porCidade = new Map();
+RACES.forEach(r => porCidade.set(r.cidade, (porCidade.get(r.cidade) || 0) + 1));
+
+const ordenaPorUso = m => [...m.entries()]
   .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
 
-const orgBtn = document.getElementById("org-btn");
-const orgMenu = document.getElementById("org-menu");
-const orgBusca = document.getElementById("org-busca");
-const orgLista = document.getElementById("org-lista");
-
-function listarEmpresas(termo = ""){
-  const alvo = norm(termo);
-  const achadas = EMPRESAS.filter(([nome]) => !alvo || norm(nome).includes(alvo));
-  orgLista.replaceChildren();
-  if (!achadas.length){
-    orgLista.append(el("li", {}, [el("div", { className:"vazio", textContent:"Nenhuma empresa com esse nome." })]));
-    return;
-  }
-  achadas.slice(0, 200).forEach(([nome, n]) => {
-    const b = el("button", { type:"button" }, [
-      el("span", { textContent:nome }), el("i", { textContent:String(n) })
-    ]);
-    b.onclick = () => { abrirMenuOrg(false); filtrarPorOrganizador(nome); };
-    orgLista.append(el("li", {}, [b]));
-  });
-}
-
-function abrirMenuOrg(abrir){
-  orgMenu.hidden = !abrir;
-  orgBtn.setAttribute("aria-expanded", String(abrir));
-  if (abrir){ listarEmpresas(orgBusca.value); orgBusca.focus(); }
-}
-
-orgBtn.onclick = () => abrirMenuOrg(orgMenu.hidden);
-orgBusca.oninput = () => listarEmpresas(orgBusca.value);
-document.addEventListener("click", e => {
-  if (!orgMenu.hidden && !e.target.closest(".org-picker")) abrirMenuOrg(false);
-});
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && !orgMenu.hidden) abrirMenuOrg(false);
+const seletorEmpresa = criarSeletor({
+  botao:"org-btn", menu:"org-menu", busca:"org-busca", lista:"org-lista",
+  itens: ordenaPorUso(porOrganizador),
+  vazio:"Nenhuma empresa com esse nome.",
+  rotuloNeutro:"Todas as empresas",
+  aoEscolher: nome => {
+    state.organizador = nome;
+    // Uma empresa costuma ter provas em anos diferentes: mostra a trajetória toda.
+    if (nome) trocarEscopo("todas");
+    render();
+    if (nome) document.getElementById("bar").scrollIntoView({ behavior:"smooth", block:"start" });
+  },
 });
 
-function filtrarPorOrganizador(nome){
-  state.organizador = nome;
-  orgBtn.textContent = nome || "Todas as empresas";
-  orgBtn.setAttribute("aria-pressed", String(Boolean(nome)));
-  // Uma empresa costuma ter provas em anos diferentes: mostra a trajetoria toda.
-  if (nome) trocarEscopo("todas");
-  render();
-  document.getElementById("bar").scrollIntoView({ behavior:"smooth", block:"start" });
-}
+const seletorCidade = criarSeletor({
+  botao:"cid-btn", menu:"cid-menu", busca:"cid-busca", lista:"cid-lista",
+  itens: ordenaPorUso(porCidade),
+  vazio:"Nenhuma cidade com esse nome.",
+  rotuloNeutro:"Todas as cidades",
+  aoEscolher: nome => {
+    state.cidade = nome;
+    render();
+    if (nome) document.getElementById("bar").scrollIntoView({ behavior:"smooth", block:"start" });
+  },
+});
+
+function filtrarPorOrganizador(nome){ seletorEmpresa.escolher(nome); }
+function filtrarPorCidade(cidade){ seletorCidade.escolher(cidade); }
 
 document.getElementById("painel-fechar").onclick = () => filtrarPorOrganizador("");
 
@@ -682,21 +725,12 @@ input.oninput = () => {
 document.getElementById("reset").onclick = () => {
   state.q = ""; input.value = "";
   [state.anos, state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
-  state.organizador = "";
-  orgBtn.textContent = "Todas as empresas";
-  orgBtn.setAttribute("aria-pressed", "false");
-  orgBusca.value = "";
+  seletorEmpresa.limpar();
+  seletorCidade.limpar();
   document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
   montarMeses();
   render();
 };
-
-function filtrarPorCidade(cidade){
-  input.value = cidade;
-  state.q = norm(cidade);
-  render();
-  document.getElementById("bar").scrollIntoView({ behavior:"smooth", block:"start" });
-}
 
 const listBox = document.getElementById("list");
 const countBox = document.getElementById("count");
@@ -705,6 +739,7 @@ const countBox = document.getElementById("count");
 function passaFiltrosGerais(r){
   if (state.q && !r._busca.includes(state.q)) return false;
   if (state.regioes.size && !state.regioes.has(r.regiao)) return false;
+  if (state.cidade && r.cidade !== state.cidade) return false;
   if (state.organizador && !(r.organizadores || []).includes(state.organizador)) return false;
   if (state.tipos.size && !r.tags.some(x => state.tipos.has(x))) return false;
   if (state.faixas.size && !r.faixas.some(f => state.faixas.has(f))) return false;
@@ -883,7 +918,7 @@ function render(){
   document.getElementById("s-km").textContent = maiorKm ? String(Math.round(maiorKm)) : "—";
 
   const filtros = state.anos.size + state.meses.size + state.regioes.size + state.faixas.size
-    + state.tipos.size + (state.q ? 1 : 0) + (state.organizador ? 1 : 0);
+    + state.tipos.size + (state.q ? 1 : 0) + (state.organizador ? 1 : 0) + (state.cidade ? 1 : 0);
   countBox.innerHTML = res.length
     ? "<b>" + res.length + "</b> " + (res.length === 1 ? "prova" : "provas") +
       " em <b>" + cidades.size + "</b> " + (cidades.size === 1 ? "cidade" : "cidades") +
