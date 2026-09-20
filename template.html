@@ -251,6 +251,48 @@ h1 em{font-style:normal; color:#FFC21A}
 }
 .serie__legenda span.f::before{background:var(--reve)}
 .serie__legenda span.m::before{background:var(--azul)}
+
+/* ---- duas provas lado a lado ---- */
+.duelo{width:100%; border-collapse:collapse; margin:1.1rem 0 .5rem; font-size:.88rem}
+.duelo th,.duelo td{padding:.45rem .6rem; text-align:right; border-bottom:1px solid var(--line-soft)}
+.duelo thead th{
+  font-family:var(--f-display); font-weight:700; font-size:.95rem; color:var(--ink);
+  border-bottom:2px solid var(--line); vertical-align:bottom;
+}
+.duelo thead th small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.62rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:.2rem}
+.duelo th:first-child,.duelo td:first-child{
+  text-align:left; font-family:var(--f-mono); font-weight:400; font-size:.66rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted); width:38%;
+}
+.duelo td{font-family:var(--f-mono); font-variant-numeric:tabular-nums; color:var(--ink-2)}
+.duelo td em{font-style:normal; color:var(--muted); font-size:.76rem; margin-left:.35rem}
+.duelo td.maior{color:var(--accent-ink); font-weight:500}
+.duelo td.sobe{color:var(--trail)}
+.duelo td.desce{color:var(--ultra)}
+.duelo__linha{display:grid; grid-template-columns:9.5rem 1fr auto; align-items:center; gap:.7rem}
+.duelo__tag{
+  font-family:var(--f-mono); font-size:.62rem; letter-spacing:.04em; padding:.2rem .4rem;
+  border-radius:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.duelo__tag--a{background:var(--accent-wash); color:var(--accent-ink)}
+.duelo__tag--b{background:var(--trail-wash); color:var(--trail)}
+.duelo__ano{
+  font-family:var(--f-mono); font-size:.72rem; color:var(--muted); margin:.8rem 0 .3rem;
+  font-variant-numeric:tabular-nums; border-top:1px solid var(--line-soft); padding-top:.5rem;
+}
+.duelo__ano:first-child{border-top:0; padding-top:0; margin-top:0}
+#serie2-btn[aria-pressed="true"]{background:var(--trail); border-color:var(--trail); color:#fff}
+/* Em tela estreita o nome da prova nao pode roubar a barra: ele sobe para
+   uma linha propria e a barra fica com a largura toda. */
+@media (max-width:560px){
+  .duelo__linha{grid-template-columns:1fr auto; row-gap:.15rem; margin-bottom:.35rem}
+  .duelo__tag{grid-column:1 / -1; justify-self:start; max-width:100%}
+  .duelo{font-size:.8rem}
+  .duelo th,.duelo td{padding:.4rem .3rem}
+  .duelo th:first-child,.duelo td:first-child{width:34%; font-size:.6rem; letter-spacing:.06em}
+  .duelo td em{display:block; margin:.1rem 0 0}
+}
 #serie-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff}
 
 /* ---- painel da empresa escolhida ---- */
@@ -466,9 +508,15 @@ h1 em{font-style:normal; color:#FFC21A}
     --ground:#FFFFFF; --surface:#FFFFFF; --surface-2:#EFF1F5;
     --line:#BFC7D4; --line-soft:#D8DEE8;
     --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880;
-    --accent:#C93F10; --accent-ink:#8F2A08;
-    --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD;
-    --trail:#07734F; --ultra:#B81C26; --reve:#961268;
+    --accent:#C93F10; --accent-ink:#8F2A08; --accent-wash:#FFE6DA;
+    --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD; --sobre-azul:#FFFFFF;
+    --sol:#FFC21A; --sol-ink:#3A2A00;
+    --trail:#07734F; --trail-wash:#DAF3E8;
+    --ultra:#B81C26; --ultra-wash:#FDE1E3;
+    --noite:#4A2FBF; --noite-wash:#E9E4FF;
+    --agua:#08667E; --agua-wash:#DCF2F8;
+    --reve:#961268; --reve-wash:#FBE0F1;
+    --kids:#7E4A00; --kids-wash:#FFF0C7;
     --shadow:none; --mix-rc:88%;
   }
   *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
@@ -573,6 +621,13 @@ h1 em{font-style:normal; color:#FFC21A}
           <ul id="serie-lista"></ul>
         </div>
       </div>
+      <div class="org-picker" id="serie2-picker">
+        <button class="chip" id="serie2-btn" type="button" aria-expanded="false" aria-pressed="false">Comparar com outra</button>
+        <div class="org-menu" id="serie2-menu" hidden>
+          <input id="serie2-busca" type="search" placeholder="Buscar prova ou empresa…" aria-label="Buscar a segunda prova">
+          <ul id="serie2-lista"></ul>
+        </div>
+      </div>
       <button class="chip" id="btn-pdf" type="button">Baixar PDF</button>
     </div>
     <div class="imp" id="imp" aria-hidden="true"></div>
@@ -640,7 +695,7 @@ RACES.forEach(r => {
 });
 
 const state = { escopo:"proximas", q:"", organizador:"", cidade:"", treinos:false,
-                comparativo:false, anoRanking:"", faixaRanking:"", serie:"",
+                comparativo:false, anoRanking:"", faixaRanking:"", serie:"", serie2:"",
                 anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
@@ -760,8 +815,10 @@ function criarSeletor({ botao, menu, busca, lista, itens, vazio, rotuloNeutro, a
 
   bt.onclick = () => abrir(mn.hidden);
   bu.oninput = () => listar(bu.value);
+  // Sao quatro seletores na pagina: clicar no botao de um fecha os outros.
+  const meu = mn.closest(".org-picker");
   document.addEventListener("click", e => {
-    if (!mn.hidden && !e.target.closest(".org-picker") ) abrir(false);
+    if (!mn.hidden && e.target.closest(".org-picker") !== meu) abrir(false);
   });
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !mn.hidden) abrir(false);
@@ -854,6 +911,7 @@ document.getElementById("reset").onclick = () => {
   seletorEmpresa.limpar();
   seletorCidade.limpar();
   seletorProva.limpar();
+  seletorProva2.limpar();
   state.treinos = false;
   btnTreinos.setAttribute("aria-pressed", "false");
   document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
@@ -1006,6 +1064,21 @@ const seletorProva = criarSeletor({
   },
 });
 
+const seletorProva2 = criarSeletor({
+  botao:"serie2-btn", menu:"serie2-menu", busca:"serie2-busca", lista:"serie2-lista",
+  itens: SERIES_LISTADAS
+    .map(x => [x.rotulo, x.edicoes, x.busca])
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR")),
+  vazio:"Nenhuma prova com esse nome.",
+  rotuloNeutro:"Comparar com outra",
+  aoEscolher: rotulo => {
+    state.serie2 = chaveDoRotulo.get(rotulo) || "";
+    montarSerie();
+    if (state.serie2)
+      document.getElementById("serie-painel").scrollIntoView({ behavior:"smooth", block:"center" });
+  },
+});
+
 const pluralAtletas = n => num(n) + (n === 1 ? " concluinte" : " concluintes");
 
 function variacao(de, para){
@@ -1017,39 +1090,58 @@ function variacao(de, para){
 const comSinal = n => (n > 0 ? "+" : "") + num(n);
 const pctComSinal = p => (p > 0 ? "+" : "") + p.toFixed(0) + "%";
 
-function montarSerie(){
-  const caixa = document.getElementById("serie-painel");
-  const s = SERIES.get(state.serie);
-  if (!s){ caixa.hidden = true; return; }
-  caixa.hidden = false;
-  caixa.replaceChildren();
-
+// As edições de uma prova, já somadas por ano e dentro da distância escolhida.
+function dadosDaSerie(chave){
+  const s = SERIES.get(chave);
+  if (!s) return null;
   // Evento de dois dias conta como uma edição só: os dois dias somam.
   const porAno = new Map();
   s.edicoes.forEach(r => {
-    const a = porAno.get(r.ano) || { total:0, f:0, m:0, genero:false };
+    const a = porAno.get(r.ano) || { total:0, f:0, m:0 };
     a.total += contarDaFaixa(r, "total");
     a.f += contarDaFaixa(r, "f");
     a.m += contarDaFaixa(r, "m");
-    a.genero = a.genero || Boolean(r.concluintes_f || r.concluintes_m);
     porAno.set(r.ano, a);
   });
   const anos = [...porAno.entries()].filter(([, v]) => v.total > 0)
                                     .sort((a, b) => a[0] - b[0]);
+  return { nome:s.nome, cidade:s.cidade, anos,
+           anosComProva: new Set(s.edicoes.map(r => r.ano)) };
+}
 
-  const rotuloFaixa = state.faixaRanking
+function rotuloDaFaixa(){
+  return state.faixaRanking
     ? (FAIXAS.find(([f]) => f === state.faixaRanking) || ["", ""])[1] : "";
+}
+
+function botaoFechar(aoFechar){
+  const b = el("button", { className:"painel__fechar", type:"button", textContent:"Fechar" });
+  b.onclick = aoFechar;
+  return b;
+}
+
+function montarSerie(){
+  const caixa = document.getElementById("serie-painel");
+  const a = dadosDaSerie(state.serie);
+  const b = state.serie2 === state.serie ? null : dadosDaSerie(state.serie2);
+  if (!a && !b){ caixa.hidden = true; return; }
+  caixa.hidden = false;
+  caixa.replaceChildren();
+  if (a && b) montarDuelo(caixa, a, b);
+  else montarUma(caixa, a || b);
+}
+
+function montarUma(caixa, dados){
+  const { nome, cidade, anos } = dados;
+  const s = { nome, cidade };
+  const rotuloFaixa = rotuloDaFaixa();
 
   caixa.append(el("div", { className:"serie__topo" }, [
     el("h3", {}, [
       document.createTextNode(s.nome),
       el("small", { textContent: s.cidade + (rotuloFaixa ? " · " + rotuloFaixa : "") })
     ]),
-    (() => {
-      const b = el("button", { className:"painel__fechar", type:"button", textContent:"Fechar" });
-      b.onclick = () => seletorProva.limpar();
-      return b;
-    })(),
+    botaoFechar(() => { seletorProva.limpar(); seletorProva2.limpar(); }),
   ]));
 
   if (!anos.length){
@@ -1143,6 +1235,144 @@ function montarSerie(){
     recados.push("Sem divisão por sexo em " + semGenero.join(", ") + ".");
   recados.push("O filtro de ano não vale aqui: o quadro existe para comparar os anos.");
   caixa.append(el("p", { className:"nota", textContent:recados.join(" ") }));
+}
+
+/* ---------- duas provas lado a lado ----------
+   As barras dos dois anos usam a mesma escala: comparar cresce ou encolhe
+   entre provas de tamanhos diferentes so faz sentido na mesma régua. */
+
+function resumoDaSerie(d){
+  const anos = d.anos;
+  if (!anos.length) return null;
+  const [anoFim, fim] = anos[anos.length - 1];
+  const [anoIni, ini] = anos[0];
+  const anterior = anos.length > 1 ? anos[anos.length - 2] : null;
+  const soma = anos.reduce((s, [, v]) => s + v.total, 0);
+  return { anoFim, fim, anoIni, ini, anterior, edicoes:anos.length, soma };
+}
+
+function celula(texto, extra, classe){
+  const td = el("td", { className:classe || "" }, [document.createTextNode(texto)]);
+  if (extra) td.append(el("em", { textContent:extra }));
+  return td;
+}
+
+function montarDuelo(caixa, a, b){
+  const rotuloFaixa = rotuloDaFaixa();
+  caixa.append(el("div", { className:"serie__topo" }, [
+    el("h3", {}, [
+      document.createTextNode(a.nome + "  ×  " + b.nome),
+      el("small", { textContent: a.cidade + " × " + b.cidade
+                    + (rotuloFaixa ? " · " + rotuloFaixa : "") })
+    ]),
+    botaoFechar(() => { seletorProva2.limpar(); }),
+  ]));
+
+  const ra = resumoDaSerie(a), rb = resumoDaSerie(b);
+  if (!ra || !rb){
+    caixa.append(el("p", { className:"nota",
+      textContent:"Uma das duas provas não tem resultado publicado"
+                  + (rotuloFaixa ? " na distância " + rotuloFaixa + "." : ".") }));
+    return;
+  }
+
+  // --- tabela de números
+  const linhas = [];
+  const par = (rotulo, va, vb, ea, eb, valorA, valorB, classe) =>
+    linhas.push({ rotulo, va, vb, ea, eb, valorA, valorB, classe });
+
+  const pctF = r => r.fim.f + r.fim.m ? Math.round(100 * r.fim.f / (r.fim.f + r.fim.m)) : null;
+  const desde = r => r.edicoes > 1 ? variacao(r.ini.total, r.fim.total) : null;
+  const ultima = r => r.anterior ? variacao(r.anterior[1].total, r.fim.total) : null;
+
+  par("Última edição", num(ra.fim.total), num(rb.fim.total),
+      "em " + ra.anoFim, "em " + rb.anoFim, ra.fim.total, rb.fim.total);
+  if (ra.fim.f + ra.fim.m || rb.fim.f + rb.fim.m){
+    par("Mulheres", num(ra.fim.f), num(rb.fim.f),
+        pctF(ra) === null ? "" : pctF(ra) + "%", pctF(rb) === null ? "" : pctF(rb) + "%",
+        ra.fim.f, rb.fim.f);
+    par("Homens", num(ra.fim.m), num(rb.fim.m),
+        pctF(ra) === null ? "" : (100 - pctF(ra)) + "%",
+        pctF(rb) === null ? "" : (100 - pctF(rb)) + "%", ra.fim.m, rb.fim.m);
+  }
+  const da = desde(ra), db = desde(rb);
+  par("Desde a 1ª edição",
+      da ? comSinal(da.delta) : "—", db ? comSinal(db.delta) : "—",
+      da ? pctComSinal(da.pct) + " desde " + ra.anoIni : "",
+      db ? pctComSinal(db.pct) + " desde " + rb.anoIni : "",
+      da ? da.delta : null, db ? db.delta : null, "variacao");
+  const ua = ultima(ra), ub = ultima(rb);
+  par("Contra a edição anterior",
+      ua ? comSinal(ua.delta) : "—", ub ? comSinal(ub.delta) : "—",
+      ua ? pctComSinal(ua.pct) : "", ub ? pctComSinal(ub.pct) : "",
+      ua ? ua.delta : null, ub ? ub.delta : null, "variacao");
+  par("Edições com resultado", String(ra.edicoes), String(rb.edicoes), "", "",
+      ra.edicoes, rb.edicoes);
+  par("Somando as edições", num(ra.soma), num(rb.soma), "", "", ra.soma, rb.soma);
+
+  const corpo = el("tbody");
+  linhas.forEach(l => {
+    const maiorA = l.valorA !== null && l.valorB !== null && l.valorA > l.valorB;
+    const maiorB = l.valorA !== null && l.valorB !== null && l.valorB > l.valorA;
+    const classeDe = (valor, maior) => {
+      if (l.classe !== "variacao") return maior ? "maior" : "";
+      if (valor === null) return "";
+      return valor > 0 ? "sobe" : (valor < 0 ? "desce" : "");
+    };
+    corpo.append(el("tr", {}, [
+      el("th", { scope:"row", textContent:l.rotulo }),
+      celula(l.va, l.ea, classeDe(l.valorA, maiorA)),
+      celula(l.vb, l.eb, classeDe(l.valorB, maiorB)),
+    ]));
+  });
+
+  const cabeca = el("thead", {}, [el("tr", {}, [
+    el("th", { scope:"col" }),
+    el("th", { scope:"col" }, [document.createTextNode(a.nome), el("small", { textContent:a.cidade })]),
+    el("th", { scope:"col" }, [document.createTextNode(b.nome), el("small", { textContent:b.cidade })]),
+  ])]);
+  caixa.append(el("table", { className:"duelo" }, [cabeca, corpo]));
+
+  // --- evolução ano a ano, uma barra para cada prova
+  const anos = [...new Set([...a.anos, ...b.anos].map(([ano]) => ano))].sort((x, y) => x - y);
+  const maior = Math.max(...[...a.anos, ...b.anos].map(([, v]) => v.total));
+  const grafico = el("div", { className:"serie__grafico" });
+  anos.forEach(ano => {
+    grafico.append(el("p", { className:"duelo__ano", textContent:String(ano) }));
+    [[a, "a"], [b, "b"]].forEach(([d, lado]) => {
+      const achado = d.anos.find(([x]) => x === ano);
+      const v = achado ? achado[1] : null;
+      const barra = el("span", { className:"serie__barra" });
+      if (v){
+        const dupla = v.f + v.m;
+        if (dupla){
+          barra.append(el("i", { className:"f", style:"width:" + (100 * v.f / dupla) + "%" }));
+          barra.append(el("i", { className:"m", style:"width:" + (100 * v.m / dupla) + "%" }));
+        } else {
+          barra.append(el("i", { className:"sem", style:"width:100%" }));
+        }
+        barra.style.width = Math.max(1.5, 100 * v.total / maior) + "%";
+      } else {
+        barra.style.width = "0%";
+      }
+      grafico.append(el("div", { className:"duelo__linha" }, [
+        el("span", { className:"duelo__tag duelo__tag--" + lado, textContent:d.nome, title:d.nome }),
+        el("span", { className:"serie__trilho" }, [barra]),
+        el("span", { className:"serie__valor",
+          textContent: v ? num(v.total)
+                         : (d.anosComProva.has(ano) ? "sem resultado" : "não houve") }),
+      ]));
+    });
+  });
+  caixa.append(grafico);
+
+  caixa.append(el("div", { className:"serie__legenda" }, [
+    el("span", { className:"f", textContent:"mulheres" }),
+    el("span", { className:"m", textContent:"homens" }),
+  ]));
+  caixa.append(el("p", { className:"nota",
+    textContent:"As barras das duas provas usam a mesma escala. O filtro de ano não "
+                + "vale aqui: o quadro existe para comparar os anos." }));
 }
 
 function montarComparativo(){
