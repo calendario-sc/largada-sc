@@ -316,6 +316,7 @@ h1 em{font-style:normal; color:#FFC21A}
 
 .race__main{grid-area:main; min-width:0}
 .race__name{font-family:var(--f-display); font-weight:700; font-size:1.06rem; letter-spacing:-.012em; margin:0; line-height:1.25}
+.outro-nome{display:block; font-family:var(--f-body); font-weight:400; font-size:.76rem; color:var(--muted); margin-top:.15rem}
 .race__meta{display:flex; align-items:center; flex-wrap:wrap; gap:.45rem; margin:.3rem 0 0; font-size:.83rem; color:var(--muted)}
 .city{
   font:inherit; cursor:pointer; padding:0; border:0; background:none; color:var(--ink-2);
@@ -514,7 +515,8 @@ const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(
 RACES.forEach(r => {
   r._d = new Date(r.ano, r.mes - 1, r.dia);
   r._key = r.ano * 100 + r.mes;
-  r._busca = norm(r.nome + " " + r.cidade + " " + r.regiao);
+  // Prova que mudou de nome é encontrada pelo antigo e pelo novo.
+  r._busca = norm([r.nome, ...(r.outros_nomes || []), r.cidade, r.regiao].join(" "));
   r._passada = r._d < hoje;
 });
 
@@ -1015,6 +1017,8 @@ function linha(r, destaque){
   ]);
 
   const nome = el("h3", { className:"race__name", textContent:r.nome });
+  (r.outros_nomes || []).forEach(outro =>
+    nome.append(el("small", { className:"outro-nome", textContent:"também: " + outro })));
 
   const meta = el("p", { className:"race__meta" });
   const btnCidade = el("button", { className:"city", type:"button", textContent:r.cidade, title:"Ver provas em " + r.cidade });

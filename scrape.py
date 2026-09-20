@@ -16,8 +16,8 @@ from pathlib import Path
 
 import fontes
 from comum import (FAIXAS, NAO_CORRIDA, UF_ALVO, arrumar_titulo, canonizar_cidade,
-                   classificar, faixas_de, mesma_prova, separar_organizadores,
-                   sem_acento)
+                   classificar, faixas_de, mesma_prova, parecidos,
+                   separar_organizadores, sem_acento)
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI / "corridas.json"
@@ -387,6 +387,15 @@ def vincular_concluintes(historico, desde=None):
         alvo = next((p for p in por_data.get(e["data"], []) if mesma_prova(e, p)), None)
 
         if alvo is None:
+            # Prova que mudou de nome: o calendario ainda usa o antigo
+            # ("Sunset Jurere - Corrida & Vinho") e o portal ja usa o novo
+            # ("Jurere Wine Run"). Mesma data, mesma cidade e um unico
+            # candidato sem resultado e a mesma prova.
+            alvo = _candidato_unico(por_data.get(e["data"], []), e)
+            if alvo is not None:
+                _guardar_outro_nome(alvo, e["nome"])
+
+        if alvo is None:
             # Prova que ja aconteceu e nenhuma fonte de calendario listou.
             # O portal de resultados e a unica prova de que ela existiu.
             # Respeita o corte: criar prova fora da janela daria um ano com
@@ -406,6 +415,58 @@ def vincular_concluintes(historico, desde=None):
         alvo["concluintes_total"] = e["concluintes_total"]
         alvo["or_slug"] = e["slug"]
     return len(eventos), ligados, atualizados, criados
+
+
+def _candidato_unico(provas_do_dia, evento):
+    """A unica prova da mesma cidade e data que ainda nao tem resultado."""
+    candidatos = [p for p in provas_do_dia
+                  if p.get("cidade") == evento["cidade"]
+                  and not p.get("concluintes_total")
+                  and p.get("fontes") != ["openresults"]]
+    return candidatos[0] if len(candidatos) == 1 else None
+
+
+def _guardar_outro_nome(prova, nome):
+    """Registra o nome alternativo, para a prova ser achada pelos dois."""
+    if not nome or parecidos(nome, prova["nome"]):
+        return
+    outros = prova.get("outros_nomes") or []
+    if nome not in outros:
+        outros.append(nome)
+        prova["outros_nomes"] = outros
+
+
+def unificar_openresults(historico):
+    """Junta prova criada pelo portal com a do calendario que mudou de nome.
+
+    Necessario porque as primeiras rodadas criaram registros separados antes
+    de existir a regra de candidato unico. Fica o registro do calendario, com
+    os numeros do portal e o nome novo guardado em outros_nomes.
+    """
+    por_data = {}
+    for p in historico:
+        por_data.setdefault(p["data"], []).append(p)
+
+    juntadas = []
+    for p in list(historico):
+        if p.get("fontes") != ["openresults"]:
+            continue
+        alvo = _candidato_unico([q for q in por_data[p["data"]] if q is not p], p)
+        if alvo is None:
+            continue
+        alvo["concluintes"] = p.get("concluintes", {})
+        alvo["concluintes_total"] = p.get("concluintes_total", 0)
+        if p.get("or_slug"):
+            alvo["or_slug"] = p["or_slug"]
+        if not alvo.get("pills") and p.get("pills"):
+            alvo["pills"] = p["pills"]
+            alvo["faixas"] = p.get("faixas", [])
+            alvo["max_km"] = p.get("max_km", 0)
+        _guardar_outro_nome(alvo, p["nome"])
+        historico.remove(p)
+        por_data[p["data"]].remove(p)
+        juntadas.append((alvo, p))
+    return juntadas
 
 
 def _prova_do_openresults(e):
@@ -570,6 +631,12 @@ def main():
         print(f"restam {len(atuais)} provas")
 
     historico = json.loads(SAIDA.read_text(encoding="utf-8")) if SAIDA.exists() else []
+    renomeadas = unificar_openresults(historico)
+    if renomeadas:
+        print(f"provas que mudaram de nome: {len(renomeadas)} registros unificados")
+        for alvo, outro in renomeadas[:6]:
+            print(f"  = {alvo['data']}  {alvo['cidade']} - {alvo['nome'][:38]}  <-  {outro['nome'][:38]}")
+
     historico, juntadas = consolidar_historico(historico)
     if juntadas:
         print(f"historico: {len(juntadas)} registros duplicados juntados")
