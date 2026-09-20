@@ -236,6 +236,7 @@ h1 em{font-style:normal; color:#FFC21A}
 /* ---- concluintes ---- */
 .race__dists li i{font-style:normal; color:var(--muted); margin-left:.3rem}
 .race__dists li.big i{color:rgba(28,10,3,.65)}
+.conc--vazio{background:none; border:1px dashed var(--line); color:var(--muted)}
 .conc{
   font-family:var(--f-mono); font-size:.6rem; letter-spacing:.06em; text-transform:uppercase;
   font-weight:500; padding:.2rem .45rem; border-radius:4px;
@@ -759,6 +760,21 @@ function montarComparativo(){
     nome: r.nome, sub: r.cidade + " · " + r.ano, valor: num(r.concluintes_total)
   }))));
 
+  // --- empresas por concluintes somados
+  const porEmpresa = new Map();
+  comResultado.forEach(r => (r.organizadores || []).forEach(o => {
+    const atual = porEmpresa.get(o) || { provas:0, concluintes:0 };
+    atual.provas += 1;
+    atual.concluintes += r.concluintes_total;
+    porEmpresa.set(o, atual);
+  }));
+  const empresas = [...porEmpresa.entries()]
+    .sort((a, b) => b[1].concluintes - a[1].concluintes).slice(0, 10);
+  if (empresas.length)
+    grade.append(bloco("Empresas com mais concluintes", empresas.map(([nome, v]) => ({
+      nome, sub: v.provas + (v.provas === 1 ? " prova" : " provas"), valor: num(v.concluintes)
+    }))));
+
   // --- crescimento desde 2024, por série
   const series = new Map();
   comResultado.forEach(r => {
@@ -956,6 +972,9 @@ function linha(r, destaque){
 
   if (r.concluintes_total)
     meta.append(el("span", { className:"conc", textContent:num(r.concluintes_total) + " concluintes" }));
+  else if (r._passada)
+    // Deixa explícito que falta o resultado, em vez de parecer esquecimento.
+    meta.append(el("span", { className:"conc conc--vazio", textContent:"sem resultado publicado" }));
 
   const fontes = r.fontes || [];
   if (fontes.length) meta.append(el("span", { className:"fontes", textContent:fontes.join(" · ") }));

@@ -9,6 +9,7 @@ Uso:  python scrape.py
 
 import datetime
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -204,26 +205,158 @@ def completar_organizadores(historico, limite=LIMITE_DETALHES):
     return len(pendentes[:limite]), achados
 
 
+def _chave_org(nome):
+    return " ".join(sem_acento(nome).replace(".", " ").split()).strip(" -–:,")
+
+
+def _prefixo_de(curto, longo):
+    """'acorsj' e prefixo de 'acorsj - associacao...' (no limite de palavra)."""
+    return longo.startswith(curto) and (len(longo) == len(curto)
+                                        or longo[len(curto)] in " -–:,")
+
+
+def _parecem_mesma_coisa(a, b):
+    """Dois complementos de um mesmo tronco dizem a mesma coisa?
+
+    'associacao de corredores...' x 'assoc dos corredores...' -> sim, e a mesma
+    entidade escrita de dois jeitos (ou truncada pela fonte).
+    'de guaramirim' x 'de pinhalzinho' -> nao, sao unidades diferentes.
+    """
+    ta = {w for w in a.split() if len(w) > 2}
+    tb = {w for w in b.split() if len(w) > 2}
+    if not ta or not tb:
+        return True
+    if _prefixo_de(a, b) or _prefixo_de(b, a):
+        return True
+    # "assoc" e "associacao" sao a mesma palavra abreviada.
+    def casa(x, y):
+        return x == y or (min(len(x), len(y)) >= 4 and (x.startswith(y) or y.startswith(x)))
+    iguais = sum(1 for x in ta if any(casa(x, y) for y in tb))
+    return iguais / (len(ta) + len(tb) - iguais) >= 0.5
+
+
+def _lugar(resto):
+    """'de salete' -> True. Complemento que e municipio indica outra unidade:
+    a Rede Feminina de Guaramirim nao e a de Pinhalzinho."""
+    casa = re.match(r"^(?:de|do|da|em)\s+(.+)$", resto or "")
+    if not casa:
+        return False
+    _, regiao, _ = canonizar_cidade(casa.group(1))
+    return regiao != "Outras"
+
+
+# Onde uma prova co-organizada pode estar juntando duas empresas.
+SEPARADOR_DUPLA = re.compile(r"(\s+e\s+|\s*&\s*|\s*\+\s*)")
+
+
 def padronizar_organizadores(historico):
     """Uma empresa so, escrita de varios jeitos, vira um nome so.
 
-    A grafia vencedora e a mais bem escrita (sem CAIXA ALTA) e mais completa,
-    para o painel nao contar a mesma empresa duas vezes.
+    Tres decisoes que so dao para tomar olhando o conjunto inteiro:
+
+    1. Dividir "ACORSJ e TM4" em duas empresas, mas nao "Thome & Santos".
+       A divisao e testada em cada separador e so vale quando um lado e uma
+       empresa que aparece sozinha em outras provas e o outro tambem aparece
+       ou ao menos tem cara de nome de empresa (duas palavras ou mais).
+    2. Juntar variantes da mesma empresa, inclusive as que o corridasbr corta
+       em 50 caracteres. Vence a grafia mais usada.
+    3. NAO juntar nomes que apenas compartilham um tronco generico:
+       "Rede Feminina ... de Guaramirim" e "... de Pinhalzinho" sao duas
+       entidades, e "Prefeitura Municipal" sozinha nao representa nenhuma.
     """
-    melhor = {}
+    contagem = {}
     for p in historico:
         for nome in p.get("organizadores", []):
-            chave = sem_acento(nome)
-            atual = melhor.get(chave)
-            if atual is None or qualidade_nome(nome) > qualidade_nome(atual):
-                melhor[chave] = nome
+            contagem[nome] = contagem.get(nome, 0) + 1
+    if not contagem:
+        return 0
+
+    conhecidos = {_chave_org(n): n for n in contagem}
+
+    def resolve(parte, exceto=None):
+        """Devolve o nome oficial se a parte for uma empresa ja conhecida.
+
+        Nome comum exige correspondencia exata: "Saude" nao pode casar com
+        "Saude em Movimento" so por comecar igual, senao "SESI +Saude" viraria
+        duas empresas. Sigla em caixa alta pode casar por prefixo.
+        """
+        chave = _chave_org(parte)
+        if not chave or len(chave) < 2:
+            return None
+        achado = conhecidos.get(chave)
+        if achado and achado != exceto:
+            return achado
+        candidatos = [n for k, n in conhecidos.items()
+                      if n != exceto and (_prefixo_de(chave, k)
+                                          if re.fullmatch(r"[A-Z0-9]{2,}", parte.strip())
+                                          else _prefixo_de(k, chave))]
+        return max(candidatos, key=lambda n: (contagem[n], len(n))) if candidatos else None
+
+    def plausivel(parte):
+        """Nao conhecida, mas com cara de nome de empresa."""
+        limpo = " ".join(parte.split()).strip(" -–:,.")
+        return limpo if len(limpo.split()) >= 2 and len(limpo) >= 6 else None
+
+    def dividir(nome, original, profundidade=0):
+        """Tenta cada separador; so divide se a divisao se sustentar."""
+        if profundidade > 3 or not SEPARADOR_DUPLA.search(nome):
+            return [nome]
+        pedacos = SEPARADOR_DUPLA.split(nome)
+        for i in range(1, len(pedacos), 2):
+            esquerda = "".join(pedacos[:i]).strip()
+            direita = "".join(pedacos[i + 1:]).strip()
+            if not esquerda or not direita:
+                continue
+            a, b = resolve(esquerda, original), resolve(direita, original)
+            if a and (b or plausivel(direita)):
+                return (dividir(a, original, profundidade + 1)
+                        + dividir(b or plausivel(direita), original, profundidade + 1))
+            if b and plausivel(esquerda):
+                return (dividir(plausivel(esquerda), original, profundidade + 1)
+                        + dividir(b, original, profundidade + 1))
+        return [nome]
+
+    divisao = {n: dividir(n, n) for n in contagem if SEPARADOR_DUPLA.search(n)}
+
+    # --- variantes: agrupa por tronco, sem misturar entidades diferentes
+    nomes = sorted(contagem, key=lambda n: (len(_chave_org(n)), n))
+    grupos = {}
+    for nome in nomes:
+        chave = _chave_org(nome)
+        alvo = None
+        for raiz, membros in grupos.items():
+            if not _prefixo_de(raiz, chave):
+                continue
+            resto = chave[len(raiz):].lstrip(" -–:,")
+            if re.match(r"(e\s|&|\+)", resto):
+                continue      # emenda outra empresa: nao e variante
+            if _lugar(resto):
+                continue      # "de Salete", "de Guaramirim": outra entidade
+            outros = [_chave_org(m)[len(raiz):].lstrip(" -–:,") for m in membros
+                      if _chave_org(m) != raiz]
+            # Basta parecer com UM dos que ja estao no grupo: as variantes
+            # truncadas nem sempre se parecem entre si duas a duas.
+            if not outros or any(_parecem_mesma_coisa(resto, o) for o in outros):
+                alvo = raiz
+                break
+        grupos.setdefault(alvo or chave, []).append(nome)
+
+    troca = {}
+    for membros in grupos.values():
+        vence = max(membros, key=lambda n: (contagem.get(n, 0), len(n)))
+        for n in membros:
+            troca[n] = vence
 
     ajustados = 0
     for p in historico:
-        nomes = p.get("organizadores", [])
-        padronizados = sorted({melhor[sem_acento(n)] for n in nomes}, key=sem_acento)
-        if padronizados != nomes:
-            p["organizadores"] = padronizados
+        atuais = p.get("organizadores", [])
+        finais = []
+        for nome in atuais:
+            for parte in divisao.get(nome, [nome]):
+                finais.append(troca.get(parte, parte))
+        finais = sorted(set(finais), key=sem_acento)
+        if finais != atuais:
+            p["organizadores"] = finais
             ajustados += 1
     return ajustados
 
