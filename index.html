@@ -1240,6 +1240,9 @@ function montarUma(caixa, dados){
 
   const semGenero = anos.filter(([, v]) => !(v.f + v.m)).map(([a]) => a);
   const recados = [];
+  if (anos.length > 1)
+    recados.push("A conta parte de " + anos[0][0] + ", o primeiro ano com resultado"
+                 + " publicado — que não é necessariamente a primeira edição da prova.");
   if (semGenero.length)
     recados.push("Sem divisão por sexo em " + semGenero.join(", ") + ".");
   recados.push("O filtro de ano não vale aqui: o quadro existe para comparar os anos.");
@@ -1305,10 +1308,13 @@ function montarDuelo(caixa, a, b){
         pctF(rb) === null ? "" : (100 - pctF(rb)) + "%", ra.fim.m, rb.fim.m);
   }
   const da = desde(ra), db = desde(rb);
-  par("Desde a 1ª edição",
+  // Cada prova comeca no seu primeiro ano com resultado, que nem sempre e o
+  // mesmo das duas: so da para pendurar o ano no rotulo quando coincidem.
+  const mesmoInicio = ra.anoIni === rb.anoIni;
+  par(mesmoInicio ? "Desde " + ra.anoIni : "Desde o 1º resultado",
       da ? comSinal(da.delta) : "—", db ? comSinal(db.delta) : "—",
-      da ? pctComSinal(da.pct) + " desde " + ra.anoIni : "",
-      db ? pctComSinal(db.pct) + " desde " + rb.anoIni : "",
+      da ? pctComSinal(da.pct) + (mesmoInicio ? "" : " desde " + ra.anoIni) : "",
+      db ? pctComSinal(db.pct) + (mesmoInicio ? "" : " desde " + rb.anoIni) : "",
       da ? da.delta : null, db ? db.delta : null, "variacao");
   const ua = ultima(ra), ub = ultima(rb);
   par("Contra a edição anterior",
@@ -1380,8 +1386,10 @@ function montarDuelo(caixa, a, b){
     el("span", { className:"m", textContent:"homens" }),
   ]));
   caixa.append(el("p", { className:"nota",
-    textContent:"As barras das duas provas usam a mesma escala. O filtro de ano não "
-                + "vale aqui: o quadro existe para comparar os anos." }));
+    textContent:"Cada prova parte do seu primeiro ano com resultado publicado — "
+                + "que não é necessariamente a primeira edição dela. As barras das "
+                + "duas usam a mesma escala. O filtro de ano não vale aqui: o quadro "
+                + "existe para comparar os anos." }));
 }
 
 function montarComparativo(){
