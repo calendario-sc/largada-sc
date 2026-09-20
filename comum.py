@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Peças compartilhadas pelos adaptadores de fonte e pelo merge."""
 
+import difflib
 import gzip
 import re
 import unicodedata
@@ -289,6 +290,42 @@ def tokens_nome(nome):
     n = re.sub(r"\b\d+\s*[oa]?\b(?=\s)", " ", n)   # ordinais: 1a, 18o, 3
     n = re.sub(r"[^a-z0-9]+", " ", n)
     return {p for p in n.split() if p and p not in VAZIAS and len(p) > 1}
+
+
+# Palavras que aparecem em quase toda prova e por isso nao identificam
+# nenhuma: duas provas no mesmo dia e cidade podem compartilhar todas elas.
+GENERICOS = {"maratona", "meia", "night", "sunset", "trail", "circuito",
+             "desafio", "rustica", "solidaria", "beneficente", "internacional",
+             "cidade", "municipal", "anos", "experience", "feminina", "masculina",
+             "aniversario", "natal", "verao", "inverno", "primavera", "outono",
+             "floripa", "florianopolis"}
+
+
+def palavras_distintivas(nome, cidade=""):
+    """Palavras que de fato identificam a prova."""
+    palavras = tokens_nome(nome) - tokens_nome(cidade) - GENERICOS
+    return {w for w in palavras if not w.isdigit()}
+
+
+def mesmo_evento_renomeado(nome_a, nome_b, cidade=""):
+    """A mesma prova escrita de dois jeitos?
+
+    Usado so quando data e cidade ja batem. Exige uma palavra que identifique
+    ("jurere", "wilson buch") ou entao textos quase iguais, que e o caso de
+    erro de digitacao e de espacamento ("Rotarace" x "Rota Race"). Sem isso,
+    "13a Maratona de Floripa" e "Meia e Maratona Cidade de Florianopolis" --
+    provas diferentes no mesmo dia -- seriam tratadas como uma so.
+    """
+    if palavras_distintivas(nome_a, cidade) & palavras_distintivas(nome_b, cidade):
+        return True
+    so_letras = lambda s: re.sub(r"[^a-z]", "", sem_acento(s))
+    a, b = so_letras(nome_a), so_letras(nome_b)
+    if difflib.SequenceMatcher(None, a, b).ratio() >= 0.8:
+        return True
+    # Um nome inteiro dentro do outro, sem os espacos: "GREEN X RACE" aparece
+    # em "Corrida de Obstaculos Greenxrace".
+    menor, maior = sorted((a, b), key=len)
+    return len(menor) >= 8 and menor in maior
 
 
 def parecidos(a, b, ignorar=frozenset(), minimo=2):

@@ -16,8 +16,8 @@ from pathlib import Path
 
 import fontes
 from comum import (FAIXAS, NAO_CORRIDA, UF_ALVO, arrumar_titulo, canonizar_cidade,
-                   classificar, faixas_de, mesma_prova, parecidos,
-                   separar_organizadores, sem_acento)
+                   classificar, faixas_de, mesma_prova, mesmo_evento_renomeado,
+                   parecidos, separar_organizadores, sem_acento)
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI / "corridas.json"
@@ -423,7 +423,13 @@ def _candidato_unico(provas_do_dia, evento):
                   if p.get("cidade") == evento["cidade"]
                   and not p.get("concluintes_total")
                   and p.get("fontes") != ["openresults"]]
-    return candidatos[0] if len(candidatos) == 1 else None
+    if len(candidatos) != 1:
+        return None
+    unico = candidatos[0]
+    # Data e cidade iguais nao bastam: numa cidade grande ha varias provas no
+    # mesmo dia. O nome precisa sustentar que e a mesma.
+    return unico if mesmo_evento_renomeado(evento["nome"], unico["nome"],
+                                           unico["cidade"]) else None
 
 
 def _guardar_outro_nome(prova, nome):
