@@ -52,6 +52,30 @@ NAO_CORRIDA = ("duathlon", "duatlon", "triathlon", "triatlon", "aquathlon",
                # prova virtual nao acontece num lugar: nao e calendario
                "corrida virtual", "desafio virtual", "(virtual)")
 
+# Textos que aparecem no lugar do nome do organizador e nao identificam ninguem.
+ORG_VAZIO = {"", "-", "--", "a definir", "a confirmar", "nao informado",
+             "sem organizador", "diversos", "varios", "organizador"}
+
+# Uma prova co-organizada traz as empresas separadas por barra, ponto-e-virgula
+# ou barra vertical. "&", "+" e " e " ficam de fora de proposito: aparecem
+# DENTRO de nomes de empresa ("Thome & Santos", "AB Bike & Fitness",
+# "SESI +Saude", "CJR Academia e Eventos"). Subcontar e melhor que inventar.
+ORG_SEPARADOR = re.compile(r"\s*[/;|]\s*")
+
+
+def separar_organizadores(texto):
+    """'LDM Eventos / Prefeitura' -> ['LDM Eventos', 'Prefeitura'].
+
+    Cada empresa vira um item, porque o painel conta uma a uma.
+    """
+    nomes = []
+    for parte in ORG_SEPARADOR.split(texto or ""):
+        nome = " ".join(parte.split()).strip(" .,-")
+        if nome and sem_acento(nome) not in ORG_VAZIO and len(nome) > 1:
+            nomes.append(nome)
+    return nomes
+
+
 def sem_acento(s):
     return "".join(c for c in unicodedata.normalize("NFD", s or "")
                    if unicodedata.category(c) != "Mn").lower()
@@ -177,6 +201,9 @@ def limpar(html):
     txt = re.sub(r"&nbsp;?", " ", txt)
     for ent, ch in ENTIDADES:
         txt = txt.replace(ent, ch)
+    # Entidades numericas: o corridasbr escreve "Solu&#231;&#245;es".
+    txt = re.sub(r"&#(\d+);", lambda m: chr(int(m.group(1))), txt)
+    txt = re.sub(r"&#x([0-9a-fA-F]+);", lambda m: chr(int(m.group(1), 16)), txt)
     return " ".join(txt.split())
 
 

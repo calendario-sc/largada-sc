@@ -169,6 +169,13 @@ h1 em{font-style:normal; color:#FFC21A}
 .chip[data-cor][aria-pressed="true"]{background:var(--cc); border-color:var(--cc); color:#FFFFFF}
 .chip[data-cor][aria-pressed="true"]::before{background:#FFFFFF}
 .chip--reset{border-style:dashed; color:var(--muted)}
+#g-organizador{
+  font:inherit; font-size:.82rem; max-width:15rem; cursor:pointer;
+  padding:.4rem .6rem; border-radius:999px; color:var(--ink-2);
+  background:var(--surface); border:1px solid var(--line);
+}
+#g-organizador:hover{border-color:var(--accent); color:var(--ink)}
+#g-organizador.ativo{background:var(--azul); border-color:var(--azul); color:var(--sobre-azul)}
 /* O periodo e escolha unica, entao vira um seletor segmentado. */
 .escopo{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--surface)}
 .escopo .chip{border:0; border-radius:0; padding:.42rem .8rem}
@@ -230,6 +237,11 @@ h1 em{font-style:normal; color:#FFC21A}
   border-bottom:1px solid var(--line); text-align:left;
 }
 .city:hover{color:var(--accent-ink); border-color:var(--accent)}
+.org{
+  font:inherit; font-size:.78rem; cursor:pointer; padding:0; border:0; background:none;
+  color:var(--muted); border-bottom:1px dotted var(--line);
+}
+.org:hover{color:var(--accent-ink); border-color:var(--accent)}
 .dot{opacity:.45}
 .regiao{color:color-mix(in srgb,var(--rc) var(--mix-rc),var(--ink)); font-weight:600}
 .tag{
@@ -306,6 +318,7 @@ h1 em{font-style:normal; color:#FFC21A}
     <div class="stats">
       <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
       <div class="stat"><b id="s-cidades">0</b><span>cidades</span></div>
+      <div class="stat"><b id="s-orgs">0</b><span>organizadoras</span></div>
       <div class="stat"><b id="s-km">0</b><span>km mais longo</span></div>
     </div>
   </div>
@@ -330,6 +343,11 @@ h1 em{font-style:normal; color:#FFC21A}
       <div class="group" id="g-regiao"><b>Região</b></div>
       <div class="group" id="g-faixa"><b>Distância</b></div>
       <div class="group" id="g-tipo"><b>Tipo</b></div>
+      <div class="group"><b>Organizador</b>
+        <select id="g-organizador" aria-label="Filtrar por organizador">
+          <option value="">todos</option>
+        </select>
+      </div>
       <button class="chip chip--reset" id="reset" type="button">Limpar</button>
     </div>
   </div>
@@ -382,7 +400,8 @@ RACES.forEach(r => {
   r._passada = r._d < hoje;
 });
 
-const state = { escopo:"proximas", q:"", meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
+const state = { escopo:"proximas", q:"", organizador:"",
+                meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
   const n = Object.assign(document.createElement(tag), props);
@@ -441,6 +460,32 @@ chipGroup("g-faixa", FAIXAS.filter(([f]) => RACES.some(r => r.faixas.includes(f)
           () => "#1250C4");
 chipGroup("g-tipo", TIPOS.map(t => [t, t]), state.tipos, t => TAG_COR[t] || "#2E3A50");
 
+/* Organizadores: dezenas de empresas, então lista suspensa ordenada por
+   quantidade de provas, com o total ao lado de cada nome. */
+const porOrganizador = new Map();
+RACES.forEach(r => (r.organizadores || []).forEach(o =>
+  porOrganizador.set(o, (porOrganizador.get(o) || 0) + 1)));
+
+const selectOrg = document.getElementById("g-organizador");
+[...porOrganizador.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"))
+  .forEach(([nome, n]) => selectOrg.append(
+    el("option", { value:nome, textContent:nome + " (" + n + ")" })));
+
+selectOrg.onchange = () => {
+  state.organizador = selectOrg.value;
+  selectOrg.classList.toggle("ativo", Boolean(state.organizador));
+  render();
+};
+
+function filtrarPorOrganizador(nome){
+  state.organizador = nome;
+  selectOrg.value = nome;
+  selectOrg.classList.toggle("ativo", Boolean(nome));
+  render();
+  document.getElementById("bar").scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
 /* ---- barras por mês, redesenhadas a cada troca de período ---- */
 const monthsBox = document.getElementById("months");
 
@@ -485,6 +530,7 @@ input.oninput = () => {
 document.getElementById("reset").onclick = () => {
   state.q = ""; input.value = "";
   [state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
+  state.organizador = ""; selectOrg.value = ""; selectOrg.classList.remove("ativo");
   document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
   montarMeses();
   render();
@@ -505,6 +551,7 @@ function passa(r){
   if (state.q && !r._busca.includes(state.q)) return false;
   if (state.meses.size && !state.meses.has(r._key)) return false;
   if (state.regioes.size && !state.regioes.has(r.regiao)) return false;
+  if (state.organizador && !(r.organizadores || []).includes(state.organizador)) return false;
   if (state.tipos.size && !r.tags.some(x => state.tipos.has(x))) return false;
   if (state.faixas.size && !r.faixas.some(f => state.faixas.has(f))) return false;
   return true;
@@ -519,12 +566,16 @@ function render(){
   listBox.replaceChildren();
 
   const cidades = new Set(res.map(r => r.cidade));
+  // Prova co-organizada soma cada empresa: o Set cuida de não repetir.
+  const organizadoras = new Set(res.flatMap(r => r.organizadores || []));
   const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
   document.getElementById("s-corridas").textContent = String(res.length);
   document.getElementById("s-cidades").textContent = String(cidades.size);
+  document.getElementById("s-orgs").textContent = String(organizadoras.size);
   document.getElementById("s-km").textContent = maiorKm ? String(Math.round(maiorKm)) : "—";
 
-  const filtros = state.meses.size + state.regioes.size + state.faixas.size + state.tipos.size + (state.q ? 1 : 0);
+  const filtros = state.meses.size + state.regioes.size + state.faixas.size + state.tipos.size
+    + (state.q ? 1 : 0) + (state.organizador ? 1 : 0);
   countBox.innerHTML = res.length
     ? "<b>" + res.length + "</b> " + (res.length === 1 ? "prova" : "provas") +
       " em <b>" + cidades.size + "</b> " + (cidades.size === 1 ? "cidade" : "cidades") +
@@ -590,6 +641,14 @@ function linha(r, destaque){
     if (dias === 0) meta.append(el("span", { className:"flag", textContent:"é hoje" }));
     else if (dias <= 7) meta.append(el("span", { className:"flag", textContent:"em " + dias + (dias === 1 ? " dia" : " dias") }));
   }
+
+  (r.organizadores || []).forEach((o, i) => {
+    if (i) meta.append(el("span", { className:"dot", textContent:"+" }));
+    const b = el("button", { className:"org", type:"button", textContent:o,
+                             title:"Ver provas de " + o });
+    b.onclick = () => filtrarPorOrganizador(o);
+    meta.append(b);
+  });
 
   const fontes = r.fontes || [];
   if (fontes.length) meta.append(el("span", { className:"fontes", textContent:fontes.join(" · ") }));

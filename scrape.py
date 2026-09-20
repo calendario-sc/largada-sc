@@ -15,7 +15,7 @@ from pathlib import Path
 
 import fontes
 from comum import (FAIXAS, NAO_CORRIDA, UF_ALVO, canonizar_cidade, classificar,
-                   faixas_de, mesma_prova, sem_acento)
+                   faixas_de, mesma_prova, separar_organizadores, sem_acento)
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI / "corridas.json"
@@ -77,6 +77,10 @@ def fundir(grupo):
         "tags": tags,
         "fontes": sorted({g["fonte"] for g in grupo}),
         "resultado_id": next((g["resultado_id"] for g in grupo if g.get("resultado_id")), None),
+        "corrida_id": next((g["corrida_id"] for g in grupo if g.get("corrida_id")), None),
+        # Co-organizacao e comum: vale a uniao do que cada fonte informa.
+        "organizadores": sorted({o for g in grupo for o in g.get("organizadores", [])},
+                                key=sem_acento),
     }
 
 
@@ -170,6 +174,58 @@ def normalizar_historico(historico):
             p["cidade"], p["regiao"], p["uf"] = cidade, regiao, uf
             ajustadas += 1
     return ajustadas
+
+
+def completar_organizadores(historico, limite=LIMITE_DETALHES):
+    """Busca o organizador prova a prova, na pagina do corridasbr.
+
+    Nenhuma listagem traz esse campo: so a pagina de cada prova (futura) ou a
+    do resultado (passada). Cada prova e consultada uma unica vez.
+    """
+    pendentes = [p for p in historico
+                 if not p.get("organizadores")
+                 and (p.get("corrida_id") or p.get("resultado_id"))
+                 and not p.get("org_tentado")]
+    if not pendentes:
+        return 0, 0
+
+    achados = 0
+    for p in pendentes[:limite]:
+        try:
+            texto = fontes.organizador_da_prova(p.get("corrida_id"), p.get("resultado_id"))
+        except Exception:
+            continue          # tenta de novo numa proxima rodada
+        p["org_tentado"] = True
+        nomes = separar_organizadores(texto)
+        if nomes:
+            p["organizadores"] = nomes
+            achados += 1
+        time.sleep(PAUSA_DETALHES)
+    return len(pendentes[:limite]), achados
+
+
+def padronizar_organizadores(historico):
+    """Uma empresa so, escrita de varios jeitos, vira um nome so.
+
+    A grafia vencedora e a mais bem escrita (sem CAIXA ALTA) e mais completa,
+    para o painel nao contar a mesma empresa duas vezes.
+    """
+    melhor = {}
+    for p in historico:
+        for nome in p.get("organizadores", []):
+            chave = sem_acento(nome)
+            atual = melhor.get(chave)
+            if atual is None or qualidade_nome(nome) > qualidade_nome(atual):
+                melhor[chave] = nome
+
+    ajustados = 0
+    for p in historico:
+        nomes = p.get("organizadores", [])
+        padronizados = sorted({melhor[sem_acento(n)] for n in nomes}, key=sem_acento)
+        if padronizados != nomes:
+            p["organizadores"] = padronizados
+            ajustados += 1
+    return ajustados
 
 
 def coletar():
@@ -289,6 +345,8 @@ def main():
                 guardado = (antiga["pills"], antiga.get("faixas", []),
                             antiga.get("max_km", 0))
             tentada = antiga.get("dist_tentada")
+            org_tentado = antiga.get("org_tentado")
+            organizadores = antiga.get("organizadores") or []
             antiga.clear()
             antiga.update(prova)
             antiga["fontes"] = creditos
@@ -296,6 +354,10 @@ def main():
                 antiga["pills"], antiga["faixas"], antiga["max_km"] = guardado
             if tentada:
                 antiga["dist_tentada"] = True
+            if org_tentado:
+                antiga["org_tentado"] = True
+            if organizadores and not antiga.get("organizadores"):
+                antiga["organizadores"] = organizadores
             antiga["primeira_vez"] = primeira
             antiga["visto_em"] = hoje
         else:
@@ -308,6 +370,13 @@ def main():
     ajustadas = normalizar_historico(historico)
     if ajustadas:
         print(f"malha do IBGE: {ajustadas} registros com cidade ou regiao corrigida")
+
+    tentados, achados = completar_organizadores(historico)
+    if tentados:
+        print(f"organizador: {tentados} provas consultadas, {achados} preenchidas")
+    ajustados = padronizar_organizadores(historico)
+    if ajustados:
+        print(f"organizador: {ajustados} provas tiveram a grafia padronizada")
 
     tentadas, achadas = completar_distancias(historico)
     if tentadas:

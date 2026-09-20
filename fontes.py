@@ -11,7 +11,8 @@ import json
 import re
 
 from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, arrumar_titulo, baixar,
-                   canonizar_cidade, classificar, distancias, limpar, sem_acento)
+                   canonizar_cidade, classificar, distancias, limpar,
+                   separar_organizadores, sem_acento)
 
 # ---------------------------------------------------------------- corridasbr
 
@@ -58,8 +59,11 @@ def corridasbr():
 
                 pills, km, extra = distancias(limpar(tds[3]))
                 cidade, regiao, uf = canonizar_cidade(cidade)
+                # O id leva a pagina da prova, que traz o organizador.
+                ident = re.search(r"escolha=(\d+)", tds[2])
                 provas.append({
                     "fonte": "corridasbr",
+                    "corrida_id": ident.group(1) if ident else None,
                     "data": f"{ano:04d}-{mes:02d}-{dia:02d}",
                     "dia": dia, "mes": mes, "ano": ano,
                     "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
@@ -116,6 +120,27 @@ def corridasbr_arquivo(ano=None, ate_mes=None):
                 "tags": classificar(nome, []),
             })
     return provas
+
+
+CBR_ORGANIZADOR = re.compile(r"Organizador:\s*(.+?)\s+(?:Mais Informa|Compartilhar|Resultados|Publicidade|$)")
+
+
+def _texto_corridasbr(caminho):
+    html = baixar(CBR_BASE + caminho)
+    return limpar(re.sub(r"<script.*?</script>", " ", html, flags=re.S))
+
+
+def organizador_da_prova(corrida_id=None, resultado_id=None):
+    """Le a pagina da prova (futura) ou a do resultado (passada) e devolve o
+    organizador. Nenhuma das listagens traz esse campo."""
+    if corrida_id:
+        caminho = f"mostracorrida.asp?escolha={corrida_id}"
+    elif resultado_id:
+        caminho = f"mostraresultado.asp?escolha={resultado_id}"
+    else:
+        return ""
+    achado = CBR_ORGANIZADOR.search(_texto_corridasbr(caminho))
+    return achado.group(1).strip() if achado else ""
 
 
 CBR_DISTANCIA = re.compile(r"ncia\(s\):\s*(.+?)\s+(?:Organizador|Resultados|Publicidade)")
@@ -195,6 +220,7 @@ def ticketsports():
             "pills": banda["rotulos"] if banda else [],
             "km": [],
             "faixas_diretas": sorted(banda["faixas"]) if banda else [],
+            "organizadores": separar_organizadores(e.get("organizer")),
             "tags": classificar(nome, []),
         })
     return provas
@@ -381,6 +407,14 @@ AT_ESPORTES = {"corrida de rua", "corrida", "trail run", "trail", "corrida de mo
                "corrida de obstaculos", "cross country"}
 
 
+def _nome_organizador(evento):
+    """O JSON-LD traz organizer como objeto ou, raramente, como texto."""
+    org = evento.get("organizer")
+    if isinstance(org, dict):
+        return org.get("name") or ""
+    return org or ""
+
+
 def atletis():
     """Eventos de corrida do atletis.com.br na UF alvo."""
     lista = baixar(AT_LISTA)
@@ -424,6 +458,7 @@ def atletis():
             "dia": dia, "mes": mes, "ano": ano,
             "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
             "pills": [], "km": [],
+            "organizadores": separar_organizadores(_nome_organizador(evento)),
             "tags": classificar(nome, [], extras),
         })
     return provas
