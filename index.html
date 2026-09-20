@@ -978,7 +978,7 @@ function linha(r, destaque){
       // Concluintes daquela distância, quando o resultado já foi publicado.
       const km = d.replace(/km.*/i, "").replace(",", ".");
       const n = (r.concluintes || {})[km];
-      if (n) li.append(el("i", { textContent:num(n) }));
+      if (n) li.append(el("i", { textContent:" " + num(n) }));   // espaço: sem ele vira "21km277"
       dists.append(li);
     });
   } else {
