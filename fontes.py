@@ -598,19 +598,28 @@ def runking_concluintes(empresa, slug):
     achado = re.search(r'"distinctModalities":(\[[^\]]*\])', dados)
     if not achado:
         return {}, 0
+    generos = re.search(r'"distinctGenders":(\[[^\]]*\])', dados)
+    # Sem o parametro de genero a pagina devolve SO o feminino, entao cada
+    # genero e pedido em separado e somado. Sem isso o total sai pela metade.
+    generos = json.loads(generos.group(1)) if generos else []
 
     por_distancia, total = {}, 0
     for modalidade in json.loads(achado.group(1)):
-        pagina = _rk_payload(f"{empresa}/{slug}?modality={urllib.parse.quote(modalidade)}")
-        resultado = re.search(r'"totalAthletesResults":(\d+)', pagina)
-        n = int(resultado.group(1)) if resultado else 0
-        if not n:
+        n_modalidade = 0
+        for genero in (generos or [None]):
+            url = f"{empresa}/{slug}?modality={urllib.parse.quote(modalidade)}"
+            if genero:
+                url += f"&gender={urllib.parse.quote(genero)}"
+            pagina = _rk_payload(url)
+            resultado = re.search(r'"totalAthletesResults":(\d+)', pagina)
+            n_modalidade += int(resultado.group(1)) if resultado else 0
+        if not n_modalidade:
             continue
-        total += n
+        total += n_modalidade
         km = re.match(r"(\d+(?:[.,]\d+)?)\s*k", modalidade.strip(), re.I)
         if km:
             chave = km.group(1).replace(",", ".").rstrip(".")
-            por_distancia[chave] = por_distancia.get(chave, 0) + n
+            por_distancia[chave] = por_distancia.get(chave, 0) + n_modalidade
     return por_distancia, total
 
 
