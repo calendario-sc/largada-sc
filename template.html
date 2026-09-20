@@ -887,7 +887,8 @@ function montarComparativo(){
   // Base pequena vira percentual enganoso: 12 -> 60 seria +400%.
   const porPct = evolucao.filter(e => e.base >= 100)
     .sort((a, b) => b.pct - a.pct).slice(0, 10);
-  grade.append(bloco("Mais cresceram desde 2024 (%)", porPct.map(e => ({
+  grade.append(bloco("Mais cresceram desde 2024 (%)"
+    + (state.cidade ? " em " + state.cidade : ""), porPct.map(e => ({
     nome: e.nome, sub: e.cidade + " · " + num(e.base) + " → " + num(e.atual) + " em " + e.ultimo,
     valor: (e.pct >= 0 ? "+" : "") + e.pct.toFixed(0) + "%", classe: e.pct >= 0 ? "sobe" : "desce"
   })), "só provas com 100 ou mais concluintes em 2024"));
