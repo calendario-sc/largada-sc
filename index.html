@@ -258,6 +258,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .comparativo[hidden]{display:none}
 .comparativo h2{font-family:var(--f-display); font-weight:800; font-size:1.3rem; margin:0 0 .2rem}
 .comparativo .nota{color:var(--muted); font-size:.8rem; margin:0 0 1rem; max-width:70ch}
+#comparativo-anos{display:inline-flex; margin:.7rem 0 .8rem}
 .comparativo__grade{display:grid; gap:1.4rem; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
 .comparativo h3{
   font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
@@ -455,6 +456,7 @@ h1 em{font-style:normal; color:#FFC21A}
 <main class="wrap results">
   <section class="comparativo" id="comparativo" hidden>
     <h2>Comparativo entre as provas</h2>
+    <div class="escopo" id="comparativo-anos" role="group" aria-label="Ano do ranking"></div>
     <p class="nota" id="comparativo-nota"></p>
     <div class="comparativo__grade" id="comparativo-grade"></div>
   </section>
@@ -514,7 +516,7 @@ RACES.forEach(r => {
   r._passada = r._d < hoje;
 });
 
-const state = { escopo:"proximas", q:"", organizador:"", comparativo:false,
+const state = { escopo:"proximas", q:"", organizador:"", comparativo:false, anoRanking:"",
                 anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
 const el = (tag, props = {}, kids = []) => {
@@ -747,31 +749,56 @@ function chaveSerie(r){
   return norm(r.cidade) + "|" + palavrasProva(r.nome).join(" ");
 }
 
+const caixaAnosRanking = document.getElementById("comparativo-anos");
+const ANOS_COM_RESULTADO = [...new Set(RACES.filter(r => r.concluintes_total).map(r => r.ano))].sort();
+
+[["", "Todos os anos"], ...ANOS_COM_RESULTADO.map(a => [String(a), String(a)])]
+  .forEach(([val, rotulo]) => {
+    const b = el("button", { className:"chip", type:"button", textContent:rotulo });
+    b.dataset.ano = val;
+    b.setAttribute("aria-pressed", String(state.anoRanking === val));
+    b.onclick = () => {
+      state.anoRanking = val;
+      caixaAnosRanking.querySelectorAll(".chip").forEach(c =>
+        c.setAttribute("aria-pressed", String(c.dataset.ano === val)));
+      montarComparativo();
+    };
+    caixaAnosRanking.append(b);
+  });
+
 function montarComparativo(){
   const caixa = document.getElementById("comparativo");
   if (!state.comparativo){ caixa.hidden = true; return; }
   caixa.hidden = false;
 
   const comResultado = RACES.filter(r => r.concluintes_total && passaFiltrosGerais(r));
+  // O ano escolhido vale para os rankings; o crescimento precisa de vários
+  // anos e por isso usa sempre a base inteira.
+  const doAno = state.anoRanking
+    ? comResultado.filter(r => String(r.ano) === state.anoRanking)
+    : comResultado;
   const grade = document.getElementById("comparativo-grade");
   grade.replaceChildren();
 
   document.getElementById("comparativo-nota").textContent =
     comResultado.length
-      ? "Considera as " + num(comResultado.length) + " provas com resultado publicado. " +
-        "O crescimento compara edições da mesma prova e por isso ignora os filtros de período, ano e mês."
+      ? "Os dois primeiros quadros usam " + num(doAno.length) + " provas com resultado publicado" +
+        (state.anoRanking ? " em " + state.anoRanking : "") +
+        ". O crescimento compara edições da mesma prova ao longo dos anos, então usa as " +
+        num(comResultado.length) + " provas do período todo."
       : "Nenhuma prova com resultado publicado dentro dos filtros atuais.";
   if (!comResultado.length) return;
 
   // --- maiores em concluintes
-  const maiores = [...comResultado].sort((a, b) => b.concluintes_total - a.concluintes_total).slice(0, 10);
-  grade.append(bloco("Maiores em concluintes", maiores.map(r => ({
+  const maiores = [...doAno].sort((a, b) => b.concluintes_total - a.concluintes_total).slice(0, 10);
+  grade.append(bloco("Maiores em concluintes" + (state.anoRanking ? " em " + state.anoRanking : ""),
+    maiores.map(r => ({
     nome: r.nome, sub: r.cidade + " · " + r.ano, valor: num(r.concluintes_total)
   }))));
 
   // --- empresas por concluintes somados
   const porEmpresa = new Map();
-  comResultado.forEach(r => (r.organizadores || []).forEach(o => {
+  doAno.forEach(r => (r.organizadores || []).forEach(o => {
     const atual = porEmpresa.get(o) || { provas:0, concluintes:0 };
     atual.provas += 1;
     atual.concluintes += r.concluintes_total;
@@ -780,7 +807,8 @@ function montarComparativo(){
   const empresas = [...porEmpresa.entries()]
     .sort((a, b) => b[1].concluintes - a[1].concluintes).slice(0, 10);
   if (empresas.length)
-    grade.append(bloco("Empresas com mais concluintes", empresas.map(([nome, v]) => ({
+    grade.append(bloco("Empresas com mais concluintes" + (state.anoRanking ? " em " + state.anoRanking : ""),
+      empresas.map(([nome, v]) => ({
       nome, sub: v.provas + (v.provas === 1 ? " prova" : " provas"), valor: num(v.concluintes)
     }))));
 
