@@ -652,6 +652,7 @@ h1 em{font-style:normal; color:#FFC21A}
   <div class="wrap">
     <p><b>Largada SC</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b> e <b>atletis.com.br</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
     <p>Os números de concluintes vêm de <b>openresults.run</b> e, onde ele não alcança, das cronometragens que publicam os resultados: <b>supercrono.com.br</b>, <b>chiprun.com.br</b> e <b>resultados.runking.com.br</b>. Conta quem cruzou a linha de chegada com tempo registrado.</p>
+    <p id="cobertura"></p>
     <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
     <p>Confirme datas, percursos e inscrições direto com a organização do evento antes de se programar.</p>
   </div>
@@ -1400,12 +1401,16 @@ function montarComparativo(){
   const grade = document.getElementById("comparativo-grade");
   grade.replaceChildren();
 
+  const c = state.anoRanking ? COBERTURA.get(Number(state.anoRanking)) : null;
+  const ressalva = c && c.pct < COBERTURA_RALA
+    ? " " + fraseDaCobertura(state.anoRanking) + ": o ano aparece menor do que foi."
+    : "";
   document.getElementById("comparativo-nota").textContent =
     comResultado.length
       ? "Os dois primeiros quadros usam " + num(doAno.length) + " provas com resultado publicado" +
         (state.anoRanking ? " em " + state.anoRanking : "") +
         ". O crescimento compara edições da mesma prova ao longo dos anos, então usa as " +
-        num(comResultado.length) + " provas do período todo."
+        num(comResultado.length) + " provas do período todo." + ressalva
       : "Nenhuma prova com resultado publicado dentro dos filtros atuais.";
   if (!comResultado.length) return;
 
@@ -1570,6 +1575,45 @@ document.getElementById("btn-pdf").onclick = () => {
   window.print();
 };
 window.addEventListener("afterprint", () => { document.title = TITULO; });
+
+/* ---------- cobertura de resultados ----------
+   Nem todo ano tem a mesma parcela de provas com resultado publicado: quanto
+   mais antigo, menos. Sem isso à vista, o total de 2022 parece dizer que o
+   ano foi pequeno, quando diz que sobrou pouco resultado no ar. */
+
+const COBERTURA = (() => {
+  const conta = new Map();
+  RACES.filter(r => r._passada && !(r.tags || []).includes("Treino")).forEach(r => {
+    const a = conta.get(r.ano) || { provas:0, com:0 };
+    a.provas += 1;
+    if (r.concluintes_total) a.com += 1;
+    conta.set(r.ano, a);
+  });
+  const saida = new Map();
+  conta.forEach((v, ano) => saida.set(ano, { ...v, pct: v.provas ? v.com / v.provas * 100 : 0 }));
+  return saida;
+})();
+
+// Abaixo disso o ano conta bem menos gente do que de fato correu.
+const COBERTURA_RALA = 75;
+
+function fraseDaCobertura(ano){
+  const c = COBERTURA.get(Number(ano));
+  if (!c || !c.provas) return "";
+  return "Em " + ano + ", " + num(c.com) + " das " + num(c.provas)
+       + " provas realizadas têm resultado publicado (" + c.pct.toFixed(0) + "%)";
+}
+
+(() => {
+  const anos = [...COBERTURA.entries()].filter(([, v]) => v.provas >= 20)
+                                       .sort((a, b) => a[0] - b[0]);
+  if (anos.length < 2) return;
+  document.getElementById("cobertura").textContent =
+    "A parcela de provas com resultado publicado cresce com os anos — "
+    + anos.map(([ano, v]) => ano + ": " + v.pct.toFixed(0) + "%").join(", ")
+    + ". Por isso o total de concluintes de um ano antigo fica abaixo do que "
+    + "de fato correu, e os anos não se comparam de igual para igual.";
+})();
 
 function bloco(titulo, itens, rodape){
   const lista = el("ul", { className:"rank" });

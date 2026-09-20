@@ -481,7 +481,9 @@ def atletis():
 OR_LISTA = ("https://openresults.run/api/eventos_por_estado.cfm"
             "?filtro=&tag={uf}&page={page}&lastWeek=0&lastMonth=0"
             "&lastMonthKey=&distancia=&tempo=")
-OR_MAX_PAGINAS = 60
+# A listagem por estado volta no tempo pagina a pagina; o teto so existe
+# para a coleta nao girar sem fim se o portal mudar de formato.
+OR_MAX_PAGINAS = 140
 
 OR_CARD = re.compile(
     r'<a href="/evento/[^"]+/" class="or-event-card-link">.*?</article>', re.S)
