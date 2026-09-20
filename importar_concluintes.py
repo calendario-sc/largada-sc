@@ -22,9 +22,9 @@ if __name__ == "__main__":
     desde = sys.argv[1] if len(sys.argv) > 1 else "2024-01-01"
     historico = json.loads(scrape.SAIDA.read_text(encoding="utf-8"))
 
-    vistos, ligados, atualizados = scrape.vincular_concluintes(historico, desde=desde)
+    vistos, ligados, atualizados, criados = scrape.vincular_concluintes(historico, desde=desde)
     print(f"Open Results desde {desde}: {vistos} provas | {ligados} casadas | "
-          f"{atualizados} com numero novo")
+          f"{atualizados} com numero novo | {criados} provas criadas")
 
     historico.sort(key=lambda p: (p["data"], sem_acento(p["cidade"]), p["nome"]))
     scrape.SAIDA.write_text(

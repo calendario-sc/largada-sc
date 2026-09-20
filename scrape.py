@@ -15,8 +15,9 @@ import time
 from pathlib import Path
 
 import fontes
-from comum import (FAIXAS, NAO_CORRIDA, UF_ALVO, canonizar_cidade, classificar,
-                   faixas_de, mesma_prova, separar_organizadores, sem_acento)
+from comum import (FAIXAS, NAO_CORRIDA, UF_ALVO, arrumar_titulo, canonizar_cidade,
+                   classificar, faixas_de, mesma_prova, separar_organizadores,
+                   sem_acento)
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI / "corridas.json"
@@ -378,20 +379,55 @@ def vincular_concluintes(historico, desde=None):
     for p in historico:
         por_data.setdefault(p["data"], []).append(p)
 
-    ligados, atualizados = 0, 0
+    hoje = datetime.date.today().isoformat()
+    ligados, atualizados, criados = 0, 0, 0
     for e in eventos:
         if not e["concluintes_total"]:
             continue          # prova sem resultado publicado ainda
         alvo = next((p for p in por_data.get(e["data"], []) if mesma_prova(e, p)), None)
-        if not alvo:
-            continue
+
+        if alvo is None:
+            # Prova que ja aconteceu e nenhuma fonte de calendario listou.
+            # O portal de resultados e a unica prova de que ela existiu.
+            # Respeita o corte: criar prova fora da janela daria um ano com
+            # cobertura pela metade, pior que nenhum para comparar.
+            if (e["data"] >= hoje or e["data"] < desde
+                    or e["regiao"] in ("Outras", "Fora de SC")):
+                continue
+            alvo = _prova_do_openresults(e)
+            historico.append(alvo)
+            por_data.setdefault(e["data"], []).append(alvo)
+            criados += 1
+
         ligados += 1
         if alvo.get("concluintes_total") != e["concluintes_total"]:
             atualizados += 1
         alvo["concluintes"] = e["concluintes"]
         alvo["concluintes_total"] = e["concluintes_total"]
         alvo["or_slug"] = e["slug"]
-    return len(eventos), ligados, atualizados
+    return len(eventos), ligados, atualizados, criados
+
+
+def _prova_do_openresults(e):
+    """Monta o registro de uma prova que so existe no portal de resultados.
+
+    As distancias saem das proprias modalidades com resultado; organizador
+    fica em branco, porque o portal nao informa.
+    """
+    hoje = datetime.date.today().isoformat()
+    km = sorted((float(d) for d in e["concluintes"]), reverse=True)
+    ano, mes, dia = (int(x) for x in e["data"].split("-"))
+    return {
+        "data": e["data"], "dia": dia, "mes": mes, "ano": ano,
+        "cidade": e["cidade"], "regiao": e["regiao"], "uf": e["uf"],
+        "nome": arrumar_titulo(e["nome"]),
+        "pills": [f"{v:g}km" for v in km], "faixas": faixas_de(km),
+        "max_km": round(max(km), 1) if km else 0,
+        "tags": classificar(e["nome"], km),
+        "fontes": ["openresults"],
+        "organizadores": [],
+        "primeira_vez": hoje, "visto_em": hoje,
+    }
 
 
 def completar_runking(historico, limite=60):
@@ -590,9 +626,9 @@ def main():
         print(f"malha do IBGE: {ajustadas} registros com cidade ou regiao corrigida")
 
     try:
-        vistos, ligados, atualizados = vincular_concluintes(historico)
+        vistos, ligados, atualizados, criados = vincular_concluintes(historico)
         print(f"concluintes: {vistos} provas no Open Results, {ligados} casadas, "
-              f"{atualizados} com numero novo")
+              f"{atualizados} com numero novo, {criados} provas criadas")
     except Exception as erro:
         print(f"concluintes: FALHOU ({erro.__class__.__name__}: {erro})")
 
