@@ -9,6 +9,13 @@ import zlib
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) largada-sc/2.0"
 
+# Os portais de resultado ficam atras de Cloudflare e recusaram o agente
+# identificado quando a coleta roda em servidor (403). Para esses hosts
+# vale um agente de navegador comum.
+UA_NAVEGADOR = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+HOSTS_NAVEGADOR = ("openresults.run", "runking.com.br")
+
 MESES_ABBR = {
     "jan": 1, "fev": 2, "mar": 3, "abr": 4, "mai": 5, "jun": 6,
     "jul": 7, "ago": 8, "set": 9, "out": 10, "nov": 11, "dez": 12,
@@ -184,7 +191,9 @@ def canonizar_cidade(cidade, uf=None):
 
 
 def baixar(url, headers=None, timeout=60):
-    cabecalhos = {"User-Agent": UA, "Accept-Language": "pt-BR,pt;q=0.9"}
+    agente = UA_NAVEGADOR if any(h in url for h in HOSTS_NAVEGADOR) else UA
+    cabecalhos = {"User-Agent": agente, "Accept-Language": "pt-BR,pt;q=0.9",
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
     cabecalhos.update(headers or {})
     req = urllib.request.Request(url, headers=cabecalhos)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
