@@ -12,7 +12,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import json
+
 import build
+import perfis
 import scrape
 
 
@@ -21,6 +24,17 @@ def main():
     if scrape.main() != 0:
         print("\nRESULTADO: nada a publicar (coleta falhou).")
         return 1
+
+    # Perfil falhando nao impede a publicacao do calendario.
+    print("\n== perfis ==")
+    try:
+        historico = json.loads(scrape.SAIDA.read_text(encoding="utf-8"))
+        feitos = perfis.atualizar_perfis(historico)
+        scrape.SAIDA.write_text(json.dumps(historico, ensure_ascii=False, separators=(",", ":")),
+                                encoding="utf-8")
+        print(f"perfis revistos: {feitos}")
+    except Exception as erro:
+        print(f"perfis: FALHOU ({erro.__class__.__name__}: {erro})")
 
     print("\n== build ==")
     tamanho = build.build()

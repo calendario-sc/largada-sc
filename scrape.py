@@ -83,6 +83,10 @@ def fundir(grupo):
         "fontes": sorted({g["fonte"] for g in grupo}),
         "resultado_id": next((g["resultado_id"] for g in grupo if g.get("resultado_id")), None),
         "corrida_id": next((g["corrida_id"] for g in grupo if g.get("corrida_id")), None),
+        # Endereco da prova em cada fonte: e dele que sai o perfil.
+        "ts_id": next((g["ts_id"] for g in grupo if g.get("ts_id")), None),
+        "ts_url": next((g["ts_url"] for g in grupo if g.get("ts_url")), None),
+        "rr_slug": next((g["rr_slug"] for g in grupo if g.get("rr_slug")), None),
         # Co-organizacao e comum: vale a uniao do que cada fonte informa.
         "organizadores": sorted({o for g in grupo for o in g.get("organizadores", [])},
                                 key=sem_acento),
@@ -841,7 +845,10 @@ def main():
                          ("concluintes", "concluintes_total", "or_slug",
                           "fonte_resultado", "runking_tentado",
                           "concluintes_genero", "concluintes_f", "concluintes_m",
-                          "genero_tentado")
+                          "genero_tentado", "perfil", "perfil_em")
+                         if antiga.get(c)}
+            enderecos = {c: antiga[c] for c in
+                         ("corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug")
                          if antiga.get(c)}
             antiga.clear()
             antiga.update(prova)
@@ -855,6 +862,10 @@ def main():
             if organizadores and not antiga.get("organizadores"):
                 antiga["organizadores"] = organizadores
             antiga.update(resultado)
+            for campo, valor in enderecos.items():
+                antiga.setdefault(campo, valor)
+                if not antiga[campo]:
+                    antiga[campo] = valor
             antiga["primeira_vez"] = primeira
             antiga["visto_em"] = hoje
         else:

@@ -19,7 +19,14 @@ banco nem build. Qualquer hospedagem estática serve.
    nas cronometragens, uma prova por vez — supercrono.com.br, chiprun.com.br e
    resultados.runking.com.br. Concluinte é quem tem tempo de chegada; quem se
    inscreveu e não largou não entra.
-3. `build.py` injeta esses dados em `template.html` e gera `index.html`.
+3. `perfis.py` monta o perfil das provas de 2026 e 2027: site e Instagram
+   oficiais, ticketeira e link de inscrição, tabela de preços, patrocinadores
+   e lei de incentivo com o proponente. Cada campo sai de uma fonte citável
+   (página do evento no roadrunners, link oficial do corridasbr, API da
+   Ticket Sports, regulamento); o que não for achado aparece como "não
+   encontrado", nunca deduzido. Provas futuras são revistas a cada 3 dias,
+   porque o preço muda a cada lote.
+4. `build.py` injeta esses dados em `template.html` e gera `index.html`.
 
 Cidades e regiões saem da malha municipal do IBGE, guardada em
 `municipios.json` e renovada sozinha a cada 180 dias.
@@ -60,3 +67,5 @@ erro, nada é commitado e o histórico fica intacto.
 | `fontes.py` | um adaptador por fonte |
 | `scrape.py` | fusão, histórico e relatório |
 | `municipios.py` | cache da malha municipal do IBGE |
+| `perfis.py` | perfil de cada prova (links, preços, patrocínio, incentivo) |
+| `pdftexto.py` | texto de regulamento em PDF, só com a biblioteca padrão |

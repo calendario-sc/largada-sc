@@ -221,6 +221,8 @@ def ticketsports():
         banda = bandas.get(e["eventId"])
         provas.append({
             "fonte": "ticketsports",
+            "ts_id": e["eventId"],
+            "ts_url": e.get("uri"),
             "data": f"{ano:04d}-{mes:02d}-{dia:02d}",
             "dia": dia, "mes": mes, "ano": ano,
             "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
@@ -688,6 +690,8 @@ RR_MAX_PAGINAS = 12
 
 RR_CARD = re.compile(
     r'<div class="home-event-card"[^>]*>(.*?)(?=<div class="home-event-card"|\Z)', re.S)
+# O id do cartao e o endereco do evento: roadrunners.run/evento/<id>/
+RR_ID = re.compile(r'<div class="home-event-card"\s+id="([^"]+)"')
 
 
 def roadrunners():
@@ -699,7 +703,8 @@ def roadrunners():
                       {"X-Requested-With": "XMLHttpRequest"})
         novos = 0
 
-        for corpo in RR_CARD.findall(html):
+        ids = RR_ID.findall(html)
+        for n_cartao, corpo in enumerate(RR_CARD.findall(html)):
             dia = re.search(r'<span class="day">\s*(\d{1,2})', corpo)
             mes = re.search(r'<span class="month">\s*([a-zç]{3})', corpo, re.I)
             ano = re.search(r'<span class="year">\s*(\d{4})', corpo)
@@ -745,6 +750,7 @@ def roadrunners():
                 continue
             provas.append({
                 "fonte": "roadrunners",
+                "rr_slug": ids[n_cartao] if n_cartao < len(ids) else None,
                 "data": f"{int(ano.group(1)):04d}-{mes_num:02d}-{int(dia.group(1)):02d}",
                 "dia": int(dia.group(1)), "mes": mes_num, "ano": int(ano.group(1)),
                 "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
