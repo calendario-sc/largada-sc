@@ -1,27 +1,30 @@
 == coleta ==
 == fontes ==
-  corridasbr: 223 provas
-  corridasbr/arquivo: 317 provas
-  ticketsports: 78 provas
-  roadrunners: 217 provas
-  movnow: 17 provas
+  corridasbr: 207 provas
+  corridasbr/arquivo: 334 provas
+  ticketsports: 79 provas
+  roadrunners: 200 provas
+  movnow: 15 provas
   atletis: 0 provas
 
-594 provas distintas depois de fundir as fontes
-descartadas (10): fora de SC ou nao sao corrida
+589 provas distintas depois de fundir as fontes
+descartadas (8): fora de SC ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
-  - 2026-09-20  Braço do Trombudo - 2º Pedal da Integração [pedal]
-  - 2026-09-20  Palhoça - Corrida Virtual CBCR - Campeonato Brasileiro [corrida virtual]
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - 2026-11-07  Rio Negrinho - Volta Grande Cross Aquathlon Rio Negrinho [aquathlon]
   - 2026-11-29  Morrinhos do Sul - 5ª RÚstica Recanto dos Canyons [é de RS]
-  - ... e mais 2
-restam 584 provas
+  - 2026-11-30  São José - SC - FEDERAÇÃO DE TRIATHLON DE SANTA CATARIN [triathlon]
+  - 2026-12-12  Nova Veneza - FODAXMAN EXTREME TRIATHLON 2026 [triathlon]
+restam 581 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+concluintes (supercrono): 1 provas consultadas, 1 preenchidas
+organizador: 1 provas consultadas, 1 preenchidas
 organizador: 17 provas tiveram a grafia padronizada
-historico: 1394 provas (1124 ja realizadas) | 175 cidades
+percurso: 1 provas consultadas no arquivo, 1 preenchidas
+series: 1235 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 2115 provas (1865 ja realizadas) | 194 cidades
 novas nesta rodada: 0
 
 futuras que nao apareceram hoje (2) - possivel cancelamento, mantidas no historico:
@@ -29,6 +32,6 @@ futuras que nao apareceram hoje (2) - possivel cancelamento, mantidas no histori
   ? 2026-11-01  Florianópolis - 16ª VOLTA a LAGOA da CONCEIÇÃO (visto pela ultima vez em 2026-09-19)
 
 == build ==
-artifact.html e index.html gerados (714,463 bytes)
+artifact.html e index.html gerados (1,466,099 bytes)
 
-RESULTADO: pronto para publicar (coleta de 20/09/2026).
+RESULTADO: pronto para publicar (coleta de 21/09/2026).
