@@ -307,63 +307,16 @@ h1 em{font-style:normal; color:#FFC21A}
 }
 #serie-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff}
 
-.race__name button{
-  font:inherit; color:inherit; letter-spacing:inherit; text-align:left; cursor:pointer;
-  background:none; border:0; padding:0;
+.race__acoes{display:flex; flex-wrap:wrap; align-items:center; gap:.35rem .9rem; margin:.45rem 0 0; font-size:.84rem}
+.race__acoes a{color:var(--azul-ink); font-weight:600; text-decoration:underline; text-underline-offset:2px}
+.race__acoes a:hover{color:var(--accent-ink)}
+.race__acoes .inscrever{
+  text-decoration:none; color:#FFFFFF; background:var(--azul); padding:.28rem .7rem; border-radius:999px;
 }
-.race__name button::after{content:" ›"; color:var(--muted); font-weight:400}
-.race__name button:hover{color:var(--accent-ink)}
-.race__name button:hover::after{color:var(--accent-ink)}
-
-/* ---- perfil da prova ---- */
-.perfil{
-  width:min(44rem,calc(100vw - 1.5rem)); max-height:calc(100dvh - 2rem);
-  padding:0; border:1px solid var(--line); border-radius:var(--r);
-  background:var(--surface); color:var(--ink); box-shadow:var(--shadow);
-}
-.perfil::backdrop{background:rgba(10,15,28,.55)}
-.perfil__topo{
-  position:sticky; top:0; z-index:1; display:flex; gap:1rem; align-items:flex-start;
-  justify-content:space-between; padding:1.1rem 1.2rem .9rem;
-  background:var(--surface); border-bottom:1px solid var(--line-soft);
-}
-.perfil__topo h2{font-family:var(--f-display); font-weight:800; font-size:1.25rem; line-height:1.2; margin:0}
-.perfil__topo p{margin:.3rem 0 0; font-size:.85rem; color:var(--muted)}
-.perfil__fechar{
-  flex:0 0 auto; font:inherit; font-size:1.3rem; line-height:1; cursor:pointer;
-  width:2.2rem; height:2.2rem; border-radius:999px;
-  background:var(--surface-2); color:var(--ink-2); border:1px solid var(--line);
-}
-.perfil__corpo{padding:.4rem 1.2rem 1.2rem; overflow-y:auto}
-.perfil dl{margin:0}
-.perfil__linha{display:grid; grid-template-columns:10.5rem 1fr; gap:.3rem 1rem;
-  padding:.7rem 0; border-bottom:1px solid var(--line-soft)}
-.perfil__linha:last-child{border-bottom:0}
-.perfil dt{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--muted); padding-top:.15rem}
-.perfil dd{margin:0; font-size:.92rem; color:var(--ink-2); min-width:0; overflow-wrap:anywhere}
-.perfil dd a{color:var(--azul-ink); text-decoration:underline; text-underline-offset:2px}
-.perfil dd a:hover{color:var(--accent-ink)}
-.perfil .nao{color:var(--muted); font-style:italic}
-.perfil .fonte-nota{display:block; margin-top:.25rem; font-size:.74rem; color:var(--muted)}
-.perfil .lista-pills{display:flex; flex-wrap:wrap; gap:.3rem}
-.perfil .lista-pills span{font-family:var(--f-mono); font-size:.76rem; padding:.2rem .5rem;
-  border-radius:6px; background:var(--surface-2); border:1px solid var(--line-soft)}
-.perfil table{width:100%; border-collapse:collapse; font-size:.84rem; margin:.1rem 0 .2rem}
-.perfil th,.perfil td{text-align:left; padding:.35rem .4rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
-.perfil th{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--muted); font-weight:400}
-.perfil td.valor{font-family:var(--f-mono); white-space:nowrap; font-variant-numeric:tabular-nums}
-.perfil blockquote{margin:.5rem 0 0; padding:.55rem .75rem; border-left:3px solid var(--line);
-  background:var(--surface-2); font-size:.82rem; color:var(--ink-2); border-radius:0 6px 6px 0}
-.perfil details{margin-top:.3rem}
-.perfil summary{cursor:pointer; font-size:.78rem; color:var(--muted)}
-.perfil__rodape{margin:1rem 0 0; font-size:.76rem; color:var(--muted)}
-@media (max-width:560px){
-  .perfil__linha{grid-template-columns:1fr; gap:.2rem}
-  .perfil table{font-size:.78rem}
-  .perfil th,.perfil td{padding:.3rem .25rem}
-}
+.race__acoes .inscrever:hover{background:var(--azul-ink); color:#FFFFFF}
+.race__acoes .ticketeira{color:var(--muted); font-size:.76rem}
+.race__acoes .preco{color:var(--ink-2)}
+.race__acoes .preco b{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
 
 /* ---- painel da empresa escolhida ---- */
 .painel{
@@ -740,14 +693,6 @@ h1 em{font-style:normal; color:#FFC21A}
   <p class="count" id="count" role="status" aria-live="polite"></p>
   <div id="list"></div>
 </main>
-
-<dialog class="perfil" id="perfil" aria-labelledby="perfil-titulo">
-  <div class="perfil__topo">
-    <div><h2 id="perfil-titulo"></h2><p id="perfil-sub"></p></div>
-    <form method="dialog"><button class="perfil__fechar" aria-label="Fechar">×</button></form>
-  </div>
-  <div class="perfil__corpo"><dl id="perfil-dados"></dl><p class="perfil__rodape" id="perfil-rodape"></p></div>
-</dialog>
 
 <footer class="foot">
   <div class="wrap">
@@ -1883,14 +1828,7 @@ function linha(r, destaque){
     el("span", { className:"w", textContent:DIA_ABBR[r._d.getDay()] })
   ]);
 
-  const nome = el("h3", { className:"race__name" });
-  if (r.perfil){
-    const b = el("button", { type:"button", textContent:r.nome, title:"Ver o perfil da prova" });
-    b.onclick = () => abrirPerfil(r);
-    nome.append(b);
-  } else {
-    nome.textContent = r.nome;
-  }
+  const nome = el("h3", { className:"race__name", textContent:r.nome });
   (r.outros_nomes || []).forEach(outro =>
     nome.append(el("small", { className:"outro-nome", textContent:"também: " + outro })));
 
@@ -1938,6 +1876,29 @@ function linha(r, destaque){
   if (fontes.length) meta.append(el("span", { className:"fontes", textContent:fontes.join(" · ") }));
 
   const main = el("div", { className:"race__main" }, [nome, meta]);
+
+  // Prova futura: inscricao, preco de entrada e regulamento, quando houver.
+  // So o que foi achado aparece -- nada de "nao encontrado".
+  const c = r.cartao;
+  if (c && !r._passada){
+    const acoes = el("p", { className:"race__acoes" });
+    const externo = (url, cls, texto) => /^https?:\/\//i.test(url || "")
+      ? el("a", { className:cls, href:url, target:"_blank", rel:"noopener noreferrer", textContent:texto })
+      : null;
+    const inscrever = externo(c.inscricao, "inscrever", "Inscrever-se ↗");
+    if (inscrever){
+      acoes.append(inscrever);
+      if (c.ticketeira) acoes.append(el("span", { className:"ticketeira", textContent:c.ticketeira }));
+    }
+    if (c.preco){
+      acoes.append(el("span", { className:"preco", title:"Menor preço adulto do lote em vigor na última consulta" }, [
+        document.createTextNode("a partir de "), el("b", { textContent:c.preco }),
+        document.createTextNode(c.taxa ? " + taxa" : "")]));
+    }
+    const reg = externo(c.regulamento, "", "Regulamento ↗");
+    if (reg) acoes.append(reg);
+    if (acoes.childNodes.length) main.append(acoes);
+  }
 
   const dists = el("ul", { className:"race__dists" });
   // O que foi anunciado nem sempre é o que teve resultado: a prova pode ter
@@ -1992,166 +1953,6 @@ btnFiltros.onclick = () => {
   const aberto = document.getElementById("bar").classList.toggle("aberto");
   btnFiltros.setAttribute("aria-expanded", String(aberto));
 };
-
-/* ---------- perfil da prova ----------
-   Tudo aqui vem do coletor, com a fonte à vista. O que não foi achado aparece
-   como "não encontrado" -- nunca preenchido por dedução. */
-
-const dlgPerfil = document.getElementById("perfil");
-const MES_EXTENSO = ["janeiro","fevereiro","março","abril","maio","junho","julho",
-                     "agosto","setembro","outubro","novembro","dezembro"];
-const DIA_EXTENSO = ["domingo","segunda-feira","terça-feira","quarta-feira",
-                     "quinta-feira","sexta-feira","sábado"];
-
-const naoEncontrado = () => el("span", { className:"nao", textContent:"não encontrado" });
-
-// Endereço vindo de página de terceiros só vira link se for http(s).
-function linkExterno(url, texto){
-  if (!/^https?:\/\//i.test(url || "")) return naoEncontrado();
-  return el("a", { href:url, target:"_blank", rel:"noopener noreferrer", textContent:(texto || url) + " ↗" });
-}
-
-function enderecoCurto(url){
-  try {
-    const u = new URL(url);
-    const caminho = u.pathname.replace(/\/$/, "");
-    return u.hostname.replace(/^www\./, "") + (caminho.length > 1 ? caminho : "");
-  } catch (e){ return url; }
-}
-
-function dataPorExtenso(r){
-  return DIA_EXTENSO[r._d.getDay()] + ", " + r.dia + " de " + MES_EXTENSO[r.mes - 1] + " de " + r.ano;
-}
-
-const cnpjFormatado = c => /^\d{14}$/.test(c || "")
-  ? c.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5") : (c || "");
-
-function linhaPerfil(rotulo, ...conteudo){
-  return el("div", { className:"perfil__linha" }, [
-    el("dt", { textContent:rotulo }),
-    el("dd", {}, conteudo.filter(Boolean)),
-  ]);
-}
-
-function abrirPerfil(r){
-  const f = r.perfil || {};
-  document.getElementById("perfil-titulo").textContent = r.nome;
-  document.getElementById("perfil-sub").textContent = dataPorExtenso(r);
-  const dl = document.getElementById("perfil-dados");
-  dl.replaceChildren();
-
-  // Site e perfil oficial
-  dl.append(linhaPerfil("Site oficial",
-    f.site ? linkExterno(f.site, enderecoCurto(f.site)) : naoEncontrado()));
-  const handle = (f.instagram || "").replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/\/$/, "");
-  // Quando o perfil é o da empresa, e não o da prova, a página diz.
-  const soLetras = s => norm(s || "").replace(/[^a-z0-9]/g, "");
-  const daOrganizadora = (r.organizadores || []).some(o => {
-    const junto = soLetras(o);
-    return junto.length >= 5 && soLetras(handle).includes(junto);
-  });
-  dl.append(linhaPerfil("Perfil oficial",
-    f.instagram ? linkExterno(f.instagram, "@" + handle + " no Instagram") : naoEncontrado(),
-    f.instagram && daOrganizadora
-      ? el("span", { className:"fonte-nota", textContent:"perfil da organizadora" }) : null));
-
-  // Ticketeira
-  dl.append(linhaPerfil("Ticketeira oficial",
-    f.inscricao
-      ? el("span", {}, [document.createTextNode((f.ticketeira || "Inscrição") + " — "),
-                        linkExterno(f.inscricao, r._passada ? "página da inscrição" : "inscrever-se")])
-      : naoEncontrado()));
-
-  // Organizadora e cidade
-  const orgs = (r.organizadores || []).join(" + ");
-  dl.append(linhaPerfil("Empresa organizadora",
-    orgs ? document.createTextNode(orgs) : naoEncontrado(),
-    f.organizador_cnpj ? el("span", { className:"fonte-nota", textContent:"CNPJ " + cnpjFormatado(f.organizador_cnpj) }) : null));
-  dl.append(linhaPerfil("Cidade", document.createTextNode(r.cidade + " · " + r.regiao)));
-
-  // Patrocinio
-  const patro = f.patrocinadores || [];
-  const apoio = f.apoio || [];
-  dl.append(linhaPerfil("Patrocinadores",
-    patro.length ? document.createTextNode(patro.join(", ")) : naoEncontrado(),
-    patro.length && f.trecho_patrocinio
-      ? el("span", { className:"fonte-nota",
-          textContent: /^logos/.test(f.trecho_patrocinio) ? "Fonte: " + f.trecho_patrocinio
-                                                          : "Fonte: regulamento" }) : null,
-    apoio.length ? el("span", { className:"fonte-nota", textContent:"Apoio: " + apoio.join(", ") }) : null));
-
-  // Lei de incentivo. A pergunta é "usou?": só vira "Sim" quando o texto
-  // afirma (projeto aprovado, realizado com recursos da lei). "Poderão ser
-  // custeados" ou "projeto em análise" não são sim.
-  const leis = f.incentivo || [];
-  const usou = leis.filter(l => (l.situacao || "usou") === "usou");
-  const pendente = leis.filter(l => l.situacao === "pendente");
-  const cita = leis.filter(l => l.situacao === "cita");
-  const trechoDe = l => l.trecho
-    ? el("details", {}, [el("summary", { textContent:"ver o trecho" }), el("blockquote", { textContent:l.trecho })])
-    : null;
-  let resposta, detalhes = [];
-  if (usou.length){
-    resposta = el("strong", { textContent:"Sim" });
-    usou.forEach(l => detalhes.push(el("div", { textContent:l.lei }), trechoDe(l)));
-    detalhes.push(el("span", { className:"fonte-nota",
-      textContent:"Proponente: " + (f.proponente || "não informado no texto") }));
-  } else if (pendente.length){
-    resposta = el("span", { textContent:"Não confirmado — projeto pendente ou uso condicional" });
-    pendente.forEach(l => detalhes.push(el("span", { className:"fonte-nota", textContent:l.lei }), trechoDe(l)));
-  } else if (cita.length){
-    resposta = el("span", { textContent:"Não confirmado — o texto cita a lei, mas não diz que o evento a usa" });
-    cita.forEach(l => detalhes.push(el("span", { className:"fonte-nota", textContent:l.lei }), trechoDe(l)));
-  } else {
-    resposta = naoEncontrado();
-    detalhes.push(el("span", { className:"fonte-nota",
-      textContent: f.regulamento ? "O regulamento lido não cita lei de incentivo."
-                                 : "Regulamento não disponível em texto." }));
-  }
-  dl.append(linhaPerfil("Usou Lei de Incentivo?", resposta, ...detalhes));
-
-  // Distancias
-  const pills = (r.pills || []).length ? r.pills : Object.keys(r.concluintes || {}).map(k => k + "km");
-  dl.append(linhaPerfil("Distâncias",
-    pills.length ? el("div", { className:"lista-pills" }, pills.map(p => el("span", { textContent:p })))
-                 : naoEncontrado()));
-
-  // Precos
-  const precos = f.precos || [];
-  const partesPreco = [];
-  if (precos.length){
-    const tabela = el("table", {}, [
-      el("thead", {}, [el("tr", {}, ["Kit", "Modalidade", "Valor", "Taxa"].map(x => el("th", { textContent:x })))]),
-      el("tbody", {}, precos.map(x => el("tr", {}, [
-        el("td", { textContent:x.kit }), el("td", { textContent:x.modalidade }),
-        el("td", { className:"valor", textContent:x.preco }), el("td", { className:"valor", textContent:x.taxa || "—" }),
-      ]))),
-    ]);
-    const quando = f.precos_em ? f.precos_em.split("-").reverse().join("/") : "";
-    partesPreco.push(tabela, el("span", { className:"fonte-nota",
-      textContent:"Ticket Sports · lote em vigor em " + quando + ". O preço muda a cada lote." }));
-  }
-  if (f.precos_regulamento){
-    partesPreco.push(el("span", { className:"fonte-nota", textContent:"Valores no regulamento:" }),
-                     el("blockquote", { textContent:f.precos_regulamento }));
-  }
-  dl.append(linhaPerfil("Tabela de preços", ...(partesPreco.length ? partesPreco : [naoEncontrado()])));
-
-  // Regulamento
-  dl.append(linhaPerfil("Regulamento",
-    f.regulamento ? linkExterno(f.regulamento, "abrir o regulamento") : naoEncontrado()));
-
-  const quando = r.perfil_em ? r.perfil_em.split("-").reverse().join("/") : "";
-  document.getElementById("perfil-rodape").textContent =
-    "Fontes: " + ((f.fontes || []).join(", ") || "—") + (quando ? " · coletado em " + quando : "")
-    + ". Confirme datas, valores e regulamento com a organização antes de se inscrever.";
-
-  if (typeof dlgPerfil.showModal === "function") dlgPerfil.showModal();
-  else dlgPerfil.setAttribute("open", "");
-}
-
-// Toque fora da janela fecha.
-dlgPerfil.addEventListener("click", e => { if (e.target === dlgPerfil) dlgPerfil.close(); });
 
 /* deslocamento das âncoras de mês sob a barra fixa */
 const bar = document.getElementById("bar");

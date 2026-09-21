@@ -9,6 +9,8 @@ Uso:  python build.py
 """
 
 import datetime
+import json
+import re
 import sys
 from pathlib import Path
 
@@ -31,9 +33,59 @@ def data_coleta():
     return f"{dia}/{mes}/{ano}"
 
 
+# O que nao conta para o "a partir de": o kit kids da NJR Run custa R$ 79 e o
+# adulto R$ 139,90 -- o preco de entrada de um adulto e o que interessa.
+NAO_E_ENTRADA = re.compile(r"kid|infantil|crian|pcd|idos|60\s*\+|cortesia|gratuit|elite|"
+                           r"cadeirant|\bcad\b|\bdv\b|\bdi\b|isen", re.I)
+
+
+def _valor(texto):
+    achado = re.search(r"R\$\s*([\d.]+,\d{2}|[\d.]+)", texto or "")
+    if not achado:
+        return 0.0
+    return float(achado.group(1).replace(".", "").replace(",", "."))
+
+
+def _para_o_cartao(perfil):
+    """Do perfil coletado, so o que vai no cartao de uma prova futura."""
+    cartao = {}
+    if perfil.get("inscricao"):
+        cartao["inscricao"] = perfil["inscricao"]
+        cartao["ticketeira"] = perfil.get("ticketeira", "")
+    entrada = [x for x in perfil.get("precos") or []
+               if _valor(x.get("preco")) > 0 and not NAO_E_ENTRADA.search(
+                   f"{x.get('kit', '')} {x.get('modalidade', '')}")]
+    if entrada:
+        mais_barato = min(entrada, key=lambda x: _valor(x["preco"]))
+        cartao["preco"] = mais_barato["preco"]
+        if _valor(mais_barato.get("taxa")) > 0:
+            cartao["taxa"] = True
+    if perfil.get("regulamento"):
+        cartao["regulamento"] = perfil["regulamento"]
+    return cartao
+
+
+def dados_da_pagina(historico):
+    """O historico guarda o perfil inteiro; a pagina leva so o que mostra.
+
+    O perfil completo acrescentava ~430 KB, quase tudo campo vazio ou de
+    prova ja realizada -- peso a toa no celular.
+    """
+    hoje = datetime.date.today().isoformat()
+    for p in historico:
+        perfil = p.pop("perfil", None)
+        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug"):
+            p.pop(campo, None)
+        if perfil and p["data"] >= hoje:
+            cartao = _para_o_cartao(perfil)
+            if cartao:
+                p["cartao"] = cartao
+    return json.dumps(historico, ensure_ascii=False, separators=(",", ":"))
+
+
 def build():
     template = (AQUI / "template.html").read_text(encoding="utf-8")
-    dados = (AQUI / "corridas.json").read_text(encoding="utf-8").strip()
+    dados = dados_da_pagina(json.loads((AQUI / "corridas.json").read_text(encoding="utf-8")))
 
     for marcador in ("__DATA__", "__COLETA__"):
         if marcador not in template:
