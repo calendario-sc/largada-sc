@@ -345,6 +345,7 @@ def precos_do_regulamento(texto):
     o trecho vai inteiro, como citacao.
     """
     posicoes = [m.start() for m in VALOR.finditer(texto)]
+    corrompido = lambda trecho: "�" in trecho
     for i in range(len(posicoes) - 2):
         if posicoes[i + 2] - posicoes[i] <= 300:
             ini = posicoes[i]
@@ -356,7 +357,9 @@ def precos_do_regulamento(texto):
             fim = posicoes[min(len(posicoes) - 1, i + 30)]
             fim = texto.find(". ", fim)
             fim = len(texto) if fim < 0 else fim + 1
-            return texto[ini:min(fim, ini + 900)].strip()
+            trecho = texto[ini:min(fim, ini + 900)].strip()
+            # Trecho com letra que nao se conseguiu ler nao e citacao fiel.
+            return "" if corrompido(trecho) else trecho
     return ""
 
 

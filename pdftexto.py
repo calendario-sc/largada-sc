@@ -77,11 +77,17 @@ def _utf16(hexa):
 
 
 def _fontes(objetos):
-    """Nome da fonte no recurso (/F1) -> (tabela ToUnicode, bytes por codigo)."""
+    """Nome da fonte no recurso (/F1) -> (tabela ToUnicode, bytes por codigo, codec).
+
+    Sem tabela ToUnicode, o byte e lido pela codificacao que a fonte
+    declara: MacRoman, comum em PDF gerado no Mac, ou WinAnsi (cp1252).
+    Lido pela errada, "Inscricao" vira "Inscri‹o".
+    """
     por_objeto = {}
     for num, (dicionario, _) in objetos.items():
         if b"/Type" not in dicionario or b"/Font" not in dicionario:
             continue
+        codec = "mac_roman" if b"/MacRomanEncoding" in dicionario else "cp1252"
         tabela, largura = {}, 1
         ref = re.search(rb"/ToUnicode\s+(\d+)\s+\d+\s+R", dicionario)
         if ref and int(ref.group(1)) in objetos:
@@ -92,7 +98,7 @@ def _fontes(objetos):
             if b"begincodespacerange" in cmap and re.search(
                     rb"begincodespacerange\s*<([0-9A-Fa-f]{4})>", cmap):
                 largura = 2
-        por_objeto[num] = (tabela, largura)
+        por_objeto[num] = (tabela, largura, codec)
 
     nomes = {}
     for dicionario, _ in objetos.values():
@@ -143,7 +149,7 @@ def _bytes_da_string(s):
 
 
 def _decodificar(dados, fonte):
-    tabela, largura = fonte if fonte else ({}, 1)
+    tabela, largura, codec = fonte if fonte else ({}, 1, "cp1252")
     if tabela:
         passo = largura
         partes = []
@@ -151,7 +157,7 @@ def _decodificar(dados, fonte):
             codigo = int.from_bytes(dados[i:i + passo], "big")
             partes.append(tabela.get(codigo, ""))
         return "".join(partes)
-    return dados.decode("cp1252", errors="replace")
+    return dados.decode(codec, errors="replace")
 
 
 def _texto_do_fluxo(conteudo, fontes):
