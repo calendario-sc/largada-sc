@@ -909,7 +909,9 @@ def main():
         print(f"percurso: {tentadas} provas consultadas no arquivo, {achadas} preenchidas")
 
     series = agrupar_series(historico)
-    print(f"series: {series} eventos com uma ou mais edicoes")
+    parciais = marcar_resultados_parciais(historico)
+    print(f"series: {series} eventos com uma ou mais edicoes | "
+          f"{len(parciais)} resultados parciais marcados")
 
     historico.sort(key=lambda p: (p["data"], sem_acento(p["cidade"]), p["nome"]))
     SAIDA.write_text(json.dumps(historico, ensure_ascii=False, separators=(",", ":")),
@@ -955,6 +957,13 @@ if __name__ == "__main__":
 # "Jurere Night Run" da "One Day Run - Jurere", a 49 dias de distancia.
 JANELA_SERIE = 35
 JANELA_MESMO_NOME = 75
+# Duas edicoes do mesmo ano so convivem numa serie se forem o mesmo fim de
+# semana -- evento de dois dias. Mais que isso sao etapas de um circuito ou
+# provas diferentes que o nome generico aproximou.
+JANELA_MESMO_ANO = 20
+
+MES_DO_ANO = ["janeiro", "fevereiro", "marco", "abril", "maio", "junho",
+              "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
 
 
 def _dia_do_ano(data):
@@ -972,9 +981,25 @@ def _so_letras(s):
     return re.sub(r"[^a-z]", "", sem_acento(s))
 
 
+# Nome parecido basta para juntar duas edicoes -- menos quando o nome inteiro
+# e feito de palavras que toda prova tem. "Meia Maratona Internacional de
+# Florianopolis" e "Meia e Maratona Cidade de Florianopolis" se parecem em 81%
+# das letras e sao provas diferentes, com um mes de distancia.
+PARECIDO = 0.80
+PARECIDO_SO_GENERICO = 0.92
+
+
 def _quase_o_mesmo_nome(a, b):
-    return difflib.SequenceMatcher(None, _so_letras(a["nome"]),
-                                   _so_letras(b["nome"])).ratio() >= 0.8
+    da = palavras_distintivas(a["nome"], a.get("cidade", ""))
+    db = palavras_distintivas(b["nome"], b.get("cidade", ""))
+    # Cada uma tem a sua palavra, e nao e a mesma: "Corrida da Virada
+    # Floripa" e "Corrida da Folia Floripa" se parecem em 93% das letras
+    # justamente porque so diferem no que as distingue.
+    if da and db and not (da & db):
+        return False
+    ratio = difflib.SequenceMatcher(None, _so_letras(a["nome"]),
+                                    _so_letras(b["nome"])).ratio()
+    return ratio >= (PARECIDO_SO_GENERICO if not (da or db) else PARECIDO)
 
 
 def _evidencia_de_serie(a, b):
@@ -1032,6 +1057,86 @@ def nome_da_serie(nome):
     return limpo or nome
 
 
+def _pode_juntar(grupo_a, grupo_b):
+    """A juncao criaria duas edicoes do mesmo ano em epocas diferentes?
+
+    E o sinal mais confiavel de fusao errada: a Meia Maratona Internacional
+    de Florianopolis (maio) tinha sido juntada com a Meia e Maratona Cidade
+    de Florianopolis (junho), e o painel somava as duas no mesmo ano.
+    """
+    for a in grupo_a:
+        for b in grupo_b:
+            if a["ano"] != b["ano"]:
+                continue
+            d = abs(_dia_do_ano(a["data"]) - _dia_do_ano(b["data"]))
+            if min(d, 365 - d) > JANELA_MESMO_ANO:
+                return False
+    return True
+
+
+# Um resultado que fica muito abaixo das outras edicoes da mesma prova nao
+# conta uma prova pequena: conta um resultado que subiu pela metade no
+# portal. A Corrida Mulheres na Pista de Blumenau tem 727 e 1.120 concluintes
+# em 2024 e 2025, e "60" em 2026 -- 30 em cada distancia, numero redondo de
+# upload interrompido.
+FRACAO_PARCIAL = 0.15
+PISO_PARCIAL = 100
+
+
+def marcar_resultados_parciais(historico):
+    """Marca o resultado que destoa demais das outras edicoes da prova.
+
+    O numero continua a vista na prova, com a ressalva; o que ele deixa de
+    fazer e entrar nos totais e nos rankings, onde faria a prova parecer ter
+    encolhido 95%.
+    """
+    series = {}
+    for p in historico:
+        if p.get("serie") and p.get("concluintes_total"):
+            series.setdefault(p["serie"], []).append(p)
+
+    marcadas = []
+    for provas in series.values():
+        if len(provas) < 2:
+            continue
+        for p in provas:
+            outras = [q for q in provas if q is not p]
+            if _parece_parcial(p, outras):
+                p["resultado_parcial"] = True
+                marcadas.append(p)
+            else:
+                p.pop("resultado_parcial", None)
+    return marcadas
+
+
+def _mediana(valores):
+    ordenados = sorted(valores)
+    return ordenados[len(ordenados) // 2]
+
+
+def _parece_parcial(prova, outras):
+    """O resultado desta edicao destoa das outras a ponto de nao ser dela?"""
+    minhas = prova.get("concluintes") or {}
+    # A comparacao e por distancia. Uma edicao que so teve a maratona nao e
+    # resultado pela metade: e um evento que so depois ganhou 5km e 10km --
+    # a Maratona de Tubarao foi de 62 para 813 assim, com a maratona parada
+    # em torno de 100.
+    comuns = []
+    for km, quantos in minhas.items():
+        refs = [o["concluintes"][km] for o in outras
+                if (o.get("concluintes") or {}).get(km)]
+        if refs:
+            comuns.append((quantos, _mediana(refs)))
+    if comuns:
+        referencia = max(r for _, r in comuns)
+        return (referencia >= PISO_PARCIAL
+                and all(q < r * FRACAO_PARCIAL for q, r in comuns))
+    # Sem nenhuma distancia em comum, so resta o total.
+    referencia = _mediana([o["concluintes_total"] for o in outras])
+    return (referencia >= PISO_PARCIAL
+            and prova["concluintes_total"] < referencia * FRACAO_PARCIAL)
+
+
 def agrupar_series(historico):
     """Marca cada prova com a serie a que pertence (as edicoes de um evento).
 
@@ -1053,19 +1158,48 @@ def agrupar_series(historico):
                 i = dono[i]
             return i
 
+        membros = {i: [p] for i, p in enumerate(provas)}
         for i in range(len(provas)):
             for j in range(i + 1, len(provas)):
-                if raiz(i) != raiz(j) and mesma_serie(provas[i], provas[j]):
-                    dono[raiz(j)] = raiz(i)
+                ri, rj = raiz(i), raiz(j)
+                if ri == rj or not mesma_serie(provas[i], provas[j]):
+                    continue
+                if not _pode_juntar(membros[ri], membros[rj]):
+                    continue
+                dono[rj] = ri
+                membros[ri] += membros.pop(rj)
 
         grupos = {}
         for i, p in enumerate(provas):
             grupos.setdefault(raiz(i), []).append(p)
-        for grupo in grupos.values():
+
+        # Mesma cidade, mesmo nome, epocas diferentes: a Black Trunk Race
+        # acontece duas vezes por ano em Florianopolis. Sao series distintas
+        # e precisam de identificadores distintos, senao o painel soma as
+        # duas. A colisao e testada no identificador ja normalizado, porque
+        # "Corrida do Fogo  CBM" e "Corrida do Fogo - CBM" viram o mesmo.
+        def rotulo_e_chave(grupo, mes=False):
             recente = max(grupo, key=lambda p: p["data"])
             rotulo = nome_da_serie(recente["nome"])
+            if mes:
+                rotulo += f" ({MES_DO_ANO[recente['mes'] - 1]})"
             chave = sem_acento(f"{recente.get('cidade','')} {rotulo}")
-            chave = re.sub(r"[^a-z0-9]+", "-", chave).strip("-")
+            return rotulo, re.sub(r"[^a-z0-9]+", "-", chave).strip("-")
+
+        chaves = [rotulo_e_chave(g)[1] for g in grupos.values()]
+        repetidas = {c for c in chaves if chaves.count(c) > 1}
+
+        usadas = set()
+        for grupo in grupos.values():
+            rotulo, chave = rotulo_e_chave(grupo)
+            if chave in repetidas:
+                rotulo, chave = rotulo_e_chave(grupo, mes=True)
+            # Duas series no mesmo mes e com o mesmo nome: sobrou o numero.
+            base, conta = chave, 2
+            while chave in usadas:
+                chave = f"{base}-{conta}"
+                conta += 1
+            usadas.add(chave)
             for p in grupo:
                 p["serie"] = chave
                 p["serie_nome"] = rotulo

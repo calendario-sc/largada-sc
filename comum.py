@@ -336,10 +336,16 @@ GENERICOS = {"maratona", "meia", "night", "sunset", "trail", "circuito",
              "floripa", "florianopolis"}
 
 
+# "5km", "21k", "42km": dizem o percurso, nao qual prova e. Sem isso,
+# "Maratona Internacional de Floripa 2023 - 5km" teria "5km" como palavra
+# que a identifica, e uma prova generica passaria a casar com outra.
+SO_DISTANCIA = re.compile(r"^\d+(?:[.,]\d+)?k?m?$")
+
+
 def palavras_distintivas(nome, cidade=""):
     """Palavras que de fato identificam a prova."""
     palavras = tokens_nome(nome) - tokens_nome(cidade) - GENERICOS
-    return {w for w in palavras if not w.isdigit()}
+    return {w for w in palavras if not w.isdigit() and not SO_DISTANCIA.match(w)}
 
 
 def mesmo_evento_renomeado(nome_a, nome_b, cidade=""):

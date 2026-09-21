@@ -61,6 +61,7 @@
 }
 
 *{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--bar-h) + .5rem)}
 body{
   margin:0; background:var(--ground); color:var(--ink);
   font-family:var(--f-body); font-size:16px; line-height:1.5;
@@ -137,7 +138,9 @@ h1 em{font-style:normal; color:#FFC21A}
 /* ---------- filtros ---------- */
 .filters{
   position:sticky; top:0; z-index:30;
+  background:var(--ground);
   background:color-mix(in srgb,var(--ground) 90%,transparent);
+  -webkit-backdrop-filter:blur(10px);
   backdrop-filter:blur(10px);
   border-block:1px solid var(--line);
 }
@@ -169,6 +172,15 @@ h1 em{font-style:normal; color:#FFC21A}
 .chip[data-cor][aria-pressed="true"]{background:var(--cc); border-color:var(--cc); color:#FFFFFF}
 .chip[data-cor][aria-pressed="true"]::before{background:#FFFFFF}
 .chip--reset{border-style:dashed; color:var(--muted)}
+/* So aparece em tela estreita, onde os filtros ficam guardados. */
+#btn-filtros{display:none}
+#btn-filtros i{
+  font-style:normal; font-family:var(--f-mono); font-size:.68rem; line-height:1;
+  margin-left:.4rem; padding:.15rem .35rem; border-radius:999px;
+  background:var(--accent); color:#FFFFFF;
+}
+#btn-filtros[aria-expanded="true"] i{background:var(--ground); color:var(--ink)}
+#btn-filtros[aria-expanded="true"]{background:var(--ink); border-color:var(--ink); color:var(--ground)}
 #g-organizador{
   font:inherit; font-size:.82rem; max-width:15rem; cursor:pointer;
   padding:.4rem .6rem; border-radius:999px; color:var(--ink-2);
@@ -326,6 +338,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .race__dists li i{font-style:normal; color:var(--muted); margin-left:.3rem}
 .race__dists li.big i{color:rgba(28,10,3,.65)}
 .conc--vazio{background:none; border:1px dashed var(--line); color:var(--muted)}
+.conc--parcial{background:var(--sol); color:var(--sol-ink)}
 .conc--f{background:var(--reve-wash); color:var(--reve)}
 .conc--m{background:var(--azul-wash); color:var(--azul-ink)}
 .conc{
@@ -471,19 +484,40 @@ h1 em{font-style:normal; color:#FFC21A}
 .foot p{margin:0 0 .5rem; max-width:72ch}
 .foot b{color:var(--ink-2); font-weight:500}
 
+/* Em tela estreita os sete grupos de filtro nao cabem lado a lado. Em vez de
+   virarem uma fita de tres metros para rolar de lado -- com o Comparativo no
+   fim dela --, ficam guardados atras do botao Filtros: o que sobra na barra
+   sao a busca e os botoes de ação, todos ao alcance do polegar. */
 @media (max-width:900px){
   .search{flex:1 0 100%}
-  .groups{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; padding-bottom:.1rem}
-  .groups::-webkit-scrollbar{display:none}
-  .group,.chip--reset,.escopo{flex:0 0 auto}
-  .groups::after{content:""; flex:0 0 .5rem}
+  .groups{flex-wrap:wrap; gap:.45rem}
+  #btn-filtros{display:inline-flex; align-items:center}
+  .groups > .group,.groups > .escopo{display:none; flex:1 1 100%}
+  .filters.aberto .groups > .group{display:flex}
+  .filters.aberto .groups > .escopo{display:flex; flex:0 0 auto}
+  .filters.aberto .groups{
+    max-height:min(50vh,22rem); overflow-y:auto;
+    padding:.3rem 0 .4rem; -webkit-overflow-scrolling:touch;
+  }
+  .group{align-items:flex-start}
+  .group > b{flex:1 0 100%; margin:.15rem 0 .1rem}
+  .org-menu{width:min(20rem,calc(100vw - 2.6rem))}
 }
 @media (max-width:720px){
   .wrap{width:min(1120px,100% - 1.6rem)}
   .top__inner{padding:2rem 0 2rem; gap:1.4rem}
-  .stats{gap:.6rem}
-  .stat{min-width:0; flex:1 1 0; padding:.6rem .7rem}
-  .stat b{font-size:1.6rem}
+  /* Cinco numeros lado a lado nao cabem: em grade eles quebram em duas
+     linhas em vez de os rotulos se atropelarem. */
+  .stats{
+    flex:1 1 100%;   /* sem a largura da linha inteira a grade colapsa em 1 coluna */
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(6.1rem,1fr)); gap:.5rem;
+  }
+  .stat{min-width:0; padding:.55rem .6rem}
+  .stat b{font-size:1.5rem}
+  .stat span{font-size:.58rem; letter-spacing:.06em; line-height:1.3; overflow-wrap:anywhere}
+  /* Alvo de toque maior; o dedo nao acerta um chip de 30px. */
+  .chip{padding:.5rem .75rem}
+  .escopo .chip{padding:.5rem .8rem}
   .race{grid-template-columns:56px minmax(0,1fr); grid-template-areas:"date main" "date dist"; row-gap:.55rem}
   .race__dists{justify-content:flex-start}
   .fontes{margin-left:0; flex-basis:100%}
@@ -578,6 +612,7 @@ h1 em{font-style:normal; color:#FFC21A}
       <input id="q" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade">
     </label>
     <div class="groups">
+      <button class="chip" id="btn-filtros" type="button" aria-expanded="false" aria-controls="g-escopo">Filtros</button>
       <div class="escopo" id="g-escopo" role="group" aria-label="Período"></div>
       <div class="group" id="g-regiao"><b>Região</b></div>
       <div class="group" id="g-faixa"><b>Distância</b></div>
@@ -924,6 +959,13 @@ const listBox = document.getElementById("list");
 const countBox = document.getElementById("count");
 
 // Filtros que valem em qualquer recorte de tempo. O comparativo usa só estes.
+/* O portal as vezes publica so um punhado de atletas de uma prova -- 30 em
+   cada distancia, numero redondo de upload interrompido. O coletor marca
+   esses casos comparando com as outras edicoes da mesma prova. O numero
+   continua visivel na prova, com a ressalva, mas fica fora de tudo que soma
+   ou ordena: senao a prova apareceria como a que mais encolheu no estado. */
+const temResultado = r => Boolean(r.concluintes_total) && !r.resultado_parcial;
+
 function passaFiltrosGerais(r){
   // Treinão não é prova: não entra no calendário nem nos rankings, a não ser
   // que se peça o calendário de treinos.
@@ -968,7 +1010,7 @@ function chaveSerie(r){
 }
 
 const caixaAnosRanking = document.getElementById("comparativo-anos");
-const ANOS_COM_RESULTADO = [...new Set(RACES.filter(r => r.concluintes_total).map(r => r.ano))].sort();
+const ANOS_COM_RESULTADO = [...new Set(RACES.filter(temResultado).map(r => r.ano))].sort();
 
 [["", "Todos os anos"], ...ANOS_COM_RESULTADO.map(a => [String(a), String(a)])]
   .forEach(([val, rotulo]) => {
@@ -1004,9 +1046,14 @@ const caixaFaixasRanking = document.getElementById("comparativo-faixas");
    causa dos 5km delas. */
 const LIMITES = { "5k":[0,6], "10k":[6.01,12], "21k":[12.01,25], "42k":[25.01,45], "ultra":[45.01,999] };
 
+// O portal as vezes rotula a distancia em metros ("16100k") ou usa o campo
+// para outra coisa. Nada disso é percurso de corrida: fica fora das faixas.
+const KM_PLAUSIVEL = 250;
+
 function naFaixa(km){
-  const faixa = LIMITES[state.faixaRanking];
   const v = Number(km);
+  if (!(v > 0) || v > KM_PLAUSIVEL) return false;
+  const faixa = LIMITES[state.faixaRanking];
   return !faixa || (v >= faixa[0] && v <= faixa[1]);
 }
 
@@ -1039,10 +1086,10 @@ RACES.forEach(r => {
 
 // Sem resultado publicado não há evolução para mostrar.
 const SERIES_LISTADAS = [...SERIES.entries()]
-  .filter(([, s]) => s.edicoes.some(r => r.concluintes_total))
+  .filter(([, s]) => s.edicoes.some(temResultado))
   .map(([chave, s]) => ({
     chave, s, rotulo: s.nome + " · " + s.cidade,
-    edicoes: s.edicoes.filter(r => r.concluintes_total).length,
+    edicoes: s.edicoes.filter(temResultado).length,
     // Procurar pelo nome da empresa traz todas as provas dela.
     busca: s.nome + " " + s.cidade + " "
            + [...new Set(s.edicoes.flatMap(r => r.organizadores || []))].join(" "),
@@ -1097,7 +1144,7 @@ function dadosDaSerie(chave){
   if (!s) return null;
   // Evento de dois dias conta como uma edição só: os dois dias somam.
   const porAno = new Map();
-  s.edicoes.forEach(r => {
+  s.edicoes.filter(r => !r.resultado_parcial).forEach(r => {
     const a = porAno.get(r.ano) || { total:0, f:0, m:0 };
     a.total += contarDaFaixa(r, "total");
     a.f += contarDaFaixa(r, "f");
@@ -1107,7 +1154,8 @@ function dadosDaSerie(chave){
   const anos = [...porAno.entries()].filter(([, v]) => v.total > 0)
                                     .sort((a, b) => a[0] - b[0]);
   return { nome:s.nome, cidade:s.cidade, anos,
-           anosComProva: new Set(s.edicoes.map(r => r.ano)) };
+           anosComProva: new Set(s.edicoes.map(r => r.ano)),
+           anosParciais: new Set(s.edicoes.filter(r => r.resultado_parcial).map(r => r.ano)) };
 }
 
 function rotuloDaFaixa(){
@@ -1133,7 +1181,7 @@ function montarSerie(){
 }
 
 function montarUma(caixa, dados){
-  const { nome, cidade, anos } = dados;
+  const { nome, cidade, anos, anosParciais } = dados;
   const s = { nome, cidade };
   const rotuloFaixa = rotuloDaFaixa();
 
@@ -1232,6 +1280,10 @@ function montarUma(caixa, dados){
 
   const semGenero = anos.filter(([, v]) => !(v.f + v.m)).map(([a]) => a);
   const recados = [];
+  const parciais = [...(anosParciais || [])].sort();
+  if (parciais.length)
+    recados.push("Em " + parciais.join(", ") + " o portal publicou só parte dos "
+                 + "atletas, então a edição ficou fora da conta.");
   if (anos.length > 1)
     recados.push("A conta parte de " + anos[0][0] + ", o primeiro ano com resultado"
                  + " publicado — que não é necessariamente a primeira edição da prova.");
@@ -1367,7 +1419,8 @@ function montarDuelo(caixa, a, b){
         el("span", { className:"serie__trilho" }, [barra]),
         el("span", { className:"serie__valor",
           textContent: v ? num(v.total)
-                         : (d.anosComProva.has(ano) ? "sem resultado" : "não houve") }),
+                         : (d.anosParciais.has(ano) ? "resultado parcial"
+                            : d.anosComProva.has(ano) ? "sem resultado" : "não houve") }),
       ]));
     });
   });
@@ -1391,7 +1444,7 @@ function montarComparativo(){
 
   montarSerie();
 
-  const comResultado = RACES.filter(r => r.concluintes_total && passaFiltrosGerais(r));
+  const comResultado = RACES.filter(r => temResultado(r) && passaFiltrosGerais(r));
   // O ano escolhido vale para os rankings; o crescimento precisa de vários
   // anos e por isso usa sempre a base inteira.
   let doAno = state.anoRanking
@@ -1586,7 +1639,7 @@ const COBERTURA = (() => {
   RACES.filter(r => r._passada && !(r.tags || []).includes("Treino")).forEach(r => {
     const a = conta.get(r.ano) || { provas:0, com:0 };
     a.provas += 1;
-    if (r.concluintes_total) a.com += 1;
+    if (temResultado(r)) a.com += 1;
     conta.set(r.ano, a);
   });
   const saida = new Map();
@@ -1633,6 +1686,7 @@ function bloco(titulo, itens, rodape){
 
 
 function render(){
+  marcarFiltros();
   const res = RACES.filter(passa);
   // No arquivo o mais recente interessa primeiro; na agenda, o mais próximo.
   const recente = state.escopo === "realizadas";
@@ -1648,7 +1702,7 @@ function render(){
   document.getElementById("s-cidades").textContent = String(cidades.size);
   document.getElementById("s-orgs").textContent = String(organizadoras.size);
   // Só provas com resultado publicado entram nesta soma.
-  const concluintes = res.reduce((s, r) => s + (r.concluintes_total || 0), 0);
+  const concluintes = res.reduce((s, r) => s + (temResultado(r) ? r.concluintes_total : 0), 0);
   document.getElementById("s-conc").textContent = concluintes ? num(concluintes) : "—";
   document.getElementById("s-km").textContent = maiorKm ? String(Math.round(maiorKm)) : "—";
 
@@ -1730,7 +1784,7 @@ function montarPainel(res){
   const cidades = new Set(res.map(r => r.cidade));
   const regioes = new Set(res.map(r => r.regiao));
   const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
-  const concluintes = res.reduce((s, r) => s + (r.concluintes_total || 0), 0);
+  const concluintes = res.reduce((s, r) => s + (temResultado(r) ? r.concluintes_total : 0), 0);
   const numeros = [
     [res.length, res.length === 1 ? "prova" : "provas"],
     [cidades.size, cidades.size === 1 ? "cidade" : "cidades"],
@@ -1790,7 +1844,14 @@ function linha(r, destaque){
   });
 
   if (r.concluintes_total)
-    meta.append(el("span", { className:"conc", textContent:num(r.concluintes_total) + " concluintes" }));
+    meta.append(el("span", {
+      className: "conc" + (r.resultado_parcial ? " conc--parcial" : ""),
+      title: r.resultado_parcial
+        ? "O portal publicou só parte dos atletas desta edição; o número fica fora dos totais e dos rankings."
+        : "",
+      textContent: num(r.concluintes_total) + " concluintes"
+                 + (r.resultado_parcial ? " (resultado parcial)" : ""),
+    }));
   else if (r._passada)
     // Deixa explícito que falta o resultado, em vez de parecer esquecimento.
     meta.append(el("span", { className:"conc conc--vazio", textContent:"sem resultado publicado" }));
@@ -1834,6 +1895,30 @@ function linha(r, destaque){
   art.append(date, main, dists);
   return art;
 }
+
+/* Em tela estreita os filtros ficam guardados: o botão conta quantos estão
+   ligados, senão o filtro esquecido some de vista e o resultado parece errado. */
+const btnFiltros = document.getElementById("btn-filtros");
+
+function filtrosLigados(){
+  return (state.q ? 1 : 0) + (state.escopo !== "proximas" ? 1 : 0)
+       + state.regioes.size + state.faixas.size + state.tipos.size
+       + state.anos.size + state.meses.size
+       + (state.cidade ? 1 : 0) + (state.organizador ? 1 : 0)
+       + (state.treinos ? 1 : 0);
+}
+
+function marcarFiltros(){
+  const n = filtrosLigados();
+  btnFiltros.replaceChildren(document.createTextNode("Filtros"));
+  if (n) btnFiltros.append(el("i", { textContent: String(n) }));
+  btnFiltros.setAttribute("aria-pressed", String(Boolean(n)));
+}
+
+btnFiltros.onclick = () => {
+  const aberto = document.getElementById("bar").classList.toggle("aberto");
+  btnFiltros.setAttribute("aria-expanded", String(aberto));
+};
 
 /* deslocamento das âncoras de mês sob a barra fixa */
 const bar = document.getElementById("bar");
