@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+"""Coleta dos concluintes feita neste computador, e nao no GitHub.
+
+O Open Results e o RunKing ficam atras do Cloudflare, que recusa o servidor
+do GitHub (HTTP 403): na coleta das 8h a linha "concluintes" sai FALHOU.
+Daqui eles respondem. Este script roda pelo Agendador do Windows as 9h,
+depois da coleta do GitHub, e faz so a parte que la falha:
+
+  1. puxa o repositorio (com o que o robo das 8h publicou)
+  2. liga os concluintes do Open Results dos ultimos 90 dias, completa pelo
+     RunKing e busca a divisao por sexo
+  3. refaz series e marcas de resultado parcial, reconstroi a pagina
+  4. publica, se algo mudou
+
+Tudo vai para coleta-local.log. Se o repositorio local tiver mudanca que nao
+seja deste script, ele nao mexe em nada e registra o motivo -- melhor um dia
+sem numero novo que sobrescrever trabalho em andamento.
+
+Uso:  python resultados_locais.py
+"""
+
+import datetime
+import json
+import shutil
+import subprocess
+import sys
+import traceback
+from pathlib import Path
+
+AQUI = Path(__file__).resolve().parent
+LOG = AQUI / "coleta-local.log"
+sys.path.insert(0, str(AQUI))
+
+
+def registrar(texto):
+    linha = f"{datetime.datetime.now():%Y-%m-%d %H:%M} {texto}"
+    print(linha, flush=True)
+    with LOG.open("a", encoding="utf-8") as f:
+        f.write(linha + "\n")
+
+
+def git(*args, checar=True):
+    exe = shutil.which("git")
+    if not exe:
+        raise RuntimeError("git nao encontrado no PATH")
+    r = subprocess.run([exe, *args], cwd=AQUI, capture_output=True, text=True,
+                       encoding="utf-8", errors="replace")
+    if checar and r.returncode != 0:
+        raise RuntimeError(f"git {' '.join(args)}: {r.stderr.strip() or r.stdout.strip()}")
+    return r
+
+
+def repositorio_limpo():
+    """Nada modificado alem do que o proprio script gera."""
+    mudancas = [l for l in git("status", "--porcelain").stdout.splitlines() if l.strip()]
+    return not mudancas, mudancas
+
+
+def coletar():
+    import scrape
+
+    historico = json.loads(scrape.SAIDA.read_text(encoding="utf-8"))
+    com_antes = sum(1 for p in historico if p.get("concluintes_total"))
+
+    vistos, ligados, novos, criados = scrape.vincular_concluintes(historico)
+    registrar(f"open results: {vistos} eventos, {ligados} casados, "
+              f"{novos} com numero novo, {criados} provas criadas")
+    juntadas = scrape.unificar_openresults(historico)
+    if juntadas:
+        registrar(f"provas que mudaram de nome: {len(juntadas)} unificadas")
+
+    try:
+        consultadas, achadas = scrape.completar_runking(historico)
+        if consultadas:
+            registrar(f"runking: {consultadas} consultadas, {achadas} preenchidas")
+    except Exception as erro:
+        registrar(f"runking: FALHOU ({erro.__class__.__name__}: {erro})")
+
+    for _ in range(10):
+        n, ok = scrape.completar_generos(historico, limite=200)
+        if not n:
+            break
+        registrar(f"genero: {n} consultadas, {ok} preenchidas")
+
+    scrape.agrupar_series(historico)
+    parciais = scrape.marcar_resultados_parciais(historico)
+
+    historico.sort(key=lambda p: (p["data"], scrape.sem_acento(p["cidade"]), p["nome"]))
+    scrape.SAIDA.write_text(json.dumps(historico, ensure_ascii=False, separators=(",", ":")),
+                            encoding="utf-8")
+    com_depois = sum(1 for p in historico if p.get("concluintes_total"))
+    registrar(f"provas com resultado: {com_antes} -> {com_depois} "
+              f"({len(parciais)} parciais marcadas)")
+    return com_depois - com_antes
+
+
+def publicar():
+    import build
+
+    build.build()
+    if not git("status", "--porcelain").stdout.strip():
+        registrar("nada mudou: nada a publicar")
+        return
+    git("add", "corridas.json", "index.html")
+    hoje = datetime.date.today().strftime("%d/%m/%Y")
+    git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
+        "commit", "-q", "-m", f"concluintes de {hoje} (coleta local)")
+    envio = git("push", "-q", "origin", "main", checar=False)
+    if envio.returncode != 0:
+        # O robo do GitHub publicou no meio do caminho. O historico local ja
+        # contem o dele (foi puxado no inicio) e mais os numeros de hoje.
+        registrar("push recusado: juntando com o que chegou e tentando de novo")
+        git("fetch", "-q", "origin")
+        git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
+            "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
+        build.build()
+        git("add", "corridas.json", "index.html")
+        git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
+            "commit", "-q", "-m", "reconstroi a pagina", checar=False)
+        git("push", "-q", "origin", "main")
+    registrar("publicado")
+
+
+def main():
+    registrar("== inicio ==")
+    try:
+        limpo, mudancas = repositorio_limpo()
+        if not limpo:
+            registrar("repositorio com mudancas locais, nada feito: " + "; ".join(mudancas[:5]))
+            return 1
+        git("pull", "-q", "--ff-only", "origin", "main")
+        coletar()
+        publicar()
+        return 0
+    except Exception as erro:
+        registrar(f"FALHOU: {erro.__class__.__name__}: {erro}")
+        with LOG.open("a", encoding="utf-8") as f:
+            traceback.print_exc(file=f)
+        return 1
+    finally:
+        registrar("== fim ==")
+
+
+if __name__ == "__main__":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError):
+        pass
+    sys.exit(main())

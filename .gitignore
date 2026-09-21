@@ -10,3 +10,6 @@ _*.py
 
 # Copias temporarias para conferir o layout de impressao.
 _*.html
+
+# Registro da coleta local (resultados_locais.py): fica so neste computador.
+coleta-local.log
