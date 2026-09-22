@@ -21,6 +21,7 @@ import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -40,12 +41,26 @@ _cookies = http.cookiejar.CookieJar()
 _abrir = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(_cookies)).open
 
 
+TENTATIVAS = 4
+ESPERA = 45          # segundos entre tentativas: uma queda de rede passa
+
+
 def baixar(url, ajax=False, referer=BASE + "/"):
+    """Baixa com paciencia: rede que cai por um minuto nao pode derrubar a
+    fila inteira -- numa queda, 181 provas seguidas falharam em segundos."""
     cab = {"User-Agent": UA_NAVEGADOR, "Accept-Language": "pt-BR,pt;q=0.9", "Referer": referer}
     if ajax:
         cab.update({"X-Requested-With": "XMLHttpRequest", "Accept": "application/json"})
-    with _abrir(urllib.request.Request(url, headers=cab), timeout=60) as resp:
-        return resp.read().decode("utf-8", errors="replace")
+    for tentativa in range(TENTATIVAS):
+        try:
+            with _abrir(urllib.request.Request(url, headers=cab), timeout=60) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except (urllib.error.URLError, TimeoutError, ConnectionError, OSError) as erro:
+            if isinstance(erro, urllib.error.HTTPError) and erro.code in (404, 410):
+                raise
+            if tentativa == TENTATIVAS - 1:
+                raise
+            time.sleep(ESPERA * (tentativa + 1))
 
 
 def segundos(texto):
