@@ -304,6 +304,8 @@ ORG_ALIAS = {
     # A sigla e o nome por extenso, sem nada em comum para uma regra pegar.
     "associacao corredores de rua de sao jose": "ACORSJ",
     "associacao dos corredores de rua de sao jose": "ACORSJ",
+    # Singular e plural da mesma empresa (o nome fantasia e no plural).
+    "mais sport": "Mais Sports",
 }
 
 
