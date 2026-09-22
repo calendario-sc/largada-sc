@@ -11,7 +11,7 @@ So roda daqui: o Open Results recusa o servidor do GitHub (HTTP 403).
 Cada linha: [slug do atleta, nome, sexo, modalidade, categoria, equipe,
              posicao geral, tempo em segundos, pace em s/km]
 
-Uso:  python atletas_coleta.py [ANO ...]        (padrao: 2026)
+Uso:  python atletas_coleta.py [ANO ...]        (padrao: 2022 a 2026)
 """
 
 import datetime
@@ -30,9 +30,9 @@ from comum import UA_NAVEGADOR, limpar  # noqa: E402
 
 AQUI = Path(__file__).resolve().parent
 PASTA = AQUI / "atletas" / "provas"
-ANOS_ATLETAS = (2026,)
+ANOS_ATLETAS = (2022, 2023, 2024, 2025, 2026)
 BASE = "https://openresults.run"
-PAUSA = 0.12
+PAUSA = 0.35        # o portal freia quem faz centenas de chamadas seguidas
 LIMITE = 100          # o servidor devolve no maximo 100 por chamada
 
 # O ColdFusion do portal quer a sessao (CFID/CFTOKEN) que a pagina cria.

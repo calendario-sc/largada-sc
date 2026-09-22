@@ -109,7 +109,7 @@ def coletar_atletas():
     import atletas_build
     import atletas_coleta
 
-    feitas = atletas_coleta.coletar(atletas_coleta.ANOS_ATLETAS, limite=40, registrar=registrar)
+    feitas = atletas_coleta.coletar(atletas_coleta.ANOS_ATLETAS, limite=80, registrar=registrar)
     if feitas:
         atletas_build.montar(registrar=registrar)
     return feitas
