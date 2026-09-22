@@ -168,7 +168,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .orgs__rodape{padding:.6rem 1.2rem .9rem; border-top:1px solid var(--line-soft); font-size:.8rem; color:var(--muted)}
 .orgs__rodape b{color:var(--ink-2)}
 .orgs__acoes{display:flex; gap:.4rem; flex:none}
-#orgs-pdf::before{content:"\2193\00a0"}
+#orgs-pdf::before,#btn-cal-pdf::before{content:"\2193\00a0"}
 
 /* Relatorio das organizadoras: so existe no papel. */
 .rel{display:none}
@@ -656,8 +656,22 @@ h1 em{font-style:normal; color:#FFC21A}
 
   /* Relatorio das organizadoras no lugar do comparativo. */
   .orgs{display:none !important}
-  body.print-orgs .results{display:none !important}
-  body.print-orgs .rel{display:block}
+  body.print-orgs .results,body.print-cal .results{display:none !important}
+  body.print-orgs #rel-orgs,body.print-cal #rel-cal{display:block}
+
+  /* Calendario em tabela, um bloco por mes. */
+  .rel table{width:100%; border-collapse:collapse; margin:.7rem 0 0; font-size:.76rem}
+  .rel th,.rel td{text-align:left; vertical-align:top; padding:.22rem .4rem; border-bottom:1px solid var(--line-soft)}
+  .rel th{font-family:var(--f-mono); font-weight:500; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--line)}
+  .rel td.data{font-family:var(--f-mono); font-variant-numeric:tabular-nums; white-space:nowrap; width:5.4rem}
+  .rel td.prova{font-weight:600; color:var(--ink)}
+  .rel td.prova small{display:block; font-weight:400; font-size:.66rem; color:var(--muted)}
+  .rel td.org{color:var(--ink-2)}
+  .rel td.org.vazio{color:var(--muted)}
+  .rel tr.mes th{padding-top:.75rem; font-family:var(--f-display); font-weight:800; font-size:.92rem; letter-spacing:-.01em; text-transform:none; color:var(--ink); border-bottom:2px solid var(--ink)}
+  .rel tr.mes th small{font-family:var(--f-mono); font-weight:400; font-size:.62rem; color:var(--muted); margin-left:.5rem; letter-spacing:.08em; text-transform:uppercase}
+  .rel tr{break-inside:avoid; page-break-inside:avoid}
+  .rel thead{display:table-header-group}
   .rel h1{font-family:var(--f-display); font-weight:800; font-size:1.45rem; margin:0; letter-spacing:-.015em; color:var(--ink); max-width:none}
   .rel__recorte{margin:.5rem 0 0; padding:0 0 .7rem; border-bottom:1px solid var(--line); font-size:.8rem; color:var(--muted)}
   .rel__recorte p{margin:.12rem 0}
@@ -744,6 +758,7 @@ h1 em{font-style:normal; color:#FFC21A}
       </div>
       <button class="chip" id="btn-treinos" type="button" aria-pressed="false">Treinos</button>
       <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
+      <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
       <button class="chip chip--reset" id="reset" type="button">Limpar</button>
     </div>
   </div>
@@ -790,6 +805,7 @@ h1 em{font-style:normal; color:#FFC21A}
 </main>
 
 <section class="rel" id="rel-orgs" aria-hidden="true"></section>
+<section class="rel" id="rel-cal" aria-hidden="true"></section>
 
 <dialog class="orgs" id="orgs" aria-labelledby="orgs-titulo">
   <div class="orgs__caixa">
@@ -1766,7 +1782,7 @@ document.getElementById("btn-pdf").onclick = () => {
 };
 window.addEventListener("afterprint", () => {
   document.title = TITULO;
-  document.body.classList.remove("print-orgs");
+  document.body.classList.remove("print-orgs", "print-cal");
 });
 
 /* ---------- cobertura de resultados ----------
@@ -2096,6 +2112,117 @@ function montarRelatorioOrgs(){
 
   caixa.replaceChildren(el("h1", { textContent:"Organizadoras — provas e concluintes" }), cab, lista, total, nota);
 }
+
+/* Calendario em PDF: as provas que passam nos filtros, em ordem de data,
+   um bloco por mes. Evento de mais de um dia sai numa linha so. */
+function cabecalhoDoRecorte(){
+  const ano = state.anos.size ? [...state.anos].sort().join(", ")
+    : { proximas:"próximas provas", realizadas:"provas realizadas", todas:"todos os anos" }[state.escopo];
+  const recorte = [
+    ["Ano", ano],
+    ["Cidade", state.cidade || "todas"],
+    [state.regioes.size ? "Região" : "Estado", state.regioes.size ? [...state.regioes].join(", ") : "Santa Catarina"],
+  ];
+  const extras = [];
+  if (state.meses.size)
+    extras.push([...state.meses].sort().map(k => MES_NOME[k % 100 - 1] + " " + Math.floor(k / 100)).join(", "));
+  if (state.organizador) extras.push(state.organizador);
+  if (state.tipos.size) extras.push([...state.tipos].join(", "));
+  if (state.faixas.size)
+    extras.push([...state.faixas].map(f => (FAIXAS.find(([x]) => x === f) || ["", f])[1]).join(", "));
+  if (state.treinos) extras.push("treinos");
+  if (state.q) extras.push("busca por “" + state.q + "”");
+  if (extras.length) recorte.push(["Outros filtros", extras.join(" · ")]);
+
+  const cab = el("div", { className:"rel__recorte" });
+  recorte.forEach(([k, v]) => cab.append(el("p", {}, [el("b", { textContent:k + ": " }), document.createTextNode(v)])));
+  cab.append(el("p", {}, [el("b", { textContent:"Largada SC" }),
+    document.createTextNode(" · dados da coleta de " + COLETA + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR"))]));
+  return cab;
+}
+
+function montarRelatorioCal(){
+  const caixa = document.getElementById("rel-cal");
+  const dd = d => String(d.getDate()).padStart(2, "0");
+  const dataCurta = d => dd(d) + "/" + String(d.getMonth() + 1).padStart(2, "0") + "/" + d.getFullYear();
+
+  // Uma linha por evento, com os dias reunidos: "10 e 11/10/2026".
+  // O nome do evento e o da serie; sem serie, o do dia que nao se anuncia
+  // como dia ("1ª Maratona de Joinville", nao "... - Sábado").
+  const MARCA_DIA = /\s*[-–|]?\s*(?:\d{1,2}\s*[ºª°oa]?\s*dia\b.*|s[áa]bado|domingo|sexta(?:-feira)?)\s*$/i;
+  const porEvento = new Map();
+  [...ultimoRecorte].sort((a, b) => a._d - b._d).forEach(r => {
+    const e = porEvento.get(r._ev);
+    if (e){
+      e.dias.push(r._d);
+      if (!r.serie_nome && !MARCA_DIA.test(r.nome)) e.nome = r.nome;
+      (r.pills || []).forEach(d => { if (!e.dists.includes(d)) e.dists.push(d); });
+      return;
+    }
+    const nome = r.evento_dias > 1 ? (r.serie_nome || r.nome).replace(MARCA_DIA, "") : r.nome;
+    porEvento.set(r._ev, { nome, cidade:r.cidade, regiao:r.regiao, orgs:r.organizadores || [],
+                           dias:[r._d], key:r._key, mes:r.mes, ano:r.ano, dists:[...(r.pills || [])] });
+  });
+  const linhas = [...porEvento.values()];
+
+  const tabela = el("table");
+  tabela.append(el("thead", {}, [el("tr", {}, ["Data", "Prova", "Cidade", "Região", "Organizadora"]
+    .map(x => el("th", { textContent:x })))]));
+  const corpo = el("tbody");
+  let mesAtual = null;
+  linhas.forEach(e => {
+    if (e.key !== mesAtual){
+      mesAtual = e.key;
+      const n = linhas.filter(x => x.key === e.key).length;
+      const th = el("th", { colSpan:5, textContent:MES_NOME[e.mes - 1] + " " + e.ano });
+      th.append(el("small", { textContent:n + (n === 1 ? " prova" : " provas") }));
+      corpo.append(el("tr", { className:"mes" }, [th]));
+    }
+    const ultimo = e.dias[e.dias.length - 1], primeiro = e.dias[0];
+    // "10 e 11/10/2026"; cruzando o mes, "31/10 e 01/11/2026".
+    const ini = primeiro.getMonth() === ultimo.getMonth() ? dd(primeiro)
+      : dd(primeiro) + "/" + String(primeiro.getMonth() + 1).padStart(2, "0");
+    const data = e.dias.length === 1 ? dataCurta(ultimo)
+      : ini + (e.dias.length === 2 ? " e " : " a ") + dataCurta(ultimo);
+    const prova = el("td", { className:"prova", textContent:e.nome });
+    if (e.dists.length) prova.append(el("small", { textContent:e.dists.join(" · ") }));
+    corpo.append(el("tr", {}, [
+      el("td", { className:"data", textContent:data }),
+      prova,
+      el("td", { textContent:e.cidade }),
+      el("td", { textContent:e.regiao }),
+      el("td", { className:"org" + (e.orgs.length ? "" : " vazio"),
+                 textContent: e.orgs.length ? e.orgs.join(" + ") : "não identificada" }),
+    ]));
+  });
+  tabela.append(corpo);
+
+  const cidades = new Set(linhas.map(e => e.cidade));
+  const total = el("p", { className:"rel__total" }, [
+    el("span", { textContent:"Total: " + num(linhas.length) + (linhas.length === 1 ? " prova" : " provas")
+      + " em " + num(cidades.size) + (cidades.size === 1 ? " cidade" : " cidades") }),
+  ]);
+  const nota = el("p", { className:"rel__nota", textContent:
+    "Evento de mais de um dia aparece numa linha só, com todos os dias. Datas conforme a última coleta; confirme com a organizadora antes de viajar." });
+  caixa.replaceChildren(el("h1", { textContent:"Calendário de provas" }), cabecalhoDoRecorte(), tabela, total, nota);
+}
+
+function nomeDoRelatorioCal(){
+  const pedacos = ["Largada SC - Calendario"];
+  if (state.anos.size) pedacos.push([...state.anos].sort().join("-"));
+  else pedacos.push({ proximas:"proximas", realizadas:"realizadas", todas:"todas" }[state.escopo]);
+  if (state.cidade) pedacos.push(state.cidade);
+  if (state.regioes.size) pedacos.push([...state.regioes].join(", "));
+  if (state.organizador) pedacos.push(state.organizador);
+  return pedacos.join(" - ").replace(/[\\/:*?"<>|]/g, "");
+}
+
+document.getElementById("btn-cal-pdf").onclick = () => {
+  montarRelatorioCal();
+  document.body.classList.add("print-cal");
+  document.title = nomeDoRelatorioCal();
+  window.print();
+};
 
 function nomeDoRelatorioOrgs(){
   const pedacos = ["Largada SC - Organizadoras"];
