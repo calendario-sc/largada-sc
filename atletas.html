@@ -99,6 +99,9 @@ h1 em{font-style:normal; color:#FFC21A}
 .perfil h2 small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:.35rem}
 .voltar{font:inherit; font-size:.85rem; cursor:pointer; color:var(--muted); background:none; border:1px dashed var(--line); border-radius:999px; padding:.35rem .8rem}
 .voltar:hover{border-color:var(--accent); color:var(--ink)}
+.perfil__acoes{display:flex; gap:.4rem; flex-wrap:wrap}
+#pdf::before{content:"\2193\00a0"}
+.imp{display:none}
 .nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.6rem; margin:0 0 1.2rem}
 .num{padding:.8rem 1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:12px}
 .num b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.5rem; line-height:1.05; color:var(--azul-ink); font-variant-numeric:tabular-nums}
@@ -173,6 +176,47 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
   table{font-size:.78rem} th,td{padding:.35rem .3rem}
   .oculta-celular{display:none}
 }
+
+/* ---------- impressao: so o perfil, em tema claro ----------
+   Quem gera o PDF e o navegador ("Salvar como PDF"): sai texto de verdade,
+   pesquisavel, e a pagina continua sem biblioteca nenhuma. */
+@media print{
+  @page{size:A4; margin:12mm 11mm}
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){
+    --ground:#FFFFFF; --surface:#FFFFFF; --surface-2:#F1F4F9;
+    --line:#BFC7D4; --line-soft:#D8DEE8;
+    --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880;
+    --accent:#C93F10; --accent-ink:#8F2A08; --accent-wash:#FFE6DA;
+    --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD; --sobre-azul:#FFFFFF;
+    --sol:#FFC21A; --sol-ink:#3A2A00;
+    --trail:#07734F; --ultra:#B81C26; --noite:#4A2FBF; --reve:#961268;
+    --s1:#1250C4; --s2:#07734F; --s3:#EF4E16; --s4:#4A2FBF; --s5:#961268;
+    --shadow:none;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  html,body{background:#FFFFFF}
+  .top,.busca,.foot,.perfil__acoes,.dica-flutuante{display:none !important}
+  .wrap{width:100%}
+  .perfil{margin:0}
+  .perfil__topo{margin:0 0 .6rem; align-items:flex-start}
+  .perfil h2{font-size:1.6rem}
+  .imp{display:block; margin:0 0 .9rem; padding:0 0 .6rem; border-bottom:1px solid var(--line); font-size:.76rem; color:var(--muted)}
+  .imp b{color:var(--ink-2); font-weight:500}
+  .nums{grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr)); gap:.45rem; margin-bottom:.9rem}
+  .num{padding:.55rem .7rem; border-color:var(--line)}
+  .num b{font-size:1.25rem}
+  .conquistas,.cartao{padding:.8rem .9rem; border-color:var(--line); box-shadow:none; overflow:visible}
+  .conquistas,.cartao,.num,.medalha,.favoritas li,tr{break-inside:avoid; page-break-inside:avoid}
+  .grade{grid-template-columns:1fr 1fr; gap:.8rem; margin-bottom:.9rem}
+  .medalhas{grid-template-columns:repeat(5,1fr)}
+  .medalha svg{width:2.4rem; height:2.4rem}
+  .medalha.fechada{opacity:.7}
+  .favoritas ol{grid-template-columns:repeat(3,1fr)}
+  table{font-size:.72rem}
+  th,td{padding:.25rem .35rem}
+  thead{display:table-header-group}
+  .grafico .ponto{cursor:default}
+}
 </style>
 </head>
 <body>
@@ -203,8 +247,12 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
   <section class="perfil" id="perfil" hidden>
     <div class="perfil__topo">
       <h2 id="p-nome"></h2>
-      <button class="voltar" id="voltar" type="button">← outra busca</button>
+      <div class="perfil__acoes">
+        <button class="voltar" id="pdf" type="button" title="Salvar este perfil em PDF">Exportar PDF</button>
+        <button class="voltar" id="voltar" type="button">← outra busca</button>
+      </div>
     </div>
+    <p class="imp" id="imp" aria-hidden="true"></p>
     <div class="nums" id="p-nums"></div>
     <div class="conquistas">
       <h3>Distâncias desbloqueadas</h3>
@@ -354,6 +402,22 @@ async function buscar(){
   if (achados.length > 60) lista.append(el("li", { className:"vazio", textContent:"Mostrando 60. Digite mais para afinar." }));
 }
 input.oninput = () => { clearTimeout(input._t); input._t = setTimeout(buscar, 180); };
+/* PDF: o cabecalho de impressao diz de onde vem o dado; o titulo da
+   pagina vira o nome do arquivo que o navegador sugere. */
+const TITULO = document.title;
+let atletaAberto = "";
+document.getElementById("pdf").onclick = () => {
+  const anos = (INDICE.anos || []);
+  document.getElementById("imp").replaceChildren(
+    el("b", { textContent:"Largada SC · resultados por atleta" }),
+    document.createTextNode(" · resultados de " + (anos.length ? anos[0] + " a " + anos[anos.length - 1] : "openresults.run")
+      + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR")
+      + " · calendario-sc.github.io/largada-sc"));
+  document.title = ("Largada SC - Atleta - " + atletaAberto).replace(/[\\/:*?"<>|]/g, "");
+  window.print();
+};
+window.addEventListener("afterprint", () => { document.title = TITULO; });
+
 document.getElementById("voltar").onclick = () => { document.getElementById("perfil").hidden = true; history.replaceState(null, "", location.pathname); input.focus(); };
 
 /* ---------- perfil ---------- */
@@ -365,6 +429,7 @@ function abrir(a){
   const res = a.res.map(r => ({ prova: PROVAS[r[0]], data: PROVAS[r[0]][0], km: r[1], tempo: r[2], pace: r[3], pos: r[4], cat: r[5], mod: r[6] }))
                    .sort((x, y) => x.data.localeCompare(y.data));
   history.replaceState(null, "", "#" + a.slug);
+  atletaAberto = titulo(a.nome);
   perfil.hidden = false;
   document.getElementById("p-nome").replaceChildren(document.createTextNode(titulo(a.nome)),
     el("small", { textContent: `${new Set(res.map(r => r.prova[3])).size} provas · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
