@@ -85,14 +85,23 @@ def repartir(atletas):
     return dividir(list(atletas), 2)
 
 
+def organizadores_por_slug():
+    """or_slug -> organizadoras, do historico do calendario."""
+    historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
+    return {p["or_slug"]: p.get("organizadores") or [] for p in historico if p.get("or_slug")}
+
+
 def montar(registrar=print):
     provas, atletas = [], {}
+    organizadores = organizadores_por_slug()
     for arquivo in sorted(PROVAS.glob("*.json")):
         d = json.loads(arquivo.read_text(encoding="utf-8"))
         if d.get("erro") or not d.get("linhas"):
             continue
         indice_prova = len(provas)
-        provas.append([d["data"], d["nome"], d["cidade"], d.get("slug_real") or d["slug"]])
+        # O quinto campo, as organizadoras, e o que da o selo de superfa.
+        provas.append([d["data"], d["nome"], d["cidade"], d.get("slug_real") or d["slug"],
+                       organizadores.get(d["slug"], [])])
         for slug, nome, sexo, modalidade, cat, _equipe, pos, tempo, pace in d["linhas"]:
             km = km_da_modalidade(modalidade)
             if pace is None and km:

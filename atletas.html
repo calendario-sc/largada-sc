@@ -121,6 +121,13 @@ h1 em{font-style:normal; color:#FFC21A}
 .medalha.fechada b{color:var(--muted)}
 .medalha.fechada svg{color:var(--muted)}
 
+.selos{display:flex; flex-wrap:wrap; gap:.5rem; margin:.9rem 0 0}
+.selo{display:inline-flex; align-items:center; gap:.45rem; padding:.4rem .75rem .4rem .55rem; border-radius:999px;
+  background:var(--sol); color:var(--sol-ink); font-size:.85rem; font-weight:600; line-height:1.2}
+.selo svg{width:1.25rem; height:1.25rem; flex:0 0 auto}
+.selo small{font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.06em; opacity:.8}
+.selos .falta{font-size:.8rem; color:var(--muted); align-self:center}
+
 .grade{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(20rem,1fr)); margin:0 0 1.2rem}
 .cartao{padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow); min-width:0; overflow-x:auto}
 .cartao h3{font-family:var(--f-display); font-weight:700; font-size:1.02rem; margin:0}
@@ -193,6 +200,7 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
       <h3>Distâncias desbloqueadas</h3>
       <p class="sub">Uma medalha por faixa de distância já concluída; cadeado no que ainda falta.</p>
       <div class="medalhas" id="medalhas"></div>
+      <div class="selos" id="selos"></div>
     </div>
     <div class="grade">
       <div class="cartao">
@@ -366,6 +374,7 @@ function abrir(a){
   if (podios) numero(num(podios), podios === 1 ? "pódio geral" : "pódios gerais", "1º a 3º da prova");
 
   desenharConquistas(res);
+  desenharSelos(res);
   desenharDistancia(res);
   desenharPace(res);
   ultimoRes = res;
@@ -409,6 +418,35 @@ function desenharConquistas(res){
       card.append(el("small", { textContent: "bloqueada" }));
     }
     caixa.append(card);
+  });
+}
+
+/* ---------- selos ----------
+   Superfa: tres ou mais provas da mesma organizadora. Prova co-organizada
+   conta para cada uma das empresas. */
+const ICONE_SELO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+  <path d="M12 3l2.7 5.6 6.1.8-4.4 4.3 1.1 6.1L12 17l-5.5 2.8 1.1-6.1L3.2 9.4l6.1-.8z" fill="currentColor" fill-opacity=".25"/>
+</svg>`;
+const MINIMO_SUPERFA = 3;
+
+function desenharSelos(res){
+  const caixa = document.getElementById("selos");
+  caixa.replaceChildren();
+  const porEmpresa = new Map();
+  res.forEach(r => (r.prova[4] || []).forEach(o => porEmpresa.set(o, (porEmpresa.get(o) || 0) + 1)));
+  const selos = [...porEmpresa.entries()].filter(([, n]) => n >= MINIMO_SUPERFA).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  if (!selos.length){
+    const maior = [...porEmpresa.entries()].sort((a, b) => b[1] - a[1])[0];
+    caixa.append(el("span", { className:"falta", textContent:
+      maior ? `Selo superfã com ${MINIMO_SUPERFA} provas da mesma organizadora — ${maior[0]}: ${maior[1]} de ${MINIMO_SUPERFA}.`
+            : `Selo superfã com ${MINIMO_SUPERFA} provas da mesma organizadora.` }));
+    return;
+  }
+  selos.forEach(([empresa, n]) => {
+    const s = el("span", { className:"selo", title:`${n} provas da ${empresa}` });
+    s.innerHTML = ICONE_SELO;
+    s.append(document.createTextNode("Superfã da " + empresa), el("small", { textContent:`${n} provas` }));
+    caixa.append(s);
   });
 }
 
