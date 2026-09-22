@@ -127,6 +127,16 @@ h1 em{font-style:normal; color:#FFC21A}
 .selo svg{width:1.25rem; height:1.25rem; flex:0 0 auto}
 .selo small{font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.06em; opacity:.8}
 .selos .falta{font-size:.8rem; color:var(--muted); align-self:center}
+.favoritas{margin:1rem 0 0; padding-top:.9rem; border-top:1px solid var(--line-soft)}
+.favoritas h4{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:400; margin:0 0 .5rem}
+.favoritas ol{list-style:none; margin:0; padding:0; display:grid; gap:.4rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.favoritas li{display:flex; gap:.7rem; align-items:center; padding:.6rem .8rem; border-radius:10px; background:var(--surface-2); border:1px solid var(--line-soft)}
+.favoritas li.top{background:var(--sol); border-color:var(--sol); color:var(--sol-ink)}
+.favoritas .pos{font-family:var(--f-display); font-weight:800; font-size:1.3rem; line-height:1; min-width:2rem}
+.favoritas .nome{flex:1; min-width:0; font-weight:600; font-size:.9rem; line-height:1.25}
+.favoritas .nome small{display:block; font-weight:400; font-size:.74rem; opacity:.8}
+.favoritas .vezes{font-family:var(--f-mono); font-size:.72rem; white-space:nowrap}
+.favoritas .falta{font-size:.8rem; color:var(--muted)}
 
 .grade{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(20rem,1fr)); margin:0 0 1.2rem}
 .cartao{padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow); min-width:0; overflow-x:auto}
@@ -201,6 +211,7 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
       <p class="sub">Uma medalha por faixa de distância já concluída; cadeado no que ainda falta.</p>
       <div class="medalhas" id="medalhas"></div>
       <div class="selos" id="selos"></div>
+      <div class="favoritas" id="favoritas"></div>
     </div>
     <div class="grade">
       <div class="cartao">
@@ -330,7 +341,7 @@ async function buscar(){
   achados.slice(0, 60).forEach(a => {
     const b = el("button", { type:"button" }, [
       el("b", { textContent: titulo(a.nome) }),
-      el("small", { textContent: a.res.length + (a.res.length === 1 ? " prova" : " provas") + " · " + [...new Set(a.res.map(r => r[1]).filter(Boolean))].sort((x, y) => x - y).map(k => k + "k").join(" ") }),
+      el("small", { textContent: new Set(a.res.map(r => r[0])).size + (new Set(a.res.map(r => r[0])).size === 1 ? " prova" : " provas") + " · " + [...new Set(a.res.map(r => r[1]).filter(Boolean))].sort((x, y) => x - y).map(k => k + "k").join(" ") }),
     ]);
     b.onclick = () => abrir(a);
     lista.append(el("li", {}, [b]));
@@ -351,7 +362,7 @@ function abrir(a){
   history.replaceState(null, "", "#" + a.slug);
   perfil.hidden = false;
   document.getElementById("p-nome").replaceChildren(document.createTextNode(titulo(a.nome)),
-    el("small", { textContent: `${res.length} ${res.length === 1 ? "prova" : "provas"} · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
+    el("small", { textContent: `${new Set(res.map(r => r.prova[3])).size} provas · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
 
   // --- numeros
   const comKm = res.filter(r => r.km);
@@ -359,7 +370,9 @@ function abrir(a){
   const nums = document.getElementById("p-nums"); nums.replaceChildren();
   const numero = (valor, rotulo, extra, classe) => nums.append(el("div", { className:"num" }, [
     el("b", { className: classe || "", textContent: valor }), el("span", { textContent: rotulo }), extra ? el("em", { textContent: extra }) : null]));
-  numero(num(res.length), "provas");
+  const eventos = new Set(res.map(r => r.prova[3])).size;
+  numero(num(eventos), eventos === 1 ? "prova" : "provas",
+         res.length > eventos ? `${num(res.length)} resultados — mais de uma distância num mesmo dia` : "");
   numero(num(Math.round(kmTotal)) + " km", "somando as provas");
   if (comKm.length >= 2){
     const meio = Math.floor(comKm.length / 2);
@@ -375,6 +388,7 @@ function abrir(a){
 
   desenharConquistas(res);
   desenharSelos(res);
+  desenharFavoritas(res);
   desenharDistancia(res);
   desenharPace(res);
   ultimoRes = res;
@@ -432,8 +446,13 @@ const MINIMO_SUPERFA = 3;
 function desenharSelos(res){
   const caixa = document.getElementById("selos");
   caixa.replaceChildren();
-  const porEmpresa = new Map();
-  res.forEach(r => (r.prova[4] || []).forEach(o => porEmpresa.set(o, (porEmpresa.get(o) || 0) + 1)));
+  // Conta eventos, nao linhas: quatro distancias num mesmo dia sao uma prova.
+  const eventosPorEmpresa = new Map();
+  res.forEach(r => (r.prova[4] || []).forEach(o => {
+    if (!eventosPorEmpresa.has(o)) eventosPorEmpresa.set(o, new Set());
+    eventosPorEmpresa.get(o).add(r.prova[3]);
+  }));
+  const porEmpresa = new Map([...eventosPorEmpresa].map(([o, s]) => [o, s.size]));
   const selos = [...porEmpresa.entries()].filter(([, n]) => n >= MINIMO_SUPERFA).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   if (!selos.length){
     const maior = [...porEmpresa.entries()].sort((a, b) => b[1] - a[1])[0];
@@ -448,6 +467,45 @@ function desenharSelos(res){
     s.append(document.createTextNode("Superfã da " + empresa), el("small", { textContent:`${n} provas` }));
     caixa.append(s);
   });
+}
+
+/* ---------- minha prova n. 1 ----------
+   As edicoes de um mesmo evento contam juntas (a serie do calendario).
+   Enquanto so houver 2026, quase toda prova aparece uma vez: o quadro so
+   ganha sentido quando os anos anteriores entrarem. */
+function desenharFavoritas(res){
+  const caixa = document.getElementById("favoritas");
+  caixa.replaceChildren(el("h4", { textContent:"Minha prova nº 1" }));
+  const porSerie = new Map();
+  res.forEach(r => {
+    const chaveSerie = r.prova[5] || r.prova[3];
+    const atual = porSerie.get(chaveSerie) || { nome: r.prova[6] || r.prova[1], cidade: r.prova[2], datas: [] };
+    // Dia distinto: varias distancias no mesmo dia sao uma participacao.
+    if (!atual.datas.includes(r.data)) atual.datas.push(r.data);
+    porSerie.set(chaveSerie, atual);
+  });
+  const ordem = [...porSerie.values()].sort((a, b) => b.datas.length - a.datas.length || a.datas[0].localeCompare(b.datas[0]));
+  // Só conta prova corrida tres vezes ou mais.
+  const MINIMO_FAVORITA = 3;
+  const favoritas = ordem.filter(s => s.datas.length >= MINIMO_FAVORITA);
+  if (!favoritas.length){
+    const quase = ordem[0];
+    caixa.append(el("p", { className:"falta", textContent:
+      quase && quase.datas.length >= 2
+        ? `Entra aqui a prova corrida ${MINIMO_FAVORITA} vezes ou mais. Mais perto: ${quase.nome}, ${quase.datas.length} de ${MINIMO_FAVORITA}.`
+        : `Entra aqui a prova corrida ${MINIMO_FAVORITA} vezes ou mais — o que fica comum quando os anos anteriores entrarem.` }));
+    return;
+  }
+  const lista = el("ol");
+  favoritas.slice(0, 3).forEach((s, i) => {
+    lista.append(el("li", { className: i === 0 ? "top" : "" }, [
+      el("span", { className:"pos", textContent: (i + 1) + "º" }),
+      el("span", { className:"nome" }, [document.createTextNode(s.nome),
+        el("small", { textContent: s.cidade + " · " + s.datas.sort().map(d => dataCurta(d)).join(", ") })]),
+      el("span", { className:"vezes", textContent: s.datas.length + " vezes" }),
+    ]));
+  });
+  caixa.append(lista);
 }
 
 let ultimoRes = null;

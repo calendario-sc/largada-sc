@@ -63,6 +63,10 @@ def km_da_modalidade(rotulo):
     return None
 
 
+# Marcadores que a cronometragem usa quando nao sabe quem e: nao sao pessoa.
+NAO_E_PESSOA = re.compile(r"desconhecid|nao-identificad|sem-nome|^atleta$|^participante$|^n-?a$", re.I)
+
+
 def chave(slug):
     return re.sub(r"[^a-z0-9]", "", sem_acento(slug).lower())
 
@@ -85,24 +89,37 @@ def repartir(atletas):
     return dividir(list(atletas), 2)
 
 
-def organizadores_por_slug():
-    """or_slug -> organizadoras, do historico do calendario."""
+def calendario_por_slug():
+    """or_slug -> (organizadoras, serie, nome da serie), do calendario.
+
+    A serie junta as edicoes de um mesmo evento: e por ela que se sabe qual
+    prova o atleta mais repetiu.
+    """
     historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
-    return {p["or_slug"]: p.get("organizadores") or [] for p in historico if p.get("or_slug")}
+    return {p["or_slug"]: (p.get("organizadores") or [], p.get("serie") or "", p.get("serie_nome") or "")
+            for p in historico if p.get("or_slug")}
 
 
 def montar(registrar=print):
     provas, atletas = [], {}
-    organizadores = organizadores_por_slug()
+    calendario = calendario_por_slug()
     for arquivo in sorted(PROVAS.glob("*.json")):
         d = json.loads(arquivo.read_text(encoding="utf-8"))
         if d.get("erro") or not d.get("linhas"):
             continue
         indice_prova = len(provas)
-        # O quinto campo, as organizadoras, e o que da o selo de superfa.
+        # Organizadoras dao o selo de superfa; serie diz qual prova se repetiu.
+        orgs, serie, serie_nome = calendario.get(d["slug"], ([], "", ""))
         provas.append([d["data"], d["nome"], d["cidade"], d.get("slug_real") or d["slug"],
-                       organizadores.get(d["slug"], [])])
+                       orgs, serie, serie_nome])
+        vistas = set()
         for slug, nome, sexo, modalidade, cat, _equipe, pos, tempo, pace in d["linhas"]:
+            if NAO_E_PESSOA.search(slug):
+                continue
+            # O portal repete uma linha aqui e ali (429 em 236 mil): fica a primeira.
+            if (slug, modalidade) in vistas:
+                continue
+            vistas.add((slug, modalidade))
             km = km_da_modalidade(modalidade)
             if pace is None and km:
                 pace = round(tempo / km)
