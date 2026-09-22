@@ -303,11 +303,16 @@ async function carregarIndice(){
 // O arquivo certo para o que foi digitado: o prefixo mais longo que casa.
 function baldesPara(q){
   const k = chave(q);
-  const exato = INDICE.prefixos.filter(p => k.startsWith(p)).sort((a, b) => b.length - a.length)[0];
-  if (exato) return [exato];
-  // Digitou menos letras que o prefixo: varios baldes servem.
-  return INDICE.prefixos.filter(p => p.startsWith(k));
+  // Dois casos convivem: o digitado é mais longo que o prefixo do balde
+  // ("simoneponte" cabe em "simonep"), ou mais curto, e vários baldes
+  // começam por ele ("simone" abre "simonea", "simoneb"...). O balde chamado
+  // exatamente "simone" guarda só quem se chama Simone e mais nada, então
+  // ele sozinho nunca basta.
+  const dentro = INDICE.prefixos.filter(p => k.startsWith(p)).sort((a, b) => b.length - a.length)[0];
+  const abaixo = INDICE.prefixos.filter(p => p.startsWith(k) && p !== dentro);
+  return dentro ? [dentro, ...abaixo] : abaixo;
 }
+const MAX_BALDES = 12;
 
 async function balde(pref){
   if (!cacheBaldes.has(pref)){
@@ -326,7 +331,7 @@ async function buscar(){
   if (chave(q).length < 3){ dica.textContent = q ? "Digite pelo menos três letras." : ""; return; }
   const prefs = baldesPara(q);
   if (!prefs.length){ dica.textContent = "Nenhum atleta com esse começo de nome."; return; }
-  if (prefs.length > 6){ dica.textContent = "Digite mais uma letra para afinar a busca."; return; }
+  if (prefs.length > MAX_BALDES){ dica.textContent = "Digite mais uma letra para afinar a busca."; return; }
   dica.textContent = "Buscando…";
   const blocos = await Promise.all(prefs.map(balde));
   if (meu !== pedido) return;
@@ -669,7 +674,7 @@ carregarIndice().then(async () => {
   const slug = location.hash.slice(1);
   if (!slug) return;
   const prefs = baldesPara(slug);
-  for (const pref of prefs.slice(0, 3)){
+  for (const pref of prefs.slice(0, MAX_BALDES)){
     const b = await balde(pref);
     if (b[slug]){ const [nome, sexo, res] = b[slug]; input.value = titulo(nome); abrir({ slug, nome, sexo, res }); return; }
   }
