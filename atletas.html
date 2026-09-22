@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Resultados por atleta nas corridas de Santa Catarina: distâncias, pace e melhores tempos.">
+<title>Atletas · Largada SC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F3F5FA; --surface:#FFFFFF; --surface-2:#EEF2F8;
+  --line:#D5DCE8; --line-soft:#E4E9F2;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880;
+  --accent:#EF4E16; --accent-ink:#B5360A; --accent-wash:#FFE6DA;
+  --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD; --sobre-azul:#FFFFFF;
+  --sol:#FFC21A; --sol-ink:#3A2A00;
+  --trail:#07734F; --ultra:#B81C26; --noite:#4A2FBF; --reve:#961268;
+  /* Series dos graficos, em ordem fixa por distancia. Validadas para
+     daltonismo e contraste sobre a superficie de cada tema. */
+  --s1:#1250C4; --s2:#07734F; --s3:#EF4E16; --s4:#4A2FBF; --s5:#961268;
+  --shadow:0 1px 2px rgba(14,23,38,.06), 0 12px 26px -16px rgba(14,23,38,.38);
+  --r:14px;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628;
+    --line:#26324C; --line-soft:#1B2539;
+    --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3;
+    --accent:#FF7143; --accent-ink:#FF9E7D; --accent-wash:#3B1A0E;
+    --azul:#6B97FF; --azul-ink:#A9C2FF; --azul-wash:#15234A; --sobre-azul:#07112B;
+    --sol:#FFC940; --sol-ink:#2A1E00;
+    --trail:#46D6A0; --ultra:#FF7880; --noite:#B09BFF; --reve:#F27BCB;
+    --s1:#3D74F0; --s2:#1A9E6E; --s3:#E8622E; --s4:#8A6CF0; --s5:#C34A9C;
+    --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628;
+  --line:#26324C; --line-soft:#1B2539;
+  --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3;
+  --accent:#FF7143; --accent-ink:#FF9E7D; --accent-wash:#3B1A0E;
+  --azul:#6B97FF; --azul-ink:#A9C2FF; --azul-wash:#15234A; --sobre-azul:#07112B;
+  --sol:#FFC940; --sol-ink:#2A1E00;
+  --trail:#46D6A0; --ultra:#FF7880; --noite:#B09BFF; --reve:#F27BCB;
+  --s1:#3D74F0; --s2:#1A9E6E; --s3:#E8622E; --s4:#8A6CF0; --s5:#C34A9C;
+  --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
+}
+
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+.wrap{width:min(1120px,100% - 2.5rem); margin-inline:auto}
+a{color:var(--azul-ink)}
+
+/* ---- cabecalho: mesma faixa do calendario ---- */
+.top{position:relative; overflow:hidden; color:#FFFFFF;
+  background:radial-gradient(90% 130% at 100% 0%, rgba(255,194,26,.26), transparent 58%),
+             linear-gradient(135deg,#0A2F73 0%,#1450C8 100%)}
+.top::before{content:""; position:absolute; inset:0 0 0 42%; pointer-events:none;
+  background:repeating-linear-gradient(-62deg,rgba(255,255,255,.08) 0 2px,transparent 2px 40px);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 35%); mask-image:linear-gradient(90deg,transparent,#000 35%)}
+.top::after{content:""; position:absolute; inset:auto 0 0 0; height:8px;
+  background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.top__inner{position:relative; display:flex; flex-wrap:wrap; gap:1.6rem 3rem; align-items:flex-end; justify-content:space-between; padding:2.2rem 0 2.2rem}
+.eyebrow{font-family:var(--f-mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:0 0 .6rem}
+.eyebrow a{color:rgba(255,255,255,.9)}
+h1{font-family:var(--f-display); font-weight:800; margin:0; color:#FFFFFF; font-size:clamp(2.2rem,6vw,3.6rem); line-height:.95; letter-spacing:-.03em}
+h1 em{font-style:normal; color:#FFC21A}
+.lede{margin:.8rem 0 0; max-width:44ch; color:rgba(255,255,255,.85); font-size:1rem}
+.stats{display:flex; gap:.8rem; flex-wrap:wrap}
+.stat{padding:.65rem .9rem .6rem; border-radius:12px; min-width:104px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18)}
+.stat b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.7rem; color:#FFFFFF; line-height:1; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.stat span{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.72)}
+.stat:first-child b{color:#FFC21A}
+
+/* ---- busca ---- */
+.busca{padding:1.6rem 0 .6rem}
+.busca label{display:block; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 .45rem}
+.busca input{width:100%; font:inherit; font-size:1.15rem; padding:.85rem 1rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px}
+.busca input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-wash)}
+.busca .dica{margin:.5rem 0 0; font-size:.82rem; color:var(--muted); min-height:1.3em}
+.lista{list-style:none; margin:.6rem 0 1.5rem; padding:0; display:grid; gap:.35rem}
+.lista button{width:100%; text-align:left; font:inherit; cursor:pointer; display:flex; justify-content:space-between; gap:1rem; align-items:baseline;
+  padding:.65rem .9rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:10px; color:var(--ink)}
+.lista button:hover{border-color:var(--accent); box-shadow:var(--shadow)}
+.lista button b{font-weight:600}
+.lista button small{font-family:var(--f-mono); font-size:.72rem; color:var(--muted); white-space:nowrap}
+
+/* ---- perfil ---- */
+.perfil{margin:0 0 3rem}
+.perfil[hidden]{display:none}
+.perfil__topo{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1rem; margin:.5rem 0 1rem}
+.perfil h2{font-family:var(--f-display); font-weight:800; font-size:clamp(1.5rem,4vw,2.2rem); margin:0; letter-spacing:-.02em}
+.perfil h2 small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:.35rem}
+.voltar{font:inherit; font-size:.85rem; cursor:pointer; color:var(--muted); background:none; border:1px dashed var(--line); border-radius:999px; padding:.35rem .8rem}
+.voltar:hover{border-color:var(--accent); color:var(--ink)}
+.nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.6rem; margin:0 0 1.2rem}
+.num{padding:.8rem 1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:12px}
+.num b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.5rem; line-height:1.05; color:var(--azul-ink); font-variant-numeric:tabular-nums}
+.num span{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.num em{display:block; font-style:normal; font-size:.78rem; color:var(--muted); margin-top:.2rem}
+.num .sobe{color:var(--trail)} .num .desce{color:var(--ultra)}
+
+.grade{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(20rem,1fr)); margin:0 0 1.2rem}
+.cartao{padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow); min-width:0; overflow-x:auto}
+.cartao h3{font-family:var(--f-display); font-weight:700; font-size:1.02rem; margin:0}
+.cartao .sub{margin:.15rem 0 .7rem; font-size:.8rem; color:var(--muted)}
+.grafico{position:relative}
+.grafico svg{display:block; width:100%; height:auto; overflow:visible}
+.grafico .eixo text{font-family:var(--f-mono); font-size:11px; fill:var(--muted)}
+.grafico .grade-y line{stroke:var(--line-soft); stroke-width:1}
+.grafico .eixo line{stroke:var(--line)}
+.grafico .linha{fill:none; stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+.grafico .ponto{stroke:var(--surface); stroke-width:2; cursor:pointer}
+.grafico .rotulo{font-family:var(--f-mono); font-size:11px; fill:var(--ink-2)}
+.grafico .alvo{fill:transparent; cursor:pointer}
+.legenda{display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin:.5rem 0 0; font-size:.78rem; color:var(--ink-2)}
+.legenda span::before{content:""; display:inline-block; width:.65rem; height:.65rem; border-radius:50%; margin-right:.35rem; background:var(--c)}
+.dica-flutuante{position:absolute; z-index:5; pointer-events:none; background:var(--ink); color:var(--ground); font-size:.78rem; line-height:1.35;
+  padding:.45rem .6rem; border-radius:8px; box-shadow:var(--shadow); max-width:16rem; transform:translate(-50%,-110%)}
+.dica-flutuante b{font-family:var(--f-mono)}
+.dica-flutuante[hidden]{display:none}
+
+table{width:100%; border-collapse:collapse; font-size:.86rem}
+th,td{text-align:left; padding:.45rem .5rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
+th{font-family:var(--f-mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:400}
+td.n{font-family:var(--f-mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; color:var(--trail); margin-left:.4rem}
+.vazio{padding:2.5rem 1rem; text-align:center; color:var(--muted); background:var(--surface); border:1px dashed var(--line); border-radius:var(--r)}
+.foot{padding:2rem 0 3rem; color:var(--muted); font-size:.8rem; border-top:4px solid; border-image:repeating-linear-gradient(90deg,var(--sol) 0 20px,var(--accent) 20px 40px) 1}
+.foot p{margin:0 0 .5rem; max-width:72ch}
+@media (max-width:720px){
+  .wrap{width:min(1120px,100% - 1.6rem)}
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); width:100%; gap:.5rem}
+  .stat{min-width:0; padding:.55rem .6rem} .stat b{font-size:1.4rem} .stat span{font-size:.56rem; letter-spacing:.06em}
+  table{font-size:.78rem} th,td{padding:.35rem .3rem}
+  .oculta-celular{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top__inner">
+    <div>
+      <p class="eyebrow"><a href="./">Largada SC</a> &middot; resultados por atleta</p>
+      <h1>Quem <em>correu</em></h1>
+      <p class="lede">Busque um nome e veja as provas, as distâncias, o pace e os melhores tempos.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="s-atletas">—</b><span>atletas</span></div>
+      <div class="stat"><b id="s-resultados">—</b><span>resultados</span></div>
+      <div class="stat"><b id="s-provas">—</b><span>provas</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="busca">
+    <label for="q">Nome do atleta</label>
+    <input id="q" type="search" placeholder="Comece pelo primeiro nome: ex. Simone Ponte" autocomplete="off" autofocus>
+    <p class="dica" id="dica"></p>
+    <ul class="lista" id="lista"></ul>
+  </section>
+
+  <section class="perfil" id="perfil" hidden>
+    <div class="perfil__topo">
+      <h2 id="p-nome"></h2>
+      <button class="voltar" id="voltar" type="button">← outra busca</button>
+    </div>
+    <div class="nums" id="p-nums"></div>
+    <div class="grade">
+      <div class="cartao">
+        <h3>Distância por prova</h3>
+        <p class="sub">Cada ponto é uma prova; a linha mostra se as distâncias estão aumentando ou diminuindo.</p>
+        <div class="grafico" id="g-dist"></div>
+      </div>
+      <div class="cartao">
+        <h3>Pace por prova</h3>
+        <p class="sub">Minutos por quilômetro, uma cor por distância. Mais alto no gráfico é mais rápido.</p>
+        <div class="grafico" id="g-pace"></div>
+        <div class="legenda" id="l-pace"></div>
+      </div>
+    </div>
+    <div class="grade">
+      <div class="cartao">
+        <h3>Melhor tempo em cada distância</h3>
+        <p class="sub">O menor tempo do atleta, prova a prova.</p>
+        <div id="t-melhores"></div>
+      </div>
+      <div class="cartao">
+        <h3>Todas as provas</h3>
+        <p class="sub" id="t-sub"></p>
+        <div id="t-todas"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Os resultados vêm de <b>openresults.run</b>, prova a prova, e o nome é agrupado como o próprio portal agrupa: duas pessoas com o mesmo nome aparecem juntas. Conta quem cruzou a chegada com tempo registrado.</p>
+    <p id="f-anos"></p>
+    <p><a href="./">← voltar ao calendário</a></p>
+  </div>
+</footer>
+
+<div class="dica-flutuante" id="tip" hidden></div>
+
+<script>
+const num = n => n.toLocaleString("pt-BR");
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const chave = s => norm(s).replace(/[^a-z0-9]/g, "");
+const el = (tag, props = {}, kids = []) => {
+  const n = Object.assign(document.createElement(tag), props);
+  kids.forEach(k => k && n.append(k));
+  return n;
+};
+const svgEl = (tag, attrs = {}) => {
+  const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v));
+  return n;
+};
+const MES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const dataCurta = iso => { const [a, m, d] = iso.split("-"); return `${d}/${m}/${a.slice(2)}`; };
+const dataMes = iso => { const [a, m] = iso.split("-"); return MES[+m - 1] + "/" + a.slice(2); };
+const tempo = s => { const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+  return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); };
+const pace = s => s ? Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0") + "/km" : "—";
+// Nome em maiusculas na fonte; aqui em caixa de titulo, preposicao minuscula.
+const titulo = s => s.toLowerCase().replace(/(^|\s|-)(\S)/g, (m, a, b) => a + b.toUpperCase())
+  .replace(/\b(Da|De|Do|Das|Dos|E)\b/g, w => w.toLowerCase());
+
+/* Faixas de distancia: mesmas do calendario. A cor segue a faixa, sempre a
+   mesma, nao a posicao da serie no grafico. */
+const FAIXAS = [
+  ["5 km",  0,     6,    "--s1"],
+  ["10 km", 6.01,  12,   "--s2"],
+  ["21 km", 12.01, 25,   "--s3"],
+  ["42 km", 25.01, 45,   "--s4"],
+  ["ultra", 45.01, 999,  "--s5"],
+];
+const faixaDe = km => km == null ? null : FAIXAS.find(([, a, b]) => km >= a && km <= b) || null;
+
+let INDICE = null, PROVAS = [];
+const cacheBaldes = new Map();
+
+async function carregarIndice(){
+  const r = await fetch("atletas/indice.json", { cache:"no-cache" });
+  INDICE = await r.json();
+  PROVAS = INDICE.provas;
+  document.getElementById("s-atletas").textContent = num(INDICE.atletas);
+  document.getElementById("s-resultados").textContent = num(INDICE.resultados);
+  document.getElementById("s-provas").textContent = num(PROVAS.length);
+  document.getElementById("f-anos").textContent =
+    "Por enquanto, provas de " + INDICE.anos.join(", ") + ". Os anos anteriores entram aos poucos.";
+}
+
+// O arquivo certo para o que foi digitado: o prefixo mais longo que casa.
+function baldesPara(q){
+  const k = chave(q);
+  const exato = INDICE.prefixos.filter(p => k.startsWith(p)).sort((a, b) => b.length - a.length)[0];
+  if (exato) return [exato];
+  // Digitou menos letras que o prefixo: varios baldes servem.
+  return INDICE.prefixos.filter(p => p.startsWith(k));
+}
+
+async function balde(pref){
+  if (!cacheBaldes.has(pref)){
+    cacheBaldes.set(pref, fetch(`atletas/dados/${pref}.json`).then(r => r.ok ? r.json() : {}));
+  }
+  return cacheBaldes.get(pref);
+}
+
+const input = document.getElementById("q"), dica = document.getElementById("dica"), lista = document.getElementById("lista");
+let pedido = 0;
+
+async function buscar(){
+  const q = input.value.trim();
+  const meu = ++pedido;
+  lista.replaceChildren();
+  if (chave(q).length < 3){ dica.textContent = q ? "Digite pelo menos três letras." : ""; return; }
+  const prefs = baldesPara(q);
+  if (!prefs.length){ dica.textContent = "Nenhum atleta com esse começo de nome."; return; }
+  if (prefs.length > 6){ dica.textContent = "Digite mais uma letra para afinar a busca."; return; }
+  dica.textContent = "Buscando…";
+  const blocos = await Promise.all(prefs.map(balde));
+  if (meu !== pedido) return;
+  const termos = norm(q).split(/\s+/).filter(Boolean);
+  const achados = [];
+  blocos.forEach(b => Object.entries(b).forEach(([slug, [nome, sexo, res]]) => {
+    const n = norm(nome);
+    if (termos.every(t => n.includes(t))) achados.push({ slug, nome, sexo, res });
+  }));
+  achados.sort((a, b) => b.res.length - a.res.length || a.nome.localeCompare(b.nome));
+  dica.textContent = achados.length ? `${num(achados.length)} atleta${achados.length > 1 ? "s" : ""}` : "Nenhum atleta com esse nome.";
+  achados.slice(0, 60).forEach(a => {
+    const b = el("button", { type:"button" }, [
+      el("b", { textContent: titulo(a.nome) }),
+      el("small", { textContent: a.res.length + (a.res.length === 1 ? " prova" : " provas") + " · " + [...new Set(a.res.map(r => r[1]).filter(Boolean))].sort((x, y) => x - y).map(k => k + "k").join(" ") }),
+    ]);
+    b.onclick = () => abrir(a);
+    lista.append(el("li", {}, [b]));
+  });
+  if (achados.length > 60) lista.append(el("li", { className:"vazio", textContent:"Mostrando 60. Digite mais para afinar." }));
+}
+input.oninput = () => { clearTimeout(input._t); input._t = setTimeout(buscar, 180); };
+document.getElementById("voltar").onclick = () => { document.getElementById("perfil").hidden = true; history.replaceState(null, "", location.pathname); input.focus(); };
+
+/* ---------- perfil ---------- */
+const perfil = document.getElementById("perfil");
+
+function variacao(de, para){ const d = para - de; return { d, pct: de ? d / de * 100 : 0 }; }
+
+function abrir(a){
+  const res = a.res.map(r => ({ prova: PROVAS[r[0]], data: PROVAS[r[0]][0], km: r[1], tempo: r[2], pace: r[3], pos: r[4], cat: r[5], mod: r[6] }))
+                   .sort((x, y) => x.data.localeCompare(y.data));
+  history.replaceState(null, "", "#" + a.slug);
+  perfil.hidden = false;
+  document.getElementById("p-nome").replaceChildren(document.createTextNode(titulo(a.nome)),
+    el("small", { textContent: `${res.length} ${res.length === 1 ? "prova" : "provas"} · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
+
+  // --- numeros
+  const comKm = res.filter(r => r.km);
+  const kmTotal = comKm.reduce((s, r) => s + r.km, 0);
+  const nums = document.getElementById("p-nums"); nums.replaceChildren();
+  const numero = (valor, rotulo, extra, classe) => nums.append(el("div", { className:"num" }, [
+    el("b", { className: classe || "", textContent: valor }), el("span", { textContent: rotulo }), extra ? el("em", { textContent: extra }) : null]));
+  numero(num(res.length), "provas");
+  numero(num(Math.round(kmTotal)) + " km", "somando as provas");
+  if (comKm.length >= 2){
+    const meio = Math.floor(comKm.length / 2);
+    const antes = comKm.slice(0, meio), depois = comKm.slice(meio);
+    const mA = antes.reduce((s, r) => s + r.km, 0) / antes.length, mD = depois.reduce((s, r) => s + r.km, 0) / depois.length;
+    const v = variacao(mA, mD);
+    numero((v.d >= 0 ? "+" : "") + v.pct.toFixed(0) + "%", "distância média", `${mA.toFixed(1)} km nas primeiras → ${mD.toFixed(1)} km nas últimas`, v.d > 0 ? "sobe" : v.d < 0 ? "desce" : "");
+  }
+  const maisLonga = comKm.reduce((m, r) => r.km > (m ? m.km : 0) ? r : m, null);
+  if (maisLonga) numero(maisLonga.km + " km", "distância mais longa", maisLonga.prova[1]);
+  const podios = res.filter(r => r.pos && r.pos <= 3).length;
+  if (podios) numero(num(podios), podios === 1 ? "pódio geral" : "pódios gerais", "1º a 3º da prova");
+
+  desenharDistancia(res);
+  desenharPace(res);
+  ultimoRes = res;
+  tabelaMelhores(res);
+  tabelaTodas(res);
+  perfil.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+let ultimoRes = null;
+window.addEventListener("resize", () => {
+  clearTimeout(window._rd);
+  window._rd = setTimeout(() => { if (ultimoRes && !perfil.hidden){ desenharDistancia(ultimoRes); desenharPace(ultimoRes); } }, 150);
+});
+
+/* ---------- graficos em SVG ----------
+   Um eixo por grafico, marcas finas, grade discreta, tooltip por ponto. */
+const tip = document.getElementById("tip");
+function mostrarTip(alvo, html){
+  // A dica fica no body, fora do cartao que rola: coordenadas da pagina.
+  const r = alvo.getBoundingClientRect();
+  tip.innerHTML = html; tip.hidden = false;
+  tip.style.left = (r.left + r.width / 2 + window.scrollX) + "px";
+  tip.style.top = (r.top + window.scrollY - 6) + "px";
+}
+function escalaTempo(datas, x0, x1){
+  const t = datas.map(d => new Date(d).getTime());
+  let min = Math.min(...t), max = Math.max(...t);
+  if (max === min){ min -= 15 * 86400000; max += 15 * 86400000; }
+  const folga = (max - min) * .06; min -= folga; max += folga;
+  return { x: d => x0 + (new Date(d).getTime() - min) / (max - min) * (x1 - x0), min, max };
+}
+function ticksTempo(min, max, n){
+  const saida = [], ini = new Date(min); ini.setDate(1);
+  const passoMeses = Math.max(1, Math.round((max - min) / 2592000000 / n));
+  for (let d = new Date(ini); d.getTime() <= max; d.setMonth(d.getMonth() + passoMeses)) if (d.getTime() >= min) saida.push(new Date(d));
+  return saida;
+}
+function ticksLineares(min, max, n){
+  const bruto = (max - min) / n, pot = Math.pow(10, Math.floor(Math.log10(bruto || 1)));
+  const passo = [1, 2, 2.5, 5, 10].map(m => m * pot).find(p => (max - min) / p <= n) || pot;
+  const saida = []; for (let v = Math.ceil(min / passo) * passo; v <= max + 1e-9; v += passo) saida.push(+v.toFixed(6));
+  return saida;
+}
+function base(cont, W, H, m){
+  // A largura do SVG e a do cartao: assim o texto nao encolhe no celular.
+  W = Math.max(300, Math.round(cont.clientWidth || W));
+  cont.replaceChildren();
+  cont.style.position = "relative";
+  const svg = svgEl("svg", { viewBox:`0 0 ${W} ${H}`, role:"img" });
+  cont.append(svg);
+  return { svg, x0: m.l, x1: W - m.r, y0: H - m.b, y1: m.t };
+}
+
+function desenharDistancia(res){
+  const cont = document.getElementById("g-dist");
+  const pts = res.filter(r => r.km);
+  if (pts.length < 1){ cont.replaceChildren(el("p", { className:"vazio", textContent:"Sem distância conhecida nas provas deste atleta." })); return; }
+  const W = 560, H = 260, { svg, x0, x1, y0, y1 } = base(cont, W, H, { l:44, r:16, t:14, b:34 });
+  const et = escalaTempo(pts.map(p => p.data), x0, x1);
+  const kmMax = Math.max(...pts.map(p => p.km)) * 1.15, kmMin = 0;
+  const y = v => y0 - (v - kmMin) / (kmMax - kmMin) * (y0 - y1);
+  const g = svgEl("g", { class:"grade-y" }), ex = svgEl("g", { class:"eixo" });
+  ticksLineares(kmMin, kmMax, 5).forEach(v => {
+    g.append(svgEl("line", { x1:x0, x2:x1, y1:y(v), y2:y(v) }));
+    const t = svgEl("text", { x:x0 - 8, y:y(v) + 4, "text-anchor":"end" }); t.textContent = v + " km"; ex.append(t);
+  });
+  ticksTempo(et.min, et.max, 5).forEach(d => { const t = svgEl("text", { x:et.x(d), y:y0 + 22, "text-anchor":"middle" }); t.textContent = MES[d.getMonth()] + "/" + String(d.getFullYear()).slice(2); ex.append(t); });
+  ex.append(svgEl("line", { x1:x0, x2:x1, y1:y0, y2:y0 }));
+  svg.append(g, ex);
+  if (pts.length > 1) svg.append(svgEl("path", { class:"linha", stroke:"var(--s1)", d: pts.map((p, i) => (i ? "L" : "M") + et.x(p.data).toFixed(1) + " " + y(p.km).toFixed(1)).join(" ") }));
+  pts.forEach(p => {
+    const c = svgEl("circle", { class:"ponto", cx:et.x(p.data), cy:y(p.km), r:5, fill:"var(--s1)" });
+    const alvo = svgEl("circle", { class:"alvo", cx:et.x(p.data), cy:y(p.km), r:14 });
+    const mostra = () => mostrarTip(c, `<b>${p.km} km</b> · ${dataCurta(p.data)}<br>${p.prova[1]}<br>${tempo(p.tempo)} · ${pace(p.pace)}`, cont);
+    alvo.addEventListener("mouseenter", mostra); alvo.addEventListener("focus", mostra); alvo.addEventListener("click", mostra);
+    alvo.addEventListener("mouseleave", () => tip.hidden = true);
+    svg.append(c, alvo);
+  });
+  // Rotulo direto so no ultimo ponto, que e o que responde "e agora?".
+  const u = pts[pts.length - 1];
+  const r = svgEl("text", { class:"rotulo", x:Math.min(et.x(u.data) + 8, x1 - 30), y:y(u.km) - 9 }); r.textContent = u.km + " km"; svg.append(r);
+}
+
+function desenharPace(res){
+  const cont = document.getElementById("g-pace"), leg = document.getElementById("l-pace");
+  const pts = res.filter(r => r.pace && r.km);
+  leg.replaceChildren();
+  if (pts.length < 1){ cont.replaceChildren(el("p", { className:"vazio", textContent:"Sem pace registrado." })); return; }
+  const W = 560, H = 260, { svg, x0, x1, y0, y1 } = base(cont, W, H, { l:50, r:16, t:14, b:34 });
+  const et = escalaTempo(pts.map(p => p.data), x0, x1);
+  const paces = pts.map(p => p.pace);
+  let pMin = Math.min(...paces), pMax = Math.max(...paces);
+  const folga = Math.max(20, (pMax - pMin) * .15); pMin -= folga; pMax += folga;
+  // Invertido de proposito: pace menor e mais rapido, e fica em cima.
+  const y = v => y1 + (v - pMin) / (pMax - pMin) * (y0 - y1);
+  const g = svgEl("g", { class:"grade-y" }), ex = svgEl("g", { class:"eixo" });
+  ticksLineares(pMin / 60, pMax / 60, 5).forEach(v => {
+    const s = Math.round(v * 60);
+    g.append(svgEl("line", { x1:x0, x2:x1, y1:y(s), y2:y(s) }));
+    const t = svgEl("text", { x:x0 - 8, y:y(s) + 4, "text-anchor":"end" }); t.textContent = pace(s).replace("/km", ""); ex.append(t);
+  });
+  ticksTempo(et.min, et.max, 5).forEach(d => { const t = svgEl("text", { x:et.x(d), y:y0 + 22, "text-anchor":"middle" }); t.textContent = MES[d.getMonth()] + "/" + String(d.getFullYear()).slice(2); ex.append(t); });
+  ex.append(svgEl("line", { x1:x0, x2:x1, y1:y0, y2:y0 }));
+  svg.append(g, ex);
+
+  const porFaixa = new Map();
+  pts.forEach(p => { const f = faixaDe(p.km); if (f) porFaixa.set(f[0], [...(porFaixa.get(f[0]) || []), p]); });
+  FAIXAS.forEach(([nome, , , cor]) => {
+    const serie = porFaixa.get(nome); if (!serie) return;
+    const c = `var(${cor})`;
+    if (serie.length > 1) svg.append(svgEl("path", { class:"linha", stroke:c, d: serie.map((p, i) => (i ? "L" : "M") + et.x(p.data).toFixed(1) + " " + y(p.pace).toFixed(1)).join(" ") }));
+    serie.forEach(p => {
+      const dot = svgEl("circle", { class:"ponto", cx:et.x(p.data), cy:y(p.pace), r:5, fill:c });
+      const alvo = svgEl("circle", { class:"alvo", cx:et.x(p.data), cy:y(p.pace), r:14 });
+      const mostra = () => mostrarTip(dot, `<b>${pace(p.pace)}</b> · ${p.km} km · ${dataCurta(p.data)}<br>${p.prova[1]}<br>tempo ${tempo(p.tempo)}`, cont);
+      alvo.addEventListener("mouseenter", mostra); alvo.addEventListener("focus", mostra); alvo.addEventListener("click", mostra);
+      alvo.addEventListener("mouseleave", () => tip.hidden = true);
+      svg.append(dot, alvo);
+    });
+    // Rotulo direto no ultimo ponto de cada serie (identidade sem depender da cor).
+    const u = serie[serie.length - 1];
+    const r = svgEl("text", { class:"rotulo", x:Math.min(et.x(u.data) + 8, x1 - 34), y:y(u.pace) - 8 }); r.textContent = nome; svg.append(r);
+    const item = el("span", { textContent: nome + " · " + serie.length + (serie.length === 1 ? " prova" : " provas") });
+    item.style.setProperty("--c", c);
+    leg.append(item);
+  });
+  if (porFaixa.size < 2) leg.replaceChildren();   // uma serie so: o rotulo direto basta
+}
+
+/* ---------- tabelas ---------- */
+function tabelaMelhores(res){
+  const cont = document.getElementById("t-melhores");
+  const porKm = new Map();
+  res.filter(r => r.km).forEach(r => { const atual = porKm.get(r.km); if (!atual || r.tempo < atual.tempo) porKm.set(r.km, r); });
+  if (!porKm.size){ cont.replaceChildren(el("p", { className:"vazio", textContent:"Sem distância conhecida." })); return; }
+  const linhas = [...porKm.entries()].sort((a, b) => a[0] - b[0]).map(([km, r]) => el("tr", {}, [
+    el("td", { className:"n", textContent: km + " km" }),
+    el("td", { className:"n", textContent: tempo(r.tempo) }),
+    el("td", { className:"n oculta-celular", textContent: pace(r.pace) }),
+    el("td", {}, [document.createTextNode(r.prova[1]), el("small", { style:"display:block;color:var(--muted)", textContent: dataCurta(r.data) + " · " + r.prova[2] })]),
+  ]));
+  cont.replaceChildren(el("table", {}, [
+    el("thead", {}, [el("tr", {}, ["Distância", "Tempo", "Pace", "Prova"].map((t, i) => el("th", { className: i === 2 ? "oculta-celular" : "", textContent:t })))]),
+    el("tbody", {}, linhas)]));
+}
+
+function tabelaTodas(res){
+  const cont = document.getElementById("t-todas");
+  const melhor = new Map();
+  res.filter(r => r.km).forEach(r => { const m = melhor.get(r.km); if (!m || r.tempo < m) melhor.set(r.km, r.tempo); });
+  document.getElementById("t-sub").textContent = "Da mais recente para a mais antiga.";
+  const linhas = [...res].reverse().map(r => el("tr", {}, [
+    el("td", { className:"n", textContent: dataCurta(r.data) }),
+    el("td", {}, [document.createTextNode(r.prova[1]), el("small", { style:"display:block;color:var(--muted)", textContent: r.prova[2] + (r.cat ? " · " + r.cat : "") })]),
+    el("td", { className:"n", textContent: r.km ? r.km + " km" : r.mod }),
+    el("td", { className:"n" }, [document.createTextNode(tempo(r.tempo)), r.km && melhor.get(r.km) === r.tempo && res.filter(x => x.km === r.km).length > 1 ? el("span", { className:"melhor", textContent:"melhor" }) : null]),
+    el("td", { className:"n oculta-celular", textContent: pace(r.pace) }),
+    el("td", { className:"n oculta-celular", textContent: r.pos ? r.pos + "º" : "—" }),
+  ]));
+  cont.replaceChildren(el("table", {}, [
+    el("thead", {}, [el("tr", {}, [["Data"], ["Prova"], ["Dist."], ["Tempo"], ["Pace", 1], ["Geral", 1]].map(([t, oc]) => el("th", { className: oc ? "oculta-celular" : "", textContent:t })))]),
+    el("tbody", {}, linhas)]));
+}
+
+/* ---------- inicio ---------- */
+carregarIndice().then(async () => {
+  const slug = location.hash.slice(1);
+  if (!slug) return;
+  const prefs = baldesPara(slug);
+  for (const pref of prefs.slice(0, 3)){
+    const b = await balde(pref);
+    if (b[slug]){ const [nome, sexo, res] = b[slug]; input.value = titulo(nome); abrir({ slug, nome, sexo, res }); return; }
+  }
+}).catch(() => { dica.textContent = "Não foi possível carregar o índice de atletas."; });
+</script>
+</body>
+</html>

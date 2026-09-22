@@ -51,8 +51,14 @@ def git(*args, checar=True):
 
 
 def repositorio_limpo():
-    """Nada modificado alem do que o proprio script gera."""
-    mudancas = [l for l in git("status", "--porcelain").stdout.splitlines() if l.strip()]
+    """Nada modificado alem do que o proprio script gera.
+
+    Arquivo novo em atletas/ e obra da coleta de atletas, que pode estar
+    rodando em paralelo ou ter sido interrompida: nao e trabalho em andamento
+    de ninguem, e entra no commit normalmente.
+    """
+    mudancas = [l for l in git("status", "--porcelain").stdout.splitlines()
+                if l.strip() and not l[3:].startswith("atletas/")]
     return not mudancas, mudancas
 
 
@@ -94,6 +100,21 @@ def coletar():
     return com_depois - com_antes
 
 
+def coletar_atletas():
+    """Resultado por atleta das provas que ainda nao tem, e o indice da pagina.
+
+    O portal limita o ritmo depois de umas centenas de provas seguidas, entao
+    a rodada tem teto: o que faltar entra nos dias seguintes.
+    """
+    import atletas_build
+    import atletas_coleta
+
+    feitas = atletas_coleta.coletar(atletas_coleta.ANOS_ATLETAS, limite=40, registrar=registrar)
+    if feitas:
+        atletas_build.montar(registrar=registrar)
+    return feitas
+
+
 def publicar():
     import build
 
@@ -101,7 +122,7 @@ def publicar():
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return
-    git("add", "corridas.json", "index.html")
+    git("add", "corridas.json", "index.html", "atletas")
     hoje = datetime.date.today().strftime("%d/%m/%Y")
     git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
         "commit", "-q", "-m", f"concluintes de {hoje} (coleta local)")
@@ -114,7 +135,7 @@ def publicar():
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
         build.build()
-        git("add", "corridas.json", "index.html")
+        git("add", "corridas.json", "index.html", "atletas")
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
         git("push", "-q", "origin", "main")
@@ -130,6 +151,10 @@ def main():
             return 1
         git("pull", "-q", "--ff-only", "origin", "main")
         coletar()
+        try:
+            coletar_atletas()
+        except Exception as erro:
+            registrar(f"atletas: FALHOU ({erro.__class__.__name__}: {erro})")
         publicar()
         return 0
     except Exception as erro:

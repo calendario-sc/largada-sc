@@ -68,4 +68,8 @@ erro, nada é commitado e o histórico fica intacto.
 | `scrape.py` | fusão, histórico e relatório |
 | `municipios.py` | cache da malha municipal do IBGE |
 | `perfis.py` | perfil de cada prova (links, preços, patrocínio, incentivo) |
+| `atletas_coleta.py` | resultado de cada atleta, prova a prova, do Open Results (roda só localmente) |
+| `atletas_build.py` | índice por prefixo de nome que a página `atletas.html` consulta |
+| `atletas.html` | busca por atleta: distâncias, pace e melhores tempos |
+| `resultados_locais.py` | rotina das 9h neste computador: concluintes, atletas e publicação |
 | `pdftexto.py` | texto de regulamento em PDF, só com a biblioteca padrão |
