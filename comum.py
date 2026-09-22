@@ -333,7 +333,9 @@ GENERICOS = {"maratona", "meia", "night", "sunset", "trail", "circuito",
              "desafio", "rustica", "solidaria", "beneficente", "internacional",
              "cidade", "municipal", "anos", "experience", "feminina", "masculina",
              "aniversario", "natal", "verao", "inverno", "primavera", "outono",
-             "floripa", "florianopolis"}
+             "floripa", "florianopolis",
+             # dia do evento, nao a prova: "1o Dia", "- Sabado"
+             "dia", "sabado", "domingo", "sexta", "feira"}
 
 
 # "5km", "21k", "42km": dizem o percurso, nao qual prova e. Sem isso,

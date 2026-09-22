@@ -1148,6 +1148,96 @@ def _parece_parcial(prova, outras):
             and prova["concluintes_total"] < referencia * FRACAO_PARCIAL)
 
 
+# Evento que se espalha por mais de um dia: "1o Dia", "2o Dia Noturno",
+# "- Sabado". A Maratona de Jurere tem duas entradas no calendario (cada dia
+# tem suas distancias), mas e uma prova so, e assim deve ser contada.
+MARCA_DE_DIA = re.compile(r"\b\d{1,2}\s*[ºª°oa]?\s*dia\b|[-–|]\s*(?:s[aá]bado|domingo|sexta(?:-feira)?)\b",
+                          re.I)
+PERIODO_DO_DIA = re.compile(r"\b(?:tarde|manh[aã]|noite|noturn[oa]|matinal)\b", re.I)
+JANELA_EVENTO = 3        # dias entre um dia e o seguinte do mesmo evento
+
+
+def _nome_sem_dia(nome):
+    """O nome da prova sem o que diz qual dia do evento e."""
+    limpo = PERIODO_DO_DIA.sub(" ", MARCA_DE_DIA.sub(" ", nome_da_serie(nome)))
+    return _so_letras(limpo)
+
+
+def _mesmo_evento(a, b):
+    """Dois dias de um mesmo evento? Mesma cidade e ano, datas coladas, ao
+    menos um dos nomes se anuncia como um dia, e o resto do nome bate."""
+    if a["ano"] != b["ano"] or a.get("cidade") != b.get("cidade"):
+        return False
+    gap = abs((datetime.date.fromisoformat(a["data"]) - datetime.date.fromisoformat(b["data"])).days)
+    if not 0 < gap <= JANELA_EVENTO:
+        return False
+    if not (MARCA_DE_DIA.search(a["nome"]) or MARCA_DE_DIA.search(b["nome"])):
+        return False
+    na, nb = _nome_sem_dia(a["nome"]), _nome_sem_dia(b["nome"])
+    if na == nb:
+        return True
+    menor, maior = sorted((na, nb), key=len)
+    if len(menor) >= 8 and menor in maior:
+        return True
+    return difflib.SequenceMatcher(None, na, nb).ratio() >= 0.85
+
+
+def agrupar_eventos(historico):
+    """Marca os dias de um mesmo evento com a chave "evento".
+
+    A chave e a serie mais o ano quando os dias ja estao na mesma serie;
+    senao sai da cidade, do nome sem a marca de dia e do ano. Cada dia
+    guarda tambem sua posicao (evento_dia) e o total (evento_dias).
+    """
+    for p in historico:
+        for campo in ("evento", "evento_dia", "evento_dias"):
+            p.pop(campo, None)
+
+    por_praca = {}
+    for p in historico:
+        if MARCA_DE_DIA.search(p["nome"]):
+            por_praca.setdefault((p.get("cidade", ""), p["ano"]), None)
+    candidatos = {}
+    for p in historico:
+        chave = (p.get("cidade", ""), p["ano"])
+        if chave in por_praca:
+            candidatos.setdefault(chave, []).append(p)
+
+    eventos = 0
+    for provas in candidatos.values():
+        dono = list(range(len(provas)))
+
+        def raiz(i):
+            while dono[i] != i:
+                dono[i] = dono[dono[i]]
+                i = dono[i]
+            return i
+
+        for i in range(len(provas)):
+            for j in range(i + 1, len(provas)):
+                if raiz(i) != raiz(j) and _mesmo_evento(provas[i], provas[j]):
+                    dono[raiz(j)] = raiz(i)
+        grupos = {}
+        for i, p in enumerate(provas):
+            grupos.setdefault(raiz(i), []).append(p)
+        for grupo in grupos.values():
+            if len(grupo) < 2:
+                continue
+            grupo.sort(key=lambda p: p["data"])
+            series = {p.get("serie") for p in grupo}
+            if len(series) == 1 and grupo[0].get("serie"):
+                chave = f"{grupo[0]['serie']}-{grupo[0]['ano']}"
+            else:
+                base = sem_acento(f"{grupo[0].get('cidade','')} {_nome_sem_dia(grupo[0]['nome'])} {grupo[0]['ano']}")
+                chave = re.sub(r"[^a-z0-9]+", "-", base).strip("-")
+            for k, p in enumerate(grupo, 1):
+                p["evento"] = chave
+                p["evento_dia"] = k
+                p["evento_dias"] = len(grupo)
+            eventos += 1
+    return eventos
+
+
 def agrupar_series(historico):
     """Marca cada prova com a serie a que pertence (as edicoes de um evento).
 
@@ -1215,4 +1305,5 @@ def agrupar_series(historico):
                 p["serie"] = chave
                 p["serie_nome"] = rotulo
             series += 1
+    agrupar_eventos(historico)
     return series

@@ -515,6 +515,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .tag--caminhada{background:var(--agua-wash); color:var(--agua)}
 .tag--revezamento{background:var(--reve-wash); color:var(--reve)}
 .tag--kids{background:var(--kids-wash); color:var(--kids)}
+.tag--dia{background:var(--azul-wash); color:var(--azul-ink)}
 .flag{
   font-family:var(--f-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
   background:var(--sol); color:var(--sol-ink); padding:.2rem .45rem; border-radius:4px;
@@ -801,13 +802,20 @@ const TAG_COR = {Trail:"#07734F", Ultra:"#B81C26", Noturna:"#4A2FBF", Vertical:"
 
 const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 
-RACES.forEach(r => {
+RACES.forEach((r, i) => {
   r._d = new Date(r.ano, r.mes - 1, r.dia);
   r._key = r.ano * 100 + r.mes;
+  // Evento de dois ou tres dias e uma prova so: os dias compartilham a
+  // chave, e tudo que conta provas conta chaves distintas.
+  r._ev = r.evento || "#" + i;
   // Prova que mudou de nome é encontrada pelo antigo e pelo novo.
   r._busca = norm([r.nome, ...(r.outros_nomes || []), r.cidade, r.regiao].join(" "));
   r._passada = r._d < hoje;
 });
+
+/* Quantas provas ha numa lista de dias: a Maratona de Jurere aparece em
+   dois dias do calendario e conta uma vez. */
+const contarProvas = lista => new Set(lista.map(r => r._ev)).size;
 
 const state = { escopo:"proximas", q:"", organizador:"", cidade:"", treinos:false,
                 comparativo:false, anoRanking:"", faixaRanking:"", serie:"", serie2:"",
@@ -990,8 +998,12 @@ function noEscopo(r){
 
 function montarMeses(){
   monthsBox.replaceChildren();
-  const porMes = new Map();
-  RACES.filter(noEscopo).forEach(r => porMes.set(r._key, (porMes.get(r._key) || 0) + 1));
+  const porMes = new Map(), vistos = new Set();
+  RACES.filter(noEscopo).forEach(r => {
+    if (vistos.has(r._ev)) return;
+    vistos.add(r._ev);
+    porMes.set(r._key, (porMes.get(r._key) || 0) + 1);
+  });
   const chaves = [...porMes.keys()].sort((a, b) => a - b);
   if (!chaves.length) return;
   const maxMes = Math.max(...porMes.values());
@@ -1539,10 +1551,10 @@ function montarComparativo(){
     : "";
   document.getElementById("comparativo-nota").textContent =
     comResultado.length
-      ? "Os dois primeiros quadros usam " + num(doAno.length) + " provas com resultado publicado" +
+      ? "Os dois primeiros quadros usam " + num(contarProvas(doAno)) + " provas com resultado publicado" +
         (state.anoRanking ? " em " + state.anoRanking : "") +
         ". O crescimento compara edições da mesma prova ao longo dos anos, então usa as " +
-        num(comResultado.length) + " provas do período todo." + ressalva
+        num(contarProvas(comResultado)) + " provas do período todo." + ressalva
       : "Nenhuma prova com resultado publicado dentro dos filtros atuais.";
   if (!comResultado.length) return;
 
@@ -1573,11 +1585,12 @@ function montarComparativo(){
   // --- empresas por concluintes somados
   const porEmpresa = new Map();
   doAno.forEach(r => (r.organizadores || []).forEach(o => {
-    const atual = porEmpresa.get(o) || { provas:0, concluintes:0 };
-    atual.provas += 1;
+    const atual = porEmpresa.get(o) || { eventos:new Set(), concluintes:0 };
+    atual.eventos.add(r._ev);
     atual.concluintes += contarDaFaixa(r, "total");
     porEmpresa.set(o, atual);
   }));
+  porEmpresa.forEach(v => { v.provas = v.eventos.size; });
   const empresas = [...porEmpresa.entries()]
     .sort((a, b) => b[1].concluintes - a[1].concluintes).slice(0, 10);
   if (empresas.length)
@@ -1777,7 +1790,8 @@ function render(){
   // Prova co-organizada soma cada empresa: o Set cuida de não repetir.
   const organizadoras = new Set(res.flatMap(r => r.organizadores || []));
   const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
-  document.getElementById("s-corridas").textContent = String(res.length);
+  const nProvas = contarProvas(res);
+  document.getElementById("s-corridas").textContent = String(nProvas);
   document.getElementById("s-cidades").textContent = String(cidades.size);
   document.getElementById("s-orgs").textContent = String(organizadoras.size);
   // Só provas com resultado publicado entram nesta soma.
@@ -1788,10 +1802,10 @@ function render(){
   const filtros = state.anos.size + state.meses.size + state.regioes.size + state.faixas.size
     + state.tipos.size + (state.q ? 1 : 0) + (state.organizador ? 1 : 0) + (state.cidade ? 1 : 0);
   const palavra = state.treinos
-    ? (res.length === 1 ? "treino" : "treinos")
-    : (res.length === 1 ? "prova" : "provas");
+    ? (nProvas === 1 ? "treino" : "treinos")
+    : (nProvas === 1 ? "prova" : "provas");
   countBox.innerHTML = res.length
-    ? "<b>" + res.length + "</b> " + palavra +
+    ? "<b>" + nProvas + "</b> " + palavra +
       " em <b>" + cidades.size + "</b> " + (cidades.size === 1 ? "cidade" : "cidades") +
       (filtros ? " &middot; filtros ativos" : "")
     : "";
@@ -1814,8 +1828,12 @@ function render(){
     return;
   }
 
-  const porMesRes = new Map();
-  res.forEach(r => porMesRes.set(r._key, (porMesRes.get(r._key) || 0) + 1));
+  const porMesRes = new Map(), vistosMes = new Set();
+  res.forEach(r => {
+    if (vistosMes.has(r._ev)) return;
+    vistosMes.add(r._ev);
+    porMesRes.set(r._key, (porMesRes.get(r._key) || 0) + 1);
+  });
 
   const proxima = res.find(r => !r._passada);
   let mesAtual = null;
@@ -1884,11 +1902,12 @@ function montarOrgs(){
   document.getElementById("orgs-recorte").textContent = descreverRecorte();
   const porEmpresa = new Map();
   ultimoRecorte.forEach(r => (r.organizadores || []).forEach(o => {
-    const atual = porEmpresa.get(o) || { provas:0, cidades:new Set() };
-    atual.provas += 1;
+    const atual = porEmpresa.get(o) || { eventos:new Set(), cidades:new Set() };
+    atual.eventos.add(r._ev);
     atual.cidades.add(r.cidade);
     porEmpresa.set(o, atual);
   }));
+  porEmpresa.forEach(v => { v.provas = v.eventos.size; });
   const todas = [...porEmpresa.entries()]
     .sort((a, b) => b[1].provas - a[1].provas || a[0].localeCompare(b[0], "pt-BR"));
   const alvo = norm(buscaOrgs.value);
@@ -1917,8 +1936,8 @@ function montarOrgs(){
     lista.append(el("li", {}, [b]));
   });
 
-  const provas = ultimoRecorte.filter(r => (r.organizadores || []).length).length;
-  const semOrg = ultimoRecorte.length - provas;
+  const provas = contarProvas(ultimoRecorte.filter(r => (r.organizadores || []).length));
+  const semOrg = contarProvas(ultimoRecorte) - provas;
   const rodape = document.getElementById("orgs-rodape");
   rodape.replaceChildren(
     el("b", { textContent:String(todas.length) }),
@@ -1951,8 +1970,9 @@ function montarPainel(res){
   const regioes = new Set(res.map(r => r.regiao));
   const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
   const concluintes = res.reduce((s, r) => s + (temResultado(r) ? r.concluintes_total : 0), 0);
+  const nProvas = contarProvas(res);
   const numeros = [
-    [res.length, res.length === 1 ? "prova" : "provas"],
+    [nProvas, nProvas === 1 ? "prova" : "provas"],
     [cidades.size, cidades.size === 1 ? "cidade" : "cidades"],
     [regioes.size, regioes.size === 1 ? "região" : "regiões"],
     [concluintes ? num(concluintes) : "—", "concluintes"],
@@ -1964,11 +1984,11 @@ function montarPainel(res){
     el("div", {}, [el("b", { textContent:String(valor) }), el("span", { textContent:rotulo })])));
 
   const porAno = new Map();
-  res.forEach(r => porAno.set(r.ano, (porAno.get(r.ano) || 0) + 1));
+  res.forEach(r => porAno.set(r.ano, (porAno.get(r.ano) || new Set()).add(r._ev)));
   const anos = document.getElementById("painel-anos");
   anos.replaceChildren();
-  [...porAno.entries()].sort((a, b) => a[0] - b[0]).forEach(([ano, n]) =>
-    anos.append(el("span", { textContent:ano + ": " + n + (n === 1 ? " prova" : " provas") })));
+  [...porAno.entries()].sort((a, b) => a[0] - b[0]).forEach(([ano, evs]) =>
+    anos.append(el("span", { textContent:ano + ": " + evs.size + (evs.size === 1 ? " prova" : " provas") })));
 }
 
 function linha(r, destaque){
@@ -1994,6 +2014,9 @@ function linha(r, destaque){
 
   r.tags.filter(x => x !== "Rua").forEach(x =>
     meta.append(el("span", { className:"tag tag--" + norm(x), textContent:x })));
+  if (r.evento_dias > 1)
+    meta.append(el("span", { className:"tag tag--dia", textContent:"dia " + r.evento_dia + " de " + r.evento_dias,
+                             title:"Evento de " + r.evento_dias + " dias: conta uma prova só nos totais" }));
 
   if (!r._passada){
     const dias = Math.round((r._d - hoje) / 86400000);
