@@ -466,7 +466,8 @@ function desenharSelos(res){
             : `Selo superfã com ${MINIMO_SUPERFA} provas da mesma organizadora.` }));
     return;
   }
-  selos.forEach(([empresa, n]) => {
+  // So as tres organizadoras que o atleta mais correu; empate, ordem alfabetica.
+  selos.slice(0, 3).forEach(([empresa, n]) => {
     const s = el("span", { className:"selo", title:`${n} provas da ${empresa}` });
     s.innerHTML = ICONE_SELO;
     s.append(document.createTextNode("Superfã da " + empresa), el("small", { textContent:`${n} provas` }));
