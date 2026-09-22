@@ -1,13 +1,13 @@
 == coleta ==
 == fontes ==
-  corridasbr: 207 provas
+  corridasbr: 208 provas
   corridasbr/arquivo: 334 provas
-  ticketsports: 79 provas
-  roadrunners: 200 provas
+  ticketsports: 78 provas
+  roadrunners: 208 provas
   movnow: 15 provas
   atletis: 0 provas
 
-589 provas distintas depois de fundir as fontes
+595 provas distintas depois de fundir as fontes
 descartadas (8): fora de SC ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
@@ -17,21 +17,29 @@ descartadas (8): fora de SC ou nao sao corrida
   - 2026-11-29  Morrinhos do Sul - 5ª RÚstica Recanto dos Canyons [é de RS]
   - 2026-11-30  São José - SC - FEDERAÇÃO DE TRIATHLON DE SANTA CATARIN [triathlon]
   - 2026-12-12  Nova Veneza - FODAXMAN EXTREME TRIATHLON 2026 [triathlon]
-restam 581 provas
+restam 587 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
-concluintes (supercrono): 1 provas consultadas, 1 preenchidas
 organizador: 1 provas consultadas, 1 preenchidas
-organizador: 17 provas tiveram a grafia padronizada
+organizador: 16 provas tiveram a grafia padronizada
 percurso: 1 provas consultadas no arquivo, 1 preenchidas
-series: 1235 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 2115 provas (1865 ja realizadas) | 194 cidades
-novas nesta rodada: 0
+series: 1244 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 2125 provas (1869 ja realizadas) | 195 cidades
+novas nesta rodada: 6
+  + 2026-10-03  Vargem Bonita - 10º CIRCUITO IRANI de ESPORTES
+  + 2026-10-24  Três Barras - Corrida e Caminhada Sest Senat
+  + 2026-11-21  São Francisco do Sul - PDS Run
+  + 2026-11-22  Itajaí - Corrida Sest Senat - Itajaí
+  + 2026-12-05  Tijucas - SUNSET RUN TIJUCAS
+  + 2027-02-21  Lages - 5ª Meia Maratona Animi Serra Catarinense
 
 futuras que nao apareceram hoje (2) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
   ? 2026-11-01  Florianópolis - 16ª VOLTA a LAGOA da CONCEIÇÃO (visto pela ultima vez em 2026-09-19)
 
-== build ==
-artifact.html e index.html gerados (1,466,099 bytes)
+== perfis ==
+perfis revistos: 10
 
-RESULTADO: pronto para publicar (coleta de 21/09/2026).
+== build ==
+artifact.html e index.html gerados (1,519,468 bytes)
+
+RESULTADO: pronto para publicar (coleta de 22/09/2026).
