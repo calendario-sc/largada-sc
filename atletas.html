@@ -106,6 +106,21 @@ h1 em{font-style:normal; color:#FFC21A}
 .num em{display:block; font-style:normal; font-size:.78rem; color:var(--muted); margin-top:.2rem}
 .num .sobe{color:var(--trail)} .num .desce{color:var(--ultra)}
 
+.conquistas{margin:0 0 1.2rem; padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow)}
+.conquistas h3{font-family:var(--f-display); font-weight:700; font-size:1.02rem; margin:0}
+.conquistas .sub{margin:.15rem 0 .8rem; font-size:.8rem; color:var(--muted)}
+.medalhas{display:grid; grid-template-columns:repeat(auto-fit,minmax(6.6rem,1fr)); gap:.6rem}
+.medalha{display:flex; flex-direction:column; align-items:center; text-align:center; gap:.35rem; padding:.85rem .5rem .7rem;
+  border-radius:12px; border:1px solid var(--line-soft); background:var(--surface-2)}
+.medalha svg{width:3rem; height:3rem; display:block}
+.medalha b{font-family:var(--f-display); font-weight:800; font-size:1.05rem; line-height:1}
+.medalha small{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); line-height:1.3}
+.medalha.aberta{background:var(--surface); border-color:var(--c); box-shadow:inset 0 0 0 1px var(--c)}
+.medalha.aberta b{color:var(--c)}
+.medalha.fechada{opacity:.55}
+.medalha.fechada b{color:var(--muted)}
+.medalha.fechada svg{color:var(--muted)}
+
 .grade{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(20rem,1fr)); margin:0 0 1.2rem}
 .cartao{padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow); min-width:0; overflow-x:auto}
 .cartao h3{font-family:var(--f-display); font-weight:700; font-size:1.02rem; margin:0}
@@ -174,6 +189,11 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
       <button class="voltar" id="voltar" type="button">← outra busca</button>
     </div>
     <div class="nums" id="p-nums"></div>
+    <div class="conquistas">
+      <h3>Distâncias desbloqueadas</h3>
+      <p class="sub">Uma medalha por faixa de distância já concluída; cadeado no que ainda falta.</p>
+      <div class="medalhas" id="medalhas"></div>
+    </div>
     <div class="grade">
       <div class="cartao">
         <h3>Distância por prova</h3>
@@ -345,12 +365,51 @@ function abrir(a){
   const podios = res.filter(r => r.pos && r.pos <= 3).length;
   if (podios) numero(num(podios), podios === 1 ? "pódio geral" : "pódios gerais", "1º a 3º da prova");
 
+  desenharConquistas(res);
   desenharDistancia(res);
   desenharPace(res);
   ultimoRes = res;
   tabelaMelhores(res);
   tabelaTodas(res);
   perfil.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+/* ---------- distancias desbloqueadas ----------
+   Uma medalha por faixa que o atleta ja concluiu; cadeado nas outras. A cor
+   da medalha e a mesma da serie no grafico de pace. */
+const ICONE_MEDALHA = `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+  <path d="M17 4h14l-3 12h-8z" fill="currentColor" fill-opacity=".18"/>
+  <circle cx="24" cy="30" r="12" fill="currentColor" fill-opacity=".14"/>
+  <circle cx="24" cy="30" r="12"/>
+  <path d="M19.5 30.5l3 3 6-7"/>
+</svg>`;
+const ICONE_CADEADO = `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+  <rect x="11" y="21" width="26" height="20" rx="4" fill="currentColor" fill-opacity=".12"/>
+  <path d="M16 21v-5a8 8 0 0 1 16 0v5"/>
+  <circle cx="24" cy="31" r="2.2" fill="currentColor"/>
+  <path d="M24 33v4"/>
+</svg>`;
+
+function desenharConquistas(res){
+  const caixa = document.getElementById("medalhas");
+  caixa.replaceChildren();
+  FAIXAS.forEach(([nome, , , cor]) => {
+    const dessa = res.filter(r => { const f = faixaDe(r.km); return f && f[0] === nome; });
+    const aberta = dessa.length > 0;
+    const card = el("div", { className: "medalha " + (aberta ? "aberta" : "fechada"),
+      title: aberta ? `${nome}: ${dessa.length} ${dessa.length === 1 ? "prova" : "provas"}` : `${nome}: ainda não concluída` });
+    card.style.setProperty("--c", `var(${cor})`);
+    const icone = el("span"); icone.innerHTML = aberta ? ICONE_MEDALHA : ICONE_CADEADO;
+    icone.firstElementChild.style.color = aberta ? `var(${cor})` : "";
+    card.append(icone, el("b", { textContent: nome }));
+    if (aberta){
+      const melhor = dessa.reduce((m, r) => r.tempo < m.tempo ? r : m);
+      card.append(el("small", { textContent: `${dessa.length} ${dessa.length === 1 ? "prova" : "provas"} · melhor ${tempo(melhor.tempo)}` }));
+    } else {
+      card.append(el("small", { textContent: "bloqueada" }));
+    }
+    caixa.append(card);
+  });
 }
 
 let ultimoRes = null;
