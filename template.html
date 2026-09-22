@@ -113,6 +113,54 @@ h1 em{font-style:normal; color:#FFC21A}
 }
 .stat span{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.72)}
 .stat:first-child b{color:#FFC21A}
+/* A caixa das organizadoras abre a lista: e botao, com a mesma cara das outras. */
+.stat--btn{font:inherit; text-align:left; cursor:pointer; color:inherit; transition:background .15s, border-color .15s}
+.stat--btn:hover,.stat--btn:focus-visible{background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.45)}
+.stat--btn span::after{content:" ›"; color:#FFC21A; letter-spacing:0}
+
+/* ---------- lista das organizadoras ---------- */
+.orgs{
+  width:min(34rem, 100% - 2rem); max-height:min(85vh, 44rem); padding:0; margin:auto;
+  border:1px solid var(--line); border-radius:var(--r); background:var(--surface); color:var(--ink);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.orgs::backdrop{background:rgba(4,9,22,.55); -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px)}
+.orgs__caixa{display:flex; flex-direction:column; max-height:min(85vh, 44rem)}
+.orgs__topo{display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; padding:1.1rem 1.2rem .7rem}
+.orgs h2{font-family:var(--f-display); font-weight:800; font-size:1.3rem; margin:0; letter-spacing:-.015em}
+.orgs h2 small{
+  display:block; margin-top:.3rem; font-family:var(--f-mono); font-weight:400;
+  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+}
+.orgs__fechar{
+  flex:none; font:inherit; font-size:.8rem; cursor:pointer; color:var(--muted);
+  background:none; border:1px dashed var(--line); border-radius:999px; padding:.3rem .7rem;
+}
+.orgs__fechar:hover{border-color:var(--accent); color:var(--ink)}
+.orgs__busca{padding:0 1.2rem .7rem}
+.orgs__busca input{
+  width:100%; font:inherit; font-size:.9rem; padding:.5rem .7rem; color:var(--ink);
+  background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
+}
+.orgs__lista{list-style:none; margin:0; padding:0 .6rem 1rem; overflow-y:auto}
+.orgs__lista li button{
+  width:100%; font:inherit; cursor:pointer; text-align:left; background:none; border:0;
+  border-radius:8px; padding:.45rem .6rem; color:var(--ink); position:relative;
+  display:grid; grid-template-columns:2rem minmax(0,1fr) auto; align-items:center; gap:.6rem;
+}
+.orgs__lista li button:hover{background:var(--accent-wash)}
+.orgs__lista .pos{font-family:var(--f-mono); font-size:.72rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.orgs__lista .nome{font-weight:600; font-size:.92rem; overflow-wrap:anywhere}
+.orgs__lista .nome small{display:block; font-weight:400; font-size:.76rem; color:var(--muted)}
+.orgs__lista .n{font-family:var(--f-display); font-weight:800; font-size:1.05rem; color:var(--azul-ink); font-variant-numeric:tabular-nums}
+.orgs__lista .n small{font-family:var(--f-mono); font-weight:400; font-size:.62rem; color:var(--muted); margin-left:.25rem; letter-spacing:.06em; text-transform:uppercase}
+.orgs__lista .barra{
+  grid-column:2 / 4; height:3px; border-radius:2px; background:var(--azul-wash); overflow:hidden; margin-top:-.1rem;
+}
+.orgs__lista .barra i{display:block; height:100%; width:var(--w); background:var(--azul)}
+.orgs__vazio{color:var(--muted); font-size:.88rem; padding:.6rem 1.2rem 1.2rem}
+.orgs__rodape{padding:.6rem 1.2rem .9rem; border-top:1px solid var(--line-soft); font-size:.8rem; color:var(--muted)}
+.orgs__rodape b{color:var(--ink-2)}
 
 /* ---------- ritmo do ano ---------- */
 .pulse{padding:1.9rem 0 1.6rem}
@@ -528,6 +576,9 @@ h1 em{font-style:normal; color:#FFC21A}
   .stat{min-width:0; padding:.55rem .6rem}
   .stat b{font-size:1.5rem}
   .stat span{font-size:.58rem; letter-spacing:.06em; line-height:1.3; overflow-wrap:anywhere}
+  .orgs{width:calc(100% - 1rem); max-height:90vh}
+  .orgs__caixa{max-height:90vh}
+  .orgs__topo,.orgs__busca{padding-inline:.9rem}
   /* Alvo de toque maior; o dedo nao acerta um chip de 30px. */
   .chip{padding:.5rem .75rem}
   .escopo .chip{padding:.5rem .8rem}
@@ -603,7 +654,8 @@ h1 em{font-style:normal; color:#FFC21A}
     <div class="stats">
       <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
       <div class="stat"><b id="s-cidades">0</b><span>cidades</span></div>
-      <div class="stat"><b id="s-orgs">0</b><span>organizadoras</span></div>
+      <button class="stat stat--btn" id="stat-orgs" type="button" aria-haspopup="dialog"
+              title="Ver a lista das organizadoras e quantas provas cada uma tem no recorte"><b id="s-orgs">0</b><span>organizadoras</span></button>
       <div class="stat"><b id="s-conc">0</b><span>concluintes</span></div>
       <div class="stat"><b id="s-km">0</b><span>km mais longo</span></div>
     </div>
@@ -695,6 +747,20 @@ h1 em{font-style:normal; color:#FFC21A}
   <p class="count" id="count" role="status" aria-live="polite"></p>
   <div id="list"></div>
 </main>
+
+<dialog class="orgs" id="orgs" aria-labelledby="orgs-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="orgs-titulo">Organizadoras <small id="orgs-recorte"></small></h2>
+      <button class="orgs__fechar" id="orgs-fechar" type="button">Fechar</button>
+    </div>
+    <div class="orgs__busca">
+      <input id="orgs-busca" type="search" placeholder="Buscar organizadora…" autocomplete="off" aria-label="Buscar organizadora">
+    </div>
+    <ul class="orgs__lista" id="orgs-lista"></ul>
+    <p class="orgs__rodape" id="orgs-rodape"></p>
+  </div>
+</dialog>
 
 <footer class="foot">
   <div class="wrap">
@@ -1732,6 +1798,8 @@ function render(){
 
   montarPainel(res);
   montarComparativo();
+  ultimoRecorte = res;
+  if (dialogoOrgs.open) montarOrgs();
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -1787,6 +1855,91 @@ btnComparativo.onclick = () => {
   if (state.comparativo)
     document.getElementById("comparativo").scrollIntoView({ behavior:"smooth", block:"start" });
 };
+
+/* ---------- lista das organizadoras ----------
+   A caixa do cabecalho diz quantas sao; clicar nela abre a lista, com o
+   numero de provas de cada empresa no recorte filtrado (ano, mes, regiao...).
+   Clicar numa empresa filtra o calendario por ela. */
+let ultimoRecorte = [];
+const dialogoOrgs = document.getElementById("orgs");
+const buscaOrgs = document.getElementById("orgs-busca");
+
+function descreverRecorte(){
+  const partes = [];
+  if (state.anos.size) partes.push([...state.anos].sort().join(", "));
+  else partes.push({ proximas:"próximas provas", realizadas:"provas realizadas", todas:"todos os anos" }[state.escopo]);
+  if (state.meses.size)
+    partes.push([...state.meses].sort().map(k => MES_NOME[k % 100 - 1] + " " + Math.floor(k / 100)).join(", "));
+  if (state.regioes.size) partes.push([...state.regioes].join(", "));
+  if (state.cidade) partes.push(state.cidade);
+  if (state.tipos.size) partes.push([...state.tipos].join(", "));
+  if (state.faixas.size)
+    partes.push([...state.faixas].map(f => (FAIXAS.find(([x]) => x === f) || ["", f])[1]).join(", "));
+  if (state.treinos) partes.push("treinos");
+  if (state.q) partes.push("busca por “" + state.q + "”");
+  return partes.join(" · ");
+}
+
+function montarOrgs(){
+  document.getElementById("orgs-recorte").textContent = descreverRecorte();
+  const porEmpresa = new Map();
+  ultimoRecorte.forEach(r => (r.organizadores || []).forEach(o => {
+    const atual = porEmpresa.get(o) || { provas:0, cidades:new Set() };
+    atual.provas += 1;
+    atual.cidades.add(r.cidade);
+    porEmpresa.set(o, atual);
+  }));
+  const todas = [...porEmpresa.entries()]
+    .sort((a, b) => b[1].provas - a[1].provas || a[0].localeCompare(b[0], "pt-BR"));
+  const alvo = norm(buscaOrgs.value);
+  const achadas = alvo ? todas.filter(([nome]) => norm(nome).includes(alvo)) : todas;
+  const maior = todas.length ? todas[0][1].provas : 1;
+  const palavra = state.treinos ? "treino" : "prova";
+
+  const lista = document.getElementById("orgs-lista");
+  lista.replaceChildren();
+  if (!achadas.length){
+    lista.append(el("li", {}, [el("div", { className:"orgs__vazio",
+      textContent: todas.length ? "Nenhuma organizadora com esse nome." : "Nenhuma organizadora no recorte." })]));
+  }
+  achadas.forEach(([nome, v], i) => {
+    const b = el("button", { type:"button", title:"Ver as provas de " + nome }, [
+      el("span", { className:"pos", textContent:String(todas.indexOf(achadas[i]) + 1) + "º" }),
+      el("span", { className:"nome", textContent:nome }, [
+        el("small", { textContent: v.cidades.size === 1 ? [...v.cidades][0]
+          : v.cidades.size + " cidades" })]),
+      el("span", { className:"n", textContent:String(v.provas) }, [
+        el("small", { textContent: v.provas === 1 ? palavra : palavra + "s" })]),
+      el("span", { className:"barra" }, [el("i")]),
+    ]);
+    b.querySelector(".barra").style.setProperty("--w", Math.round(100 * v.provas / maior) + "%");
+    b.onclick = () => { dialogoOrgs.close(); filtrarPorOrganizador(nome); };
+    lista.append(el("li", {}, [b]));
+  });
+
+  const provas = ultimoRecorte.filter(r => (r.organizadores || []).length).length;
+  const semOrg = ultimoRecorte.length - provas;
+  const rodape = document.getElementById("orgs-rodape");
+  rodape.replaceChildren(
+    el("b", { textContent:String(todas.length) }),
+    document.createTextNode((todas.length === 1 ? " organizadora em " : " organizadoras em ")),
+    el("b", { textContent:String(provas) }),
+    document.createTextNode(" " + (provas === 1 ? palavra : palavra + "s")
+      + (semOrg ? " · " + semOrg + (semOrg === 1 ? " " + palavra + " sem organizadora identificada" : " " + palavra + "s sem organizadora identificada") : "")
+      + ". Prova com mais de uma organizadora conta para cada uma."),
+  );
+}
+
+document.getElementById("stat-orgs").onclick = () => {
+  buscaOrgs.value = "";
+  montarOrgs();
+  dialogoOrgs.showModal();
+  document.getElementById("orgs-lista").scrollTop = 0;
+};
+document.getElementById("orgs-fechar").onclick = () => dialogoOrgs.close();
+buscaOrgs.oninput = () => montarOrgs();
+// Clique no fundo escurecido fecha, como se espera de uma janela dessas.
+dialogoOrgs.addEventListener("click", e => { if (e.target === dialogoOrgs) dialogoOrgs.close(); });
 
 function montarPainel(res){
   const painel = document.getElementById("painel");
