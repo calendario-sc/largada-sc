@@ -331,7 +331,7 @@ async function buscar(){
   if (chave(q).length < 3){ dica.textContent = q ? "Digite pelo menos três letras." : ""; return; }
   const prefs = baldesPara(q);
   if (!prefs.length){ dica.textContent = "Nenhum atleta com esse começo de nome."; return; }
-  if (prefs.length > MAX_BALDES){ dica.textContent = "Digite mais uma letra para afinar a busca."; return; }
+  if (prefs.length > MAX_BALDES){ dica.textContent = "Nome muito comum: acrescente o começo do sobrenome (ex. \"" + q.trim() + " s\").";  return; }
   dica.textContent = "Buscando…";
   const blocos = await Promise.all(prefs.map(balde));
   if (meu !== pedido) return;

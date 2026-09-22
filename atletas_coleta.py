@@ -101,6 +101,10 @@ def modalidades(html):
         if nome and nome != "0" and nome not in vistas:
             vistas.add(nome)
             saida.append(nome)
+    # Prova de modalidade unica nao tem seletor: a tabela vem direto, com
+    # modalidade vazia na chamada (Maratona de Jurere 2024).
+    if not saida and 'data-remote-url="' in html:
+        saida.append("")
     return saida
 
 
