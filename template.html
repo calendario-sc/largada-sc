@@ -161,6 +161,11 @@ h1 em{font-style:normal; color:#FFC21A}
 .orgs__vazio{color:var(--muted); font-size:.88rem; padding:.6rem 1.2rem 1.2rem}
 .orgs__rodape{padding:.6rem 1.2rem .9rem; border-top:1px solid var(--line-soft); font-size:.8rem; color:var(--muted)}
 .orgs__rodape b{color:var(--ink-2)}
+.orgs__acoes{display:flex; gap:.4rem; flex:none}
+#orgs-pdf::before{content:"\2193\00a0"}
+
+/* Relatorio das organizadoras: so existe no papel. */
+.rel{display:none}
 
 /* ---------- ritmo do ano ---------- */
 .pulse{padding:1.9rem 0 1.6rem}
@@ -642,6 +647,32 @@ h1 em{font-style:normal; color:#FFC21A}
   .serie{border:1px solid var(--line); border-left-width:3px; box-shadow:none; padding:.9rem 1rem}
   .rank li{font-size:.8rem}
   .rank .nome small{font-size:.68rem}
+
+  /* Relatorio das organizadoras no lugar do comparativo. */
+  .orgs{display:none !important}
+  body.print-orgs .results{display:none !important}
+  body.print-orgs .rel{display:block}
+  .rel h1{font-family:var(--f-display); font-weight:800; font-size:1.45rem; margin:0; letter-spacing:-.015em; color:var(--ink); max-width:none}
+  .rel__recorte{margin:.5rem 0 0; padding:0 0 .7rem; border-bottom:1px solid var(--line); font-size:.8rem; color:var(--muted)}
+  .rel__recorte p{margin:.12rem 0}
+  .rel__recorte b{color:var(--ink-2); font-weight:500}
+  .rel__lista{list-style:none; margin:.6rem 0 0; padding:0}
+  .rel__org{break-inside:avoid; page-break-inside:avoid; padding:.45rem 0 .3rem; border-top:1px solid var(--line-soft)}
+  .rel__org:first-child{border-top:0}
+  .rel__cab{display:flex; align-items:baseline; gap:.6rem; font-size:.92rem}
+  .rel__cab .pos{font-family:var(--f-mono); font-size:.7rem; color:var(--muted); min-width:1.6rem}
+  .rel__cab .nome{font-weight:700; flex:1}
+  .rel__cab .n{font-family:var(--f-mono); font-size:.74rem; color:var(--ink-2); white-space:nowrap}
+  .rel__provas{list-style:none; margin:.15rem 0 0 2.2rem; padding:0}
+  .rel__provas li{display:flex; gap:.6rem; align-items:baseline; font-size:.74rem; color:var(--ink-2); padding:.07rem 0}
+  .rel__provas .p{flex:1}
+  .rel__provas .p small{color:var(--muted); font-size:.68rem}
+  .rel__provas .c{font-family:var(--f-mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+  .rel__provas .c.vazio{color:var(--muted)}
+  .rel__total{margin:.8rem 0 0; padding:.6rem 0 0; border-top:2px solid var(--ink); display:flex; gap:.6rem; font-size:.92rem; font-weight:700}
+  .rel__total span:first-child{flex:1}
+  .rel__total .c{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
+  .rel__nota{margin:.5rem 0 0; font-size:.7rem; color:var(--muted)}
 }
 </style>
 
@@ -749,11 +780,16 @@ h1 em{font-style:normal; color:#FFC21A}
   <div id="list"></div>
 </main>
 
+<section class="rel" id="rel-orgs" aria-hidden="true"></section>
+
 <dialog class="orgs" id="orgs" aria-labelledby="orgs-titulo">
   <div class="orgs__caixa">
     <div class="orgs__topo">
       <h2 id="orgs-titulo">Organizadoras <small id="orgs-recorte"></small></h2>
-      <button class="orgs__fechar" id="orgs-fechar" type="button">Fechar</button>
+      <div class="orgs__acoes">
+        <button class="orgs__fechar" id="orgs-pdf" type="button" title="Relatório com as provas e os concluintes de cada organizadora">Exportar PDF</button>
+        <button class="orgs__fechar" id="orgs-fechar" type="button">Fechar</button>
+      </div>
     </div>
     <div class="orgs__busca">
       <input id="orgs-busca" type="search" placeholder="Buscar organizadora…" autocomplete="off" aria-label="Buscar organizadora">
@@ -1719,7 +1755,10 @@ document.getElementById("btn-pdf").onclick = () => {
   document.title = nomeDoArquivo();
   window.print();
 };
-window.addEventListener("afterprint", () => { document.title = TITULO; });
+window.addEventListener("afterprint", () => {
+  document.title = TITULO;
+  document.body.classList.remove("print-orgs");
+});
 
 /* ---------- cobertura de resultados ----------
    Nem todo ano tem a mesma parcela de provas com resultado publicado: quanto
@@ -1956,6 +1995,113 @@ document.getElementById("stat-orgs").onclick = () => {
   document.getElementById("orgs-lista").scrollTop = 0;
 };
 document.getElementById("orgs-fechar").onclick = () => dialogoOrgs.close();
+
+/* Relatorio em PDF: quem gera e o navegador (Salvar como PDF na caixa de
+   impressao). O corpo ganha a classe print-orgs, e o CSS de impressao
+   troca o comparativo por esta secao. Evento de mais de um dia sai uma
+   vez, com os concluintes dos dias somados. */
+function eventosDoRecorte(lista){
+  const porEvento = new Map();
+  lista.forEach(r => {
+    const e = porEvento.get(r._ev) || { nome:r.evento_dias > 1 && r.serie_nome ? r.serie_nome : r.nome,
+                                        cidade:r.cidade, data:r._d, ano:r.ano, concluintes:0, comResultado:false, parcial:false };
+    if (temResultado(r)){ e.concluintes += r.concluintes_total; e.comResultado = true; }
+    if (r.resultado_parcial) e.parcial = true;
+    porEvento.set(r._ev, e);
+  });
+  return porEvento;
+}
+
+function montarRelatorioOrgs(){
+  const caixa = document.getElementById("rel-orgs");
+  const eventos = eventosDoRecorte(ultimoRecorte);
+  const dataCurta = d => d.toLocaleDateString("pt-BR", { day:"2-digit", month:"2-digit", year:"numeric" });
+
+  // Cabecalho: ano, cidade, regiao ou estado, e o que mais estiver filtrado.
+  const ano = state.anos.size ? [...state.anos].sort().join(", ")
+    : { proximas:"próximas provas", realizadas:"provas realizadas", todas:"todos os anos" }[state.escopo];
+  const recorte = [
+    ["Ano", ano],
+    ["Cidade", state.cidade || "todas"],
+    [state.regioes.size ? "Região" : "Estado", state.regioes.size ? [...state.regioes].join(", ") : "Santa Catarina"],
+  ];
+  const extras = [];
+  if (state.meses.size)
+    extras.push([...state.meses].sort().map(k => MES_NOME[k % 100 - 1] + " " + Math.floor(k / 100)).join(", "));
+  if (state.tipos.size) extras.push([...state.tipos].join(", "));
+  if (state.faixas.size)
+    extras.push([...state.faixas].map(f => (FAIXAS.find(([x]) => x === f) || ["", f])[1]).join(", "));
+  if (state.treinos) extras.push("treinos");
+  if (state.q) extras.push("busca por “" + state.q + "”");
+  if (extras.length) recorte.push(["Outros filtros", extras.join(" · ")]);
+
+  const cab = el("div", { className:"rel__recorte" });
+  recorte.forEach(([k, v]) => cab.append(el("p", {}, [el("b", { textContent:k + ": " }), document.createTextNode(v)])));
+  cab.append(el("p", {}, [el("b", { textContent:"Largada SC" }),
+    document.createTextNode(" · dados da coleta de " + COLETA + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR"))]));
+
+  // Empresas, cada uma com seus eventos; no fim, as provas sem organizadora.
+  const porEmpresa = new Map();
+  ultimoRecorte.forEach(r => {
+    const orgs = (r.organizadores || []).length ? r.organizadores : ["Sem organizadora identificada"];
+    orgs.forEach(o => porEmpresa.set(o, (porEmpresa.get(o) || new Set()).add(r._ev)));
+  });
+  const semOrg = porEmpresa.get("Sem organizadora identificada");
+  porEmpresa.delete("Sem organizadora identificada");
+  const ordem = [...porEmpresa.entries()]
+    .sort((a, b) => b[1].size - a[1].size || a[0].localeCompare(b[0], "pt-BR"));
+  if (semOrg) ordem.push(["Sem organizadora identificada", semOrg]);
+
+  const lista = el("ol", { className:"rel__lista" });
+  ordem.forEach(([nome, evs], i) => {
+    const itens = [...evs].map(k => eventos.get(k)).sort((a, b) => a.data - b.data);
+    const soma = itens.reduce((s, e) => s + e.concluintes, 0);
+    const li = el("li", { className:"rel__org" });
+    li.append(el("div", { className:"rel__cab" }, [
+      el("span", { className:"pos", textContent: nome === "Sem organizadora identificada" ? "" : (i + 1) + "º" }),
+      el("span", { className:"nome", textContent:nome }),
+      el("span", { className:"n", textContent: itens.length + (itens.length === 1 ? " prova" : " provas")
+        + (soma ? " · " + num(soma) + " concluintes" : "") }),
+    ]));
+    const ul = el("ul", { className:"rel__provas" });
+    itens.forEach(e => ul.append(el("li", {}, [
+      el("span", { className:"p" }, [document.createTextNode(e.nome + " "),
+        el("small", { textContent:"· " + e.cidade + " · " + dataCurta(e.data) })]),
+      el("span", { className:"c" + (e.comResultado ? "" : " vazio"),
+        textContent: e.comResultado ? num(e.concluintes) : (e.parcial ? "resultado parcial" : "sem resultado") }),
+    ])));
+    li.append(ul);
+    lista.append(li);
+  });
+
+  // Soma final: cada evento uma vez, mesmo quando duas empresas o assinam.
+  const totalConc = [...eventos.values()].reduce((s, e) => s + e.concluintes, 0);
+  const total = el("p", { className:"rel__total" }, [
+    el("span", { textContent:"Total: " + num(eventos.size) + (eventos.size === 1 ? " prova" : " provas")
+      + " · " + num(porEmpresa.size) + (porEmpresa.size === 1 ? " organizadora" : " organizadoras") }),
+    el("span", { className:"c", textContent: num(totalConc) + " concluintes" }),
+  ]);
+  const nota = el("p", { className:"rel__nota", textContent:
+    "Concluintes contam só as provas com resultado publicado. Prova com mais de uma organizadora aparece em cada uma, "
+    + "mas entra uma vez na soma final. Evento de mais de um dia conta uma prova." });
+
+  caixa.replaceChildren(el("h1", { textContent:"Organizadoras — provas e concluintes" }), cab, lista, total, nota);
+}
+
+function nomeDoRelatorioOrgs(){
+  const pedacos = ["Largada SC - Organizadoras"];
+  if (state.anos.size) pedacos.push([...state.anos].sort().join("-"));
+  if (state.cidade) pedacos.push(state.cidade);
+  if (state.regioes.size) pedacos.push([...state.regioes].join(", "));
+  return pedacos.join(" - ").replace(/[\\/:*?"<>|]/g, "");
+}
+
+document.getElementById("orgs-pdf").onclick = () => {
+  montarRelatorioOrgs();
+  document.body.classList.add("print-orgs");
+  document.title = nomeDoRelatorioOrgs();
+  window.print();
+};
 buscaOrgs.oninput = () => montarOrgs();
 // Clique no fundo escurecido fecha, como se espera de uma janela dessas.
 dialogoOrgs.addEventListener("click", e => { if (e.target === dialogoOrgs) dialogoOrgs.close(); });
