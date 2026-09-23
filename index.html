@@ -112,6 +112,11 @@ h1 em{font-style:normal; color:#FFC21A}
 .lede{margin:.9rem 0 0; max-width:38ch; color:rgba(255,255,255,.85); font-size:1.02rem}
 .lede__link{display:inline-block; margin-top:.35rem; color:#FFC21A; font-weight:600; text-decoration:none; border-bottom:1px solid rgba(255,194,26,.5)}
 .lede__link:hover{border-color:#FFC21A}
+/* O lugar do recorte, em cima das caixas: estado, regiao ou cidade. */
+.top__dados{display:flex; flex-direction:column; gap:.6rem; align-items:stretch; min-width:0}
+.top__lugar{margin:0; display:flex; flex-direction:column; gap:.15rem}
+.top__lugar small{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:#FFC21A}
+.top__lugar b{font-family:var(--f-display); font-weight:800; font-size:clamp(1.4rem,3vw,2rem); line-height:1.05; letter-spacing:-.02em; color:#FFFFFF; text-wrap:balance}
 .stats{display:flex; gap:1.2rem; flex-wrap:wrap}
 .stat{
   padding:.75rem 1rem .7rem; border-radius:12px; min-width:108px;
@@ -642,6 +647,8 @@ h1 em{font-style:normal; color:#FFC21A}
   .top__inner{padding:2rem 0 2rem; gap:1.4rem}
   /* Cinco numeros lado a lado nao cabem: em grade eles quebram em duas
      linhas em vez de os rotulos se atropelarem. */
+  .top__dados{flex:1 1 100%; width:100%}
+  .top__dados .stats{width:100%}
   .stats{
     flex:1 1 100%;   /* sem a largura da linha inteira a grade colapsa em 1 coluna */
     display:grid; grid-template-columns:repeat(auto-fit,minmax(6.1rem,1fr)); gap:.5rem;
@@ -773,6 +780,8 @@ h1 em{font-style:normal; color:#FFC21A}
       <h1>Cupons de <em>Corrida</em></h1>
       <p class="lede">Filtre por mês, região, distância e tipo.</p>
     </div>
+    <div class="top__dados">
+      <p class="top__lugar" id="top-lugar"><small id="lugar-tipo">Estado</small><b id="lugar-nome">Santa Catarina</b></p>
     <div class="stats">
       <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
       <div class="stat"><b id="s-cidades">0</b><span>cidades</span></div>
@@ -780,6 +789,7 @@ h1 em{font-style:normal; color:#FFC21A}
               title="Ver a lista das organizadoras e quantas provas cada uma tem no recorte"><b id="s-orgs">0</b><span>organizadoras</span></button>
       <div class="stat"><b id="s-conc">0</b><span>concluintes</span></div>
       <div class="stat"><b id="s-km">0</b><span>km mais longo</span></div>
+    </div>
     </div>
     <div class="top__acoes">
       <p class="top__recorte" id="top-recorte"></p>
@@ -2106,7 +2116,19 @@ function descreverRecorte(){
   return partes.join(" · ");
 }
 
+function mostrarLugar(){
+  let tipo = "Estado", nome = "Santa Catarina";
+  if (state.cidade){ tipo = "Cidade"; nome = state.cidade; }
+  else if (state.regioes.size){
+    tipo = state.regioes.size === 1 ? "Região" : "Regiões";
+    nome = [...state.regioes].join(" · ");
+  }
+  document.getElementById("lugar-tipo").textContent = tipo;
+  document.getElementById("lugar-nome").textContent = nome;
+}
+
 function mostrarRecorte(){
+  mostrarLugar();
   const semNada = !state.anos.size && !state.meses.size && !state.regioes.size && !state.cidade
     && !state.organizador && !state.tipos.size && !state.faixas.size && !state.treinos && !state.q;
   document.getElementById("top-recorte").replaceChildren(
