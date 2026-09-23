@@ -412,7 +412,7 @@ document.getElementById("pdf").onclick = () => {
     el("b", { textContent:"Cupons de Corrida · resultados por atleta" }),
     document.createTextNode(" · resultados de " + (anos.length ? anos[0] + " a " + anos[anos.length - 1] : "openresults.run")
       + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR")
-      + " · calendario-sc.github.io/largada-sc"));
+      + " · www.cuponsdecorrida.com.br"));
   document.title = ("Cupons de Corrida - Atleta - " + atletaAberto).replace(/[\\/:*?"<>|]/g, "");
   window.print();
 };
