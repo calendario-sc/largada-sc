@@ -119,14 +119,16 @@ h1 em{font-style:normal; color:#FFC21A}
 .stat--btn span::after{content:" ›"; color:#FFC21A; letter-spacing:0}
 
 /* ---- linha do recorte e dos botoes principais ---- */
-.top__acoes{flex:1 1 100%; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.6rem 1.2rem; margin-top:-.6rem}
+.top__acoes{flex:1 1 100%; display:flex; flex-direction:column; align-items:flex-start; gap:.7rem; margin-top:-.6rem}
 .top__recorte{margin:0; font-size:.8rem; color:rgba(255,255,255,.85); max-width:70ch; line-height:1.45}
 .top__recorte b{font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.62); margin-right:.35rem}
-.top__botoes{display:flex; flex-wrap:wrap; gap:.4rem; align-items:center}
+.top__botoes{display:flex; flex-wrap:wrap; gap:.4rem .5rem; align-items:center}
+.top__grupo{display:inline-flex; align-items:center; gap:.3rem; flex-wrap:wrap; margin-right:.5rem}
+.top__grupo > b{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.62); font-weight:400; margin-right:.2rem}
+.top__sep{width:1px; height:1.3rem; background:rgba(255,255,255,.3); margin:0 .3rem}
 .top .chip{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.35); color:#FFFFFF}
 .top .chip:hover{background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.7); color:#FFFFFF}
-.top .chip[aria-pressed="true"],.top #org-btn[aria-pressed="true"]{background:#FFC21A; border-color:#FFC21A; color:#0E1726}
-.top .org-menu{right:0; left:auto}
+.top .chip[aria-pressed="true"],.top #org-btn[aria-pressed="true"],.top #cid-btn[aria-pressed="true"]{background:#FFC21A; border-color:#FFC21A; color:#0E1726}
 
 /* ---------- lista das organizadoras ---------- */
 .orgs{
@@ -594,7 +596,7 @@ h1 em{font-style:normal; color:#FFC21A}
   .stat span{font-size:.58rem; letter-spacing:.06em; line-height:1.3; overflow-wrap:anywhere}
   .orgs{width:calc(100% - 1rem); max-height:90vh}
   .top__acoes{margin-top:0}
-  .top .org-menu{left:0; right:auto}
+  .top__sep{display:none}
   .orgs__caixa{max-height:90vh}
   .orgs__topo,.orgs__busca{padding-inline:.9rem}
   /* Alvo de toque maior; o dedo nao acerta um chip de 30px. */
@@ -720,7 +722,14 @@ h1 em{font-style:normal; color:#FFC21A}
     <div class="top__acoes">
       <p class="top__recorte" id="top-recorte"></p>
       <div class="top__botoes">
-        <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
+        <span class="top__grupo"><b>Ano</b><span id="g-ano"></span></span>
+        <div class="org-picker">
+          <button class="chip" id="cid-btn" type="button" aria-expanded="false" aria-pressed="false">Todas as cidades</button>
+          <div class="org-menu" id="cid-menu" hidden>
+            <input id="cid-busca" type="search" placeholder="Buscar cidade…" aria-label="Buscar cidade">
+            <ul id="cid-lista"></ul>
+          </div>
+        </div>
         <div class="org-picker">
           <button class="chip" id="org-btn" type="button" aria-expanded="false" aria-pressed="false">Todas as empresas</button>
           <div class="org-menu" id="org-menu" hidden>
@@ -728,6 +737,8 @@ h1 em{font-style:normal; color:#FFC21A}
             <ul id="org-lista"></ul>
           </div>
         </div>
+        <span class="top__sep" aria-hidden="true"></span>
+        <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
       </div>
     </div>
@@ -754,16 +765,6 @@ h1 em{font-style:normal; color:#FFC21A}
       <div class="group" id="g-regiao"><b>Região</b></div>
       <div class="group" id="g-faixa"><b>Distância</b></div>
       <div class="group" id="g-tipo"><b>Tipo</b></div>
-      <div class="group"><b>Ano</b><span id="g-ano"></span></div>
-      <div class="group"><b>Cidade</b>
-        <div class="org-picker">
-          <button class="chip" id="cid-btn" type="button" aria-expanded="false" aria-pressed="false">Todas as cidades</button>
-          <div class="org-menu" id="cid-menu" hidden>
-            <input id="cid-busca" type="search" placeholder="Buscar cidade…" aria-label="Buscar cidade">
-            <ul id="cid-lista"></ul>
-          </div>
-        </div>
-      </div>
       <button class="chip" id="btn-treinos" type="button" aria-pressed="false">Treinos</button>
       <button class="chip chip--reset" id="reset" type="button">Limpar</button>
     </div>
@@ -1108,7 +1109,7 @@ document.getElementById("reset").onclick = () => {
   seletorProva2.limpar();
   state.treinos = false;
   btnTreinos.setAttribute("aria-pressed", "false");
-  document.querySelectorAll('.group [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
+  document.querySelectorAll('.group [aria-pressed="true"], .top__grupo [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
   montarMeses();
   render();
 };
