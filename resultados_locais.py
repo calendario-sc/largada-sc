@@ -155,6 +155,36 @@ def publicar():
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
         git("push", "-q", "origin", "main")
     registrar("publicado")
+    publicar_bi()
+
+
+def publicar_bi():
+    """A pagina de BI vive num repositorio privado ao lado deste (../cupons-bi),
+    publicado pelo Cloudflare Pages. O build ja escreveu o index.html la."""
+    pasta = AQUI.parent / "cupons-bi"
+    if not (pasta / ".git").is_dir():
+        return
+    exe = shutil.which("git")
+
+    def g(*args, checar=True):
+        r = subprocess.run([exe, *args], cwd=pasta, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace")
+        if checar and r.returncode != 0:
+            raise RuntimeError(f"git {' '.join(args)}: {r.stderr.strip() or r.stdout.strip()}")
+        return r
+
+    try:
+        if not g("status", "--porcelain").stdout.strip():
+            return
+        g("add", "index.html")
+        hoje = datetime.date.today().strftime("%d/%m/%Y")
+        g("-c", "user.name=Cupons de Corrida", "-c", "user.email=thiagomansur@gmail.com",
+          "commit", "-q", "-m", f"BI de {hoje}")
+        if g("remote").stdout.strip():
+            g("push", "-q", "origin", "main")
+        registrar("BI publicado")
+    except Exception as erro:
+        registrar(f"BI: FALHOU ({erro.__class__.__name__}: {erro})")
 
 
 def main():

@@ -65,11 +65,21 @@ def _para_o_cartao(perfil):
     return cartao
 
 
-def dados_da_pagina(historico):
+# A area de BI (bi.cuponsdecorrida.com.br) e um repositorio privado ao lado
+# deste, publicado pelo Cloudflare Pages atras de login. Quando a pasta
+# existe, o build escreve la a pagina completa.
+BI_DIR = AQUI.parent / "cupons-bi"
+# O que so a pagina de BI leva: quem vende a inscricao, quem cronometra e
+# quem fotografa cada prova.
+CAMPOS_BI = ("ticketeira", "cronometragem", "fotografia")
+
+
+def dados_da_pagina(historico, bi=True):
     """O historico guarda o perfil inteiro; a pagina leva so o que mostra.
 
     O perfil completo acrescentava ~430 KB, quase tudo campo vazio ou de
-    prova ja realizada -- peso a toa no celular.
+    prova ja realizada -- peso a toa no celular. Sem bi, saem tambem os
+    campos que so os paineis restritos usam.
     """
     hoje = datetime.date.today().isoformat()
     for p in historico:
@@ -92,29 +102,73 @@ def dados_da_pagina(historico):
             cartao = _para_o_cartao(perfil)
             if cartao:
                 p["cartao"] = cartao
+        if not bi:
+            for campo in CAMPOS_BI:
+                p.pop(campo, None)
     return json.dumps(historico, ensure_ascii=False, separators=(",", ":"))
+
+
+# Pedacos do template que so existem na pagina de BI. O JS tolera a falta
+# deles (ver `ao` e `BI` no template).
+SO_BI = [
+    r'[ \t]*<button class="chip" id="btn-comparativo"[^\n]*\n',
+    r'[ \t]*<button class="chip" id="btn-ticketeiras"[^\n]*\n',
+    r'[ \t]*<button class="chip" id="btn-crono"[^\n]*\n',
+    r'[ \t]*<button class="chip" id="btn-foto"[^\n]*\n',
+    r'  <section class="comparativo" id="comparativo".*?\n  </section>\n',
+    r'<dialog class="orgs tk" id="tk".*?</dialog>\n\n',
+    r'<dialog class="orgs tk" id="crono".*?</dialog>\n\n',
+    r'<dialog class="orgs tk" id="foto".*?</dialog>\n\n',
+    r'<dialog class="orgs" id="orgs".*?</dialog>\n',
+    r'<section class="rel" id="rel-orgs"[^\n]*\n',
+]
+STAT_ORGS = re.compile(r'<button class="stat stat--btn" id="stat-orgs".*?</button>', re.S)
+
+
+def so_publico(pagina):
+    """A pagina publica: sem os paineis de BI e sem o clique nas organizadoras."""
+    for padrao in SO_BI:
+        pagina, n = re.subn(padrao, "", pagina, count=1, flags=re.S)
+        if n != 1:
+            raise SystemExit(f"template.html: nao achei o trecho de BI {padrao[:40]!r}")
+    pagina, n = STAT_ORGS.subn('<div class="stat"><b id="s-orgs">0</b><span>organizadoras</span></div>', pagina, count=1)
+    if n != 1:
+        raise SystemExit("template.html: nao achei a caixa das organizadoras")
+    return pagina
+
+
+def completa(pagina):
+    """A pagina standalone precisa do <head>: o <style> sobe para dentro dele."""
+    estilo, corpo = pagina.split("</style>", 1)
+    return CABECALHO + estilo + "</style>\n</head>\n<body>\n" + corpo + "\n</body>\n</html>\n"
 
 
 def build():
     template = (AQUI / "template.html").read_text(encoding="utf-8")
-    dados = dados_da_pagina(json.loads((AQUI / "corridas.json").read_text(encoding="utf-8")))
-
-    for marcador in ("__DATA__", "__COLETA__"):
+    for marcador in ("__DATA__", "__COLETA__", "__BI__"):
         if marcador not in template:
             raise SystemExit(f"template.html perdeu o marcador {marcador}")
+    historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
+    coleta = data_coleta()
 
-    pagina = template.replace("__COLETA__", data_coleta()).replace("__DATA__", dados)
-    (AQUI / "artifact.html").write_text(pagina, encoding="utf-8")
+    # Pagina de BI: tudo. Vai para o Artifact (privado do dono) e, se a
+    # pasta do repositorio privado existir, para ela.
+    dados_bi = dados_da_pagina(json.loads(json.dumps(historico)), bi=True)
+    pagina_bi = template.replace("__COLETA__", coleta).replace("__DATA__", dados_bi).replace("__BI__", "true")
+    (AQUI / "artifact.html").write_text(pagina_bi, encoding="utf-8")
+    if BI_DIR.is_dir():
+        (BI_DIR / "index.html").write_text(completa(pagina_bi), encoding="utf-8")
 
-    # A pagina standalone precisa do <head>, entao o <style> sobe para dentro dele.
-    estilo, corpo = pagina.split("</style>", 1)
-    completa = CABECALHO + estilo + "</style>\n</head>\n<body>\n" + corpo + "\n</body>\n</html>\n"
-    (AQUI / "index.html").write_text(completa, encoding="utf-8")
+    # Pagina publica: sem os paineis e sem os campos de BI.
+    dados_pub = dados_da_pagina(historico, bi=False)
+    pagina_pub = so_publico(template).replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
+    (AQUI / "index.html").write_text(completa(pagina_pub), encoding="utf-8")
 
-    return len(pagina)
+    return len(pagina_bi)
 
 
 if __name__ == "__main__":
     tamanho = build()
-    print(f"artifact.html e index.html gerados ({tamanho:,} bytes, coleta de {data_coleta()})")
+    print(f"index.html (publica) e artifact.html (BI) gerados ({tamanho:,} bytes, coleta de {data_coleta()})"
+          + (f" | BI tambem em {BI_DIR}" if BI_DIR.is_dir() else ""))
     sys.exit(0)

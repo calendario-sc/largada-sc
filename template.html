@@ -968,6 +968,7 @@ h1 em{font-style:normal; color:#FFC21A}
     <p id="cobertura"></p>
     <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
     <p>Confirme datas, percursos e inscrições direto com a organização do evento antes de se programar.</p>
+    <p class="foot__bi"><a href="https://bi.cuponsdecorrida.com.br/">Área restrita</a> · painéis para organizadoras e parceiros, com login.</p>
   </div>
 </footer>
 
@@ -981,6 +982,13 @@ const FAIXAS = [["5k","até 6 km"],["10k","10 km"],["21k","meia"],["42k","marato
 const ESCOPOS = [["proximas","Próximas"],["realizadas","Realizadas"],["todas","Todas"]];
 
 const COLETA = "__COLETA__";
+// BI: a pagina completa (bi.cuponsdecorrida.com.br). Na publica, os paineis
+// de BI nao existem no HTML, e este sinalizador desliga o que os usaria.
+const BI = __BI__;
+// Liga um evento so se o elemento existe: na pagina publica varios nao existem.
+const ao = (id, fn) => { const e = document.getElementById(id); if (e) e.onclick = fn; return e; };
+// Clique no fundo escurecido fecha a janela, como se espera de uma janela dessas.
+const fechaNoFundo = d => { if (d) d.addEventListener("click", e => { if (e.target === d) d.close(); }); };
 const hoje = new Date(); hoje.setHours(0,0,0,0);
 const num = n => n.toLocaleString("pt-BR");
 /* Cor por regiao: fixa para as de SC, sorteada por hash para as outras
@@ -1101,6 +1109,7 @@ function criarSeletor({ botao, menu, busca, lista, itens, vazio, rotuloNeutro, a
   const mn = document.getElementById(menu);
   const bu = document.getElementById(busca);
   const li = document.getElementById(lista);
+  if (!bt || !mn) return { escolher(){}, limpar(){} };
 
   function listar(termo = ""){
     const alvo = norm(termo);
@@ -1314,7 +1323,7 @@ const ANOS_COM_RESULTADO = [...new Set(RACES.filter(temResultado).map(r => r.ano
         c.setAttribute("aria-pressed", String(c.dataset.ano === val)));
       montarComparativo();
     };
-    caixaAnosRanking.append(b);
+    if (caixaAnosRanking) caixaAnosRanking.append(b);
   });
 
 const caixaFaixasRanking = document.getElementById("comparativo-faixas");
@@ -1329,7 +1338,7 @@ const caixaFaixasRanking = document.getElementById("comparativo-faixas");
         c.setAttribute("aria-pressed", String(c.dataset.faixa === val)));
       montarComparativo();
     };
-    caixaFaixasRanking.append(b);
+    if (caixaFaixasRanking) caixaFaixasRanking.append(b);
   });
 
 /* Com uma distância escolhida, o ranking passa a contar só quem concluiu
@@ -1914,11 +1923,11 @@ function nomeDoArquivo(){
   return pedacos.join(" - ").replace(/[\\/:*?"<>|]/g, "");
 }
 
-document.getElementById("btn-pdf").onclick = () => {
+ao("btn-pdf", () => {
   montarCabecalhoImpressao();
   document.title = nomeDoArquivo();
   window.print();
-};
+});
 window.addEventListener("afterprint", () => {
   document.title = TITULO;
   document.body.classList.remove("print-orgs", "print-cal");
@@ -2014,13 +2023,13 @@ function render(){
     : "";
 
   montarPainel(res);
-  montarComparativo();
+  if (BI) montarComparativo();
   ultimoRecorte = res;
   mostrarRecorte();
-  if (dialogoOrgs.open) montarOrgs();
-  if (dialogoTk.open) montarTicketeiras();
-  if (dialogoCrono.open) montarCrono();
-  if (dialogoFoto.open) montarFoto();
+  if (dialogoOrgs && dialogoOrgs.open) montarOrgs();
+  if (dialogoTk && dialogoTk.open) montarTicketeiras();
+  if (dialogoCrono && dialogoCrono.open) montarCrono();
+  if (dialogoFoto && dialogoFoto.open) montarFoto();
   if (dialogoRec.open) montarRecordes();
 
   if (!res.length){
@@ -2073,14 +2082,13 @@ btnTreinos.onclick = () => {
   render();
 };
 
-const btnComparativo = document.getElementById("btn-comparativo");
-btnComparativo.onclick = () => {
+const btnComparativo = ao("btn-comparativo", () => {
   state.comparativo = !state.comparativo;
   btnComparativo.setAttribute("aria-pressed", String(state.comparativo));
   montarComparativo();
   if (state.comparativo)
     document.getElementById("comparativo").scrollIntoView({ behavior:"smooth", block:"start" });
-};
+});
 
 /* ---------- lista das organizadoras ----------
    A caixa do cabecalho diz quantas sao; clicar nela abre a lista, com o
@@ -2195,13 +2203,13 @@ function montarOrgs(){
   );
 }
 
-document.getElementById("stat-orgs").onclick = () => {
+ao("stat-orgs", () => {
   buscaOrgs.value = "";
   montarOrgs();
   dialogoOrgs.showModal();
   document.getElementById("orgs-lista").scrollTop = 0;
-};
-document.getElementById("orgs-fechar").onclick = () => dialogoOrgs.close();
+});
+ao("orgs-fechar", () => dialogoOrgs.close());
 
 /* ---------- recordes ----------
    atletas/recordes.json guarda, por prova, os dez melhores de cada sexo
@@ -2464,16 +2472,14 @@ function montarFoto(){ montarParticipacao(PIZZA_FOTO); }
 function montarTicketeiras(){ montarParticipacao(PIZZA_TICKETEIRAS); }
 function montarCrono(){ montarParticipacao(PIZZA_CRONO); }
 
-document.getElementById("btn-ticketeiras").onclick = () => { montarTicketeiras(); dialogoTk.showModal(); };
-document.getElementById("tk-fechar").onclick = () => dialogoTk.close();
-dialogoTk.addEventListener("click", e => { if (e.target === dialogoTk) dialogoTk.close(); });
-document.getElementById("btn-crono").onclick = () => { montarCrono(); dialogoCrono.showModal(); };
 const dialogoFoto = document.getElementById("foto");
-document.getElementById("btn-foto").onclick = () => { montarFoto(); dialogoFoto.showModal(); };
-document.getElementById("foto-fechar").onclick = () => dialogoFoto.close();
-dialogoFoto.addEventListener("click", e => { if (e.target === dialogoFoto) dialogoFoto.close(); });
-document.getElementById("crono-fechar").onclick = () => dialogoCrono.close();
-dialogoCrono.addEventListener("click", e => { if (e.target === dialogoCrono) dialogoCrono.close(); });
+ao("btn-ticketeiras", () => { montarTicketeiras(); dialogoTk.showModal(); });
+ao("tk-fechar", () => dialogoTk.close());
+ao("btn-crono", () => { montarCrono(); dialogoCrono.showModal(); });
+ao("crono-fechar", () => dialogoCrono.close());
+ao("btn-foto", () => { montarFoto(); dialogoFoto.showModal(); });
+ao("foto-fechar", () => dialogoFoto.close());
+fechaNoFundo(dialogoTk); fechaNoFundo(dialogoCrono); fechaNoFundo(dialogoFoto);
 
 /* Relatorio em PDF: quem gera e o navegador (Salvar como PDF na caixa de
    impressao). O corpo ganha a classe print-orgs, e o CSS de impressao
@@ -2713,15 +2719,14 @@ function nomeDoRelatorioOrgs(){
   return pedacos.join(" - ").replace(/[\\/:*?"<>|]/g, "");
 }
 
-document.getElementById("orgs-pdf").onclick = () => {
+ao("orgs-pdf", () => {
   montarRelatorioOrgs();
   document.body.classList.add("print-orgs");
   document.title = nomeDoRelatorioOrgs();
   window.print();
-};
-buscaOrgs.oninput = () => montarOrgs();
-// Clique no fundo escurecido fecha, como se espera de uma janela dessas.
-dialogoOrgs.addEventListener("click", e => { if (e.target === dialogoOrgs) dialogoOrgs.close(); });
+});
+if (buscaOrgs) buscaOrgs.oninput = () => montarOrgs();
+fechaNoFundo(dialogoOrgs);
 
 function montarPainel(res){
   const painel = document.getElementById("painel");
