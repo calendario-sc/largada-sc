@@ -960,7 +960,8 @@ def main():
                           "fonte_resultado", "runking_tentado",
                           "concluintes_genero", "concluintes_f", "concluintes_m",
                           "genero_tentado", "perfil", "perfil_em",
-                          "cronometragem", "cronometragem_url", "cronometragem_em")
+                          "cronometragem", "cronometragem_url", "cronometragem_em",
+                          "fotografia", "fotografia_em", "fotografia_detalhe")
                          if antiga.get(c)}
             enderecos = {c: antiga[c] for c in
                          ("corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug")

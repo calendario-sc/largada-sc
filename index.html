@@ -211,6 +211,25 @@ h1 em{font-style:normal; color:#FFC21A}
   .orgs__share .tk__pizza{max-width:9rem}
 }
 
+/* ---------- recordes ---------- */
+.rec{width:min(46rem, 100% - 2rem)}
+.rec__filtros{display:flex; flex-wrap:wrap; gap:.4rem .8rem; padding:0 1.2rem .6rem; align-items:center}
+.rec__filtros .grupo{display:flex; gap:.3rem; flex-wrap:wrap}
+.rec__filtros .chip{font-size:.8rem}
+.rec__lista{list-style:none; margin:0; padding:0 .6rem .6rem; overflow-y:auto}
+.rec__lista li{display:grid; grid-template-columns:2rem minmax(0,1fr) auto; gap:.2rem .7rem; align-items:center; padding:.45rem .6rem; border-radius:8px}
+.rec__lista li:nth-child(odd){background:var(--surface-2)}
+.rec__lista .pos{font-family:var(--f-display); font-weight:800; font-size:1.05rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.rec__lista li:nth-child(-n+3) .pos{color:var(--sol-ink); background:var(--sol); border-radius:6px; text-align:center; font-size:.9rem; line-height:1.5}
+.rec__lista .quem{font-weight:600; font-size:.92rem; overflow-wrap:anywhere}
+.rec__lista .quem a{color:inherit; text-decoration:none; border-bottom:1px solid var(--line)}
+.rec__lista .quem a:hover{color:var(--azul-ink); border-color:var(--azul-ink)}
+.rec__lista .quem small{display:block; font-weight:400; font-size:.76rem; color:var(--muted)}
+.rec__lista .tempo{font-family:var(--f-mono); font-size:1rem; font-variant-numeric:tabular-nums; color:var(--azul-ink); font-weight:500; text-align:right}
+.rec__lista .tempo small{display:block; font-size:.66rem; color:var(--muted); letter-spacing:.04em}
+.rec__vazio{padding:1rem 1.2rem; color:var(--muted); font-size:.9rem}
+@media (max-width:720px){ .rec__filtros{padding-inline:.9rem} }
+
 /* Relatorio das organizadoras: so existe no papel. */
 .rel{display:none}
 
@@ -698,7 +717,7 @@ h1 em{font-style:normal; color:#FFC21A}
   .rank .nome small{font-size:.68rem}
 
   /* Relatorio das organizadoras no lugar do comparativo. */
-  .orgs,.tk{display:none !important}
+  .orgs,.tk,.rec{display:none !important}
   body.print-orgs .results,body.print-cal .results{display:none !important}
   body.print-orgs #rel-orgs,body.print-cal #rel-cal{display:block}
 
@@ -783,6 +802,8 @@ h1 em{font-style:normal; color:#FFC21A}
         <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
         <button class="chip" id="btn-ticketeiras" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de inscrição nas provas do recorte">Ticketeiras</button>
         <button class="chip" id="btn-crono" type="button" aria-haspopup="dialog" title="Participação de cada empresa de cronometragem nas provas com resultado publicado">Cronometragem</button>
+        <button class="chip" id="btn-foto" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de fotografia nas provas realizadas">Fotografia</button>
+        <button class="chip" id="btn-recordes" type="button" aria-haspopup="dialog" title="Os dez melhores tempos em cada distância, nas provas do recorte">Recordes</button>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
         <button class="chip chip--reset" id="reset-top" type="button" title="Limpar todos os filtros">Limpar</button>
       </div>
@@ -881,6 +902,35 @@ h1 em{font-style:normal; color:#FFC21A}
       <ol class="tk__legenda" id="crono-legenda"></ol>
     </div>
     <p class="orgs__rodape" id="crono-rodape"></p>
+  </div>
+</dialog>
+
+<dialog class="orgs tk" id="foto" aria-labelledby="foto-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="foto-titulo">Fotografia <small id="foto-recorte"></small></h2>
+      <button class="orgs__fechar" id="foto-fechar" type="button">Fechar</button>
+    </div>
+    <div class="tk__corpo">
+      <div class="tk__pizza" id="foto-pizza"></div>
+      <ol class="tk__legenda" id="foto-legenda"></ol>
+    </div>
+    <p class="orgs__rodape" id="foto-rodape"></p>
+  </div>
+</dialog>
+
+<dialog class="orgs rec" id="rec" aria-labelledby="rec-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="rec-titulo">Recordes <small id="rec-recorte"></small></h2>
+      <button class="orgs__fechar" id="rec-fechar" type="button">Fechar</button>
+    </div>
+    <div class="rec__filtros">
+      <div class="grupo" id="rec-dist" role="group" aria-label="Distância"></div>
+      <div class="grupo" id="rec-sexo" role="group" aria-label="Sexo"></div>
+    </div>
+    <ol class="rec__lista" id="rec-lista"></ol>
+    <p class="orgs__rodape" id="rec-rodape"></p>
   </div>
 </dialog>
 
@@ -1967,6 +2017,8 @@ function render(){
   if (dialogoOrgs.open) montarOrgs();
   if (dialogoTk.open) montarTicketeiras();
   if (dialogoCrono.open) montarCrono();
+  if (dialogoFoto.open) montarFoto();
+  if (dialogoRec.open) montarRecordes();
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -2136,6 +2188,114 @@ document.getElementById("stat-orgs").onclick = () => {
 };
 document.getElementById("orgs-fechar").onclick = () => dialogoOrgs.close();
 
+/* ---------- recordes ----------
+   atletas/recordes.json guarda, por prova, os dez melhores de cada sexo
+   nas distancias padrao. A janela junta as provas do recorte e tira os dez
+   melhores; o mesmo atleta entra uma vez, com o seu melhor tempo. */
+// No site o arquivo esta ao lado; no Artifact so o endereco completo serve.
+const RECORDES_URLS = ["atletas/recordes.json", "https://calendario-sc.github.io/largada-sc/atletas/recordes.json"];
+const ATLETA_URL = "https://calendario-sc.github.io/largada-sc/atletas.html#";
+const DIST_REC = [["5", "5 km"], ["10", "10 km"], ["21", "Meia (21 km)"], ["42", "Maratona (42 km)"]];
+const SEXO_REC = [["", "Geral"], ["F", "Feminino"], ["M", "Masculino"]];
+const dialogoRec = document.getElementById("rec");
+const recState = { dist:"5", sexo:"" };
+let RECORDES = null, recordesErro = "";
+
+function tempoLegivel(s){
+  const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), seg = s % 60;
+  return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(seg).padStart(2, "0");
+}
+function paceLegivel(s, km){
+  const p = Math.round(s / km);
+  return Math.floor(p / 60) + ":" + String(p % 60).padStart(2, "0") + " /km";
+}
+
+async function carregarRecordes(){
+  if (RECORDES || recordesErro) return;
+  let erro = "";
+  for (const url of RECORDES_URLS){
+    try {
+      const r = await fetch(url, { cache:"no-cache" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      RECORDES = await r.json();
+      return;
+    } catch (e){ erro = e.message; }
+  }
+  recordesErro = "Não foi possível carregar os tempos (" + erro + ").";
+}
+
+function chipsRec(id, itens, chave){
+  const caixa = document.getElementById(id);
+  caixa.replaceChildren();
+  itens.forEach(([val, rotulo]) => {
+    const b = el("button", { className:"chip", type:"button", textContent:rotulo });
+    b.setAttribute("aria-pressed", String(recState[chave] === val));
+    b.onclick = () => { recState[chave] = val; chipsRec(id, itens, chave); montarRecordes(); };
+    caixa.append(b);
+  });
+}
+
+function montarRecordes(){
+  document.getElementById("rec-recorte").textContent = descreverRecorte();
+  const lista = document.getElementById("rec-lista"), rodape = document.getElementById("rec-rodape");
+  lista.replaceChildren(); rodape.textContent = "";
+  if (recordesErro){ lista.append(el("li", { className:"rec__vazio", textContent:recordesErro })); return; }
+  if (!RECORDES){ lista.append(el("li", { className:"rec__vazio", textContent:"Carregando os tempos…" })); return; }
+
+  const provasRec = ultimoRecorte.filter(r => r.or_slug && RECORDES[r.or_slug] && temResultado(r));
+  const km = { "5":5, "10":10, "21":21.1, "42":42.2 }[recState.dist];
+  const melhor = new Map();       // slug do atleta -> melhor resultado
+  let comDist = 0;
+  provasRec.forEach(r => {
+    const linhas = RECORDES[r.or_slug][recState.dist];
+    if (!linhas) return;
+    comDist += 1;
+    linhas.forEach(([nome, sexo, tempo, slug]) => {
+      if (recState.sexo && sexo !== recState.sexo) return;
+      const atual = melhor.get(slug);
+      if (!atual || tempo < atual.tempo) melhor.set(slug, { nome, sexo, tempo, slug, prova:r });
+    });
+  });
+  const top = [...melhor.values()].sort((a, b) => a.tempo - b.tempo).slice(0, 10);
+  if (!top.length){
+    lista.append(el("li", { className:"rec__vazio", textContent:
+      "Nenhum tempo nessa distância dentro dos filtros. Os tempos vêm das provas com resultado por atleta (a partir de 2022)." }));
+    return;
+  }
+  top.forEach((x, i) => {
+    const quem = el("span", { className:"quem" }, [
+      el("a", { href:ATLETA_URL + x.slug, target:"_blank", rel:"noopener", textContent:titulo(x.nome) }),
+      el("small", { textContent:(recState.sexo ? "" : (x.sexo === "F" ? "F · " : "M · ")) + x.prova.nome + " · " + x.prova.cidade
+        + " · " + String(x.prova.dia).padStart(2, "0") + "/" + String(x.prova.mes).padStart(2, "0") + "/" + x.prova.ano }),
+    ]);
+    lista.append(el("li", {}, [
+      el("span", { className:"pos", textContent:String(i + 1) }),
+      quem,
+      el("span", { className:"tempo", textContent:tempoLegivel(x.tempo) }, [el("small", { textContent:paceLegivel(x.tempo, km) })]),
+    ]));
+  });
+  rodape.replaceChildren(
+    el("b", { textContent:num(comDist) }),
+    document.createTextNode((comDist === 1 ? " prova" : " provas") + " com essa distância entre as " + num(provasRec.length)
+      + " do recorte com resultado por atleta. Tempo líquido ou bruto conforme a cronometragem publicou; cada atleta aparece uma vez, com o seu melhor."),
+  );
+}
+
+// Nome em maiusculas no portal vira Nome Proprio.
+const titulo = s => s.toLowerCase().replace(/(^|[\s-])(\S)/g, (m, a, b) => a + b.toUpperCase())
+  .replace(/\b(Da|De|Do|Das|Dos|E)\b/g, m => m.toLowerCase());
+
+chipsRec("rec-dist", DIST_REC, "dist");
+chipsRec("rec-sexo", SEXO_REC, "sexo");
+document.getElementById("btn-recordes").onclick = async () => {
+  montarRecordes();
+  dialogoRec.showModal();
+  await carregarRecordes();
+  montarRecordes();
+};
+document.getElementById("rec-fechar").onclick = () => dialogoRec.close();
+dialogoRec.addEventListener("click", e => { if (e.target === dialogoRec) dialogoRec.close(); });
+
 /* ---------- ticketeiras ----------
    Participacao de cada plataforma de inscricao nas provas do recorte, pelo
    link de inscricao de cada prova. So ha link nas provas de 2026 em diante
@@ -2222,13 +2382,24 @@ function legendaDaPizza(ol, fatias, resto, total, unidade = "prova"){
 function montarParticipacao(cfg){
   document.getElementById(cfg.id + "-recorte").textContent = descreverRecorte();
   const base = ultimoRecorte.filter(cfg.base);
+  // Por evento, o conjunto de nomes: a fotografia pode ter mais de uma
+  // plataforma na mesma prova; ticketeira e cronometragem tem uma so.
   const eventos = new Map();
-  base.forEach(r => { if (r[cfg.campo] && !eventos.has(r._ev)) eventos.set(r._ev, r[cfg.campo]); });
+  base.forEach(r => {
+    const valores = Array.isArray(r[cfg.campo]) ? r[cfg.campo] : (r[cfg.campo] ? [r[cfg.campo]] : []);
+    if (!valores.length) return;
+    const conjunto = eventos.get(r._ev) || new Set();
+    valores.forEach(v => conjunto.add(v));
+    eventos.set(r._ev, conjunto);
+  });
   const totalProvas = contarProvas(base);
   const porNome = new Map();
-  eventos.forEach(n => porNome.set(n, (porNome.get(n) || 0) + 1));
+  eventos.forEach(conjunto => conjunto.forEach(n => porNome.set(n, (porNome.get(n) || 0) + 1)));
   const ordem = [...porNome.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
-  const total = eventos.size;
+  // A soma das fatias: com mais de uma plataforma por prova, passa do
+  // numero de provas, e o percentual e sobre a soma -- fecha em 100%.
+  const total = ordem.reduce((s, [, v]) => s + v, 0);
+  const identificadas = eventos.size;
 
   const pizza = document.getElementById(cfg.id + "-pizza");
   const legenda = document.getElementById(cfg.id + "-legenda");
@@ -2243,10 +2414,10 @@ function montarParticipacao(cfg){
   desenharPizza(pizza, fatias, total, cfg.titulo);
   legendaDaPizza(legenda, fatias, resto, total);
 
-  const sem = totalProvas - total;
+  const sem = totalProvas - identificadas;
   rodape.replaceChildren(
-    el("b", { textContent:num(total) }),
-    document.createTextNode((total === 1 ? " prova" : " provas") + " com " + cfg.rotulo + " identificada, de "),
+    el("b", { textContent:num(identificadas) }),
+    document.createTextNode((identificadas === 1 ? " prova" : " provas") + " com " + cfg.rotulo + " identificada, de "),
     el("b", { textContent:num(totalProvas) }),
     document.createTextNode(" " + cfg.universo + (sem ? " · " + num(sem) + " " + cfg.semRotulo : "") + ". " + cfg.nota),
   );
@@ -2266,6 +2437,15 @@ const PIZZA_CRONO = {
   vazio:"Nenhuma prova do recorte tem resultado publicado com a empresa de cronometragem identificada.",
   nota:"A empresa vem do link do resultado oficial na página do Open Results; a participação é sobre as provas identificadas.",
 };
+/* As plataformas de fotos listam os eventos que cobriram: a prova casa por
+   data, cidade e nome. So prova realizada pode ter foto. */
+const PIZZA_FOTO = {
+  id:"foto", campo:"fotografia", titulo:"Participação das plataformas de fotografia", rotulo:"fotografia",
+  base: r => r._passada && !(r.tags || []).includes("Treino"), universo:"realizadas", semRotulo:"sem cobertura encontrada",
+  vazio:"Nenhuma prova realizada do recorte aparece nas plataformas de fotografia (Foco Radical, Banlek e Fotop).",
+  nota:"Cobertura achada nas listas de eventos da Foco Radical, da Banlek e da Fotop. Prova coberta por mais de uma plataforma conta em cada uma, e o percentual é sobre a soma.",
+};
+function montarFoto(){ montarParticipacao(PIZZA_FOTO); }
 function montarTicketeiras(){ montarParticipacao(PIZZA_TICKETEIRAS); }
 function montarCrono(){ montarParticipacao(PIZZA_CRONO); }
 
@@ -2273,6 +2453,10 @@ document.getElementById("btn-ticketeiras").onclick = () => { montarTicketeiras()
 document.getElementById("tk-fechar").onclick = () => dialogoTk.close();
 dialogoTk.addEventListener("click", e => { if (e.target === dialogoTk) dialogoTk.close(); });
 document.getElementById("btn-crono").onclick = () => { montarCrono(); dialogoCrono.showModal(); };
+const dialogoFoto = document.getElementById("foto");
+document.getElementById("btn-foto").onclick = () => { montarFoto(); dialogoFoto.showModal(); };
+document.getElementById("foto-fechar").onclick = () => dialogoFoto.close();
+dialogoFoto.addEventListener("click", e => { if (e.target === dialogoFoto) dialogoFoto.close(); });
 document.getElementById("crono-fechar").onclick = () => dialogoCrono.close();
 dialogoCrono.addEventListener("click", e => { if (e.target === dialogoCrono) dialogoCrono.close(); });
 

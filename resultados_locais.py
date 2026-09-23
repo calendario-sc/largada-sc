@@ -95,6 +95,14 @@ def coletar():
     except Exception as erro:
         registrar(f"cronometragem: FALHOU ({erro.__class__.__name__}: {erro})")
 
+    try:
+        import fotografia
+        n, ok = fotografia.completar_fotografia(historico, limite=120, registrar=registrar)
+        if n:
+            registrar(f"fotografia: {n} provas procuradas, {ok} com plataforma")
+    except Exception as erro:
+        registrar(f"fotografia: FALHOU ({erro.__class__.__name__}: {erro})")
+
     scrape.agrupar_series(historico)
     parciais = scrape.marcar_resultados_parciais(historico)
 

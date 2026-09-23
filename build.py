@@ -74,7 +74,8 @@ def dados_da_pagina(historico):
     hoje = datetime.date.today().isoformat()
     for p in historico:
         perfil = p.pop("perfil", None)
-        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "cronometragem_url", "cronometragem_em"):
+        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "cronometragem_url", "cronometragem_em",
+                      "fotografia_em", "fotografia_detalhe"):
             p.pop(campo, None)
         # Resultado lido direto na cronometradora: ela e a cronometragem.
         if not p.get("cronometragem") and p.get("fonte_resultado") in ("supercrono", "chiprun"):
