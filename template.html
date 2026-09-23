@@ -133,6 +133,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .top .chip{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.35); color:#FFFFFF}
 .top .chip:hover{background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.7); color:#FFFFFF}
 .top .chip--reset{background:none; border-style:dashed; color:rgba(255,255,255,.8)}
+.top .chip--link{text-decoration:none; display:inline-block; line-height:1}
 .top .chip[aria-pressed="true"],.top #org-btn[aria-pressed="true"],.top #cid-btn[aria-pressed="true"]{background:#FFC21A; border-color:#FFC21A; color:#0E1726}
 
 /* ---------- lista das organizadoras ---------- */
@@ -761,7 +762,7 @@ h1 em{font-style:normal; color:#FFC21A}
     <div>
       <p class="eyebrow">Santa Catarina &middot; corridas de rua e trail</p>
       <h1>Largada <em>SC</em></h1>
-      <p class="lede">Filtre por mês, região, distância e tipo. <a class="lede__link" href="https://calendario-sc.github.io/largada-sc/atletas.html">Resultados por atleta →</a></p>
+      <p class="lede">Filtre por mês, região, distância e tipo.</p>
     </div>
     <div class="stats">
       <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
@@ -795,6 +796,7 @@ h1 em{font-style:normal; color:#FFC21A}
         <button class="chip" id="btn-crono" type="button" aria-haspopup="dialog" title="Participação de cada empresa de cronometragem nas provas com resultado publicado">Cronometragem</button>
         <button class="chip" id="btn-foto" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de fotografia nas provas realizadas">Fotografia</button>
         <button class="chip" id="btn-recordes" type="button" aria-haspopup="dialog" title="Os dez melhores tempos em cada distância, nas provas do recorte">Recordes</button>
+        <a class="chip chip--link" href="https://calendario-sc.github.io/largada-sc/atletas.html" title="Busque um atleta pelo nome e veja as provas, o pace e os melhores tempos">Resultados por atleta ↗</a>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
         <button class="chip chip--reset" id="reset-top" type="button" title="Limpar todos os filtros">Limpar</button>
       </div>
