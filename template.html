@@ -132,6 +132,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .top__sep{width:1px; height:1.3rem; background:rgba(255,255,255,.3); margin:0 .3rem}
 .top .chip{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.35); color:#FFFFFF}
 .top .chip:hover{background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.7); color:#FFFFFF}
+.top .chip--reset{background:none; border-style:dashed; color:rgba(255,255,255,.8)}
 .top .chip[aria-pressed="true"],.top #org-btn[aria-pressed="true"],.top #cid-btn[aria-pressed="true"]{background:#FFC21A; border-color:#FFC21A; color:#0E1726}
 
 /* ---------- lista das organizadoras ---------- */
@@ -774,6 +775,7 @@ h1 em{font-style:normal; color:#FFC21A}
         <button class="chip" id="btn-ticketeiras" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de inscrição nas provas do recorte">Ticketeiras</button>
         <button class="chip" id="btn-crono" type="button" aria-haspopup="dialog" title="Participação de cada empresa de cronometragem nas provas com resultado publicado">Cronometragem</button>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
+        <button class="chip chip--reset" id="reset-top" type="button" title="Limpar todos os filtros">Limpar</button>
       </div>
     </div>
   </div>
@@ -1120,6 +1122,8 @@ function filtrarPorOrganizador(nome){ seletorEmpresa.escolher(nome); }
 function filtrarPorCidade(cidade){ seletorCidade.escolher(cidade); }
 
 document.getElementById("painel-fechar").onclick = () => filtrarPorOrganizador("");
+// O "Limpar" do cabecalho faz o mesmo que o da barra.
+document.getElementById("reset-top").onclick = () => document.getElementById("reset").click();
 
 /* ---- barras por mês, redesenhadas a cada troca de período ---- */
 const monthsBox = document.getElementById("months");
