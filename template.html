@@ -1,4 +1,4 @@
-<title>Largada SC</title>
+<title>Cupons de Corrida</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
@@ -761,7 +761,7 @@ h1 em{font-style:normal; color:#FFC21A}
   <div class="wrap top__inner">
     <div>
       <p class="eyebrow">Santa Catarina &middot; corridas de rua e trail</p>
-      <h1>Largada <em>SC</em></h1>
+      <h1>Cupons de <em>Corrida</em></h1>
       <p class="lede">Filtre por mês, região, distância e tipo.</p>
     </div>
     <div class="stats">
@@ -953,7 +953,7 @@ h1 em{font-style:normal; color:#FFC21A}
 
 <footer class="foot">
   <div class="wrap">
-    <p><b>Largada SC</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b> e <b>atletis.com.br</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
+    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b> e <b>atletis.com.br</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
     <p>Os números de concluintes vêm de <b>openresults.run</b> e, onde ele não alcança, das cronometragens que publicam os resultados: <b>supercrono.com.br</b>, <b>chiprun.com.br</b> e <b>resultados.runking.com.br</b>. Conta quem cruzou a linha de chegada com tempo registrado.</p>
     <p id="cobertura"></p>
     <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
@@ -1888,7 +1888,7 @@ function montarCabecalhoImpressao(){
   caixa.replaceChildren(
     el("p", {}, [el("b", { textContent:"Recorte: " }),
                  document.createTextNode(recorteAtual().join(" · "))]),
-    el("p", {}, [el("b", { textContent:"Largada SC" }),
+    el("p", {}, [el("b", { textContent:"Cupons de Corrida" }),
                  document.createTextNode(" · dados da coleta de " + COLETA
                    + " · relatório gerado em " + hojeTxt)]),
   );
@@ -1897,7 +1897,7 @@ function montarCabecalhoImpressao(){
 // O nome do arquivo sugerido pelo navegador sai do título da página.
 const TITULO = document.title;
 function nomeDoArquivo(){
-  const pedacos = ["Largada SC - Comparativo"];
+  const pedacos = ["Cupons de Corrida - Comparativo"];
   if (state.cidade) pedacos.push(state.cidade);
   if (state.organizador) pedacos.push(state.organizador);
   if (state.anoRanking) pedacos.push(state.anoRanking);
@@ -2508,7 +2508,7 @@ function montarRelatorioOrgs(){
 
   const cab = el("div", { className:"rel__recorte" });
   recorte.forEach(([k, v]) => cab.append(el("p", {}, [el("b", { textContent:k + ": " }), document.createTextNode(v)])));
-  cab.append(el("p", {}, [el("b", { textContent:"Largada SC" }),
+  cab.append(el("p", {}, [el("b", { textContent:"Cupons de Corrida" }),
     document.createTextNode(" · dados da coleta de " + COLETA + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR"))]));
 
   // Empresas, cada uma com seus eventos; no fim, as provas sem organizadora.
@@ -2595,7 +2595,7 @@ function cabecalhoDoRecorte(){
 
   const cab = el("div", { className:"rel__recorte" });
   recorte.forEach(([k, v]) => cab.append(el("p", {}, [el("b", { textContent:k + ": " }), document.createTextNode(v)])));
-  cab.append(el("p", {}, [el("b", { textContent:"Largada SC" }),
+  cab.append(el("p", {}, [el("b", { textContent:"Cupons de Corrida" }),
     document.createTextNode(" · dados da coleta de " + COLETA + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR"))]));
   return cab;
 }
@@ -2667,7 +2667,7 @@ function montarRelatorioCal(){
 }
 
 function nomeDoRelatorioCal(){
-  const pedacos = ["Largada SC - Calendario"];
+  const pedacos = ["Cupons de Corrida - Calendario"];
   if (state.anos.size) pedacos.push([...state.anos].sort().join("-"));
   else pedacos.push({ proximas:"proximas", realizadas:"realizadas", todas:"todas" }[state.escopo]);
   if (state.cidade) pedacos.push(state.cidade);
@@ -2684,7 +2684,7 @@ document.getElementById("btn-cal-pdf").onclick = () => {
 };
 
 function nomeDoRelatorioOrgs(){
-  const pedacos = ["Largada SC - Organizadoras"];
+  const pedacos = ["Cupons de Corrida - Organizadoras"];
   if (state.anos.size) pedacos.push([...state.anos].sort().join("-"));
   if (state.cidade) pedacos.push(state.cidade);
   if (state.regioes.size) pedacos.push([...state.regioes].join(", "));

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Resultados por atleta nas corridas de Santa Catarina: distâncias, pace e melhores tempos.">
-<title>Atletas · Largada SC</title>
+<title>Atletas · Cupons de Corrida</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
@@ -224,7 +224,7 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
 <header class="top">
   <div class="wrap top__inner">
     <div>
-      <p class="eyebrow"><a href="./">Largada SC</a> &middot; resultados por atleta</p>
+      <p class="eyebrow"><a href="./">Cupons de Corrida</a> &middot; resultados por atleta</p>
       <h1>Quem <em>correu</em></h1>
       <p class="lede">Busque um nome e veja as provas, as distâncias, o pace e os melhores tempos.</p>
     </div>
@@ -409,11 +409,11 @@ let atletaAberto = "";
 document.getElementById("pdf").onclick = () => {
   const anos = (INDICE.anos || []);
   document.getElementById("imp").replaceChildren(
-    el("b", { textContent:"Largada SC · resultados por atleta" }),
+    el("b", { textContent:"Cupons de Corrida · resultados por atleta" }),
     document.createTextNode(" · resultados de " + (anos.length ? anos[0] + " a " + anos[anos.length - 1] : "openresults.run")
       + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR")
       + " · calendario-sc.github.io/largada-sc"));
-  document.title = ("Largada SC - Atleta - " + atletaAberto).replace(/[\\/:*?"<>|]/g, "");
+  document.title = ("Cupons de Corrida - Atleta - " + atletaAberto).replace(/[\\/:*?"<>|]/g, "");
   window.print();
 };
 window.addEventListener("afterprint", () => { document.title = TITULO; });
