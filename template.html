@@ -2063,15 +2063,21 @@ function montarOrgs(){
   porEmpresa.forEach(v => { v.provas = v.eventos.size; });
   const todas = [...porEmpresa.entries()]
     .sort((a, b) => b[1].provas - a[1].provas || a[0].localeCompare(b[0], "pt-BR"));
-  // Participacao: cada prova conta para cada empresa que a assina, e o
-  // percentual e sobre essa soma -- fecha em 100%.
-  const somaProvas = todas.reduce((s, [, v]) => s + v.provas, 0);
+  // Participacao pela soma de concluintes: cada evento entra uma vez por
+  // empresa que o assina, e o percentual e sobre essa soma -- fecha em 100%.
+  const concluintesPorOrg = concluintesPorOrganizadora(ultimoRecorte);
+  const ordemConc = [...concluintesPorOrg.entries()].filter(([, v]) => v > 0)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
+  const somaConc = ordemConc.reduce((s, [, v]) => s + v, 0);
   const pizzaOrgs = document.getElementById("orgs-pizza"), legendaOrgs = document.getElementById("orgs-legenda");
-  if (somaProvas){
-    const { fatias, resto } = agruparFatias(todas.map(([nome, v]) => [nome, v.provas]));
-    desenharPizza(pizzaOrgs, fatias, somaProvas, "Participação das organizadoras");
-    legendaDaPizza(legendaOrgs, fatias, resto, somaProvas);
-  } else { pizzaOrgs.replaceChildren(); legendaOrgs.replaceChildren(); }
+  if (somaConc){
+    const { fatias, resto } = agruparFatias(ordemConc);
+    desenharPizza(pizzaOrgs, fatias, somaConc, "Participação das organizadoras em concluintes", "concluinte");
+    legendaDaPizza(legendaOrgs, fatias, resto, somaConc, "concluinte");
+  } else {
+    pizzaOrgs.replaceChildren(el("p", { className:"tk__vazio", textContent:"Nenhuma prova do recorte tem resultado publicado: sem concluintes para repartir." }));
+    legendaOrgs.replaceChildren();
+  }
 
   const alvo = norm(buscaOrgs.value);
   const achadas = alvo ? todas.filter(([nome]) => norm(nome).includes(alvo)) : todas;
@@ -2091,7 +2097,8 @@ function montarOrgs(){
         el("small", { textContent: v.cidades.size === 1 ? [...v.cidades][0]
           : v.cidades.size + " cidades" })]),
       el("span", { className:"n", textContent:String(v.provas) }, [
-        el("small", { textContent: v.provas === 1 ? palavra : palavra + "s" })]),
+        el("small", { textContent: (v.provas === 1 ? palavra : palavra + "s")
+          + (concluintesPorOrg.get(nome) ? " · " + num(concluintesPorOrg.get(nome)) + " concl." : "") })]),
       el("span", { className:"barra" }, [el("i")]),
     ]);
     b.querySelector(".barra").style.setProperty("--w", Math.round(100 * v.provas / maior) + "%");
@@ -2141,7 +2148,9 @@ function agruparFatias(ordem){
 }
 const corDaFatia = i => `var(--p${Math.min(i + 1, 7)})`;
 
-function desenharPizza(host, fatias, total, titulo){
+const plural = (v, unidade) => v === 1 ? unidade : unidade + "s";
+
+function desenharPizza(host, fatias, total, titulo, unidade = "prova"){
   const NS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(NS, "svg");
   svg.setAttribute("viewBox", "0 0 240 240"); svg.setAttribute("role", "img");
@@ -2163,7 +2172,7 @@ function desenharPizza(host, fatias, total, titulo){
     }
     path.setAttribute("d", d); path.setAttribute("class", "fatia"); path.style.fill = corDaFatia(i);
     const tt = document.createElementNS(NS, "title");
-    tt.textContent = `${nome}: ${num(v)} ${v === 1 ? "prova" : "provas"} (${(100 * frac).toFixed(1)}%)`;
+    tt.textContent = `${nome}: ${num(v)} ${plural(v, unidade)} (${(100 * frac).toFixed(1)}%)`;
     path.append(tt);
     svg.append(path);
     if (frac >= .07){
@@ -2180,17 +2189,17 @@ function desenharPizza(host, fatias, total, titulo){
   centro.textContent = num(total);
   const sub = document.createElementNS(NS, "text");
   sub.setAttribute("x", cx); sub.setAttribute("y", cy + 14); sub.setAttribute("class", "centro-sub");
-  sub.textContent = total === 1 ? "PROVA" : "PROVAS";
+  sub.textContent = plural(total, unidade).toUpperCase();
   svg.append(centro, sub);
   host.replaceChildren(svg);
 }
 
-function legendaDaPizza(ol, fatias, resto, total){
+function legendaDaPizza(ol, fatias, resto, total, unidade = "prova"){
   ol.replaceChildren();
   fatias.forEach(([nome, v], i) => {
     const li = el("li", {}, [
       el("i"), el("span", { className:"nome", textContent:nome }),
-      el("span", { className:"n", textContent:num(v) + (v === 1 ? " prova" : " provas") }),
+      el("span", { className:"n", textContent:num(v) + " " + plural(v, unidade) }),
       el("span", { className:"pct", textContent:(100 * v / total).toFixed(1).replace(".", ",") + "%" }),
     ]);
     li.style.setProperty("--c", corDaFatia(i));
@@ -2274,6 +2283,20 @@ function eventosDoRecorte(lista){
   return porEvento;
 }
 
+/* Concluintes somados por organizadora: evento de mais de um dia conta uma
+   vez, resultado parcial fica de fora (como em todo lugar). */
+function concluintesPorOrganizadora(lista){
+  const eventos = eventosDoRecorte(lista);
+  const vistos = new Set(), soma = new Map();
+  lista.forEach(r => (r.organizadores || []).forEach(o => {
+    const chave = o + "\u0000" + r._ev;
+    if (vistos.has(chave)) return;
+    vistos.add(chave);
+    soma.set(o, (soma.get(o) || 0) + (eventos.get(r._ev) || { concluintes:0 }).concluintes);
+  }));
+  return soma;
+}
+
 function montarRelatorioOrgs(){
   const caixa = document.getElementById("rel-orgs");
   const eventos = eventosDoRecorte(ultimoRecorte);
@@ -2347,17 +2370,18 @@ function montarRelatorioOrgs(){
     "Concluintes contam só as provas com resultado publicado. Prova com mais de uma organizadora aparece em cada uma, "
     + "mas entra uma vez na soma final. Evento de mais de um dia conta uma prova." });
 
-  // Pizza de participacao, com os mesmos cortes do pop-up.
-  const somaProvas = [...porEmpresa.values()].reduce((s, evs) => s + evs.size, 0);
+  // Pizza de participacao pela soma de concluintes, como no pop-up.
+  const concOrg = concluintesPorOrganizadora(ultimoRecorte);
+  const ordemShare = [...concOrg.entries()].filter(([, v]) => v > 0)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
+  const somaShare = ordemShare.reduce((s, [, v]) => s + v, 0);
   const share = el("div", { className:"rel__share" });
-  if (somaProvas){
-    const ordemShare = [...porEmpresa.entries()].map(([nome, evs]) => [nome, evs.size])
-      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
+  if (somaShare){
     const { fatias, resto } = agruparFatias(ordemShare);
     const host = el("div", { className:"tk__pizza" }), leg = el("ol", { className:"tk__legenda" });
-    desenharPizza(host, fatias, somaProvas, "Participação das organizadoras");
-    legendaDaPizza(leg, fatias, resto, somaProvas);
-    share.append(el("h2", { textContent:"Participação por número de provas" }), host, leg);
+    desenharPizza(host, fatias, somaShare, "Participação das organizadoras em concluintes", "concluinte");
+    legendaDaPizza(leg, fatias, resto, somaShare, "concluinte");
+    share.append(el("h2", { textContent:"Participação pela soma de concluintes" }), host, leg);
   }
   caixa.replaceChildren(el("h1", { textContent:"Organizadoras — provas e concluintes" }), cab, share, lista, total, nota);
 }
