@@ -41,9 +41,11 @@
     --kids:#F5BD55; --kids-wash:#33260B;
     --mix-rc:52%;
     --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
+    --p1:#3D74F0; --p2:#1A9E6E; --p3:#E8622E; --p4:#8A6CF0; --p5:#C34A9C; --p6:#5CCBE6; --p7:#7A879E;
   }
 }
 :root[data-theme="dark"]{
+  --p1:#3D74F0; --p2:#1A9E6E; --p3:#E8622E; --p4:#8A6CF0; --p5:#C34A9C; --p6:#5CCBE6; --p7:#7A879E;
   --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628;
   --line:#26324C; --line-soft:#1B2539;
   --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3;
@@ -59,6 +61,8 @@
   --mix-rc:52%;
   --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
 }
+
+:root{--p1:#1250C4; --p2:#07734F; --p3:#EF4E16; --p4:#4A2FBF; --p5:#961268; --p6:#08667E; --p7:#8C97AA}
 
 *{box-sizing:border-box}
 html{scroll-padding-top:calc(var(--bar-h) + .5rem)}
@@ -175,6 +179,26 @@ h1 em{font-style:normal; color:#FFC21A}
 .orgs__rodape b{color:var(--ink-2)}
 .orgs__acoes{display:flex; gap:.4rem; flex:none}
 #orgs-pdf::before,#btn-cal-pdf::before{content:"\2193\00a0"}
+
+/* ---------- ticketeiras: pizza + legenda ---------- */
+.tk{width:min(40rem, 100% - 2rem)}
+.tk__corpo{display:grid; grid-template-columns:minmax(0,15rem) minmax(0,1fr); gap:1rem 1.4rem; align-items:center; padding:0 1.2rem .6rem}
+.tk__pizza svg{display:block; width:100%; height:auto; overflow:visible}
+.tk__pizza .fatia{stroke:var(--surface); stroke-width:2}
+.tk__pizza .pct{font-family:var(--f-mono); font-size:11px; fill:#FFFFFF; font-weight:500; text-anchor:middle; dominant-baseline:middle; pointer-events:none}
+.tk__pizza .centro{font-family:var(--f-display); font-weight:800; font-size:26px; fill:var(--ink); text-anchor:middle; dominant-baseline:middle}
+.tk__pizza .centro-sub{font-family:var(--f-mono); font-size:9px; fill:var(--muted); text-anchor:middle; dominant-baseline:middle; letter-spacing:.08em}
+.tk__legenda{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.3rem}
+.tk__legenda li{display:grid; grid-template-columns:.8rem minmax(0,1fr) auto auto; gap:.55rem; align-items:center; font-size:.88rem}
+.tk__legenda i{width:.8rem; height:.8rem; border-radius:3px; background:var(--c)}
+.tk__legenda .nome{font-weight:600; overflow-wrap:anywhere}
+.tk__legenda .n{font-family:var(--f-mono); font-size:.76rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.tk__legenda .pct{font-family:var(--f-display); font-weight:800; color:var(--azul-ink); font-variant-numeric:tabular-nums; min-width:3rem; text-align:right}
+.tk__vazio{padding:.5rem 1.2rem 1rem; color:var(--muted); font-size:.9rem}
+@media (max-width:720px){
+  .tk__corpo{grid-template-columns:1fr; padding-inline:.9rem}
+  .tk__pizza{max-width:14rem; margin:0 auto}
+}
 
 /* Relatorio das organizadoras: so existe no papel. */
 .rel{display:none}
@@ -663,7 +687,7 @@ h1 em{font-style:normal; color:#FFC21A}
   .rank .nome small{font-size:.68rem}
 
   /* Relatorio das organizadoras no lugar do comparativo. */
-  .orgs{display:none !important}
+  .orgs,.tk{display:none !important}
   body.print-orgs .results,body.print-cal .results{display:none !important}
   body.print-orgs #rel-orgs,body.print-cal #rel-cal{display:block}
 
@@ -739,6 +763,7 @@ h1 em{font-style:normal; color:#FFC21A}
         </div>
         <span class="top__sep" aria-hidden="true"></span>
         <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
+        <button class="chip" id="btn-ticketeiras" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de inscrição nas provas do recorte">Ticketeiras</button>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
       </div>
     </div>
@@ -810,6 +835,20 @@ h1 em{font-style:normal; color:#FFC21A}
   <p class="count" id="count" role="status" aria-live="polite"></p>
   <div id="list"></div>
 </main>
+
+<dialog class="orgs tk" id="tk" aria-labelledby="tk-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="tk-titulo">Ticketeiras <small id="tk-recorte"></small></h2>
+      <button class="orgs__fechar" id="tk-fechar" type="button">Fechar</button>
+    </div>
+    <div class="tk__corpo" id="tk-corpo">
+      <div class="tk__pizza" id="tk-pizza"></div>
+      <ol class="tk__legenda" id="tk-legenda"></ol>
+    </div>
+    <p class="orgs__rodape" id="tk-rodape"></p>
+  </div>
+</dialog>
 
 <section class="rel" id="rel-orgs" aria-hidden="true"></section>
 <section class="rel" id="rel-cal" aria-hidden="true"></section>
@@ -1886,6 +1925,7 @@ function render(){
   ultimoRecorte = res;
   mostrarRecorte();
   if (dialogoOrgs.open) montarOrgs();
+  if (dialogoTk.open) montarTicketeiras();
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -2037,6 +2077,111 @@ document.getElementById("stat-orgs").onclick = () => {
   document.getElementById("orgs-lista").scrollTop = 0;
 };
 document.getElementById("orgs-fechar").onclick = () => dialogoOrgs.close();
+
+/* ---------- ticketeiras ----------
+   Participacao de cada plataforma de inscricao nas provas do recorte, pelo
+   link de inscricao de cada prova. So ha link nas provas de 2026 em diante
+   (o perfil da prova nasceu em 2026), e o rodape diz quantas ficaram sem. */
+const dialogoTk = document.getElementById("tk");
+const MAX_FATIAS = 6;
+
+function montarTicketeiras(){
+  document.getElementById("tk-recorte").textContent = descreverRecorte();
+  const eventos = new Map();
+  ultimoRecorte.forEach(r => { if (r.ticketeira && !eventos.has(r._ev)) eventos.set(r._ev, r.ticketeira); });
+  const totalProvas = contarProvas(ultimoRecorte);
+  const porTk = new Map();
+  eventos.forEach(tk => porTk.set(tk, (porTk.get(tk) || 0) + 1));
+  const ordem = [...porTk.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
+  const total = eventos.size;
+
+  const pizza = document.getElementById("tk-pizza");
+  const legenda = document.getElementById("tk-legenda");
+  const rodape = document.getElementById("tk-rodape");
+  pizza.replaceChildren(); legenda.replaceChildren();
+  if (!total){
+    pizza.append(el("p", { className:"tk__vazio", textContent:
+      "Nenhuma prova do recorte tem o link de inscrição identificado. O link só é coletado para as provas de 2026 em diante." }));
+    rodape.textContent = "";
+    return;
+  }
+
+  // Ate seis fatias nomeadas; o resto vira "Outras" para a pizza continuar legivel.
+  let fatias = ordem.slice(0, MAX_FATIAS);
+  const resto = ordem.slice(MAX_FATIAS);
+  if (resto.length === 1) fatias = ordem;
+  else if (resto.length) fatias.push(["Outras (" + resto.length + ")", resto.reduce((s, x) => s + x[1], 0)]);
+  const cor = i => `var(--p${Math.min(i + 1, 7)})`;
+
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", "0 0 240 240"); svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "Participação das ticketeiras: " + fatias.map(([n, v]) => n + " " + Math.round(100 * v / total) + "%").join(", "));
+  const cx = 120, cy = 120, R = 112, r = 62;
+  let ang = -Math.PI / 2;
+  const ponto = (a, rr) => [cx + rr * Math.cos(a), cy + rr * Math.sin(a)];
+  fatias.forEach(([nome, v], i) => {
+    const frac = v / total, fim = ang + frac * 2 * Math.PI;
+    const path = document.createElementNS(NS, "path");
+    let d;
+    if (frac >= .9999){
+      d = `M ${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - 0.01} ${cy - R} Z M ${cx} ${cy - r} A ${r} ${r} 0 1 0 ${cx + 0.01} ${cy - r} Z`;
+      path.setAttribute("fill-rule", "evenodd");
+    } else {
+      const [x1, y1] = ponto(ang, R), [x2, y2] = ponto(fim, R), [x3, y3] = ponto(fim, r), [x4, y4] = ponto(ang, r);
+      const grande = frac > .5 ? 1 : 0;
+      d = `M ${x1} ${y1} A ${R} ${R} 0 ${grande} 1 ${x2} ${y2} L ${x3} ${y3} A ${r} ${r} 0 ${grande} 0 ${x4} ${y4} Z`;
+    }
+    path.setAttribute("d", d); path.setAttribute("class", "fatia"); path.style.fill = cor(i);
+    const t = document.createElementNS(NS, "title");
+    t.textContent = `${nome}: ${num(v)} ${v === 1 ? "prova" : "provas"} (${(100 * frac).toFixed(1)}%)`;
+    path.append(t);
+    svg.append(path);
+    if (frac >= .07){
+      const [tx, ty] = ponto((ang + fim) / 2, (R + r) / 2);
+      const txt = document.createElementNS(NS, "text");
+      txt.setAttribute("x", tx); txt.setAttribute("y", ty); txt.setAttribute("class", "pct");
+      txt.textContent = Math.round(100 * frac) + "%";
+      svg.append(txt);
+    }
+    ang = fim;
+  });
+  const centro = document.createElementNS(NS, "text");
+  centro.setAttribute("x", cx); centro.setAttribute("y", cy - 6); centro.setAttribute("class", "centro");
+  centro.textContent = num(total);
+  const sub = document.createElementNS(NS, "text");
+  sub.setAttribute("x", cx); sub.setAttribute("y", cy + 14); sub.setAttribute("class", "centro-sub");
+  sub.textContent = total === 1 ? "PROVA" : "PROVAS";
+  svg.append(centro, sub);
+  pizza.append(svg);
+
+  fatias.forEach(([nome, v], i) => {
+    const li = el("li", {}, [
+      el("i"), el("span", { className:"nome", textContent:nome }),
+      el("span", { className:"n", textContent:num(v) + (v === 1 ? " prova" : " provas") }),
+      el("span", { className:"pct", textContent:(100 * v / total).toFixed(1).replace(".", ",") + "%" }),
+    ]);
+    li.style.setProperty("--c", cor(i));
+    li.title = i === fatias.length - 1 && resto.length > 1 ? resto.map(([n, x]) => n + " " + x).join(" · ") : "";
+    legenda.append(li);
+  });
+
+  const semLink = totalProvas - total;
+  rodape.replaceChildren(
+    el("b", { textContent:num(total) }),
+    document.createTextNode((total === 1 ? " prova" : " provas") + " com ticketeira identificada, de "),
+    el("b", { textContent:num(totalProvas) }),
+    document.createTextNode(" no recorte" + (semLink ? " · " + num(semLink) + " sem link de inscrição conhecido" : "")
+      + ". A participação é sobre as provas com ticketeira identificada; o link só é coletado a partir de 2026."),
+  );
+}
+
+document.getElementById("btn-ticketeiras").onclick = () => {
+  montarTicketeiras();
+  dialogoTk.showModal();
+};
+document.getElementById("tk-fechar").onclick = () => dialogoTk.close();
+dialogoTk.addEventListener("click", e => { if (e.target === dialogoTk) dialogoTk.close(); });
 
 /* Relatorio em PDF: quem gera e o navegador (Salvar como PDF na caixa de
    impressao). O corpo ganha a classe print-orgs, e o CSS de impressao

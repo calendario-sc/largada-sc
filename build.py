@@ -76,6 +76,14 @@ def dados_da_pagina(historico):
         perfil = p.pop("perfil", None)
         for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug"):
             p.pop(campo, None)
+        # Ticketeira de toda prova que tem uma: e o que alimenta o grafico de
+        # participacao. Prova listada pelo Ticket Sports vende por ele mesmo
+        # quando o perfil nao achou o link.
+        fontes = p.get("fontes") or []
+        ticketeira = (perfil or {}).get("ticketeira") or (
+            "Ticket Sports" if "ticketsports" in fontes else "MovNow" if "movnow" in fontes else "")
+        if ticketeira:
+            p["ticketeira"] = ticketeira
         if perfil and p["data"] >= hoje:
             cartao = _para_o_cartao(perfil)
             if cartao:

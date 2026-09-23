@@ -65,6 +65,7 @@ TICKETEIRAS = {
     "assessocor.online": "Assessocor",
     "eventooficial.com.br": "Evento Oficial",
     "rsfproeventos.com.br": "RSF Pro Eventos",
+    "runningland.com.br": "Runningland",
 }
 
 # Redes sociais e servicos que aparecem em qualquer pagina: nunca sao o site.
