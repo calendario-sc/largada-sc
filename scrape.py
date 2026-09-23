@@ -574,6 +574,120 @@ def _guardar_resultado(prova, por_distancia, total, por_genero, fonte):
         prova["genero_tentado"] = True
 
 
+# ------------------------------------------------------------ cronometragem
+# A pagina do Open Results diz de onde veio o resultado ("Fonte: resultado
+# oficial"), e o link aponta para o site da empresa que cronometrou. E por
+# ele que se sabe a participacao de cada cronometragem no estado.
+CRONO_DOMINIOS = {
+    "chiprun.com.br": "ChipRun",
+    "chiptiming.com.br": "Chip Timing",
+    "racetag.com.br": "Racetag",
+    "supercrono.com.br": "Super Crono",
+    "sprintcrono.com.br": "Sprint Crono",
+    "cronomax.com.br": "Chronomax",
+    "runking.com.br": "RunKing",
+    "podiumchip.com.br": "Podium Chip",
+    "km.esp.br": "KM Eventos Esportivos",
+    "maissport.com.br": "Mais Sports",
+    "pfeventos.com.br": "PF Eventos",
+    "eventooficial.com.br": "Evento Oficial",
+    "onsportsoficial.com.br": "On Sports",
+    "rsfproeventos.com.br": "RSF Pro Eventos",
+    "ticketsports.com.br": "Ticket Sports",
+    "movnow.com.br": "MovNow",
+    "atletis.com.br": "Atletis",
+    "vemcorrer.com": "Vem Correr",
+    "cronochip.com.br": "CronoChip",
+    "yescom.com.br": "Yescom",
+    "minhasinscricoes.com.br": "Minhas Inscrições",
+    "sportchip.com.br": "SportChip",
+    "iguana.com.br": "Iguana Sports",
+    # Achadas nas paginas de resultado das provas de SC.
+    "desafioagora.com.br": "Desafio Agora",
+    "trichipcronometragem.com.br": "Trichip Cronometragem",
+    "o2corre.com.br": "O2 Corre",
+    "quedasadventure.com.br": "Quedas Adventure",
+    "sportcrono.com.br": "Sport Crono",
+    "rodrigocirilo.com.br": "Rodrigo Cirilo",
+    "racetime.com.br": "Racetime",
+    "tfsports.com.br": "TF Sports",
+    "sulbrasilis.com.br": "Sul Brasilis",
+    "protiming.com.br": "Pro Timing",
+    "cronoserv.com.br": "Cronoserv",
+    "ativo.com": "Ativo.com",
+    "estounessa.com.br": "Estou Nessa",
+    "chiptimingworld.com": "Chip Timing World",
+    "imxeventos.com.br": "IMX Eventos",
+    "apuracaodetempos.com.br": "Apuração de Tempos",
+    "assessocor.online": "Assessocor",
+    "liverun.com.br": "Live Run",
+    "esportivacorridas.com.br": "Esportiva Corridas",
+    "ngtechno.com": "NG Techno",
+    "chiprun.my.to": "ChipRun",
+    "esportecorrida.com.br": "Esporte Corrida",
+    "tbfsports.com.br": "TBF Sports",
+    "cronoserra.com.br": "Crono Serra",
+}
+# O Racezone hospeda o resultado de varias cronometragens: a conta no
+# endereco (racezone.com.br/<conta>/) e quem cronometrou.
+RACEZONE_CONTAS = {"mycrono": "MyCrono", "onsports": "On Sports", "quedasadventure": "Quedas Adventure"}
+# Link que nao e de cronometragem nenhuma: rede social, site da propria
+# prova, pagina de teste. Fica sem empresa.
+CRONO_IGNORAR = ("facebook.com", "instagram.com", "windows.net", "nightruncostaodosantinho.com")
+OR_FONTE = re.compile(r"Fonte:(.{0,400}?)<a[^>]+href=\"([^\"]+)\"", re.S)
+REVER_CRONO_DIAS = 60
+
+
+def nome_da_cronometragem(url):
+    """'https://result.racetag.com.br/x' -> 'Racetag'. Dominio desconhecido
+    vira o proprio nome do dominio, para nao se perder nada."""
+    limpo = re.sub(r"^https?://(?:www\.)?", "", url.strip().lower())
+    host = limpo.split("/")[0].split("?")[0]
+    if any(host == x or host.endswith("." + x) for x in CRONO_IGNORAR):
+        return ""
+    if host.endswith("racezone.com.br"):
+        conta = limpo.split("/")[1].split("#")[0] if "/" in limpo else ""
+        return RACEZONE_CONTAS.get(conta, "Racezone")
+    for raiz, nome in CRONO_DOMINIOS.items():
+        if host == raiz or host.endswith("." + raiz):
+            return nome
+    partes = [x for x in host.split(".") if x not in ("www", "result", "results", "resultado",
+                                                       "resultados", "eventos", "evento", "app", "site")]
+    return (partes[0] if partes else host).capitalize()
+
+
+def completar_cronometragem(historico, limite=None, registrar=print):
+    """Le a pagina do Open Results de cada prova com resultado e guarda a
+    empresa de cronometragem. Uma vez por prova; sem link, tenta de novo
+    depois de REVER_CRONO_DIAS."""
+    import atletas_coleta   # o mesmo download paciente, com a sessao do portal
+    hoje = datetime.date.today()
+    limite_data = (hoje - datetime.timedelta(days=REVER_CRONO_DIAS)).isoformat()
+    alvo = [p for p in historico if p.get("or_slug")
+            and not p.get("cronometragem")
+            and (p.get("cronometragem_em") or "") <= limite_data]
+    alvo.sort(key=lambda p: p["data"], reverse=True)
+    feitas, achadas = 0, 0
+    for p in alvo[:limite] if limite else alvo:
+        try:
+            html, _url, _slug = atletas_coleta.pagina_do_evento(p["or_slug"])
+        except Exception as erro:
+            registrar(f"  cronometragem {p['data']} {p['nome'][:40]}: FALHOU ({erro.__class__.__name__})")
+            continue
+        feitas += 1
+        p["cronometragem_em"] = hoje.isoformat()
+        achado = OR_FONTE.search(html)
+        if achado:
+            url = achado.group(2)
+            nome = nome_da_cronometragem(url)
+            if nome:
+                p["cronometragem_url"] = url
+                p["cronometragem"] = nome
+                achadas += 1
+        time.sleep(0.5)
+    return feitas, achadas
+
+
 def _sem_resultado(historico, marca):
     """Provas ja realizadas que continuam sem numeros e ainda nao foram
     procuradas nesta cronometragem."""
@@ -845,7 +959,8 @@ def main():
                          ("concluintes", "concluintes_total", "or_slug",
                           "fonte_resultado", "runking_tentado",
                           "concluintes_genero", "concluintes_f", "concluintes_m",
-                          "genero_tentado", "perfil", "perfil_em")
+                          "genero_tentado", "perfil", "perfil_em",
+                          "cronometragem", "cronometragem_url", "cronometragem_em")
                          if antiga.get(c)}
             enderecos = {c: antiga[c] for c in
                          ("corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug")

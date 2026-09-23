@@ -88,6 +88,13 @@ def coletar():
             break
         registrar(f"genero: {n} consultadas, {ok} preenchidas")
 
+    try:
+        feitas, achadas = scrape.completar_cronometragem(historico, limite=120, registrar=registrar)
+        if feitas:
+            registrar(f"cronometragem: {feitas} paginas lidas, {achadas} empresas achadas")
+    except Exception as erro:
+        registrar(f"cronometragem: FALHOU ({erro.__class__.__name__}: {erro})")
+
     scrape.agrupar_series(historico)
     parciais = scrape.marcar_resultados_parciais(historico)
 

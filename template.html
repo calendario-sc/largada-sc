@@ -181,7 +181,10 @@ h1 em{font-style:normal; color:#FFC21A}
 #orgs-pdf::before,#btn-cal-pdf::before{content:"\2193\00a0"}
 
 /* ---------- ticketeiras: pizza + legenda ---------- */
-.tk{width:min(40rem, 100% - 2rem)}
+.tk,.orgs{width:min(40rem, 100% - 2rem)}
+.orgs__share{padding-top:0; padding-bottom:.2rem; border-bottom:1px solid var(--line-soft); margin-bottom:.4rem}
+.orgs__share .tk__pizza{max-width:11rem}
+.orgs__share .tk__legenda li{font-size:.8rem}
 .tk__corpo{display:grid; grid-template-columns:minmax(0,15rem) minmax(0,1fr); gap:1rem 1.4rem; align-items:center; padding:0 1.2rem .6rem}
 .tk__pizza svg{display:block; width:100%; height:auto; overflow:visible}
 .tk__pizza .fatia{stroke:var(--surface); stroke-width:2}
@@ -198,6 +201,7 @@ h1 em{font-style:normal; color:#FFC21A}
 @media (max-width:720px){
   .tk__corpo{grid-template-columns:1fr; padding-inline:.9rem}
   .tk__pizza{max-width:14rem; margin:0 auto}
+  .orgs__share .tk__pizza{max-width:9rem}
 }
 
 /* Relatorio das organizadoras: so existe no papel. */
@@ -725,6 +729,10 @@ h1 em{font-style:normal; color:#FFC21A}
   .rel__total span:first-child{flex:1}
   .rel__total .c{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
   .rel__nota{margin:.5rem 0 0; font-size:.7rem; color:var(--muted)}
+  .rel__share{display:grid; grid-template-columns:10rem minmax(0,1fr); gap:.6rem 1.2rem; align-items:center; margin:.7rem 0 .2rem; padding:0 0 .6rem; border-bottom:1px solid var(--line); break-inside:avoid; page-break-inside:avoid}
+  .rel__share h2{grid-column:1 / 3; font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0}
+  .rel__share .tk__legenda li{font-size:.76rem}
+  .rel__share .tk__legenda .pct{color:var(--ink)}
 }
 </style>
 
@@ -764,6 +772,7 @@ h1 em{font-style:normal; color:#FFC21A}
         <span class="top__sep" aria-hidden="true"></span>
         <button class="chip" id="btn-comparativo" type="button" aria-pressed="false">Comparativo</button>
         <button class="chip" id="btn-ticketeiras" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de inscrição nas provas do recorte">Ticketeiras</button>
+        <button class="chip" id="btn-crono" type="button" aria-haspopup="dialog" title="Participação de cada empresa de cronometragem nas provas com resultado publicado">Cronometragem</button>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
       </div>
     </div>
@@ -850,6 +859,20 @@ h1 em{font-style:normal; color:#FFC21A}
   </div>
 </dialog>
 
+<dialog class="orgs tk" id="crono" aria-labelledby="crono-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="crono-titulo">Cronometragem <small id="crono-recorte"></small></h2>
+      <button class="orgs__fechar" id="crono-fechar" type="button">Fechar</button>
+    </div>
+    <div class="tk__corpo">
+      <div class="tk__pizza" id="crono-pizza"></div>
+      <ol class="tk__legenda" id="crono-legenda"></ol>
+    </div>
+    <p class="orgs__rodape" id="crono-rodape"></p>
+  </div>
+</dialog>
+
 <section class="rel" id="rel-orgs" aria-hidden="true"></section>
 <section class="rel" id="rel-cal" aria-hidden="true"></section>
 
@@ -861,6 +884,10 @@ h1 em{font-style:normal; color:#FFC21A}
         <button class="orgs__fechar" id="orgs-pdf" type="button" title="Relatório com as provas e os concluintes de cada organizadora">Exportar PDF</button>
         <button class="orgs__fechar" id="orgs-fechar" type="button">Fechar</button>
       </div>
+    </div>
+    <div class="tk__corpo orgs__share">
+      <div class="tk__pizza" id="orgs-pizza"></div>
+      <ol class="tk__legenda" id="orgs-legenda"></ol>
     </div>
     <div class="orgs__busca">
       <input id="orgs-busca" type="search" placeholder="Buscar organizadora…" autocomplete="off" aria-label="Buscar organizadora">
@@ -1926,6 +1953,7 @@ function render(){
   mostrarRecorte();
   if (dialogoOrgs.open) montarOrgs();
   if (dialogoTk.open) montarTicketeiras();
+  if (dialogoCrono.open) montarCrono();
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -2031,6 +2059,16 @@ function montarOrgs(){
   porEmpresa.forEach(v => { v.provas = v.eventos.size; });
   const todas = [...porEmpresa.entries()]
     .sort((a, b) => b[1].provas - a[1].provas || a[0].localeCompare(b[0], "pt-BR"));
+  // Participacao: cada prova conta para cada empresa que a assina, e o
+  // percentual e sobre essa soma -- fecha em 100%.
+  const somaProvas = todas.reduce((s, [, v]) => s + v.provas, 0);
+  const pizzaOrgs = document.getElementById("orgs-pizza"), legendaOrgs = document.getElementById("orgs-legenda");
+  if (somaProvas){
+    const { fatias, resto } = agruparFatias(todas.map(([nome, v]) => [nome, v.provas]));
+    desenharPizza(pizzaOrgs, fatias, somaProvas, "Participação das organizadoras");
+    legendaDaPizza(legendaOrgs, fatias, resto, somaProvas);
+  } else { pizzaOrgs.replaceChildren(); legendaOrgs.replaceChildren(); }
+
   const alvo = norm(buscaOrgs.value);
   const achadas = alvo ? todas.filter(([nome]) => norm(nome).includes(alvo)) : todas;
   const maior = todas.length ? todas[0][1].provas : 1;
@@ -2083,40 +2121,27 @@ document.getElementById("orgs-fechar").onclick = () => dialogoOrgs.close();
    link de inscricao de cada prova. So ha link nas provas de 2026 em diante
    (o perfil da prova nasceu em 2026), e o rodape diz quantas ficaram sem. */
 const dialogoTk = document.getElementById("tk");
+const dialogoCrono = document.getElementById("crono");
 const MAX_FATIAS = 6;
 
-function montarTicketeiras(){
-  document.getElementById("tk-recorte").textContent = descreverRecorte();
-  const eventos = new Map();
-  ultimoRecorte.forEach(r => { if (r.ticketeira && !eventos.has(r._ev)) eventos.set(r._ev, r.ticketeira); });
-  const totalProvas = contarProvas(ultimoRecorte);
-  const porTk = new Map();
-  eventos.forEach(tk => porTk.set(tk, (porTk.get(tk) || 0) + 1));
-  const ordem = [...porTk.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
-  const total = eventos.size;
-
-  const pizza = document.getElementById("tk-pizza");
-  const legenda = document.getElementById("tk-legenda");
-  const rodape = document.getElementById("tk-rodape");
-  pizza.replaceChildren(); legenda.replaceChildren();
-  if (!total){
-    pizza.append(el("p", { className:"tk__vazio", textContent:
-      "Nenhuma prova do recorte tem o link de inscrição identificado. O link só é coletado para as provas de 2026 em diante." }));
-    rodape.textContent = "";
-    return;
-  }
-
-  // Ate seis fatias nomeadas; o resto vira "Outras" para a pizza continuar legivel.
+/* Pizza de participacao: serve as ticketeiras e as cronometragens. cfg diz
+   de onde vem o nome (campo), quais provas contam (base) e o texto do rodape. */
+/* Ate seis fatias nomeadas; o resto vira "Outras" para a pizza continuar
+   legivel. ordem: [[nome, valor], ...] ja do maior para o menor. */
+function agruparFatias(ordem){
   let fatias = ordem.slice(0, MAX_FATIAS);
   const resto = ordem.slice(MAX_FATIAS);
   if (resto.length === 1) fatias = ordem;
   else if (resto.length) fatias.push(["Outras (" + resto.length + ")", resto.reduce((s, x) => s + x[1], 0)]);
-  const cor = i => `var(--p${Math.min(i + 1, 7)})`;
+  return { fatias, resto };
+}
+const corDaFatia = i => `var(--p${Math.min(i + 1, 7)})`;
 
+function desenharPizza(host, fatias, total, titulo){
   const NS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(NS, "svg");
   svg.setAttribute("viewBox", "0 0 240 240"); svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", "Participação das ticketeiras: " + fatias.map(([n, v]) => n + " " + Math.round(100 * v / total) + "%").join(", "));
+  svg.setAttribute("aria-label", titulo + ": " + fatias.map(([n, v]) => n + " " + Math.round(100 * v / total) + "%").join(", "));
   const cx = 120, cy = 120, R = 112, r = 62;
   let ang = -Math.PI / 2;
   const ponto = (a, rr) => [cx + rr * Math.cos(a), cy + rr * Math.sin(a)];
@@ -2132,10 +2157,10 @@ function montarTicketeiras(){
       const grande = frac > .5 ? 1 : 0;
       d = `M ${x1} ${y1} A ${R} ${R} 0 ${grande} 1 ${x2} ${y2} L ${x3} ${y3} A ${r} ${r} 0 ${grande} 0 ${x4} ${y4} Z`;
     }
-    path.setAttribute("d", d); path.setAttribute("class", "fatia"); path.style.fill = cor(i);
-    const t = document.createElementNS(NS, "title");
-    t.textContent = `${nome}: ${num(v)} ${v === 1 ? "prova" : "provas"} (${(100 * frac).toFixed(1)}%)`;
-    path.append(t);
+    path.setAttribute("d", d); path.setAttribute("class", "fatia"); path.style.fill = corDaFatia(i);
+    const tt = document.createElementNS(NS, "title");
+    tt.textContent = `${nome}: ${num(v)} ${v === 1 ? "prova" : "provas"} (${(100 * frac).toFixed(1)}%)`;
+    path.append(tt);
     svg.append(path);
     if (frac >= .07){
       const [tx, ty] = ponto((ang + fim) / 2, (R + r) / 2);
@@ -2153,35 +2178,81 @@ function montarTicketeiras(){
   sub.setAttribute("x", cx); sub.setAttribute("y", cy + 14); sub.setAttribute("class", "centro-sub");
   sub.textContent = total === 1 ? "PROVA" : "PROVAS";
   svg.append(centro, sub);
-  pizza.append(svg);
+  host.replaceChildren(svg);
+}
 
+function legendaDaPizza(ol, fatias, resto, total){
+  ol.replaceChildren();
   fatias.forEach(([nome, v], i) => {
     const li = el("li", {}, [
       el("i"), el("span", { className:"nome", textContent:nome }),
       el("span", { className:"n", textContent:num(v) + (v === 1 ? " prova" : " provas") }),
       el("span", { className:"pct", textContent:(100 * v / total).toFixed(1).replace(".", ",") + "%" }),
     ]);
-    li.style.setProperty("--c", cor(i));
+    li.style.setProperty("--c", corDaFatia(i));
     li.title = i === fatias.length - 1 && resto.length > 1 ? resto.map(([n, x]) => n + " " + x).join(" · ") : "";
-    legenda.append(li);
+    ol.append(li);
   });
+}
 
-  const semLink = totalProvas - total;
+/* Pizza de participacao: serve as ticketeiras e as cronometragens. cfg diz
+   de onde vem o nome (campo), quais provas contam (base) e o texto do rodape. */
+function montarParticipacao(cfg){
+  document.getElementById(cfg.id + "-recorte").textContent = descreverRecorte();
+  const base = ultimoRecorte.filter(cfg.base);
+  const eventos = new Map();
+  base.forEach(r => { if (r[cfg.campo] && !eventos.has(r._ev)) eventos.set(r._ev, r[cfg.campo]); });
+  const totalProvas = contarProvas(base);
+  const porNome = new Map();
+  eventos.forEach(n => porNome.set(n, (porNome.get(n) || 0) + 1));
+  const ordem = [...porNome.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
+  const total = eventos.size;
+
+  const pizza = document.getElementById(cfg.id + "-pizza");
+  const legenda = document.getElementById(cfg.id + "-legenda");
+  const rodape = document.getElementById(cfg.id + "-rodape");
+  pizza.replaceChildren(); legenda.replaceChildren();
+  if (!total){
+    pizza.append(el("p", { className:"tk__vazio", textContent:cfg.vazio }));
+    rodape.textContent = "";
+    return;
+  }
+  const { fatias, resto } = agruparFatias(ordem);
+  desenharPizza(pizza, fatias, total, cfg.titulo);
+  legendaDaPizza(legenda, fatias, resto, total);
+
+  const sem = totalProvas - total;
   rodape.replaceChildren(
     el("b", { textContent:num(total) }),
-    document.createTextNode((total === 1 ? " prova" : " provas") + " com ticketeira identificada, de "),
+    document.createTextNode((total === 1 ? " prova" : " provas") + " com " + cfg.rotulo + " identificada, de "),
     el("b", { textContent:num(totalProvas) }),
-    document.createTextNode(" no recorte" + (semLink ? " · " + num(semLink) + " sem link de inscrição conhecido" : "")
-      + ". A participação é sobre as provas com ticketeira identificada; o link só é coletado a partir de 2026."),
+    document.createTextNode(" " + cfg.universo + (sem ? " · " + num(sem) + " " + cfg.semRotulo : "") + ". " + cfg.nota),
   );
 }
 
-document.getElementById("btn-ticketeiras").onclick = () => {
-  montarTicketeiras();
-  dialogoTk.showModal();
+const PIZZA_TICKETEIRAS = {
+  id:"tk", campo:"ticketeira", titulo:"Participação das ticketeiras", rotulo:"ticketeira",
+  base: () => true, universo:"no recorte", semRotulo:"sem link de inscrição conhecido",
+  vazio:"Nenhuma prova do recorte tem o link de inscrição identificado. O link só é coletado para as provas de 2026 em diante.",
+  nota:"A participação é sobre as provas com ticketeira identificada; o link só é coletado a partir de 2026.",
 };
+/* A cronometragem sai da pagina de resultado: so existe para prova com
+   resultado publicado, entao a base e essa. */
+const PIZZA_CRONO = {
+  id:"crono", campo:"cronometragem", titulo:"Participação das cronometragens", rotulo:"cronometragem",
+  base: r => Boolean(r.concluintes_total), universo:"com resultado publicado", semRotulo:"sem a empresa identificada",
+  vazio:"Nenhuma prova do recorte tem resultado publicado com a empresa de cronometragem identificada.",
+  nota:"A empresa vem do link do resultado oficial na página do Open Results; a participação é sobre as provas identificadas.",
+};
+function montarTicketeiras(){ montarParticipacao(PIZZA_TICKETEIRAS); }
+function montarCrono(){ montarParticipacao(PIZZA_CRONO); }
+
+document.getElementById("btn-ticketeiras").onclick = () => { montarTicketeiras(); dialogoTk.showModal(); };
 document.getElementById("tk-fechar").onclick = () => dialogoTk.close();
 dialogoTk.addEventListener("click", e => { if (e.target === dialogoTk) dialogoTk.close(); });
+document.getElementById("btn-crono").onclick = () => { montarCrono(); dialogoCrono.showModal(); };
+document.getElementById("crono-fechar").onclick = () => dialogoCrono.close();
+dialogoCrono.addEventListener("click", e => { if (e.target === dialogoCrono) dialogoCrono.close(); });
 
 /* Relatorio em PDF: quem gera e o navegador (Salvar como PDF na caixa de
    impressao). O corpo ganha a classe print-orgs, e o CSS de impressao
@@ -2272,7 +2343,19 @@ function montarRelatorioOrgs(){
     "Concluintes contam só as provas com resultado publicado. Prova com mais de uma organizadora aparece em cada uma, "
     + "mas entra uma vez na soma final. Evento de mais de um dia conta uma prova." });
 
-  caixa.replaceChildren(el("h1", { textContent:"Organizadoras — provas e concluintes" }), cab, lista, total, nota);
+  // Pizza de participacao, com os mesmos cortes do pop-up.
+  const somaProvas = [...porEmpresa.values()].reduce((s, evs) => s + evs.size, 0);
+  const share = el("div", { className:"rel__share" });
+  if (somaProvas){
+    const ordemShare = [...porEmpresa.entries()].map(([nome, evs]) => [nome, evs.size])
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
+    const { fatias, resto } = agruparFatias(ordemShare);
+    const host = el("div", { className:"tk__pizza" }), leg = el("ol", { className:"tk__legenda" });
+    desenharPizza(host, fatias, somaProvas, "Participação das organizadoras");
+    legendaDaPizza(leg, fatias, resto, somaProvas);
+    share.append(el("h2", { textContent:"Participação por número de provas" }), host, leg);
+  }
+  caixa.replaceChildren(el("h1", { textContent:"Organizadoras — provas e concluintes" }), cab, share, lista, total, nota);
 }
 
 /* Calendario em PDF: as provas que passam nos filtros, em ordem de data,

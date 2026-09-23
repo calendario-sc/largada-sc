@@ -74,8 +74,11 @@ def dados_da_pagina(historico):
     hoje = datetime.date.today().isoformat()
     for p in historico:
         perfil = p.pop("perfil", None)
-        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug"):
+        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "cronometragem_url", "cronometragem_em"):
             p.pop(campo, None)
+        # Resultado lido direto na cronometradora: ela e a cronometragem.
+        if not p.get("cronometragem") and p.get("fonte_resultado") in ("supercrono", "chiprun"):
+            p["cronometragem"] = {"supercrono": "Super Crono", "chiprun": "ChipRun"}[p["fonte_resultado"]]
         # Ticketeira de toda prova que tem uma: e o que alimenta o grafico de
         # participacao. Prova listada pelo Ticket Sports vende por ele mesmo
         # quando o perfil nao achou o link.
