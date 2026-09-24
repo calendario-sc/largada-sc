@@ -230,6 +230,32 @@ h1 em{font-style:normal; color:#FFC21A}
 .rec__vazio{padding:1rem 1.2rem; color:var(--muted); font-size:.9rem}
 @media (max-width:720px){ .rec__filtros{padding-inline:.9rem} }
 
+/* ---------- galeria dos campeoes ---------- */
+.camp-btn{font:inherit; font-size:.72rem; cursor:pointer; border:1px solid var(--sol); background:none; color:var(--ink-2);
+  border-radius:999px; padding:.12rem .55rem; font-family:var(--f-mono); letter-spacing:.04em}
+.camp-btn:hover,.camp-btn[aria-expanded="true"]{background:var(--sol); color:var(--sol-ink)}
+.galeria{margin:.55rem 0 0; padding:.55rem .7rem; border-radius:10px; background:var(--surface-2); border:1px solid var(--line-soft)}
+.galeria[hidden]{display:none}
+.galeria h4{font-family:var(--f-mono); font-weight:400; font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 .35rem}
+.galeria table{width:100%; border-collapse:collapse; font-size:.8rem}
+.galeria td{padding:.22rem .35rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
+.galeria tr:last-child td{border-bottom:0}
+.galeria td.km{font-family:var(--f-display); font-weight:800; white-space:nowrap; color:var(--azul-ink); width:4.5rem}
+.galeria td.sx{font-family:var(--f-mono); font-size:.64rem; color:var(--muted); width:1.2rem}
+.galeria td.t{font-family:var(--f-mono); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+.galeria a{color:inherit; text-decoration:none; border-bottom:1px solid var(--line)}
+.galeria a:hover{color:var(--azul-ink); border-color:var(--azul-ink)}
+.galeria .vazio{color:var(--muted); font-size:.8rem}
+.camp{width:min(46rem, 100% - 2rem)}
+.camp__lista{list-style:none; margin:0; padding:0 .8rem .6rem; overflow-y:auto}
+.camp__lista > li{padding:.55rem .5rem; border-bottom:1px solid var(--line-soft)}
+.camp__lista .prova{font-weight:700; font-size:.92rem}
+.camp__lista .prova small{display:block; font-weight:400; font-family:var(--f-mono); font-size:.68rem; color:var(--muted); letter-spacing:.04em}
+.camp__lista .venc{margin:.3rem 0 0; font-size:.76rem; color:var(--ink-2); line-height:1.5}
+.camp__lista .venc b{font-family:var(--f-display); color:var(--azul-ink); margin-right:.25rem}
+.camp__lista .venc span{white-space:nowrap}
+.camp__lista .venc i{font-style:normal; font-family:var(--f-mono); color:var(--muted)}
+
 /* ---------- raio-x floripa: mapa + lista ---------- */
 .rx{width:min(72rem, 100% - 2rem)}
 .rx__corpo{display:grid; grid-template-columns:minmax(0,22rem) minmax(0,1fr); gap:1rem 1.4rem; padding:0 1.2rem .6rem; align-items:start}
@@ -751,7 +777,7 @@ h1 em{font-style:normal; color:#FFC21A}
   .rank .nome small{font-size:.68rem}
 
   /* Relatorio das organizadoras no lugar do comparativo. */
-  .orgs,.tk,.rec,.rx{display:none !important}
+  .orgs,.tk,.rec,.rx,.camp{display:none !important}
   body.print-orgs .results,body.print-cal .results,body.print-raiox .results{display:none !important}
   body.print-orgs #rel-orgs,body.print-cal #rel-cal,body.print-raiox #rel-raiox{display:block}
   .rel__rx{display:grid; grid-template-columns:15rem minmax(0,1fr); gap:1rem 1.4rem; align-items:start; margin:.8rem 0 .4rem; break-inside:avoid; page-break-inside:avoid}
@@ -855,6 +881,7 @@ h1 em{font-style:normal; color:#FFC21A}
         <button class="chip" id="btn-crono" type="button" aria-haspopup="dialog" title="Participação de cada empresa de cronometragem nas provas com resultado publicado">Cronometragem</button>
         <button class="chip" id="btn-foto" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de fotografia nas provas realizadas">Fotografia</button>
         <button class="chip" id="btn-raiox" type="button" aria-haspopup="dialog" title="Onde as provas de Florianópolis largam e chegam: mapa e lista por local">Raio-X Floripa</button>
+        <button class="chip" id="btn-campeoes" type="button" aria-haspopup="dialog" title="Os vencedores de cada distância, nas provas do recorte">Campeões</button>
         <button class="chip" id="btn-recordes" type="button" aria-haspopup="dialog" title="Os dez melhores tempos em cada distância, nas provas do recorte">Recordes</button>
         <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html" title="Busque um atleta pelo nome e veja as provas, o pace e os melhores tempos">Resultados por atleta ↗</a>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
@@ -986,6 +1013,17 @@ h1 em{font-style:normal; color:#FFC21A}
       <div class="rx__lista" id="raiox-lista"></div>
     </div>
     <p class="orgs__rodape" id="raiox-rodape"></p>
+  </div>
+</dialog>
+
+<dialog class="orgs camp" id="campeoes" aria-labelledby="campeoes-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="campeoes-titulo">Campeões <small id="campeoes-recorte"></small></h2>
+      <button class="orgs__fechar" id="campeoes-fechar" type="button">Fechar</button>
+    </div>
+    <ol class="camp__lista" id="campeoes-lista"></ol>
+    <p class="orgs__rodape" id="campeoes-rodape"></p>
   </div>
 </dialog>
 
@@ -2099,6 +2137,7 @@ function render(){
   if (dialogoCrono && dialogoCrono.open) montarCrono();
   if (dialogoFoto && dialogoFoto.open) montarFoto();
   if (dialogoRec.open) montarRecordes();
+  if (dialogoCampeoes.open) montarCampeoes();
   if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
 
   if (!res.length){
@@ -2279,6 +2318,112 @@ ao("stat-orgs", () => {
   document.getElementById("orgs-lista").scrollTop = 0;
 });
 ao("orgs-fechar", () => dialogoOrgs.close());
+
+/* ---------- galeria dos campeoes ----------
+   atletas/campeoes.json: por prova (or_slug), a lista de distancias com a
+   vencedora e o vencedor: [km, [nome, tempo, slug] | null, [...] | null].
+   Fica de fora o que e caminhada, PCD, kids e revezamento, e o tempo
+   impossivel (abaixo do recorde brasileiro ou incoerente com o historico
+   do atleta), que e erro de cronometragem e nao vitoria. */
+const CAMPEOES_URLS = ["atletas/campeoes.json", "https://www.cuponsdecorrida.com.br/atletas/campeoes.json"];
+let CAMPEOES = null, campeoesErro = "";
+
+async function carregarCampeoes(){
+  if (CAMPEOES || campeoesErro) return;
+  let erro = "";
+  for (const url of CAMPEOES_URLS){
+    try {
+      const r = await fetch(url, { cache:"no-cache" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      CAMPEOES = await r.json();
+      return;
+    } catch (e){ erro = e.message; }
+  }
+  campeoesErro = "Não foi possível carregar os campeões (" + erro + ").";
+}
+
+const kmRotulo = km => (km === 21.1 ? "21 km" : km === 42.2 ? "42 km" : String(km).replace(".", ",") + " km");
+const tempoCamp = s => {
+  const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), seg = s % 60;
+  return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(seg).padStart(2, "0");
+};
+const nomeProprio = s => s.toLowerCase().replace(/(^|[\s-])(\S)/g, (m, a, b) => a + b.toUpperCase())
+  .replace(/\b(Da|De|Do|Das|Dos|E)\b/g, m => m.toLowerCase());
+const linkAtleta = (nome, slug) => el("a", { href:"https://www.cuponsdecorrida.com.br/atletas.html#" + slug,
+  target:"_blank", rel:"noopener", textContent:nomeProprio(nome) });
+
+function desenharGaleria(caixa, r){
+  caixa.replaceChildren();
+  if (campeoesErro){ caixa.append(el("p", { className:"vazio", textContent:campeoesErro })); return; }
+  const lista = (CAMPEOES || {})[r.or_slug];
+  caixa.append(el("h4", { textContent:"Galeria dos campeões" }));
+  if (!lista || !lista.length){
+    caixa.append(el("p", { className:"vazio", textContent:"Sem vencedores identificados nesta prova." }));
+    return;
+  }
+  const tb = el("table"), corpo = el("tbody");
+  lista.forEach(([km, f, m]) => {
+    [["F", f], ["M", m]].forEach(([sx, v], i) => {
+      if (!v) return;
+      const tr = el("tr");
+      tr.append(
+        el("td", { className:"km", textContent: i === 0 || !f ? kmRotulo(km) : "" }),
+        el("td", { className:"sx", textContent:sx }),
+        el("td", {}, [linkAtleta(v[0], v[2])]),
+        el("td", { className:"t", textContent:tempoCamp(v[1]) }),
+      );
+      corpo.append(tr);
+    });
+  });
+  tb.append(corpo);
+  caixa.append(tb);
+}
+
+const dialogoCampeoes = document.getElementById("campeoes");
+
+function montarCampeoes(){
+  document.getElementById("campeoes-recorte").textContent = descreverRecorte();
+  const lista = document.getElementById("campeoes-lista"), rodape = document.getElementById("campeoes-rodape");
+  lista.replaceChildren(); rodape.textContent = "";
+  if (campeoesErro){ lista.append(el("li", { className:"rec__vazio", textContent:campeoesErro })); return; }
+  if (!CAMPEOES){ lista.append(el("li", { className:"rec__vazio", textContent:"Carregando os campeões…" })); return; }
+  const provas = ultimoRecorte.filter(r => r.or_slug && CAMPEOES[r.or_slug])
+    .sort((a, b) => b._d - a._d);
+  const dataCurta = r => String(r.dia).padStart(2, "0") + "/" + String(r.mes).padStart(2, "0") + "/" + r.ano;
+  provas.forEach(r => {
+    const li = el("li");
+    li.append(el("div", { className:"prova", textContent:r.nome }, [
+      el("small", { textContent:dataCurta(r) + " · " + r.cidade }) ]));
+    const venc = el("div", { className:"venc" });
+    CAMPEOES[r.or_slug].forEach(([km, f, m], i) => {
+      if (i) venc.append(document.createElement("br"));
+      venc.append(el("b", { textContent:kmRotulo(km) }));
+      [["F", f], ["M", m]].forEach(([sx, v], j) => {
+        if (!v) return;
+        const s = el("span");
+        if (j && f) s.append(document.createTextNode(" · "));
+        s.append(el("i", { textContent:sx + " " }), linkAtleta(v[0], v[2]), el("i", { textContent:" " + tempoCamp(v[1]) }));
+        venc.append(s);
+      });
+    });
+    li.append(venc);
+    lista.append(li);
+  });
+  if (!provas.length)
+    lista.append(el("li", { className:"rec__vazio", textContent:"Nenhuma prova do recorte com vencedores identificados. Os campeões vêm dos resultados por atleta, de 2022 em diante; escolha um ano ou o período \"Realizadas\"." }));
+  rodape.textContent = provas.length
+    ? num(provas.length) + (provas.length === 1 ? " prova" : " provas") + " com vencedores identificados, da mais recente à mais antiga. F = feminino, M = masculino; tempo como a cronometragem publicou. Clique no nome para ver o perfil do atleta."
+    : "";
+}
+
+ao("btn-campeoes", async () => {
+  montarCampeoes();
+  dialogoCampeoes.showModal();
+  await carregarCampeoes();
+  montarCampeoes();
+});
+ao("campeoes-fechar", () => dialogoCampeoes.close());
+fechaNoFundo(dialogoCampeoes);
 
 /* ---------- raio-x floripa ----------
    Cada prova de Florianopolis tem em `locais` os pontos da cidade onde
@@ -3085,6 +3230,25 @@ function linha(r, destaque){
   if (fontes.length) meta.append(el("span", { className:"fontes", textContent:fontes.join(" · ") }));
 
   const main = el("div", { className:"race__main" }, [nome, meta]);
+
+  // Galeria dos campeoes: so para prova com resultado por atleta (2022 em
+  // diante); o arquivo e baixado no primeiro clique.
+  if (r.or_slug && temResultado(r) && r.ano >= 2022){
+    const bt = el("button", { className:"camp-btn", type:"button", textContent:"Campeões" });
+    bt.setAttribute("aria-expanded", "false");
+    const gal = el("div", { className:"galeria" }); gal.hidden = true;
+    bt.onclick = async () => {
+      const abrir = gal.hidden;
+      gal.hidden = !abrir;
+      bt.setAttribute("aria-expanded", String(abrir));
+      if (!abrir) return;
+      gal.replaceChildren(el("p", { className:"vazio", textContent:"Carregando…" }));
+      await carregarCampeoes();
+      desenharGaleria(gal, r);
+    };
+    meta.append(bt);
+    main.append(gal);
+  }
 
   // Prova futura: inscricao, preco de entrada e regulamento, quando houver.
   // So o que foi achado aparece -- nada de "nao encontrado".

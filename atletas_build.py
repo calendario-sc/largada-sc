@@ -31,6 +31,12 @@ PROVAS = AQUI / "atletas" / "provas"
 DADOS = AQUI / "atletas" / "dados"
 INDICE = AQUI / "atletas" / "indice.json"
 RECORDES = AQUI / "atletas" / "recordes.json"
+CAMPEOES = AQUI / "atletas" / "campeoes.json"
+# Modalidade que nao e a prova principal: nao entra na galeria.
+NAO_E_CAMPEAO = re.compile(r"caminhad|pcd|cadeir|kids|infantil|crianc|revez|dupla|quarteto|trio|equipe", re.I)
+# Ritmo abaixo do qual e erro de dado, nao vitoria: um pouco abaixo dos
+# recordes mundiais (5 km masculino em 12:35 = 2:31/km).
+RITMO_MINIMO = {"M": 150, "F": 168}
 # Distancias padrao dos recordes e, por sexo, o tempo abaixo do qual e erro
 # de dado (modalidade trocada, chip disparado antes): ninguem corre 5 km em
 # 12 minutos numa prova de bairro. O corte fica um pouco abaixo dos
@@ -190,8 +196,43 @@ def filtrar_recordes(recordes, atletas):
     return saida
 
 
+def campeoes_da_prova(linhas, atletas):
+    """Vencedor e vencedora de cada distancia: o menor tempo entre as
+    modalidades da mesma distancia ("5K", "5K MORADOR", "5K ELITE").
+    [[km, [nome, tempo, slug] ou None (F), [nome, tempo, slug] ou None (M)], ...]"""
+    candidatos = {}
+    for slug, nome, sexo, modalidade, cat, _eq, pos, tempo, _pace in linhas:
+        if NAO_E_PESSOA.search(slug) or sexo not in ("F", "M") or not tempo:
+            continue
+        if NAO_E_CAMPEAO.search(f"{modalidade} {cat}") or pos == SEM_POSICAO:
+            continue
+        km = km_da_modalidade(modalidade)
+        if not km or km < 1:
+            continue
+        if tempo / km < RITMO_MINIMO[sexo]:
+            continue
+        padrao = DISTANCIAS_RECORDE.get(km)
+        if padrao and tempo < TEMPO_MINIMO[padrao][sexo]:
+            continue                      # abaixo do recorde brasileiro: erro de dado
+        candidatos.setdefault(km, {}).setdefault(sexo, []).append((tempo, nome, slug))
+    saida = []
+    for km in sorted(candidatos, reverse=True):
+        linha = [km, None, None]
+        for i, sexo in ((1, "F"), (2, "M")):
+            for tempo, nome, slug in sorted(candidatos[km].get(sexo, [])):
+                entrada = atletas.get(slug)
+                if entrada and not coerente(km, tempo, entrada[2]):
+                    continue
+                linha[i] = [nome, tempo, slug]
+                break
+        if linha[1] or linha[2]:
+            saida.append(linha)
+    return saida
+
+
 def montar(registrar=print):
     provas, atletas, recordes = [], {}, {}
+    brutos = {}
     calendario = calendario_por_slug()
     for arquivo in sorted(PROVAS.glob("*.json")):
         d = json.loads(arquivo.read_text(encoding="utf-8"))
@@ -201,6 +242,7 @@ def montar(registrar=print):
         top = top_da_prova(d["linhas"])
         if top:
             recordes[d["slug"]] = top
+        brutos[d["slug"]] = d["linhas"]
         # Organizadoras dao o selo de superfa; serie diz qual prova se repetiu.
         orgs, serie, serie_nome = calendario.get(d["slug"], ([], "", ""))
         provas.append([d["data"], d["nome"], d["cidade"], d.get("slug_real") or d["slug"],
@@ -242,6 +284,12 @@ def montar(registrar=print):
     }, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
     recordes = filtrar_recordes(recordes, atletas)
+    campeoes = {}
+    for slug_prova, linhas in brutos.items():
+        c = campeoes_da_prova(linhas, atletas)
+        if c:
+            campeoes[slug_prova] = c
+    CAMPEOES.write_text(json.dumps(campeoes, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     RECORDES.write_text(json.dumps(recordes, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     maior = max((len(m) for m in reparticao.values()), default=0)
     registrar(f"atletas: {len(atletas)} | resultados: {resultados} | provas: {len(provas)} | "
