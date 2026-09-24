@@ -992,16 +992,26 @@ def clax_ler(url):
         por_distancia[km] = por_distancia.get(km, 0) + 1
         total += 1
         sexo = (e.get("x") or "").upper()
+        if sexo not in ("M", "F"):
+            # Equipe de revezamento: o sexo esta no nome da categoria
+            # ("FEMININA", "DUPLA MASCULINA"); "MISTA" e "ELITE" ficam de fora.
+            rotulo = sem_acento(percurso).upper()
+            if "MIST" not in rotulo:
+                sexo = "F" if "FEMININ" in rotulo else "M" if "MASCULIN" in rotulo else ""
         if sexo in ("M", "F"):
             g = por_genero.setdefault(km, {"f": 0, "m": 0})
             g["f" if sexo == "F" else "m"] += 1
+    # E revezamento quando cada inscrito e uma equipe: a lista de equipes
+    # tem o mesmo tamanho dos inscritos, ou ninguem tem sexo individual.
     equipes = len(raiz.findall("Equipes/E"))
+    sexos = {(e.get("x") or "").upper() for e in inscritos.values()}
+    e_equipes = bool(inscritos) and (equipes == len(inscritos) or not (sexos & {"M", "F"}))
     return {
         "nome": (raiz.get("nom") or "").strip(),
         "data": raiz.get("dt1") or "",
         "organizador": (raiz.get("organisateur") or "").strip(),
         "por_distancia": por_distancia, "total": total, "por_genero": por_genero,
-        "equipes": bool(inscritos) and equipes == len(inscritos),
+        "equipes": e_equipes,
     }
 
 

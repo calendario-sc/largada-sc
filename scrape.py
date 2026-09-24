@@ -737,7 +737,7 @@ CRONO_DO_CLAX = {"supercrono": "Super Crono", "maissport": "Mais Sports"}
 def _guardar_clax(prova, dados, fonte, url):
     """Grava numa prova o que veio de um .clax."""
     _guardar_resultado(prova, dados["por_distancia"], dados["total"], dados["por_genero"], fonte)
-    if dados["equipes"]:
+    if dados["equipes"] or "Revezamento" in (prova.get("tags") or []):
         prova["concluintes_unidade"] = "equipes"
     else:
         prova.pop("concluintes_unidade", None)
