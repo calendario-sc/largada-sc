@@ -337,6 +337,7 @@ PROVA_REMARCADA = [
 MESMA_PROVA = [
     ("2026-06-07", "15ª Maratona de Floripa", "Meia e Maratona Cidade de Florianópolis - 2026"),
     ("2026-11-14", "Corrida Santo S Dumont", "Corrida Rústica Santos Dumont"),
+    ("2026-06-13", "Sunset Jurerê - Corrida & Vinho", "JURERÊ WINE RUN | SUPER IMPERATRIZ"),
 ]
 
 
