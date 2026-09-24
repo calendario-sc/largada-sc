@@ -1070,6 +1070,11 @@ def fundir_fca(historico):
             for campo in ("permit", "permit_status", "organizador_fca", "or_slug", "corrida_id"):
                 if p.get(campo) and not alvo.get(campo):
                     alvo[campo] = p[campo]
+            pills = list(dict.fromkeys((alvo.get("pills") or []) + (p.get("pills") or [])))
+            if pills != (alvo.get("pills") or []):
+                alvo["pills"] = pills
+                alvo["faixas"] = sorted(set(alvo.get("faixas") or []) | set(p.get("faixas") or []), key=FAIXAS.index)
+                alvo["max_km"] = max(alvo.get("max_km") or 0, p.get("max_km") or 0)
             if not alvo.get("organizadores") and p.get("organizadores"):
                 alvo["organizadores"] = p["organizadores"]
             historico.remove(p)

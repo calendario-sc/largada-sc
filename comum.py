@@ -330,10 +330,13 @@ RESULTADOS_EXTRAS = [
 # minusculas) e a data em que a prova aconteceu.
 PROVA_REMARCADA = [
     ("2026-04-12", "circuito das estacoes", "2026-04-26"),
+    # O percurso de 100 km larga na vespera; a prova e uma so.
+    ("2026-09-18", "floripa ultra trail", "2026-09-19"),
 ]
 
 MESMA_PROVA = [
     ("2026-06-07", "15ª Maratona de Floripa", "Meia e Maratona Cidade de Florianópolis - 2026"),
+    ("2026-11-14", "Corrida Santo S Dumont", "Corrida Rústica Santos Dumont"),
 ]
 
 
