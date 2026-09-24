@@ -325,6 +325,13 @@ RESULTADOS_EXTRAS = [
 # se confundem com provas tradicionais da mesma cidade (a "Maratona de
 # Floripa" e a "Meia e Maratona Cidade de Florianopolis" sao eventos
 # distintos em outros anos). Fica declarado a mao, por data.
+# Prova remarcada: uma fonte (em geral a FCA, que guarda a data do permit)
+# ficou com a data antiga. Data antiga, trecho do nome (sem acento,
+# minusculas) e a data em que a prova aconteceu.
+PROVA_REMARCADA = [
+    ("2026-04-12", "circuito das estacoes", "2026-04-26"),
+]
+
 MESMA_PROVA = [
     ("2026-06-07", "15ª Maratona de Floripa", "Meia e Maratona Cidade de Florianópolis - 2026"),
 ]

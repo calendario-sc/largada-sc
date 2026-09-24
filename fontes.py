@@ -766,12 +766,112 @@ def roadrunners():
     return provas
 
 
+# ------------------------------------------------------ FCA (permits)
+# A Federacao Catarinense de Atletismo lista toda corrida que pediu Permit,
+# com data, cidade, organizadora e o numero do permit. E quem oficializa a
+# prova, entao vale como fonte de calendario e como carimbo no cartao.
+FCA_DADOS = "https://fcatletismo.org.br/ajax/ajax_competicoes_read.php"
+FCA_PRIMEIRO_ANO = 2022
+
+
+def _titulo_fca(nome):
+    """A FCA escreve muita prova em caixa alta; vira nome proprio."""
+    nome = " ".join((nome or "").split())
+    if nome and nome == nome.upper() and any(c.isalpha() for c in nome):
+        pequenas = {"de", "da", "do", "das", "dos", "e", "a", "o", "em", "no", "na", "com", "para", "por"}
+        palavras = []
+        for i, w in enumerate(nome.lower().split()):
+            palavras.append(w if (i and w in pequenas) else (w.upper() if re.fullmatch(r"[a-z]{1,4}\d*", w) and len(w) <= 3 else w.capitalize()))
+        nome = " ".join(palavras)
+    return arrumar_titulo(nome)
+
+
+# A FCA escreve a cidade de varios jeitos: "JOINVILLE - SC", "Tubarão Sc",
+# "Municipio de Schroeder", e alguns erros de digitacao recorrentes.
+FCA_CIDADE_TROCA = {"florianopolins": "Florianópolis", "joinvillle": "Joinville",
+                    "florianoplis": "Florianópolis", "treze tilhas": "Treze Tílias",
+                    "picarras": "Balneário Piçarras", "balneario picarras": "Balneário Piçarras",
+                    "aroio trinta": "Arroio Trinta", "rio negrino": "Rio Negrinho",
+                    "fachinal dos guedes": "Faxinal dos Guedes", "herval d oeste": "Herval d'Oeste",
+                    "laguna a garopaba": "Laguna", "lauro muller e bom jardim da serra": "Lauro Müller",
+                    "lauro muller - bom jardim da serra": "Lauro Müller",
+                    "porto belo - itapema - bombinhas": "Porto Belo",
+                    "farol do morro dos conventos": "Araranguá",
+                    "corrida do coracao etapa morro dos conventos": "Araranguá",
+                    "prospera": "Criciúma"}
+
+
+def _cidade_fca(texto):
+    s = " ".join((texto or "").split())
+    s = re.sub("(?i)^municipio de ", "", sem_acento(s)) if s.lower().startswith("munic") else s
+    s = re.sub("(?i)[- /]*santa catarina$", "", s)
+    s = re.sub("(?i)[- /]+sc$", "", s).strip(" -/")
+    chave = sem_acento(s).lower()
+    return FCA_CIDADE_TROCA.get(chave, s)
+
+
+def fca():
+    """As corridas com pedido de Permit na FCA, ano a ano."""
+    import datetime as _dt
+    hoje = _dt.date.today()
+    provas = []
+    for ano in range(FCA_PRIMEIRO_ANO, hoje.year + 2):
+        consulta = urllib.parse.urlencode({"ano": ano, "mes": "", "tipo": "", "pagina": "c"})
+        try:
+            bruto = baixar(f"{FCA_DADOS}?{consulta}", headers={
+                "Referer": "https://fcatletismo.org.br/?pagina=competicoes&q=c",
+                "X-Requested-With": "XMLHttpRequest"})
+        except Exception:
+            continue
+        inicio = bruto.find("{")
+        if inicio < 0:
+            continue
+        try:
+            linhas = json.loads(bruto[inicio:]).get("aaData") or []
+        except ValueError:
+            continue
+        for r in linhas:
+            titulo = " ".join((r.get("Titulo") or "").split())
+            data = r.get("dataTeste") or r.get("DataOrdem") or ""
+            if not titulo or not re.match(r"\d{4}-\d{2}-\d{2}$", data):
+                continue
+            if re.search(r"(?i)\bcancelad[ao]\b", titulo):
+                continue                       # a FCA marca no titulo o que caiu
+            # OK = permit confirmado; AP aguardando pagamento, CR aberto para
+            # correcoes, NV solicitado. Prova passada sem permit confirmado
+            # pode nao ter acontecido: fica de fora.
+            status = (r.get("Status") or "").strip().upper()
+            if status != "OK" and data < hoje.isoformat():
+                continue
+            a, m, d = (int(x) for x in data.split("-"))
+            if sem_acento(r.get("Cidade") or "").strip().lower() in ("a definir", ""):
+                continue
+            cidade, regiao, uf = canonizar_cidade(_cidade_fca(r.get("Cidade")))
+            classe = sem_acento(r.get("Classificacao") or "").lower()
+            extras = ["Trail"] if "trail" in classe or "montanha" in classe else []
+            numero, pano = r.get("Permit_Numero"), r.get("Permit_Ano")
+            provas.append({
+                "fonte": "fca",
+                "data": data, "dia": d, "mes": m, "ano": a,
+                "cidade": cidade, "regiao": regiao, "uf": uf,
+                "nome": _titulo_fca(titulo),
+                "pills": [], "km": [],
+                "tags": classificar(_titulo_fca(titulo), [], extras),
+                "permit": f"{numero}/{pano}" if numero and pano and status == "OK" else "",
+                "permit_status": status,
+                "organizador_fca": " ".join((r.get("organizador") or "").split()),
+            })
+        time.sleep(0.4)
+    return provas
+
+
 TODAS = [("corridasbr", corridasbr),
          ("corridasbr/arquivo", corridasbr_arquivo),
          ("ticketsports", ticketsports),
          ("roadrunners", roadrunners),
          ("movnow", movnow),
-         ("atletis", atletis)]
+         ("atletis", atletis),
+         ("fca", fca)]
 
 
 # ----------------------------------------------- super crono (cronometragem)

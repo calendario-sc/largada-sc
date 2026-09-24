@@ -618,6 +618,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .tag--revezamento{background:var(--reve-wash); color:var(--reve)}
 .tag--kids{background:var(--kids-wash); color:var(--kids)}
 .tag--dia{background:var(--azul-wash); color:var(--azul-ink)}
+.tag--permit{background:var(--trail-wash); color:var(--trail)}
 .flag{
   font-family:var(--f-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
   background:var(--sol); color:var(--sol-ink); padding:.2rem .45rem; border-radius:4px;
@@ -751,8 +752,25 @@ h1 em{font-style:normal; color:#FFC21A}
 
   /* Relatorio das organizadoras no lugar do comparativo. */
   .orgs,.tk,.rec,.rx{display:none !important}
-  body.print-orgs .results,body.print-cal .results{display:none !important}
-  body.print-orgs #rel-orgs,body.print-cal #rel-cal{display:block}
+  body.print-orgs .results,body.print-cal .results,body.print-raiox .results{display:none !important}
+  body.print-orgs #rel-orgs,body.print-cal #rel-cal,body.print-raiox #rel-raiox{display:block}
+  .rel__rx{display:grid; grid-template-columns:15rem minmax(0,1fr); gap:1rem 1.4rem; align-items:start; margin:.8rem 0 .4rem; break-inside:avoid; page-break-inside:avoid}
+  .rel__rx svg{display:block; width:100%; height:auto}
+  .rel__rx .terra{fill:#EEF2F8; stroke:#8C97AA; stroke-width:1}
+  .rel__rx .ponto{fill:#1250C4; stroke:#FFFFFF; stroke-width:2}
+  .rel__rx .n{font-family:var(--f-display); font-weight:800; font-size:22px; fill:#FFFFFF; text-anchor:middle; dominant-baseline:middle}
+  .rel__rx .legenda{display:none}
+  .rel__rx table td.c{text-align:right; font-family:var(--f-mono)}
+  .rel__rx table{font-size:.8rem}
+  #rel-raiox .rx__local{break-inside:auto; margin:.8rem 0 0}
+  #rel-raiox .rx__local h3{font-family:var(--f-display); font-weight:800; font-size:.95rem; margin:0 0 .25rem; display:flex; gap:.5rem; align-items:baseline; border-bottom:2px solid var(--ink); padding-bottom:.15rem; break-after:avoid; page-break-after:avoid}
+  #rel-raiox .rx__local h3 small{font-family:var(--f-mono); font-weight:400; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+  #rel-raiox .rx__local td{padding:.2rem .35rem; border-bottom:1px solid var(--line-soft); vertical-align:top; font-size:.74rem}
+  #rel-raiox .rx__local td.d{font-family:var(--f-mono); white-space:nowrap; color:var(--muted)}
+  #rel-raiox .rx__local td.p{font-weight:600}
+  #rel-raiox .rx__local td.p small{display:block; font-weight:400; font-size:.66rem; color:var(--muted)}
+  #rel-raiox .rx__local td.c{font-family:var(--f-mono); text-align:right; white-space:nowrap}
+  #rel-raiox .rx__local table{width:100%; border-collapse:collapse}
 
   /* Calendario em tabela, um bloco por mes. */
   .rel table{width:100%; border-collapse:collapse; margin:.7rem 0 0; font-size:.76rem}
@@ -958,7 +976,10 @@ h1 em{font-style:normal; color:#FFC21A}
   <div class="orgs__caixa">
     <div class="orgs__topo">
       <h2 id="raiox-titulo">Raio-X Floripa <small id="raiox-recorte"></small></h2>
-      <button class="orgs__fechar" id="raiox-fechar" type="button">Fechar</button>
+      <div class="orgs__acoes">
+        <button class="orgs__fechar" id="raiox-pdf" type="button" title="Relatório com o mapa e as provas de cada local">Exportar PDF</button>
+        <button class="orgs__fechar" id="raiox-fechar" type="button">Fechar</button>
+      </div>
     </div>
     <div class="rx__corpo">
       <div class="rx__mapa" id="raiox-mapa"></div>
@@ -985,6 +1006,7 @@ h1 em{font-style:normal; color:#FFC21A}
 
 <section class="rel" id="rel-orgs" aria-hidden="true"></section>
 <section class="rel" id="rel-cal" aria-hidden="true"></section>
+<section class="rel" id="rel-raiox" aria-hidden="true"></section>
 
 <dialog class="orgs" id="orgs" aria-labelledby="orgs-titulo">
   <div class="orgs__caixa">
@@ -1009,7 +1031,7 @@ h1 em{font-style:normal; color:#FFC21A}
 
 <footer class="foot">
   <div class="wrap">
-    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b> e <b>atletis.com.br</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
+    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b>, <b>atletis.com.br</b> e o calendário de permits da <b>Federação Catarinense de Atletismo</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
     <p>Os números de concluintes vêm de <b>openresults.run</b> e, onde ele não alcança, das cronometragens que publicam os resultados: <b>supercrono.com.br</b>, <b>chiprun.com.br</b> e <b>resultados.runking.com.br</b>. Conta quem cruzou a linha de chegada com tempo registrado.</p>
     <p id="cobertura"></p>
     <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
@@ -1976,7 +1998,7 @@ ao("btn-pdf", () => {
 });
 window.addEventListener("afterprint", () => {
   document.title = TITULO;
-  document.body.classList.remove("print-orgs", "print-cal");
+  document.body.classList.remove("print-orgs", "print-cal", "print-raiox");
 });
 
 /* ---------- cobertura de resultados ----------
@@ -2277,16 +2299,32 @@ function montarRaioX(){
     return;
   }
   const base = ultimoRecorte.filter(r => r.cidade === "Florianópolis" && !(r.tags || []).includes("Treino"));
-  // Um evento conta uma vez em cada local onde larga ou chega.
+  // Um evento conta uma vez em cada local onde larga ou chega. Os dias do
+  // evento se somam: a Maratona de Floripa publica tudo no domingo.
   const eventos = new Map();
   base.forEach(r => {
-    const e = eventos.get(r._ev) || { r, locais:new Set() };
+    const e = eventos.get(r._ev) || { r, dias:[], locais:new Set(), km:{} };
+    e.dias.push(r);
     (r.locais || []).forEach(l => e.locais.add(l));
+    Object.assign(e.km, r.locais_km || {});
+    if (r.concluintes_total && (!e.r.concluintes_total || r._d < e.r._d)) e.r = e.r.concluintes_total ? e.r : r;
     if (!eventos.has(r._ev)) eventos.set(r._ev, e);
   });
+  // Concluintes do evento num local: todos os dias, e so as distancias que
+  // largaram ali quando isso esta registrado ("so 5 km e 21 km").
+  const concNoLocal = (e, local) => {
+    const km = e.km[local];
+    let soma = 0, algum = false;
+    e.dias.forEach(r => {
+      if (!temResultado(r)) return;
+      algum = true;
+      soma += km ? km.reduce((s, k) => s + ((r.concluintes || {})[k] || 0), 0) : r.concluintes_total;
+    });
+    return algum ? soma : null;
+  };
   const porLocal = new Map();
-  eventos.forEach(e => e.locais.forEach(l => porLocal.set(l, (porLocal.get(l) || []).concat([e.r]))));
-  const semLocal = [...eventos.values()].filter(e => !e.locais.size).map(e => e.r);
+  eventos.forEach(e => e.locais.forEach(l => porLocal.set(l, (porLocal.get(l) || []).concat([e]))));
+  const semLocal = [...eventos.values()].filter(e => !e.locais.size);
   const maior = Math.max(1, ...[...porLocal.values()].map(v => v.length));
 
   // --- mapa
@@ -2346,15 +2384,22 @@ function montarRaioX(){
                                  id:"rx-" + norm(nome).replace(/[^a-z0-9]+/g, "-") });
     sec.append(el("h3", { textContent:nome }, [el("small", { textContent:provas.length + (provas.length === 1 ? " prova" : " provas") })]));
     const tb = el("table"), corpo = el("tbody");
-    [...provas].sort((a, b) => b._d - a._d).forEach(r => {
-      const nomeCel = el("td", { className:"p", textContent:r.nome });
+    [...provas].sort((a, b) => b.r._d - a.r._d).forEach(e => {
+      const r = e.dias.reduce((a, b) => (a._d <= b._d ? a : b));
+      const nomeCel = el("td", { className:"p", textContent: e.dias.length > 1 && r.serie_nome ? r.serie_nome + " " + r.ano : r.nome });
       if (classe === "sem" && (r.largada || r.local_banlek))
         nomeCel.append(el("small", { textContent:"pista: " + (r.largada || r.local_banlek) }));
+      const km = e.km[nome];
+      if (km) nomeCel.append(el("small", { textContent:"neste local, só " + km.map(k => k + " km").join(" e ") }));
+      const conc = concNoLocal(e, classe === "sem" ? "" : nome);
+      const passada = e.dias.some(d => d._passada);
       corpo.append(el("tr", {}, [
-        el("td", { className:"d", textContent:dataCurta(r) }),
+        el("td", { className:"d", textContent:dataCurta(r) + (e.dias.length > 1 ? " +" + (e.dias.length - 1) : "") }),
         nomeCel,
         el("td", { textContent:(r.organizadores || []).join(" + ") || "—" }),
-        el("td", { className:"c", textContent: temResultado(r) ? num(r.concluintes_total) + (r.concluintes_unidade === "equipes" ? " eq." : "") : (r._passada ? "sem resultado" : "futura") }),
+        el("td", { className:"c", textContent: conc !== null
+          ? num(conc) + (r.concluintes_unidade === "equipes" ? " eq." : "") + (km ? " *" : "")
+          : (passada ? "sem resultado" : "futura") }),
       ]));
     });
     tb.append(corpo); sec.append(tb);
@@ -2376,6 +2421,53 @@ function montarRaioX(){
 
 ao("btn-raiox", () => { raioxAtivo = ""; montarRaioX(); dialogoRaiox.showModal(); });
 ao("raiox-fechar", () => dialogoRaiox.close());
+
+/* PDF do Raio-X: o mapa (copia do SVG da janela), um resumo com as provas
+   e os concluintes de cada local e, depois, as provas de cada local. */
+function montarRelatorioRaioX(){
+  raioxAtivo = "";
+  montarRaioX();                         // garante a janela no recorte atual
+  const caixa = document.getElementById("rel-raiox");
+  const mapa = document.querySelector("#raiox-mapa svg");
+  const secoes = [...document.querySelectorAll("#raiox-lista .rx__local")];
+  const resumo = el("table");
+  const corpo = el("tbody");
+  resumo.append(el("thead", {}, [el("tr", {}, ["Local", "Provas", "Concluintes"].map(x => el("th", { textContent:x })))]));
+  secoes.forEach(sec => {
+    const nome = sec.querySelector("h3").firstChild.textContent;
+    const linhas = [...sec.querySelectorAll("tbody tr")];
+    const conc = linhas.reduce((s, tr) => {
+      const v = (tr.lastChild.textContent || "").replace(/\D/g, "");
+      return s + (v ? Number(v) : 0);
+    }, 0);
+    corpo.append(el("tr", {}, [
+      el("td", { textContent:nome }),
+      el("td", { className:"c", textContent:num(linhas.length) }),
+      el("td", { className:"c", textContent: conc ? num(conc) : "—" }),
+    ]));
+  });
+  resumo.append(corpo);
+  const topo = el("div", { className:"rel__rx" }, [mapa ? mapa.cloneNode(true) : el("div"), resumo]);
+  const lista = el("div");
+  secoes.forEach(sec => {
+    const copia = sec.cloneNode(true);
+    copia.removeAttribute("id");
+    copia.classList.remove("ativo");
+    lista.append(copia);
+  });
+  const nota = el("p", { className:"rel__nota", textContent:
+    "Local de largada e chegada; prova que larga e chega em pontos diferentes conta nos dois. Evento de mais de um dia conta uma prova, com os concluintes dos dias somados. * concluintes só das distâncias que largaram naquele local. As provas sem local identificado estão no fim." });
+  caixa.replaceChildren(el("h1", { textContent:"Raio-X Floripa — provas por local" }), cabecalhoDoRecorte(), topo, lista, nota);
+}
+
+ao("raiox-pdf", () => {
+  montarRelatorioRaioX();
+  dialogoRaiox.close();
+  document.body.classList.add("print-raiox");
+  const anos = state.anos.size ? " - " + [...state.anos].sort().join("-") : "";
+  document.title = ("Cupons de Corrida - Raio-X Floripa" + anos).replace(/[\\/:*?"<>|]/g, "");
+  window.print();
+});
 fechaNoFundo(dialogoRaiox);
 
 /* ---------- recordes ----------
@@ -2949,6 +3041,9 @@ function linha(r, destaque){
 
   r.tags.filter(x => x !== "Rua").forEach(x =>
     meta.append(el("span", { className:"tag tag--" + norm(x), textContent:x })));
+  if (r.permit)
+    meta.append(el("span", { className:"tag tag--permit", textContent:"Permit FCA",
+                             title:"Permit nº " + r.permit + " na Federação Catarinense de Atletismo" }));
   if (r.evento_dias > 1)
     meta.append(el("span", { className:"tag tag--dia", textContent:"dia " + r.evento_dia + " de " + r.evento_dias,
                              title:"Evento de " + r.evento_dias + " dias: conta uma prova só nos totais" }));

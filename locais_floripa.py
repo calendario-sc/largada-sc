@@ -39,7 +39,7 @@ LOCAIS = [
     ("Beira-Mar Continental", -27.594, -48.578,
      r"beira ?-?mar continental|\bcontinental\b|balneario\b|estreito|claudio alvim|coqueiros|abraao|bom abrigo|villa romana|jardim atlantico|capoeiras"),
     ("Centro", -27.597, -48.551,
-     r"\bcentro\b|praca xv|hercilio luz|largo da alfandega|mercado publico|figueira|catedral|praca de portugal|passeio publico|trompowsk"),
+     r"\bcentro\b|praca xv|hercilio luz|largo da alfandega|mercado publico|catedral|praca de portugal|passeio publico|trompowsk"),
     ("Morro da Cruz", -27.590, -48.535, r"morro da cruz"),
     ("Trindade / UFSC", -27.600, -48.519,
      r"\bufsc\b|trindade|carvoeira|corrego grande|udesc|itacorubi|santa monica|\bpantanal\b|serrinha"),
@@ -69,6 +69,31 @@ LOCAIS = [
 # apontar a mao; a lista "sem local" do painel diz o que falta.
 LOCAIS_POR_SERIE = {
 }
+# Prova cujo nome engana: a "Figueira Run" nao e na Figueira da Praca XV, e
+# no Estreito. Chave: trecho do nome normalizado (sem acento, minusculas).
+LOCAIS_PELO_NOME = [
+    ("figueira run", ["Beira-Mar Continental"]),
+]
+# Correcao pontual, informada pelo usuario: data e trecho do nome (sem
+# acento, minusculas). Vale so para aquela edicao e para os outros dias do
+# mesmo evento. O quarto campo, opcional, restringe as distancias de um
+# local: {"Beira-Mar Norte": ["5", "21"]} = so 5 km e 21 km largaram ali.
+LOCAIS_POR_PROVA = [
+    ("2026-08-29", "maratona internacional de floripa", ["Beira-Mar Norte"],
+     {"Beira-Mar Norte": ["5", "21"]}),
+    ("2026-09-13", "lupo sport corre", ["Beira-Mar Continental"]),
+    ("2026-09-06", "vascorrida", ["Beira-Mar Continental"]),
+    ("2026-08-01", "santander night run", ["Beira-Mar Continental"]),
+    ("2026-07-26", "corrida verde", ["Beira-Mar Continental"]),
+    ("2026-07-05", "circuito das estacoes", ["Beira-Mar Continental"]),
+    ("2026-06-14", "circuito caixa de corridas", ["Beira-Mar Continental"]),
+    ("2026-04-12", "circuito das estacoes", ["Beira-Mar Continental"]),
+    ("2026-04-26", "circuito das estacoes", ["Beira-Mar Continental"]),
+    ("2026-03-29", "live! run xp", ["Beira-Mar Continental"]),
+]
+# Um lugar dentro do outro: quem larga na Beira-Mar Norte esta no Centro,
+# mas conta uma vez so, no ponto mais preciso.
+CONTIDOS = {"Beira-Mar Norte": "Centro"}
 
 REGISTRAR = print
 
@@ -162,10 +187,21 @@ def classificar(textos):
 def locais_da_prova(prova):
     """Pelas pistas guardadas na prova: largada do corridasbr, endereco da
     Banlek, frases do regulamento; o nome so quando nada mais diz."""
+    nome = sem_acento(prova["nome"]).lower()
+    for data, trecho, locais, *_km in LOCAIS_POR_PROVA:
+        if prova["data"] == data and trecho in nome:
+            return list(locais)
+    for trecho, locais in LOCAIS_PELO_NOME:
+        if trecho in nome:
+            return list(locais)
     pistas = [prova.get("largada"), prova.get("local_banlek"), prova.get("local_texto")]
     achados = classificar(pistas)
     if not achados:
         achados = classificar([prova["nome"]])
+    # Beira-Mar Norte fica no Centro: nao conta duas vezes.
+    for preciso, amplo in CONTIDOS.items():
+        if preciso in achados and amplo in achados:
+            achados.remove(amplo)
     return achados[:2]        # largada e chegada: no maximo dois pontos
 
 
@@ -217,6 +253,18 @@ def atualizar_locais(historico, limite=None, registrar=print):
     por_serie = {}
     for p in floripa:
         p["locais"] = locais_da_prova(p)
+        p.pop("locais_km", None)
+    # Correcao pontual vale para todos os dias do evento, com as distancias.
+    for data, trecho, locais, *km in LOCAIS_POR_PROVA:
+        dono = next((p for p in floripa if p["data"] == data and trecho in sem_acento(p["nome"]).lower()), None)
+        if dono is None:
+            continue
+        dias = [p for p in floripa if dono.get("evento") and p.get("evento") == dono["evento"]] or [dono]
+        for p in dias:
+            p["locais"] = list(locais)
+            if km and km[0]:
+                p["locais_km"] = km[0]
+    for p in floripa:
         if p["locais"] and p.get("serie"):
             por_serie.setdefault(p["serie"], []).append(tuple(p["locais"]))
     herdadas = 0

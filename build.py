@@ -71,7 +71,7 @@ def _para_o_cartao(perfil):
 BI_DIR = AQUI.parent / "cupons-bi"
 # O que so a pagina de BI leva: quem vende a inscricao, quem cronometra e
 # quem fotografa cada prova.
-CAMPOS_BI = ("ticketeira", "cronometragem", "fotografia", "locais", "largada", "local_banlek")
+CAMPOS_BI = ("ticketeira", "cronometragem", "fotografia", "locais", "locais_km", "largada", "local_banlek")
 
 
 def dados_floripa():
@@ -101,7 +101,7 @@ def dados_da_pagina(historico, bi=True):
         perfil = p.pop("perfil", None)
         for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "cronometragem_url", "cronometragem_em",
                       "fotografia_em", "fotografia_detalhe", "maissport_tentado",
-                      "largada_em", "local_texto", "local_texto_em"):
+                      "largada_em", "local_texto", "local_texto_em", "permit_status", "organizador_fca"):
             p.pop(campo, None)
         # Resultado lido direto na cronometradora: ela e a cronometragem.
         if not p.get("cronometragem") and p.get("fonte_resultado") in ("supercrono", "chiprun"):
@@ -133,6 +133,7 @@ SO_BI = [
     r'[ \t]*<button class="chip" id="btn-foto"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-raiox"[^\n]*\n',
     r'<dialog class="orgs rx" id="raiox".*?</dialog>\n\n',
+    r'<section class="rel" id="rel-raiox"[^\n]*\n',
     r'  <section class="comparativo" id="comparativo".*?\n  </section>\n',
     r'<dialog class="orgs tk" id="tk".*?</dialog>\n\n',
     r'<dialog class="orgs tk" id="crono".*?</dialog>\n\n',

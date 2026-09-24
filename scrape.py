@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 import fontes
-from comum import (mesmo_evento_renomeado, FAIXAS, MESMA_PROVA, NAO_CORRIDA, ORG_ALIAS, RESULTADOS_EXTRAS, UF_ALVO, arrumar_titulo,
+from comum import (PROVA_REMARCADA, mesmo_evento_renomeado, FAIXAS, MESMA_PROVA, NAO_CORRIDA, ORG_ALIAS, RESULTADOS_EXTRAS, UF_ALVO, arrumar_titulo,
                    canonizar_cidade,
                    classificar, esta_excluida, faixas_de, mesma_prova,
                    mesmo_evento_renomeado, palavras_distintivas, parecidos,
@@ -46,7 +46,10 @@ def qualidade_nome(nome):
 
 def fundir(grupo):
     """Combina os registros de uma mesma prova vindos de fontes diferentes."""
-    melhor_nome = max((g["nome"] for g in grupo), key=qualidade_nome)
+    # A FCA escreve o nome do permit ("Montain do...", caixa alta): so vale
+    # quando nenhuma outra fonte tem a prova.
+    nomes = [g["nome"] for g in grupo if g.get("fonte") != "fca"] or [g["nome"] for g in grupo]
+    melhor_nome = max(nomes, key=qualidade_nome)
 
     # Cidade: vale a que o mapa de regioes reconhece.
     com_regiao = [g for g in grupo
@@ -90,6 +93,10 @@ def fundir(grupo):
         # Co-organizacao e comum: vale a uniao do que cada fonte informa.
         "organizadores": sorted({o for g in grupo for o in g.get("organizadores", [])},
                                 key=sem_acento),
+        # FCA: o permit carimba o cartao; a organizadora dela e so reserva.
+        "permit": next((g["permit"] for g in grupo if g.get("permit")), ""),
+        "permit_status": next((g["permit_status"] for g in grupo if g.get("permit_status")), ""),
+        "organizador_fca": next((g["organizador_fca"] for g in grupo if g.get("organizador_fca")), ""),
     }
 
 
@@ -258,6 +265,26 @@ def _lugar(resto):
 
 # Onde uma prova co-organizada pode estar juntando duas empresas.
 SEPARADOR_DUPLA = re.compile(r"(\s+e\s+|\s*&\s*|\s*\+\s*)")
+
+
+# Quem tira o permit nem sempre organiza: a ACORSJ cuida da parte tecnica das
+# provas da Sportsland e pede o permit por elas. Por isso a organizadora da
+# FCA so vale como reserva, e nunca quando e a ACORSJ.
+NAO_ORGANIZA_PELA_FCA = {"acorsj"}
+
+
+def aplicar_fca(historico):
+    """Organizadora da FCA nas provas que nao tem nenhuma outra."""
+    preenchidas = 0
+    for p in historico:
+        nome = p.get("organizador_fca") or ""
+        if p.get("organizadores") or not nome:
+            continue
+        if _chave_org(nome).replace(" ", "") in NAO_ORGANIZA_PELA_FCA:
+            continue
+        p["organizadores"] = separar_organizadores(nome)
+        preenchidas += 1
+    return preenchidas
 
 
 def padronizar_organizadores(historico):
@@ -1012,6 +1039,71 @@ def consolidar_historico(historico):
     return resultado, juntadas
 
 
+def _so_alfanum(s):
+    return re.sub(r"[^a-z0-9]", "", sem_acento(s or "").lower().replace("&", "and"))
+
+
+def fundir_fca(historico):
+    """Junta a prova que veio so da FCA com a que ja existe na mesma data e
+    cidade. A FCA escreve o nome do seu jeito ("Montain do Costao do
+    Santinho", "STFRS Villa Romana Shopping"), entao a regra e mais frouxa
+    que a da fusao geral, mas presa a data e a cidade:
+
+      - nome parecido (>= 50% das letras em comum), ou
+      - candidata unica no dia e na cidade, com uma palavra distintiva em comum.
+
+    Fica a prova antiga, com a fonte fca, o permit e a organizadora da FCA
+    como reserva. Duas provas diferentes no mesmo dia e cidade continuam
+    separadas quando nada nos nomes as liga."""
+    fundidas = 0
+    # Prova remarcada: o registro da data antiga vai para a data certa.
+    for velha, trecho, nova in PROVA_REMARCADA:
+        antigos = [p for p in historico if p["data"] == velha and trecho in sem_acento(p["nome"]).lower()]
+        alvo = next((p for p in historico if p["data"] == nova and trecho in sem_acento(p["nome"]).lower()), None)
+        for p in antigos:
+            if alvo is None:
+                ano, mes, dia = (int(x) for x in nova.split("-"))
+                p.update({"data": nova, "ano": ano, "mes": mes, "dia": dia})
+                alvo = p
+                continue
+            alvo["fontes"] = sorted(set(alvo.get("fontes", [])) | set(p.get("fontes", [])))
+            for campo in ("permit", "permit_status", "organizador_fca", "or_slug", "corrida_id"):
+                if p.get(campo) and not alvo.get(campo):
+                    alvo[campo] = p[campo]
+            if not alvo.get("organizadores") and p.get("organizadores"):
+                alvo["organizadores"] = p["organizadores"]
+            historico.remove(p)
+            fundidas += 1
+    por_chave = {}
+    for p in historico:
+        if p.get("fontes") != ["fca"]:
+            por_chave.setdefault((p["data"], p["cidade"]), []).append(p)
+    for p in list(historico):
+        if p.get("fontes") != ["fca"]:
+            continue
+        cands = por_chave.get((p["data"], p["cidade"]), [])
+        if not cands:
+            continue
+        melhor = max(cands, key=lambda c: difflib.SequenceMatcher(None, _so_alfanum(p["nome"]), _so_alfanum(c["nome"])).ratio())
+        razao = difflib.SequenceMatcher(None, _so_alfanum(p["nome"]), _so_alfanum(melhor["nome"])).ratio()
+        comum = palavras_distintivas(p["nome"], p["cidade"]) & palavras_distintivas(melhor["nome"], melhor["cidade"])
+        # Um nome dentro do outro, sem a cidade: "Srun Blumenau" e "Circuito S-Run".
+        sem_cidade = lambda n: _so_alfanum(n).replace(_so_alfanum(p["cidade"]), "")
+        a, b = sorted((sem_cidade(p["nome"]), sem_cidade(melhor["nome"])), key=len)
+        contido = len(a) >= 4 and a in b
+        if not (razao >= 0.5 or contido or (len(cands) == 1 and comum)):
+            continue
+        melhor["fontes"] = sorted(set(melhor.get("fontes", [])) | {"fca"})
+        for campo in ("permit", "permit_status", "organizador_fca"):
+            if p.get(campo) and not melhor.get(campo):
+                melhor[campo] = p[campo]
+        if not melhor.get("organizadores") and p.get("organizadores"):
+            melhor["organizadores"] = p["organizadores"]
+        historico.remove(p)
+        fundidas += 1
+    return fundidas
+
+
 def casar_no_historico(prova, historico_por_data):
     for antiga in historico_por_data.get(prova["data"], []):
         if mesma_prova(prova, antiga):
@@ -1102,13 +1194,21 @@ def main():
                           "genero_tentado", "perfil", "perfil_em",
                           "cronometragem", "cronometragem_url", "cronometragem_em",
                           "fotografia", "fotografia_em", "fotografia_detalhe",
-                          "concluintes_unidade", "maissport_tentado")
+                          "concluintes_unidade", "maissport_tentado",
+                          "permit", "permit_status", "organizador_fca",
+                          "locais", "locais_km", "largada", "largada_em", "local_banlek", "local_texto", "local_texto_em")
                          if antiga.get(c)}
             enderecos = {c: antiga[c] for c in
                          ("corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug")
                          if antiga.get(c)}
+            # So a FCA listou a prova hoje: o nome e as etiquetas do historico
+            # sao melhores que os do permit e ficam.
+            so_fca = prova.get("fontes") == ["fca"]
+            mantidos = {c: antiga[c] for c in ("nome", "tags", "outros_nomes", "cidade", "regiao", "uf")
+                        if so_fca and antiga.get(c)}
             antiga.clear()
             antiga.update(prova)
+            antiga.update(mantidos)
             antiga["fontes"] = creditos
             if guardado:
                 antiga["pills"], antiga["faixas"], antiga["max_km"] = guardado
@@ -1168,6 +1268,9 @@ def main():
     tentados, achados = completar_organizadores(historico)
     if tentados:
         print(f"organizador: {tentados} provas consultadas, {achados} preenchidas")
+    pela_fca = aplicar_fca(historico)
+    if pela_fca:
+        print(f"organizador: {pela_fca} provas preenchidas pela FCA")
     ajustados = padronizar_organizadores(historico)
     if ajustados:
         print(f"organizador: {ajustados} provas tiveram a grafia padronizada")
@@ -1176,6 +1279,11 @@ def main():
     if tentadas:
         print(f"percurso: {tentadas} provas consultadas no arquivo, {achadas} preenchidas")
 
+    fca_fundidas = fundir_fca(historico)
+    if fca_fundidas:
+        print(f"fca: {fca_fundidas} provas juntadas as que ja existiam")
+    # As fontes de hoje podem ter recriado uma prova ja unificada a mao.
+    unificar_manualmente(historico)
     series = agrupar_series(historico)
     parciais = marcar_resultados_parciais(historico)
     print(f"series: {series} eventos com uma ou mais edicoes | "
@@ -1209,10 +1317,6 @@ def main():
         print(f"\ncidades sem regiao (adicionar em REGIOES no comum.py): {fora}")
 
     return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
 
 
 # ------------------------------------------------------- series (as edicoes)
@@ -1569,3 +1673,7 @@ def agrupar_series(historico):
             series += 1
     agrupar_eventos(historico)
     return series
+
+
+if __name__ == "__main__":
+    sys.exit(main())
