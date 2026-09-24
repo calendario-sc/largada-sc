@@ -1,45 +1,44 @@
 == coleta ==
 == fontes ==
-  corridasbr: 208 provas
-  corridasbr/arquivo: 334 provas
-  ticketsports: 78 provas
-  roadrunners: 208 provas
-  movnow: 15 provas
+  corridasbr: 211 provas
+  corridasbr/arquivo: 335 provas
+  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  roadrunners: 210 provas
+  movnow: 17 provas
   atletis: 0 provas
 
-595 provas distintas depois de fundir as fontes
-descartadas (8): fora de SC ou nao sao corrida
+598 provas distintas depois de fundir as fontes
+descartadas (7): fora de SC ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
+  - 2026-10-25  Palhoça - Corrida Virtual CBCR - Campeonato Brasileiro [corrida virtual]
   - 2026-11-07  Rio Negrinho - Volta Grande Cross Aquathlon Rio Negrinho [aquathlon]
   - 2026-11-29  Morrinhos do Sul - 5ª RÚstica Recanto dos Canyons [é de RS]
-  - 2026-11-30  São José - SC - FEDERAÇÃO DE TRIATHLON DE SANTA CATARIN [triathlon]
-  - 2026-12-12  Nova Veneza - FODAXMAN EXTREME TRIATHLON 2026 [triathlon]
-restam 587 provas
+restam 591 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
-organizador: 1 provas consultadas, 1 preenchidas
-organizador: 16 provas tiveram a grafia padronizada
-percurso: 1 provas consultadas no arquivo, 1 preenchidas
-series: 1244 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 2125 provas (1869 ja realizadas) | 195 cidades
+organizador: 5 provas consultadas, 5 preenchidas
+percurso: 2 provas consultadas no arquivo, 2 preenchidas
+series: 1245 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 2127 provas (1868 ja realizadas) | 195 cidades
 novas nesta rodada: 6
-  + 2026-10-03  Vargem Bonita - 10º CIRCUITO IRANI de ESPORTES
-  + 2026-10-24  Três Barras - Corrida e Caminhada Sest Senat
-  + 2026-11-21  São Francisco do Sul - PDS Run
-  + 2026-11-22  Itajaí - Corrida Sest Senat - Itajaí
-  + 2026-12-05  Tijucas - SUNSET RUN TIJUCAS
-  + 2027-02-21  Lages - 5ª Meia Maratona Animi Serra Catarinense
+  + 2026-06-07  Florianópolis - 15ª Maratona de Floripa
+  + 2026-06-13  Florianópolis - Sunset Jurerê - Corrida & Vinho
+  + 2026-12-06  Guabiruba - 3ª Corrida Pelznickel
+  + 2026-12-13  Governador Celso Ramos - Chama Run
+  + 2027-02-28  Indaial - 2º Desafio Caminhos do Warnow
+  + 2027-04-04  Itajaí - 5ª Corrida dos Anjos
 
 futuras que nao apareceram hoje (2) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
-  ? 2026-11-01  Florianópolis - 16ª VOLTA a LAGOA da CONCEIÇÃO (visto pela ultima vez em 2026-09-19)
+  ? 2026-12-31  São José - REGISTRO DE TREINADORES DE SANTA CATARINA 2026 (visto pela ultima vez em 2026-09-22)
 
 == perfis ==
-perfis revistos: 10
+  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (1,519,468 bytes)
+artifact.html e index.html gerados (1,698,768 bytes)
 
-RESULTADO: pronto para publicar (coleta de 22/09/2026).
+RESULTADO: pronto para publicar (coleta de 24/09/2026).
