@@ -100,6 +100,38 @@ h1 em{font-style:normal; color:#FFC21A}
 .voltar{font:inherit; font-size:.85rem; cursor:pointer; color:var(--muted); background:none; border:1px dashed var(--line); border-radius:999px; padding:.35rem .8rem}
 .voltar:hover{border-color:var(--accent); color:var(--ink)}
 .perfil__acoes{display:flex; gap:.4rem; flex-wrap:wrap}
+#comparar::before{content:"\2694\00a0"}
+
+/* ---- duelo estilo Super Trunfo ---- */
+.duelo{margin:0 0 1.2rem; padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow)}
+.duelo[hidden]{display:none}
+.duelo__topo{display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap}
+.duelo h3{font-family:var(--f-display); font-weight:800; font-size:1.1rem; margin:0}
+.duelo__busca{margin:.7rem 0 0}
+.duelo__busca input{width:100%; font:inherit; padding:.6rem .8rem; border:1px solid var(--line); border-radius:10px; background:var(--surface-2); color:var(--ink)}
+.duelo__busca .lista{margin-top:.5rem}
+.placar{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.6rem; margin:.9rem 0 .8rem}
+.carta{padding:.8rem .9rem; border-radius:12px; color:#FFFFFF; min-width:0}
+.carta--a{background:linear-gradient(135deg,#0A2F73,#1450C8)}
+.carta--b{background:linear-gradient(135deg,#8A2A0B,#EF4E16); text-align:right}
+.carta b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.05rem; line-height:1.2; overflow-wrap:anywhere}
+.carta small{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.06em; opacity:.85}
+.carta .pts{font-family:var(--f-display); font-weight:800; font-size:2.2rem; line-height:1; margin-top:.35rem}
+.carta.vence{box-shadow:0 0 0 3px #FFC21A}
+.placar__x{font-family:var(--f-display); font-weight:800; font-size:1.1rem; color:var(--muted)}
+.atributos{width:100%; border-collapse:collapse; font-size:.9rem}
+.atributos td{padding:.45rem .55rem; border-bottom:1px solid var(--line-soft); vertical-align:middle}
+.atributos td.a{text-align:left; width:38%}
+.atributos td.b{text-align:right; width:38%}
+.atributos td.rot{text-align:center; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.atributos td.a b,.atributos td.b b{font-family:var(--f-display); font-weight:800; font-size:1.05rem; font-variant-numeric:tabular-nums}
+.atributos td small{display:block; font-family:var(--f-mono); font-size:.68rem; color:var(--muted)}
+.atributos td.ganha{background:var(--sol); color:var(--sol-ink); border-radius:8px}
+.atributos td.ganha small{color:var(--sol-ink); opacity:.8}
+.atributos tr.grupo td{padding-top:.9rem; border-bottom:2px solid var(--ink); font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); text-align:center}
+.duelo__nota{margin:.6rem 0 0; font-size:.76rem; color:var(--muted)}
+@media (max-width:720px){ .carta b{font-size:.9rem} .carta .pts{font-size:1.7rem} .atributos{font-size:.8rem} }
+@media print{ .duelo__busca,.duelo__topo button{display:none !important} .duelo{box-shadow:none; border-color:var(--line)} }
 #pdf::before{content:"\2193\00a0"}
 .imp{display:none}
 .nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.6rem; margin:0 0 1.2rem}
@@ -248,11 +280,24 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
     <div class="perfil__topo">
       <h2 id="p-nome"></h2>
       <div class="perfil__acoes">
+        <button class="voltar" id="comparar" type="button" title="Comparar este atleta com outro, estilo Super Trunfo">Comparar</button>
         <button class="voltar" id="pdf" type="button" title="Salvar este perfil em PDF">Exportar PDF</button>
         <button class="voltar" id="voltar" type="button">← outra busca</button>
       </div>
     </div>
     <p class="imp" id="imp" aria-hidden="true"></p>
+    <div class="duelo" id="duelo" hidden>
+      <div class="duelo__topo">
+        <h3>Duelo de atletas</h3>
+        <button class="voltar" id="duelo-fechar" type="button">Fechar duelo</button>
+      </div>
+      <div class="duelo__busca" id="duelo-busca">
+        <input id="q2" type="search" placeholder="Com quem comparar? Digite o nome do outro atleta" autocomplete="off">
+        <p class="dica" id="dica2"></p>
+        <ul class="lista" id="lista2"></ul>
+      </div>
+      <div id="duelo-cartas"></div>
+    </div>
     <div class="nums" id="p-nums"></div>
     <div class="conquistas">
       <h3>Distâncias desbloqueadas</h3>
@@ -372,6 +417,38 @@ async function balde(pref){
 const input = document.getElementById("q"), dica = document.getElementById("dica"), lista = document.getElementById("lista");
 let pedido = 0;
 
+// Busca reaproveitavel: a da pagina e a do duelo usam a mesma.
+async function buscarEm(inp, dic, lis, aoEscolher, contador){
+  const q = inp.value.trim();
+  const meu = ++contador.n;
+  lis.replaceChildren();
+  if (chave(q).length < 3){ dic.textContent = q ? "Digite pelo menos três letras." : ""; return; }
+  const prefs = baldesPara(q);
+  if (!prefs.length){ dic.textContent = "Nenhum atleta com esse começo de nome."; return; }
+  if (prefs.length > MAX_BALDES){ dic.textContent = "Nome muito comum: acrescente o começo do sobrenome (ex. \"" + q.trim() + " s\").";  return; }
+  dic.textContent = "Buscando…";
+  const blocos = await Promise.all(prefs.map(balde));
+  if (meu !== contador.n) return;
+  const termos = norm(q).split(/\s+/).filter(Boolean);
+  const achados = [];
+  blocos.forEach(b => Object.entries(b).forEach(([slug, [nome, sexo, res]]) => {
+    const n = norm(nome);
+    if (termos.every(t => n.includes(t))) achados.push({ slug, nome, sexo, res });
+  }));
+  achados.sort((a, b) => b.res.length - a.res.length || a.nome.localeCompare(b.nome));
+  dic.textContent = achados.length ? `${num(achados.length)} atleta${achados.length > 1 ? "s" : ""}` : "Nenhum atleta com esse nome.";
+  achados.slice(0, 60).forEach(a => {
+    const nProvas = new Set(a.res.map(r => r[0])).size;
+    const b = el("button", { type:"button" }, [
+      el("b", { textContent: titulo(a.nome) }),
+      el("small", { textContent: nProvas + (nProvas === 1 ? " prova" : " provas") + " · " + [...new Set(a.res.map(r => r[1]).filter(Boolean))].sort((x, y) => x - y).map(k => k + "k").join(" ") }),
+    ]);
+    b.onclick = () => aoEscolher(a);
+    lis.append(el("li", {}, [b]));
+  });
+  if (achados.length > 60) lis.append(el("li", { className:"vazio", textContent:"Mostrando 60. Digite mais para afinar." }));
+}
+
 async function buscar(){
   const q = input.value.trim();
   const meu = ++pedido;
@@ -406,6 +483,7 @@ input.oninput = () => { clearTimeout(input._t); input._t = setTimeout(buscar, 18
    pagina vira o nome do arquivo que o navegador sugere. */
 const TITULO = document.title;
 let atletaAberto = "";
+let atletaAtual = null;
 document.getElementById("pdf").onclick = () => {
   const anos = (INDICE.anos || []);
   document.getElementById("imp").replaceChildren(
@@ -430,6 +508,8 @@ function abrir(a){
                    .sort((x, y) => x.data.localeCompare(y.data));
   history.replaceState(null, "", "#" + a.slug);
   atletaAberto = titulo(a.nome);
+  atletaAtual = a;
+  fecharDuelo();
   perfil.hidden = false;
   document.getElementById("p-nome").replaceChildren(document.createTextNode(titulo(a.nome)),
     el("small", { textContent: `${new Set(res.map(r => r.prova[3])).size} provas · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
@@ -735,9 +815,125 @@ function tabelaTodas(res){
     el("tbody", {}, linhas)]));
 }
 
+/* ---------- duelo estilo Super Trunfo ----------
+   Dois atletas lado a lado. Cada atributo vale um ponto para quem vence:
+   mais provas, mais km, maior distancia e, distancia por distancia, o
+   melhor tempo (com o pace dele). Distancia que so um correu aparece, mas
+   nao vale ponto. */
+const duelo = document.getElementById("duelo");
+const q2 = document.getElementById("q2"), dica2 = document.getElementById("dica2"), lista2 = document.getElementById("lista2");
+const pedido2 = { n: 0 };
+
+function resumoAtleta(a){
+  const res = a.res.map(r => ({ prova: PROVAS[r[0]], km: r[1], tempo: r[2], pace: r[3] }));
+  const comKm = res.filter(r => r.km);
+  const melhor = new Map();
+  comKm.forEach(r => { const m = melhor.get(r.km); if (!m || r.tempo < m.tempo) melhor.set(r.km, r); });
+  return {
+    nome: titulo(a.nome), slug: a.slug,
+    provas: new Set(res.map(r => r.prova[3])).size,
+    km: comKm.reduce((s, r) => s + r.km, 0),
+    maior: comKm.reduce((m, r) => Math.max(m, r.km), 0),
+    melhor,
+  };
+}
+
+function fecharDuelo(){
+  duelo.hidden = true;
+  document.getElementById("duelo-cartas").replaceChildren();
+  q2.value = ""; lista2.replaceChildren(); dica2.textContent = "";
+  if (atletaAtual) history.replaceState(null, "", "#" + atletaAtual.slug);
+}
+
+function abrirDuelo(){
+  duelo.hidden = false;
+  document.getElementById("duelo-busca").hidden = false;
+  document.getElementById("duelo-cartas").replaceChildren();
+  q2.focus();
+  duelo.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+function montarDuelo(b){
+  const A = resumoAtleta(atletaAtual), B = resumoAtleta(b);
+  history.replaceState(null, "", "#" + A.slug + "~" + B.slug);
+  document.getElementById("duelo-busca").hidden = true;
+  let pa = 0, pb = 0;
+  const corpo = el("tbody");
+  // maior vence (true) ou menor vence (false)
+  const linha = (rotulo, va, vb, texto, sub, maiorVence) => {
+    const tem = va != null && vb != null;
+    const ganhaA = tem && (maiorVence ? va > vb : va < vb);
+    const ganhaB = tem && (maiorVence ? vb > va : vb < va);
+    if (ganhaA) pa++;
+    if (ganhaB) pb++;
+    const cel = (v, lado, ganha) => el("td", { className: lado + (ganha ? " ganha" : "") },
+      v == null ? [el("b", { textContent:"—" })] : [el("b", { textContent:texto(v) }), sub ? el("small", { textContent:sub(v, lado) }) : null].filter(Boolean));
+    corpo.append(el("tr", {}, [cel(va, "a", ganhaA), el("td", { className:"rot", textContent:rotulo }), cel(vb, "b", ganhaB)]));
+  };
+  const grupo = texto => corpo.append(el("tr", { className:"grupo" }, [el("td", { colSpan:3, textContent:texto })]));
+
+  grupo("Volume");
+  linha("Provas", A.provas, B.provas, v => num(v), null, true);
+  linha("Km percorridos", A.km, B.km, v => num(Math.round(v)) + " km", null, true);
+  linha("Maior distância", A.maior || null, B.maior || null, v => String(v).replace(".", ",") + " km", null, true);
+
+  const kms = [...new Set([...A.melhor.keys(), ...B.melhor.keys()])].sort((x, y) => x - y);
+  const disputadas = kms.filter(k => A.melhor.has(k) && B.melhor.has(k));
+  const soUm = kms.filter(k => !(A.melhor.has(k) && B.melhor.has(k)));
+  const porDistancia = km => {
+    const ra = A.melhor.get(km), rb = B.melhor.get(km);
+    const sub = (v, lado) => {
+      const r = lado === "a" ? ra : rb;
+      return (r.pace ? pace(r.pace) : pace(Math.round(r.tempo / km))) + " · " + r.prova[1];
+    };
+    linha(String(km).replace(".", ",") + " km", ra ? ra.tempo : null, rb ? rb.tempo : null, v => tempo(v), sub, false);
+  };
+  grupo(disputadas.length ? "Melhor tempo e pace nas distâncias que os dois correram" : "Nenhuma distância em comum");
+  disputadas.forEach(porDistancia);
+  if (soUm.length){
+    grupo("Só um dos dois correu (não vale ponto)");
+    soUm.forEach(porDistancia);
+  }
+
+  const carta = (X, pts, lado, vence) => el("div", { className:"carta carta--" + lado + (vence ? " vence" : "") }, [
+    el("b", { textContent:X.nome }),
+    el("small", { textContent: num(X.provas) + (X.provas === 1 ? " prova" : " provas") }),
+    el("div", { className:"pts", textContent:String(pts) }),
+  ]);
+  const placar = el("div", { className:"placar" }, [
+    carta(A, pa, "a", pa > pb), el("span", { className:"placar__x", textContent:"×" }), carta(B, pb, "b", pb > pa),
+  ]);
+  const veredito = pa === pb ? "Empate." : (pa > pb ? A.nome : B.nome) + " vence o duelo, " + Math.max(pa, pb) + " a " + Math.min(pa, pb) + ".";
+  const trocar = el("button", { className:"voltar", type:"button", textContent:"Trocar adversário" });
+  trocar.onclick = abrirDuelo;
+  document.getElementById("duelo-cartas").replaceChildren(
+    placar,
+    el("table", { className:"atributos" }, [corpo]),
+    el("p", { className:"duelo__nota", textContent: veredito + " Cada atributo vale um ponto; nas distâncias, vence o menor tempo, e o pace vem embaixo. Distância que só um dos dois correu não vale ponto." }),
+    trocar,
+  );
+}
+
+document.getElementById("comparar").onclick = abrirDuelo;
+document.getElementById("duelo-fechar").onclick = fecharDuelo;
+q2.oninput = () => { clearTimeout(q2._t); q2._t = setTimeout(() => buscarEm(q2, dica2, lista2, montarDuelo, pedido2), 180); };
+
+async function atletaPorSlug(slug){
+  for (const pref of baldesPara(slug).slice(0, MAX_BALDES)){
+    const b = await balde(pref);
+    if (b[slug]){ const [nome, sexo, res] = b[slug]; return { slug, nome, sexo, res }; }
+  }
+  return null;
+}
+
 /* ---------- inicio ---------- */
 carregarIndice().then(async () => {
-  const slug = location.hash.slice(1);
+  const [slug, slugB] = decodeURIComponent(location.hash.slice(1)).split("~");
+  if (slug && slugB){
+    const a = await atletaPorSlug(slug), b = await atletaPorSlug(slugB);
+    if (a){ input.value = titulo(a.nome); abrir(a); if (b){ duelo.hidden = false; montarDuelo(b); } }
+    return;
+  }
   if (!slug) return;
   const prefs = baldesPara(slug);
   for (const pref of prefs.slice(0, MAX_BALDES)){
