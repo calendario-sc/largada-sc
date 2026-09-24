@@ -484,6 +484,7 @@ input.oninput = () => { clearTimeout(input._t); input._t = setTimeout(buscar, 18
 const TITULO = document.title;
 let atletaAberto = "";
 let atletaAtual = null;
+let modoSupertrunfo = location.hash === "#supertrunfo";
 document.getElementById("pdf").onclick = () => {
   const anos = (INDICE.anos || []);
   document.getElementById("imp").replaceChildren(
@@ -510,6 +511,8 @@ function abrir(a){
   atletaAberto = titulo(a.nome);
   atletaAtual = a;
   fecharDuelo();
+  // Chegou pelo botao Supertrunfo: escolhido o primeiro, ja pede o segundo.
+  if (modoSupertrunfo){ modoSupertrunfo = false; setTimeout(abrirDuelo, 0); }
   perfil.hidden = false;
   document.getElementById("p-nome").replaceChildren(document.createTextNode(titulo(a.nome)),
     el("small", { textContent: `${new Set(res.map(r => r.prova[3])).size} provas · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
@@ -947,6 +950,13 @@ async function atletaPorSlug(slug){
 
 /* ---------- inicio ---------- */
 carregarIndice().then(async () => {
+  if (modoSupertrunfo){
+    history.replaceState(null, "", location.pathname);
+    input.placeholder = "Supertrunfo: escolha o primeiro atleta";
+    dica.textContent = "Supertrunfo: busque e escolha o primeiro atleta; em seguida, o adversário.";
+    input.focus();
+    return;
+  }
   const [slug, slugB] = decodeURIComponent(location.hash.slice(1)).split("~");
   if (slug && slugB){
     const a = await atletaPorSlug(slug), b = await atletaPorSlug(slugB);
