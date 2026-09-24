@@ -77,6 +77,9 @@ def coletar():
     manuais = scrape.unificar_manualmente(historico)
     if manuais:
         registrar(f"provas declaradas iguais: {manuais} unificadas")
+    duplicadas = scrape.remover_resultado_duplicado(historico)
+    if duplicadas:
+        registrar(f"resultados repetidos removidos: {duplicadas}")
 
     try:
         consultadas, achadas = scrape.completar_runking(historico)

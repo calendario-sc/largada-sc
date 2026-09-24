@@ -521,6 +521,39 @@ def unificar_openresults(historico):
     return juntadas
 
 
+def remover_resultado_duplicado(historico):
+    """Tira o registro que repete uma prova ja unificada.
+
+    Quando a prova do calendario herda o resultado do Open Results, o nome
+    do portal fica em outros_nomes. Se o portal recria o registro depois,
+    a prova aparece duas vezes e os concluintes contam em dobro. Criterio:
+    mesma data e cidade, o nome de um e nome alternativo do outro, e o
+    mesmo resultado (mesmo endereco no portal ou mesmo total)."""
+    norm = lambda s: sem_acento(s or "").lower().strip()
+    por = {}
+    for p in historico:
+        por.setdefault((p["data"], p.get("cidade"), norm(p["nome"])), []).append(p)
+    tirados = []
+    for p in historico:
+        if p in tirados:
+            continue
+        for outro in p.get("outros_nomes") or []:
+            for q in por.get((p["data"], p.get("cidade"), norm(outro)), []):
+                if q is p or q in tirados:
+                    continue
+                mesmo = (p.get("or_slug") and p.get("or_slug") == q.get("or_slug")) or                         (p.get("concluintes_total") and p.get("concluintes_total") == q.get("concluintes_total"))
+                if not mesmo:
+                    continue
+                p["fontes"] = sorted(set(p.get("fontes", [])) | set(q.get("fontes", [])))
+                for campo in ("permit", "permit_status", "organizador_fca", "cronometragem", "fotografia"):
+                    if q.get(campo) and not p.get(campo):
+                        p[campo] = q[campo]
+                tirados.append(q)
+    for q in tirados:
+        historico.remove(q)
+    return len(tirados)
+
+
 def unificar_manualmente(historico):
     """Junta as duplas declaradas em MESMA_PROVA (comum.py).
 
@@ -536,8 +569,11 @@ def unificar_manualmente(historico):
     juntadas = 0
     for data, nome_a, nome_b in MESMA_PROVA:
         do_dia = [p for p in historico if p["data"] == data]
-        a = next((p for p in do_dia if bate(p, nome_a)), None)
-        b = next((p for p in do_dia if bate(p, nome_b)), None)
+        # Nome exato primeiro: o nome alternativo guardado numa prova nao
+        # pode esconder o registro que ainda tem aquele nome.
+        exato = lambda p, nome: sem_acento(p["nome"]).lower().strip() == sem_acento(nome).lower().strip()
+        a = next((p for p in do_dia if exato(p, nome_a)), None) or next((p for p in do_dia if bate(p, nome_a)), None)
+        b = next((p for p in do_dia if exato(p, nome_b) and p is not a), None) or             next((p for p in do_dia if bate(p, nome_b) and p is not a), None)
         if not a or not b or a is b:
             continue
         alvo, outra = (a, b) if (a.get("concluintes_total") or a.get("or_slug")) and not b.get("concluintes_total") else (b, a)
@@ -1287,8 +1323,11 @@ def main():
     fca_fundidas = fundir_fca(historico)
     if fca_fundidas:
         print(f"fca: {fca_fundidas} provas juntadas as que ja existiam")
-    # As fontes de hoje podem ter recriado uma prova ja unificada a mao.
+    # As fontes de hoje podem ter recriado uma prova ja unificada.
     unificar_manualmente(historico)
+    duplicadas = remover_resultado_duplicado(historico)
+    if duplicadas:
+        print(f"resultados repetidos removidos: {duplicadas}")
     series = agrupar_series(historico)
     parciais = marcar_resultados_parciais(historico)
     print(f"series: {series} eventos com uma ou mais edicoes | "
