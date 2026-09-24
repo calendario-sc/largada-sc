@@ -102,6 +102,26 @@ h1 em{font-style:normal; color:#FFC21A}
 .perfil__acoes{display:flex; gap:.4rem; flex-wrap:wrap}
 #comparar::before{content:"\2694\00a0"}
 
+/* ---- tela do Supertrunfo: duas buscas lado a lado ---- */
+.st{margin:0 0 2rem}
+.st[hidden]{display:none}
+.st h2{font-family:var(--f-display); font-weight:800; font-size:clamp(1.4rem,3.5vw,2rem); margin:.4rem 0 .2rem; letter-spacing:-.02em}
+.st__sub{margin:0 0 1rem; color:var(--muted); font-size:.9rem}
+.st__escolha{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:.8rem; align-items:start}
+.st__lado label{display:block; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 .3rem}
+.st__lado input{width:100%; font:inherit; font-size:1rem; padding:.7rem .9rem; border-radius:12px; border:2px solid var(--line); background:var(--surface); color:var(--ink)}
+.st__lado--a input{border-color:#1450C8}
+.st__lado--b input{border-color:#EF4E16}
+.st__lado input.escolhido{font-weight:700}
+.st__lado .lista{margin-top:.4rem; max-height:22rem; overflow-y:auto}
+.st__x{align-self:center; font-family:var(--f-display); font-weight:800; font-size:2rem; color:var(--muted); padding-top:1.3rem}
+.st__cartas{margin-top:1.2rem; padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow)}
+.st__cartas:empty{display:none}
+@media (max-width:720px){
+  .st__escolha{grid-template-columns:1fr}
+  .st__x{padding:0; text-align:center; font-size:1.5rem}
+}
+
 /* ---- duelo estilo Super Trunfo ---- */
 .duelo{margin:0 0 1.2rem; padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow)}
 .duelo[hidden]{display:none}
@@ -269,6 +289,27 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
 </header>
 
 <main class="wrap">
+  <section class="st" id="st" hidden>
+    <h2>Supertrunfo</h2>
+    <p class="st__sub">Escolha dois atletas: um ponto por atributo, e vence quem somar mais.</p>
+    <div class="st__escolha">
+      <div class="st__lado st__lado--a">
+        <label for="st-a">Atleta 1</label>
+        <input id="st-a" type="search" placeholder="Nome do primeiro atleta" autocomplete="off">
+        <p class="dica" id="st-dica-a"></p>
+        <ul class="lista" id="st-lista-a"></ul>
+      </div>
+      <span class="st__x" aria-hidden="true">×</span>
+      <div class="st__lado st__lado--b">
+        <label for="st-b">Atleta 2</label>
+        <input id="st-b" type="search" placeholder="Nome do segundo atleta" autocomplete="off">
+        <p class="dica" id="st-dica-b"></p>
+        <ul class="lista" id="st-lista-b"></ul>
+      </div>
+    </div>
+    <div class="st__cartas" id="st-cartas"></div>
+  </section>
+
   <section class="busca">
     <label for="q">Nome do atleta</label>
     <input id="q" type="search" placeholder="Comece pelo primeiro nome: ex. Simone Ponte" autocomplete="off" autofocus>
@@ -511,8 +552,9 @@ function abrir(a){
   atletaAberto = titulo(a.nome);
   atletaAtual = a;
   fecharDuelo();
-  // Chegou pelo botao Supertrunfo: escolhido o primeiro, ja pede o segundo.
-  if (modoSupertrunfo){ modoSupertrunfo = false; setTimeout(abrirDuelo, 0); }
+  st.hidden = true;
+  document.querySelector(".busca").hidden = false;
+
   perfil.hidden = false;
   document.getElementById("p-nome").replaceChildren(document.createTextNode(titulo(a.nome)),
     el("small", { textContent: `${new Set(res.map(r => r.prova[3])).size} provas · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
@@ -873,11 +915,13 @@ function abrirDuelo(){
   duelo.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
-async function montarDuelo(b){
+// a: primeiro atleta (o do perfil, se nao vier); destino: onde desenhar.
+async function montarDuelo(b, a = atletaAtual, destino = null){
   await carregarTitulos();
-  const A = resumoAtleta(atletaAtual), B = resumoAtleta(b);
+  const naTela = !!destino;
+  const A = resumoAtleta(a), B = resumoAtleta(b);
   history.replaceState(null, "", "#" + A.slug + "~" + B.slug);
-  document.getElementById("duelo-busca").hidden = true;
+  if (!naTela) document.getElementById("duelo-busca").hidden = true;
   let pa = 0, pb = 0;
   const corpo = el("tbody");
   // maior vence (true) ou menor vence (false)
@@ -926,9 +970,9 @@ async function montarDuelo(b){
     carta(A, pa, "a", pa > pb), el("span", { className:"placar__x", textContent:"×" }), carta(B, pb, "b", pb > pa),
   ]);
   const veredito = pa === pb ? "Empate." : (pa > pb ? A.nome : B.nome) + " vence o duelo, " + Math.max(pa, pb) + " a " + Math.min(pa, pb) + ".";
-  const trocar = el("button", { className:"voltar", type:"button", textContent:"Trocar adversário" });
-  trocar.onclick = abrirDuelo;
-  document.getElementById("duelo-cartas").replaceChildren(
+  const trocar = el("button", { className:"voltar", type:"button", textContent: naTela ? "Novo duelo" : "Trocar adversário" });
+  trocar.onclick = naTela ? () => abrirSupertrunfo() : abrirDuelo;
+  (destino || document.getElementById("duelo-cartas")).replaceChildren(
     placar,
     el("table", { className:"atributos" }, [corpo]),
     el("p", { className:"duelo__nota", textContent: veredito + " Cada atributo vale um ponto; nas distâncias, vence o menor tempo, e o pace vem embaixo. Distância que só um dos dois correu não vale ponto. Título é a vitória geral (1º lugar do sexo) numa distância de uma prova, pela Galeria dos Campeões; empate em zero não dá ponto." }),
@@ -948,19 +992,63 @@ async function atletaPorSlug(slug){
   return null;
 }
 
+/* ---------- tela do Supertrunfo ----------
+   Duas buscas lado a lado; escolhidos os dois, as cartas saem embaixo. */
+const st = document.getElementById("st");
+const stEscolha = { a: null, b: null };
+const stPedidos = { a: { n: 0 }, b: { n: 0 } };
+
+function stLado(lado){
+  const inp = document.getElementById("st-" + lado), dic = document.getElementById("st-dica-" + lado),
+        lis = document.getElementById("st-lista-" + lado);
+  inp.oninput = () => {
+    stEscolha[lado] = null;
+    inp.classList.remove("escolhido");
+    document.getElementById("st-cartas").replaceChildren();
+    clearTimeout(inp._t);
+    inp._t = setTimeout(() => buscarEm(inp, dic, lis, a => {
+      stEscolha[lado] = a;
+      inp.value = titulo(a.nome);
+      inp.classList.add("escolhido");
+      lis.replaceChildren(); dic.textContent = "";
+      const outro = lado === "a" ? "b" : "a";
+      if (stEscolha[outro]) stDuelo();
+      else document.getElementById("st-" + outro).focus();
+    }, stPedidos[lado]), 180);
+  };
+}
+stLado("a"); stLado("b");
+
+async function stDuelo(){
+  if (stEscolha.a && stEscolha.b)
+    await montarDuelo(stEscolha.b, stEscolha.a, document.getElementById("st-cartas"));
+}
+
+function abrirSupertrunfo(a = null, b = null){
+  st.hidden = false;
+  document.querySelector(".busca").hidden = true;
+  perfil.hidden = true;
+  document.getElementById("st-cartas").replaceChildren();
+  ["a", "b"].forEach(lado => {
+    const x = lado === "a" ? a : b;
+    const inp = document.getElementById("st-" + lado);
+    stEscolha[lado] = x;
+    inp.value = x ? titulo(x.nome) : "";
+    inp.classList.toggle("escolhido", !!x);
+    document.getElementById("st-lista-" + lado).replaceChildren();
+    document.getElementById("st-dica-" + lado).textContent = "";
+  });
+  if (a && b) stDuelo();
+  else { history.replaceState(null, "", "#supertrunfo"); document.getElementById(a ? "st-b" : "st-a").focus(); }
+}
+
 /* ---------- inicio ---------- */
 carregarIndice().then(async () => {
-  if (modoSupertrunfo){
-    history.replaceState(null, "", location.pathname);
-    input.placeholder = "Supertrunfo: escolha o primeiro atleta";
-    dica.textContent = "Supertrunfo: busque e escolha o primeiro atleta; em seguida, o adversário.";
-    input.focus();
-    return;
-  }
+  if (modoSupertrunfo){ abrirSupertrunfo(); return; }
   const [slug, slugB] = decodeURIComponent(location.hash.slice(1)).split("~");
   if (slug && slugB){
     const a = await atletaPorSlug(slug), b = await atletaPorSlug(slugB);
-    if (a){ input.value = titulo(a.nome); abrir(a); if (b){ duelo.hidden = false; await montarDuelo(b); } }
+    abrirSupertrunfo(a, b);
     return;
   }
   if (!slug) return;
