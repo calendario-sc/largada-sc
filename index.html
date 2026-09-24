@@ -236,6 +236,37 @@ h1 em{font-style:normal; color:#FFC21A}
 .rec__vazio{padding:1rem 1.2rem; color:var(--muted); font-size:.9rem}
 @media (max-width:720px){ .rec__filtros{padding-inline:.9rem} }
 
+/* ---------- raio-x floripa: mapa + lista ---------- */
+.rx{width:min(72rem, 100% - 2rem)}
+.rx__corpo{display:grid; grid-template-columns:minmax(0,22rem) minmax(0,1fr); gap:1rem 1.4rem; padding:0 1.2rem .6rem; align-items:start}
+.rx__mapa{position:relative}
+.rx__mapa svg{display:block; width:100%; height:auto; overflow:visible}
+.rx__mapa .terra{fill:var(--surface-2); stroke:var(--line); stroke-width:1}
+.rx__mapa .ponto{fill:var(--azul); fill-opacity:.85; stroke:var(--surface); stroke-width:2; cursor:pointer; transition:fill .15s}
+.rx__mapa .ponto:hover,.rx__mapa .ponto.ativo{fill:var(--accent)}
+.rx__mapa .n{font-family:var(--f-display); font-weight:800; font-size:22px; fill:#FFFFFF; text-anchor:middle; dominant-baseline:middle; pointer-events:none}
+.rx__mapa .legenda{font-family:var(--f-mono); font-size:18px; fill:var(--muted); letter-spacing:.06em}
+.rx__dica{position:absolute; z-index:5; pointer-events:none; background:var(--ink); color:var(--ground); font-size:.78rem; line-height:1.35; padding:.4rem .6rem; border-radius:8px; box-shadow:var(--shadow); transform:translate(-50%,-115%); white-space:nowrap}
+.rx__dica b{font-family:var(--f-display)}
+.rx__dica[hidden]{display:none}
+.rx__lista{max-height:min(70vh, 46rem); overflow-y:auto; padding-right:.3rem}
+.rx__local{margin:0 0 1rem}
+.rx__local h3{font-family:var(--f-display); font-weight:800; font-size:1rem; margin:0 0 .35rem; display:flex; align-items:baseline; gap:.5rem; position:sticky; top:0; background:var(--surface); padding:.2rem 0}
+.rx__local h3 small{font-family:var(--f-mono); font-weight:400; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.rx__local table{width:100%; border-collapse:collapse; font-size:.8rem}
+.rx__local td{padding:.3rem .4rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
+.rx__local td.d{font-family:var(--f-mono); white-space:nowrap; color:var(--muted); font-size:.74rem}
+.rx__local td.p{font-weight:600}
+.rx__local td.p small{display:block; font-weight:400; font-size:.72rem; color:var(--muted)}
+.rx__local td.c{font-family:var(--f-mono); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+.rx__local.sem h3{color:var(--muted)}
+.rx__local.ativo h3{color:var(--accent-ink)}
+@media (max-width:720px){
+  .rx__corpo{grid-template-columns:1fr; padding-inline:.9rem}
+  .rx__mapa{max-width:15rem; margin:0 auto}
+  .rx__lista{max-height:none}
+}
+
 /* Relatorio das organizadoras: so existe no papel. */
 .rel{display:none}
 
@@ -725,7 +756,7 @@ h1 em{font-style:normal; color:#FFC21A}
   .rank .nome small{font-size:.68rem}
 
   /* Relatorio das organizadoras no lugar do comparativo. */
-  .orgs,.tk,.rec{display:none !important}
+  .orgs,.tk,.rec,.rx{display:none !important}
   body.print-orgs .results,body.print-cal .results{display:none !important}
   body.print-orgs #rel-orgs,body.print-cal #rel-cal{display:block}
 
@@ -1946,6 +1977,7 @@ function render(){
   if (dialogoCrono && dialogoCrono.open) montarCrono();
   if (dialogoFoto && dialogoFoto.open) montarFoto();
   if (dialogoRec.open) montarRecordes();
+  if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -2125,6 +2157,126 @@ ao("stat-orgs", () => {
   document.getElementById("orgs-lista").scrollTop = 0;
 });
 ao("orgs-fechar", () => dialogoOrgs.close());
+
+/* ---------- raio-x floripa ----------
+   Cada prova de Florianopolis tem em `locais` os pontos da cidade onde
+   larga e chega (ate dois). O mapa e o contorno da ilha e do continente
+   (OpenStreetMap), com um circulo por ponto, e a lista embaixo. */
+const FLORIPA = null;
+const dialogoRaiox = document.getElementById("raiox");
+let raioxAtivo = "";
+
+function montarRaioX(){
+  document.getElementById("raiox-recorte").textContent = descreverRecorte();
+  const mapa = document.getElementById("raiox-mapa"), lista = document.getElementById("raiox-lista"),
+        rodape = document.getElementById("raiox-rodape");
+  mapa.replaceChildren(); lista.replaceChildren(); rodape.textContent = "";
+  if (!FLORIPA){ lista.append(el("p", { className:"tk__vazio", textContent:"Mapa indisponível nesta página." })); return; }
+  if (state.cidade && state.cidade !== "Florianópolis"){
+    lista.append(el("p", { className:"tk__vazio", textContent:"O Raio-X é de Florianópolis; o filtro de cidade está em " + state.cidade + "." }));
+    return;
+  }
+  const base = ultimoRecorte.filter(r => r.cidade === "Florianópolis" && !(r.tags || []).includes("Treino"));
+  // Um evento conta uma vez em cada local onde larga ou chega.
+  const eventos = new Map();
+  base.forEach(r => {
+    const e = eventos.get(r._ev) || { r, locais:new Set() };
+    (r.locais || []).forEach(l => e.locais.add(l));
+    if (!eventos.has(r._ev)) eventos.set(r._ev, e);
+  });
+  const porLocal = new Map();
+  eventos.forEach(e => e.locais.forEach(l => porLocal.set(l, (porLocal.get(l) || []).concat([e.r]))));
+  const semLocal = [...eventos.values()].filter(e => !e.locais.size).map(e => e.r);
+  const maior = Math.max(1, ...[...porLocal.values()].map(v => v.length));
+
+  // --- mapa
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${FLORIPA.w} ${FLORIPA.h}`); svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "Mapa de Florianópolis com o número de provas por local");
+  FLORIPA.aneis.forEach(anel => {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", "M" + anel.map(([x, y]) => x + " " + y).join(" L") + " Z");
+    p.setAttribute("class", "terra");
+    svg.append(p);
+  });
+  const dica = el("div", { className:"rx__dica" }); dica.hidden = true;
+  const ordemPontos = [...FLORIPA.pontos].sort((a, b) => (porLocal.get(b.nome) || []).length - (porLocal.get(a.nome) || []).length);
+  ordemPontos.forEach(pt => {
+    const n = (porLocal.get(pt.nome) || []).length;
+    if (!n) return;
+    const raio = 18 + 16 * Math.sqrt(n / maior);
+    const g = document.createElementNS(NS, "g");
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", pt.x); c.setAttribute("cy", pt.y); c.setAttribute("r", raio);
+    c.setAttribute("class", "ponto" + (raioxAtivo === pt.nome ? " ativo" : ""));
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("x", pt.x); t.setAttribute("y", pt.y + 0.5); t.setAttribute("class", "n"); t.textContent = String(n);
+    const titulo = document.createElementNS(NS, "title");
+    titulo.textContent = `${pt.nome}: ${n} ${n === 1 ? "prova" : "provas"}`;
+    c.append(titulo);
+    const mostrar = () => {
+      dica.innerHTML = `<b>${pt.nome}</b><br>${n} ${n === 1 ? "prova" : "provas"}`;
+      dica.hidden = false;
+      const box = mapa.getBoundingClientRect(), r = c.getBoundingClientRect();
+      dica.style.left = (r.left + r.width / 2 - box.left) + "px";
+      dica.style.top = (r.top - box.top) + "px";
+    };
+    c.addEventListener("mouseenter", mostrar);
+    c.addEventListener("mouseleave", () => { dica.hidden = true; });
+    c.addEventListener("click", () => {
+      raioxAtivo = raioxAtivo === pt.nome ? "" : pt.nome;
+      montarRaioX();
+      const alvo = document.getElementById("rx-" + norm(pt.nome).replace(/[^a-z0-9]+/g, "-"));
+      if (alvo) alvo.scrollIntoView({ behavior:"smooth", block:"start" });
+    });
+    g.append(c, t);
+    svg.append(g);
+  });
+  const leg = document.createElementNS(NS, "text");
+  leg.setAttribute("x", 8); leg.setAttribute("y", FLORIPA.h - 12); leg.setAttribute("class", "legenda"); leg.setAttribute("font-size", "18");
+  leg.textContent = "CLIQUE NUM PONTO PARA IR À LISTA";
+  svg.append(leg);
+  mapa.append(svg, dica);
+
+  // --- lista por local
+  const dataCurta = r => String(r.dia).padStart(2, "0") + "/" + String(r.mes).padStart(2, "0") + "/" + r.ano;
+  const bloco = (nome, provas, classe) => {
+    const sec = el("section", { className:"rx__local" + (classe ? " " + classe : "") + (raioxAtivo === nome ? " ativo" : ""),
+                                 id:"rx-" + norm(nome).replace(/[^a-z0-9]+/g, "-") });
+    sec.append(el("h3", { textContent:nome }, [el("small", { textContent:provas.length + (provas.length === 1 ? " prova" : " provas") })]));
+    const tb = el("table"), corpo = el("tbody");
+    [...provas].sort((a, b) => b._d - a._d).forEach(r => {
+      const nomeCel = el("td", { className:"p", textContent:r.nome });
+      if (classe === "sem" && (r.largada || r.local_banlek))
+        nomeCel.append(el("small", { textContent:"pista: " + (r.largada || r.local_banlek) }));
+      corpo.append(el("tr", {}, [
+        el("td", { className:"d", textContent:dataCurta(r) }),
+        nomeCel,
+        el("td", { textContent:(r.organizadores || []).join(" + ") || "—" }),
+        el("td", { className:"c", textContent: temResultado(r) ? num(r.concluintes_total) + (r.concluintes_unidade === "equipes" ? " eq." : "") : (r._passada ? "sem resultado" : "futura") }),
+      ]));
+    });
+    tb.append(corpo); sec.append(tb);
+    return sec;
+  };
+  [...porLocal.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], "pt-BR"))
+    .forEach(([nome, provas]) => lista.append(bloco(nome, provas, "")));
+  if (semLocal.length) lista.append(bloco("Sem local identificado", semLocal, "sem"));
+  if (!eventos.size) lista.append(el("p", { className:"tk__vazio", textContent:"Nenhuma prova de Florianópolis dentro dos filtros atuais." }));
+
+  const comLocal = eventos.size - semLocal.length;
+  rodape.replaceChildren(
+    el("b", { textContent:num(comLocal) }),
+    document.createTextNode((comLocal === 1 ? " prova" : " provas") + " com local identificado, de "),
+    el("b", { textContent:num(eventos.size) }),
+    document.createTextNode(" em Florianópolis no recorte. O local vem da largada informada no corridasbr, do endereço do álbum de fotos, do regulamento e da página da ticketeira; prova com largada e chegada em pontos diferentes conta nos dois. As sem local aparecem no fim da lista."),
+  );
+}
+
+ao("btn-raiox", () => { raioxAtivo = ""; montarRaioX(); dialogoRaiox.showModal(); });
+ao("raiox-fechar", () => dialogoRaiox.close());
+fechaNoFundo(dialogoRaiox);
 
 /* ---------- recordes ----------
    atletas/recordes.json guarda, por prova, os dez melhores de cada sexo

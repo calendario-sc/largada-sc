@@ -71,7 +71,22 @@ def _para_o_cartao(perfil):
 BI_DIR = AQUI.parent / "cupons-bi"
 # O que so a pagina de BI leva: quem vende a inscricao, quem cronometra e
 # quem fotografa cada prova.
-CAMPOS_BI = ("ticketeira", "cronometragem", "fotografia")
+CAMPOS_BI = ("ticketeira", "cronometragem", "fotografia", "locais", "largada", "local_banlek")
+
+
+def dados_floripa():
+    """O mapa do Raio-X Floripa: contorno projetado e os pontos da cidade."""
+    import math
+    import locais_floripa
+    contorno = json.loads((AQUI / "floripa_contorno.json").read_text(encoding="utf-8"))
+    escala = contorno["w"] / ((contorno["lon1"] - contorno["lon0"]) * math.cos(math.radians(contorno["lat_ref"])))
+    pontos = []
+    for nome, lat, lon, _rx in locais_floripa.LOCAIS:
+        x = (lon - contorno["lon0"]) * math.cos(math.radians(contorno["lat_ref"])) * escala
+        y = (contorno["lat1"] - lat) * escala
+        pontos.append({"nome": nome, "x": round(x, 1), "y": round(y, 1)})
+    return json.dumps({"w": contorno["w"], "h": contorno["h"], "aneis": contorno["aneis"], "pontos": pontos},
+                      ensure_ascii=False, separators=(",", ":"))
 
 
 def dados_da_pagina(historico, bi=True):
@@ -85,7 +100,8 @@ def dados_da_pagina(historico, bi=True):
     for p in historico:
         perfil = p.pop("perfil", None)
         for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "cronometragem_url", "cronometragem_em",
-                      "fotografia_em", "fotografia_detalhe", "maissport_tentado"):
+                      "fotografia_em", "fotografia_detalhe", "maissport_tentado",
+                      "largada_em", "local_texto", "local_texto_em"):
             p.pop(campo, None)
         # Resultado lido direto na cronometradora: ela e a cronometragem.
         if not p.get("cronometragem") and p.get("fonte_resultado") in ("supercrono", "chiprun"):
@@ -115,6 +131,8 @@ SO_BI = [
     r'[ \t]*<button class="chip" id="btn-ticketeiras"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-crono"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-foto"[^\n]*\n',
+    r'[ \t]*<button class="chip" id="btn-raiox"[^\n]*\n',
+    r'<dialog class="orgs rx" id="raiox".*?</dialog>\n\n',
     r'  <section class="comparativo" id="comparativo".*?\n  </section>\n',
     r'<dialog class="orgs tk" id="tk".*?</dialog>\n\n',
     r'<dialog class="orgs tk" id="crono".*?</dialog>\n\n',
@@ -145,7 +163,7 @@ def completa(pagina):
 
 def build():
     template = (AQUI / "template.html").read_text(encoding="utf-8")
-    for marcador in ("__DATA__", "__COLETA__", "__BI__"):
+    for marcador in ("__DATA__", "__COLETA__", "__BI__", "__FLORIPA__"):
         if marcador not in template:
             raise SystemExit(f"template.html perdeu o marcador {marcador}")
     historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
@@ -154,14 +172,16 @@ def build():
     # Pagina de BI: tudo. Vai para o Artifact (privado do dono) e, se a
     # pasta do repositorio privado existir, para ela.
     dados_bi = dados_da_pagina(json.loads(json.dumps(historico)), bi=True)
-    pagina_bi = template.replace("__COLETA__", coleta).replace("__DATA__", dados_bi).replace("__BI__", "true")
+    pagina_bi = (template.replace("__COLETA__", coleta).replace("__DATA__", dados_bi).replace("__BI__", "true")
+                 .replace("__FLORIPA__", dados_floripa()))
     (AQUI / "artifact.html").write_text(pagina_bi, encoding="utf-8")
     if BI_DIR.is_dir():
         (BI_DIR / "index.html").write_text(completa(pagina_bi), encoding="utf-8")
 
     # Pagina publica: sem os paineis e sem os campos de BI.
     dados_pub = dados_da_pagina(historico, bi=False)
-    pagina_pub = so_publico(template).replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
+    pagina_pub = (so_publico(template).replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
+                  .replace("__FLORIPA__", "null"))
     (AQUI / "index.html").write_text(completa(pagina_pub), encoding="utf-8")
 
     return len(pagina_bi)

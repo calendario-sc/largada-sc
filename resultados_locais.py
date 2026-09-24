@@ -109,6 +109,12 @@ def coletar():
         registrar(f"cronometragem: FALHOU ({erro.__class__.__name__}: {erro})")
 
     try:
+        import locais_floripa
+        locais_floripa.atualizar_locais(historico, limite=60, registrar=registrar)
+    except Exception as erro:
+        registrar(f"raio-x floripa: FALHOU ({erro.__class__.__name__}: {erro})")
+
+    try:
         import fotografia
         n, ok = fotografia.completar_fotografia(historico, limite=120, registrar=registrar)
         if n:
