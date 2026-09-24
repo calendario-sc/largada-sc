@@ -2238,7 +2238,9 @@ async function carregarCampeoes(){
   campeoesErro = "Não foi possível carregar os campeões (" + erro + ").";
 }
 
-const kmRotulo = km => (km === 21.1 ? "21 km" : km === 42.2 ? "42 km" : String(km).replace(".", ",") + " km");
+// 1,6 km e a milha (a do Campeonato Brasileiro na Oakberry 2026).
+const kmRotulo = km => (km === 21.1 ? "21 km" : km === 42.2 ? "42 km" : km === 1.6 ? "1 milha"
+  : String(km).replace(".", ",") + " km");
 const tempoCamp = s => {
   const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), seg = s % 60;
   return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(seg).padStart(2, "0");
