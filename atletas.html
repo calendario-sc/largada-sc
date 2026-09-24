@@ -824,6 +824,22 @@ const duelo = document.getElementById("duelo");
 const q2 = document.getElementById("q2"), dica2 = document.getElementById("dica2"), lista2 = document.getElementById("lista2");
 const pedido2 = { n: 0 };
 
+// Titulos: vitorias gerais (1o lugar do sexo) numa distancia de uma prova,
+// pela mesma Galeria dos Campeoes do calendario.
+let TITULOS = null;
+async function carregarTitulos(){
+  if (TITULOS) return TITULOS;
+  TITULOS = new Map();
+  try {
+    const r = await fetch("atletas/campeoes.json", { cache:"no-cache" });
+    const c = r.ok ? await r.json() : {};
+    Object.values(c).forEach(lista => lista.forEach(([, f, m]) => [f, m].forEach(v => {
+      if (v) TITULOS.set(v[2], (TITULOS.get(v[2]) || 0) + 1);
+    })));
+  } catch (e){ /* sem o arquivo, titulos ficam em zero */ }
+  return TITULOS;
+}
+
 function resumoAtleta(a){
   const res = a.res.map(r => ({ prova: PROVAS[r[0]], km: r[1], tempo: r[2], pace: r[3] }));
   const comKm = res.filter(r => r.km);
@@ -834,6 +850,7 @@ function resumoAtleta(a){
     provas: new Set(res.map(r => r.prova[3])).size,
     km: comKm.reduce((s, r) => s + r.km, 0),
     maior: comKm.reduce((m, r) => Math.max(m, r.km), 0),
+    titulos: (TITULOS && TITULOS.get(a.slug)) || 0,
     melhor,
   };
 }
@@ -853,7 +870,8 @@ function abrirDuelo(){
   duelo.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
-function montarDuelo(b){
+async function montarDuelo(b){
+  await carregarTitulos();
   const A = resumoAtleta(atletaAtual), B = resumoAtleta(b);
   history.replaceState(null, "", "#" + A.slug + "~" + B.slug);
   document.getElementById("duelo-busca").hidden = true;
@@ -876,6 +894,7 @@ function montarDuelo(b){
   linha("Provas", A.provas, B.provas, v => num(v), null, true);
   linha("Km percorridos", A.km, B.km, v => num(Math.round(v)) + " km", null, true);
   linha("Maior distância", A.maior || null, B.maior || null, v => String(v).replace(".", ",") + " km", null, true);
+  linha("Total de títulos", A.titulos, B.titulos, v => num(v), v => v === 1 ? "vitória geral" : "vitórias gerais", true);
 
   const kms = [...new Set([...A.melhor.keys(), ...B.melhor.keys()])].sort((x, y) => x - y);
   const disputadas = kms.filter(k => A.melhor.has(k) && B.melhor.has(k));
@@ -909,7 +928,7 @@ function montarDuelo(b){
   document.getElementById("duelo-cartas").replaceChildren(
     placar,
     el("table", { className:"atributos" }, [corpo]),
-    el("p", { className:"duelo__nota", textContent: veredito + " Cada atributo vale um ponto; nas distâncias, vence o menor tempo, e o pace vem embaixo. Distância que só um dos dois correu não vale ponto." }),
+    el("p", { className:"duelo__nota", textContent: veredito + " Cada atributo vale um ponto; nas distâncias, vence o menor tempo, e o pace vem embaixo. Distância que só um dos dois correu não vale ponto. Título é a vitória geral (1º lugar do sexo) numa distância de uma prova, pela Galeria dos Campeões; empate em zero não dá ponto." }),
     trocar,
   );
 }
@@ -931,7 +950,7 @@ carregarIndice().then(async () => {
   const [slug, slugB] = decodeURIComponent(location.hash.slice(1)).split("~");
   if (slug && slugB){
     const a = await atletaPorSlug(slug), b = await atletaPorSlug(slugB);
-    if (a){ input.value = titulo(a.nome); abrir(a); if (b){ duelo.hidden = false; montarDuelo(b); } }
+    if (a){ input.value = titulo(a.nome); abrir(a); if (b){ duelo.hidden = false; await montarDuelo(b); } }
     return;
   }
   if (!slug) return;
