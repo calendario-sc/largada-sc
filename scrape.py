@@ -763,7 +763,7 @@ def completar_extras(historico, registrar=print):
     achados = 0
     for data, nome, url in RESULTADOS_EXTRAS:
         prova = _acha_prova(historico, data, nome)
-        if prova is None or prova.get("concluintes_total"):
+        if prova is None or (prova.get("concluintes_total") and prova.get("fonte_resultado") in CRONO_DO_CLAX):
             continue
         try:
             dados = fontes.clax_ler(url)
@@ -772,6 +772,11 @@ def completar_extras(historico, registrar=print):
             continue
         if not dados or not dados["total"]:
             continue
+        # O endereco apontado a mao e a fonte oficial: vale mais que um
+        # numero parcial ou menor que veio de outro portal.
+        if prova.get("concluintes_total", 0) >= dados["total"] and not prova.get("resultado_parcial"):
+            continue
+        prova.pop("resultado_parcial", None)
         fonte = "supercrono" if "supercrono" in url else "maissport" if "maissport" in url else "clax"
         _guardar_clax(prova, dados, fonte, url)
         registrar(f"  extra {data} {prova['nome'][:40]}: {dados['total']} "

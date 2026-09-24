@@ -315,6 +315,8 @@ ORG_ALIAS = {
 RESULTADOS_EXTRAS = [
     ("2026-04-11", "29º Revezamento Volta à Ilha",
      "https://www.supercrono.com.br/resultados/eventos/2026/04-10voltailha/voltailha.clax"),
+    ("2024-04-27", "27º Revezamento Volta À Ilha 2024",
+     "https://www.supercrono.com.br/resultados/eventos/2024/04-27VOLTA_ILHA/CORRIDA.clax"),
 ]
 
 
