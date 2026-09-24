@@ -11,6 +11,9 @@ import functools
 import html as entidades
 import json
 import re
+import time
+import urllib.request
+from comum import UA_NAVEGADOR
 import urllib.parse
 
 from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, arrumar_titulo, baixar,
@@ -943,3 +946,99 @@ def chiprun_concluintes(slug, modalidades):
         atual["f"] += feminino
         atual["m"] += total - feminino
     return por_distancia, sum(por_distancia.values()), por_genero
+
+
+# =========================================================== formato .clax
+# A SuperCrono e a Mais Sports publicam parte dos resultados no "g-live",
+# visualizador do cronometro Wiclax: um XML .clax com os inscritos (Engages),
+# os tempos (Resultats) e os percursos (Parcours). Quem tem tempo concluiu.
+# Num revezamento os inscritos sao as equipes, e e isso que se conta.
+import xml.etree.ElementTree as _ET
+
+CLAX_HORA = re.compile(r"^\d{1,2}h\d{2}'\d{2}")
+
+
+def clax_ler(url):
+    """Le um .clax e devolve nome, data, organizador e os concluintes.
+
+    Devolve dict com nome, data (aaaa-mm-dd), organizador, por_distancia
+    {km: n}, total, por_genero {km: {f, m}} e equipes (True quando cada
+    inscrito e uma equipe: revezamento)."""
+    raw = _baixar_bytes(url)
+    raiz = _ET.fromstring(raw.decode("utf-8-sig", errors="replace"))
+    etapa = raiz.find("Etapes/Etape")
+    if etapa is None:
+        return None
+    metros = {}
+    for pcs in raiz.findall("Parcours/Pcs"):
+        try:
+            metros[pcs.get("nom") or ""] = int(float(pcs.get("distance") or 0))
+        except ValueError:
+            pass
+    inscritos = {e.get("d"): e for e in etapa.findall("Engages/E")}
+    por_distancia, por_genero, total = {}, {}, 0
+    for r in etapa.findall("Resultats/R"):
+        tempo = r.get("t") or ""
+        e = inscritos.get(r.get("d"))
+        if e is None or not CLAX_HORA.match(tempo):
+            continue
+        percurso = e.get("p") or ""
+        if "desclass" in sem_acento(percurso).lower():
+            continue
+        m = metros.get(percurso, 0)
+        if not m:
+            continue
+        km = str(round(m / 1000, 1)).rstrip("0").rstrip(".")
+        por_distancia[km] = por_distancia.get(km, 0) + 1
+        total += 1
+        sexo = (e.get("x") or "").upper()
+        if sexo in ("M", "F"):
+            g = por_genero.setdefault(km, {"f": 0, "m": 0})
+            g["f" if sexo == "F" else "m"] += 1
+    equipes = len(raiz.findall("Equipes/E"))
+    return {
+        "nome": (raiz.get("nom") or "").strip(),
+        "data": raiz.get("dt1") or "",
+        "organizador": (raiz.get("organisateur") or "").strip(),
+        "por_distancia": por_distancia, "total": total, "por_genero": por_genero,
+        "equipes": bool(inscritos) and equipes == len(inscritos),
+    }
+
+
+def _baixar_bytes(url):
+    req = urllib.request.Request(url, headers={"User-Agent": UA_NAVEGADOR, "Accept": "*/*"})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return resp.read()
+
+
+MS_BASE = "https://maissport.com.br/resultados/eventos/"
+MS_PASTA = re.compile(r'href="([^"?/][^"]*)/"')
+
+
+def maissport_eventos(ano, registrar=print):
+    """Os eventos de um ano na Mais Sports: uma pasta por prova, com o .clax
+    dentro. Devolve [{url, nome, data, organizador, ...concluintes}]."""
+    try:
+        indice = _baixar_bytes(f"{MS_BASE}{ano}/").decode("utf-8", errors="replace")
+    except Exception as erro:
+        registrar(f"  mais sports {ano}: FALHOU ({erro.__class__.__name__})")
+        return []
+    saida = []
+    for pasta in MS_PASTA.findall(indice):
+        url = f"{MS_BASE}{ano}/{pasta}/{pasta}.clax"
+        try:
+            dados = clax_ler(url)
+        except Exception:
+            # A pasta pode ter o .clax com outro nome: lista a pasta.
+            try:
+                lista = _baixar_bytes(f"{MS_BASE}{ano}/{pasta}/").decode("utf-8", errors="replace")
+                arq = next((a for a in re.findall(r'href="([^"]+\.clax)"', lista)), None)
+                dados = clax_ler(f"{MS_BASE}{ano}/{pasta}/{arq}") if arq else None
+                url = f"{MS_BASE}{ano}/{pasta}/{arq}" if arq else url
+            except Exception:
+                dados = None
+        if dados and dados["total"]:
+            dados["url"] = url
+            saida.append(dados)
+        time.sleep(0.3)
+    return saida

@@ -74,6 +74,9 @@ def coletar():
     juntadas = scrape.unificar_openresults(historico)
     if juntadas:
         registrar(f"provas que mudaram de nome: {len(juntadas)} unificadas")
+    manuais = scrape.unificar_manualmente(historico)
+    if manuais:
+        registrar(f"provas declaradas iguais: {manuais} unificadas")
 
     try:
         consultadas, achadas = scrape.completar_runking(historico)
@@ -81,6 +84,16 @@ def coletar():
             registrar(f"runking: {consultadas} consultadas, {achadas} preenchidas")
     except Exception as erro:
         registrar(f"runking: FALHOU ({erro.__class__.__name__}: {erro})")
+
+    try:
+        n = scrape.completar_extras(historico, registrar=registrar)
+        if n:
+            registrar(f"resultados apontados a mao: {n} preenchidos")
+        n, ok = scrape.completar_maissport(historico, registrar=registrar)
+        if n:
+            registrar(f"mais sports: {n} provas procuradas, {ok} preenchidas")
+    except Exception as erro:
+        registrar(f"clax: FALHOU ({erro.__class__.__name__}: {erro})")
 
     for _ in range(10):
         n, ok = scrape.completar_generos(historico, limite=200)

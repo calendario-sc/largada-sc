@@ -2806,7 +2806,8 @@ function linha(r, destaque){
       title: r.resultado_parcial
         ? "O portal publicou só parte dos atletas desta edição; o número fica fora dos totais e dos rankings."
         : "",
-      textContent: num(r.concluintes_total) + " concluintes"
+      textContent: num(r.concluintes_total)
+                 + (r.concluintes_unidade === "equipes" ? " equipes concluintes" : " concluintes")
                  + (r.resultado_parcial ? " (resultado parcial)" : ""),
     }));
   else if (r._passada)

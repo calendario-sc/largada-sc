@@ -309,6 +309,25 @@ ORG_ALIAS = {
 }
 
 
+# Resultados publicados fora dos indices que o coletor varre: a SuperCrono
+# poe alguns eventos so no "g-live" (arquivo .clax), sem lista. Cada item:
+# data, nome da prova no calendario e o endereco do .clax.
+RESULTADOS_EXTRAS = [
+    ("2026-04-11", "29º Revezamento Volta à Ilha",
+     "https://www.supercrono.com.br/resultados/eventos/2026/04-10voltailha/voltailha.clax"),
+]
+
+
+# Duas entradas que sao a mesma prova numa data, anunciadas com nomes
+# diferentes pelas fontes. Nenhuma regra automatica pode juntar: os nomes
+# se confundem com provas tradicionais da mesma cidade (a "Maratona de
+# Floripa" e a "Meia e Maratona Cidade de Florianopolis" sao eventos
+# distintos em outros anos). Fica declarado a mao, por data.
+MESMA_PROVA = [
+    ("2026-06-07", "15ª Maratona de Floripa", "Meia e Maratona Cidade de Florianópolis - 2026"),
+]
+
+
 # Provas retiradas do calendario a pedido: viraram treinao, foram canceladas
 # sem sair das fontes, ou nao sao corrida. Guardadas com data porque o mesmo
 # nome se repete entre edicoes, e so a edicao indicada deve sair.

@@ -85,7 +85,7 @@ def dados_da_pagina(historico, bi=True):
     for p in historico:
         perfil = p.pop("perfil", None)
         for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "cronometragem_url", "cronometragem_em",
-                      "fotografia_em", "fotografia_detalhe"):
+                      "fotografia_em", "fotografia_detalhe", "maissport_tentado"):
             p.pop(campo, None)
         # Resultado lido direto na cronometradora: ela e a cronometragem.
         if not p.get("cronometragem") and p.get("fonte_resultado") in ("supercrono", "chiprun"):

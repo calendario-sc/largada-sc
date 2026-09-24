@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 import fontes
-from comum import (FAIXAS, NAO_CORRIDA, ORG_ALIAS, UF_ALVO, arrumar_titulo,
+from comum import (mesmo_evento_renomeado, FAIXAS, MESMA_PROVA, NAO_CORRIDA, ORG_ALIAS, RESULTADOS_EXTRAS, UF_ALVO, arrumar_titulo,
                    canonizar_cidade,
                    classificar, esta_excluida, faixas_de, mesma_prova,
                    mesmo_evento_renomeado, palavras_distintivas, parecidos,
@@ -494,6 +494,49 @@ def unificar_openresults(historico):
     return juntadas
 
 
+def unificar_manualmente(historico):
+    """Junta as duplas declaradas em MESMA_PROVA (comum.py).
+
+    Fica a entrada que tem resultado (ou a primeira), com a uniao das
+    fontes, organizadoras e distancias, e o outro nome em outros_nomes para
+    a busca achar pelos dois. Roda a cada coleta, porque a fonte que anuncia
+    o outro nome recriaria a duplicata no dia seguinte.
+    """
+    def bate(p, nome):
+        return (sem_acento(p["nome"]).lower().strip() == sem_acento(nome).lower().strip()
+                or nome in (p.get("outros_nomes") or []))
+
+    juntadas = 0
+    for data, nome_a, nome_b in MESMA_PROVA:
+        do_dia = [p for p in historico if p["data"] == data]
+        a = next((p for p in do_dia if bate(p, nome_a)), None)
+        b = next((p for p in do_dia if bate(p, nome_b)), None)
+        if not a or not b or a is b:
+            continue
+        alvo, outra = (a, b) if (a.get("concluintes_total") or a.get("or_slug")) and not b.get("concluintes_total") else (b, a)
+        if not alvo.get("concluintes_total") and outra.get("concluintes_total"):
+            alvo, outra = outra, alvo
+        alvo["fontes"] = sorted(set(alvo.get("fontes", [])) | set(outra.get("fontes", [])))
+        alvo["organizadores"] = sorted(set(alvo.get("organizadores") or []) | set(outra.get("organizadores") or []),
+                                       key=sem_acento)
+        alvo["tags"] = sorted(set(alvo.get("tags", [])) | set(outra.get("tags", [])))
+        if len(alvo["tags"]) > 1 and "Rua" in alvo["tags"]:
+            alvo["tags"].remove("Rua")
+        if len(outra.get("pills") or []) > len(alvo.get("pills") or []):
+            alvo["pills"], alvo["faixas"], alvo["max_km"] = outra["pills"], outra.get("faixas", []), outra.get("max_km", 0)
+        for campo in ("resultado_id", "corrida_id", "ts_id", "ts_url", "rr_slug", "or_slug", "perfil", "perfil_em",
+                      "concluintes", "concluintes_total", "concluintes_genero", "concluintes_f", "concluintes_m",
+                      "fonte_resultado", "cronometragem", "cronometragem_url", "fotografia", "fotografia_em"):
+            if not alvo.get(campo) and outra.get(campo):
+                alvo[campo] = outra[campo]
+        _guardar_outro_nome(alvo, outra["nome"])
+        for n in outra.get("outros_nomes") or []:
+            _guardar_outro_nome(alvo, n)
+        historico.remove(outra)
+        juntadas += 1
+    return juntadas
+
+
 def _prova_do_openresults(e):
     """Monta o registro de uma prova que so existe no portal de resultados.
 
@@ -686,6 +729,92 @@ def completar_cronometragem(historico, limite=None, registrar=print):
                 achadas += 1
         time.sleep(0.5)
     return feitas, achadas
+
+
+CRONO_DO_CLAX = {"supercrono": "Super Crono", "maissport": "Mais Sports"}
+
+
+def _guardar_clax(prova, dados, fonte, url):
+    """Grava numa prova o que veio de um .clax."""
+    _guardar_resultado(prova, dados["por_distancia"], dados["total"], dados["por_genero"], fonte)
+    if dados["equipes"]:
+        prova["concluintes_unidade"] = "equipes"
+    else:
+        prova.pop("concluintes_unidade", None)
+    if not prova.get("cronometragem"):
+        prova["cronometragem"] = CRONO_DO_CLAX.get(fonte, fonte)
+        prova["cronometragem_url"] = url
+
+
+def _acha_prova(historico, data, nome):
+    for p in historico:
+        if p["data"] != data:
+            continue
+        if (sem_acento(p["nome"]).lower().strip() == sem_acento(nome).lower().strip()
+                or nome in (p.get("outros_nomes") or [])
+                or mesmo_evento_renomeado(p["nome"], nome, p.get("cidade", ""))):
+            return p
+    return None
+
+
+def completar_extras(historico, registrar=print):
+    """Resultados apontados a mao (RESULTADOS_EXTRAS): so busca o que a
+    prova ainda nao tem."""
+    achados = 0
+    for data, nome, url in RESULTADOS_EXTRAS:
+        prova = _acha_prova(historico, data, nome)
+        if prova is None or prova.get("concluintes_total"):
+            continue
+        try:
+            dados = fontes.clax_ler(url)
+        except Exception as erro:
+            registrar(f"  extra {data} {nome[:40]}: FALHOU ({erro.__class__.__name__})")
+            continue
+        if not dados or not dados["total"]:
+            continue
+        fonte = "supercrono" if "supercrono" in url else "maissport" if "maissport" in url else "clax"
+        _guardar_clax(prova, dados, fonte, url)
+        registrar(f"  extra {data} {prova['nome'][:40]}: {dados['total']} "
+                  + ("equipes" if dados["equipes"] else "concluintes"))
+        achados += 1
+    return achados
+
+
+REVER_MAISSPORT_DIAS = 7
+JANELA_MAISSPORT = 60
+
+
+def completar_maissport(historico, registrar=print):
+    """Concluintes das provas que a Mais Sports cronometrou e publicou no
+    g-live (pasta por prova, por ano). Casa por data e nome."""
+    hoje = datetime.date.today()
+    recente = (hoje - datetime.timedelta(days=JANELA_MAISSPORT)).isoformat()
+    limite = (hoje - datetime.timedelta(days=REVER_MAISSPORT_DIAS)).isoformat()
+    alvo = [p for p in historico
+            if p["data"] < hoje.isoformat() and not p.get("concluintes_total")
+            and "Treino" not in (p.get("tags") or [])
+            and (not p.get("maissport_tentado")
+                 or (p["data"] >= recente and p["maissport_tentado"] <= limite))]
+    if not alvo:
+        return 0, 0
+    anos = sorted({p["ano"] for p in alvo})
+    eventos = []
+    for ano in anos:
+        eventos += fontes.maissport_eventos(ano, registrar=registrar)
+    por_data = {}
+    for e in eventos:
+        por_data.setdefault(e["data"], []).append(e)
+    achados = 0
+    for p in alvo:
+        p["maissport_tentado"] = hoje.isoformat()
+        for e in por_data.get(p["data"], []):
+            if mesmo_evento_renomeado(p["nome"], e["nome"], p.get("cidade", "")) or parecidos(p["nome"], e["nome"]):
+                _guardar_clax(p, e, "maissport", e["url"])
+                registrar(f"  mais sports {p['data']} {p['nome'][:40]}: {e['total']} "
+                          + ("equipes" if e["equipes"] else "concluintes"))
+                achados += 1
+                break
+    return len(alvo), achados
 
 
 def _sem_resultado(historico, marca):
@@ -924,6 +1053,12 @@ def main():
             print(f"  - {p['data']}  {p['cidade']} - {p['nome'][:44]}")
 
     renomeadas = unificar_openresults(historico)
+
+    manuais = unificar_manualmente(historico)
+
+    if manuais:
+
+        print(f"provas declaradas iguais: {manuais} unificadas")
     if renomeadas:
         print(f"provas que mudaram de nome: {len(renomeadas)} registros unificados")
         for alvo, outro in renomeadas[:6]:
@@ -961,7 +1096,8 @@ def main():
                           "concluintes_genero", "concluintes_f", "concluintes_m",
                           "genero_tentado", "perfil", "perfil_em",
                           "cronometragem", "cronometragem_url", "cronometragem_em",
-                          "fotografia", "fotografia_em", "fotografia_detalhe")
+                          "fotografia", "fotografia_em", "fotografia_detalhe",
+                          "concluintes_unidade", "maissport_tentado")
                          if antiga.get(c)}
             enderecos = {c: antiga[c] for c in
                          ("corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug")
@@ -1266,8 +1402,13 @@ def _parece_parcial(prova, outras):
 
 # Evento que se espalha por mais de um dia: "1o Dia", "2o Dia Noturno",
 # "- Sabado". A Maratona de Jurere tem duas entradas no calendario (cada dia
-# tem suas distancias), mas e uma prova so, e assim deve ser contada.
-MARCA_DE_DIA = re.compile(r"\b\d{1,2}\s*[ºª°oa]?\s*dia\b|[-–|]\s*(?:s[aá]bado|domingo|sexta(?:-feira)?)\b",
+# tem suas distancias), mas e uma prova so, e assim deve ser contada. "s\s*[aá]\s*bado"
+# tolera espaco solto no meio da palavra (a fonte publicou "Sá bado" em 2026).
+# "meia" pega o dia da meia-maratona num evento de dois dias ("Maratona
+# Internacional de Floripa 2026 - Meia"), mas nao "Meia Maratona de X", onde
+# "meia" abre o nome da prova em vez de fechar o rotulo do dia.
+MARCA_DE_DIA = re.compile(r"\b\d{1,2}\s*[ºª°oa]?\s*dia\b|"
+                          r"[-–|]\s*(?:s\s*[aá]\s*bado|domingo|sexta(?:-feira)?|meia\b(?!\s*maratona))",
                           re.I)
 PERIODO_DO_DIA = re.compile(r"\b(?:tarde|manh[aã]|noite|noturn[oa]|matinal)\b", re.I)
 JANELA_EVENTO = 3        # dias entre um dia e o seguinte do mesmo evento
