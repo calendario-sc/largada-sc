@@ -151,7 +151,9 @@ h1 em{font-style:normal; color:#FFC21A}
 .atributos tr.grupo td{padding-top:.9rem; border-bottom:2px solid var(--ink); font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); text-align:center}
 .duelo__nota{margin:.6rem 0 0; font-size:.76rem; color:var(--muted)}
 @media (max-width:720px){ .carta b{font-size:.9rem} .carta .pts{font-size:1.7rem} .atributos{font-size:.8rem} }
-@media print{ .duelo__busca,.duelo__topo button{display:none !important} .duelo{box-shadow:none; border-color:var(--line)} }
+.duelo__acoes{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.8rem}
+.duelo__acoes .pdf::before{content:"\2193\00a0"}
+@media print{ .duelo__busca,.duelo__topo button,.duelo__acoes{display:none !important} .duelo{box-shadow:none; border-color:var(--line)} }
 #pdf::before{content:"\2193\00a0"}
 .imp{display:none}
 .nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.6rem; margin:0 0 1.2rem}
@@ -268,7 +270,18 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
   th,td{padding:.25rem .35rem}
   thead{display:table-header-group}
   .grafico .ponto{cursor:default}
+  .imp:empty{display:none}
+  body.pdf-duelo .perfil > :not(.duelo),
+  body.pdf-duelo .duelo__topo,
+  body.pdf-duelo .st > h2,
+  body.pdf-duelo .st__sub,
+  body.pdf-duelo .st__escolha{display:none !important}
+  body.pdf-duelo .duelo,
+  body.pdf-duelo .st__cartas{margin:0; padding:0; border:0; box-shadow:none}
+  body.pdf-duelo .duelo__titulo{display:block; font-family:var(--f-display); font-weight:800; font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .8rem}
+  body.pdf-duelo .placar{margin-bottom:.8rem}
 }
+.duelo__titulo{display:none}
 </style>
 </head>
 <body>
@@ -536,7 +549,11 @@ document.getElementById("pdf").onclick = () => {
   document.title = ("Cupons de Corrida - Atleta - " + atletaAberto).replace(/[\\/:*?"<>|]/g, "");
   window.print();
 };
-window.addEventListener("afterprint", () => { document.title = TITULO; });
+window.addEventListener("afterprint", () => {
+  document.title = TITULO;
+  document.body.classList.remove("pdf-duelo");
+  document.querySelectorAll(".duelo .imp, .st .imp").forEach(x => x.replaceChildren());
+});
 
 document.getElementById("voltar").onclick = () => { document.getElementById("perfil").hidden = true; history.replaceState(null, "", location.pathname); input.focus(); };
 
@@ -887,7 +904,9 @@ async function carregarTitulos(){
 
 function resumoAtleta(a){
   const res = a.res.map(r => ({ prova: PROVAS[r[0]], km: r[1], tempo: r[2], pace: r[3] }));
-  const comKm = res.filter(r => r.km);
+  // Pace abaixo de 2:30/km (mais rapido que o recorde mundial) e distancia
+  // errada na cronometragem: nao entra em km, maior distancia nem melhor tempo.
+  const comKm = res.filter(r => r.km && !(r.tempo && (r.pace || r.tempo / r.km) < 150));
   const melhor = new Map();
   comKm.forEach(r => { const m = melhor.get(r.km); if (!m || r.tempo < m.tempo) melhor.set(r.km, r); });
   return {
@@ -972,11 +991,27 @@ async function montarDuelo(b, a = atletaAtual, destino = null){
   const veredito = pa === pb ? "Empate." : (pa > pb ? A.nome : B.nome) + " vence o duelo, " + Math.max(pa, pb) + " a " + Math.min(pa, pb) + ".";
   const trocar = el("button", { className:"voltar", type:"button", textContent: naTela ? "Novo duelo" : "Trocar adversário" });
   trocar.onclick = naTela ? () => abrirSupertrunfo() : abrirDuelo;
+  // PDF: o navegador salva ("Salvar como PDF"); sai so o duelo, com cabecalho.
+  const imp = el("p", { className:"imp" });
+  const pdf = el("button", { className:"voltar pdf", type:"button", textContent:"Exportar PDF", title:"Salvar este duelo em PDF" });
+  pdf.onclick = () => {
+    const anos = (INDICE.anos || []);
+    imp.replaceChildren(
+      el("b", { textContent:"Cupons de Corrida · Supertrunfo" }),
+      document.createTextNode(" · resultados de " + (anos.length ? anos[0] + " a " + anos[anos.length - 1] : "openresults.run")
+        + " · relatório gerado em " + new Date().toLocaleDateString("pt-BR")
+        + " · www.cuponsdecorrida.com.br"));
+    document.body.classList.add("pdf-duelo");
+    document.title = ("Cupons de Corrida - Supertrunfo - " + A.nome + " x " + B.nome).replace(/[\\/:*?"<>|]/g, "");
+    window.print();
+  };
   (destino || document.getElementById("duelo-cartas")).replaceChildren(
+    imp,
+    el("h2", { className:"duelo__titulo", textContent:"Supertrunfo: " + A.nome + " × " + B.nome }),
     placar,
     el("table", { className:"atributos" }, [corpo]),
     el("p", { className:"duelo__nota", textContent: veredito + " Cada atributo vale um ponto; nas distâncias, vence o menor tempo, e o pace vem embaixo. Distância que só um dos dois correu não vale ponto. Título é a vitória geral (1º lugar do sexo) numa distância de uma prova, pela Galeria dos Campeões; empate em zero não dá ponto." }),
-    trocar,
+    el("div", { className:"duelo__acoes" }, [pdf, trocar]),
   );
 }
 
