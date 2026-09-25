@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 import fontes
-from comum import (PROVA_REMARCADA, mesmo_evento_renomeado, FAIXAS, MESMA_PROVA, NAO_CORRIDA, ORG_ALIAS, RESULTADOS_EXTRAS, UF_ALVO, UFS, arrumar_titulo,
+from comum import (PROVA_REMARCADA, mesmo_evento_renomeado, FAIXAS, MESMA_PROVA, NAO_CORRIDA, ORG_ALIAS, RESULTADOS_EXTRAS, UF_ALVO, UFS, FEDERACOES, so_federacao, arrumar_titulo,
                    canonizar_cidade,
                    classificar, esta_excluida, faixas_de, mesma_prova,
                    mesmo_evento_renomeado, palavras_distintivas, parecidos,
@@ -46,9 +46,9 @@ def qualidade_nome(nome):
 
 def fundir(grupo):
     """Combina os registros de uma mesma prova vindos de fontes diferentes."""
-    # A FCA escreve o nome do permit ("Montain do...", caixa alta): so vale
-    # quando nenhuma outra fonte tem a prova.
-    nomes = [g["nome"] for g in grupo if g.get("fonte") != "fca"] or [g["nome"] for g in grupo]
+    # A federacao (FCA, FAP) escreve o nome do permit ("Montain do...", caixa
+    # alta): so vale quando nenhuma outra fonte tem a prova.
+    nomes = [g["nome"] for g in grupo if g.get("fonte") not in FEDERACOES] or [g["nome"] for g in grupo]
     melhor_nome = max(nomes, key=qualidade_nome)
 
     # Cidade: vale a que o mapa de regioes reconhece.
@@ -566,6 +566,51 @@ def remover_resultado_duplicado(historico):
                     if q.get(campo) and not p.get(campo):
                         p[campo] = q[campo]
                 tirados.append(q)
+    for q in tirados:
+        historico.remove(q)
+    return len(tirados) + juntar_mesmo_resultado(historico)
+
+
+# Campos que a gemea tirada pode ter e a que fica nao.
+CAMPOS_DA_GEMEA = ("permit", "permit_status", "organizador_fca", "organizadores", "cronometragem",
+                   "cronometragem_url", "fotografia", "locais", "locais_km", "largada",
+                   "corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug", "perfil", "perfil_em",
+                   "serie", "serie_nome")
+
+
+def juntar_mesmo_resultado(historico):
+    """Duas entradas da mesma data e regiao ligadas ao MESMO resultado do
+    portal sao a mesma prova vinda de fontes com nomes diferentes demais
+    para a fusao ("Rustica Marlim Azul" x "RUSTICA MARLIN AZUL"; "Circuito
+    Ocean" em Picarras x Penha). Sem isto os concluintes contam em dobro.
+    Fica a que tem mais fontes; o nome da outra vai para outros_nomes."""
+    grupos = {}
+    for p in historico:
+        if p.get("or_slug"):
+            grupos.setdefault((p["data"], p["or_slug"], p.get("regiao")), []).append(p)
+    tirados = []
+    for grupo in grupos.values():
+        if len(grupo) < 2:
+            continue
+        grupo.sort(key=lambda p: (-len(p.get("fontes") or []), -len(p.get("pills") or [])))
+        fica = grupo[0]
+        for q in grupo[1:]:
+            fica["fontes"] = sorted(set(fica.get("fontes") or []) | set(q.get("fontes") or []))
+            for campo in CAMPOS_DA_GEMEA:
+                if q.get(campo) and not fica.get(campo):
+                    fica[campo] = q[campo]
+            if q.get("pills") and not fica.get("pills"):
+                fica["pills"], fica["faixas"], fica["max_km"] = q["pills"], q.get("faixas", []), q.get("max_km", 0)
+            atual = sem_acento(fica["nome"]).lower().strip()
+            outros = {sem_acento(n).lower().strip(): n for n in fica.get("outros_nomes") or []}
+            for n in [q["nome"]] + list(q.get("outros_nomes") or []):
+                chave = sem_acento(n).lower().strip()
+                if chave != atual:
+                    outros.setdefault(chave, n)
+            if outros:
+                fica["outros_nomes"] = sorted(outros.values())
+            fica["primeira_vez"] = min(fica.get("primeira_vez") or "9999", q.get("primeira_vez") or "9999")
+            tirados.append(q)
     for q in tirados:
         historico.remove(q)
     return len(tirados)
@@ -1140,10 +1185,10 @@ def fundir_fca(historico):
             fundidas += 1
     por_chave = {}
     for p in historico:
-        if p.get("fontes") != ["fca"]:
+        if not so_federacao(p):
             por_chave.setdefault((p["data"], p["cidade"]), []).append(p)
     for p in list(historico):
-        if p.get("fontes") != ["fca"]:
+        if not so_federacao(p):
             continue
         cands = por_chave.get((p["data"], p["cidade"]), [])
         if not cands:
@@ -1157,7 +1202,7 @@ def fundir_fca(historico):
         contido = len(a) >= 4 and a in b
         if not (razao >= 0.5 or contido or (len(cands) == 1 and comum)):
             continue
-        melhor["fontes"] = sorted(set(melhor.get("fontes", [])) | {"fca"})
+        melhor["fontes"] = sorted(set(melhor.get("fontes", [])) | set(p.get("fontes") or []))
         for campo in ("permit", "permit_status", "organizador_fca"):
             if p.get(campo) and not melhor.get(campo):
                 melhor[campo] = p[campo]
@@ -1169,8 +1214,16 @@ def fundir_fca(historico):
 
 
 def casar_no_historico(prova, historico_por_data):
-    for antiga in historico_por_data.get(prova["data"], []):
+    do_dia = historico_por_data.get(prova["data"], [])
+    for antiga in do_dia:
         if mesma_prova(prova, antiga):
+            return antiga
+    # O nome que a fonte usa ja e conhecido como outro nome da prova (duas
+    # fontes, dois nomes: "Rustica Marlim Azul" e "RUSTICA MARLIN AZUL").
+    nome = sem_acento(prova["nome"]).lower().strip()
+    for antiga in do_dia:
+        if antiga.get("regiao") == prova.get("regiao") and nome in {
+                sem_acento(n).lower().strip() for n in antiga.get("outros_nomes") or []}:
             return antiga
     return None
 
@@ -1267,13 +1320,23 @@ def main():
                          if antiga.get(c)}
             # So a FCA listou a prova hoje: o nome e as etiquetas do historico
             # sao melhores que os do permit e ficam.
-            so_fca = prova.get("fontes") == ["fca"]
+            so_fca = so_federacao(prova)
             mantidos = {c: antiga[c] for c in ("nome", "tags", "outros_nomes", "cidade", "regiao", "uf")
                         if so_fca and antiga.get(c)}
+            nomes_antes = [antiga.get("nome")] + list(antiga.get("outros_nomes") or [])
             antiga.clear()
             antiga.update(prova)
             antiga.update(mantidos)
             antiga["fontes"] = creditos
+            # O nome de antes vira outro nome: e por ele que a busca acha a
+            # prova e que a outra fonte volta a casar amanha.
+            atual = sem_acento(antiga["nome"]).lower().strip()
+            outros = {}
+            for n in nomes_antes + list(antiga.get("outros_nomes") or []):
+                if n and sem_acento(n).lower().strip() != atual:
+                    outros.setdefault(sem_acento(n).lower().strip(), n)
+            if outros:
+                antiga["outros_nomes"] = sorted(outros.values())
             if guardado:
                 antiga["pills"], antiga["faixas"], antiga["max_km"] = guardado
             if tentada:

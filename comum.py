@@ -34,6 +34,15 @@ FAIXAS = ["5k", "10k", "21k", "42k", "ultra"]
 UFS = ("SC", "PR")
 UF_ALVO = UFS[0]
 UF_NOME = {"SC": "santa catarina", "PR": "parana"}
+# Federacoes cujos permits entram como fonte: FCA (SC) e FAP (PR). Nome de
+# prova escrito pela federacao so vale quando nenhuma outra fonte a tem.
+FEDERACOES = {"fca", "fap"}
+
+
+def so_federacao(p):
+    """A prova veio so de permit de federacao, nenhuma outra fonte a lista."""
+    fontes = set(p.get("fontes") or [])
+    return bool(fontes) and fontes <= FEDERACOES
 
 # Apelidos por UF: grafias que as fontes usam e que o IBGE nao reconhece.
 APELIDOS = {
@@ -41,6 +50,14 @@ APELIDOS = {
         "floripa": "Florianópolis",
         "balneario camboriu bc": "Balneário Camboriú",
         "sao jose sc": "São José",
+    },
+    # Grafias dos permits da FAP.
+    "PR": {
+        "matinho": "Matinhos",
+        "sao jose do pinhais": "São José dos Pinhais",
+        "mairinck": "Conselheiro Mairinck",
+        "candido rondon": "Marechal Cândido Rondon",
+        "foz do iguacu pr": "Foz do Iguaçu",
     },
 }
 

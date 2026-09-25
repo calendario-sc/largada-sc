@@ -1129,7 +1129,7 @@ h1 em{font-style:normal; color:#FFC21A}
 
 <footer class="foot">
   <div class="wrap">
-    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b>, <b>atletis.com.br</b> e o calendário de permits da <b>Federação Catarinense de Atletismo</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
+    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b>, <b>atletis.com.br</b> e os permits da <b>Federação Catarinense de Atletismo</b> e da <b>Federação de Atletismo do Paraná</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
     <p>Os números de concluintes vêm de <b>openresults.run</b> e, onde ele não alcança, das cronometragens que publicam os resultados: <b>supercrono.com.br</b>, <b>chiprun.com.br</b> e <b>resultados.runking.com.br</b>. Conta quem cruzou a linha de chegada com tempo registrado.</p>
     <p id="cobertura"></p>
     <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
@@ -3447,8 +3447,9 @@ function linha(r, destaque){
   r.tags.filter(x => x !== "Rua").forEach(x =>
     meta.append(el("span", { className:"tag tag--" + norm(x), textContent:x })));
   if (r.permit)
-    meta.append(el("span", { className:"tag tag--permit", textContent:"Permit FCA",
-                             title:"Permit nº " + r.permit + " na Federação Catarinense de Atletismo" }));
+    meta.append(el("span", { className:"tag tag--permit", textContent: r.uf === "PR" ? "Permit FAP" : "Permit FCA",
+                             title:"Permit nº " + r.permit + (r.uf === "PR" ? " na Federação de Atletismo do Paraná"
+                                                                        : " na Federação Catarinense de Atletismo") }));
   if (r.evento_dias > 1)
     meta.append(el("span", { className:"tag tag--dia", textContent:"dia " + r.evento_dia + " de " + r.evento_dias,
                              title:"Evento de " + r.evento_dias + " dias: conta uma prova só nos totais" }));

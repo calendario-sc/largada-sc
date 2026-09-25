@@ -866,6 +866,152 @@ def fca():
     return provas
 
 
+# ------------------------------------------------------ FAP (permits do PR)
+# A Federacao de Atletismo do Parana publica cada permit emitido como um PDF
+# numa pasta publica do Google Drive ("051.2026-Meia de Curita 2026.pdf").
+# O PDF traz numero, quem pediu (organizadora ou prefeitura), evento,
+# percursos, data, local e horario. Cada arquivo e lido uma vez so: o
+# resultado fica em fap_permits.json, e a rodada diaria baixa so os novos.
+FAP_PASTA = "1k975EUr26qTm_KiIg0chMHnO7lN0gE8n"
+FAP_LISTA = "https://drive.google.com/embeddedfolderview?id=" + FAP_PASTA
+FAP_PDF = "https://drive.google.com/uc?export=download&id={id}"
+FAP_CACHE = __import__("pathlib").Path(__file__).resolve().parent / "fap_permits.json"
+FAP_POR_RODADA = 800        # teto de PDFs novos por rodada (a carga inicial e ~600)
+FAP_ITEM = re.compile(r'<a href="https://drive\.google\.com/file/d/([\w-]+)/[^"]*"[^>]*>.*?'
+                      r'<div class="flip-entry-title">(.*?)</div>', re.S)
+
+
+def _texto_fap(pdf):
+    """O PDF do permit escreve letra por letra ("M e i a  d e  C u r i t a"):
+    cada linha e uma palavra com espacos entre as letras."""
+    import pdftexto
+    palavras = []
+    for linha in pdftexto.texto_do_pdf(pdf).split("\n"):
+        linha = linha.strip()
+        if re.fullmatch(r"(?:\S )+\S", linha):
+            linha = linha.replace(" ", "")
+        if linha:
+            palavras.append(linha)
+    return " ".join(palavras)
+
+
+def _ler_permit_fap(texto):
+    """Campos do permit; None quando o PDF nao tem o formato esperado."""
+    achar = lambda rx: (re.search(rx, texto, re.I | re.S) or [None, None])[1]
+    numero = re.search(r"N[º°o]\s*(\d+)\s*/\s*(\d{4})", texto)
+    # Prova de dois dias ("02 e 03 de maio de 2026"): vale o ultimo, o da
+    # prova principal (a maratona e no domingo).
+    data = re.search(r"Datas?\s*:\s*(?:\d{1,2}\s*(?:e|a|,)\s*)*(\d{1,2})\s*de\s*([a-zç]+)\s*de\s*(\d{4})", texto, re.I)
+    if not (numero and data):
+        return None
+    mes = MESES_NOME.get(sem_acento(data.group(2)).lower())
+    if not mes:
+        return None
+    local = achar(r"Local\s*:\s*(.+?)\s*(?:Largada|Hor[aá]rio|$)") or ""
+    # A cidade e o que vem antes do "PR" no fim do local ("Curitiba-PR",
+    # "Sao Joao do Ivai PR."); _cidade_fap confere e procura mais a fundo.
+    cidades = re.findall(r"([A-Za-zÀ-ÿ' ]+?)\s*[-–/]?\s*PR\b", local)
+    percurso = achar(r"Percursos?\s*(?:aproximad[oa]s?(?:mente)?)?\s*:\s*(.+?)\s*(?:Aferidor|Datas?\s*:)") or ""
+    km = []
+    for n, unidade in re.findall(r"(\d+(?:[.,]\d+)?)\s*(km|k|m)\b", percurso, re.I):
+        v = float(n.replace(",", "."))
+        v = v / 1000 if unidade.lower() == "m" else v
+        if 0 < v <= 400 and v not in km:
+            km.append(v)
+    return {
+        "numero": f"{int(numero.group(1)):03d}/{numero.group(2)}",
+        "data": f"{int(data.group(3)):04d}-{mes:02d}-{int(data.group(1)):02d}",
+        "evento": " ".join((achar(r"Evento\s*:\s*(.+?)\s*Percursos?") or "").split()),
+        "entidade": " ".join((achar(r"garante\s+(?:a|ao|à)\s+(.+?)\.?\s*CNPJ") or "").split()),
+        "cidade": cidades[-1].strip() if cidades else "",
+        "km": sorted(km, reverse=True),
+        "largada": achar(r"Largada\s*:\s*(\d{1,2}[:h]\d{2})") or "",
+        "local": " ".join(local.split()),
+    }
+
+
+def _cidade_fap(*textos):
+    """O primeiro municipio do PR achado nos textos, na ordem dada.
+
+    O local vem de muitos jeitos: "Praca Central de Francisco Beltrao",
+    "Centro de Porto Vitoria", "em Goioere", "Aeroporto Londrina". Em cada
+    pedaco (entre virgulas e hifens), do fim para o comeco, vale o maior
+    final de frase que for municipio.
+    """
+    for texto in textos:
+        texto = re.sub(r"[-–/\s]*\bPR\b\.?\s*$", "", texto or "")
+        for pedaco in reversed(re.split(r"[,;–]|\s-\s|-(?=[A-ZÀ-Ú])", texto)):
+            palavras = pedaco.strip(" .").split()
+            for i in range(len(palavras)):
+                cidade, regiao, uf = canonizar_cidade(" ".join(palavras[i:]), "PR")
+                if uf == "PR" and regiao != "Outras":
+                    return cidade
+    return ""
+
+
+def _entidade_fap(nome):
+    """"MUNICÍPIO DE WENCESLAU BRAZ" -> "Prefeitura de Wenceslau Braz"."""
+    # Microempreendedor vem com o CNPJ colado ao nome: "42.836.649 NILZA ...".
+    nome = _titulo_fca(re.sub(r"^[\d./-]+\s*", "", nome).rstrip(". "))
+    return re.sub(r"(?i)^munic[ií]pio\s+de\s+", "Prefeitura de ", nome)
+
+
+def fap(registrar=None):
+    """Corridas com permit emitido pela FAP (Parana)."""
+    cache = {}
+    if FAP_CACHE.exists():
+        cache = json.loads(FAP_CACHE.read_text(encoding="utf-8"))
+    itens = FAP_ITEM.findall(baixar(FAP_LISTA))
+    novos = [(i, t) for i, t in itens if i not in cache][:FAP_POR_RODADA]
+    for ident, titulo in novos:
+        try:
+            req = urllib.request.Request(FAP_PDF.format(id=ident), headers={"User-Agent": UA_NAVEGADOR})
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                pdf = resp.read()
+            lido = _ler_permit_fap(_texto_fap(pdf)) if pdf[:4] == b"%PDF" else None
+        except Exception:
+            continue                    # tenta de novo na proxima rodada
+        cache[ident] = lido or {"erro": "formato nao reconhecido"}
+        cache[ident]["arquivo"] = limpar(titulo)
+        # Cada PDF leva uns 3 s: grava de tempos em tempos para uma queda
+        # no meio da carga inicial nao perder o que ja foi lido.
+        if len(cache) % 25 == 0:
+            FAP_CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
+        time.sleep(0.3)
+    if novos:
+        FAP_CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
+
+    presentes = {i for i, _ in itens}
+    provas = []
+    for ident, p in cache.items():
+        # Permit que saiu da pasta foi cancelado ou refeito: nao vale mais.
+        if ident not in presentes or p.get("erro"):
+            continue
+        achada = _cidade_fap(p.get("cidade"), p.get("local"), p.get("evento"), p.get("arquivo"))
+        if not achada:
+            continue
+        # Nome do arquivo sem o numero: "051.2026-Meia de Curita 2026.pdf".
+        do_arquivo = re.sub(r"^\s*\d+[.-]\d{4}\s*-\s*|\.pdf$", "", p.get("arquivo") or "", flags=re.I).strip()
+        nome = _titulo_fca(p.get("evento") or do_arquivo)
+        if not nome or "virtual" in sem_acento(nome).lower():
+            continue
+        ano, mes, dia = (int(x) for x in p["data"].split("-"))
+        cidade, regiao, uf = canonizar_cidade(achada, "PR")
+        km = p.get("km") or []
+        provas.append({
+            "fonte": "fap",
+            "data": p["data"], "dia": dia, "mes": mes, "ano": ano,
+            "cidade": cidade, "regiao": regiao, "uf": uf,
+            "nome": nome,
+            "pills": [f"{v:g}km" for v in km], "km": km,
+            "tags": classificar(nome, km, []),
+            "permit": p["numero"],
+            "permit_status": "OK",
+            "organizador_fca": _entidade_fap(p.get("entidade") or ""),
+        })
+    return provas
+
+
 TODAS = [("corridasbr", corridasbr),
          ("corridasbr/arquivo", corridasbr_arquivo),
          ("ticketsports", ticketsports),
@@ -879,6 +1025,7 @@ for _uf in UFS[1:]:
               (f"corridasbr/arquivo ({_uf})", functools.partial(corridasbr_arquivo, uf=_uf)),
               (f"ticketsports ({_uf})", functools.partial(ticketsports, uf=_uf)),
               (f"roadrunners ({_uf})", functools.partial(roadrunners, uf=_uf))]
+TODAS.append(("fap", fap))
 
 
 # ----------------------------------------------- super crono (cronometragem)
