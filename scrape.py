@@ -847,6 +847,9 @@ def completar_cronometragem(historico, limite=None, registrar=print):
             html, _url, _slug = atletas_coleta.pagina_do_evento(p["or_slug"])
         except Exception as erro:
             registrar(f"  cronometragem {p['data']} {p['nome'][:40]}: FALHOU ({erro.__class__.__name__})")
+            # Pagina que o portal recusa (403) custa minutos de espera: so
+            # volta a ser tentada daqui a REVER_CRONO_DIAS, nao no proximo lote.
+            p["cronometragem_em"] = hoje.isoformat()
             continue
         feitas += 1
         p["cronometragem_em"] = hoje.isoformat()

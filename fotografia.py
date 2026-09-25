@@ -3,7 +3,7 @@
 
 Cada plataforma lista os eventos que fotografou, com data e cidade:
 
-  Foco Radical  API do site, por estado (next-api/home/competitions)
+  Foco Radical  API do site, por estado (next-api/home/competitions): SC e PR
   Banlek        GraphQL (graphql.banlek.com), por estado e categoria
   Fotop         busca por nome (webservices/eventos/nome-eventos)
 
@@ -29,6 +29,8 @@ from comum import UA_NAVEGADOR, mesmo_evento_renomeado, parecidos, sem_acento  #
 AQUI = Path(__file__).resolve().parent
 PAUSA = 0.4
 FOCO_ESTADO_SC = 24
+# Codigo de cada estado na Foco Radical (ordem alfabetica dos nomes).
+FOCO_ESTADO = {"SC": 24, "PR": 16}
 FOCO_URL = ("https://www.focoradical.com.br/next-api/home/competitions"
             "?CompetitionSearch%5Bstate%5D={estado}&page={pagina}")
 BANLEK_URL = "https://graphql.banlek.com/graphql"
@@ -70,10 +72,18 @@ def foco_eventos(desde, estado=FOCO_ESTADO_SC, registrar=print):
     """
     saida, pagina, total = [], 1, 1
     while pagina <= total:
-        try:
-            d = json.loads(_baixar(FOCO_URL.format(estado=estado, pagina=pagina)))
-        except Exception as erro:
-            registrar(f"  foco radical pagina {pagina}: FALHOU ({erro.__class__.__name__})")
+        # O site freia depois de umas dezenas de paginas seguidas (HTTP 429/
+        # 403 passageiro): espera e tenta de novo antes de desistir.
+        d = None
+        for espera in (0, 10, 30, 60):
+            time.sleep(espera)
+            try:
+                d = json.loads(_baixar(FOCO_URL.format(estado=estado, pagina=pagina)))
+                break
+            except Exception as erro:
+                falha = erro
+        if d is None:
+            registrar(f"  foco radical pagina {pagina}: FALHOU ({falha.__class__.__name__})")
             break
         total = d.get("_meta", {}).get("pageCount", pagina)
         itens = d.get("items") or []
@@ -89,11 +99,11 @@ def foco_eventos(desde, estado=FOCO_ESTADO_SC, registrar=print):
     return saida
 
 
-def banlek_albuns(desde, ate, registrar=print):
-    """Albuns de corrida da Banlek em SC entre as datas (aaaa-mm-dd)."""
+def banlek_albuns(desde, ate, registrar=print, estado="SC"):
+    """Albuns de corrida da Banlek no estado entre as datas (aaaa-mm-dd)."""
     saida, pagina = [], 1
     while True:
-        v = {"estado": "SC", "categoria": "Corrida", "pais": "BR", "data_inicio": desde, "data_final": ate,
+        v = {"estado": estado, "categoria": "Corrida", "pais": "BR", "data_inicio": desde, "data_final": ate,
              "nav": {"page": pagina, "itemsPerPage": 500}}
         try:
             d = json.loads(_baixar(BANLEK_URL, {"query": BANLEK_QUERY, "variables": v}))
@@ -208,15 +218,20 @@ def completar_fotografia(historico, limite=None, registrar=print, foco=None, ban
     alvo = alvo[:limite] if limite else alvo
     if not alvo:
         return 0, 0
-    desde = min(p["data"] for p in alvo)
-    if foco is None:
-        foco = foco_eventos(desde, registrar=registrar)
-    if banlek is None:
-        banlek = banlek_albuns(desde, hoje.isoformat(), registrar=registrar)
-    registrar(f"  fotografia: {len(foco)} corridas na Foco Radical, {len(banlek)} álbuns na Banlek desde {desde}")
-    indice = _indexar(foco + banlek)
+    # Foco Radical e Banlek listam por estado: um indice para cada UF das
+    # provas alvo (foco/banlek dados de fora valem so para SC).
+    indices = {}
+    for uf in sorted({p.get("uf") or "SC" for p in alvo}):
+        if uf not in FOCO_ESTADO:
+            continue
+        desde = min(p["data"] for p in alvo if (p.get("uf") or "SC") == uf)
+        f = foco if (foco is not None and uf == "SC") else foco_eventos(desde, FOCO_ESTADO[uf], registrar=registrar)
+        b = banlek if (banlek is not None and uf == "SC") else banlek_albuns(desde, hoje.isoformat(), registrar=registrar, estado=uf)
+        registrar(f"  fotografia {uf}: {len(f)} corridas na Foco Radical, {len(b)} álbuns na Banlek desde {desde}")
+        indices[uf] = _indexar(f + b)
     achadas = 0
     for p in alvo:
+        indice = indices.get(p.get("uf") or "SC", {})
         plataformas, detalhes = plataformas_da_prova(p, indice)
         p["fotografia_em"] = hoje.isoformat()
         if plataformas:
