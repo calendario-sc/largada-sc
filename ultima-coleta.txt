@@ -2,43 +2,61 @@
 == fontes ==
   corridasbr: 211 provas
   corridasbr/arquivo: 335 provas
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports: 74 provas
   roadrunners: 210 provas
-  movnow: 17 provas
-  atletis: 0 provas
+  movnow: 20 provas
+  atletis: 1 provas
+  fca: 1840 provas
+  corridasbr (PR): 180 provas
+  corridasbr/arquivo (PR): 372 provas
+  ticketsports (PR): 74 provas
+  roadrunners (PR): 149 provas
+  fap: 585 provas
 
-598 provas distintas depois de fundir as fontes
-descartadas (7): fora de SC ou nao sao corrida
+2872 provas distintas depois de fundir as fontes
+descartadas (18): fora de SC/PR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
+  - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
+  - 2026-09-27  Paranaguá - BIKE AND RUN 3° ETAPA - PARANAGUÁ [bike]
+  - 2026-10-11  Cianorte - Corrida e Duathlon AMAFIL [duathlon]
+  - 2026-10-12  Araucária - Cross Run & Duathlon Araucária [duathlon]
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
-  - 2026-10-25  Palhoça - Corrida Virtual CBCR - Campeonato Brasileiro [corrida virtual]
-  - 2026-11-07  Rio Negrinho - Volta Grande Cross Aquathlon Rio Negrinho [aquathlon]
-  - 2026-11-29  Morrinhos do Sul - 5ª RÚstica Recanto dos Canyons [é de RS]
-restam 591 provas
+  - ... e mais 10
+restam 2854 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
-organizador: 5 provas consultadas, 5 preenchidas
-percurso: 2 provas consultadas no arquivo, 2 preenchidas
-series: 1245 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 2127 provas (1868 ja realizadas) | 195 cidades
-novas nesta rodada: 6
-  + 2026-06-07  Florianópolis - 15ª Maratona de Floripa
-  + 2026-06-13  Florianópolis - Sunset Jurerê - Corrida & Vinho
-  + 2026-12-06  Guabiruba - 3ª Corrida Pelznickel
-  + 2026-12-13  Governador Celso Ramos - Chama Run
-  + 2027-02-28  Indaial - 2º Desafio Caminhos do Warnow
-  + 2027-04-04  Itajaí - 5ª Corrida dos Anjos
+concluintes (chiprun): 6 provas consultadas, 5 preenchidas
+genero: 10 provas consultadas, 0 preenchidas
+organizador: 138 provas preenchidas pela FCA
+organizador: 80 provas tiveram a grafia padronizada
+fca: 147 provas juntadas as que ja existiam
+series: 2855 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 4775 provas (4237 ja realizadas) | 423 cidades
+novas nesta rodada: 149
+  + 2022-01-15  Campo Largo - 147ª Corrida da Lua Cheia
+  + 2022-01-23  Cascavel - Colinas Golf Run Day
+  + 2022-01-30  Pinhais - Runthechange - Etapa 1
+  + 2022-02-06  Curitiba - Track&Fields Run Series - Shopping Mueller
+  + 2022-02-06  Palmeira - Discover Trail - Palmeira
+  + 2022-02-13  Francisco Beltrão - Evolua em Movimento 2022
+  + 2022-02-13  Ponta Grossa - Meia Maratona Unimed Parque Vila Velha
+  + 2022-02-19  Campo Largo - 148ª Corrida da Lua Cheia
+  + 2022-02-20  Cascavel - 3ª Corrida Zero Açucar Fitness e Beach
+  + 2022-02-20  Itaperuçu - X-Trail Itaperuçu - 1ª Etapa
+  + 2022-02-20  Londrina - Circuito Decathlon Off Road – Etapa 1
+  + 2022-02-20  Pontal do Paraná - Meia Maratona de Pontal do Paraná
+  + 2022-02-27  Ponta Grossa - Circuito Ponta Grossa - 4ª Etapa
+  + 2022-03-06  Colombo - Corrida de Rua Colombo 132 Anos
+  + 2022-03-06  Corbélia - 6ª Corrida das Flores
 
-futuras que nao apareceram hoje (2) - possivel cancelamento, mantidas no historico:
+futuras que nao apareceram hoje (1) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
-  ? 2026-12-31  São José - REGISTRO DE TREINADORES DE SANTA CATARINA 2026 (visto pela ultima vez em 2026-09-22)
 
 == perfis ==
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (1,698,768 bytes)
+artifact.html e index.html gerados (1,944,344 bytes)
 
-RESULTADO: pronto para publicar (coleta de 24/09/2026).
+RESULTADO: pronto para publicar (coleta de 25/09/2026).
