@@ -144,6 +144,11 @@ SO_BI = [
     r'<dialog class="orgs" id="orgs".*?</dialog>\n',
     r'<section class="rel" id="rel-orgs"[^\n]*\n',
 ]
+# O texto do rodape (fontes, cobertura, area restrita) fica so no BI; o
+# publico leva so a assinatura.
+RODAPE = re.compile(r'<footer class="foot">.*?</footer>', re.S)
+RODAPE_PUBLICO = ('<footer class="foot">\n  <div class="wrap">\n'
+                  '    <p><b>Cupons de Corrida</b></p>\n  </div>\n</footer>')
 STAT_ORGS = re.compile(r'<button class="stat stat--btn" id="stat-orgs".*?</button>', re.S)
 
 
@@ -156,6 +161,9 @@ def so_publico(pagina):
     pagina, n = STAT_ORGS.subn('<div class="stat"><b id="s-orgs">0</b><span>organizadoras</span></div>', pagina, count=1)
     if n != 1:
         raise SystemExit("template.html: nao achei a caixa das organizadoras")
+    pagina, n = RODAPE.subn(lambda m: RODAPE_PUBLICO, pagina, count=1)
+    if n != 1:
+        raise SystemExit("template.html: nao achei o rodape")
     return pagina
 
 

@@ -994,12 +994,7 @@ h1 em{font-style:normal; color:#FFC21A}
 
 <footer class="foot">
   <div class="wrap">
-    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina a partir de cinco fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b>, <b>movnow.com.br</b>, <b>atletis.com.br</b> e o calendário de permits da <b>Federação Catarinense de Atletismo</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>24/09/2026</b>.</p>
-    <p>Os números de concluintes vêm de <b>openresults.run</b> e, onde ele não alcança, das cronometragens que publicam os resultados: <b>supercrono.com.br</b>, <b>chiprun.com.br</b> e <b>resultados.runking.com.br</b>. Conta quem cruzou a linha de chegada com tempo registrado.</p>
-    <p id="cobertura"></p>
-    <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
-    <p>Confirme datas, percursos e inscrições direto com a organização do evento antes de se programar.</p>
-    <p class="foot__bi"><a href="https://bi.cuponsdecorrida.com.br/">Área restrita</a> · painéis para organizadoras e parceiros, com login.</p>
+    <p><b>Cupons de Corrida</b></p>
   </div>
 </footer>
 
@@ -1995,7 +1990,8 @@ function fraseDaCobertura(ano){
 (() => {
   const anos = [...COBERTURA.entries()].filter(([, v]) => v.provas >= 20)
                                        .sort((a, b) => a[0] - b[0]);
-  if (anos.length < 2) return;
+  // Na pagina publica o rodape com as fontes nao existe.
+  if (anos.length < 2 || !document.getElementById("cobertura")) return;
   document.getElementById("cobertura").textContent =
     "A parcela de provas com resultado publicado cresce com os anos — "
     + anos.map(([ano, v]) => ano + ": " + v.pct.toFixed(0) + "%").join(", ")

@@ -2119,7 +2119,8 @@ function fraseDaCobertura(ano){
 (() => {
   const anos = [...COBERTURA.entries()].filter(([, v]) => v.provas >= 20)
                                        .sort((a, b) => a[0] - b[0]);
-  if (anos.length < 2) return;
+  // Na pagina publica o rodape com as fontes nao existe.
+  if (anos.length < 2 || !document.getElementById("cobertura")) return;
   document.getElementById("cobertura").textContent =
     "A parcela de provas com resultado publicado cresce com os anos — "
     + anos.map(([ano, v]) => ano + ": " + v.pct.toFixed(0) + "%").join(", ")
