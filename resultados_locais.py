@@ -149,6 +149,9 @@ def coletar_atletas():
     feitas = atletas_coleta.coletar(atletas_coleta.ANOS_ATLETAS, limite=80, registrar=registrar)
     if feitas:
         atletas_build.montar(registrar=registrar)
+    # Alunos por assessoria (so para o BI): refeito todo dia, e barato.
+    import assessorias
+    assessorias.montar(registrar=registrar)
     return feitas
 
 
@@ -199,6 +202,8 @@ def publicar_bi():
         if not g("status", "--porcelain").stdout.strip():
             return
         g("add", "index.html")
+        if (pasta / "assessorias.json").exists():
+            g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")
         g("-c", "user.name=Cupons de Corrida", "-c", "user.email=thiagomansur@gmail.com",
           "commit", "-q", "-m", f"BI de {hoje}")

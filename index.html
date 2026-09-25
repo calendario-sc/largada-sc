@@ -293,6 +293,33 @@ h1 em{font-style:normal; color:#FFC21A}
   .rx__lista{max-height:none}
 }
 
+/* ---------- assessorias: ranking e pagina de cada equipe ---------- */
+.as__voltar{font:inherit; font-size:.82rem; cursor:pointer; border:0; background:none; color:var(--azul-ink); padding:0; margin:0 0 .5rem}
+.as__voltar:hover{text-decoration:underline}
+.as__pagina{padding:0 1.2rem 1rem; overflow-y:auto}
+.as__pagina[hidden],.orgs__busca[hidden]{display:none}
+.as__pagina h3{font-family:var(--f-display); font-weight:800; font-size:1.35rem; letter-spacing:-.015em; margin:0}
+.as__pagina h3 small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:.2rem}
+.as__nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(7rem,1fr)); gap:.5rem; margin:.8rem 0}
+.as__nums div{padding:.55rem .7rem; border:1px solid var(--line-soft); border-radius:10px; background:var(--surface-2)}
+.as__nums b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.3rem; color:var(--azul-ink); font-variant-numeric:tabular-nums}
+.as__nums span{font-family:var(--f-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+.as__tabela{width:100%; border-collapse:collapse; font-size:.84rem}
+.as__tabela th{font-family:var(--f-mono); font-weight:400; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.3rem .4rem; border-bottom:1px solid var(--line)}
+.as__tabela td{padding:.4rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
+.as__tabela td.d{font-family:var(--f-mono); font-size:.76rem; white-space:nowrap; color:var(--muted)}
+.as__tabela td.p{font-weight:600; overflow-wrap:anywhere}
+.as__tabela td.p small{display:block; font-weight:400; font-size:.74rem; color:var(--muted)}
+.as__tabela td.c,.as__tabela th.c{text-align:right; font-family:var(--f-mono); white-space:nowrap; font-variant-numeric:tabular-nums}
+.as__tabela td.c b{font-family:var(--f-display); font-weight:800; color:var(--azul-ink); font-size:.95rem}
+.as__nota{margin:.8rem 0 0; font-size:.76rem; color:var(--muted)}
+#assess-rodape:empty{display:none}
+@media (max-width:720px){
+  .as__pagina{padding-inline:.9rem} .as__tabela .pct{display:none}
+  .as__tabela{font-size:.78rem} .as__tabela th{letter-spacing:.03em} .as__tabela td,.as__tabela th{padding:.35rem .25rem}
+  .as__nums{grid-template-columns:1fr 1fr}
+}
+
 /* Relatorio das organizadoras: so existe no papel. */
 .rel{display:none}
 
@@ -784,8 +811,9 @@ h1 em{font-style:normal; color:#FFC21A}
 
   /* Relatorio das organizadoras no lugar do comparativo. */
   .orgs,.tk,.rec,.rx,.camp{display:none !important}
-  body.print-orgs .results,body.print-cal .results,body.print-raiox .results{display:none !important}
-  body.print-orgs #rel-orgs,body.print-cal #rel-cal,body.print-raiox #rel-raiox{display:block}
+  body.print-orgs .results,body.print-cal .results,body.print-raiox .results,body.print-assess .results{display:none !important}
+  body.print-orgs #rel-orgs,body.print-cal #rel-cal,body.print-raiox #rel-raiox,body.print-assess #rel-assess{display:block}
+  #rel-assess td.c,#rel-assess th.c{text-align:right; font-family:var(--f-mono); white-space:nowrap}
   .rel__rx{display:grid; grid-template-columns:15rem minmax(0,1fr); gap:1rem 1.4rem; align-items:start; margin:.8rem 0 .4rem; break-inside:avoid; page-break-inside:avoid}
   .rel__rx svg{display:block; width:100%; height:auto}
   .rel__rx .terra{fill:#EEF2F8; stroke:#8C97AA; stroke-width:1}
@@ -1933,7 +1961,7 @@ ao("btn-pdf", () => {
 });
 window.addEventListener("afterprint", () => {
   document.title = TITULO;
-  document.body.classList.remove("print-orgs", "print-cal", "print-raiox");
+  document.body.classList.remove("print-orgs", "print-cal", "print-raiox", "print-assess");
 });
 
 /* ---------- cobertura de resultados ----------
@@ -2036,6 +2064,7 @@ function render(){
   if (dialogoRec.open) montarRecordes();
   if (dialogoCampeoes.open) montarCampeoes();
   if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
+  if (dialogoAssess && dialogoAssess.open) montarAssessorias();
 
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
@@ -2215,6 +2244,192 @@ ao("stat-orgs", () => {
   document.getElementById("orgs-lista").scrollTop = 0;
 });
 ao("orgs-fechar", () => dialogoOrgs.close());
+
+/* ---------- assessorias ----------
+   assessorias.json (so no BI, ao lado da pagina): por equipe, quantos
+   alunos ela teve em cada prova, tirado do campo "Equipe/Assessoria" das
+   classificacoes. Grafias da mesma equipe ja vem unidas; "avulso", cidade e
+   afins ficam de fora. O ranking soma os alunos das provas do recorte. */
+const dialogoAssess = document.getElementById("assess");
+const buscaAssess = document.getElementById("assess-busca");
+const MOSTRAR_ASSESS = 200;
+let ASSESS = null, assessErro = "", assessAberta = null;
+
+async function carregarAssessorias(){
+  if (ASSESS || assessErro) return;
+  try {
+    const r = await fetch("assessorias.json", { cache:"no-cache" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    ASSESS = d.equipes.map(([nome, pares]) => {
+      const provas = [];
+      for (let i = 0; i < pares.length; i += 2) provas.push([d.provas[pares[i]], pares[i + 1]]);
+      return { nome, provas };
+    });
+  } catch (e){
+    assessErro = "Não foi possível carregar as assessorias (" + e.message + "). Elas só existem no painel de BI.";
+  }
+}
+
+// Equipes com aluno em alguma prova do recorte, da que mais levou para a que menos.
+function assessDoRecorte(){
+  const porSlug = new Map(ultimoRecorte.filter(r => r.or_slug).map(r => [r.or_slug, r]));
+  return ASSESS.map(a => {
+    const provas = a.provas.filter(([s]) => porSlug.has(s)).map(([s, n]) => ({ r:porSlug.get(s), n }));
+    return { nome:a.nome, provas, alunos:provas.reduce((s, x) => s + x.n, 0), cidades:new Set(provas.map(x => x.r.cidade)) };
+  }).filter(a => a.alunos).sort((a, b) => b.alunos - a.alunos || a.nome.localeCompare(b.nome, "pt-BR"));
+}
+
+const dataAssess = r => String(r.dia).padStart(2, "0") + "/" + String(r.mes).padStart(2, "0") + "/" + r.ano;
+const pctAssess = (n, total) => total ? (100 * n / total).toLocaleString("pt-BR", { maximumFractionDigits:1 }) + "%" : "—";
+
+function montarAssessorias(){
+  document.getElementById("assess-recorte").textContent = descreverRecorte();
+  const lista = document.getElementById("assess-lista"), pagina = document.getElementById("assess-pagina"),
+        rodape = document.getElementById("assess-rodape"), caixaBusca = document.getElementById("assess-busca-caixa");
+  lista.replaceChildren(); rodape.replaceChildren();
+  if (assessErro || !ASSESS){
+    pagina.hidden = true; lista.hidden = false; caixaBusca.hidden = true;
+    lista.append(el("li", {}, [el("div", { className:"orgs__vazio", textContent: assessErro || "Carregando as assessorias…" })]));
+    return;
+  }
+  const todas = assessDoRecorte();
+  const aberta = assessAberta && todas.find(a => a.nome === assessAberta);
+  if (aberta){ paginaAssessoria(aberta, todas.indexOf(aberta) + 1); return; }
+  assessAberta = null;
+  pagina.hidden = true; lista.hidden = false; caixaBusca.hidden = false;
+
+  const alvo = norm(buscaAssess.value);
+  const achadas = alvo ? todas.filter(a => norm(a.nome).includes(alvo)) : todas;
+  const maior = todas.length ? todas[0].alunos : 1;
+  if (!achadas.length)
+    lista.append(el("li", {}, [el("div", { className:"orgs__vazio", textContent: todas.length
+      ? "Nenhuma assessoria com esse nome no recorte."
+      : "Nenhuma prova do recorte tem classificação com assessoria. Os alunos vêm dos resultados por atleta, de 2022 em diante; escolha um ano ou o período \"Realizadas\"." })]));
+  achadas.slice(0, MOSTRAR_ASSESS).forEach(a => {
+    const b = el("button", { type:"button", title:"Abrir a página de " + a.nome }, [
+      el("span", { className:"pos", textContent:(todas.indexOf(a) + 1) + "º" }),
+      el("span", { className:"nome", textContent:a.nome }, [
+        el("small", { textContent: a.provas.length + (a.provas.length === 1 ? " prova" : " provas") + " · "
+          + (a.cidades.size === 1 ? [...a.cidades][0] : a.cidades.size + " cidades") })]),
+      el("span", { className:"n", textContent:num(a.alunos) }, [el("small", { textContent: a.alunos === 1 ? "aluno" : "alunos" })]),
+      el("span", { className:"barra" }, [el("i")]),
+    ]);
+    b.querySelector(".barra").style.setProperty("--w", Math.round(100 * a.alunos / maior) + "%");
+    b.onclick = () => { assessAberta = a.nome; montarAssessorias(); document.getElementById("assess-pagina").scrollTop = 0; };
+    lista.append(el("li", {}, [b]));
+  });
+
+  // Rodape: quanto do recorte a lista cobre.
+  const provasCom = new Set(todas.flatMap(a => a.provas.map(x => x.r)));
+  const alunos = todas.reduce((s, a) => s + a.alunos, 0);
+  const concluintes = [...provasCom].reduce((s, r) => s + (r.concluintes_total || 0), 0);
+  if (todas.length) rodape.replaceChildren(
+    el("b", { textContent:num(todas.length) }),
+    document.createTextNode(todas.length === 1 ? " assessoria com " : " assessorias com "),
+    el("b", { textContent:num(alunos) }),
+    document.createTextNode(" alunos em " + num(provasCom.size) + (provasCom.size === 1 ? " prova" : " provas")
+      + " (" + pctAssess(alunos, concluintes) + " dos concluintes)."
+      + (achadas.length > MOSTRAR_ASSESS ? " Lista com as " + MOSTRAR_ASSESS + " primeiras; as outras, pela busca." : "")));
+}
+
+function paginaAssessoria(a, posicao){
+  const lista = document.getElementById("assess-lista"), pagina = document.getElementById("assess-pagina");
+  lista.hidden = true; document.getElementById("assess-busca-caixa").hidden = true; pagina.hidden = false;
+  const provas = [...a.provas].sort((x, y) => y.r._d - x.r._d || y.n - x.n);
+  const concl = provas.reduce((s, x) => s + (x.r.concluintes_total || 0), 0);
+  const voltar = el("button", { className:"as__voltar", type:"button", textContent:"← todas as assessorias" });
+  voltar.onclick = () => { assessAberta = null; montarAssessorias(); };
+  const numero = (v, rot) => el("div", {}, [el("b", { textContent:v }), el("span", { textContent:rot })]);
+  const corpo = el("tbody");
+  provas.forEach(x => corpo.append(el("tr", {}, [
+    el("td", { className:"d", textContent:dataAssess(x.r) }),
+    el("td", { className:"p", textContent:x.r.nome }, [el("small", { textContent:x.r.cidade })]),
+    el("td", { className:"c" }, [el("b", { textContent:num(x.n) })]),
+    el("td", { className:"c", textContent: x.r.concluintes_total ? num(x.r.concluintes_total) : "—" }),
+    el("td", { className:"c pct", textContent:pctAssess(x.n, x.r.concluintes_total) }),
+  ])));
+  pagina.replaceChildren(
+    voltar,
+    el("h3", { textContent:a.nome }, [el("small", { textContent:posicao + "º no ranking do recorte" })]),
+    el("div", { className:"as__nums" }, [
+      numero(num(a.alunos), "alunos"),
+      numero(num(provas.length), provas.length === 1 ? "prova" : "provas"),
+      numero(num(a.cidades.size), a.cidades.size === 1 ? "cidade" : "cidades"),
+      numero((a.alunos / provas.length).toLocaleString("pt-BR", { maximumFractionDigits:1 }), "alunos por prova"),
+    ]),
+    el("table", { className:"as__tabela" }, [
+      el("thead", {}, [el("tr", {}, [el("th", { textContent:"Data" }), el("th", { textContent:"Prova" }),
+        el("th", { className:"c", textContent:"Alunos" }), el("th", { className:"c", textContent:"Concluintes" }),
+        el("th", { className:"c pct", textContent:"%" })])]),
+      corpo,
+    ]),
+    el("p", { className:"as__nota", textContent:"Alunos: concluintes que informaram esta equipe na inscrição. Concluintes: total da prova (todas as distâncias). "
+      + "Na soma das provas, a equipe teve " + pctAssess(a.alunos, concl) + " dos concluintes." }),
+  );
+  document.getElementById("assess-rodape").replaceChildren();
+}
+
+// PDF: o ranking do recorte ou a pagina da assessoria aberta.
+function montarRelatorioAssess(){
+  const caixa = document.getElementById("rel-assess");
+  const todas = assessDoRecorte();
+  const aberta = assessAberta && todas.find(a => a.nome === assessAberta);
+  const th = (t, c) => el("th", { className:c || "", textContent:t });
+  const corpo = el("tbody");
+  let titulo, cabeca, nota;
+  if (aberta){
+    titulo = "Assessoria " + aberta.nome;
+    cabeca = [th("Data"), th("Prova"), th("Alunos", "c"), th("Concluintes", "c"), th("%", "c")];
+    [...aberta.provas].sort((x, y) => x.r._d - y.r._d).forEach(x => corpo.append(el("tr", {}, [
+      el("td", { className:"data", textContent:dataAssess(x.r) }),
+      el("td", { className:"prova", textContent:x.r.nome }, [el("small", { textContent:x.r.cidade })]),
+      el("td", { className:"c", textContent:num(x.n) }),
+      el("td", { className:"c", textContent:x.r.concluintes_total ? num(x.r.concluintes_total) : "—" }),
+      el("td", { className:"c", textContent:pctAssess(x.n, x.r.concluintes_total) }),
+    ])));
+    corpo.append(el("tr", {}, [el("td"), el("td", { className:"prova", textContent:"Total: " + aberta.provas.length
+      + (aberta.provas.length === 1 ? " prova" : " provas") + " · " + aberta.cidades.size + (aberta.cidades.size === 1 ? " cidade" : " cidades") }),
+      el("td", { className:"c", textContent:num(aberta.alunos) }), el("td"), el("td")]));
+    nota = "Alunos: concluintes que informaram esta equipe na inscrição. Concluintes: total da prova, todas as distâncias.";
+  } else {
+    titulo = "Assessorias — alunos nas provas";
+    cabeca = [th("#"), th("Assessoria ou equipe"), th("Provas", "c"), th("Cidades", "c"), th("Alunos", "c")];
+    todas.slice(0, MOSTRAR_ASSESS).forEach((a, i) => corpo.append(el("tr", {}, [
+      el("td", { className:"data", textContent:(i + 1) + "º" }),
+      el("td", { className:"prova", textContent:a.nome }),
+      el("td", { className:"c", textContent:num(a.provas.length) }),
+      el("td", { className:"c", textContent:num(a.cidades.size) }),
+      el("td", { className:"c", textContent:num(a.alunos) }),
+    ])));
+    nota = (todas.length > MOSTRAR_ASSESS ? "As " + MOSTRAR_ASSESS + " primeiras de " + num(todas.length) + ". " : "")
+      + "Equipe é o que o corredor informou na inscrição; grafias da mesma equipe foram unidas e respostas como \"avulso\" ou o nome da cidade ficaram de fora. Aluno conta uma vez por prova.";
+  }
+  caixa.replaceChildren(el("h1", { textContent:titulo }), cabecalhoDoRecorte(),
+    el("table", {}, [el("thead", {}, [el("tr", {}, cabeca)]), corpo]),
+    el("p", { className:"rel__nota", textContent:nota }));
+  return aberta;
+}
+
+ao("btn-assessorias", async () => {
+  assessAberta = null;
+  buscaAssess.value = "";
+  montarAssessorias();
+  dialogoAssess.showModal();
+  await carregarAssessorias();
+  montarAssessorias();
+});
+ao("assess-fechar", () => dialogoAssess.close());
+ao("assess-pdf", () => {
+  if (!ASSESS) return;
+  const aberta = montarRelatorioAssess();
+  document.body.classList.add("print-assess");
+  const anos = state.anos.size ? " - " + [...state.anos].sort().join("-") : "";
+  document.title = ("Cupons de Corrida - " + (aberta ? "Assessoria " + aberta.nome : "Assessorias") + anos).replace(/[\\/:*?"<>|]/g, "");
+  window.print();
+});
+if (buscaAssess) buscaAssess.oninput = () => montarAssessorias();
+fechaNoFundo(dialogoAssess);
 
 /* ---------- galeria dos campeoes ----------
    atletas/campeoes.json: por prova (or_slug), a lista de distancias com a
