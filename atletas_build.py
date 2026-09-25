@@ -56,6 +56,7 @@ NAO_E_RECORDE = re.compile(r"revez|dupla|quarteto|trio|equipe|kids|infantil|pcd|
 COERENCIA_CURTA = 0.92        # frente ao melhor ritmo em distancia menor
 COERENCIA_QUALQUER = 0.80     # frente ao melhor ritmo em qualquer distancia
 BALDE = 600          # atletas por arquivo; acima disso o prefixo cresce
+NOMES_RESERVADOS = {"con", "prn", "aux", "nul"} | {f"com{i}" for i in range(10)} | {f"lpt{i}" for i in range(10)}
 
 KM = re.compile(r"(\d+)(?:[.,](\d+))?\s*k", re.I)
 KM_HIFEN = re.compile(r"^(\d)-(\d)\s*k", re.I)      # "2-5KM" e 2,5 km
@@ -106,7 +107,10 @@ def repartir(atletas):
         for pref, membros in baldes.items():
             # "maria" sozinho passa de 2 mil corredoras: precisa ir ate a
             # inicial do sobrenome para caber no balde.
-            if len(membros) > BALDE and tamanho < 8 and len(pref) == tamanho:
+            # "aux", "con", "nul"... sao nomes de dispositivo no Windows: o
+            # arquivo nao existe. O balde desce mais uma letra ("auxi").
+            reservado = pref in NOMES_RESERVADOS
+            if (len(membros) > BALDE or reservado) and tamanho < 8 and len(pref) == tamanho:
                 saida.update(dividir(membros, tamanho + 1))
             else:
                 saida[pref] = membros
