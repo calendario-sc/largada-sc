@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "largada-sc"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add corridas.json index.html coletado_em.txt municipios.json ultima-coleta.txt
+          git add corridas.json index.html pr.html todos.html coletado_em.txt municipios.json ultima-coleta.txt
           if git diff --staged --quiet; then
             echo "Nada mudou nesta rodada."
           else

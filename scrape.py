@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 import fontes
-from comum import (PROVA_REMARCADA, mesmo_evento_renomeado, FAIXAS, MESMA_PROVA, NAO_CORRIDA, ORG_ALIAS, RESULTADOS_EXTRAS, UF_ALVO, arrumar_titulo,
+from comum import (PROVA_REMARCADA, mesmo_evento_renomeado, FAIXAS, MESMA_PROVA, NAO_CORRIDA, ORG_ALIAS, RESULTADOS_EXTRAS, UF_ALVO, UFS, arrumar_titulo,
                    canonizar_cidade,
                    classificar, esta_excluida, faixas_de, mesma_prova,
                    mesmo_evento_renomeado, palavras_distintivas, parecidos,
@@ -129,9 +129,15 @@ def peneirar(provas):
     os filtros aplicados; o descarte e reportado para poder ser auditado.
     """
     ficam, saem = [], []
+    # Data a mais de dois anos e cadastro de teste ou placeholder
+    # ("Comissao Rodrigo Cirilo" em 01/01/2030 no roadrunners).
+    limite = (datetime.date.today() + datetime.timedelta(days=730)).isoformat()
     for p in provas:
         if esta_excluida(p):
             saem.append((p, "retirada a pedido"))
+            continue
+        if p["data"] > limite:
+            saem.append((p, "data distante demais"))
             continue
         if p["regiao"].startswith("Fora de"):
             saem.append((p, f"é de {p.get('uf') or 'outro estado'}"))
@@ -160,7 +166,7 @@ def completar_distancias(historico, limite=LIMITE_DETALHES):
     achadas = 0
     for p in pendentes[:limite]:
         try:
-            pills, km = fontes.distancias_do_resultado(p["resultado_id"])
+            pills, km = fontes.distancias_do_resultado(p["resultado_id"], p.get("uf") or UF_ALVO)
         except Exception:
             continue          # tenta de novo numa proxima rodada
         p["dist_tentada"] = True
@@ -188,7 +194,8 @@ def normalizar_historico(historico):
     for p in historico:
         if not p.get("cidade"):
             continue
-        cidade, regiao, uf = canonizar_cidade(p["cidade"])
+        # A UF gravada vale: Palmeira do PR nao pode virar Palmeira de SC.
+        cidade, regiao, uf = canonizar_cidade(p["cidade"], p.get("uf") if p.get("uf") in UFS else None)
         if (cidade, regiao, uf) != (p["cidade"], p.get("regiao"), p.get("uf")):
             p["cidade"], p["regiao"], p["uf"] = cidade, regiao, uf
             ajustadas += 1
@@ -211,7 +218,7 @@ def completar_organizadores(historico, limite=LIMITE_DETALHES):
     achados = 0
     for p in pendentes[:limite]:
         try:
-            texto = fontes.organizador_da_prova(p.get("corrida_id"), p.get("resultado_id"))
+            texto = fontes.organizador_da_prova(p.get("corrida_id"), p.get("resultado_id"), p.get("uf") or UF_ALVO)
         except Exception:
             continue          # tenta de novo numa proxima rodada
         p["org_tentado"] = True
@@ -420,7 +427,12 @@ def vincular_concluintes(historico, desde=None):
         # nao mudam. O historico completo vem pelo importar_concluintes.py.
         desde = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
 
-    eventos = fontes.openresults(desde=desde)
+    eventos = []
+    for uf in UFS:
+        for e in fontes.openresults(desde=desde, uf=uf):
+            # Cidade que o mapa nao achou: vale o estado da listagem.
+            e["uf"] = e.get("uf") or uf
+            eventos.append(e)
     por_data = {}
     for p in historico:
         por_data.setdefault(p["data"], []).append(p)
@@ -447,7 +459,7 @@ def vincular_concluintes(historico, desde=None):
             # Respeita o corte: criar prova fora da janela daria um ano com
             # cobertura pela metade, pior que nenhum para comparar.
             if (e["data"] >= hoje or e["data"] < desde
-                    or e["regiao"] in ("Outras", "Fora de SC")):
+                    or e["regiao"] == "Outras" or e["regiao"].startswith("Fora de")):
                 continue
             alvo = _prova_do_openresults(e)
             historico.append(alvo)
@@ -455,6 +467,11 @@ def vincular_concluintes(historico, desde=None):
             criados += 1
 
         ligados += 1
+        # Resultado lido no arquivo da cronometragem (Volta a Ilha: equipes,
+        # nao atletas) vale mais que o do portal: fica.
+        if alvo.get("fonte_resultado") in CRONO_DO_CLAX and alvo.get("concluintes_total"):
+            alvo.setdefault("or_slug", e["slug"])
+            continue
         if alvo.get("concluintes_total") != e["concluintes_total"]:
             atualizados += 1
         alvo["concluintes"] = e["concluintes"]
@@ -600,6 +617,12 @@ def unificar_manualmente(historico):
     return juntadas
 
 
+# Acima disso a "distancia" do portal nao e corrida: 3000 e metros de natacao
+# (Circuito Ocean), 16200 e revezamento, 1314 e categoria kids "13-14 anos".
+# A maior prova de verdade nos dados e o Mons Ultra Trail, 320 km.
+KM_MAXIMO = 400
+
+
 def _prova_do_openresults(e):
     """Monta o registro de uma prova que so existe no portal de resultados.
 
@@ -607,7 +630,7 @@ def _prova_do_openresults(e):
     fica em branco, porque o portal nao informa.
     """
     hoje = datetime.date.today().isoformat()
-    km = sorted((float(d) for d in e["concluintes"]), reverse=True)
+    km = sorted((float(d) for d in e["concluintes"] if float(d) <= KM_MAXIMO), reverse=True)
     ano, mes, dia = (int(x) for x in e["data"].split("-"))
     return {
         "data": e["data"], "dia": dia, "mes": mes, "ano": ano,
@@ -940,8 +963,8 @@ def _mesma_praca(cidade, prova):
     """
     if not cidade:
         return True
-    achada, regiao, uf = canonizar_cidade(cidade)
-    if uf and uf != UF_ALVO:
+    achada, regiao, uf = canonizar_cidade(cidade, prova.get("uf"))
+    if uf and uf not in UFS:
         return False
     if not achada or regiao in ("Outras", ""):
         return True
@@ -1175,7 +1198,7 @@ def main():
 
     atuais, descartadas = peneirar(atuais)
     if descartadas:
-        print(f"descartadas ({len(descartadas)}): fora de {UF_ALVO} ou nao sao corrida")
+        print(f"descartadas ({len(descartadas)}): fora de {'/'.join(UFS)} ou nao sao corrida")
         for p, motivo in descartadas[:8]:
             print(f"  - {p['data']}  {p['cidade']} - {p['nome'][:44]} [{motivo}]")
         if len(descartadas) > 8:

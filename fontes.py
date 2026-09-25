@@ -16,24 +16,24 @@ import urllib.request
 from comum import UA_NAVEGADOR
 import urllib.parse
 
-from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, arrumar_titulo, baixar,
+from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, UF_NOME, UFS, arrumar_titulo, baixar,
                    canonizar_cidade, classificar, consertar_mojibake,
                    distancias, limpar, separar_organizadores, sem_acento)
 
 # ---------------------------------------------------------------- corridasbr
 
-CBR_BASE = f"https://www.corridasbr.com.br/{UF_ALVO}/"
+CBR_BASE = "https://www.corridasbr.com.br/{uf}/"
 CBR_PAGINAS = ["Calendario.asp", "Calendario2.asp", "Calendario3.asp"]
 
 
-def corridasbr():
+def corridasbr(uf=UF_ALVO):
     """Calendario do corridasbr.com.br: tres paginas de HTML em cp1252."""
     provas = []
     ano = datetime.date.today().year
     mes_anterior = None
 
     for pagina in CBR_PAGINAS:
-        html = baixar(CBR_BASE + pagina)
+        html = baixar(CBR_BASE.format(uf=uf) + pagina)
         blocos = re.split(r'tipo6"><font color="#FFFFFF">\s*([A-Za-zÀ-ÿ]+)', html)
 
         for i in range(1, len(blocos), 2):
@@ -64,7 +64,7 @@ def corridasbr():
                         cidade = fim[1].strip()
 
                 pills, km, extra = distancias(limpar(tds[3]))
-                cidade, regiao, uf = canonizar_cidade(cidade)
+                cidade, regiao, uf_achada = canonizar_cidade(cidade, uf)
                 # O id leva a pagina da prova, que traz o organizador.
                 ident = re.search(r"escolha=(\d+)", tds[2])
                 provas.append({
@@ -72,7 +72,7 @@ def corridasbr():
                     "corrida_id": ident.group(1) if ident else None,
                     "data": f"{ano:04d}-{mes:02d}-{dia:02d}",
                     "dia": dia, "mes": mes, "ano": ano,
-                    "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
+                    "cidade": cidade, "regiao": regiao, "uf": uf_achada, "nome": nome,
                     "pills": pills, "km": km,
                     "tags": classificar(nome, km, [extra]),
                 })
@@ -89,7 +89,7 @@ CBR_ARQUIVO = CBR_BASE + "Res_{ano}.asp?escolha={mes}"
 CBR_LINHA = re.compile(r'<tr align="center" height="50".*?(?=<tr|\Z)', re.S)
 
 
-def corridasbr_arquivo(ano=None, ate_mes=None):
+def corridasbr_arquivo(ano=None, ate_mes=None, uf=UF_ALVO):
     """Provas ja realizadas no ano corrente, do arquivo de resultados."""
     hoje = datetime.date.today()
     ano = ano or hoje.year
@@ -98,7 +98,7 @@ def corridasbr_arquivo(ano=None, ate_mes=None):
     provas = []
     for mes in range(1, ate_mes + 1):
         try:
-            html = baixar(CBR_ARQUIVO.format(ano=ano, mes=mes))
+            html = baixar(CBR_ARQUIVO.format(uf=uf, ano=ano, mes=mes))
         except Exception:
             continue          # mes ainda sem pagina publicada
         for linha in CBR_LINHA.findall(html):
@@ -112,7 +112,7 @@ def corridasbr_arquivo(ano=None, ate_mes=None):
             dia, mes_linha = int(casa.group(1)), int(casa.group(2))
             if mes_linha != mes:
                 continue      # linha fora do mes da pagina: ignora
-            cidade, regiao, uf = canonizar_cidade(limpar(tds[1]))
+            cidade, regiao, uf_achada = canonizar_cidade(limpar(tds[1]), uf)
             # O link do resultado leva a pagina que tem as distancias,
             # recuperadas depois por distancias_do_resultado().
             ident = re.search(r"mostraresultado\.asp\?escolha=(\d+)", linha)
@@ -120,7 +120,7 @@ def corridasbr_arquivo(ano=None, ate_mes=None):
                 "fonte": "corridasbr",
                 "data": f"{ano:04d}-{mes:02d}-{dia:02d}",
                 "dia": dia, "mes": mes, "ano": ano,
-                "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
+                "cidade": cidade, "regiao": regiao, "uf": uf_achada, "nome": nome,
                 "pills": [], "km": [],
                 "resultado_id": ident.group(1) if ident else None,
                 "tags": classificar(nome, []),
@@ -132,17 +132,17 @@ CBR_ORGANIZADOR = re.compile(r"Organizador:\s*(.+?)\s+(?:Mais Informa|Compartilh
 
 
 @functools.lru_cache(maxsize=4096)
-def _texto_corridasbr(caminho):
+def _texto_corridasbr(caminho, uf=UF_ALVO):
     """Texto limpo de uma pagina do corridasbr, com cache.
 
     A mesma pagina de resultado traz o percurso E o organizador; sem o cache,
     cada prova passada seria baixada duas vezes.
     """
-    html = baixar(CBR_BASE + caminho)
+    html = baixar(CBR_BASE.format(uf=uf) + caminho)
     return limpar(re.sub(r"<script.*?</script>", " ", html, flags=re.S))
 
 
-def organizador_da_prova(corrida_id=None, resultado_id=None):
+def organizador_da_prova(corrida_id=None, resultado_id=None, uf=UF_ALVO):
     """Le a pagina da prova (futura) ou a do resultado (passada) e devolve o
     organizador. Nenhuma das listagens traz esse campo."""
     if corrida_id:
@@ -151,19 +151,19 @@ def organizador_da_prova(corrida_id=None, resultado_id=None):
         caminho = f"mostraresultado.asp?escolha={resultado_id}"
     else:
         return ""
-    achado = CBR_ORGANIZADOR.search(_texto_corridasbr(caminho))
+    achado = CBR_ORGANIZADOR.search(_texto_corridasbr(caminho, uf))
     return achado.group(1).strip() if achado else ""
 
 
 CBR_DISTANCIA = re.compile(r"ncia\(s\):\s*(.+?)\s+(?:Organizador|Resultados|Publicidade)")
 
 
-def distancias_do_resultado(resultado_id):
+def distancias_do_resultado(resultado_id, uf=UF_ALVO):
     """Le a pagina de resultado de uma prova passada e devolve (pills, km).
 
     O arquivo mensal nao traz percurso; a pagina de cada prova traz.
     """
-    texto = _texto_corridasbr(f"mostraresultado.asp?escolha={resultado_id}")
+    texto = _texto_corridasbr(f"mostraresultado.asp?escolha={resultado_id}", uf)
     achado = CBR_DISTANCIA.search(texto)
     if not achado:
         return [], []
@@ -174,7 +174,7 @@ def distancias_do_resultado(resultado_id):
 # -------------------------------------------------------------- ticketsports
 
 TS_LISTA = ("https://www.ticketsports.com.br/api/events/list"
-            "?quantity=500&atlheteId=0&term=&country=BR&region=" + UF_ALVO)
+            "?quantity=500&atlheteId=0&term=&country=BR&region={uf}")
 # Filtros que a API aplica de fato. Um filtro desconhecido e ignorado e devolve
 # a lista inteira, entao qualquer resultado do tamanho do total e descartado.
 TS_EXCLUIR = ["ciclismo", "mountain-bike", "triathlon", "natacao"]
@@ -183,26 +183,26 @@ TS_DISTANCIAS = [("4k", ["5k"], "até 4km"), ("5k-a-10k", ["5k", "10k"], "5 a 10
                  ("42k", ["42k"], "42km")]
 
 
-def _ts_ids(quick_filter):
-    dados = json.loads(baixar(TS_LISTA + "&quickFilter=" + quick_filter,
+def _ts_ids(quick_filter, uf):
+    dados = json.loads(baixar(TS_LISTA.format(uf=uf) + "&quickFilter=" + quick_filter,
                               {"Accept": "application/json"}))
     return {e["eventId"] for e in dados}
 
 
-def ticketsports():
-    """API publica do calendario da Ticket Sports, recortada em SC."""
-    base = json.loads(baixar(TS_LISTA, {"Accept": "application/json"}))
+def ticketsports(uf=UF_ALVO):
+    """API publica do calendario da Ticket Sports, recortada no estado."""
+    base = json.loads(baixar(TS_LISTA.format(uf=uf), {"Accept": "application/json"}))
     total = {e["eventId"] for e in base}
 
     fora = set()
     for filtro in TS_EXCLUIR:
-        ids = _ts_ids(filtro)
+        ids = _ts_ids(filtro, uf)
         if ids != total:                      # filtro reconhecido pela API
             fora |= ids
 
     bandas = {}
     for filtro, faixas, rotulo in TS_DISTANCIAS:
-        ids = _ts_ids(filtro)
+        ids = _ts_ids(filtro, uf)
         if ids == total:
             continue
         for i in ids:
@@ -219,7 +219,7 @@ def ticketsports():
         except (KeyError, ValueError):
             continue
 
-        cidade, regiao, uf = canonizar_cidade(e.get("address", "").rsplit(",", 1)[0])
+        cidade, regiao, uf_achada = canonizar_cidade(e.get("address", "").rsplit(",", 1)[0], uf)
         nome = " ".join((e.get("title") or "").split())
         banda = bandas.get(e["eventId"])
         provas.append({
@@ -228,7 +228,7 @@ def ticketsports():
             "ts_url": e.get("uri"),
             "data": f"{ano:04d}-{mes:02d}-{dia:02d}",
             "dia": dia, "mes": mes, "ano": ano,
-            "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
+            "cidade": cidade, "regiao": regiao, "uf": uf_achada, "nome": nome,
             # A API nao expoe as distancias exatas, so as faixas do filtro.
             "pills": banda["rotulos"] if banda else [],
             "km": [],
@@ -335,7 +335,6 @@ MN_SITEMAP = "https://www.movnow.com.br/sitemap.xml"
 MN_BASE = "https://www.movnow.com.br"
 MN_PAUSA = 0.3
 
-UF_NOME = {"SC": "santa catarina"}
 # Categorias do MovNow que sao corrida; o resto (natacao, aquathlon, MTB,
 # workshops, eventos de entretenimento) fica de fora.
 MN_CORRIDA = {"corrida", "corrida de rua", "trail run", "trail", "caminhada",
@@ -365,12 +364,12 @@ def _km_de_rotulos(rotulos):
 
 
 def movnow(categorias=MN_CORRIDA):
-    """Corridas do movnow.com.br na UF alvo. categorias=None traz todas."""
+    """Corridas do movnow.com.br nos estados cobertos. categorias=None traz todas."""
     import time
 
     xml = baixar(MN_SITEMAP)
     caminhos = sorted(set(re.findall(r"<loc>https?://[^<]*?(/eventos/\d+-[^<]+)</loc>", xml)))
-    alvo = UF_NOME.get(UF_ALVO, UF_ALVO.lower())
+    alvo = {UF_NOME[u]: u for u in UFS}
 
     provas = []
     for caminho in caminhos:
@@ -385,7 +384,8 @@ def movnow(categorias=MN_CORRIDA):
         local = re.search(r'"location":\{[^{}]*?"city":"([^"]*)","state":"([^"]*)"', dados)
         if not (cab and local):
             continue
-        if sem_acento(local.group(2)) != alvo:
+        estado = alvo.get(sem_acento(local.group(2)))
+        if not estado:
             continue
         categoria = cab.group(5)
         if categorias is not None and sem_acento(categoria) not in categorias:
@@ -395,7 +395,7 @@ def movnow(categorias=MN_CORRIDA):
         dia, mes, ano = int(cab.group(2)), int(cab.group(3)), int(cab.group(4))
         rotulos = re.findall(r'\{"id":"\d+","name":"([^"]+)","participants"', dados)
         km = _km_de_rotulos(rotulos)
-        cidade, regiao, uf = canonizar_cidade(local.group(1))
+        cidade, regiao, uf = canonizar_cidade(local.group(1), estado)
         extras = ["Trail"] if "trail" in sem_acento(categoria) else []
         provas.append({
             "fonte": "movnow",
@@ -429,10 +429,10 @@ def _nome_organizador(evento):
 
 
 def atletis():
-    """Eventos de corrida do atletis.com.br na UF alvo."""
+    """Eventos de corrida do atletis.com.br nos estados cobertos."""
     lista = baixar(AT_LISTA)
     urls = sorted(set(re.findall(r'data-url="(https://www\.atletis\.com\.br/evento/[^"]+)"', lista)))
-    alvo = UF_NOME.get(UF_ALVO, UF_ALVO.lower())
+    alvo = {UF_NOME[u]: u for u in UFS}
 
     provas = []
     for url in urls:
@@ -453,7 +453,8 @@ def atletis():
             continue
 
         endereco = (evento.get("location") or {}).get("address") or {}
-        if sem_acento(endereco.get("addressRegion") or "") != alvo:
+        estado = alvo.get(sem_acento(endereco.get("addressRegion") or ""))
+        if not estado:
             continue
         if sem_acento(evento.get("sport") or "") not in AT_ESPORTES:
             continue
@@ -463,7 +464,7 @@ def atletis():
             continue
 
         ano, mes, dia = (int(g) for g in casa.groups())
-        cidade, regiao, uf = canonizar_cidade(endereco.get("addressLocality") or "")
+        cidade, regiao, uf = canonizar_cidade(endereco.get("addressLocality") or "", estado)
         extras = ["Trail"] if "trail" in sem_acento(evento.get("sport") or "") else []
         provas.append({
             "fonte": "atletis",
@@ -543,7 +544,7 @@ def openresults(desde="2024-01-01", uf=None):
                 km = km.replace(",", ".").rstrip(".")
                 por_distancia[km] = por_distancia.get(km, 0) + _numero(n)
 
-            cidade, regiao, uf_achada = canonizar_cidade(cidade)
+            cidade, regiao, uf_achada = canonizar_cidade(cidade, uf)
             eventos.append({
                 "slug": slug.group(1),
                 "data": data,
@@ -688,7 +689,7 @@ def runking_concluintes(empresa, slug):
 RR_BASE = ("https://roadrunners.run/api/eventos_busca.cfm"
            "?badges=&rua=true&trail=true&nacional=true&internacional=false"
            "&tag=&cupom=false&busca_mode=plain&tipo_termo=indefinido"
-           "&estado=" + UF_ALVO)
+           "&estado={uf}")
 RR_MAX_PAGINAS = 12
 
 RR_CARD = re.compile(
@@ -697,12 +698,12 @@ RR_CARD = re.compile(
 RR_ID = re.compile(r'<div class="home-event-card"\s+id="([^"]+)"')
 
 
-def roadrunners():
+def roadrunners(uf=UF_ALVO):
     """Busca do roadrunners.run: devolve cards HTML paginados de 50 em 50."""
     provas, vistos = [], set()
 
     for pagina in range(RR_MAX_PAGINAS):
-        html = baixar(f"{RR_BASE}&page={pagina}",
+        html = baixar(f"{RR_BASE.format(uf=uf)}&page={pagina}",
                       {"X-Requested-With": "XMLHttpRequest"})
         novos = 0
 
@@ -721,9 +722,9 @@ def roadrunners():
             # "Planalto Alegre - SC" -> so eventos do estado interessam.
             partes = re.split(r"\s*[-–]\s*", local)
             sigla = re.sub(r"[^A-Za-z]", "", partes[-1]).upper() if len(partes) > 1 else ""
-            if sigla and sigla != UF_ALVO:
+            if sigla and sigla != uf:
                 continue
-            cidade, regiao, uf = canonizar_cidade(partes[0] if partes else "")
+            cidade, regiao, uf_achada = canonizar_cidade(partes[0] if partes else "", uf)
 
             chave = (dia.group(1), mes.group(1).lower(), ano.group(1), sem_acento(nome))
             if chave in vistos:
@@ -756,7 +757,7 @@ def roadrunners():
                 "rr_slug": ids[n_cartao] if n_cartao < len(ids) else None,
                 "data": f"{int(ano.group(1)):04d}-{mes_num:02d}-{int(dia.group(1)):02d}",
                 "dia": int(dia.group(1)), "mes": mes_num, "ano": int(ano.group(1)),
-                "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
+                "cidade": cidade, "regiao": regiao, "uf": uf_achada, "nome": nome,
                 "pills": pills, "km": km,
                 "tags": classificar(nome, km, extras),
             })
@@ -846,7 +847,7 @@ def fca():
             a, m, d = (int(x) for x in data.split("-"))
             if sem_acento(r.get("Cidade") or "").strip().lower() in ("a definir", ""):
                 continue
-            cidade, regiao, uf = canonizar_cidade(_cidade_fca(r.get("Cidade")))
+            cidade, regiao, uf = canonizar_cidade(_cidade_fca(r.get("Cidade")), "SC")
             classe = sem_acento(r.get("Classificacao") or "").lower()
             extras = ["Trail"] if "trail" in classe or "montanha" in classe else []
             numero, pano = r.get("Permit_Numero"), r.get("Permit_Ano")
@@ -872,6 +873,12 @@ TODAS = [("corridasbr", corridasbr),
          ("movnow", movnow),
          ("atletis", atletis),
          ("fca", fca)]
+# As fontes que se consultam por estado rodam de novo para cada UF extra.
+for _uf in UFS[1:]:
+    TODAS += [(f"corridasbr ({_uf})", functools.partial(corridasbr, uf=_uf)),
+              (f"corridasbr/arquivo ({_uf})", functools.partial(corridasbr_arquivo, uf=_uf)),
+              (f"ticketsports ({_uf})", functools.partial(ticketsports, uf=_uf)),
+              (f"roadrunners ({_uf})", functools.partial(roadrunners, uf=_uf))]
 
 
 # ----------------------------------------------- super crono (cronometragem)
@@ -886,11 +893,11 @@ SC_KM = re.compile(r"(\d+(?:[.,]\d+)?)\s*k", re.I)
 
 
 def supercrono_eventos():
-    """Provas cronometradas pela Super Crono, so as da UF alvo."""
+    """Provas cronometradas pela Super Crono, so as dos estados cobertos."""
     eventos = []
     for e in json.loads(baixar(SC_BASE + "events.json")):
         cidade, regiao, uf = canonizar_cidade(e.get("place") or "")
-        if uf != UF_ALVO or not e.get("startDate"):
+        if uf not in UFS or not e.get("startDate"):
             continue
         eventos.append({
             "id": e["id"], "data": e["startDate"][:10],

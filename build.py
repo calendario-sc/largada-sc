@@ -21,7 +21,7 @@ CABECALHO = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Calendario de corridas de rua e trail em Santa Catarina.">
+<meta name="description" content="Calendario de corridas de rua e trail em Santa Catarina e no Parana.">
 """
 
 
@@ -173,30 +173,45 @@ def completa(pagina):
     return CABECALHO + estilo + "</style>\n</head>\n<body>\n" + corpo + "\n</body>\n</html>\n"
 
 
+# Uma pagina por estado: o seletor do cabecalho troca de pagina. Cada uma
+# leva so as provas do seu estado, e a de SC continua sendo a index.
+PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("todos.html", "")]
+PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
+
+
 def build():
     template = (AQUI / "template.html").read_text(encoding="utf-8")
-    for marcador in ("__DATA__", "__COLETA__", "__BI__", "__FLORIPA__"):
+    for marcador in ("__DATA__", "__COLETA__", "__BI__", "__FLORIPA__", "__UF__"):
         if marcador not in template:
             raise SystemExit(f"template.html perdeu o marcador {marcador}")
     historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
     coleta = data_coleta()
+    publico = so_publico(template)
 
-    # Pagina de BI: tudo. Vai para o Artifact (privado do dono) e, se a
-    # pasta do repositorio privado existir, para ela.
-    dados_bi = dados_da_pagina(json.loads(json.dumps(historico)), bi=True)
-    pagina_bi = (template.replace("__COLETA__", coleta).replace("__DATA__", dados_bi).replace("__BI__", "true")
-                 .replace("__FLORIPA__", dados_floripa()))
-    (AQUI / "artifact.html").write_text(pagina_bi, encoding="utf-8")
-    if BI_DIR.is_dir():
-        (BI_DIR / "index.html").write_text(completa(pagina_bi), encoding="utf-8")
+    tamanho = 0
+    for arquivo, uf in PAGINAS:
+        provas = [p for p in historico if not uf or (p.get("uf") or "SC") == uf]
+        floripa = dados_floripa() if uf != "PR" else "null"
 
-    # Pagina publica: sem os paineis e sem os campos de BI.
-    dados_pub = dados_da_pagina(historico, bi=False)
-    pagina_pub = (so_publico(template).replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
-                  .replace("__FLORIPA__", "null"))
-    (AQUI / "index.html").write_text(completa(pagina_pub), encoding="utf-8")
+        # Pagina de BI: tudo. A de SC vai tambem para o Artifact (privado do
+        # dono); todas vao para o repositorio privado, se a pasta existir.
+        dados_bi = dados_da_pagina(json.loads(json.dumps(provas)), bi=True)
+        pagina_bi = (template.replace("__COLETA__", coleta).replace("__DATA__", dados_bi).replace("__BI__", "true")
+                     .replace("__FLORIPA__", floripa).replace("__UF__", uf))
+        if arquivo == "index.html":
+            (AQUI / "artifact.html").write_text(pagina_bi, encoding="utf-8")
+            tamanho = len(pagina_bi)
+        if BI_DIR.is_dir():
+            (BI_DIR / arquivo).write_text(completa(pagina_bi), encoding="utf-8")
 
-    return len(pagina_bi)
+        # Pagina publica: sem os paineis e sem os campos de BI.
+        # Copia: dados_da_pagina tira campos, e a proxima pagina precisa deles.
+        dados_pub = dados_da_pagina(json.loads(json.dumps(provas)), bi=False)
+        pagina_pub = (publico.replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
+                      .replace("__FLORIPA__", "null").replace("__UF__", uf))
+        (AQUI / arquivo).write_text(completa(pagina_pub), encoding="utf-8")
+
+    return tamanho
 
 
 if __name__ == "__main__":

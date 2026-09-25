@@ -4,7 +4,7 @@
 A coleta diaria so olha o ano corrente. Este script e para trazer anos
 anteriores uma vez, quando se quer material de comparacao.
 
-Uso:  python importar_ano.py 2024 2025
+Uso:  python importar_ano.py 2024 2025 [--uf PR]
 """
 
 import datetime
@@ -16,13 +16,13 @@ import scrape
 from comum import sem_acento
 
 
-def importar(anos):
+def importar(anos, uf="SC"):
     historico = json.loads(scrape.SAIDA.read_text(encoding="utf-8")) \
         if scrape.SAIDA.exists() else []
     hoje = datetime.date.today().isoformat()
 
     for ano in anos:
-        registros = fontes.corridasbr_arquivo(ano=ano, ate_mes=12)
+        registros = fontes.corridasbr_arquivo(ano=ano, ate_mes=12, uf=uf)
         if not registros:
             print(f"{ano}: nada encontrado no arquivo")
             continue
@@ -37,7 +37,13 @@ def importar(anos):
 
         novas = 0
         for prova in provas:
-            if scrape.casar_no_historico(prova, por_data):
+            antiga = scrape.casar_no_historico(prova, por_data)
+            if antiga:
+                # Prova que so o portal de resultados trazia: o link do
+                # corridasbr e o que deixa achar organizador e percurso.
+                if prova.get("resultado_id") and not antiga.get("resultado_id"):
+                    antiga["resultado_id"] = prova["resultado_id"]
+                    antiga["fontes"] = sorted(set(antiga.get("fontes") or []) | {"corridasbr"})
                 continue      # ja estava no historico
             prova["primeira_vez"] = hoje
             prova["visto_em"] = hoje
@@ -77,5 +83,10 @@ if __name__ == "__main__":
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except (AttributeError, OSError):
         pass
-    anos = [int(a) for a in sys.argv[1:]] or [datetime.date.today().year - 1]
-    importar(anos)
+    args = sys.argv[1:]
+    uf = "SC"
+    if "--uf" in args:
+        uf = args[args.index("--uf") + 1].upper()
+        args = [a for a in args if a not in ("--uf", uf, uf.lower())]
+    anos = [int(a) for a in args] or [datetime.date.today().year - 1]
+    importar(anos, uf)

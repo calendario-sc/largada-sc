@@ -29,8 +29,11 @@ MESES_NOME = {
 
 FAIXAS = ["5k", "10k", "21k", "42k", "ultra"]
 
-# Estado que a coleta cobre. A expansao nacional troca isto por um laco.
-UF_ALVO = "SC"
+# Estados que a coleta cobre. O primeiro e o padrao: cidade sem UF
+# informada e procurada nele antes dos outros.
+UFS = ("SC", "PR")
+UF_ALVO = UFS[0]
+UF_NOME = {"SC": "santa catarina", "PR": "parana"}
 
 # Apelidos por UF: grafias que as fontes usam e que o IBGE nao reconhece.
 APELIDOS = {
@@ -161,11 +164,12 @@ def _indice():
 def canonizar_cidade(cidade, uf=None):
     """Devolve (nome, regiao, uf) usando a malha municipal do IBGE.
 
-    regiao e a mesorregiao oficial. Cidade que existe em outro estado volta
-    como "Fora de {UF}" com a sigla encontrada; cidade que nao existe em
-    lugar nenhum volta como "Outras" para ser reportada.
+    regiao e a mesorregiao oficial. Com uf, a cidade e procurada nele (a
+    fonte disse o estado); sem, nos estados cobertos, na ordem de UFS --
+    Palmeira, Irati, Turvo, Catanduvas e Santa Helena existem em SC e no PR.
+    Cidade de estado nao coberto volta como "Fora de SC/PR" com a sigla
+    encontrada; cidade que nao existe em lugar nenhum volta como "Outras".
     """
-    uf = uf or UF_ALVO
     # As fontes as vezes colam endereco ("Sombrio, Rua Coberta, Centro.")
     # ou juntam varias sedes ("Laguna | Imbituba | Garopaba").
     bruta = re.split(r"[,|/]", cidade or "")[0].strip(" .	-–")
@@ -174,19 +178,15 @@ def canonizar_cidade(cidade, uf=None):
 
     from municipios import chave_cidade
     chave = chave_cidade(bruta)
-    tabela = _indice().get(uf, {})
-
-    apelido = APELIDOS.get(uf, {}).get(chave)
-    if apelido:
-        chave = chave_cidade(apelido)
-
-    achada = tabela.get(chave)
-    if achada:
-        return achada[0], achada[1], uf
+    for estado in ([uf] if uf else []) + [u for u in UFS if u != uf]:
+        apelido = APELIDOS.get(estado, {}).get(chave)
+        achada = _indice().get(estado, {}).get(chave_cidade(apelido) if apelido else chave)
+        if achada:
+            return achada[0], achada[1], estado
 
     outra = _REVERSO.get(chave)
     if outra:
-        return _INDICE[outra][chave][0], f"Fora de {uf}", outra
+        return _INDICE[outra][chave][0], "Fora de " + "/".join(UFS), outra
 
     return arrumar_caixa(bruta), "Outras", None
 
@@ -283,7 +283,7 @@ def classificar(nome, km, extras=()):
 VAZIAS = {
     "a", "as", "o", "os", "de", "da", "do", "das", "dos", "e", "em", "no", "na",
     "nos", "nas", "para", "por", "com", "corrida", "corridas", "caminhada",
-    "prova", "etapa", "edicao", "run", "running", "race", "sc", "santa",
+    "prova", "etapa", "edicao", "run", "running", "race", "sc", "santa", "pr", "parana",
     "catarina", "2024", "2025", "2026", "2027", "2028",
 }
 
@@ -434,8 +434,11 @@ def mesma_prova(a, b):
 
     Cidade diferente decide contra: etapas de um circuito caem no mesmo dia
     em cidades diferentes e tem nomes quase iguais. Se uma das cidades e
-    desconhecida, vale so o nome.
+    desconhecida, vale so o nome. Estado diferente tambem decide contra: a
+    Corrida Nacional do SESI cai no mesmo dia em Blumenau e no Parana.
     """
+    if a.get("uf") and b.get("uf") and a["uf"] != b["uf"]:
+        return False
     if _cidade_conhecida(a) and _cidade_conhecida(b):
         if a["cidade"] != b["cidade"]:
             return False

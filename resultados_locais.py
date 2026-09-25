@@ -162,7 +162,7 @@ def publicar():
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return
-    git("add", "corridas.json", "index.html", "atletas")
+    git("add", "corridas.json", "index.html", "pr.html", "todos.html", "atletas")
     hoje = datetime.date.today().strftime("%d/%m/%Y")
     git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
         "commit", "-q", "-m", f"concluintes de {hoje} (coleta local)")
@@ -175,7 +175,7 @@ def publicar():
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
         build.build()
-        git("add", "corridas.json", "index.html", "atletas")
+        git("add", "corridas.json", "index.html", "pr.html", "todos.html", "atletas")
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
         git("push", "-q", "origin", "main")
@@ -201,7 +201,7 @@ def publicar_bi():
     try:
         if not g("status", "--porcelain").stdout.strip():
             return
-        g("add", "index.html")
+        g("add", "index.html", "pr.html", "todos.html")
         if (pasta / "assessorias.json").exists():
             g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")

@@ -109,6 +109,12 @@ h1 em{font-style:normal; color:#FFC21A}
 /* O lugar do recorte, em cima das caixas: estado, regiao ou cidade. */
 .top__dados{display:flex; flex-direction:column; gap:.6rem; align-items:stretch; min-width:0}
 .top__lugar{margin:0; display:flex; flex-direction:column; gap:.15rem}
+/* Seletor de estado: cada estado e uma pagina (index = SC). */
+.uf{display:flex; gap:.3rem; flex-wrap:wrap; margin:0 0 .2rem}
+.uf a{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
+  color:#FFFFFF; padding:.3rem .7rem; border-radius:999px; border:1px solid rgba(255,255,255,.35)}
+.uf a:hover{border-color:#FFC21A; color:#FFC21A}
+.uf a[aria-current="page"]{background:#FFC21A; border-color:#FFC21A; color:#0A2F73; font-weight:500}
 .top__lugar small{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:#FFC21A}
 .top__lugar b{font-family:var(--f-display); font-weight:800; font-size:clamp(1.4rem,3vw,2rem); line-height:1.05; letter-spacing:-.02em; color:#FFFFFF; text-wrap:balance}
 .stats{display:flex; gap:1.2rem; flex-wrap:wrap}
@@ -870,11 +876,16 @@ h1 em{font-style:normal; color:#FFC21A}
 <header class="top">
   <div class="wrap top__inner">
     <div>
-      <p class="eyebrow">Santa Catarina &middot; corridas de rua e trail</p>
+      <p class="eyebrow"><span id="eyebrow-uf">Santa Catarina</span> &middot; corridas de rua e trail</p>
       <h1>Cupons de <em>Corrida</em></h1>
       <p class="lede">Filtre por mês, região, distância e tipo.</p>
     </div>
     <div class="top__dados">
+      <nav class="uf" id="uf" aria-label="Estado">
+        <a href="./" data-uf="SC">Santa Catarina</a>
+        <a href="pr.html" data-uf="PR">Paraná</a>
+        <a href="todos.html" data-uf="">SC + PR</a>
+      </nav>
       <p class="top__lugar" id="top-lugar"><small id="lugar-tipo">Estado</small><b id="lugar-nome">Santa Catarina</b></p>
     <div class="stats">
       <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
@@ -1140,6 +1151,16 @@ const COLETA = "__COLETA__";
 // BI: a pagina completa (bi.cuponsdecorrida.com.br). Na publica, os paineis
 // de BI nao existem no HTML, e este sinalizador desliga o que os usaria.
 const BI = __BI__;
+// Estado da pagina: "SC" (index), "PR" (pr.html) ou "" (todos.html, os dois).
+const UF = "__UF__";
+const NOME_ESTADO = { SC:"Santa Catarina", PR:"Paraná", "":"Santa Catarina e Paraná" }[UF];
+document.querySelectorAll("#uf a").forEach(a => {
+  if (a.dataset.uf === UF) a.setAttribute("aria-current", "page");
+});
+document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "SC e PR";
+if (UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC e PR");
+// O Raio-X e de Florianopolis: nao cabe na pagina do Parana.
+if (UF === "PR" && document.getElementById("btn-raiox")) document.getElementById("btn-raiox").hidden = true;
 // Liga um evento so se o elemento existe: na pagina publica varios nao existem.
 const ao = (id, fn) => { const e = document.getElementById(id); if (e) e.onclick = fn; return e; };
 // Clique no fundo escurecido fecha a janela, como se espera de uma janela dessas.
@@ -2275,7 +2296,7 @@ function descreverRecorte(){
 }
 
 function mostrarLugar(){
-  let tipo = "Estado", nome = "Santa Catarina";
+  let tipo = UF ? "Estado" : "Estados", nome = NOME_ESTADO;
   if (state.cidade){ tipo = "Cidade"; nome = state.cidade; }
   else if (state.regioes.size){
     tipo = state.regioes.size === 1 ? "Região" : "Regiões";
@@ -2291,7 +2312,7 @@ function mostrarRecorte(){
     && !state.organizador && !state.tipos.size && !state.faixas.size && !state.treinos && !state.q;
   document.getElementById("top-recorte").replaceChildren(
     el("b", { textContent:"Filtro" }),
-    document.createTextNode(descreverRecorte() + (semNada ? " · Santa Catarina inteira" : "")));
+    document.createTextNode(descreverRecorte() + (semNada ? " · " + (UF === "SC" ? "Santa Catarina inteira" : UF ? "Paraná inteiro" : "SC e PR") : "")));
 }
 
 function montarOrgs(){
@@ -3165,7 +3186,7 @@ function montarRelatorioOrgs(){
   const recorte = [
     ["Ano", ano],
     ["Cidade", state.cidade || "todas"],
-    [state.regioes.size ? "Região" : "Estado", state.regioes.size ? [...state.regioes].join(", ") : "Santa Catarina"],
+    [state.regioes.size ? "Região" : (UF ? "Estado" : "Estados"), state.regioes.size ? [...state.regioes].join(", ") : NOME_ESTADO],
   ];
   const extras = [];
   if (state.meses.size)
@@ -3251,7 +3272,7 @@ function cabecalhoDoRecorte(){
   const recorte = [
     ["Ano", ano],
     ["Cidade", state.cidade || "todas"],
-    [state.regioes.size ? "Região" : "Estado", state.regioes.size ? [...state.regioes].join(", ") : "Santa Catarina"],
+    [state.regioes.size ? "Região" : (UF ? "Estado" : "Estados"), state.regioes.size ? [...state.regioes].join(", ") : NOME_ESTADO],
   ];
   const extras = [];
   if (state.meses.size)
