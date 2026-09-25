@@ -43,7 +43,9 @@ ENFEITE_FIM = re.compile(r"\s+(equipe|assessoria esportiva|assessoria|team|sc)$"
 # palavra solta.
 NAO_E_EQUIPE = {"sympla", "ticketsports", "site", "instituto", "extrasemkit", "runners", "runner",
                 "corredores", "corredor", "running", "run", "instagram", "facebook", "whatsapp",
-                "google", "indicacao", "internet", "amigo", "amigos", "outros", "outro", "kit"}
+                "google", "indicacao", "internet", "amigo", "amigos", "outros", "outro", "kit",
+                # campo vazio exportado como texto pela cronometragem
+                "null", "none", "undefined", "nan", "vazio"}
 SUFIXO = ("assessoriaesportiva", "assessoria", "equipe", "team")
 # Grafias que a limpeza nao junta sozinha: chave -> chave.
 MESMA_EQUIPE = {
