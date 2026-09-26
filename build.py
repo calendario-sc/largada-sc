@@ -167,10 +167,25 @@ def so_publico(pagina):
     return pagina
 
 
-def completa(pagina):
+# Google Analytics: so nas paginas publicas. O BI e privado e os acessos
+# da equipe nao entram na conta do publico.
+GOOGLE_ANALYTICS = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0JZLDPQ7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P0JZLDPQ7W');
+</script>
+"""
+
+
+def completa(pagina, publica=False):
     """A pagina standalone precisa do <head>: o <style> sobe para dentro dele."""
     estilo, corpo = pagina.split("</style>", 1)
-    return CABECALHO + estilo + "</style>\n</head>\n<body>\n" + corpo + "\n</body>\n</html>\n"
+    return (CABECALHO + (GOOGLE_ANALYTICS if publica else "") + estilo
+            + "</style>\n</head>\n<body>\n" + corpo + "\n</body>\n</html>\n")
 
 
 # Uma pagina por estado: o seletor do cabecalho troca de pagina. Cada uma
@@ -209,7 +224,7 @@ def build():
         dados_pub = dados_da_pagina(json.loads(json.dumps(provas)), bi=False)
         pagina_pub = (publico.replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
                       .replace("__FLORIPA__", "null").replace("__UF__", uf))
-        (AQUI / arquivo).write_text(completa(pagina_pub), encoding="utf-8")
+        (AQUI / arquivo).write_text(completa(pagina_pub, publica=True), encoding="utf-8")
 
     return tamanho
 
