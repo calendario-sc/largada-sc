@@ -1,19 +1,19 @@
 == coleta ==
 == fontes ==
-  corridasbr: 211 provas
+  corridasbr: 213 provas
   corridasbr/arquivo: 335 provas
-  ticketsports: 74 provas
-  roadrunners: 210 provas
-  movnow: 20 provas
+  ticketsports: 76 provas
+  roadrunners: 224 provas
+  movnow: 19 provas
   atletis: 1 provas
-  fca: 1840 provas
+  fca: 1842 provas
   corridasbr (PR): 180 provas
   corridasbr/arquivo (PR): 372 provas
-  ticketsports (PR): 74 provas
-  roadrunners (PR): 149 provas
-  fap: 585 provas
+  ticketsports (PR): 75 provas
+  roadrunners (PR): 158 provas
+  fap: 586 provas
 
-2872 provas distintas depois de fundir as fontes
+2891 provas distintas depois de fundir as fontes
 descartadas (18): fora de SC/PR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
@@ -24,39 +24,40 @@ descartadas (18): fora de SC/PR ou nao sao corrida
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - ... e mais 10
-restam 2854 provas
+restam 2873 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 concluintes (chiprun): 6 provas consultadas, 5 preenchidas
 genero: 10 provas consultadas, 0 preenchidas
-organizador: 138 provas preenchidas pela FCA
-organizador: 80 provas tiveram a grafia padronizada
+organizador: 140 provas preenchidas pela FCA
+organizador: 82 provas tiveram a grafia padronizada
 fca: 147 provas juntadas as que ja existiam
-series: 2855 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 4775 provas (4237 ja realizadas) | 423 cidades
-novas nesta rodada: 149
-  + 2022-01-15  Campo Largo - 147ª Corrida da Lua Cheia
-  + 2022-01-23  Cascavel - Colinas Golf Run Day
-  + 2022-01-30  Pinhais - Runthechange - Etapa 1
-  + 2022-02-06  Curitiba - Track&Fields Run Series - Shopping Mueller
-  + 2022-02-06  Palmeira - Discover Trail - Palmeira
-  + 2022-02-13  Francisco Beltrão - Evolua em Movimento 2022
-  + 2022-02-13  Ponta Grossa - Meia Maratona Unimed Parque Vila Velha
-  + 2022-02-19  Campo Largo - 148ª Corrida da Lua Cheia
-  + 2022-02-20  Cascavel - 3ª Corrida Zero Açucar Fitness e Beach
-  + 2022-02-20  Itaperuçu - X-Trail Itaperuçu - 1ª Etapa
-  + 2022-02-20  Londrina - Circuito Decathlon Off Road – Etapa 1
-  + 2022-02-20  Pontal do Paraná - Meia Maratona de Pontal do Paraná
-  + 2022-02-27  Ponta Grossa - Circuito Ponta Grossa - 4ª Etapa
-  + 2022-03-06  Colombo - Corrida de Rua Colombo 132 Anos
-  + 2022-03-06  Corbélia - 6ª Corrida das Flores
+series: 2870 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 4794 provas (4237 ja realizadas) | 423 cidades
+novas nesta rodada: 168
+  + 2026-04-11  Gaspar - Running X
+  + 2026-09-26  Joinville - CORRA com a FONTE de SAÚDE - 3º EDIÇÃO
+  + 2026-10-08  Palhoça - Oktober Run 5k
+  + 2026-10-11  Curitiba - Track&Field Run Series 2026 - Parkshoppingbarigüi
+  + 2026-10-17  Prudentópolis - VI Corrida Rosa de Prudentópolis
+  + 2026-10-18  Criciúma - Track&Field Etapa Weber
+  + 2026-10-24  Arapongas - 4ª Corrida Cidade dos Pássaros
+  + 2026-11-07  São Carlos - 1ª CORRIDA DELAS
+  + 2026-11-08  São José dos Pinhais - CORRIDA MULTIRUN
+  + 2026-11-20  Porto Belo - CORRIDA DA CONSCIÊNCIA NEGRA
+  + 2026-11-21  Irati - CORRIDA DAS 4 ESTAÇÕES IRATI - PR - EDIÇÃO PIMAVERA
+  + 2026-11-28  Palhoça - RUN FOR CHRIST
+  + 2026-11-29  Blumenau - Corrida e Caminhada Sest Senat - Blumenau
+  + 2026-11-29  Xaxim - 1ª RAFITEC RUN
+  + 2026-12-12  São José - Corrida Magia de Natal
 
-futuras que nao apareceram hoje (1) - possivel cancelamento, mantidas no historico:
+futuras que nao apareceram hoje (2) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
+  ? 2026-11-01  Curitiba - Track&Field Run Series 2026 - Parkshoppingbarigüi (visto pela ultima vez em 2026-09-25)
 
 == perfis ==
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (1,944,344 bytes)
+artifact.html e index.html gerados (1,956,852 bytes)
 
-RESULTADO: pronto para publicar (coleta de 25/09/2026).
+RESULTADO: pronto para publicar (coleta de 26/09/2026).
