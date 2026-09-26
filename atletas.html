@@ -301,6 +301,7 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
       <p class="eyebrow"><a href="./">Cupons de Corrida</a> &middot; resultados por atleta</p>
       <h1>Quem <em>correu</em></h1>
       <p class="lede">Busque um nome e veja as provas, as distâncias, o pace e os melhores tempos.</p>
+      <button class="cta-cadastro" type="button" data-cadastro hidden>Cadastre-se e ganhe cupons</button>
     </div>
     <div class="stats">
       <div class="stat"><b id="s-atletas">—</b><span>atletas</span></div>
@@ -1103,5 +1104,6 @@ carregarIndice().then(async () => {
   }
 }).catch(() => { dica.textContent = "Não foi possível carregar o índice de atletas."; });
 </script>
+<script src="cadastro.js"></script>
 </body>
 </html>

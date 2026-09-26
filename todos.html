@@ -335,6 +335,31 @@ h1 em{font-style:normal; color:#FFC21A}
   .as__nums{grid-template-columns:1fr 1fr}
 }
 
+/* ---------- leads (cadastro de atletas), so no BI ---------- */
+.ld{width:min(52rem, 100% - 2rem)}
+.ld__corpo{padding:0 1.2rem 1rem; overflow-y:auto}
+.ld__nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(8rem,1fr)); gap:.5rem; margin:0 0 1rem}
+.ld__nums div{padding:.6rem .75rem; border:1px solid var(--line-soft); border-radius:10px; background:var(--surface-2)}
+.ld__nums b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.45rem; color:var(--azul-ink); font-variant-numeric:tabular-nums}
+.ld__nums span{font-family:var(--f-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+.ld h3{font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:1rem 0 .4rem}
+.ld__dias{display:flex; align-items:flex-end; gap:2px; height:90px; border-bottom:1px solid var(--line)}
+.ld__dias i{flex:1; background:var(--azul); min-height:1px; border-radius:2px 2px 0 0; position:relative}
+.ld__dias i b{position:absolute; left:0; right:0; bottom:0; background:var(--sol)}
+.ld__legenda{font-size:.72rem; color:var(--muted); margin:.3rem 0 0}
+.ld__legenda span{display:inline-block; width:.7rem; height:.7rem; border-radius:2px; vertical-align:-1px; margin:0 .25rem 0 .6rem}
+.ld__grade{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:.4rem 1.4rem}
+.ld__lista{list-style:none; margin:0; padding:0; font-size:.84rem}
+.ld__lista li{display:flex; justify-content:space-between; gap:.6rem; padding:.22rem 0; border-bottom:1px solid var(--line-soft)}
+.ld__lista li b{font-family:var(--f-mono); font-weight:500; font-variant-numeric:tabular-nums}
+.ld__tabela{width:100%; border-collapse:collapse; font-size:.8rem}
+.ld__tabela th{font-family:var(--f-mono); font-weight:400; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.3rem .35rem; border-bottom:1px solid var(--line)}
+.ld__tabela td{padding:.35rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
+.ld__tabela td small{display:block; color:var(--muted)}
+.ld__tabela .pend{color:var(--muted); font-style:italic}
+.ld__vazio{color:var(--muted); padding:.6rem 0}
+@media (max-width:720px){ .ld__corpo{padding-inline:.9rem} .ld__tabela .opc{display:none} }
+
 /* Relatorio das organizadoras: so existe no papel. */
 .rel{display:none}
 
@@ -897,6 +922,7 @@ h1 em{font-style:normal; color:#FFC21A}
       <p class="eyebrow"><span id="eyebrow-uf">Santa Catarina</span> &middot; corridas de rua e trail</p>
       <h1>Cupons de <em>Corrida</em></h1>
       <p class="lede">Filtre por mês, região, distância e tipo.</p>
+      <button class="cta-cadastro" type="button" data-cadastro hidden>Cadastre-se e ganhe cupons</button>
     </div>
     <div class="top__dados">
       <nav class="uf" id="uf" aria-label="Estado">
@@ -2271,6 +2297,93 @@ ao("stat-orgs", () => {
 });
 ao("orgs-fechar", () => dialogoOrgs.close());
 
+/* ---------- leads ----------
+   Os cadastros ficam no banco D1; a funcao /api/leads do proprio BI (atras
+   do login) devolve o resumo. Fora do BI publicado nao ha API: avisa. */
+const dialogoLeads = document.getElementById("leads");
+
+async function montarLeads(){
+  const corpo = document.getElementById("leads-corpo");
+  corpo.replaceChildren(el("p", { className:"ld__vazio", textContent:"Carregando…" }));
+  let d;
+  try {
+    const r = await fetch("/api/leads", { cache:"no-store", credentials:"same-origin" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    d = await r.json();
+    if (d.erro) throw new Error(d.erro);
+  } catch (e) {
+    corpo.replaceChildren(el("p", { className:"ld__vazio",
+      textContent:"Não foi possível carregar os leads (" + e.message + "). Eles só aparecem no BI publicado, bi.cuponsdecorrida.com.br." }));
+    return;
+  }
+  const t = d.totais || {};
+  const n = v => num(v || 0);
+  const taxa = t.cadastros ? Math.round(100 * (t.confirmados || 0) / t.cadastros) + "%" : "—";
+  const numero = (v, rot) => el("div", {}, [el("b", { textContent:v }), el("span", { textContent:rot })]);
+  const partes = [el("div", { className:"ld__nums" }, [
+    numero(n(t.confirmados), "confirmados"), numero(n(t.cadastros), "cadastros"), numero(taxa, "confirmaram o e-mail"),
+    numero(n(t.ativos), "recebem a newsletter"), numero(n(t.whatsapp), "aceitam WhatsApp"),
+  ])];
+  if (t.fora_do_brevo)
+    partes.push(el("p", { className:"ld__vazio", textContent: n(t.fora_do_brevo) + " confirmados ainda não entraram na lista do Brevo." }));
+
+  // Ultimos 60 dias: barra azul = cadastros, amarela = confirmados.
+  const dias = new Map((d.porDia || []).map(x => [x.dia, x]));
+  const barras = el("div", { className:"ld__dias" });
+  const hojeD = new Date();
+  const lista60 = [];
+  for (let i = 59; i >= 0; i--){
+    const dt = new Date(hojeD.getTime() - i * 86400000).toISOString().slice(0, 10);
+    lista60.push(dias.get(dt) || { dia:dt, cadastros:0, confirmados:0 });
+  }
+  const maior = Math.max(1, ...lista60.map(x => x.cadastros));
+  lista60.forEach(x => {
+    const b = el("i", { title: x.dia.split("-").reverse().join("/") + ": " + x.cadastros + " cadastros, " + x.confirmados + " confirmados" });
+    b.style.height = (100 * x.cadastros / maior) + "%";
+    const c = el("b"); c.style.height = x.cadastros ? (100 * x.confirmados / x.cadastros) + "%" : "0";
+    b.append(c); barras.append(b);
+  });
+  partes.push(el("h3", { textContent:"Cadastros por dia, últimos 60 dias" }), barras,
+    el("p", { className:"ld__legenda" }, [el("span", { style:"background:var(--azul)" }), document.createTextNode("cadastros"),
+      el("span", { style:"background:var(--sol)" }), document.createTextNode("confirmados")]));
+
+  const lista = (titulo, itens, rotulo) => el("div", {}, [el("h3", { textContent:titulo }),
+    itens.length ? el("ul", { className:"ld__lista" }, itens.map(x => el("li", {}, [el("span", { textContent:rotulo(x) }), el("b", { textContent:n(x.n) })])))
+                 : el("p", { className:"ld__vazio", textContent:"—" })]);
+  const NOME_DIST = { "5k":"5 km", "10k":"10 km", "21k":"Meia", "42k":"Maratona", trail:"Trail", ultra:"Ultra" };
+  partes.push(el("div", { className:"ld__grade" }, [
+    lista("Estado", d.porUf || [], x => x.uf === "OU" ? "Outro" : x.uf),
+    lista("Distâncias", d.distancias || [], x => NOME_DIST[x.distancia] || x.distancia),
+    lista("Cidades", d.porCidade || [], x => x.cidade + " · " + x.uf),
+    lista("Página do cadastro", d.porOrigem || [], x => x.origem),
+  ]));
+
+  const corpoT = el("tbody");
+  (d.ultimos || []).forEach(a => {
+    let ds = []; try { ds = JSON.parse(a.distancias || "[]"); } catch {}
+    const quando = (a.criado_em || "").slice(0, 16).replace("T", " ");
+    corpoT.append(el("tr", {}, [
+      el("td", { textContent:a.nome }, [el("small", { textContent:a.email })]),
+      el("td", { textContent:a.cidade + " · " + (a.uf === "OU" ? "Outro" : a.uf) }),
+      el("td", { className:"opc", textContent: ds.map(x => NOME_DIST[x] || x).join(", ") || "—" }),
+      el("td", { className:"opc", textContent: a.whatsapp ? a.whatsapp + (a.whatsapp_ok ? "" : " (sem aceite)") : "—" }),
+      el("td", { className: a.confirmado_em ? "" : "pend",
+                 textContent: a.descadastrado_em ? "descadastrado" : a.confirmado_em ? "confirmado" : "aguardando" },
+         [el("small", { textContent:quando })]),
+    ]));
+  });
+  partes.push(el("h3", { textContent:"Últimos cadastros" }),
+    (d.ultimos || []).length ? el("table", { className:"ld__tabela" }, [
+      el("thead", {}, [el("tr", {}, ["Atleta", "Cidade", "Distâncias", "WhatsApp", "Situação"].map((h, i) =>
+        el("th", { className: i === 2 || i === 3 ? "opc" : "", textContent:h })))]), corpoT])
+      : el("p", { className:"ld__vazio", textContent:"Nenhum cadastro ainda." }));
+  corpo.replaceChildren(...partes);
+}
+
+ao("btn-leads", () => { dialogoLeads.showModal(); montarLeads(); });
+ao("leads-fechar", () => dialogoLeads.close());
+fechaNoFundo(dialogoLeads);
+
 /* ---------- assessorias ----------
    assessorias.json (so no BI, ao lado da pagina): por equipe, quantos
    alunos ela teve em cada prova, tirado do campo "Equipe/Assessoria" das
@@ -3478,6 +3591,7 @@ window.addEventListener("resize", setOffset);
 montarMeses();
 render();
 </script>
+<script src="cadastro.js"></script>
 
 </body>
 </html>

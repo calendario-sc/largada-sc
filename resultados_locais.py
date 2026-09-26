@@ -201,7 +201,7 @@ def publicar_bi():
     try:
         if not g("status", "--porcelain").stdout.strip():
             return
-        g("add", "index.html", "pr.html", "todos.html")
+        g("add", "index.html", "pr.html", "todos.html", "cadastro.js")
         if (pasta / "assessorias.json").exists():
             g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")

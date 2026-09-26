@@ -132,6 +132,8 @@ SO_BI = [
     r'[ \t]*<button class="chip" id="btn-crono"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-foto"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-raiox"[^\n]*\n',
+    r'[ \t]*<button class="chip" id="btn-leads"[^\n]*\n',
+    r'<dialog class="orgs ld" id="leads".*?</dialog>\n\n',
     r'[ \t]*<button class="chip" id="btn-assessorias"[^\n]*\n',
     r'<dialog class="orgs as" id="assess".*?</dialog>\n\n',
     r'<section class="rel" id="rel-assess"[^\n]*\n',
@@ -218,6 +220,8 @@ def build():
             tamanho = len(pagina_bi)
         if BI_DIR.is_dir():
             (BI_DIR / arquivo).write_text(completa(pagina_bi), encoding="utf-8")
+            # O formulario de cadastro e um arquivo a parte, usado pelas paginas.
+            (BI_DIR / "cadastro.js").write_text((AQUI / "cadastro.js").read_text(encoding="utf-8"), encoding="utf-8")
 
         # Pagina publica: sem os paineis e sem os campos de BI.
         # Copia: dados_da_pagina tira campos, e a proxima pagina precisa deles.
