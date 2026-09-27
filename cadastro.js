@@ -18,6 +18,11 @@
 .cta-cadastro:hover{background:#FFD24D}
 .cta-cadastro::before{content:"%"; display:inline-grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:50%;
   background:#0A2F73; color:#FFC21A; font-size:.8rem}
+.top{position:relative}
+.entrar-topo{position:absolute; top:.75rem; right:1rem; z-index:3; font-size:.82rem; font-weight:600; text-decoration:none;
+  color:#fff; border:1px solid rgba(255,255,255,.45); border-radius:999px; padding:.35rem .85rem; background:rgba(10,47,115,.35)}
+.entrar-topo:hover{border-color:#FFC21A; color:#FFC21A}
+@media (max-width:560px){ .entrar-topo{top:.55rem; right:.6rem; font-size:.76rem; padding:.3rem .7rem} }
 .cad{border:0; padding:0; border-radius:18px; width:min(30rem, calc(100% - 1.5rem)); max-height:calc(100vh - 1.5rem);
   background:var(--surface,#fff); color:var(--ink,#0E1726); box-shadow:0 24px 60px rgba(0,0,0,.35)}
 .cad::backdrop{background:rgba(10,20,40,.55)}
@@ -218,8 +223,11 @@
     document.querySelectorAll("[data-cadastro]").forEach(b => { b.hidden = false; b.addEventListener("click", abrir); });
     window.cuponsSessao.then(atleta => {
       if (!atleta) return;
+      // Logado: o topo mostra o nome e leva a area; o "Cadastre-se" vira atalho para os cupons.
+      const primeiro = (atleta.nome || "").split(/\s+/)[0];
+      document.querySelectorAll("[data-entrar]").forEach(a => { a.textContent = "Olá, " + primeiro + " · Minha área"; });
       document.querySelectorAll("[data-cadastro]").forEach(b => {
-        const link = el("a", { className: b.className, href: "area.html", textContent: "Minha área · cupons" });
+        const link = el("a", { className: b.className, href: "area.html", textContent: "Ver meus cupons" });
         b.replaceWith(link);
       });
     });

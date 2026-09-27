@@ -321,9 +321,12 @@ h1 em{font-style:normal; color:#FFC21A}
 }
 
 /* ---------- cupom no cartao da prova ---------- */
-.tag--cupom{background:#FFC21A; color:#0A2F73; font-weight:700; text-decoration:none; cursor:pointer}
-.tag--cupom:hover{background:#FFD24D}
-.tag--cupom::before{content:"% "}
+/* Seletor mais especifico que .tag (definido depois): senao fica cinza. */
+.race .tag.tag--cupom{background:#FFC21A; color:#0A2F73; font-weight:800; font-size:.8rem; letter-spacing:.01em;
+  padding:.28rem .7rem; border-radius:999px; text-decoration:none; cursor:pointer;
+  box-shadow:0 2px 10px rgba(255,194,26,.55); border:1px solid #E5A800}
+.race .tag.tag--cupom:hover{background:#FFD24D; box-shadow:0 3px 14px rgba(255,194,26,.75)}
+.race .tag.tag--cupom::before{content:"% "; font-weight:800}
 
 /* ---------- cupons (gestao), so no BI ---------- */
 .cp{width:min(56rem, 100% - 2rem)}
@@ -936,6 +939,7 @@ h1 em{font-style:normal; color:#FFC21A}
 </style>
 
 <header class="top">
+  <a class="entrar-topo" href="area.html" data-entrar>Entrar · Área do atleta</a>
   <div class="wrap top__inner">
     <div>
       <p class="eyebrow"><span id="eyebrow-uf">Santa Catarina</span> &middot; corridas de rua e trail</p>
