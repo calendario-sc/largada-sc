@@ -6,7 +6,7 @@
   const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   const API = LOCAL ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
   // Chave publica do Turnstile (anti-robo). Em localhost, a chave de teste.
-  const TURNSTILE = LOCAL ? "1x00000000000000000000AA" : "0x4AAAAAAB_CHAVE_PUBLICA";
+  const TURNSTILE = LOCAL ? "1x00000000000000000000AA" : "0x4AAAAAAFE1fT4EqE1SSerz";
   const PRIVACIDADE = "https://www.cuponsdecorrida.com.br/privacidade.html";
   const DISTANCIAS = [["5k", "5 km"], ["10k", "10 km"], ["21k", "Meia (21 km)"], ["42k", "Maratona"],
                       ["trail", "Trail"], ["ultra", "Ultra"]];
