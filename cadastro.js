@@ -49,6 +49,7 @@
 .cad__enviar{font:inherit; font-weight:700; cursor:pointer; border:0; border-radius:12px; padding:.8rem; background:#FFC21A; color:#0A2F73; font-size:1rem}
 .cad__enviar[disabled]{opacity:.6; cursor:wait}
 .cad__erro{margin:0; color:#B81C26; font-size:.85rem}
+.cad__ja{margin:0; font-size:.84rem; text-align:center; color:var(--ink-2,#2E3A50)}
 .cad__ok{padding:1.6rem 1.3rem; text-align:center}
 .cad__ok b{display:block; font-size:1.2rem; margin-bottom:.4rem}
 .cad__ok p{margin:0 0 1rem; color:var(--ink-2,#2E3A50)}
@@ -132,6 +133,8 @@
         el("span", {}, [document.createTextNode("Li e aceito a "),
           el("a", { href: PRIVACIDADE, target: "_blank", rel: "noopener", textContent: "Política de Privacidade" }), document.createTextNode(".")])]),
       captcha, erro, enviar, cidades,
+      el("p", { className: "cad__ja" }, [document.createTextNode("Já tem cadastro? "),
+        el("a", { href: "area.html", textContent: "Entre na sua área do atleta" })]),
     ]);
 
     const fechar = el("button", { className: "cad__fechar", type: "button", textContent: "×", title: "Fechar" });
@@ -202,10 +205,24 @@
   // nao esta no ar: os botoes continuam escondidos (vem com hidden no HTML).
   const ATIVO = LOCAL || !/CHAVE/.test(TURNSTILE);
 
+  // Sessao do atleta (cookie da API): as paginas usam para trocar o botao
+  // por "Minha area" e, na de atletas, para o "Este sou eu".
+  window.cuponsSessao = ATIVO
+    ? fetch(API + "/eu", { credentials: "include", cache: "no-store" }).then(r => r.ok ? r.json() : null).then(d => d && d.ok ? d.atleta : null).catch(() => null)
+    : Promise.resolve(null);
+  window.cuponsApi = API;
+
   function iniciar() {
     if (!ATIVO) return;
     document.head.append(el("style", { textContent: css }));
     document.querySelectorAll("[data-cadastro]").forEach(b => { b.hidden = false; b.addEventListener("click", abrir); });
+    window.cuponsSessao.then(atleta => {
+      if (!atleta) return;
+      document.querySelectorAll("[data-cadastro]").forEach(b => {
+        const link = el("a", { className: b.className, href: "area.html", textContent: "Minha área · cupons" });
+        b.replaceWith(link);
+      });
+    });
     // Volta do link do e-mail.
     const estado = new URLSearchParams(location.search).get("cadastro");
     if (estado) {

@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Área do atleta do Cupons de Corrida: seus cupons de desconto nas inscrições, seus resultados e seus dados.">
+<meta name="robots" content="noindex">
+<title>Área do atleta · Cupons de Corrida</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0JZLDPQ7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P0JZLDPQ7W');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F1F4F9; --surface:#FFFFFF; --surface-2:#F1F4F9; --line:#BFC7D4; --line-soft:#D8DEE8;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880; --azul:#0A2F73; --azul-ink:#0D3F9E; --sol:#FFC21A;
+  --f-display:"Archivo",system-ui,sans-serif; --f-mono:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){ :root{
+  --ground:#0B1220; --surface:#121B2E; --surface-2:#0E1628; --line:#33415C; --line-soft:#26324A;
+  --ink:#E8EDF6; --ink-2:#C4CCDA; --muted:#8C97AA; --azul-ink:#8FB2FF } }
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink); font:16px/1.55 "Instrument Sans",system-ui,sans-serif}
+a{color:inherit}
+header{background:var(--azul); color:#fff; padding:1.8rem 1rem 1.7rem; position:relative}
+header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.wrap{max-width:52rem; margin:0 auto}
+.eyebrow{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.8; margin:0}
+.eyebrow a{color:#FFC21A; text-decoration:none}
+h1{font-family:var(--f-display); font-weight:800; font-size:clamp(1.9rem,6vw,2.8rem); margin:.35rem 0 0; letter-spacing:-.03em; line-height:1}
+h1 em{font-style:normal; color:#FFC21A}
+.topo-linha{display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap}
+.sair{font:inherit; font-size:.85rem; cursor:pointer; border:1px solid rgba(255,255,255,.4); background:none; color:#fff; border-radius:999px; padding:.35rem .9rem}
+main{padding:1.4rem 1rem 3rem}
+.cartao{background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; padding:1.2rem 1.3rem; margin:0 0 1rem}
+.cartao h2{font-family:var(--f-display); font-weight:800; font-size:1.2rem; margin:0 0 .6rem; letter-spacing:-.01em}
+.cartao h2 small{font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-left:.4rem}
+.suave{color:var(--muted); font-size:.9rem; margin:.2rem 0 0}
+label.campo{display:grid; gap:.25rem; font-size:.8rem; font-weight:600; color:var(--ink-2)}
+input[type=text],input[type=email],input[type=tel],select{font:inherit; font-size:.95rem; padding:.6rem .7rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); width:100%}
+.grade{display:grid; grid-template-columns:1fr 1fr; gap:.7rem .9rem}
+.grade .largo{grid-column:1 / -1}
+.dist{display:flex; flex-wrap:wrap; gap:.35rem}
+.dist label{cursor:pointer}
+.dist input{position:absolute; opacity:0; pointer-events:none}
+.dist span{display:inline-block; font-size:.82rem; padding:.35rem .7rem; border-radius:999px; border:1px solid var(--line)}
+.dist input:checked + span{background:var(--azul); border-color:var(--azul); color:#fff}
+.dist input:focus-visible + span{outline:2px solid var(--sol)}
+.aceite{display:flex; gap:.5rem; align-items:flex-start; font-size:.84rem; color:var(--ink-2)}
+.aceite input{margin-top:.2rem}
+.botao{font:inherit; font-weight:700; cursor:pointer; border:0; border-radius:12px; padding:.7rem 1.1rem; background:var(--sol); color:#0A2F73}
+.botao[disabled]{opacity:.6; cursor:wait}
+.botao--leve{background:none; border:1px solid var(--line); color:var(--ink-2); font-weight:500}
+.botao--perigo{background:none; border:1px solid #B81C26; color:#B81C26; font-weight:500}
+.linha-botoes{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; margin-top:.9rem}
+.erro{color:#B81C26; font-size:.86rem; margin:.4rem 0 0}
+.ok{color:#07734F; font-size:.86rem; margin:.4rem 0 0}
+.cupons{display:grid; gap:.7rem}
+.cupom{border:1px dashed var(--line); border-radius:14px; padding:.9rem 1rem; display:grid; grid-template-columns:auto minmax(0,1fr); gap:.2rem 1rem; align-items:center}
+.cupom.destaque{border:2px solid var(--sol); box-shadow:0 0 0 4px rgba(255,194,26,.25)}
+.cupom .selo{grid-row:span 3; font-family:var(--f-display); font-weight:800; font-size:1.05rem; color:#0A2F73; background:var(--sol); border-radius:12px; padding:.6rem .75rem; text-align:center; min-width:5.5rem; line-height:1.15}
+.cupom h3{margin:0; font-size:1rem}
+.cupom p{margin:0; font-size:.84rem; color:var(--ink-2)}
+.cupom .acao{grid-column:2; margin-top:.4rem; display:flex; gap:.5rem; flex-wrap:wrap; align-items:center}
+.codigo{font-family:var(--f-mono); font-size:1.15rem; font-weight:500; letter-spacing:.06em; background:var(--surface-2); border:1px solid var(--line); border-radius:8px; padding:.3rem .7rem}
+.pequeno{font:inherit; font-size:.8rem; cursor:pointer; border:1px solid var(--line); background:none; color:var(--ink-2); border-radius:999px; padding:.3rem .75rem; text-decoration:none}
+.nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(7rem,1fr)); gap:.5rem; margin:.7rem 0}
+.nums div{padding:.55rem .7rem; border:1px solid var(--line-soft); border-radius:10px; background:var(--surface-2)}
+.nums b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.3rem; color:var(--azul-ink)}
+.nums span{font-family:var(--f-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+.aviso{position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%); z-index:50; max-width:calc(100% - 2rem);
+  background:#0A2F73; color:#fff; padding:.85rem 1.1rem; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,.3); font-size:.92rem}
+.carregando{color:var(--muted); padding:1rem 0}
+@media (max-width:560px){ .grade{grid-template-columns:1fr} .cupom{grid-template-columns:1fr} .cupom .selo{grid-row:auto; justify-self:start} .cupom .acao{grid-column:1} }
+</style>
+</head>
+<body>
+<header><div class="wrap topo-linha">
+  <div>
+    <p class="eyebrow"><a href="./">Cupons de Corrida</a> · área do atleta</p>
+    <h1 id="saudacao">Sua <em>área</em></h1>
+  </div>
+  <button class="sair" id="sair" type="button" hidden>Sair</button>
+</div></header>
+
+<main><div class="wrap" id="conteudo"><p class="carregando">Carregando…</p></div></main>
+
+<script>
+(() => {
+  const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  const API = LOCAL ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
+  const TURNSTILE = LOCAL ? "1x00000000000000000000AA" : "0x4AAAAAAFE1fT4EqE1SSerz";
+  const DISTANCIAS = [["5k", "5 km"], ["10k", "10 km"], ["21k", "Meia (21 km)"], ["42k", "Maratona"], ["trail", "Trail"], ["ultra", "Ultra"]];
+  const params = new URLSearchParams(location.search);
+  const cupomPedido = Number(params.get("cupom") || 0);
+  const conteudo = document.getElementById("conteudo");
+  const num = n => n.toLocaleString("pt-BR");
+  const el = (tag, props = {}, kids = []) => {
+    const n = Object.assign(document.createElement(tag), props);
+    kids.forEach(k => k && n.append(k));
+    return n;
+  };
+  const api = (caminho, opcoes = {}) => fetch(API + caminho, {
+    credentials: "include", cache: "no-store", ...opcoes,
+    headers: opcoes.body ? { "Content-Type": "application/json" } : {},
+  }).then(async r => ({ status: r.status, ...(await r.json().catch(() => ({ ok: false, erro: "Resposta inválida do servidor." }))) }));
+  const dataBr = s => s ? s.slice(8, 10) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4) : "";
+
+  function aviso(texto) {
+    const a = el("div", { className: "aviso", role: "status", textContent: texto });
+    document.body.append(a);
+    setTimeout(() => a.remove(), 9000);
+  }
+
+  // ------------------------------------------------------------ sem login
+  function telaEntrar(msg) {
+    document.getElementById("saudacao").replaceChildren(document.createTextNode("Sua "), el("em", { textContent: "área" }));
+    const email = el("input", { type: "email", autocomplete: "email", placeholder: "seu@email.com", maxLength: 120 });
+    const captcha = el("div");
+    const erro = el("p", { className: "erro", role: "alert", textContent: msg || "" });
+    const enviar = el("button", { className: "botao", type: "submit", textContent: "Receber link de acesso" });
+    let widget = null;
+    const form = el("form", {}, [
+      el("label", { className: "campo" }, [el("span", { textContent: "E-mail do seu cadastro" }), email]),
+      el("div", { style: "margin-top:.8rem" }, [captcha]), erro,
+      el("div", { className: "linha-botoes" }, [enviar]),
+    ]);
+    form.onsubmit = async e => {
+      e.preventDefault();
+      erro.textContent = "";
+      enviar.disabled = true;
+      const token = window.turnstile && widget != null ? window.turnstile.getResponse(widget) : "";
+      const d = await api("/entrar", { method: "POST", body: JSON.stringify({ email: email.value.trim(), turnstile: token }) })
+        .catch(() => ({ ok: false, erro: "Sem conexão com o servidor. Tente de novo." }));
+      enviar.disabled = false;
+      if (!d.ok) { erro.textContent = d.erro; if (window.turnstile && widget != null) window.turnstile.reset(widget); return; }
+      const pronto = el("div", {}, [
+        el("h2", { textContent: "Veja seu e-mail" }),
+        el("p", { textContent: d.mensagem + " Se não chegar em alguns minutos, veja a caixa de spam ou promoções." }),
+      ]);
+      if (d.dev_link) pronto.append(el("p", {}, [el("a", { href: d.dev_link.replace(/^https?:\/\/[^/]+/, API), textContent: "(teste local) entrar agora" })]));
+      caixa.replaceChildren(pronto);
+    };
+    const caixa = el("section", { className: "cartao" }, [
+      el("h2", { textContent: "Entrar na área do atleta" }),
+      el("p", { className: "suave", textContent: "Sem senha: digite o e-mail do seu cadastro e enviamos um link de acesso." }),
+      el("div", { style: "margin-top:1rem" }, [form]),
+    ]);
+    const cadastro = el("section", { className: "cartao" }, [
+      el("h2", { textContent: "Ainda não tem cadastro?" }),
+      el("p", { className: "suave", textContent: "Cadastre-se de graça para ver os cupons de desconto nas inscrições e receber as provas da sua região." }),
+      el("div", { className: "linha-botoes" }, [Object.assign(el("button", { className: "botao", type: "button", textContent: "Cadastre-se e ganhe cupons" }), { onclick: () => window.abrirCadastro && window.abrirCadastro() })]),
+    ]);
+    conteudo.replaceChildren(caixa, cadastro);
+    carregarTurnstile().then(() => { widget = window.turnstile.render(captcha, { sitekey: TURNSTILE, size: "flexible", language: "pt-br" }); }).catch(() => {});
+    email.focus();
+  }
+
+  function carregarTurnstile() {
+    if (window.turnstile) return Promise.resolve();
+    return new Promise((ok, falha) => {
+      const s = el("script", { src: "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit", async: true });
+      s.onload = ok; s.onerror = falha;
+      document.head.append(s);
+    });
+  }
+
+  // ------------------------------------------------------------ logado
+  let atleta = null;
+
+  async function telaArea() {
+    const primeiro = atleta.nome.split(/\s+/)[0];
+    document.getElementById("saudacao").replaceChildren(document.createTextNode("Olá, "), el("em", { textContent: primeiro }));
+    const sair = document.getElementById("sair");
+    sair.hidden = false;
+    sair.onclick = async () => { await api("/sair", { method: "POST" }); location.href = "./"; };
+    const secCupons = el("section", { className: "cartao" }, [el("h2", { textContent: "Meus cupons" }), el("p", { className: "carregando", textContent: "Carregando…" })]);
+    const secPerfil = el("section", { className: "cartao" });
+    const secDados = el("section", { className: "cartao" });
+    const secConta = el("section", { className: "cartao" });
+    conteudo.replaceChildren(secCupons, secPerfil, secDados, secConta);
+    montarPerfil(secPerfil);
+    montarDados(secDados);
+    montarConta(secConta);
+    await montarCupons(secCupons);
+  }
+
+  function descreverAlvo(c) {
+    if (c.alvo === "prova") return (c.prova_nome || "") + (c.prova_data ? " · " + dataBr(c.prova_data) : "") + (c.prova_cidade ? " · " + c.prova_cidade : "");
+    if (c.alvo === "organizadora") return "Provas de " + c.organizadora;
+    return "Válido em várias provas" + (c.uf ? " de " + c.uf : "");
+  }
+
+  async function montarCupons(sec) {
+    const d = await api("/cupons").catch(() => ({ ok: false }));
+    const lista = el("div", { className: "cupons" });
+    const cupons = (d.cupons || []).slice().sort((a, b) =>
+      (b.id === cupomPedido) - (a.id === cupomPedido) || ((b.uf || atleta.uf) === atleta.uf) - ((a.uf || atleta.uf) === atleta.uf));
+    cupons.forEach(c => {
+      const acao = el("div", { className: "acao" });
+      const mostrar = (codigo, link, regras) => {
+        const copiar = el("button", { className: "pequeno", type: "button", textContent: "Copiar" });
+        copiar.onclick = () => navigator.clipboard.writeText(codigo).then(() => { copiar.textContent = "Copiado ✓"; });
+        acao.replaceChildren(el("span", { className: "codigo", textContent: codigo }), copiar);
+        if (link) acao.append(el("a", { className: "pequeno", href: link, target: "_blank", rel: "noopener", textContent: "Ir para a inscrição ↗" }));
+        if (regras) acao.append(el("p", { textContent: regras, style: "width:100%" }));
+      };
+      if (c.revelado) mostrar(c.codigo, c.link_inscricao, c.regras);
+      else if (c.esgotado) acao.append(el("p", { textContent: "Esgotado." }));
+      else {
+        const ver = el("button", { className: "botao", type: "button", textContent: "Ver código" });
+        ver.onclick = async () => {
+          ver.disabled = true;
+          const r = await api("/cupons/" + c.id + "/revelar", { method: "POST" }).catch(() => ({ ok: false, erro: "Sem conexão." }));
+          if (!r.ok) { ver.disabled = false; acao.append(el("p", { className: "erro", textContent: r.erro })); return; }
+          if (typeof gtag === "function") gtag("event", "cupom_revelado", { cupom_id: c.id });
+          mostrar(r.codigo, r.link_inscricao, r.regras);
+        };
+        acao.append(ver);
+      }
+      lista.append(el("article", { className: "cupom" + (c.id === cupomPedido ? " destaque" : "") }, [
+        el("div", { className: "selo", textContent: c.desconto }),
+        el("h3", { textContent: c.titulo }),
+        el("p", { textContent: descreverAlvo(c) }),
+        el("p", { textContent: c.valido_ate ? "Válido até " + dataBr(c.valido_ate) : "Sem prazo definido" }),
+        acao,
+      ]));
+    });
+    sec.replaceChildren(el("h2", {}, [document.createTextNode("Meus cupons"), cupons.length ? el("small", { textContent: cupons.length + (cupons.length === 1 ? " disponível" : " disponíveis") }) : null]),
+      cupons.length ? lista : el("p", { className: "suave", textContent: "Nenhum cupom disponível agora. Quando surgir um, ele aparece aqui e você fica sabendo pela newsletter." }));
+    const destaque = sec.querySelector(".cupom.destaque");
+    if (destaque) destaque.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  // Resumo do perfil de resultados, pelos mesmos arquivos da pagina de atletas.
+  async function resumoResultados(slug) {
+    const indice = await fetch("atletas/indice.json").then(r => r.json());
+    const k = slug.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const pref = indice.prefixos.filter(p => k.startsWith(p)).sort((a, b) => b.length - a.length)[0];
+    if (!pref) return null;
+    const balde = await fetch("atletas/dados/" + pref + ".json").then(r => r.ok ? r.json() : {});
+    const a = balde[slug];
+    if (!a) return null;
+    const [nome, , res] = a;
+    const km = res.reduce((s, r) => s + (r[1] || 0), 0);
+    const provas = new Set(res.map(r => r[0])).size;
+    const melhor = km => res.filter(r => r[1] === km && r[2]).reduce((m, r) => (m == null || r[2] < m ? r[2] : m), null);
+    const tempo = s => { if (!s) return "—"; const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); };
+    return { nome, provas, km, t5: tempo(melhor(5)), t10: tempo(melhor(10)), t21: tempo(melhor(21.1)), t42: tempo(melhor(42.2)) };
+  }
+
+  async function montarPerfil(sec) {
+    sec.replaceChildren(el("h2", { textContent: "Meus resultados" }));
+    if (!atleta.slug_atleta) {
+      sec.append(el("p", { className: "suave", textContent: "Ligue sua conta ao seu histórico de corridas: procure seu nome em Resultados por atleta e clique em “Este sou eu”." }),
+        el("div", { className: "linha-botoes" }, [el("a", { className: "botao", href: "atletas.html", textContent: "Encontrar meu nome" })]));
+      return;
+    }
+    const r = await resumoResultados(atleta.slug_atleta).catch(() => null);
+    const nome = r ? r.nome.toLowerCase().replace(/(^|\s)\S/g, x => x.toUpperCase()) : atleta.slug_atleta;
+    const desfazer = el("button", { className: "pequeno", type: "button", textContent: "Não sou eu" });
+    desfazer.onclick = async () => {
+      const d = await api("/eu", { method: "PUT", body: JSON.stringify({ slug_atleta: "" }) });
+      if (d.ok) { atleta = d.atleta; montarPerfil(sec); }
+    };
+    sec.append(el("p", { className: "suave", textContent: "Perfil ligado: " + nome }));
+    if (r) sec.append(el("div", { className: "nums" }, [
+      ["provas", num(r.provas)], ["km corridos", num(Math.round(r.km))], ["melhor 5 km", r.t5], ["melhor 10 km", r.t10], ["melhor meia", r.t21], ["melhor maratona", r.t42],
+    ].map(([rot, v]) => el("div", {}, [el("b", { textContent: v }), el("span", { textContent: rot })]))));
+    sec.append(el("div", { className: "linha-botoes" }, [
+      el("a", { className: "botao", href: "atletas.html#" + atleta.slug_atleta, textContent: "Ver meu perfil completo" }), desfazer]));
+  }
+
+  function montarDados(sec) {
+    const nome = el("input", { type: "text", value: atleta.nome, maxLength: 80, autocomplete: "name" });
+    const cidade = el("input", { type: "text", value: atleta.cidade, maxLength: 80, autocomplete: "address-level2" });
+    const uf = el("select", {}, [["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"], ["OU", "Outro"]].map(([v, t]) => el("option", { value: v, textContent: t })));
+    uf.value = atleta.uf;
+    const dist = el("div", { className: "dist" });
+    DISTANCIAS.forEach(([v, rot]) => dist.append(el("label", {}, [
+      el("input", { type: "checkbox", value: v, checked: atleta.distancias.includes(v) }), el("span", { textContent: rot })])));
+    const whats = el("input", { type: "tel", value: atleta.whatsapp, maxLength: 20, placeholder: "(48) 99999-0000", autocomplete: "tel" });
+    const aceite = el("input", { type: "checkbox", checked: atleta.whatsapp_ok });
+    const msg = el("p", { role: "status" });
+    const salvar = el("button", { className: "botao", type: "submit", textContent: "Salvar" });
+    const form = el("form", { className: "grade" }, [
+      el("label", { className: "campo largo" }, [el("span", { textContent: "Nome" }), nome]),
+      el("label", { className: "campo" }, [el("span", { textContent: "Cidade" }), cidade]),
+      el("label", { className: "campo" }, [el("span", { textContent: "Estado" }), uf]),
+      el("div", { className: "largo" }, [el("p", { className: "suave", textContent: "Distâncias que você corre", style: "font-size:.8rem;font-weight:600;margin:0 0 .35rem" }), dist]),
+      el("label", { className: "campo largo" }, [el("span", { textContent: "WhatsApp (opcional)" }), whats]),
+      el("label", { className: "aceite largo" }, [aceite, el("span", { textContent: "Aceito receber avisos de cupons e provas pelo WhatsApp." })]),
+      el("div", { className: "largo" }, [salvar, msg]),
+    ]);
+    form.onsubmit = async e => {
+      e.preventDefault();
+      msg.className = ""; msg.textContent = "";
+      salvar.disabled = true;
+      const d = await api("/eu", { method: "PUT", body: JSON.stringify({
+        nome: nome.value, cidade: cidade.value, uf: uf.value,
+        distancias: [...dist.querySelectorAll("input:checked")].map(i => i.value),
+        whatsapp: whats.value, aceitaWhatsapp: aceite.checked,
+      }) }).catch(() => ({ ok: false, erro: "Sem conexão." }));
+      salvar.disabled = false;
+      if (!d.ok) { msg.className = "erro"; msg.textContent = d.erro; return; }
+      atleta = d.atleta;
+      msg.className = "ok"; msg.textContent = "Dados salvos.";
+    };
+    sec.replaceChildren(el("h2", {}, [document.createTextNode("Meus dados"), el("small", { textContent: atleta.email })]), form);
+  }
+
+  function montarConta(sec) {
+    const estado = el("p", { className: "suave" });
+    const alternar = el("button", { className: "botao botao--leve", type: "button" });
+    const pintar = () => {
+      estado.textContent = atleta.newsletter
+        ? "Você recebe a newsletter com cupons e provas da sua região."
+        : "Você não recebe a newsletter. Os cupons continuam aqui na sua área.";
+      alternar.textContent = atleta.newsletter ? "Parar de receber a newsletter" : "Voltar a receber a newsletter";
+    };
+    pintar();
+    alternar.onclick = async () => {
+      const d = await api("/eu/newsletter", { method: "POST", body: JSON.stringify({ ativo: !atleta.newsletter }) });
+      if (d.ok) { atleta = d.atleta; pintar(); }
+    };
+    const excluir = el("button", { className: "botao botao--perigo", type: "button", textContent: "Excluir minha conta" });
+    excluir.onclick = async () => {
+      if (!confirm("Excluir sua conta? Seus dados são apagados e você deixa de receber e-mails e cupons. Não dá para desfazer.")) return;
+      const d = await api("/eu", { method: "DELETE" });
+      if (d.ok) { conteudo.replaceChildren(el("section", { className: "cartao" }, [el("h2", { textContent: "Conta excluída" }),
+        el("p", { className: "suave", textContent: "Seus dados foram apagados. Obrigado por ter corrido com a gente." })]));
+        document.getElementById("sair").hidden = true; }
+    };
+    sec.replaceChildren(el("h2", { textContent: "Newsletter e conta" }), estado,
+      el("div", { className: "linha-botoes" }, [alternar, excluir]),
+      el("p", { className: "suave", style: "font-size:.8rem;margin-top:.8rem" }, [document.createTextNode("Como tratamos seus dados: "),
+        el("a", { href: "privacidade.html", textContent: "Política de Privacidade" }), document.createTextNode(".")]));
+  }
+
+  // ------------------------------------------------------------ inicio
+  (async () => {
+    const acesso = params.get("acesso");
+    if (params.get("bemvindo")) aviso("Cadastro confirmado! Bem-vindo(a) à sua área do atleta.");
+    if (acesso || params.get("bemvindo")) history.replaceState(null, "", location.pathname + (cupomPedido ? "?cupom=" + cupomPedido : ""));
+    const d = await api("/eu").catch(() => ({ ok: false, status: 0 }));
+    if (d.ok) { atleta = d.atleta; return telaArea(); }
+    if (d.status === 0) return conteudo.replaceChildren(el("p", { className: "erro", textContent: "Sem conexão com o servidor. Tente de novo em instantes." }));
+    telaEntrar(acesso === "expirado" ? "O link de acesso expirou. Peça um novo abaixo."
+             : acesso === "invalido" ? "Link de acesso inválido ou já usado. Peça um novo abaixo."
+             : cupomPedido ? "Entre para ver o código do cupom." : "");
+  })();
+})();
+</script>
+<script src="cadastro.js"></script>
+</body>
+</html>

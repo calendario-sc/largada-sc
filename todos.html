@@ -335,6 +335,43 @@ h1 em{font-style:normal; color:#FFC21A}
   .as__nums{grid-template-columns:1fr 1fr}
 }
 
+/* ---------- cupom no cartao da prova ---------- */
+.tag--cupom{background:#FFC21A; color:#0A2F73; font-weight:700; text-decoration:none; cursor:pointer}
+.tag--cupom:hover{background:#FFD24D}
+.tag--cupom::before{content:"% "}
+
+/* ---------- cupons (gestao), so no BI ---------- */
+.cp{width:min(56rem, 100% - 2rem)}
+.cp__corpo{padding:0 1.2rem 1rem; overflow-y:auto}
+.cp__novo{margin:0 0 .8rem}
+.cp__lista{list-style:none; margin:0; padding:0; display:grid; gap:.5rem}
+.cp__item{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.3rem 1rem; padding:.7rem .85rem; border:1px solid var(--line-soft); border-radius:12px; background:var(--surface)}
+.cp__item.inativo{opacity:.6}
+.cp__item h4{margin:0; font-size:.98rem}
+.cp__item h4 small{font-weight:400; color:var(--muted); margin-left:.4rem}
+.cp__item p{margin:.15rem 0 0; font-size:.8rem; color:var(--ink-2)}
+.cp__item code{font-family:var(--f-mono); background:var(--surface-2); padding:.05rem .35rem; border-radius:5px}
+.cp__acoes{display:flex; gap:.35rem; align-items:flex-start; flex-wrap:wrap; justify-content:flex-end}
+.cp__acoes button{font:inherit; font-size:.76rem; cursor:pointer; border:1px solid var(--line); background:none; color:var(--ink-2); border-radius:999px; padding:.2rem .6rem}
+.cp__acoes button:hover{border-color:var(--ink)}
+.cp__vistos{font-family:var(--f-display); font-weight:800; color:var(--azul-ink)}
+.cp__form{display:grid; grid-template-columns:1fr 1fr; gap:.6rem .9rem; padding:.9rem; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); margin:0 0 1rem}
+.cp__form label{display:grid; gap:.2rem; font-size:.76rem; font-weight:600; color:var(--ink-2)}
+.cp__form label.largo{grid-column:1 / -1}
+.cp__form input,.cp__form select,.cp__form textarea{font:inherit; font-size:.88rem; padding:.45rem .55rem; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink); width:100%; min-width:0; box-sizing:border-box}
+.cp__form input[type=checkbox]{width:auto}
+.cp__form label,.cp__form > *{min-width:0}
+.cp__corpo{overflow-x:hidden}
+.cp__form textarea{min-height:3.2rem; resize:vertical}
+.cp__alvo{grid-column:1 / -1; display:flex; gap:.4rem; flex-wrap:wrap; align-items:center; font-size:.8rem}
+.cp__alvo .chip[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
+.cp__botoes{grid-column:1 / -1; display:flex; gap:.5rem; align-items:center}
+.cp__botoes .salvar{font:inherit; font-weight:700; cursor:pointer; border:0; border-radius:10px; padding:.55rem 1rem; background:#FFC21A; color:#0A2F73}
+.cp__botoes .cancelar{font:inherit; cursor:pointer; border:1px solid var(--line); background:none; border-radius:10px; padding:.5rem .9rem; color:var(--ink-2)}
+.cp__erro{color:#B81C26; font-size:.82rem; margin:0}
+.cp__vazio{color:var(--muted); padding:.6rem 0}
+@media (max-width:720px){ .cp__corpo{padding-inline:.9rem} .cp__form{grid-template-columns:1fr} .cp__item{grid-template-columns:1fr} .cp__acoes{justify-content:flex-start} }
+
 /* ---------- leads (cadastro de atletas), so no BI ---------- */
 .ld{width:min(52rem, 100% - 2rem)}
 .ld__corpo{padding:0 1.2rem 1rem; overflow-y:auto}
@@ -2297,6 +2334,190 @@ ao("stat-orgs", () => {
 });
 ao("orgs-fechar", () => dialogoOrgs.close());
 
+/* ---------- cupons ----------
+   A API publica devolve os cupons ativos (sem o codigo). Cupom de prova casa
+   pela chave "data|nome"; de organizadora, por qualquer prova futura dela. */
+const API_CUPONS = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
+let CUPONS = [];
+const chaveDaProva = r => r.data + "|" + r.nome;
+
+function cupomDaProva(r){
+  if (!CUPONS.length) return null;
+  const chave = chaveDaProva(r);
+  return CUPONS.find(c => !c.esgotado && c.alvo === "prova" && c.prova_chave === chave)
+      || CUPONS.find(c => !c.esgotado && c.alvo === "organizadora" && (r.organizadores || []).includes(c.organizadora))
+      || null;
+}
+
+(async () => {
+  try {
+    const r = await fetch(API_CUPONS + "/cupons", { cache:"no-cache" });
+    const d = await r.json();
+    CUPONS = d.cupons || [];
+    if (CUPONS.length) render();
+  } catch (e) { /* sem API (Artifact, offline): sem selo */ }
+})();
+
+/* ---------- gestao de cupons (so no BI) ----------
+   /api/cupons do proprio BI, atras do login. */
+const dialogoCupons = document.getElementById("cupons");
+let cuponsAdm = [];
+
+async function carregarCuponsAdm(){
+  const corpo = document.getElementById("cupons-corpo");
+  corpo.replaceChildren(el("p", { className:"cp__vazio", textContent:"Carregando…" }));
+  try {
+    const r = await fetch("/api/cupons", { cache:"no-store", credentials:"same-origin" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    cuponsAdm = (await r.json()).cupons || [];
+  } catch (e) {
+    corpo.replaceChildren(el("p", { className:"cp__vazio",
+      textContent:"Não foi possível carregar os cupons (" + e.message + "). Eles só aparecem no BI publicado, bi.cuponsdecorrida.com.br." }));
+    return;
+  }
+  listarCuponsAdm();
+}
+
+const dataBr = s => s ? s.slice(8, 10) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4) : "";
+const hojeIso = () => new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 10);
+
+function descreverAlvo(c){
+  if (c.alvo === "prova") return (c.prova_nome || "prova") + (c.prova_data ? " · " + dataBr(c.prova_data) : "") + (c.prova_cidade ? " · " + c.prova_cidade : "");
+  if (c.alvo === "organizadora") return "todas as provas de " + c.organizadora;
+  return "geral" + (c.uf ? " · " + c.uf : "");
+}
+
+function listarCuponsAdm(){
+  const corpo = document.getElementById("cupons-corpo");
+  const novo = el("button", { className:"cta-cadastro cp__novo", type:"button", textContent:"Novo cupom" });
+  novo.onclick = () => formularioCupom(null);
+  const lista = el("ul", { className:"cp__lista" });
+  cuponsAdm.forEach(c => {
+    const vencido = c.valido_ate && c.valido_ate < hojeIso();
+    const situacao = !c.ativo ? "desativado" : vencido ? "vencido" : "ativo";
+    const acoes = el("div", { className:"cp__acoes" });
+    const b = (txt, fn) => { const x = el("button", { type:"button", textContent:txt }); x.onclick = fn; acoes.append(x); };
+    b("Editar", () => formularioCupom(c));
+    b(c.ativo ? "Desativar" : "Ativar", () => salvarCupom({ ...c, ativo: !c.ativo }, c.id));
+    if (!c.vistos) b("Apagar", async () => {
+      if (!confirm("Apagar o cupom \"" + c.titulo + "\"?")) return;
+      const r = await fetch("/api/cupons?id=" + c.id, { method:"DELETE", credentials:"same-origin" });
+      const d = await r.json(); if (d.erro) alert(d.erro); carregarCuponsAdm();
+    });
+    lista.append(el("li", { className:"cp__item" + (situacao === "ativo" ? "" : " inativo") }, [
+      el("div", {}, [
+        el("h4", { textContent:c.titulo }, [el("small", { textContent:c.desconto + " · " + situacao })]),
+        el("p", { textContent:"Vale para: " + descreverAlvo(c) }),
+        el("p", {}, [document.createTextNode("Código: "), el("code", { textContent:c.codigo }),
+          document.createTextNode((c.valido_ate ? " · até " + dataBr(c.valido_ate) : " · sem prazo") + (c.limite ? " · limite " + c.limite + " atletas" : ""))]),
+        el("p", {}, [el("span", { className:"cp__vistos", textContent:num(c.vistos || 0) }),
+          document.createTextNode((c.vistos === 1 ? " atleta viu o código" : " atletas viram o código") + (c.ultimo_visto ? " · último em " + dataBr(c.ultimo_visto.slice(0, 10)) : ""))]),
+      ]),
+      acoes,
+    ]));
+  });
+  corpo.replaceChildren(novo, cuponsAdm.length ? lista : el("p", { className:"cp__vazio",
+    textContent:"Nenhum cupom ainda. Crie o primeiro quando tiver o código de uma organizadora: ele aparece na área dos atletas cadastrados e como selo no cartão da prova." }));
+}
+
+function formularioCupom(c){
+  const corpo = document.getElementById("cupons-corpo");
+  c = c || { alvo:"prova", ativo:1 };
+  const campo = (rotulo, input, largo) => el("label", { className: largo ? "largo" : "" }, [el("span", { textContent:rotulo }), input]);
+  const inp = (nome, tipo, valor, extra) => Object.assign(el("input", { type:tipo || "text", name:nome }), { value: valor == null ? "" : valor }, extra || {});
+  const f = el("form", { className:"cp__form" });
+  const titulo = inp("titulo", "text", c.titulo, { placeholder:"Ex.: 15% na Meia de Floripa", maxLength:120 });
+  const desconto = inp("desconto", "text", c.desconto, { placeholder:"Ex.: 15% off", maxLength:60 });
+  const codigo = inp("codigo", "text", c.codigo, { placeholder:"Código que o atleta usa na inscrição", maxLength:60 });
+
+  // Para quem vale: prova, organizadora ou geral.
+  let alvo = c.alvo || "prova";
+  const alvoBox = el("div", { className:"cp__alvo" }, [el("span", { textContent:"Vale para:" })]);
+  const partes = {};
+  [["prova", "uma prova"], ["organizadora", "todas as provas de uma organizadora"], ["geral", "geral"]].forEach(([v, t]) => {
+    const x = el("button", { type:"button", className:"chip", textContent:t });
+    x.setAttribute("aria-pressed", String(alvo === v));
+    x.onclick = () => { alvo = v; alvoBox.querySelectorAll(".chip").forEach(y => y.setAttribute("aria-pressed", String(y === x))); mostrarAlvo(); };
+    alvoBox.append(x);
+  });
+
+  // Prova: busca entre as provas futuras do calendario (a pagina do BI tem todas).
+  const futuras = RACES.filter(r => !r._passada && !(r.tags || []).includes("Treino")).sort((a, b) => a._d - b._d);
+  const rotuloProva = r => dataBr(r.data) + " · " + r.nome + " · " + r.cidade;
+  const lista = el("datalist", { id:"cp-provas" });
+  futuras.forEach(r => lista.append(el("option", { value:rotuloProva(r) })));
+  const provaInp = inp("prova", "text", c.prova_nome ? dataBr(c.prova_data) + " · " + c.prova_nome + " · " + (c.prova_cidade || "") : "", { placeholder:"Digite o nome da prova…" });
+  provaInp.setAttribute("list", "cp-provas");
+  let provaEscolhida = c.prova_chave ? { chave:c.prova_chave, nome:c.prova_nome, data:c.prova_data, cidade:c.prova_cidade } : null;
+  const link = inp("link", "url", c.link_inscricao, { placeholder:"https://…" });
+  const validade = inp("validade", "date", c.valido_ate);
+  provaInp.oninput = () => {
+    const r = futuras.find(x => rotuloProva(x) === provaInp.value);
+    provaEscolhida = r ? { chave:chaveDaProva(r), nome:r.nome, data:r.data, cidade:r.cidade } : null;
+    if (r){
+      if (!link.value && r.cartao && r.cartao.inscricao) link.value = r.cartao.inscricao;
+      if (!validade.value) validade.value = r.data;
+      if (!titulo.value && desconto.value) titulo.value = desconto.value + " na " + r.nome;
+    }
+  };
+  const orgs = el("select", { name:"organizadora" }, [el("option", { value:"", textContent:"Escolha…" })]);
+  ordenaPorUso(porOrganizador).forEach(([o]) => orgs.append(el("option", { value:o, textContent:o })));
+  orgs.value = c.organizadora || "";
+  const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ["SC", "SC"], ["PR", "PR"]].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
+  uf.value = c.uf || "";
+  const campoProva = campo("Prova", provaInp, true), campoOrg = campo("Organizadora", orgs, true), campoUf = campo("Estado", uf);
+  function mostrarAlvo(){
+    campoProva.hidden = alvo !== "prova"; campoOrg.hidden = alvo !== "organizadora"; campoUf.hidden = alvo !== "geral";
+  }
+  mostrarAlvo();
+
+  const limite = inp("limite", "number", c.limite, { min:1, placeholder:"sem limite" });
+  const regras = Object.assign(el("textarea", { name:"regras", maxLength:400, placeholder:"Ex.: válido para 5 e 10 km; não cumulativo" }), { value:c.regras || "" });
+  const ativo = el("input", { type:"checkbox", checked: !!c.ativo });
+  const erro = el("p", { className:"cp__erro", role:"alert" });
+  const salvar = el("button", { type:"submit", className:"salvar", textContent: c.id ? "Salvar alterações" : "Criar cupom" });
+  const cancelar = el("button", { type:"button", className:"cancelar", textContent:"Cancelar" });
+  cancelar.onclick = listarCuponsAdm;
+
+  f.append(
+    campo("Desconto", desconto), campo("Código", codigo), campo("Título", titulo, true), alvoBox,
+    campoProva, lista, campoOrg, campoUf,
+    campo("Link de inscrição", link, true), campo("Válido até", validade), campo("Limite de atletas", limite),
+    campo("Regras (aparecem para o atleta)", regras, true),
+    el("label", { className:"largo" }, [el("span", {}, [ativo, document.createTextNode(" Cupom ativo (aparece para os atletas)")])]),
+    erro, el("div", { className:"cp__botoes" }, [salvar, cancelar]),
+  );
+  f.onsubmit = async e => {
+    e.preventDefault();
+    erro.textContent = "";
+    if (alvo === "prova" && !provaEscolhida) return (erro.textContent = "Escolha a prova na lista de sugestões.");
+    const dados = {
+      titulo:titulo.value, desconto:desconto.value, codigo:codigo.value, alvo,
+      prova_chave: provaEscolhida && provaEscolhida.chave, prova_nome: provaEscolhida && provaEscolhida.nome,
+      prova_data: provaEscolhida && provaEscolhida.data, prova_cidade: provaEscolhida && provaEscolhida.cidade,
+      organizadora: orgs.value, uf: uf.value, link_inscricao: link.value, regras: regras.value,
+      valido_ate: validade.value, limite: limite.value, ativo: ativo.checked,
+    };
+    const d = await salvarCupom(dados, c.id);
+    if (d && d.erro) erro.textContent = d.erro;
+  };
+  corpo.replaceChildren(el("h3", { textContent: c.id ? "Editar cupom" : "Novo cupom" }), f);
+  desconto.focus();
+}
+
+async function salvarCupom(dados, id){
+  const r = await fetch("/api/cupons" + (id ? "?id=" + id : ""), {
+    method: id ? "PUT" : "POST", credentials:"same-origin",
+    headers:{ "Content-Type":"application/json" }, body: JSON.stringify(dados) });
+  const d = await r.json().catch(() => ({ erro:"Erro ao salvar (HTTP " + r.status + ")." }));
+  if (!d.erro) await carregarCuponsAdm();
+  return d;
+}
+
+ao("btn-cupons", () => { dialogoCupons.showModal(); carregarCuponsAdm(); });
+ao("cupons-fechar", () => dialogoCupons.close());
+fechaNoFundo(dialogoCupons);
+
 /* ---------- leads ----------
    Os cadastros ficam no banco D1; a funcao /api/leads do proprio BI (atras
    do login) devolve o resumo. Fora do BI publicado nao ha API: avisa. */
@@ -3443,6 +3664,12 @@ function linha(r, destaque){
     meta.append(el("span", { className:"tag tag--permit", textContent: r.uf === "PR" ? "Permit FAP" : "Permit FCA",
                              title:"Permit nº " + r.permit + (r.uf === "PR" ? " na Federação de Atletismo do Paraná"
                                                                         : " na Federação Catarinense de Atletismo") }));
+  const cupom = !r._passada && cupomDaProva(r);
+  if (cupom){
+    const selo = el("a", { className:"tag tag--cupom", href:"area.html?cupom=" + cupom.id,
+      textContent:"Cupom " + cupom.desconto, title:cupom.titulo + " — entre na sua área do atleta para ver o código" });
+    meta.append(selo);
+  }
   if (r.evento_dias > 1)
     meta.append(el("span", { className:"tag tag--dia", textContent:"dia " + r.evento_dia + " de " + r.evento_dias,
                              title:"Evento de " + r.evento_dias + " dias: conta uma prova só nos totais" }));

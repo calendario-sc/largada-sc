@@ -345,6 +345,7 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
       <h2 id="p-nome"></h2>
       <div class="perfil__acoes">
         <button class="voltar" id="comparar" type="button" title="Comparar este atleta com outro, estilo Super Trunfo">Comparar</button>
+        <button class="voltar" id="sou-eu" type="button" hidden title="Ligar este perfil de resultados à sua conta">Este sou eu</button>
         <button class="voltar" id="pdf" type="button" title="Salvar este perfil em PDF">Exportar PDF</button>
         <button class="voltar" id="voltar" type="button">← outra busca</button>
       </div>
@@ -567,6 +568,25 @@ window.addEventListener("afterprint", () => {
 
 document.getElementById("voltar").onclick = () => { document.getElementById("perfil").hidden = true; history.replaceState(null, "", location.pathname); input.focus(); };
 
+/* ---------- "Este sou eu" ----------
+   Quem esta logado na area do atleta liga o perfil de resultados a conta. */
+async function marcarSouEu(a){
+  const b = document.getElementById("sou-eu");
+  const atleta = window.cuponsSessao ? await window.cuponsSessao : null;
+  if (!atleta){ b.hidden = true; return; }
+  b.hidden = false;
+  const meu = atleta.slug_atleta === a.slug;
+  b.textContent = meu ? "✓ Este é você" : "Este sou eu";
+  b.disabled = meu;
+  b.onclick = async () => {
+    b.disabled = true;
+    const r = await fetch(window.cuponsApi + "/eu", { method:"PUT", credentials:"include",
+      headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ slug_atleta: a.slug }) }).then(x => x.json()).catch(() => ({ ok:false }));
+    if (r.ok){ atleta.slug_atleta = a.slug; b.textContent = "✓ Este é você"; }
+    else { b.disabled = false; alert(r.erro || "Não foi possível ligar o perfil agora."); }
+  };
+}
+
 /* ---------- perfil ---------- */
 const perfil = document.getElementById("perfil");
 
@@ -579,6 +599,7 @@ function abrir(a){
   atletaAberto = titulo(a.nome);
   atletaAtual = a;
   fecharDuelo();
+  marcarSouEu(a);
   st.hidden = true;
   document.querySelector(".busca").hidden = false;
 
