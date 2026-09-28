@@ -15,3 +15,7 @@ _*.html
 coleta-local.log
 .segredos/
 .estado_r2.json
+
+# Resultados por atleta: gerados aqui e servidos pela Cloudflare
+# (dados.cuponsdecorrida.com.br, via publicar_dados.py), nao pelo GitHub.
+atletas/

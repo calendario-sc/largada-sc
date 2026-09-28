@@ -53,9 +53,9 @@ def git(*args, checar=True):
 def repositorio_limpo():
     """Nada modificado alem do que o proprio script gera.
 
-    Arquivo novo em atletas/ e obra da coleta de atletas, que pode estar
-    rodando em paralelo ou ter sido interrompida: nao e trabalho em andamento
-    de ninguem, e entra no commit normalmente.
+    atletas/ nao vai mais para o git (e servido pela Cloudflare, ver
+    publicar_dados.py); a linha abaixo so protege quem ainda tiver a pasta
+    rastreada numa copia antiga.
     """
     mudancas = [l for l in git("status", "--porcelain").stdout.splitlines()
                 if l.strip() and not l[3:].startswith("atletas/")]
@@ -169,7 +169,7 @@ def publicar():
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return
-    git("add", "corridas.json", "index.html", "pr.html", "todos.html", "atletas")
+    git("add", "corridas.json", "index.html", "pr.html", "todos.html")
     hoje = datetime.date.today().strftime("%d/%m/%Y")
     git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
         "commit", "-q", "-m", f"concluintes de {hoje} (coleta local)")
@@ -182,7 +182,7 @@ def publicar():
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
         build.build()
-        git("add", "corridas.json", "index.html", "pr.html", "todos.html", "atletas")
+        git("add", "corridas.json", "index.html", "pr.html", "todos.html")
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
         git("push", "-q", "origin", "main")
@@ -208,7 +208,7 @@ def publicar_bi():
     try:
         if not g("status", "--porcelain").stdout.strip():
             return
-        g("add", "index.html", "pr.html", "todos.html", "cadastro.js")
+        g("add", "index.html", "pr.html", "todos.html", "cadastro.js", "cupons.html")
         if (pasta / "assessorias.json").exists():
             g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")

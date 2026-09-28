@@ -227,6 +227,12 @@ def build():
             (BI_DIR / arquivo).write_text(completa(pagina_bi), encoding="utf-8")
             # O formulario de cadastro e um arquivo a parte, usado pelas paginas.
             (BI_DIR / "cadastro.js").write_text((AQUI / "cadastro.js").read_text(encoding="utf-8"), encoding="utf-8")
+            # Central de Cupons: o botao do topo aponta para ela tambem no BI
+            # (sem o Google Analytics, que e so do publico).
+            central = (AQUI / "cupons.html").read_text(encoding="utf-8")
+            if GOOGLE_ANALYTICS not in central:
+                raise SystemExit("cupons.html: trecho do Google Analytics diferente do build.py")
+            (BI_DIR / "cupons.html").write_text(central.replace(GOOGLE_ANALYTICS, ""), encoding="utf-8")
 
         # Pagina publica: sem os paineis e sem os campos de BI.
         # Copia: dados_da_pagina tira campos, e a proxima pagina precisa deles.

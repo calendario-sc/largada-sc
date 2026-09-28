@@ -344,6 +344,18 @@ h1 em{font-style:normal; color:#FFC21A}
 
 /* ---------- cupom no cartao da prova ---------- */
 /* Seletor mais especifico que .tag (definido depois): senao fica cinza. */
+/* Central de Cupons: o botao mais chamativo do topo. */
+.top__ctas{display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; margin-top:.9rem}
+.top__ctas .cta-cadastro{margin-top:0; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.6); box-shadow:none}
+.top__ctas .cta-cadastro:hover{background:rgba(255,255,255,.1); border-color:#FFC21A; color:#FFC21A}
+.top__ctas .cta-cadastro::before{content:none}
+.central-cupons{display:inline-flex; align-items:center; gap:.5rem; font-family:var(--f-display); font-weight:800; font-size:1.05rem;
+  letter-spacing:-.01em; text-decoration:none; color:#0A2F73; background:#FFC21A; border-radius:14px; padding:.7rem 1.15rem;
+  box-shadow:0 6px 18px rgba(255,194,26,.45), inset 0 -3px 0 rgba(10,47,115,.18); transition:transform .15s, box-shadow .15s}
+.central-cupons span{display:grid; place-items:center; width:1.7rem; height:1.7rem; border-radius:50%; background:#0A2F73; color:#FFC21A; font-size:.95rem}
+.central-cupons:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(255,194,26,.6), inset 0 -3px 0 rgba(10,47,115,.18)}
+.central-cupons:focus-visible{outline:3px solid #fff; outline-offset:2px}
+@media print{ .top__ctas{display:none} }
 .race .tag.tag--cupom{background:#FFC21A; color:#0A2F73; font-weight:800; font-size:.8rem; letter-spacing:.01em;
   padding:.28rem .7rem; border-radius:999px; text-decoration:none; cursor:pointer;
   box-shadow:0 2px 10px rgba(255,194,26,.55); border:1px solid #E5A800}
@@ -976,7 +988,10 @@ a.chip{text-decoration:none; display:inline-block}
       <p class="eyebrow"><span id="eyebrow-uf">Santa Catarina</span> &middot; corridas de rua e trail</p>
       <h1>Cupons de <em>Corrida</em></h1>
       <p class="lede">Filtre por mês, região, distância e tipo.</p>
-      <button class="cta-cadastro" type="button" data-cadastro hidden>Cadastre-se e ganhe cupons</button>
+      <div class="top__ctas">
+        <a class="central-cupons" href="cupons.html"><span aria-hidden="true">%</span>Central de Cupons</a>
+        <button class="cta-cadastro" type="button" data-cadastro hidden>Cadastre-se e ganhe cupons</button>
+      </div>
     </div>
     <div class="top__dados">
       <nav class="uf" id="uf" aria-label="Estado">
@@ -2569,6 +2584,9 @@ function cupomDaProva(r){
 /* ---------- gestao de cupons (so no BI) ----------
    /api/cupons do proprio BI, atras do login. */
 const dialogoCupons = document.getElementById("cupons");
+const CATEGORIAS_PARCEIRO = ["Lojas de artigos esportivos", "Tênis e calçados", "Roupas e acessórios", "Nutrição e suplementos",
+  "Saúde e fisioterapia", "Assessorias e treinadores", "Academias e estúdios", "Relógios e eletrônicos", "Fotografia",
+  "Viagens e hospedagem", "Outros"];
 let cuponsAdm = [];
 
 async function carregarCuponsAdm(){
@@ -2592,6 +2610,7 @@ const hojeIso = () => new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 
 function descreverAlvo(c){
   if (c.alvo === "prova") return (c.prova_nome || "prova") + (c.prova_data ? " · " + dataBr(c.prova_data) : "") + (c.prova_cidade ? " · " + c.prova_cidade : "");
   if (c.alvo === "organizadora") return "todas as provas de " + c.organizadora;
+  if (c.alvo === "parceiro") return "parceiro: " + c.parceiro + (c.categoria ? " · " + c.categoria : "") + (c.cidade ? " · " + c.cidade : "") + (c.uf ? " · " + c.uf : "");
   return "geral" + (c.uf ? " · " + c.uf : "");
 }
 
@@ -2642,7 +2661,7 @@ function formularioCupom(c){
   let alvo = c.alvo || "prova";
   const alvoBox = el("div", { className:"cp__alvo" }, [el("span", { textContent:"Vale para:" })]);
   const partes = {};
-  [["prova", "uma prova"], ["organizadora", "todas as provas de uma organizadora"], ["geral", "geral"]].forEach(([v, t]) => {
+  [["prova", "uma prova"], ["organizadora", "todas as provas de uma organizadora"], ["geral", "geral"], ["parceiro", "loja ou serviço parceiro"]].forEach(([v, t]) => {
     const x = el("button", { type:"button", className:"chip", textContent:t });
     x.setAttribute("aria-pressed", String(alvo === v));
     x.onclick = () => { alvo = v; alvoBox.querySelectorAll(".chip").forEach(y => y.setAttribute("aria-pressed", String(y === x))); mostrarAlvo(); };
@@ -2673,9 +2692,19 @@ function formularioCupom(c){
   orgs.value = c.organizadora || "";
   const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ["SC", "SC"], ["PR", "PR"]].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
   uf.value = c.uf || "";
+  // Loja ou servico parceiro: aparece na Central de Cupons, por categoria.
+  const parceiro = inp("parceiro", "text", c.parceiro, { placeholder:"Ex.: Loja do Corredor", maxLength:120 });
+  const categoria = inp("categoria", "text", c.categoria, { placeholder:"Escolha ou digite…", maxLength:60 });
+  categoria.setAttribute("list", "cp-categorias");
+  const categorias = el("datalist", { id:"cp-categorias" }, CATEGORIAS_PARCEIRO.map(x => el("option", { value:x })));
+  const cidadeParc = inp("cidade", "text", c.cidade, { placeholder:"Vazio = online ou todo o estado", maxLength:80 });
   const campoProva = campo("Prova", provaInp, true), campoOrg = campo("Organizadora", orgs, true), campoUf = campo("Estado", uf);
+  const campoParc = campo("Loja ou serviço", parceiro), campoCat = campo("Categoria", categoria), campoCid = campo("Cidade", cidadeParc);
+  const rotuloLink = campo("Link de inscrição", link, true);
   function mostrarAlvo(){
-    campoProva.hidden = alvo !== "prova"; campoOrg.hidden = alvo !== "organizadora"; campoUf.hidden = alvo !== "geral";
+    campoProva.hidden = alvo !== "prova"; campoOrg.hidden = alvo !== "organizadora"; campoUf.hidden = alvo !== "geral" && alvo !== "parceiro";
+    campoParc.hidden = campoCat.hidden = campoCid.hidden = alvo !== "parceiro";
+    rotuloLink.firstChild.textContent = alvo === "parceiro" ? "Link da loja ou do serviço" : "Link de inscrição";
   }
   mostrarAlvo();
 
@@ -2689,8 +2718,8 @@ function formularioCupom(c){
 
   f.append(
     campo("Desconto", desconto), campo("Código", codigo), campo("Título", titulo, true), alvoBox,
-    campoProva, lista, campoOrg, campoUf,
-    campo("Link de inscrição", link, true), campo("Válido até", validade), campo("Limite de atletas", limite),
+    campoProva, lista, campoOrg, campoParc, campoCat, categorias, campoCid, campoUf,
+    rotuloLink, campo("Válido até", validade), campo("Limite de atletas", limite),
     campo("Regras (aparecem para o atleta)", regras, true),
     el("label", { className:"largo" }, [el("span", {}, [ativo, document.createTextNode(" Cupom ativo (aparece para os atletas)")])]),
     erro, el("div", { className:"cp__botoes" }, [salvar, cancelar]),
@@ -2705,6 +2734,7 @@ function formularioCupom(c){
       prova_data: provaEscolhida && provaEscolhida.data, prova_cidade: provaEscolhida && provaEscolhida.cidade,
       organizadora: orgs.value, uf: uf.value, link_inscricao: link.value, regras: regras.value,
       valido_ate: validade.value, limite: limite.value, ativo: ativo.checked,
+      parceiro: parceiro.value, categoria: categoria.value, cidade: cidadeParc.value,
     };
     const d = await salvarCupom(dados, c.id);
     if (d && d.erro) erro.textContent = d.erro;
@@ -4018,7 +4048,7 @@ function linha(r, destaque){
                                                                         : " na Federação Catarinense de Atletismo") }));
   const cupom = !r._passada && cupomDaProva(r);
   if (cupom){
-    const selo = el("a", { className:"tag tag--cupom", href:"area.html?cupom=" + cupom.id,
+    const selo = el("a", { className:"tag tag--cupom", href:"cupons.html#c-" + cupom.id,
       textContent:"Cupom " + cupom.desconto, title:cupom.titulo + " — entre na sua área do atleta para ver o código" });
     meta.append(selo);
   }

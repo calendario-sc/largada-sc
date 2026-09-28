@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Central de Cupons do Cupons de Corrida: descontos em inscrições de corridas de rua e trail em SC e PR, e em lojas e serviços parceiros para corredores.">
+<title>Central de Cupons · Cupons de Corrida</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0JZLDPQ7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P0JZLDPQ7W');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F1F4F9; --surface:#FFFFFF; --surface-2:#F1F4F9; --line:#BFC7D4; --line-soft:#D8DEE8;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880; --azul:#0A2F73; --azul-ink:#0D3F9E; --sol:#FFC21A;
+  --f-display:"Archivo",system-ui,sans-serif; --f-mono:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){ :root{
+  --ground:#0B1220; --surface:#121B2E; --surface-2:#0E1628; --line:#33415C; --line-soft:#26324A;
+  --ink:#E8EDF6; --ink-2:#C4CCDA; --muted:#8C97AA; --azul-ink:#8FB2FF } }
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink); font:16px/1.55 "Instrument Sans",system-ui,sans-serif}
+a{color:inherit}
+header{background:var(--azul); color:#fff; padding:2.6rem 1rem 2rem; position:relative}
+header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.wrap{max-width:60rem; margin:0 auto}
+.eyebrow{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin:0}
+.eyebrow a{color:#FFC21A; text-decoration:none}
+h1{font-family:var(--f-display); font-weight:800; font-size:clamp(2rem,7vw,3.2rem); margin:.35rem 0 .5rem; letter-spacing:-.03em; line-height:1}
+h1 em{font-style:normal; color:#FFC21A}
+.lede{margin:0; max-width:38rem; font-size:1.02rem; opacity:.92}
+main{padding:1.2rem 1rem 3rem}
+.filtro{display:flex; gap:.4rem; flex-wrap:wrap; margin:0 0 1.2rem}
+.filtro button{font:inherit; font-size:.9rem; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.45rem 1rem}
+.filtro button[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
+.filtro button b{font-family:var(--f-mono); font-weight:500; font-size:.78rem; opacity:.75; margin-left:.3rem}
+section.bloco{margin:0 0 2rem}
+section.bloco > h2{font-family:var(--f-display); font-weight:800; font-size:1.45rem; letter-spacing:-.02em; margin:0 0 .2rem}
+section.bloco > p.suave{margin:0 0 .9rem}
+h3.categoria{font-family:var(--f-mono); font-weight:400; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:1.1rem 0 .5rem}
+.suave{color:var(--muted); font-size:.92rem}
+.grade{display:grid; grid-template-columns:repeat(auto-fill,minmax(17rem,1fr)); gap:.8rem}
+.cupom{background:var(--surface); border:1px dashed var(--line); border-radius:16px; padding:1rem 1.05rem 1.05rem; display:flex; flex-direction:column; gap:.35rem; position:relative; scroll-margin-top:1rem}
+.cupom.destaque{border:2px solid var(--sol); box-shadow:0 0 0 4px rgba(255,194,26,.3)}
+.cupom .selo{align-self:flex-start; font-family:var(--f-display); font-weight:800; font-size:1.1rem; color:#0A2F73; background:var(--sol); border-radius:10px; padding:.3rem .65rem; line-height:1.2}
+.cupom h4{margin:.15rem 0 0; font-size:1.02rem; line-height:1.3}
+.cupom .quem{margin:0; font-size:.86rem; color:var(--ink-2)}
+.cupom .quando{margin:0; font-family:var(--f-mono); font-size:.72rem; letter-spacing:.04em; color:var(--muted)}
+.cupom .acao{margin-top:auto; padding-top:.5rem; display:flex; gap:.5rem; flex-wrap:wrap; align-items:center}
+.cupom.esgotado{opacity:.6}
+.botao{font:inherit; font-weight:700; cursor:pointer; border:0; border-radius:12px; padding:.6rem 1rem; background:var(--sol); color:#0A2F73; text-decoration:none}
+.botao[disabled]{opacity:.6; cursor:wait}
+.pequeno{font:inherit; font-size:.8rem; cursor:pointer; border:1px solid var(--line); background:none; color:var(--ink-2); border-radius:999px; padding:.3rem .75rem; text-decoration:none}
+.codigo{font-family:var(--f-mono); font-size:1.1rem; font-weight:500; letter-spacing:.06em; background:var(--surface-2); border:1px solid var(--line); border-radius:8px; padding:.25rem .65rem}
+.regras{width:100%; margin:.2rem 0 0; font-size:.8rem; color:var(--muted)}
+.erro{color:#B81C26; font-size:.84rem; margin:0; width:100%}
+.vazio{background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; padding:1.1rem 1.2rem}
+.vazio p{margin:0 0 .4rem}
+.convite{background:var(--azul); color:#fff; border-radius:16px; padding:1.1rem 1.25rem; display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap; margin:0 0 1.6rem}
+.convite p{margin:0; max-width:36rem}
+.convite .botao{white-space:nowrap}
+.carregando{color:var(--muted); padding:1rem 0}
+footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <a class="entrar-topo" href="area.html" data-entrar>Entrar · Área do atleta</a>
+  <div class="wrap">
+    <p class="eyebrow"><a href="./">Cupons de Corrida</a> · central de cupons</p>
+    <h1>Central de <em>Cupons</em></h1>
+    <p class="lede">Descontos nas inscrições das corridas e em lojas e serviços parceiros para quem corre. Cadastre-se de graça para ver os códigos.</p>
+  </div>
+</header>
+
+<main><div class="wrap" id="conteudo"><p class="carregando">Carregando os cupons…</p></div></main>
+<footer><div class="wrap">Tem uma loja, assessoria ou serviço para corredores e quer oferecer desconto? Escreva para <a href="mailto:contato@cuponsdecorrida.com.br">contato@cuponsdecorrida.com.br</a>.</div></footer>
+
+<script>
+(() => {
+  const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  const API = LOCAL ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
+  const conteudo = document.getElementById("conteudo");
+  const el = (tag, props = {}, kids = []) => {
+    const n = Object.assign(document.createElement(tag), props);
+    kids.forEach(k => k && n.append(k));
+    return n;
+  };
+  const api = (caminho, opcoes = {}) => fetch(API + caminho, { credentials: "include", cache: "no-store", ...opcoes })
+    .then(async r => ({ status: r.status, ...(await r.json().catch(() => ({ ok: false, erro: "Resposta inválida do servidor." }))) }));
+  const dataBr = s => s ? s.slice(8, 10) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4) : "";
+  const pedido = Number((location.hash.match(/^#c-(\d+)$/) || [])[1] || 0);
+
+  function paraQuem(c) {
+    if (c.alvo === "prova") return [c.prova_nome, c.prova_cidade].filter(Boolean).join(" · ");
+    if (c.alvo === "organizadora") return "Todas as provas de " + c.organizadora;
+    if (c.alvo === "parceiro") return c.parceiro + " · " + (c.cidade ? c.cidade + (c.uf ? " – " + c.uf : "") : c.uf ? "todo o estado de " + c.uf : "online e em todo lugar");
+    return "Várias provas" + (c.uf ? " de " + c.uf : "");
+  }
+  function quando(c) {
+    if (c.alvo === "prova" && c.prova_data) return "Prova em " + dataBr(c.prova_data) + (c.valido_ate && c.valido_ate !== c.prova_data ? " · cupom até " + dataBr(c.valido_ate) : "");
+    return c.valido_ate ? "Válido até " + dataBr(c.valido_ate) : "Sem prazo definido";
+  }
+
+  function cartao(c, logado) {
+    const acao = el("div", { className: "acao" });
+    const mostrar = (codigo, link, regras) => {
+      const copiar = el("button", { className: "pequeno", type: "button", textContent: "Copiar" });
+      copiar.onclick = () => navigator.clipboard.writeText(codigo).then(() => { copiar.textContent = "Copiado ✓"; });
+      acao.replaceChildren(el("span", { className: "codigo", textContent: codigo }), copiar);
+      if (link) acao.append(el("a", { className: "pequeno", href: link, target: "_blank", rel: "noopener",
+        textContent: c.alvo === "parceiro" ? "Ir para a loja ↗" : "Ir para a inscrição ↗" }));
+      if (regras) acao.append(el("p", { className: "regras", textContent: regras }));
+    };
+    if (c.revelado) mostrar(c.codigo, c.link_inscricao, c.regras);
+    else if (c.esgotado) acao.append(el("p", { className: "suave", textContent: "Esgotado." }));
+    else if (logado) {
+      const ver = el("button", { className: "botao", type: "button", textContent: "Ver código" });
+      ver.onclick = async () => {
+        ver.disabled = true;
+        const r = await api("/cupons/" + c.id + "/revelar", { method: "POST" }).catch(() => ({ ok: false, erro: "Sem conexão." }));
+        if (!r.ok) { ver.disabled = false; acao.append(el("p", { className: "erro", textContent: r.erro })); return; }
+        if (typeof gtag === "function") gtag("event", "cupom_revelado", { cupom_id: c.id, origem: "central" });
+        mostrar(r.codigo, r.link_inscricao, r.regras);
+      };
+      acao.append(ver);
+    } else {
+      // Visitante: cadastro gratis; quem ja tem conta entra e volta direto para o cupom.
+      const pegar = el("button", { className: "botao", type: "button", textContent: "Pegar cupom" });
+      pegar.onclick = () => {
+        if (typeof gtag === "function") gtag("event", "cupom_pegar", { cupom_id: c.id });
+        if (window.abrirCadastro) window.abrirCadastro(); else location.href = "area.html?cupom=" + c.id;
+      };
+      acao.append(pegar, el("a", { className: "pequeno", href: "area.html?cupom=" + c.id, textContent: "Já tenho cadastro" }));
+    }
+    return el("article", { className: "cupom" + (c.id === pedido ? " destaque" : "") + (c.esgotado && !c.revelado ? " esgotado" : ""), id: "c-" + c.id }, [
+      el("span", { className: "selo", textContent: c.desconto }),
+      el("h4", { textContent: c.titulo }),
+      el("p", { className: "quem", textContent: paraQuem(c) }),
+      el("p", { className: "quando", textContent: quando(c) }),
+      acao,
+    ]);
+  }
+
+  async function montar() {
+    const [d, atleta] = await Promise.all([
+      api("/cupons").catch(() => ({ ok: false })),
+      (window.cuponsSessao || Promise.resolve(null)).catch(() => null),
+    ]);
+    if (!d.ok) {
+      conteudo.replaceChildren(el("p", { className: "carregando", textContent: "Não foi possível carregar os cupons agora. Tente de novo em instantes." }));
+      return;
+    }
+    const logado = !!(d.logado || atleta);
+    const todos = d.cupons || [];
+    const provas = todos.filter(c => c.alvo !== "parceiro")
+      .sort((a, b) => (a.prova_data || "9999").localeCompare(b.prova_data || "9999"));
+    const parceiros = todos.filter(c => c.alvo === "parceiro");
+
+    // Provas
+    const secProvas = el("section", { className: "bloco", id: "provas" }, [
+      el("h2", { textContent: "Provas com cupom" }),
+      el("p", { className: "suave", textContent: "Desconto na inscrição, da prova mais próxima para a mais distante." }),
+      provas.length ? el("div", { className: "grade" }, provas.map(c => cartao(c, logado)))
+        : el("div", { className: "vazio" }, [el("p", { textContent: "Nenhuma prova com cupom agora." }),
+            el("p", { className: "suave", textContent: "Quando surgir, ela aparece aqui e no calendário, e quem é cadastrado fica sabendo pela newsletter." })]),
+    ]);
+
+    // Lojas e servicos, por categoria
+    const porCategoria = new Map();
+    parceiros.forEach(c => { const k = c.categoria || "Outros"; (porCategoria.get(k) || porCategoria.set(k, []).get(k)).push(c); });
+    const categorias = [...porCategoria.keys()].sort((a, b) => a === "Outros" ? 1 : b === "Outros" ? -1 : a.localeCompare(b, "pt-BR"));
+    const secParc = el("section", { className: "bloco", id: "parceiros" }, [
+      el("h2", { textContent: "Lojas e serviços parceiros" }),
+      el("p", { className: "suave", textContent: "Tênis, roupas, nutrição, fisioterapia, assessorias e mais, com desconto para quem corre." }),
+      ...(parceiros.length
+        ? categorias.flatMap(k => [el("h3", { className: "categoria", textContent: k }), el("div", { className: "grade" }, porCategoria.get(k).map(c => cartao(c, logado)))])
+        : [el("div", { className: "vazio" }, [el("p", { textContent: "Os primeiros parceiros estão chegando." }),
+            el("p", { className: "suave" }, [document.createTextNode("Tem uma loja, assessoria ou serviço para corredores? Escreva para "),
+              el("a", { href: "mailto:contato@cuponsdecorrida.com.br", textContent: "contato@cuponsdecorrida.com.br" }), document.createTextNode(".")])])]),
+    ]);
+
+    // Filtro: tudo, so provas ou so parceiros
+    let vista = location.hash === "#parceiros" ? "parceiros" : location.hash === "#provas" ? "provas" : "tudo";
+    const filtro = el("div", { className: "filtro", role: "group", ariaLabel: "Mostrar" });
+    const opcoes = [["tudo", "Todos", todos.length], ["provas", "Provas", provas.length], ["parceiros", "Lojas e serviços", parceiros.length]];
+    const aplicar = () => {
+      secProvas.hidden = vista === "parceiros";
+      secParc.hidden = vista === "provas";
+      filtro.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === vista)));
+    };
+    opcoes.forEach(([v, rot, n]) => {
+      const b = el("button", { type: "button" }, [document.createTextNode(rot), el("b", { textContent: n })]);
+      b.dataset.v = v;
+      b.onclick = () => { vista = v; aplicar(); };
+      filtro.append(b);
+    });
+    aplicar();
+
+    const convite = logado ? null : el("div", { className: "convite" }, [
+      el("p", { textContent: "Os códigos aparecem para quem tem cadastro. É grátis e você ainda recebe as provas da sua região." }),
+      Object.assign(el("button", { className: "botao", type: "button", textContent: "Cadastre-se e ganhe cupons" }),
+        { onclick: () => window.abrirCadastro ? window.abrirCadastro() : (location.href = "area.html") }),
+    ]);
+    conteudo.replaceChildren(...[convite, filtro, secProvas, secParc].filter(Boolean));
+    const destaque = document.getElementById("c-" + pedido);
+    if (destaque) { if (destaque.closest("[hidden]")) { vista = "tudo"; aplicar(); } destaque.scrollIntoView({ behavior: "smooth", block: "center" }); }
+  }
+  montar();
+})();
+</script>
+<script src="cadastro.js"></script>
+</body>
+</html>
