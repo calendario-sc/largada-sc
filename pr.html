@@ -908,6 +908,83 @@ a.chip{text-decoration:none; display:inline-block}
   *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
 }
 
+/* ---------- topo compacto (28/09/2026) ----------
+   O calendario e a pagina: o topo mostra marca, estado e numeros em pouco
+   espaco, e a lista de provas aparece ja na primeira tela. So a barra de
+   busca fica presa no alto ao rolar, com os filtros guardados no botao
+   Filtros (em qualquer largura), para nao roubar a tela. */
+body:not(.bi) .top__inner{display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-areas:"marca dados" "acoes acoes";
+  gap:.9rem 2rem; align-items:end; padding:1.15rem 0 1.1rem}
+body:not(.bi) .top__inner > div:first-child{grid-area:marca; min-width:0}
+body:not(.bi) .top__dados{grid-area:dados; align-items:flex-end; gap:.45rem}
+body:not(.bi) .top__acoes{grid-area:acoes; margin-top:0; gap:.45rem}
+body:not(.bi) .eyebrow{margin:0 0 .35rem; font-size:.64rem}
+body:not(.bi) h1{font-size:clamp(1.9rem,3.6vw,2.7rem); line-height:1}
+body:not(.bi) .lede{display:none}
+body:not(.bi) .top__ctas{margin-top:.7rem; gap:.5rem}
+body:not(.bi) .central-cupons{font-size:.95rem; padding:.5rem .95rem .5rem .6rem}
+body:not(.bi) .central-cupons span{width:1.45rem; height:1.45rem; font-size:.8rem}
+body:not(.bi) .top__ctas .cta-cadastro{font-size:.88rem; padding:.5rem .9rem}
+body:not(.bi) .top__lugar{flex-direction:row; align-items:baseline; gap:.5rem; justify-content:flex-end}
+body:not(.bi) .top__lugar b{font-size:clamp(1.05rem,1.8vw,1.35rem)}
+body:not(.bi) .uf{justify-content:flex-end; margin:0}
+body:not(.bi) .uf a{padding:.22rem .6rem; font-size:.66rem}
+body:not(.bi) .stats{gap:.4rem; justify-content:flex-end}
+body:not(.bi) .stat{min-width:0; padding:.4rem .7rem .38rem; border-radius:10px}
+body:not(.bi) .stat b{font-size:1.3rem}
+body:not(.bi) .stat span{font-size:.56rem; letter-spacing:.1em}
+body:not(.bi) .top__recorte{font-size:.76rem}
+body:not(.bi) .top__botoes{gap:.35rem .4rem}
+body:not(.bi) .top .chip{padding:.34rem .6rem; font-size:.78rem}
+body:not(.bi) .top::after{height:5px}
+body:not(.bi) .entrar-topo{top:.7rem}
+/* Ritmo do ano: uma fita baixa de meses, que continua filtrando. */
+body:not(.bi) .pulse{padding:.8rem 0 .7rem}
+body:not(.bi) .pulse__head{margin-bottom:.45rem}
+body:not(.bi) .month-btn{height:56px; min-width:62px; flex-basis:62px; padding:.4rem .45rem .38rem; gap:.3rem}
+/* Filtros guardados atras do botao em qualquer largura: a barra presa no
+   alto fica com uma linha so (busca, Filtros, Treinos, Limpar). */
+#btn-filtros{display:inline-flex; align-items:center}
+.groups > .group,.groups > .escopo{display:none; flex:1 1 100%}
+.filters.aberto .groups > .group{display:flex}
+.filters.aberto .groups > .escopo{display:flex; flex:0 0 auto}
+.filters.aberto .groups{max-height:min(55vh,24rem); overflow-y:auto; padding:.3rem 0 .4rem; -webkit-overflow-scrolling:touch}
+.groups{gap:.45rem .6rem}
+.filters__inner{padding:.55rem 0; flex-wrap:nowrap}
+.filters.aberto .filters__inner{flex-wrap:wrap}
+.search{flex:0 1 320px}
+@media (max-width:900px){
+  .filters__inner{flex-wrap:wrap}
+  .search{flex:1 0 100%}
+}
+.top__links{display:contents}
+@media (max-width:720px){
+  /* Links do topo numa fita so, que rola de lado (sem menus dentro dela). */
+  body:not(.bi) .top__links{display:flex; gap:.35rem; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; flex:1 1 100%; min-width:0; padding-bottom:2px}
+  body:not(.bi) .top__links::-webkit-scrollbar{display:none}
+  body:not(.bi) .top__links > *{flex:0 0 auto}
+  body:not(.bi) #g-ano{display:inline-flex; flex-wrap:nowrap; gap:.3rem}
+  body:not(.bi) .eyebrow,body:not(.bi) .top__recorte{display:none}
+  body:not(.bi) .top__inner{padding-top:2.9rem !important}
+  body:not(.bi) .top__ctas{gap:.4rem}
+  body:not(.bi) .top__acoes,body:not(.bi) .top__botoes,body:not(.bi) .top__dados{min-width:0; max-width:100%}
+  body:not(.bi) .central-cupons{font-size:.84rem; padding:.45rem .7rem .45rem .5rem; white-space:nowrap}
+  body:not(.bi) .top__ctas .cta-cadastro{font-size:.8rem; padding:.45rem .7rem; white-space:nowrap}
+}
+@media (max-width:720px){
+  body:not(.bi) .top__inner{grid-template-columns:minmax(0,1fr); grid-template-areas:"marca" "dados" "acoes"; gap:.7rem; padding:.9rem 0 .9rem}
+  body:not(.bi) .top__dados{align-items:stretch}
+  body:not(.bi) .top__lugar{justify-content:flex-start}
+  body:not(.bi) .uf{justify-content:flex-start}
+  body:not(.bi) h1{font-size:1.9rem}
+  body:not(.bi) .entrar-topo{position:absolute; top:.6rem; right:.8rem}
+  /* Numeros numa fita so, que rola de lado, em vez de duas linhas de caixas. */
+  body:not(.bi) .stats{display:flex; flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start; scrollbar-width:none; padding-bottom:2px}
+  body:not(.bi) .stats::-webkit-scrollbar{display:none}
+  body:not(.bi) .stat{flex:0 0 auto}
+  body:not(.bi) .stat b{font-size:1.15rem}
+}
+
 /* ---------- impressao: so o comparativo, em papel ----------
    Nao ha gerador de PDF embutido aqui; quem gera o arquivo e o proprio
    navegador, pelo "Salvar como PDF" da caixa de impressao. Em troca, o PDF
@@ -1071,12 +1148,14 @@ a.chip{text-decoration:none; display:inline-block}
           </div>
         </div>
         <span class="top__sep" aria-hidden="true"></span>
+        <span class="top__links">
         <button class="chip" id="btn-resultados" type="button" aria-haspopup="dialog" title="Provas já realizadas, da mais recente, com o número de concluintes">Resultados</button>
         <button class="chip" id="btn-campeoes" type="button" aria-haspopup="dialog" title="Os vencedores de cada distância, nas provas do recorte">Campeões</button>
         <button class="chip" id="btn-recordes" type="button" aria-haspopup="dialog" title="Os dez melhores tempos em cada distância, nas provas do recorte">Recordes</button>
         <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html" title="Busque um atleta pelo nome e veja as provas, o pace e os melhores tempos">Resultados por atleta ↗</a>
         <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html#supertrunfo" title="Compare dois atletas lado a lado: provas, km, títulos e melhores tempos">Supertrunfo ↗</a>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
+        </span>
         <button class="chip chip--reset" id="reset-top" type="button" title="Limpar todos os filtros">Limpar</button>
       </div>
     </div>
