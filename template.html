@@ -360,6 +360,14 @@ h1 em{font-style:normal; color:#FFC21A}
 .cp__vazio{color:var(--muted); padding:.6rem 0}
 @media (max-width:720px){ .cp__corpo{padding-inline:.9rem} .cp__form{grid-template-columns:1fr} .cp__item{grid-template-columns:1fr} .cp__acoes{justify-content:flex-start} }
 
+/* ---------- fotos (moderacao), so no BI ---------- */
+.ft__grade{list-style:none; margin:0; padding:0 1.2rem 1rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr)); gap:.7rem; overflow-y:auto}
+.ft__grade li{border:1px solid var(--line-soft); border-radius:12px; padding:.6rem; text-align:center; background:var(--surface)}
+.ft__grade img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; background:var(--surface-2)}
+.ft__grade b{display:block; font-size:.82rem; margin-top:.35rem; overflow-wrap:anywhere}
+.ft__grade small{display:block; font-size:.7rem; color:var(--muted)}
+.ft__grade button{margin-top:.4rem; font:inherit; font-size:.76rem; cursor:pointer; border:1px solid #B81C26; color:#B81C26; background:none; border-radius:999px; padding:.2rem .7rem}
+
 /* ---------- leads (cadastro de atletas), so no BI ---------- */
 .ld{width:min(52rem, 100% - 2rem)}
 .ld__corpo{padding:0 1.2rem 1rem; overflow-y:auto}
@@ -987,6 +995,7 @@ h1 em{font-style:normal; color:#FFC21A}
         <button class="chip" id="btn-crono" type="button" aria-haspopup="dialog" title="Participação de cada empresa de cronometragem nas provas com resultado publicado">Cronometragem</button>
         <button class="chip" id="btn-foto" type="button" aria-haspopup="dialog" title="Participação de cada plataforma de fotografia nas provas realizadas">Fotografia</button>
         <button class="chip" id="btn-cupons" type="button" aria-haspopup="dialog" title="Criar e acompanhar os cupons de desconto">Cupons</button>
+        <button class="chip" id="btn-fotos" type="button" aria-haspopup="dialog" title="Fotos que os atletas enviaram, para moderar">Fotos</button>
         <button class="chip" id="btn-leads" type="button" aria-haspopup="dialog" title="Atletas cadastrados para a newsletter e os cupons">Leads</button>
         <button class="chip" id="btn-assessorias" type="button" aria-haspopup="dialog" title="Quantos alunos cada assessoria ou equipe levou às provas do recorte">Assessorias</button>
         <button class="chip" id="btn-raiox" type="button" aria-haspopup="dialog" title="Onde as provas de Florianópolis largam e chegam: mapa e lista por local">Raio-X Floripa</button>
@@ -1161,6 +1170,16 @@ h1 em{font-style:normal; color:#FFC21A}
       </div>
     </div>
     <div class="cp__corpo" id="cupons-corpo"></div>
+  </div>
+</dialog>
+
+<dialog class="orgs cp" id="fotos" aria-labelledby="fotos-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="fotos-titulo">Fotos <small>enviadas pelos atletas; remova as impróprias</small></h2>
+      <div class="orgs__acoes"><button class="orgs__fechar" id="fotos-fechar" type="button">Fechar</button></div>
+    </div>
+    <ul class="ft__grade" id="fotos-grade"></ul>
   </div>
 </dialog>
 
@@ -2668,6 +2687,41 @@ async function salvarCupom(dados, id){
 ao("btn-cupons", () => { dialogoCupons.showModal(); carregarCuponsAdm(); });
 ao("cupons-fechar", () => dialogoCupons.close());
 fechaNoFundo(dialogoCupons);
+
+/* ---------- fotos dos atletas (moderacao, so no BI) ---------- */
+const dialogoFotos = document.getElementById("fotos");
+
+async function montarFotos(){
+  const grade = document.getElementById("fotos-grade");
+  grade.replaceChildren(el("li", { className:"cp__vazio", textContent:"Carregando…" }));
+  let fotos;
+  try {
+    const r = await fetch("/api/fotos", { cache:"no-store", credentials:"same-origin" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    fotos = (await r.json()).fotos || [];
+  } catch (e) {
+    grade.replaceChildren(el("li", { className:"cp__vazio", textContent:"Não foi possível carregar as fotos (" + e.message + ")." }));
+    return;
+  }
+  if (!fotos.length){ grade.replaceChildren(el("li", { className:"cp__vazio", textContent:"Nenhum atleta enviou foto ainda." })); return; }
+  grade.replaceChildren(...fotos.map(f => {
+    const remover = el("button", { type:"button", textContent:"Remover" });
+    remover.onclick = async () => {
+      if (!confirm("Remover a foto de " + f.nome + "?")) return;
+      const r = await fetch("/api/fotos?id=" + f.id, { method:"DELETE", credentials:"same-origin" });
+      const d = await r.json().catch(() => ({})); if (d.erro) alert(d.erro); montarFotos();
+    };
+    return el("li", {}, [
+      el("img", { src:"/api/fotos?img=" + f.id + "&v=" + encodeURIComponent(f.foto_em || ""), alt:"Foto de " + f.nome, loading:"lazy" }),
+      el("b", { textContent:f.nome }),
+      el("small", { textContent:f.cidade + " · " + (f.foto_publica ? "visível para atletas" : "só o atleta vê") }),
+      remover,
+    ]);
+  }));
+}
+ao("btn-fotos", () => { dialogoFotos.showModal(); montarFotos(); });
+ao("fotos-fechar", () => dialogoFotos.close());
+fechaNoFundo(dialogoFotos);
 
 /* ---------- leads ----------
    Os cadastros ficam no banco D1; a funcao /api/leads do proprio BI (atras

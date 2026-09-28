@@ -141,6 +141,10 @@ h1 em{font-style:normal; color:#FFC21A}
 .duelo__busca .lista{margin-top:.5rem}
 .placar{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.6rem; margin:.9rem 0 .8rem}
 .carta{padding:.8rem .9rem; border-radius:12px; color:#FFFFFF; min-width:0}
+/* Foto do atleta (so para quem esta logado e se o dono autorizou). */
+.carta .foto{display:block; width:64px; height:64px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,.85); margin:0 0 .45rem}
+.carta--b .foto{margin-left:auto}
+.foto-perfil{width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid #FFC21A; vertical-align:middle; margin-right:.7rem; float:left}
 .carta--a{background:linear-gradient(135deg,#0A2F73,#1450C8)}
 .carta--b{background:linear-gradient(135deg,#8A2A0B,#EF4E16); text-align:right}
 .carta b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.05rem; line-height:1.2; overflow-wrap:anywhere}
@@ -569,6 +573,22 @@ window.addEventListener("afterprint", () => {
 
 document.getElementById("voltar").onclick = () => { document.getElementById("perfil").hidden = true; history.replaceState(null, "", location.pathname); input.focus(); };
 
+/* ---------- foto do atleta ----------
+   Vem da API, so para quem esta logado; sem foto (ou sem autorizacao do
+   dono), a imagem some sozinha. */
+function fotoDoAtleta(slug, classe){
+  const img = el("img", { className:classe, alt:"", loading:"lazy", src: window.cuponsApi + "/foto/" + encodeURIComponent(slug) });
+  img.onerror = () => img.remove();
+  return img;
+}
+async function mostrarFotoPerfil(a){
+  const antiga = document.querySelector(".foto-perfil");
+  if (antiga) antiga.remove();
+  const logado = window.cuponsSessao ? await window.cuponsSessao : null;
+  if (!logado || atletaAtual !== a) return;
+  document.getElementById("p-nome").before(fotoDoAtleta(a.slug, "foto-perfil"));
+}
+
 /* ---------- "Este sou eu" ----------
    Quem esta logado na area do atleta liga o perfil de resultados a conta. */
 async function marcarSouEu(a){
@@ -605,6 +625,7 @@ function abrir(a){
   document.querySelector(".busca").hidden = false;
 
   perfil.hidden = false;
+  mostrarFotoPerfil(a);
   document.getElementById("p-nome").replaceChildren(document.createTextNode(titulo(a.nome)),
     el("small", { textContent: `${new Set(res.map(r => r.prova[3])).size} provas · ${dataCurta(res[0].data)} a ${dataCurta(res[res.length - 1].data)}` }));
 
@@ -1012,7 +1033,9 @@ async function montarDuelo(b, a = atletaAtual, destino = null){
     soUm.forEach(porDistancia);
   }
 
+  const logado = window.cuponsSessao ? await window.cuponsSessao : null;
   const carta = (X, pts, lado, vence) => el("div", { className:"carta carta--" + lado + (vence ? " vence" : "") }, [
+    logado ? fotoDoAtleta(X.slug, "foto") : null,
     el("b", { textContent:X.nome }),
     el("small", { textContent: num(X.provas) + (X.provas === 1 ? " prova" : " provas") }),
     el("div", { className:"pts", textContent:String(pts) }),

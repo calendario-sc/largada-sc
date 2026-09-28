@@ -79,6 +79,11 @@ input[type=text],input[type=email],input[type=tel],select{font:inherit; font-siz
 .aviso{position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%); z-index:50; max-width:calc(100% - 2rem);
   background:#0A2F73; color:#fff; padding:.85rem 1.1rem; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,.3); font-size:.92rem}
 .carregando{color:var(--muted); padding:1rem 0}
+.foto-caixa{display:flex; gap:1.1rem; align-items:center; flex-wrap:wrap}
+.foto-atleta{width:120px; height:120px; border-radius:50%; object-fit:cover; background:var(--surface-2); border:3px solid var(--sol); flex:none}
+.foto-vazia{width:120px; height:120px; border-radius:50%; display:grid; place-items:center; background:var(--surface-2); border:2px dashed var(--line); color:var(--muted); font-size:.8rem; text-align:center; flex:none}
+.foto-acoes{display:grid; gap:.5rem; min-width:0; flex:1}
+.categoria{display:inline-block; font-family:var(--f-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; background:var(--surface-2); border-radius:6px; padding:.15rem .45rem; color:var(--ink-2)}
 @media (max-width:560px){ .grade{grid-template-columns:1fr} .cupom{grid-template-columns:1fr} .cupom .selo{grid-row:auto; justify-self:start} .cupom .acao{grid-column:1} }
 </style>
 </head>
@@ -184,10 +189,12 @@ input[type=text],input[type=email],input[type=tel],select{font:inherit; font-siz
     sair.onclick = async () => { await api("/sair", { method: "POST" }); location.href = "./"; };
     const secCupons = el("section", { className: "cartao" }, [el("h2", { textContent: "Meus cupons" }), el("p", { className: "carregando", textContent: "Carregando…" })]);
     const secPerfil = el("section", { className: "cartao" });
+    const secFoto = el("section", { className: "cartao" });
     const secDados = el("section", { className: "cartao" });
     const secConta = el("section", { className: "cartao" });
-    conteudo.replaceChildren(secCupons, secPerfil, secDados, secConta);
+    conteudo.replaceChildren(secCupons, secPerfil, secFoto, secDados, secConta);
     montarPerfil(secPerfil);
+    montarFoto(secFoto);
     montarDados(secDados);
     montarConta(secConta);
     await montarCupons(secCupons);
@@ -279,6 +286,91 @@ input[type=text],input[type=email],input[type=tel],select{font:inherit; font-siz
       el("a", { className: "botao", href: "atletas.html#" + atleta.slug_atleta, textContent: "Ver meu perfil completo" }), desfazer]));
   }
 
+  // Faixa etaria de 5 em 5 anos, como nas categorias das corridas (18-19, 20-24...).
+  function categoriaDaIdade(nasc) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(nasc || "")) return "";
+    const n = new Date(nasc + "T12:00:00"), h = new Date();
+    let anos = h.getFullYear() - n.getFullYear();
+    if (h.getMonth() < n.getMonth() || (h.getMonth() === n.getMonth() && h.getDate() < n.getDate())) anos--;
+    if (anos < 18 || anos > 100) return "";
+    if (anos < 20) return "18–19";
+    const ini = Math.floor(anos / 5) * 5;
+    return ini + "–" + (ini + 4);
+  }
+
+  // Reduz no navegador: recorte quadrado central, 600x600, JPEG. Redesenhar
+  // no canvas tambem descarta os metadados da foto (GPS, aparelho).
+  function reduzirFoto(arquivo) {
+    return new Promise((ok, falha) => {
+      const img = new Image();
+      const url = URL.createObjectURL(arquivo);
+      img.onload = () => {
+        const lado = Math.min(img.naturalWidth, img.naturalHeight);
+        const alvo = Math.min(600, lado);
+        const cv = el("canvas", { width: alvo, height: alvo });
+        cv.getContext("2d").drawImage(img, (img.naturalWidth - lado) / 2, (img.naturalHeight - lado) / 2, lado, lado, 0, 0, alvo, alvo);
+        URL.revokeObjectURL(url);
+        cv.toBlob(b => b ? ok(b) : falha(new Error("Não foi possível ler a foto.")), "image/jpeg", 0.85);
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); falha(new Error("Arquivo não é uma imagem.")); };
+      img.src = url;
+    });
+  }
+
+  function montarFoto(sec) {
+    const msg = el("p", { role: "status" });
+    const imagem = () => atleta.tem_foto
+      ? el("img", { className: "foto-atleta", alt: "Sua foto", src: API + "/eu/foto?v=" + encodeURIComponent(atleta.foto_em) })
+      : el("div", { className: "foto-vazia", textContent: "Sem foto" });
+    let atual = imagem();
+    const arquivo = el("input", { type: "file", accept: "image/*", hidden: true });
+    const escolher = el("button", { className: "botao", type: "button", textContent: atleta.tem_foto ? "Trocar foto" : "Enviar foto" });
+    const remover = el("button", { className: "botao botao--leve", type: "button", textContent: "Remover", hidden: !atleta.tem_foto });
+    const publica = el("input", { type: "checkbox", checked: atleta.foto_publica });
+    const pintar = () => {
+      const nova = imagem(); atual.replaceWith(nova); atual = nova;
+      escolher.textContent = atleta.tem_foto ? "Trocar foto" : "Enviar foto";
+      remover.hidden = !atleta.tem_foto;
+    };
+    escolher.onclick = () => arquivo.click();
+    arquivo.onchange = async () => {
+      const f = arquivo.files && arquivo.files[0];
+      arquivo.value = "";
+      if (!f) return;
+      msg.className = ""; msg.textContent = "Enviando…";
+      escolher.disabled = true;
+      try {
+        const blob = await reduzirFoto(f);
+        const r = await fetch(API + "/eu/foto", { method: "PUT", credentials: "include", headers: { "Content-Type": "image/jpeg" }, body: blob });
+        const d = await r.json().catch(() => ({ ok: false, erro: "Erro ao enviar." }));
+        if (!d.ok) throw new Error(d.erro);
+        atleta = d.atleta; pintar();
+        msg.className = "ok"; msg.textContent = "Foto salva.";
+      } catch (e) { msg.className = "erro"; msg.textContent = e.message; }
+      escolher.disabled = false;
+    };
+    remover.onclick = async () => {
+      if (!confirm("Remover sua foto?")) return;
+      const d = await api("/eu/foto", { method: "DELETE" });
+      if (d.ok) { atleta = d.atleta; pintar(); msg.className = "ok"; msg.textContent = "Foto removida."; }
+    };
+    publica.onchange = async () => {
+      const d = await api("/eu", { method: "PUT", body: JSON.stringify({ foto_publica: publica.checked }) });
+      if (d.ok) { atleta = d.atleta; msg.className = "ok"; msg.textContent = publica.checked ? "Outros atletas cadastrados podem ver sua foto." : "Só você vê sua foto."; }
+      else { publica.checked = !publica.checked; msg.className = "erro"; msg.textContent = d.erro; }
+    };
+    sec.replaceChildren(
+      el("h2", { textContent: "Minha foto" }),
+      el("div", { className: "foto-caixa" }, [atual, el("div", { className: "foto-acoes" }, [
+        el("div", { className: "linha-botoes", style: "margin-top:0" }, [escolher, remover, arquivo]),
+        el("label", { className: "aceite" }, [publica, el("span", { textContent:
+          "Autorizo mostrar minha foto para outros atletas cadastrados, no meu perfil de resultados e no Supertrunfo." })]),
+        el("p", { className: "suave", style: "font-size:.8rem", textContent:
+          "Visitantes sem cadastro nunca veem a foto. Ela aparece no seu perfil quando ele está ligado à sua conta (“Este sou eu”)." }),
+        msg,
+      ])]));
+  }
+
   function montarDados(sec) {
     const nome = el("input", { type: "text", value: atleta.nome, maxLength: 80, autocomplete: "name" });
     const cidade = el("input", { type: "text", value: atleta.cidade, maxLength: 80, autocomplete: "address-level2" });
@@ -288,11 +380,21 @@ input[type=text],input[type=email],input[type=tel],select{font:inherit; font-siz
     DISTANCIAS.forEach(([v, rot]) => dist.append(el("label", {}, [
       el("input", { type: "checkbox", value: v, checked: atleta.distancias.includes(v) }), el("span", { textContent: rot })])));
     const whats = el("input", { type: "tel", value: atleta.whatsapp, maxLength: 20, placeholder: "(48) 99999-0000", autocomplete: "tel" });
+    const limite18 = new Date(Date.now() - 18 * 365.25 * 86400000).toISOString().slice(0, 10);
+    const nascimento = el("input", { type: "date", value: atleta.nascimento || "", max: limite18, min: "1920-01-01", autocomplete: "bday" });
+    const bairro = el("input", { type: "text", value: atleta.bairro || "", maxLength: 80, placeholder: "Seu bairro" });
+    const categoria = el("span", { className: "categoria" });
+    const pintarCategoria = () => { const c = categoriaDaIdade(nascimento.value); categoria.textContent = c ? "Categoria " + c : ""; categoria.hidden = !c; };
+    nascimento.oninput = pintarCategoria;
+    pintarCategoria();
     const aceite = el("input", { type: "checkbox", checked: atleta.whatsapp_ok });
     const msg = el("p", { role: "status" });
     const salvar = el("button", { className: "botao", type: "submit", textContent: "Salvar" });
     const form = el("form", { className: "grade" }, [
       el("label", { className: "campo largo" }, [el("span", { textContent: "Nome" }), nome]),
+      el("label", { className: "campo" }, [el("span", { textContent: "Data de nascimento" }), nascimento]),
+      el("div", { className: "campo", style: "align-self:end" }, [categoria]),
+      el("label", { className: "campo" }, [el("span", { textContent: "Bairro" }), bairro]),
       el("label", { className: "campo" }, [el("span", { textContent: "Cidade" }), cidade]),
       el("label", { className: "campo" }, [el("span", { textContent: "Estado" }), uf]),
       el("div", { className: "largo" }, [el("p", { className: "suave", textContent: "Distâncias que você corre", style: "font-size:.8rem;font-weight:600;margin:0 0 .35rem" }), dist]),
@@ -308,6 +410,7 @@ input[type=text],input[type=email],input[type=tel],select{font:inherit; font-siz
         nome: nome.value, cidade: cidade.value, uf: uf.value,
         distancias: [...dist.querySelectorAll("input:checked")].map(i => i.value),
         whatsapp: whats.value, aceitaWhatsapp: aceite.checked,
+        nascimento: nascimento.value, bairro: bairro.value,
       }) }).catch(() => ({ ok: false, erro: "Sem conexão." }));
       salvar.disabled = false;
       if (!d.ok) { msg.className = "erro"; msg.textContent = d.erro; return; }

@@ -132,6 +132,8 @@
       campo("WhatsApp", el("input", { type: "tel", name: "whatsapp", autocomplete: "tel", placeholder: "(48) 99999-0000", maxLength: 20 }), "(opcional)"),
       el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaWhatsapp" }),
         el("span", { textContent: "Aceito receber avisos de cupons e provas pelo WhatsApp." })]),
+      el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "maiorDeIdade" }),
+        el("span", { textContent: "Tenho 18 anos ou mais." })]),
       el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaNewsletter" }),
         el("span", { textContent: "Quero receber a newsletter e os cupons de desconto por e-mail." })]),
       el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaPrivacidade" }),
@@ -164,11 +166,13 @@
         distancias: f.getAll("distancias"), whatsapp: (f.get("whatsapp") || "").trim(),
         aceitaWhatsapp: f.get("aceitaWhatsapp") === "on",
         aceitaNewsletter: f.get("aceitaNewsletter") === "on", aceitaPrivacidade: f.get("aceitaPrivacidade") === "on",
+        maiorDeIdade: f.get("maiorDeIdade") === "on",
         origem: location.pathname, turnstile: window.turnstile && widget != null ? window.turnstile.getResponse(widget) : "",
       };
       if (dados.nome.length < 2) return (erro.textContent = "Informe seu nome.");
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(dados.email)) return (erro.textContent = "Informe um e-mail válido.");
       if (dados.cidade.length < 2 || !dados.uf) return (erro.textContent = "Informe sua cidade e o estado.");
+      if (!dados.maiorDeIdade) return (erro.textContent = "O cadastro é só para maiores de 18 anos.");
       if (!dados.aceitaNewsletter) return (erro.textContent = "Para receber os cupons, marque a opção da newsletter.");
       if (!dados.aceitaPrivacidade) return (erro.textContent = "É preciso aceitar a Política de Privacidade.");
       enviar.disabled = true; enviar.textContent = "Enviando…";
