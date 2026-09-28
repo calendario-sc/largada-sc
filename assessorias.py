@@ -5,7 +5,12 @@ Le o campo "Equipe/Assessoria" das classificacoes (atletas/provas/*.json),
 limpa o que o corredor digitou e junta as grafias da mesma equipe. Escreve,
 so no repositorio privado do BI (../cupons-bi/assessorias.json):
 
-  {"provas": [or_slug, ...], "equipes": [[nome, [prova, alunos, prova, alunos, ...]], ...]}
+  {"provas": [or_slug, ...], "info": [[nome, data, cidade, uf, regiao], ...],
+   "equipes": [[nome, [prova, alunos, prova, alunos, ...], chave], ...]}
+
+"info" anda junto com "provas" (mesma posicao) e serve a pagina
+Negocios > Assessorias, que nao tem o calendario carregado. A chave (nome
+limpo) liga a equipe aos contatos gravados no BI.
 
 A pagina de BI cruza o or_slug com as provas do filtro: o ranking segue o
 ano, a cidade e a regiao escolhidos.
@@ -110,10 +115,17 @@ def montar(registrar=print):
     # chave -> {or_slug: set(atletas)} e chave -> Counter(grafias)
     alunos = collections.defaultdict(lambda: collections.defaultdict(set))
     grafias = collections.defaultdict(collections.Counter)
+    sobre = {}      # or_slug -> [nome, data, cidade, uf, regiao]
+    calendario = AQUI / "corridas.json"
+    if calendario.exists():
+        for r in json.loads(calendario.read_text(encoding="utf-8")):
+            if r.get("or_slug"):
+                sobre[r["or_slug"]] = [r.get("nome"), r.get("data"), r.get("cidade"), r.get("uf"), r.get("regiao")]
     for arquivo in sorted(PROVAS.glob("*.json")):
         d = json.loads(arquivo.read_text(encoding="utf-8"))
         if d.get("erro") or not d.get("linhas"):
             continue
+        sobre.setdefault(d["slug"], [d.get("nome"), d.get("data"), d.get("cidade"), None, None])
         for slug, _nome, _sexo, _mod, _cat, equipe, *_ in d["linhas"]:
             if not equipe:
                 continue
@@ -154,13 +166,14 @@ def montar(registrar=print):
         nome = boas[0][0] if boas else grafias[chave].most_common(1)[0][0]
         if boas and " " not in nome:
             nome = next((g for g, n in boas if " " in g and n * 4 >= boas[0][1]), nome)
-        equipes.append([_bonito(nome), sorted(([p, len(q)] for p, q in provas.items()), key=lambda x: -x[1])])
+        equipes.append([_bonito(nome), sorted(([p, len(q)] for p, q in provas.items()), key=lambda x: -x[1]), chave])
     equipes.sort(key=lambda e: -sum(n for _, n in e[1]))
     # No arquivo a prova vai pelo numero (a lista "provas" da o or_slug):
     # corta o tamanho pela metade.
-    compacto = [[nome, [x for p, n in provas for x in (ip(p), n)]] for nome, provas in equipes]
+    compacto = [[nome, [x for p, n in provas for x in (ip(p), n)], chave] for nome, provas, chave in equipes]
+    info = [sobre.get(p) or [None] * 5 for p in lista_provas]
     if BI_DIR.is_dir():
-        SAIDA.write_text(json.dumps({"provas": lista_provas, "equipes": compacto}, ensure_ascii=False, separators=(",", ":")),
+        SAIDA.write_text(json.dumps({"provas": lista_provas, "info": info, "equipes": compacto}, ensure_ascii=False, separators=(",", ":")),
                          encoding="utf-8")
     registrar(f"assessorias: {len(equipes)} equipes com {MINIMO_ALUNOS}+ participacoes")
     return equipes
@@ -193,5 +206,5 @@ if __name__ == "__main__":
     except (AttributeError, OSError):
         pass
     eq = montar()
-    for nome, provas in eq[:int(sys.argv[1]) if len(sys.argv) > 1 else 0]:
+    for nome, provas, _chave in eq[:int(sys.argv[1]) if len(sys.argv) > 1 else 0]:
         print(sum(n for _, n in provas), len(provas), nome)
