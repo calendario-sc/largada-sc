@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Classificação completa da prova: posição, tempo, pace, categoria e equipe de cada atleta.">
+<title>Resultado · Cupons de Corrida</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0JZLDPQ7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P0JZLDPQ7W');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F1F4F9; --surface:#FFFFFF; --surface-2:#F1F4F9; --line:#BFC7D4; --line-soft:#D8DEE8;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880; --azul:#0A2F73; --azul-ink:#0D3F9E; --sol:#FFC21A; --sol-wash:#FFF4D1;
+  --f-display:"Archivo",system-ui,sans-serif; --f-mono:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){ :root{
+  --ground:#0B1220; --surface:#121B2E; --surface-2:#0E1628; --line:#33415C; --line-soft:#26324A;
+  --ink:#E8EDF6; --ink-2:#C4CCDA; --muted:#8C97AA; --azul-ink:#8FB2FF; --sol-wash:#3A2F0A } }
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink); font:16px/1.5 "Instrument Sans",system-ui,sans-serif}
+a{color:inherit}
+header.top{background:var(--azul); color:#fff; padding:1.8rem 1rem 1.6rem; position:relative}
+header.top::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.wrap{max-width:60rem; margin:0 auto}
+.eyebrow{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin:0}
+.eyebrow a{color:#FFC21A; text-decoration:none}
+h1{font-family:var(--f-display); font-weight:800; font-size:clamp(1.6rem,5vw,2.5rem); margin:.35rem 0 .3rem; letter-spacing:-.025em; line-height:1.05}
+.sub{margin:0; opacity:.9; font-size:.95rem}
+.nums{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
+.nums div{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:.5rem .8rem}
+.nums b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.35rem; color:#FFC21A; line-height:1.1}
+.nums span{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; opacity:.8}
+main{padding:1.2rem 1rem 3rem}
+.filtros{display:grid; gap:.6rem; margin:0 0 1rem}
+.grupo{display:flex; flex-wrap:wrap; gap:.35rem; align-items:center}
+.grupo > span{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:.3rem}
+.chip{font:inherit; font-size:.84rem; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.3rem .8rem}
+.chip[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
+.linha{display:flex; gap:.6rem; flex-wrap:wrap}
+.linha input,.linha select{font:inherit; font-size:.92rem; padding:.5rem .7rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); min-width:0}
+.linha input{flex:1 1 14rem}
+.caixa{background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; overflow:hidden}
+table{width:100%; border-collapse:collapse; font-size:.88rem}
+th{font-family:var(--f-mono); font-weight:400; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.6rem .6rem; border-bottom:1px solid var(--line); background:var(--surface)}
+td{padding:.5rem .6rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.pos{font-family:var(--f-display); font-weight:800; font-size:1rem; width:3rem; text-align:center; color:var(--ink-2)}
+tr.podio td.pos{color:#0A2F73}
+tr.podio td.pos span{display:inline-block; min-width:1.8rem; background:var(--sol); border-radius:8px; padding:.05rem .3rem}
+td.pos small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.62rem; color:var(--muted)}
+td.atleta a{font-weight:600; text-decoration:none; border-bottom:1px solid var(--line)}
+td.atleta a:hover{color:var(--azul-ink); border-color:var(--azul-ink)}
+td.atleta small{display:block; color:var(--muted); font-size:.76rem}
+td.num{font-family:var(--f-mono); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+td.num b{font-weight:500; color:var(--ink)}
+tr.voce td{background:var(--sol-wash)}
+.voce-tag{display:inline-block; margin-left:.35rem; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; background:var(--sol); color:#0A2F73; border-radius:5px; padding:.05rem .35rem}
+.mais{display:block; margin:1rem auto 0; font:inherit; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.5rem 1.2rem}
+.aviso{padding:1.4rem; color:var(--ink-2)}
+.nota{font-size:.78rem; color:var(--muted); margin:.8rem 0 0}
+.carregando{color:var(--muted); padding:1.5rem 0}
+.cat-cel{display:none}
+@media (max-width:640px){ .opc{display:none} .cat-cel{display:inline} td,th{padding:.45rem .4rem} table{font-size:.82rem} }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="entrar-topo" href="area.html" data-entrar>Entrar · Área do atleta</a>
+  <div class="wrap">
+    <p class="eyebrow"><a href="./">Cupons de Corrida</a> · resultado</p>
+    <h1 id="titulo">Resultado</h1>
+    <p class="sub" id="sub"></p>
+    <div class="nums" id="nums"></div>
+  </div>
+</header>
+<main><div class="wrap" id="conteudo"><p class="carregando">Carregando a classificação…</p></div></main>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const slug = (params.get("p") || "").trim();
+  const conteudo = document.getElementById("conteudo");
+  const num = n => n.toLocaleString("pt-BR");
+  const el = (tag, props = {}, kids = []) => {
+    const n = Object.assign(document.createElement(tag), props);
+    kids.forEach(k => k != null && n.append(k));
+    return n;
+  };
+  const norm = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const PEQUENAS = new Set(["da", "de", "do", "das", "dos", "e"]);
+  const titulo = s => String(s || "").toLowerCase().split(/\s+/)
+    .map((p, i) => i && PEQUENAS.has(p) ? p : p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
+  const tempo = s => { if (!s) return "—"; const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+    return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); };
+  const pace = s => s ? Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0") + "/km" : "—";
+  const dataBr = s => s ? s.slice(8, 10) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4) : "";
+  // Mesmo nome de arquivo que o coletor grava (atletas_coleta.arquivo_de).
+  const arquivo = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const kmDe = m => { const x = String(m).match(/(\d+(?:[.,]\d+)?)\s*k/i); return x ? Number(x[1].replace(",", ".")) : 999; };
+  const openResults = "https://openresults.run/evento/" + encodeURIComponent(slug) + "/";
+
+  function semDados(msg) {
+    document.getElementById("titulo").textContent = "Resultado";
+    conteudo.replaceChildren(el("div", { className: "caixa aviso" }, [
+      el("p", { textContent: msg }),
+      slug ? el("p", {}, [el("a", { href: openResults, target: "_blank", rel: "noopener", textContent: "Ver a classificação no Open Results ↗" })]) : null,
+      el("p", {}, [el("a", { href: "./", textContent: "← voltar ao calendário" })]),
+    ]));
+  }
+
+  async function carregar() {
+    // Endereco do Open Results: pode ter acento; so nao pode ter barra.
+    if (slug.length < 3 || slug.length > 250 || /[\/\?#]/.test(slug)) return semDados("Prova não informada.");
+    // No site o arquivo esta ao lado; no BI, vem do site publico.
+    const base = /^bi\./.test(location.hostname) ? "https://www.cuponsdecorrida.com.br/" : "";
+    let d;
+    try {
+      const r = await fetch(base + "atletas/provas/" + arquivo(slug) + ".json");
+      if (!r.ok) throw new Error("sem arquivo");
+      d = await r.json();
+    } catch (e) {
+      return semDados("A classificação completa desta prova ainda não está no Cupons de Corrida (temos os resultados por atleta das provas de 2022 em diante).");
+    }
+    if (d.erro || !(d.linhas || []).length) return semDados("A classificação desta prova não pôde ser lida.");
+    montar(d);
+  }
+
+  function montar(d) {
+    document.title = d.nome + " · Resultado · Cupons de Corrida";
+    document.getElementById("titulo").textContent = d.nome;
+    document.getElementById("sub").textContent = dataBr(d.data) + " · " + d.cidade;
+
+    // Uma linha por atleta e modalidade; posicao calculada aqui pelo tempo,
+    // na modalidade (geral) e no sexo.
+    const vistos = new Set();
+    const linhas = [];
+    d.linhas.forEach(([sl, nome, sexo, mod, cat, equipe, pos, t, p]) => {
+      const k = sl + "|" + mod;
+      if (vistos.has(k)) return;
+      vistos.add(k);
+      linhas.push({ slug: sl, nome: titulo(nome), sexo, mod, cat: cat || "", equipe: equipe || "", t, p, busca: norm(nome + " " + (equipe || "")) });
+    });
+    const mods = [...new Set(linhas.map(l => l.mod))].sort((a, b) => kmDe(a) - kmDe(b) || a.localeCompare(b));
+    mods.forEach(m => {
+      const da = linhas.filter(l => l.mod === m).sort((a, b) => (a.t || 9e9) - (b.t || 9e9));
+      const porSexo = {};
+      da.forEach((l, i) => {
+        l.geral = l.t ? i + 1 : null;
+        porSexo[l.sexo] = (porSexo[l.sexo] || 0) + (l.t ? 1 : 0);
+        l.noSexo = l.t ? porSexo[l.sexo] : null;
+      });
+    });
+
+    const fem = linhas.filter(l => l.sexo === "F").length, masc = linhas.filter(l => l.sexo === "M").length;
+    document.getElementById("nums").replaceChildren(...[
+      [num(linhas.length), "concluintes"], [mods.length, mods.length === 1 ? "distância" : "distâncias"],
+      [num(fem), "mulheres"], [num(masc), "homens"],
+    ].map(([v, r]) => el("div", {}, [el("b", { textContent: String(v) }), el("span", { textContent: r })])));
+
+    const estado = { mod: mods[0], sexo: "", cat: "", q: "", mostrar: 100 };
+    const grupoMod = el("div", { className: "grupo" }, [el("span", { textContent: "Distância" })]);
+    mods.forEach(m => {
+      const b = el("button", { className: "chip", type: "button", textContent: m + " · " + num(linhas.filter(l => l.mod === m).length) });
+      b.setAttribute("aria-pressed", String(m === estado.mod));
+      b.onclick = () => { estado.mod = m; estado.cat = ""; estado.mostrar = 100;
+        grupoMod.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintarCategorias(); pintar(); };
+      grupoMod.append(b);
+    });
+    const grupoSexo = el("div", { className: "grupo" }, [el("span", { textContent: "Sexo" })]);
+    [["", "Geral"], ["F", "Feminino"], ["M", "Masculino"]].forEach(([v, rot]) => {
+      const b = el("button", { className: "chip", type: "button", textContent: rot });
+      b.setAttribute("aria-pressed", String(v === estado.sexo));
+      b.onclick = () => { estado.sexo = v; estado.mostrar = 100;
+        grupoSexo.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintar(); };
+      grupoSexo.append(b);
+    });
+    const busca = el("input", { type: "search", placeholder: "Buscar atleta ou equipe…", autocomplete: "off" });
+    busca.oninput = () => { estado.q = norm(busca.value.trim()); estado.mostrar = 100; pintar(); };
+    const categorias = el("select", { ariaLabel: "Categoria" });
+    categorias.onchange = () => { estado.cat = categorias.value; estado.mostrar = 100; pintar(); };
+    function pintarCategorias() {
+      const cats = [...new Set(linhas.filter(l => l.mod === estado.mod).map(l => l.cat).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR", { numeric: true }));
+      categorias.replaceChildren(el("option", { value: "", textContent: "Todas as categorias" }), ...cats.map(c => el("option", { value: c, textContent: c })));
+      categorias.hidden = !cats.length;
+    }
+    pintarCategorias();
+
+    const corpo = el("tbody");
+    const tabela = el("table", {}, [el("thead", {}, [el("tr", {}, [
+      el("th", { textContent: "Pos." }), el("th", { textContent: "Atleta" }), el("th", { className: "opc", textContent: "Categoria" }),
+      el("th", { textContent: "Tempo", style: "text-align:right" }), el("th", { className: "opc", textContent: "Pace", style: "text-align:right" }),
+    ])]), corpo]);
+    const rodape = el("div");
+    conteudo.replaceChildren(
+      el("div", { className: "filtros" }, [grupoMod, grupoSexo, el("div", { className: "linha" }, [busca, categorias])]),
+      el("div", { className: "caixa" }, [tabela]), rodape,
+      el("p", { className: "nota" }, [document.createTextNode("Posição calculada pelo tempo publicado pela cronometragem, na distância e no sexo. Resultado oficial: "),
+        el("a", { href: openResults, target: "_blank", rel: "noopener", textContent: "Open Results ↗" }), document.createTextNode(".")]),
+    );
+
+    let meuSlug = "";
+    function pintar() {
+      const lista = linhas.filter(l => l.mod === estado.mod && (!estado.sexo || l.sexo === estado.sexo)
+        && (!estado.cat || l.cat === estado.cat) && (!estado.q || l.busca.includes(estado.q)))
+        .sort((a, b) => (a.t || 9e9) - (b.t || 9e9));
+      corpo.replaceChildren(...lista.slice(0, estado.mostrar).map(l => {
+        const pos = estado.sexo ? l.noSexo : l.geral;
+        const podio = l.noSexo && l.noSexo <= 3;
+        return el("tr", { className: (podio ? "podio" : "") + (l.slug === meuSlug ? " voce" : "") }, [
+          el("td", { className: "pos" }, [el("span", { textContent: pos ? pos + "º" : "—" }),
+            !estado.sexo && l.noSexo ? el("small", { textContent: l.noSexo + "º " + (l.sexo === "F" ? "fem" : "masc") }) : null]),
+          el("td", { className: "atleta" }, [
+            el("a", { href: "atletas.html#" + l.slug, textContent: l.nome }),
+            l.slug === meuSlug ? el("span", { className: "voce-tag", textContent: "você" }) : null,
+            el("small", {}, [document.createTextNode(l.equipe),
+              l.cat ? el("span", { className: "cat-cel", textContent: (l.equipe ? " · " : "") + l.cat }) : null])]),
+          el("td", { className: "opc", textContent: l.cat || "—" }),
+          el("td", { className: "num" }, [el("b", { textContent: tempo(l.t) })]),
+          el("td", { className: "num opc", textContent: pace(l.p) }),
+        ]);
+      }));
+      rodape.replaceChildren();
+      if (!lista.length) rodape.append(el("p", { className: "aviso", textContent: "Nenhum atleta encontrado com esses filtros." }));
+      if (lista.length > estado.mostrar) {
+        const mais = el("button", { className: "mais", type: "button", textContent: "Mostrar mais (" + num(lista.length - estado.mostrar) + " restantes)" });
+        mais.onclick = () => { estado.mostrar += 200; pintar(); };
+        rodape.append(mais);
+      }
+    }
+    pintar();
+
+    // Atleta logado com o perfil ligado: destaca a propria linha e vai para a distancia dele.
+    if (window.cuponsSessao) window.cuponsSessao.then(a => {
+      if (!a || !a.slug_atleta) return;
+      meuSlug = a.slug_atleta;
+      const minha = linhas.find(l => l.slug === meuSlug);
+      if (minha && minha.mod !== estado.mod) {
+        const b = [...grupoMod.querySelectorAll(".chip")].find(x => x.textContent.startsWith(minha.mod + " ·"));
+        if (b) return b.click();
+      }
+      pintar();
+    });
+  }
+
+  carregar();
+})();
+</script>
+<script src="cadastro.js"></script>
+</body>
+</html>

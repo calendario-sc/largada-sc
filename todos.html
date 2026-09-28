@@ -2884,6 +2884,11 @@ const buscaResultados = document.getElementById("resultados-busca");
 const LOTE_RESULTADOS = 150;
 let mostrarResultados = LOTE_RESULTADOS;
 
+// Classificacao completa no proprio site (resultado.html). No BI, a pagina
+// fica no site publico.
+const linkResultado = r => (/^bi\./.test(location.hostname) ? "https://www.cuponsdecorrida.com.br/" : "")
+  + "resultado.html?p=" + encodeURIComponent(r.or_slug);
+
 function provasComResultado(){
   const alvo = norm(buscaResultados.value.trim());
   return RACES.filter(r => r._passada && r.concluintes_total && passaFiltrosGerais(r)
@@ -2936,8 +2941,7 @@ function montarResultados(){
     const linhaDist = el("span", { className:"rs__dist", textContent: dist.join(" · ") });
     if (r.or_slug){
       if (dist.length) linhaDist.append(document.createTextNode(" · "));
-      linhaDist.append(el("a", { href:"https://openresults.run/evento/" + encodeURIComponent(r.or_slug) + "/",
-        target:"_blank", rel:"noopener", textContent:"classificação ↗" }));
+      linhaDist.append(el("a", { href: linkResultado(r), textContent:"classificação" }));
     }
     lista.append(el("li", { className:"rs__item" }, [
       el("div", { className:"rs__data" }, [el("b", { textContent:String(r.dia).padStart(2, "0") }),
@@ -3901,6 +3905,7 @@ function linha(r, destaque){
   // Galeria dos campeoes: so para prova com resultado por atleta (2022 em
   // diante); o arquivo e baixado no primeiro clique.
   if (r.or_slug && temResultado(r) && r.ano >= 2022){
+    meta.append(el("a", { className:"camp-btn", href: linkResultado(r), textContent:"Classificação", style:"text-decoration:none" }));
     const bt = el("button", { className:"camp-btn", type:"button", textContent:"Campeões" });
     bt.setAttribute("aria-expanded", "false");
     const gal = el("div", { className:"galeria" }); gal.hidden = true;
