@@ -18,6 +18,7 @@ import json
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -26,6 +27,10 @@ ATLETAS = AQUI / "atletas"
 ESTADO = AQUI / ".estado_r2.json"
 CHAVE = AQUI / ".segredos" / "upload_token"
 API = "https://api.cuponsdecorrida.com.br/interno/lote"
+API_ARQUIVO = "https://api.cuponsdecorrida.com.br/interno/arquivo"
+# Arquivo maior que isto vai sozinho, direto para o R2 (o recordes.json passa de 4 MB).
+GRANDE = 800 * 1024
+PARALELOS = 8
 # Por pedido. O Worker gratuito tem pouco tempo de CPU por pedido: ler um
 # JSON de 6 MB estoura; 1 MB passa em ~1 s.
 LOTE_BYTES = 1024 * 1024
@@ -65,6 +70,26 @@ def enviar(token, lote, registrar):
     raise RuntimeError("lote nao enviado depois de 4 tentativas")
 
 
+def enviar_arquivo(token, chave, conteudo, cache, registrar):
+    corpo = conteudo.encode("utf-8")
+    url = API_ARQUIVO + "?" + urllib.parse.urlencode({"chave": chave, "cache": cache})
+    for tentativa in range(4):
+        try:
+            req = urllib.request.Request(url, data=corpo, method="PUT", headers={
+                "Authorization": "Bearer " + token, "Content-Type": "application/json", "User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=300) as r:
+                d = json.loads(r.read().decode("utf-8"))
+            if not d.get("ok"):
+                raise RuntimeError(d.get("erro") or "resposta sem ok")
+            return
+        except (urllib.error.URLError, TimeoutError, ConnectionError, RuntimeError) as erro:
+            if isinstance(erro, urllib.error.HTTPError) and erro.code in (400, 401):
+                raise RuntimeError(f"HTTP {erro.code}: {erro.read()[:200]!r}")
+            registrar(f"  {chave}: tentativa {tentativa + 1} falhou ({erro}); de novo em 20 s")
+            time.sleep(20)
+    raise RuntimeError(f"{chave} nao enviado depois de 4 tentativas")
+
+
 def publicar(tudo=False, registrar=print):
     if not CHAVE.exists():
         registrar("dados publicos: sem .segredos/upload_token, nada enviado")
@@ -81,29 +106,23 @@ def publicar(tudo=False, registrar=print):
             pendentes.append((chave, conteudo.decode("utf-8"), cache, h))
     apagar = [c for c in estado if c not in atuais]
 
-    enviados, lote, tamanho, feitos = 0, [], 0, {}
-
-    def descarregar():
-        nonlocal lote, tamanho, enviados
-        if not lote:
-            return
-        enviar(token, {"gravar": [{"chave": c, "conteudo": t, "cache": k} for c, t, k, _ in lote]}, registrar)
-        for c, _, _, h in lote:
-            estado[c] = h
-        enviados += len(lote)
-        if enviados // 1000 != (enviados - len(lote)) // 1000:
-            registrar(f"  ... {enviados} de {len(pendentes)} enviados")
-        lote, tamanho = [], 0
-        # Grava o progresso a cada lote: uma queda no meio nao obriga a reenviar tudo.
-        ESTADO.write_text(json.dumps(estado, separators=(",", ":")), encoding="utf-8")
-
+    # Um arquivo por pedido, direto para o R2 (o lote em JSON estourava o tempo de
+    # CPU do Worker e, em dia de instabilidade do R2, o tempo de resposta).
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    enviados = 0
     registrar(f"dados publicos: {len(pendentes)} arquivos para enviar")
-    for item in pendentes:
-        if lote and tamanho + len(item[1]) > LOTE_BYTES:
-            descarregar()
-        lote.append(item)
-        tamanho += len(item[1])
-    descarregar()
+    with ThreadPoolExecutor(max_workers=PARALELOS) as pool:
+        futuros = {pool.submit(enviar_arquivo, token, c, txt, k, registrar): (c, h) for c, txt, k, h in pendentes}
+        for fut in as_completed(futuros):
+            c, h = futuros[fut]
+            fut.result()                      # erro definitivo interrompe (o que ja foi fica gravado)
+            estado[c] = h
+            enviados += 1
+            if enviados % 200 == 0:
+                registrar(f"  ... {enviados} de {len(pendentes)} enviados")
+                # Grava o progresso: uma queda no meio nao obriga a reenviar tudo.
+                ESTADO.write_text(json.dumps(estado, separators=(",", ":")), encoding="utf-8")
+    ESTADO.write_text(json.dumps(estado, separators=(",", ":")), encoding="utf-8")
 
     for i in range(0, len(apagar), 500):
         parte = apagar[i:i + 500]
