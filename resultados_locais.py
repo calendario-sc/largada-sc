@@ -208,7 +208,16 @@ def publicar_bi():
     try:
         if not g("status", "--porcelain").stdout.strip():
             return
+        # Minhas corridas (so no BI): concluintes do dia + inscritos ja anonimizados.
+        try:
+            sys.path.insert(0, str(pasta / "ferramentas"))
+            import minhas_corridas
+            minhas_corridas.montar(registrar=registrar)
+        except Exception as erro:
+            registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
         g("add", "index.html", "pr.html", "todos.html", "cadastro.js", "cupons.html")
+        if (pasta / "minhas-corridas" / "dados.json").exists():
+            g("add", "minhas-corridas/dados.json")
         if (pasta / "assessorias.json").exists():
             g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")
