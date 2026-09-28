@@ -169,7 +169,7 @@ def publicar():
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return
-    git("add", "corridas.json", "index.html", "pr.html", "todos.html")
+    git("add", "corridas.json", "index.html", "pr.html", "todos.html", "provas-futuras.json")
     hoje = datetime.date.today().strftime("%d/%m/%Y")
     git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
         "commit", "-q", "-m", f"concluintes de {hoje} (coleta local)")
@@ -182,7 +182,7 @@ def publicar():
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
         build.build()
-        git("add", "corridas.json", "index.html", "pr.html", "todos.html")
+        git("add", "corridas.json", "index.html", "pr.html", "todos.html", "provas-futuras.json")
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
         git("push", "-q", "origin", "main")

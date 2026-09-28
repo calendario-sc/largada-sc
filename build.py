@@ -135,6 +135,9 @@ SO_BI = [
     r'[ \t]*<a class="chip" id="btn-patrocinios"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-cupons"[^\n]*\n',
     r'<dialog class="orgs cp" id="cupons".*?</dialog>\n\n',
+    r'[ \t]*<button class="chip" id="btn-empresas"[^\n]*\n',
+    r'<dialog class="orgs cp" id="empresas".*?</dialog>\n\n',
+    r'<!-- painel do BI -->.*?</script>\n?',
     r'[ \t]*<button class="chip" id="btn-fotos"[^\n]*\n',
     r'<dialog class="orgs cp" id="fotos".*?</dialog>\n\n',
     r'[ \t]*<button class="chip" id="btn-leads"[^\n]*\n',
@@ -155,7 +158,8 @@ SO_BI = [
 # publico leva so a assinatura.
 RODAPE = re.compile(r'<footer class="foot">.*?</footer>', re.S)
 RODAPE_PUBLICO = ('<footer class="foot">\n  <div class="wrap">\n'
-                  '    <p><b>Cupons de Corrida</b></p>\n  </div>\n</footer>')
+                  '    <p><b>Cupons de Corrida</b> · <a href="cupons.html">Central de Cupons</a>'
+                  ' · <a href="parceiros.html">Seja parceiro</a></p>\n  </div>\n</footer>')
 STAT_ORGS = re.compile(r'<button class="stat stat--btn" id="stat-orgs".*?</button>', re.S)
 
 
@@ -209,6 +213,15 @@ def build():
     historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
     coleta = data_coleta()
     publico = so_publico(template)
+
+    # Provas futuras, leves, para o painel do parceiro (parceiros.html) escolher
+    # em que provas vale o cupom. A chave "data|nome" e a mesma do calendario.
+    hoje = datetime.date.today().isoformat()
+    futuras = sorted(({"chave": p["data"] + "|" + p["nome"], "data": p["data"], "nome": p["nome"],
+                       "cidade": p.get("cidade") or "", "uf": p.get("uf") or "SC", "org": p.get("organizadores") or []}
+                      for p in historico if p["data"] >= hoje and "Treino" not in (p.get("tags") or [])),
+                     key=lambda x: (x["data"], x["nome"]))
+    (AQUI / "provas-futuras.json").write_text(json.dumps(futuras, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
     tamanho = 0
     for arquivo, uf in PAGINAS:

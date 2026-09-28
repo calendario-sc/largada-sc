@@ -82,7 +82,7 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
 </header>
 
 <main><div class="wrap" id="conteudo"><p class="carregando">Carregando os cupons…</p></div></main>
-<footer><div class="wrap">Tem uma loja, assessoria ou serviço para corredores e quer oferecer desconto? Escreva para <a href="mailto:contato@cuponsdecorrida.com.br">contato@cuponsdecorrida.com.br</a>.</div></footer>
+<footer><div class="wrap">É organizadora de provas ou tem uma loja, assessoria ou serviço para corredores? <a href="parceiros.html">Seja parceiro</a> e cadastre seus cupons.</div></footer>
 
 <script>
 (() => {
@@ -184,8 +184,8 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
       ...(parceiros.length
         ? categorias.flatMap(k => [el("h3", { className: "categoria", textContent: k }), el("div", { className: "grade" }, porCategoria.get(k).map(c => cartao(c, logado)))])
         : [el("div", { className: "vazio" }, [el("p", { textContent: "Os primeiros parceiros estão chegando." }),
-            el("p", { className: "suave" }, [document.createTextNode("Tem uma loja, assessoria ou serviço para corredores? Escreva para "),
-              el("a", { href: "mailto:contato@cuponsdecorrida.com.br", textContent: "contato@cuponsdecorrida.com.br" }), document.createTextNode(".")])])]),
+            el("p", { className: "suave" }, [document.createTextNode("Tem uma loja, assessoria ou serviço para corredores? "),
+              el("a", { href: "parceiros.html", textContent: "Seja parceiro" }), document.createTextNode(" e cadastre seus cupons.")])])]),
     ]);
 
     // Filtro: tudo, so provas ou so parceiros

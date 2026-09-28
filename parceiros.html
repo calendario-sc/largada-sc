@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Seja parceiro do Cupons de Corrida: organizadoras de provas, lojas e serviços para corredores cadastram seus cupons de desconto e chegam a quem corre em SC e PR.">
+<title>Seja parceiro · Cupons de Corrida</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0JZLDPQ7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P0JZLDPQ7W');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F1F4F9; --surface:#FFFFFF; --surface-2:#F1F4F9; --line:#BFC7D4; --line-soft:#D8DEE8;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880; --azul:#0A2F73; --azul-ink:#0D3F9E; --sol:#FFC21A;
+  --ok:#07734F; --erro:#B81C26;
+  --f-display:"Archivo",system-ui,sans-serif; --f-mono:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){ :root{
+  --ground:#0B1220; --surface:#121B2E; --surface-2:#0E1628; --line:#33415C; --line-soft:#26324A;
+  --ink:#E8EDF6; --ink-2:#C4CCDA; --muted:#8C97AA; --azul-ink:#8FB2FF; --ok:#3FBF8F; --erro:#FF7A80 } }
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink); font:16px/1.55 "Instrument Sans",system-ui,sans-serif}
+a{color:inherit}
+header{background:var(--azul); color:#fff; padding:2rem 1rem 1.8rem; position:relative}
+header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.wrap{max-width:56rem; margin:0 auto}
+.topo-linha{display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap}
+.eyebrow{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin:0}
+.eyebrow a{color:#FFC21A; text-decoration:none}
+h1{font-family:var(--f-display); font-weight:800; font-size:clamp(1.9rem,6vw,2.8rem); margin:.35rem 0 .4rem; letter-spacing:-.03em; line-height:1}
+h1 em{font-style:normal; color:#FFC21A}
+.lede{margin:0; max-width:40rem; opacity:.92}
+.sair{font:inherit; font-size:.85rem; cursor:pointer; border:1px solid rgba(255,255,255,.4); background:none; color:#fff; border-radius:999px; padding:.35rem .9rem}
+main{padding:1.4rem 1rem 3rem}
+.cartao{background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; padding:1.2rem 1.3rem; margin:0 0 1rem}
+.cartao h2{font-family:var(--f-display); font-weight:800; font-size:1.2rem; margin:0 0 .6rem; letter-spacing:-.01em}
+.cartao h2 small{font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-left:.4rem}
+.cartao h3{font-size:1rem; margin:1rem 0 .4rem}
+.suave{color:var(--muted); font-size:.9rem; margin:.2rem 0 0}
+.vantagens{display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:.7rem; margin:0 0 1rem}
+.vantagens div{background:var(--surface); border:1px solid var(--line-soft); border-radius:14px; padding:.9rem 1rem}
+.vantagens b{display:block; font-family:var(--f-display); font-size:1.02rem; margin-bottom:.2rem}
+.vantagens span{font-size:.88rem; color:var(--ink-2)}
+.duas{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:1rem; align-items:start}
+label.campo{display:grid; gap:.25rem; font-size:.8rem; font-weight:600; color:var(--ink-2)}
+label.campo small{font-weight:400; color:var(--muted)}
+input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],input[type=date],input[type=search],select,textarea{
+  font:inherit; font-size:.95rem; padding:.6rem .7rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); width:100%}
+textarea{min-height:4.5rem; resize:vertical}
+input[readonly]{background:var(--surface-2); color:var(--muted)}
+.grade{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:.7rem .9rem}
+.c2{grid-column:span 2} .c3{grid-column:span 3} .c4{grid-column:span 4} .c6{grid-column:1 / -1}
+.tipos{display:grid; grid-template-columns:1fr 1fr; gap:.6rem}
+.tipos label{cursor:pointer; border:1px solid var(--line); border-radius:12px; padding:.7rem .8rem; display:flex; gap:.55rem; align-items:flex-start; font-size:.9rem}
+.tipos label b{display:block}
+.tipos label span{color:var(--muted); font-size:.8rem}
+.tipos input{margin-top:.25rem}
+.tipos label:has(input:checked){border-color:var(--azul-ink); box-shadow:0 0 0 2px var(--azul-ink) inset}
+.aceite{display:flex; gap:.55rem; align-items:flex-start; font-size:.88rem; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line-soft); border-radius:12px; padding:.7rem .8rem}
+.aceite input{margin-top:.25rem; width:1.1rem; height:1.1rem; flex:none}
+.botao{font:inherit; font-weight:700; cursor:pointer; border:0; border-radius:12px; padding:.7rem 1.1rem; background:var(--sol); color:#0A2F73; text-decoration:none; display:inline-block}
+.botao[disabled]{opacity:.6; cursor:wait}
+.botao--leve{background:none; border:1px solid var(--line); color:var(--ink-2); font-weight:500}
+.pequeno{font:inherit; font-size:.8rem; cursor:pointer; border:1px solid var(--line); background:none; color:var(--ink-2); border-radius:999px; padding:.3rem .75rem; text-decoration:none}
+.linha-botoes{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; margin-top:.9rem}
+.erro{color:var(--erro); font-size:.86rem; margin:.4rem 0 0}
+.ok{color:var(--ok); font-size:.9rem; margin:.4rem 0 0}
+.faixa{border-radius:14px; padding:.9rem 1.1rem; margin:0 0 1rem; font-size:.94rem; border:1px solid}
+.faixa b{display:block; font-family:var(--f-display); font-size:1.02rem}
+.faixa.pendente{background:#FFF6DA; border-color:#F0C94A; color:#5A4300}
+.faixa.aprovada{background:#E3F6EE; border-color:#7FCFAE; color:#064B34}
+.faixa.suspensa{background:#FDE8EA; border-color:#EFA0A6; color:#6E0F16}
+@media (prefers-color-scheme: dark){ .faixa.pendente{background:#3A300A; color:#FFE59A} .faixa.aprovada{background:#0D3325; color:#A6EBCC} .faixa.suspensa{background:#3E1417; color:#FFC2C6} }
+.privado{display:inline-flex; gap:.3rem; align-items:center; font-family:var(--f-mono); font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); background:var(--surface-2); border:1px solid var(--line-soft); border-radius:6px; padding:.05rem .4rem; margin-left:.3rem}
+.cupons{display:grid; gap:.7rem}
+.cupom{border:1px dashed var(--line); border-radius:14px; padding:.9rem 1rem}
+.cupom.off{opacity:.6}
+.cupom header{all:unset; display:flex; gap:.8rem; align-items:center; flex-wrap:wrap}
+.cupom .selo{font-family:var(--f-display); font-weight:800; color:#0A2F73; background:var(--sol); border-radius:10px; padding:.25rem .6rem}
+.cupom .codigo{font-family:var(--f-mono); font-size:1.02rem; letter-spacing:.05em}
+.cupom ul{margin:.5rem 0 0; padding-left:1.1rem; font-size:.86rem; color:var(--ink-2)}
+.cupom p{margin:.35rem 0 0; font-size:.86rem; color:var(--ink-2)}
+.cupom .acoes{display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.6rem}
+.etiqueta{font-family:var(--f-mono); font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; border-radius:6px; padding:.1rem .45rem; border:1px solid var(--line)}
+.provas-busca{position:relative}
+.sugestoes{list-style:none; margin:.3rem 0 0; padding:0; max-height:16rem; overflow:auto; border:1px solid var(--line-soft); border-radius:10px}
+.sugestoes li{padding:.45rem .7rem; font-size:.86rem; cursor:pointer; border-bottom:1px solid var(--line-soft)}
+.sugestoes li:hover,.sugestoes li:focus{background:var(--surface-2); outline:none}
+.sugestoes li small{color:var(--muted)}
+.escolhidas{display:flex; flex-wrap:wrap; gap:.35rem; margin:.5rem 0 0}
+.escolhidas span{display:inline-flex; gap:.4rem; align-items:center; font-size:.82rem; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:.25rem .35rem .25rem .7rem}
+.escolhidas button{font:inherit; border:0; background:none; cursor:pointer; color:var(--muted); font-size:.95rem; line-height:1}
+table.vendas{width:100%; border-collapse:collapse; font-size:.86rem; margin-top:.6rem}
+table.vendas th{font-family:var(--f-mono); font-weight:400; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.4rem; border-bottom:1px solid var(--line)}
+table.vendas td{padding:.45rem .4rem; border-bottom:1px solid var(--line-soft)}
+table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
+.carregando{color:var(--muted); padding:1rem 0}
+.aviso{position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%); z-index:50; max-width:calc(100% - 2rem);
+  background:#0A2F73; color:#fff; padding:.85rem 1.1rem; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,.3); font-size:.92rem}
+@media (max-width:760px){ .duas{grid-template-columns:1fr} .grade{grid-template-columns:repeat(2,minmax(0,1fr))} .c2,.c3,.c4{grid-column:span 2} .c1m{grid-column:span 1} .tipos{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header><div class="wrap topo-linha">
+  <div>
+    <p class="eyebrow"><a href="./">Cupons de Corrida</a> · parceiros</p>
+    <h1 id="titulo">Seja <em>parceiro</em></h1>
+    <p class="lede" id="lede">Organizadoras de provas, lojas e serviços para corredores: cadastre seus cupons de desconto e chegue a quem corre em SC e PR.</p>
+  </div>
+  <button class="sair" id="sair" type="button" hidden>Sair</button>
+</div></header>
+
+<main><div class="wrap" id="conteudo"><p class="carregando">Carregando…</p></div></main>
+
+<script>
+(() => {
+  const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  const API = LOCAL ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
+  const TURNSTILE = LOCAL ? "1x00000000000000000000AA" : "0x4AAAAAAFE1fT4EqE1SSerz";
+  const TERMOS = "2026-09-28";
+  const UFS = ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
+  const CATEGORIAS = ["Lojas de artigos esportivos", "Tênis e calçados", "Roupas e acessórios", "Nutrição e suplementos",
+    "Saúde e fisioterapia", "Assessorias e treinadores", "Academias e estúdios", "Relógios e eletrônicos", "Fotografia",
+    "Viagens e hospedagem", "Outros"];
+  const params = new URLSearchParams(location.search);
+  const conteudo = document.getElementById("conteudo");
+  const el = (tag, props = {}, kids = []) => {
+    const n = Object.assign(document.createElement(tag), props);
+    kids.forEach(k => k != null && k !== false && n.append(k));
+    return n;
+  };
+  const txt = t => document.createTextNode(t);
+  const api = (caminho, opcoes = {}) => fetch(API + caminho, {
+    credentials: "include", cache: "no-store", ...opcoes,
+    headers: opcoes.body ? { "Content-Type": "application/json" } : {},
+  }).then(async r => ({ status: r.status, ...(await r.json().catch(() => ({ ok: false, erro: "Resposta inválida do servidor." }))) }));
+  const dataBr = s => s ? s.slice(8, 10) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4) : "";
+  const brl = v => (v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  const norm = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const dig = s => String(s || "").replace(/\D/g, "");
+  const cnpjFmt = s => dig(s).slice(0, 14).replace(/^(\d{2})(\d)/, "$1.$2").replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+    .replace(/\.(\d{3})(\d)/, ".$1/$2").replace(/(\d{4})(\d)/, "$1-$2");
+  const telFmt = s => { const d = dig(s).slice(0, 11); return d.length > 10 ? d.replace(/^(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3") : d.replace(/^(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3").replace(/-$/, ""); };
+  const campo = (rotulo, input, classe, dica) => el("label", { className: "campo " + (classe || "") }, [el("span", {}, [txt(rotulo), dica ? el("small", { textContent: " " + dica }) : null]), input]);
+  const inp = (tipo, props) => el("input", { type: tipo, ...(props || {}) });
+  const selectUf = valor => { const s = el("select", {}, [el("option", { value: "", textContent: "UF" }), ...UFS.map(u => el("option", { value: u, textContent: u }))]); s.value = valor || ""; return s; };
+  function avisar(t) {
+    const a = el("div", { className: "aviso", role: "status", textContent: t });
+    document.body.append(a);
+    setTimeout(() => a.remove(), 4500);
+  }
+
+  // Turnstile (o mesmo do cadastro de atletas).
+  function carregarTurnstile() {
+    if (window.turnstile) return Promise.resolve();
+    return new Promise((ok, falha) => {
+      const s = el("script", { src: "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit", async: true });
+      s.onload = ok; s.onerror = falha;
+      document.head.append(s);
+    });
+  }
+  function captcha() {
+    const caixa = el("div", { style: "margin-top:.6rem" });
+    let widget = null;
+    carregarTurnstile().then(() => { widget = window.turnstile.render(caixa, { sitekey: TURNSTILE, size: "flexible", language: "pt-br" }); }).catch(() => {});
+    return { caixa, token: () => window.turnstile && widget != null ? window.turnstile.getResponse(widget) : "",
+             reset: () => { if (window.turnstile && widget != null) window.turnstile.reset(widget); } };
+  }
+
+  // ---------------------------------------------------------------- visitante
+  function telaVisitante() {
+    document.getElementById("sair").hidden = true;
+    const msg = params.get("acesso") === "expirado" ? "O link de acesso venceu. Peça um novo abaixo."
+              : params.get("acesso") === "invalido" ? "Esse link de acesso não vale mais. Peça um novo abaixo." : "";
+    const vantagens = el("div", { className: "vantagens" }, [
+      ["Atletas de SC e PR", "Seu cupom aparece para os corredores cadastrados, no calendário e na newsletter."],
+      ["Você no controle", "Crie, altere e desligue os cupons quando quiser, pelo seu painel."],
+      ["Resultado medido", "Veja quantos atletas pegaram o código de cada cupom."],
+    ].map(([b, s]) => el("div", {}, [el("b", { textContent: b }), el("span", { textContent: s })])));
+
+    // Cadastro
+    const tipo = { v: "organizadora" };
+    const tipos = el("div", { className: "tipos c6" }, [["organizadora", "Organizadora de provas", "Cupom de desconto na inscrição das suas provas."],
+      ["loja", "Loja ou serviço", "Tênis, roupas, nutrição, fisioterapia, assessoria…"]].map(([v, b, s]) => {
+      const r = el("input", { type: "radio", name: "tipo", value: v, checked: v === tipo.v });
+      r.onchange = () => { tipo.v = v; campoCat.hidden = v !== "loja"; };
+      return el("label", {}, [r, el("div", {}, [el("b", { textContent: b }), el("span", { textContent: s })])]);
+    }));
+    const categoria = el("select", {}, [el("option", { value: "", textContent: "Escolha…" }), ...CATEGORIAS.map(c => el("option", { value: c, textContent: c }))]);
+    const campoCat = campo("Categoria", categoria, "c6"); campoCat.hidden = true;
+    const nome = inp("text", { maxLength: 100, autocomplete: "organization", placeholder: "Como os atletas conhecem a empresa" });
+    const razao = inp("text", { maxLength: 160 });
+    const cnpj = inp("text", { inputMode: "numeric", placeholder: "00.000.000/0000-00" });
+    cnpj.oninput = () => { cnpj.value = cnpjFmt(cnpj.value); };
+    const responsavel = inp("text", { maxLength: 100, autocomplete: "name" });
+    const email = inp("email", { maxLength: 120, autocomplete: "email" });
+    const tel = inp("tel", { autocomplete: "tel", placeholder: "(48) 99999-9999" });
+    tel.oninput = () => { tel.value = telFmt(tel.value); };
+    const cep = inp("text", { inputMode: "numeric", placeholder: "00000-000", autocomplete: "postal-code" });
+    const logradouro = inp("text", { maxLength: 120, autocomplete: "address-line1" });
+    const numero = inp("text", { maxLength: 20 });
+    const complemento = inp("text", { maxLength: 60 });
+    const bairro = inp("text", { maxLength: 80 });
+    const cidade = inp("text", { maxLength: 80, autocomplete: "address-level2" });
+    const uf = selectUf("SC");
+    const site = inp("url", { maxLength: 200, placeholder: "https://…" });
+    // CEP: preenche o endereco pelo ViaCEP (so o CEP sai daqui).
+    cep.oninput = async () => {
+      cep.value = dig(cep.value).slice(0, 8).replace(/^(\d{5})(\d)/, "$1-$2");
+      if (dig(cep.value).length !== 8) return;
+      try {
+        const r = await fetch("https://viacep.com.br/ws/" + dig(cep.value) + "/json/").then(r => r.json());
+        if (r.erro) return;
+        if (!logradouro.value) logradouro.value = r.logradouro || "";
+        if (!bairro.value) bairro.value = r.bairro || "";
+        cidade.value = r.localidade || cidade.value;
+        uf.value = r.uf || uf.value;
+        numero.focus();
+      } catch (e) { /* preenche a mao */ }
+    };
+    const aceite = el("input", { type: "checkbox" });
+    const cap = captcha();
+    const erro = el("p", { className: "erro", role: "alert" });
+    const enviar = el("button", { className: "botao", type: "submit", textContent: "Enviar cadastro" });
+    const form = el("form", { className: "grade", noValidate: true }, [
+      tipos, campoCat,
+      campo("Nome da empresa", nome, "c3"), campo("Razão social", razao, "c3"),
+      campo("CNPJ", cnpj, "c2"), campo("Pessoa responsável", responsavel, "c4"),
+      campo("E-mail de contato", email, "c3", "(é por ele que você entra no painel)"), campo("Telefone", tel, "c3"),
+      campo("CEP", cep, "c2"), campo("Rua", logradouro, "c4"),
+      campo("Número", numero, "c2 c1m"), campo("Complemento", complemento, "c2 c1m"), campo("Bairro", bairro, "c2"),
+      campo("Cidade", cidade, "c4"), campo("Estado", uf, "c2"),
+      campo("Site ou Instagram", site, "c6", "(opcional)"),
+      el("label", { className: "aceite c6" }, [aceite, el("span", {}, [txt("Li e concordo com os "),
+        el("a", { href: "termos-parceria.html", target: "_blank", rel: "noopener", textContent: "Termos da parceria" }),
+        txt(" (versão de 28/09/2026), inclusive o cashback sobre as vendas feitas com os cupons, e declaro que tenho poderes para aceitá-los em nome da empresa.")])]),
+      el("div", { className: "c6" }, [cap.caixa, erro, el("div", { className: "linha-botoes" }, [enviar])]),
+    ]);
+    form.onsubmit = async ev => {
+      ev.preventDefault();
+      erro.textContent = "";
+      if (!aceite.checked) { erro.textContent = "Para continuar, leia e aceite os termos da parceria."; return; }
+      enviar.disabled = true;
+      const d = await api("/empresa/cadastro", { method: "POST", body: JSON.stringify({
+        tipo: tipo.v, categoria: categoria.value, nome: nome.value, razao_social: razao.value, cnpj: cnpj.value,
+        responsavel: responsavel.value, email: email.value, telefone: tel.value, cep: cep.value, logradouro: logradouro.value,
+        numero: numero.value, complemento: complemento.value, bairro: bairro.value, cidade: cidade.value, uf: uf.value,
+        site: site.value, aceite: true, termos_versao: TERMOS, turnstile: cap.token() }) }).catch(() => ({ ok: false, erro: "Sem conexão. Tente de novo." }));
+      enviar.disabled = false;
+      if (!d.ok) { erro.textContent = d.erro; cap.reset(); return; }
+      if (typeof gtag === "function") gtag("event", "parceiro_cadastro", { tipo: tipo.v });
+      form.replaceWith(el("div", {}, [el("p", { className: "ok", textContent: d.mensagem }),
+        el("p", { className: "suave", textContent: "Depois de confirmar o e-mail, você já entra no painel e pode preparar os cupons. Eles aparecem no site assim que aprovarmos o cadastro." }),
+        d.dev_link ? el("p", {}, [el("a", { href: d.dev_link.replace(/^https?:\/\/[^/]+/, API), textContent: "(teste) abrir o link" })]) : null]));
+    };
+
+    // Entrar
+    const emailEntrar = inp("email", { autocomplete: "email", placeholder: "email@empresa.com.br" });
+    const cap2 = captcha();
+    const erro2 = el("p", { className: "erro", role: "alert" });
+    const ok2 = el("p", { className: "ok", role: "status" });
+    const botaoEntrar = el("button", { className: "botao botao--leve", type: "submit", textContent: "Receber link de acesso" });
+    const formEntrar = el("form", {}, [campo("E-mail cadastrado", emailEntrar), cap2.caixa, erro2, ok2, el("div", { className: "linha-botoes" }, [botaoEntrar])]);
+    formEntrar.onsubmit = async ev => {
+      ev.preventDefault();
+      erro2.textContent = ok2.textContent = "";
+      botaoEntrar.disabled = true;
+      const d = await api("/empresa/entrar", { method: "POST", body: JSON.stringify({ email: emailEntrar.value, turnstile: cap2.token() }) })
+        .catch(() => ({ ok: false, erro: "Sem conexão. Tente de novo." }));
+      botaoEntrar.disabled = false;
+      if (!d.ok) { erro2.textContent = d.erro; cap2.reset(); return; }
+      ok2.textContent = d.mensagem;
+      if (d.dev_link) ok2.append(el("br"), el("a", { href: d.dev_link.replace(/^https?:\/\/[^/]+/, API), textContent: "(teste) abrir o link" }));
+    };
+
+    conteudo.replaceChildren(...[
+      msg ? el("div", { className: "faixa suspensa" }, [txt(msg)]) : null,
+      vantagens,
+      el("div", { className: "duas" }, [
+        el("section", { className: "cartao" }, [el("h2", { textContent: "Cadastrar minha empresa" }),
+          el("p", { className: "suave", textContent: "Grátis. Você só paga um percentual (cashback) sobre as vendas feitas com os seus cupons, que você mesmo define." }),
+          el("div", { style: "height:.8rem" }), form]),
+        el("section", { className: "cartao" }, [el("h2", { textContent: "Já sou parceiro" }),
+          el("p", { className: "suave", textContent: "Sem senha: enviamos um link de acesso para o e-mail cadastrado." }),
+          el("div", { style: "height:.6rem" }), formEntrar,
+          el("p", { className: "suave", style: "margin-top:1rem" }, [txt("Dúvidas? "), el("a", { href: "mailto:contato@cuponsdecorrida.com.br", textContent: "contato@cuponsdecorrida.com.br" })])]),
+      ]),
+    ].filter(Boolean));
+  }
+
+  // ---------------------------------------------------------------- painel
+  let PROVAS = null;
+  const provasFuturas = () => PROVAS || (PROVAS = fetch("provas-futuras.json", { cache: "no-cache" }).then(r => r.json())
+    .then(l => l.map(p => ({ ...p, _busca: norm(p.nome + " " + p.cidade + " " + (p.org || []).join(" ")) }))).catch(() => []));
+
+  async function painel(d) {
+    const e = d.empresa;
+    document.getElementById("titulo").replaceChildren(txt(e.nome));
+    document.getElementById("lede").textContent = (e.tipo === "organizadora" ? "Organizadora de provas" : "Loja ou serviço · " + (e.categoria || "")) + " · painel do parceiro";
+    const sair = document.getElementById("sair");
+    sair.hidden = false;
+    sair.onclick = async () => { await api("/empresa/sair", { method: "POST" }); location.href = "parceiros.html"; };
+
+    const faixas = [];
+    if (e.status === "pendente") faixas.push(el("div", { className: "faixa pendente" }, [el("b", { textContent: "Cadastro em análise" }),
+      txt("Estamos conferindo os dados. Você já pode criar os cupons: eles entram no site assim que o cadastro for aprovado.")]));
+    else if (e.status === "aprovada") faixas.push(el("div", { className: "faixa aprovada" }, [el("b", { textContent: "Parceria ativa" }),
+      txt("Seus cupons ativos aparecem na Central de Cupons, no calendário e na área dos atletas.")]));
+    else if (e.status === "suspensa") faixas.push(el("div", { className: "faixa suspensa" }, [el("b", { textContent: "Parceria suspensa" }),
+      txt((e.status_motivo ? e.status_motivo + ". " : "") + "Os cupons saíram do site. Fale com contato@cuponsdecorrida.com.br.")]));
+    if (e.termos_versao !== d.termos_atual) {
+      const aceitar = el("button", { className: "botao", type: "button", textContent: "Li e aceito a nova versão" });
+      aceitar.onclick = async () => {
+        const r = await api("/empresa/termos", { method: "POST", body: JSON.stringify({ aceite: true, termos_versao: d.termos_atual }) });
+        if (r.ok) iniciar(); else avisar(r.erro);
+      };
+      faixas.push(el("div", { className: "faixa pendente" }, [el("b", { textContent: "Os termos da parceria mudaram" }),
+        el("a", { href: "termos-parceria.html", target: "_blank", rel: "noopener", textContent: "Leia a nova versão" }), txt(" e aceite para continuar criando cupons. "), aceitar]));
+    }
+
+    const secCupons = el("section", { className: "cartao" });
+    const secNovo = el("section", { className: "cartao", id: "novo" });
+    const secVendas = el("section", { className: "cartao" });
+    const secDados = el("section", { className: "cartao" });
+    conteudo.replaceChildren(...faixas, secCupons, secNovo, secVendas, secDados);
+    montarCupons(secCupons, d, secNovo);
+    montarNovo(secNovo, d, null);
+    montarVendas(secVendas, d);
+    montarDados(secDados, d);
+  }
+
+  function descricaoOnde(c) {
+    return c.cidade ? c.cidade + (c.uf ? " – " + c.uf : "") : c.uf ? "todo o estado de " + c.uf : "online / todo o Brasil";
+  }
+
+  function montarCupons(sec, d, secNovo) {
+    const e = d.empresa;
+    const lista = el("div", { className: "cupons" }, d.cupons.map(c => {
+      const ligar = el("button", { className: "pequeno", type: "button", textContent: c.ativo ? "Desativar" : "Ativar" });
+      ligar.onclick = async () => {
+        const r = await api("/empresa/cupons/" + c.grupo + "/ativo", { method: "POST", body: JSON.stringify({ ativo: !c.ativo }) });
+        if (r.ok) iniciar(); else avisar(r.erro);
+      };
+      const editar = el("button", { className: "pequeno", type: "button", textContent: "Editar" });
+      editar.onclick = () => { montarNovo(secNovo, d, c); secNovo.scrollIntoView({ behavior: "smooth" }); };
+      const situacao = !c.ativo ? "desativado" : e.status === "aprovada" ? "no ar" : "aguardando aprovação do cadastro";
+      return el("article", { className: "cupom" + (c.ativo ? "" : " off") }, [
+        el("header", {}, [el("span", { className: "selo", textContent: c.desconto }), el("span", { className: "codigo", textContent: c.codigo }),
+          el("span", { className: "etiqueta", textContent: situacao })]),
+        el("p", { textContent: c.titulo }),
+        el("p", {}, [txt("Cashback para o Cupons de Corrida: " + String(c.cashback_pct).replace(".", ",") + "%"), el("span", { className: "privado", textContent: "privado" })]),
+        e.tipo === "organizadora"
+          ? el("ul", {}, c.provas.map(p => el("li", { textContent: dataBr(p.data) + " · " + p.nome + (p.cidade ? " · " + p.cidade : "") + " — " + p.vistos + (p.vistos === 1 ? " atleta pegou o código" : " atletas pegaram o código") + (p.ativo ? "" : " (desativada)") })))
+          : el("p", { textContent: "Vale em: " + descricaoOnde(c) + " · " + c.vistos + (c.vistos === 1 ? " atleta pegou o código" : " atletas pegaram o código") + (c.valido_ate ? " · até " + dataBr(c.valido_ate) : "") }),
+        el("div", { className: "acoes" }, [editar, ligar]),
+      ]);
+    }));
+    sec.replaceChildren(el("h2", {}, [txt("Meus cupons"), d.cupons.length ? el("small", { textContent: d.cupons.length + (d.cupons.length === 1 ? " cupom" : " cupons") }) : null]),
+      d.cupons.length ? lista : el("p", { className: "suave", textContent: "Nenhum cupom ainda. Crie o primeiro logo abaixo." }));
+  }
+
+  async function montarNovo(sec, d, c) {
+    const e = d.empresa;
+    const org = e.tipo === "organizadora";
+    const codigo = inp("text", { maxLength: 40, placeholder: "Ex.: CORRE15", value: c ? c.codigo : "" });
+    codigo.oninput = () => { codigo.value = codigo.value.toUpperCase().replace(/\s/g, ""); };
+    const desconto = inp("number", { min: 1, max: 100, step: "0.5", placeholder: "15", value: c ? c.desconto_pct : "" });
+    const cashback = inp("number", { min: 0, max: 100, step: "0.5", placeholder: "5", value: c ? c.cashback_pct : "" });
+    const titulo = inp("text", { maxLength: 120, placeholder: org ? "Automático: \"15% off na Nome da Prova\"" : "Automático: \"15% off na " + e.nome + "\"", value: c ? c.titulo : "" });
+    const link = inp("url", { maxLength: 400, placeholder: org ? "Link da inscrição (https://…)" : "Link da loja ou do agendamento (https://…)", value: c ? (c.link || "") : "" });
+    const regras = el("textarea", { maxLength: 400, placeholder: org ? "Ex.: válido para 5 e 10 km; não cumulativo com outros descontos" : "Ex.: válido em compras acima de R$ 200; não vale para produtos em promoção" });
+    regras.value = c ? (c.regras || "") : "";
+    const validade = inp("date", { value: c ? (c.valido_ate || "") : "" });
+    const limite = inp("number", { min: 1, placeholder: "sem limite", value: c && c.limite ? c.limite : "" });
+    const erro = el("p", { className: "erro", role: "alert" });
+    const salvar = el("button", { className: "botao", type: "submit", textContent: c ? "Salvar alterações" : "Criar cupom" });
+    const cancelar = c ? Object.assign(el("button", { className: "botao botao--leve", type: "button", textContent: "Cancelar" }), { onclick: () => montarNovo(sec, d, null) }) : null;
+
+    // Organizadora: provas do calendario. Loja: onde o cupom vale.
+    let escolhidas = c && org ? c.provas.filter(p => p.ativo).map(p => ({ chave: p.chave, nome: p.nome, data: p.data, cidade: p.cidade, uf: p.uf })) : [];
+    let blocoAlvo;
+    const onde = { v: c && !org ? (c.cidade ? "cidade" : c.uf ? "estado" : "online") : "online" };
+    const ufOnde = selectUf(c && c.uf ? c.uf : e.uf);
+    const cidadeOnde = inp("text", { maxLength: 80, value: c && c.cidade ? c.cidade : e.cidade || "" });
+    if (org) {
+      const busca = inp("search", { placeholder: "Digite o nome da prova ou a cidade…" });
+      const sugestoes = el("ul", { className: "sugestoes" });
+      const chips = el("div", { className: "escolhidas" });
+      const pintarChips = () => chips.replaceChildren(...escolhidas.map(p => el("span", {}, [txt(dataBr(p.data) + " · " + p.nome),
+        Object.assign(el("button", { type: "button", ariaLabel: "Tirar " + p.nome, textContent: "×" }), { onclick: () => { escolhidas = escolhidas.filter(x => x.chave !== p.chave); pintarChips(); } })])));
+      const provas = await provasFuturas();
+      const minhas = provas.filter(p => (p.org || []).some(o => norm(o).length > 3 && (norm(e.nome).includes(norm(o)) || norm(o).includes(norm(e.nome)))));
+      const listar = () => {
+        const q = norm(busca.value.trim());
+        const base = q.length >= 2 ? provas.filter(p => p._busca.includes(q)) : minhas;
+        sugestoes.replaceChildren(...base.slice(0, 40).map(p => {
+          const li = el("li", { tabIndex: 0 }, [txt(dataBr(p.data) + " · " + p.nome + " "), el("small", { textContent: p.cidade + " – " + p.uf + ((p.org || []).length ? " · " + p.org.join(", ") : "") })]);
+          const pegar = () => { if (!escolhidas.some(x => x.chave === p.chave)) escolhidas.push({ chave: p.chave, nome: p.nome, data: p.data, cidade: p.cidade, uf: p.uf }); pintarChips(); };
+          li.onclick = pegar;
+          li.onkeydown = ev => { if (ev.key === "Enter") { ev.preventDefault(); pegar(); } };
+          return li;
+        }));
+        sugestoes.hidden = !base.length;
+      };
+      busca.oninput = listar;
+      listar(); pintarChips();
+      blocoAlvo = el("div", { className: "c6 provas-busca" }, [
+        campo("Provas em que o cupom vale", busca, "", minhas.length ? "(abaixo, as provas que parecem ser suas; busque outras pelo nome)" : "(busque pelo nome ou pela cidade)"),
+        sugestoes, chips,
+        el("p", { className: "suave", textContent: "Não achou a prova? Ela precisa estar no calendário. Escreva para contato@cuponsdecorrida.com.br com o link da inscrição." })]);
+    } else {
+      const opcoes = el("div", { className: "tipos" }, [["online", "Online / todo o Brasil"], ["estado", "Em um estado"], ["cidade", "Em uma cidade"]].map(([v, t]) => {
+        const r = el("input", { type: "radio", name: "onde", value: v, checked: onde.v === v });
+        r.onchange = () => { onde.v = v; mostrar(); };
+        return el("label", {}, [r, el("div", {}, [el("b", { textContent: t })])]);
+      }));
+      const cUf = campo("Estado", ufOnde, "c2"), cCid = campo("Cidade", cidadeOnde, "c4");
+      const mostrar = () => { cUf.hidden = onde.v === "online"; cCid.hidden = onde.v !== "cidade"; };
+      mostrar();
+      blocoAlvo = el("div", { className: "c6 grade" }, [el("div", { className: "c6" }, [el("span", { className: "suave", textContent: "Onde o cupom vale" }), opcoes]), cCid, cUf]);
+    }
+
+    const form = el("form", { className: "grade", noValidate: true }, [
+      campo("Código do cupom", codigo, "c2"), campo("% de desconto", desconto, "c2"),
+      el("label", { className: "campo c2" }, [el("span", {}, [txt("% de cashback"), el("span", { className: "privado", textContent: "privado" })]), cashback]),
+      el("p", { className: "suave c6", style: "margin:-.2rem 0 0", textContent: "O cashback é o percentual que você paga ao Cupons de Corrida sobre as vendas feitas com o cupom. Só você e o Cupons de Corrida veem esse número." }),
+      blocoAlvo,
+      campo("Título", titulo, "c6", "(opcional)"),
+      campo(org ? "Link da inscrição" : "Link", link, "c4"), campo("Válido até", validade, "c2", org ? "(vazio = até a data da prova)" : "(vazio = sem prazo)"),
+      campo("Regras que o atleta vê", regras, "c4"), campo("Limite de atletas", limite, "c2", "(opcional)"),
+      el("div", { className: "c6" }, [erro, el("div", { className: "linha-botoes" }, [salvar, cancelar])]),
+    ]);
+    form.onsubmit = async ev => {
+      ev.preventDefault();
+      erro.textContent = "";
+      if (org && !escolhidas.length) { erro.textContent = "Escolha pelo menos uma prova."; return; }
+      salvar.disabled = true;
+      const corpo = { codigo: codigo.value, desconto_pct: desconto.value, cashback_pct: cashback.value, titulo: titulo.value,
+        link: link.value, regras: regras.value, valido_ate: validade.value, limite: limite.value };
+      if (org) corpo.provas = escolhidas;
+      else Object.assign(corpo, { uf: onde.v === "online" ? "" : ufOnde.value, cidade: onde.v === "cidade" ? cidadeOnde.value : "" });
+      const r = await api("/empresa/cupons" + (c ? "/" + c.grupo : ""), { method: c ? "PUT" : "POST", body: JSON.stringify(corpo) })
+        .catch(() => ({ ok: false, erro: "Sem conexão. Tente de novo." }));
+      salvar.disabled = false;
+      if (!r.ok) { erro.textContent = r.erro; return; }
+      if (typeof gtag === "function") gtag("event", c ? "parceiro_cupom_alterado" : "parceiro_cupom_criado");
+      avisar(r.aviso || (c ? "Cupom alterado." : "Cupom criado e no ar!"));
+      iniciar();
+    };
+    sec.replaceChildren(el("h2", { textContent: c ? "Editar cupom " + c.codigo : "Novo cupom" }), form);
+  }
+
+  function montarVendas(sec, d) {
+    const opcoes = [];
+    d.cupons.forEach(c => {
+      if (c.provas && c.provas.length) c.provas.forEach(p => opcoes.push([p.cupom_id, c.codigo + " · " + dataBr(p.data) + " · " + p.nome, c.cashback_pct]));
+      else if (c.cupom_id) opcoes.push([c.cupom_id, c.codigo + " · " + c.titulo, c.cashback_pct]);
+    });
+    const total = d.vendas.reduce((s, v) => s + v.cashback_valor, 0);
+    const tabela = d.vendas.length ? el("table", { className: "vendas" }, [
+      el("thead", {}, [el("tr", {}, ["Informado em", "Cupom", "Inscrições", "Valor", "Cashback"].map((t, i) => el("th", { className: i > 1 ? "n" : "", textContent: t })))]),
+      el("tbody", {}, d.vendas.map(v => el("tr", {}, [el("td", { textContent: dataBr(v.informado_em.slice(0, 10)) }),
+        el("td", { textContent: (v.prova_nome ? dataBr(v.prova_data) + " · " + v.prova_nome : v.titulo) + (v.observacao ? " — " + v.observacao : "") }),
+        el("td", { className: "n", textContent: v.inscricoes }), el("td", { className: "n", textContent: brl(v.valor) }),
+        el("td", { className: "n", textContent: brl(v.cashback_valor) + " (" + String(v.cashback_pct).replace(".", ",") + "%)" })]))),
+      el("tfoot", {}, [el("tr", {}, [el("td", { colSpan: 4, textContent: "Total de cashback informado" }), el("td", { className: "n", textContent: brl(total) })])]),
+    ]) : el("p", { className: "suave", textContent: "Nenhuma venda informada ainda." });
+    if (!opcoes.length) {
+      sec.replaceChildren(el("h2", { textContent: "Vendas com os cupons" }), el("p", { className: "suave", textContent: "Quando tiver cupons, informe aqui as vendas feitas com eles." }));
+      return;
+    }
+    const cupom = el("select", {}, opcoes.map(([id, t]) => el("option", { value: id, textContent: t })));
+    const qtd = inp("number", { min: 0, step: 1, placeholder: "0" });
+    const valor = inp("text", { inputMode: "decimal", placeholder: "Ex.: 5230,50" });
+    const obs = inp("text", { maxLength: 300, placeholder: "Opcional" });
+    const calculo = el("p", { className: "suave c6" });
+    const atualizar = () => {
+      const pctCb = (opcoes.find(o => String(o[0]) === cupom.value) || [])[2] || 0;
+      const v = Number(String(valor.value).replace(/\./g, "").replace(",", "."));
+      calculo.textContent = v > 0 ? "Cashback de " + String(pctCb).replace(".", ",") + "%: " + brl(v * pctCb / 100) : "";
+    };
+    cupom.onchange = valor.oninput = atualizar;
+    const erro = el("p", { className: "erro", role: "alert" });
+    const enviar = el("button", { className: "botao", type: "submit", textContent: "Informar vendas" });
+    const form = el("form", { className: "grade", noValidate: true }, [
+      campo("Cupom", cupom, "c6"), campo("Inscrições ou compras com o cupom", qtd, "c2"),
+      campo("Valor total pago pelos atletas (R$)", valor, "c2"), campo("Observação", obs, "c2"), calculo,
+      el("div", { className: "c6" }, [erro, el("div", { className: "linha-botoes" }, [enviar])]),
+    ]);
+    form.onsubmit = async ev => {
+      ev.preventDefault();
+      erro.textContent = "";
+      enviar.disabled = true;
+      const r = await api("/empresa/vendas", { method: "POST", body: JSON.stringify({ cupom_id: Number(cupom.value), inscricoes: qtd.value,
+        valor: String(valor.value).replace(/\./g, ""), observacao: obs.value }) }).catch(() => ({ ok: false, erro: "Sem conexão. Tente de novo." }));
+      enviar.disabled = false;
+      if (!r.ok) { erro.textContent = r.erro; return; }
+      avisar("Vendas informadas. Obrigado!");
+      iniciar();
+    };
+    sec.replaceChildren(el("h2", { textContent: "Vendas com os cupons" }),
+      el("p", { className: "suave", textContent: d.empresa.tipo === "organizadora"
+        ? "Informe em até 10 dias depois de cada prova quantas inscrições usaram o cupom e o valor total pago. É a base do cashback."
+        : "Informe até o dia 10 de cada mês as vendas do mês anterior feitas com o cupom. É a base do cashback." }),
+      form, el("h3", { textContent: "Já informado" }), tabela);
+  }
+
+  function montarDados(sec, d) {
+    const e = d.empresa;
+    const v = k => e[k] || "";
+    const nome = inp("text", { maxLength: 100, value: v("nome") });
+    const responsavel = inp("text", { maxLength: 100, value: v("responsavel") });
+    const tel = inp("tel", { value: telFmt(v("telefone")) });
+    tel.oninput = () => { tel.value = telFmt(tel.value); };
+    const cep = inp("text", { value: v("cep").replace(/^(\d{5})(\d)/, "$1-$2") });
+    const logradouro = inp("text", { maxLength: 120, value: v("logradouro") });
+    const numero = inp("text", { maxLength: 20, value: v("numero") });
+    const complemento = inp("text", { maxLength: 60, value: v("complemento") });
+    const bairro = inp("text", { maxLength: 80, value: v("bairro") });
+    const cidade = inp("text", { maxLength: 80, value: v("cidade") });
+    const uf = selectUf(v("uf"));
+    const site = inp("url", { maxLength: 200, value: v("site") });
+    const categoria = el("select", {}, CATEGORIAS.map(c => el("option", { value: c, textContent: c })));
+    categoria.value = v("categoria") || "Outros";
+    const erro = el("p", { className: "erro", role: "alert" });
+    const salvar = el("button", { className: "botao botao--leve", type: "submit", textContent: "Salvar dados" });
+    const form = el("form", { className: "grade", noValidate: true }, [
+      campo("Razão social", inp("text", { value: v("razao_social"), readOnly: true }), "c4"), campo("CNPJ", inp("text", { value: cnpjFmt(v("cnpj")), readOnly: true }), "c2"),
+      campo("Nome da empresa", nome, "c3"), e.tipo === "loja" ? campo("Categoria", categoria, "c3") : campo("E-mail de acesso", inp("email", { value: v("email"), readOnly: true }), "c3"),
+      campo("Pessoa responsável", responsavel, "c3"), campo("Telefone", tel, "c3"),
+      campo("CEP", cep, "c2"), campo("Rua", logradouro, "c4"), campo("Número", numero, "c2"), campo("Complemento", complemento, "c2"), campo("Bairro", bairro, "c2"),
+      campo("Cidade", cidade, "c4"), campo("Estado", uf, "c2"), campo("Site ou Instagram", site, "c6"),
+      el("p", { className: "suave c6", textContent: "Para mudar a razão social, o CNPJ ou o e-mail de acesso, escreva para contato@cuponsdecorrida.com.br. Termos aceitos em " + dataBr((e.termos_aceito_em || "").slice(0, 10)) + " (versão de " + dataBr(e.termos_versao) + ")." }),
+      el("div", { className: "c6" }, [erro, el("div", { className: "linha-botoes" }, [salvar])]),
+    ]);
+    form.onsubmit = async ev => {
+      ev.preventDefault();
+      erro.textContent = "";
+      salvar.disabled = true;
+      const r = await api("/empresa/eu", { method: "PUT", body: JSON.stringify({ nome: nome.value, responsavel: responsavel.value, telefone: tel.value,
+        cep: cep.value, logradouro: logradouro.value, numero: numero.value, complemento: complemento.value, bairro: bairro.value,
+        cidade: cidade.value, uf: uf.value, site: site.value, categoria: categoria.value }) }).catch(() => ({ ok: false, erro: "Sem conexão." }));
+      salvar.disabled = false;
+      if (!r.ok) { erro.textContent = r.erro; return; }
+      avisar("Dados salvos.");
+      iniciar();
+    };
+    sec.replaceChildren(el("h2", { textContent: "Dados da empresa" }), form);
+  }
+
+  async function iniciar() {
+    const d = await api("/empresa/eu").catch(() => ({ ok: false }));
+    if (d.ok) painel(d); else telaVisitante();
+    if (params.has("acesso")) history.replaceState(null, "", location.pathname);
+  }
+  iniciar();
+})();
+</script>
+</body>
+</html>
