@@ -1026,6 +1026,9 @@ for _uf in UFS[1:]:
               (f"ticketsports ({_uf})", functools.partial(ticketsports, uf=_uf)),
               (f"roadrunners ({_uf})", functools.partial(roadrunners, uf=_uf))]
 TODAS.append(("fap", fap))
+# Provas que as organizadoras parceiras cadastram no portal do parceiro.
+import parceiros as _parceiros  # noqa: E402
+TODAS.append(("parceiros", _parceiros.fonte))
 
 
 # ----------------------------------------------- super crono (cronometragem)

@@ -2689,7 +2689,7 @@ function listarEmpresas(){
             " aceitos em " + dataBr((e.termos_aceito_em || "").slice(0, 10)) + " · cadastro em " + dataBr((e.criado_em || "").slice(0, 10)) +
             (e.status_motivo ? " · motivo: " + e.status_motivo : "") }),
           el("p", {}, [el("span", { className:"cp__vistos", textContent:num(e.cupons_ativos || 0) }), document.createTextNode(" de " + (e.cupons || 0) + " cupons ativos · "),
-            el("span", { className:"cp__vistos", textContent:num(e.vistos || 0) }), document.createTextNode(" códigos pegos · " + num(e.vendas_qtd || 0) + " vendas informadas (" + brlBi(e.vendas_valor) + ") · cashback "),
+            el("span", { className:"cp__vistos", textContent:num(e.vistos || 0) }), document.createTextNode(" códigos pegos · " + (e.tipo === "organizadora" ? num(e.provas || 0) + " provas no calendário · " : "") + num(e.vendas_qtd || 0) + " vendas informadas (" + brlBi(e.vendas_valor) + ") · cashback "),
             el("b", { textContent:brlBi(e.cashback) })]),
         ]),
         acoes, detalhe,
@@ -2726,6 +2726,10 @@ async function detalheEmpresa(e, caixa){
         c.alvo === "prova" ? dataBr(c.prova_data) + " · " + c.prova_nome : (c.cidade || c.uf || "online"),
         c.valido_ate ? dataBr(c.valido_ate) : "—", num(c.vistos), c.ativo ? "ativo" : "desativado"]), [2, 5])
       : el("p", { className:"cp__vazio", textContent:"Nenhum cupom criado." }),
+    ...(d.provas && d.provas.length ? [el("h5", { textContent:"Calendário enviado pela empresa" }),
+      tabela(["Data", "Prova", "Cidade", "Distâncias", "Inscrição", "Situação"],
+        d.provas.map(p => [dataBr(p.data), p.nome, p.cidade + "-" + p.uf, p.distancias.join(", ") + (p.distancias.length ? " km" : ""),
+          p.link ? p.link.replace(/^https?:\/\//, "").slice(0, 40) : "—", p.status]), [])] : []),
     el("h5", { textContent:"Vendas informadas" }),
     d.vendas.length ? tabela(["Informado em", "Cupom", "Inscrições", "Valor", "Cashback"],
       d.vendas.map(v => [dataBr(v.informado_em.slice(0, 10)), v.codigo + (v.prova_nome ? " · " + v.prova_nome : ""), num(v.inscricoes), brlBi(v.valor),

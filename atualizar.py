@@ -30,6 +30,12 @@ def main():
     try:
         historico = json.loads(scrape.SAIDA.read_text(encoding="utf-8"))
         feitos = perfis.atualizar_perfis(historico)
+        # Link de inscricao e organizadora informados pela propria organizadora.
+        try:
+            import parceiros
+            parceiros.aplicar(historico)
+        except Exception as erro:
+            print(f"parceiros: FALHOU ({erro.__class__.__name__}: {erro})")
         scrape.SAIDA.write_text(json.dumps(historico, ensure_ascii=False, separators=(",", ":")),
                                 encoding="utf-8")
         print(f"perfis revistos: {feitos}")

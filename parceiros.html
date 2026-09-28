@@ -30,8 +30,8 @@
 *{box-sizing:border-box}
 body{margin:0; background:var(--ground); color:var(--ink); font:16px/1.55 "Instrument Sans",system-ui,sans-serif}
 a{color:inherit}
-header{background:var(--azul); color:#fff; padding:2rem 1rem 1.8rem; position:relative}
-header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+body > header{background:var(--azul); color:#fff; padding:2rem 1rem 1.8rem; position:relative}
+body > header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
 .wrap{max-width:56rem; margin:0 auto}
 .topo-linha{display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap}
 .eyebrow{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin:0}
@@ -104,6 +104,20 @@ table.vendas th{font-family:var(--f-mono); font-weight:400; font-size:.62rem; le
 table.vendas td{padding:.45rem .4rem; border-bottom:1px solid var(--line-soft)}
 table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
 .carregando{color:var(--muted); padding:1rem 0}
+.tabela-provas{width:100%; border-collapse:collapse; font-size:.84rem; margin-top:.7rem}
+.tabela-provas th{font-family:var(--f-mono); font-weight:400; font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.4rem; border-bottom:1px solid var(--line)}
+.tabela-provas td{padding:.45rem .4rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
+.tabela-provas td small{display:block; color:var(--muted)}
+.tabela-provas tr.cancelada td{opacity:.55; text-decoration:line-through}
+.tabela-provas tr.cancelada td:last-child{text-decoration:none}
+.tabela-provas tr.com-erro td{background:#FDE8EA}
+@media (prefers-color-scheme: dark){ .tabela-provas tr.com-erro td{background:#3E1417} }
+.tabela-provas .ok-linha{color:var(--ok); font-weight:600}
+.tabela-provas .erro-linha{color:var(--erro); font-weight:600}
+.rolar{overflow-x:auto}
+.situacao{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap}
+.situacao.no{color:var(--ok)} .situacao.espera{color:var(--muted)}
+.envio{border:1px dashed var(--line); border-radius:12px; padding:.9rem 1rem; margin-top:.8rem}
 .aviso{position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%); z-index:50; max-width:calc(100% - 2rem);
   background:#0A2F73; color:#fff; padding:.85rem 1.1rem; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,.3); font-size:.92rem}
 @media (max-width:760px){ .duas{grid-template-columns:1fr} .grade{grid-template-columns:repeat(2,minmax(0,1fr))} .c2,.c3,.c4{grid-column:span 2} .c1m{grid-column:span 1} .tipos{grid-template-columns:1fr} }
@@ -331,7 +345,9 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
     const secNovo = el("section", { className: "cartao", id: "novo" });
     const secVendas = el("section", { className: "cartao" });
     const secDados = el("section", { className: "cartao" });
-    conteudo.replaceChildren(...faixas, secCupons, secNovo, secVendas, secDados);
+    const secCalendario = e.tipo === "organizadora" ? el("section", { className: "cartao", id: "calendario" }) : null;
+    conteudo.replaceChildren(...faixas, ...[secCalendario].filter(Boolean), secCupons, secNovo, secVendas, secDados);
+    if (secCalendario) montarCalendario(secCalendario, d);
     montarCupons(secCupons, d, secNovo);
     montarNovo(secNovo, d, null);
     montarVendas(secVendas, d);
@@ -555,6 +571,199 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
       iniciar();
     };
     sec.replaceChildren(el("h2", { textContent: "Dados da empresa" }), form);
+  }
+
+  // ---------------------------------------------------------------- calendario da organizadora
+  const TIPOS_PROVA = ["Rua", "Trail", "Caminhada", "Kids", "Revezamento", "Noturna", "Ultra", "Duathlon", "Triathlon", "Outro"];
+  const hojeIso = () => new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 10);
+  const dataParaIso = v => {
+    if (v instanceof Date && !isNaN(v)) return v.getFullYear() + "-" + String(v.getMonth() + 1).padStart(2, "0") + "-" + String(v.getDate()).padStart(2, "0");
+    const s = String(v || "").trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+    const m = s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2}|\d{4})$/);
+    return m ? (m[3].length === 2 ? "20" + m[3] : m[3]) + "-" + m[2].padStart(2, "0") + "-" + m[1].padStart(2, "0") : "";
+  };
+  const kmTexto = l => (l || []).map(n => String(n).replace(".", ",")).join(", ");
+
+  // Mesmo que a API confere; aqui so para a previa apontar as linhas ruins.
+  function conferirProva(p) {
+    const data = dataParaIso(p.data);
+    if (String(p.nome || "").trim().length < 3) return "Falta o nome da prova.";
+    if (!data || isNaN(new Date(data + "T12:00:00"))) return "Data inválida (use dd/mm/aaaa).";
+    if (data < hojeIso()) return "A data já passou.";
+    if (!String(p.cidade || "").trim()) return "Falta a cidade.";
+    if (!["SC", "PR"].includes(String(p.uf || "").trim().toUpperCase())) return "UF deve ser SC ou PR.";
+    const link = String(p.link || "").trim();
+    if (link && !/^(https?:\/\/|www\.)/i.test(link)) return "Link deve começar com https://";
+    return "";
+  }
+
+  // Cabecalho da planilha -> campo. Aceita variacoes ("Data", "Data da prova"...).
+  const CAMPOS_PLANILHA = [["nome", /nome|prova|evento/], ["data", /^data|dia/], ["cidade", /cidade|munic/], ["uf", /^uf$|estado/],
+    ["distancias", /dist|km|percurso/], ["tipo", /tipo|modalid/], ["link", /link|inscri|site|url/], ["local_largada", /local|largada/],
+    ["horario", /hor/], ["observacao", /obs/]];
+
+  let SHEETJS = null;
+  const carregarSheetJS = () => SHEETJS || (SHEETJS = new Promise((ok, falha) => {
+    const s = el("script", { src: "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" });
+    s.onload = () => ok(window.XLSX); s.onerror = () => falha(new Error("não foi possível carregar o leitor de planilhas"));
+    document.head.append(s);
+  }));
+
+  async function lerPlanilha(arquivo) {
+    const XLSX = await carregarSheetJS();
+    const livro = XLSX.read(await arquivo.arrayBuffer(), { cellDates: true });
+    const aba = livro.Sheets[livro.SheetNames.find(n => norm(n).includes("prova")) || livro.SheetNames[0]];
+    const linhas = XLSX.utils.sheet_to_json(aba, { header: 1, raw: true, defval: "" });
+    const iCab = linhas.findIndex(l => l.some(c => /nome|prova/.test(norm(c))));
+    if (iCab < 0) throw new Error("não achei a linha de títulos (Nome da prova, Data, Cidade...). Use a planilha modelo.");
+    const mapa = linhas[iCab].map(c => { const n = norm(c).trim(); const achado = CAMPOS_PLANILHA.find(([, re]) => re.test(n)); return achado ? achado[0] : null; });
+    const usados = new Set();
+    mapa.forEach((c, i) => { if (c && usados.has(c)) mapa[i] = null; else if (c) usados.add(c); });   // primeira coluna de cada campo vale
+    return linhas.slice(iCab + 1).map((l, i) => {
+      const p = { linha: iCab + i + 2 };
+      mapa.forEach((c, j) => { if (c) p[c] = l[j] instanceof Date ? l[j] : String(l[j] == null ? "" : l[j]).trim(); });
+      return p;
+    }).filter(p => p.nome || p.data || p.cidade)
+      .filter(p => !/exemplo/i.test(String(p.nome || "")));        // linhas de exemplo do modelo
+  }
+
+  async function montarCalendario(sec, d) {
+    const e = d.empresa;
+    const provasSite = await provasFuturas();
+    const noSite = p => provasSite.some(x => x.data === p.data && (norm(x.nome) === norm(p.nome) ||
+      (x.org || []).some(o => norm(o) === norm(e.nome)) && norm(x.cidade) === norm(p.cidade)));
+    const area = el("div");
+    const lista = el("div", { className: "rolar" });
+
+    const pintarLista = () => {
+      if (!d.provas.length) { lista.replaceChildren(el("p", { className: "suave", textContent: "Nenhuma prova cadastrada ainda." })); return; }
+      const futuras = d.provas.filter(p => p.data >= hojeIso());
+      const passadas = d.provas.length - futuras.length;
+      lista.replaceChildren(el("table", { className: "tabela-provas" }, [
+        el("thead", {}, [el("tr", {}, ["Data", "Prova", "Distâncias", "Inscrição", "Situação", ""].map(t => el("th", { textContent: t })))]),
+        el("tbody", {}, futuras.map(p => {
+          const situacao = p.status === "cancelada" ? ["cancelada", "espera"]
+            : noSite(p) ? ["no calendário", "no"] : e.status === "aprovada" ? ["entra na próxima atualização", "espera"] : ["entra após a aprovação", "espera"];
+          const editar = el("button", { className: "pequeno", type: "button", textContent: "Editar" });
+          editar.onclick = () => { formulario(p); area.scrollIntoView({ behavior: "smooth", block: "center" }); };
+          const cancelar = el("button", { className: "pequeno", type: "button", textContent: p.status === "cancelada" ? "Reativar" : "Cancelar" });
+          cancelar.onclick = async () => {
+            if (p.status !== "cancelada" && !confirm("Cancelar a prova " + p.nome + "? Ela deixa de ser enviada ao calendário.")) return;
+            const r = await api("/empresa/provas/" + p.id + "/cancelar", { method: "POST", body: JSON.stringify({ cancelar: p.status !== "cancelada" }) });
+            if (r.ok) iniciar(); else avisar(r.erro);
+          };
+          return el("tr", { className: p.status === "cancelada" ? "cancelada" : "" }, [
+            el("td", { textContent: dataBr(p.data) + (p.horario ? " " + p.horario : "") }),
+            el("td", {}, [txt(p.nome), el("small", { textContent: p.cidade + " – " + p.uf + (p.tipo ? " · " + p.tipo : "") + (p.local_largada ? " · " + p.local_largada : "") })]),
+            el("td", { textContent: p.distancias.length ? kmTexto(p.distancias) + " km" : "—" }),
+            el("td", {}, [p.link ? el("a", { href: p.link, target: "_blank", rel: "noopener", textContent: "abrir ↗" }) : txt("—")]),
+            el("td", {}, [el("span", { className: "situacao " + situacao[1], textContent: situacao[0] })]),
+            el("td", {}, [el("div", { className: "acoes", style: "display:flex;gap:.3rem;flex-wrap:wrap" }, [editar, cancelar])]),
+          ]);
+        })),
+      ]), passadas ? el("p", { className: "suave", textContent: passadas + (passadas === 1 ? " prova já realizada não aparece aqui." : " provas já realizadas não aparecem aqui.") }) : "");
+    };
+
+    // Uma prova pelo formulario (nova ou editando).
+    function formulario(p) {
+      const nome = inp("text", { maxLength: 150, value: p ? p.nome : "", placeholder: "Ex.: Corrida da Lagoa 2027" });
+      const data = inp("date", { value: p ? p.data : "", min: hojeIso() });
+      const cidade = inp("text", { maxLength: 80, value: p ? p.cidade : e.cidade || "" });
+      const uf = el("select", {}, ["SC", "PR"].map(u => el("option", { value: u, textContent: u })));
+      uf.value = p ? p.uf : (["SC", "PR"].includes(e.uf) ? e.uf : "SC");
+      const dist = inp("text", { value: p ? kmTexto(p.distancias) : "", placeholder: "Ex.: 5, 10, 21" });
+      const tipo = el("select", {}, [el("option", { value: "", textContent: "—" }), ...TIPOS_PROVA.map(x => el("option", { value: x, textContent: x }))]);
+      tipo.value = p ? (p.tipo || "") : "";
+      const link = inp("url", { maxLength: 400, value: p ? (p.link || "") : "", placeholder: "https://…" });
+      const local = inp("text", { maxLength: 150, value: p ? (p.local_largada || "") : "" });
+      const horario = inp("time", { value: p ? (p.horario || "") : "" });
+      const obs = inp("text", { maxLength: 300, value: p ? (p.observacao || "") : "" });
+      const erro = el("p", { className: "erro", role: "alert" });
+      const salvar = el("button", { className: "botao", type: "submit", textContent: p ? "Salvar alterações" : "Cadastrar prova" });
+      const fechar = Object.assign(el("button", { className: "botao botao--leve", type: "button", textContent: "Fechar" }), { onclick: () => area.replaceChildren() });
+      const f = el("form", { className: "grade envio", noValidate: true }, [
+        campo("Nome da prova", nome, "c4"), campo("Data", data, "c2"),
+        campo("Cidade", cidade, "c3"), campo("UF", uf, "c1m c2"), campo("Horário da largada", horario, "c2 c1m", "(opcional)"),
+        campo("Distâncias (km)", dist, "c3"), campo("Tipo", tipo, "c3"),
+        campo("Link de inscrição", link, "c6"), campo("Local de largada", local, "c3", "(opcional)"), campo("Observações", obs, "c3", "(opcional)"),
+        el("div", { className: "c6" }, [erro, el("div", { className: "linha-botoes" }, [salvar, fechar])]),
+      ]);
+      f.onsubmit = async ev => {
+        ev.preventDefault();
+        erro.textContent = "";
+        const prova = { nome: nome.value, data: data.value, cidade: cidade.value, uf: uf.value, distancias: dist.value, tipo: tipo.value,
+          link: link.value, local_largada: local.value, horario: horario.value, observacao: obs.value };
+        const problema = conferirProva(prova);
+        if (problema) { erro.textContent = problema; return; }
+        salvar.disabled = true;
+        const r = p ? await api("/empresa/provas/" + p.id, { method: "PUT", body: JSON.stringify(prova) }).catch(() => ({ ok: false, erro: "Sem conexão." }))
+                    : await api("/empresa/provas", { method: "POST", body: JSON.stringify({ provas: [prova] }) }).catch(() => ({ ok: false, erro: "Sem conexão." }));
+        salvar.disabled = false;
+        if (!r.ok || (r.erros && r.erros.length)) { erro.textContent = r.erro || r.erros[0].erro; return; }
+        avisar(p ? "Prova alterada." : "Prova cadastrada.");
+        iniciar();
+      };
+      area.replaceChildren(el("h3", { textContent: p ? "Editar prova" : "Nova prova" }), f);
+      nome.focus();
+    }
+
+    // Planilha: le no navegador, mostra a previa e grava as linhas boas.
+    const arquivo = el("input", { type: "file", accept: ".xlsx,.xls,.csv,.ods", hidden: true });
+    arquivo.onchange = async () => {
+      const a = arquivo.files[0];
+      arquivo.value = "";
+      if (!a) return;
+      area.replaceChildren(el("p", { className: "carregando", textContent: "Lendo " + a.name + "…" }));
+      let provas;
+      try { provas = await lerPlanilha(a); } catch (err) {
+        area.replaceChildren(el("p", { className: "erro", textContent: "Não foi possível ler a planilha: " + err.message }));
+        return;
+      }
+      if (!provas.length) { area.replaceChildren(el("p", { className: "erro", textContent: "A planilha não tem provas preenchidas (as linhas de exemplo são ignoradas)." })); return; }
+      provas.forEach(p => { p._erro = conferirProva(p); if (p.data instanceof Date) p.data = dataParaIso(p.data); });
+      const boas = provas.filter(p => !p._erro);
+      const gravar = el("button", { className: "botao", type: "button", textContent: "Cadastrar " + boas.length + (boas.length === 1 ? " prova" : " provas") });
+      gravar.disabled = !boas.length;
+      const cancelar = Object.assign(el("button", { className: "botao botao--leve", type: "button", textContent: "Cancelar" }), { onclick: () => area.replaceChildren() });
+      const resultado = el("p", { role: "status" });
+      gravar.onclick = async () => {
+        gravar.disabled = true;
+        const r = await api("/empresa/provas", { method: "POST", body: JSON.stringify({ provas: boas.map(({ _erro, ...p }) => ({ ...p, data: dataParaIso(p.data) })) }) })
+          .catch(() => ({ ok: false, erro: "Sem conexão." }));
+        if (!r.ok) { gravar.disabled = false; resultado.className = "erro"; resultado.textContent = r.erro; return; }
+        if (typeof gtag === "function") gtag("event", "parceiro_planilha", { provas: r.gravadas });
+        avisar(r.gravadas + (r.gravadas === 1 ? " prova cadastrada." : " provas cadastradas.") + (r.erros.length ? " " + r.erros.length + " com problema." : ""));
+        iniciar();
+      };
+      area.replaceChildren(el("div", { className: "envio" }, [
+        el("h3", { style: "margin-top:0", textContent: a.name }),
+        el("p", { className: "suave", textContent: boas.length + " de " + provas.length + " linhas prontas para cadastrar" + (provas.length > boas.length ? "; corrija as marcadas em vermelho na planilha e envie de novo (as já cadastradas não duplicam)." : ".") }),
+        el("div", { className: "rolar" }, [el("table", { className: "tabela-provas" }, [
+          el("thead", {}, [el("tr", {}, ["Linha", "Data", "Prova", "Cidade", "Distâncias", "Tipo", ""].map(x => el("th", { textContent: x })))]),
+          el("tbody", {}, provas.map(p => el("tr", { className: p._erro ? "com-erro" : "" }, [
+            el("td", { textContent: p.linha }), el("td", { textContent: dataBr(dataParaIso(p.data)) || String(p.data || "") }),
+            el("td", { textContent: p.nome || "" }), el("td", { textContent: (p.cidade || "") + (p.uf ? " – " + String(p.uf).toUpperCase() : "") }),
+            el("td", { textContent: p.distancias || "" }), el("td", { textContent: p.tipo || "" }),
+            el("td", {}, [p._erro ? el("span", { className: "erro-linha", textContent: p._erro }) : el("span", { className: "ok-linha", textContent: "ok" })]),
+          ]))),
+        ])]),
+        resultado, el("div", { className: "linha-botoes" }, [gravar, cancelar]),
+      ]));
+    };
+
+    const nova = el("button", { className: "botao", type: "button", textContent: "Adicionar uma prova" });
+    nova.onclick = () => formulario(null);
+    const enviar = el("button", { className: "botao botao--leve", type: "button", textContent: "Enviar planilha" });
+    enviar.onclick = () => arquivo.click();
+    sec.replaceChildren(
+      el("h2", {}, [txt("Meu calendário de provas"), d.provas.length ? el("small", { textContent: d.provas.filter(p => p.status !== "cancelada" && p.data >= hojeIso()).length + " futuras" }) : null]),
+      el("p", { className: "suave", textContent: "Cadastre as provas da sua empresa: elas entram no calendário do Cupons de Corrida na atualização diária da manhã" +
+        (e.status === "aprovada" ? "." : ", depois que o cadastro for aprovado.") + " Se a prova já estiver no calendário, juntamos as informações e o link de inscrição passa a ser o seu." }),
+      el("div", { className: "linha-botoes" }, [nova, enviar, arquivo,
+        el("a", { className: "pequeno", href: "modelo-calendario-provas.xlsx", download: "", textContent: "Baixar planilha modelo (Excel)" })]),
+      area, lista);
+    pintarLista();
   }
 
   async function iniciar() {
