@@ -159,6 +159,13 @@ def publicar():
     import build
 
     build.build()
+    # Resultados por atleta: vao para a Cloudflare (dados.cuponsdecorrida.com.br),
+    # de onde as paginas leem. So sobe o que mudou.
+    try:
+        import publicar_dados
+        publicar_dados.publicar(registrar=registrar)
+    except Exception as erro:
+        registrar(f"dados publicos: FALHOU ({erro.__class__.__name__}: {erro})")
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return

@@ -415,6 +415,15 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
 <div class="dica-flutuante" id="tip" hidden></div>
 
 <script>
+// Resultados por atleta: servidos pela Cloudflare (dados.cuponsdecorrida.com.br).
+// Se falhar, a copia antiga do site serve de reserva. Em localhost, os locais.
+const DADOS_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? "" : "https://dados.cuponsdecorrida.com.br/";
+async function buscarDados(caminho, opcoes){
+  if (DADOS_URL){
+    try { const r = await fetch(DADOS_URL + caminho, opcoes); if (r.ok) return r; } catch (e) { /* tenta a reserva */ }
+  }
+  return fetch((/^bi\./.test(location.hostname) ? "https://www.cuponsdecorrida.com.br/" : "") + caminho, opcoes);
+}
 const num = n => n.toLocaleString("pt-BR");
 const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 const chave = s => norm(s).replace(/[^a-z0-9]/g, "");
@@ -453,7 +462,7 @@ let INDICE = null, PROVAS = [];
 const cacheBaldes = new Map();
 
 async function carregarIndice(){
-  const r = await fetch("atletas/indice.json", { cache:"no-cache" });
+  const r = await buscarDados("atletas/indice.json", { cache:"no-cache" });
   INDICE = await r.json();
   PROVAS = INDICE.provas;
   document.getElementById("s-atletas").textContent = num(INDICE.atletas);
@@ -479,7 +488,7 @@ const MAX_BALDES = 12;
 
 async function balde(pref){
   if (!cacheBaldes.has(pref)){
-    cacheBaldes.set(pref, fetch(`atletas/dados/${pref}.json`).then(r => r.ok ? r.json() : {}));
+    cacheBaldes.set(pref, buscarDados(`atletas/dados/${pref}.json`).then(r => r.ok ? r.json() : {}));
   }
   return cacheBaldes.get(pref);
 }
@@ -946,7 +955,7 @@ async function carregarTitulos(){
   if (TITULOS) return TITULOS;
   TITULOS = new Map();
   try {
-    const r = await fetch("atletas/campeoes.json", { cache:"no-cache" });
+    const r = await buscarDados("atletas/campeoes.json", { cache:"no-cache" });
     const c = r.ok ? await r.json() : {};
     Object.values(c).forEach(lista => lista.forEach(([, f, m]) => [f, m].forEach(v => {
       if (v) TITULOS.set(v[2], (TITULOS.get(v[2]) || 0) + 1);

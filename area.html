@@ -104,6 +104,15 @@ input[type=text],input[type=email],input[type=tel],select{font:inherit; font-siz
   const API = LOCAL ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
   const TURNSTILE = LOCAL ? "1x00000000000000000000AA" : "0x4AAAAAAFE1fT4EqE1SSerz";
   const DISTANCIAS = [["5k", "5 km"], ["10k", "10 km"], ["21k", "Meia (21 km)"], ["42k", "Maratona"], ["trail", "Trail"], ["ultra", "Ultra"]];
+// Resultados por atleta: servidos pela Cloudflare (dados.cuponsdecorrida.com.br).
+// Se falhar, a copia antiga do site serve de reserva. Em localhost, os locais.
+const DADOS_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? "" : "https://dados.cuponsdecorrida.com.br/";
+async function buscarDados(caminho, opcoes){
+  if (DADOS_URL){
+    try { const r = await fetch(DADOS_URL + caminho, opcoes); if (r.ok) return r; } catch (e) { /* tenta a reserva */ }
+  }
+  return fetch((/^bi\./.test(location.hostname) ? "https://www.cuponsdecorrida.com.br/" : "") + caminho, opcoes);
+}
   const params = new URLSearchParams(location.search);
   const cupomPedido = Number(params.get("cupom") || 0);
   const conteudo = document.getElementById("conteudo");
@@ -249,11 +258,11 @@ input[type=text],input[type=email],input[type=tel],select{font:inherit; font-siz
 
   // Resumo do perfil de resultados, pelos mesmos arquivos da pagina de atletas.
   async function resumoResultados(slug) {
-    const indice = await fetch("atletas/indice.json").then(r => r.json());
+    const indice = await buscarDados("atletas/indice.json").then(r => r.json());
     const k = slug.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
     const pref = indice.prefixos.filter(p => k.startsWith(p)).sort((a, b) => b.length - a.length)[0];
     if (!pref) return null;
-    const balde = await fetch("atletas/dados/" + pref + ".json").then(r => r.ok ? r.json() : {});
+    const balde = await buscarDados("atletas/dados/" + pref + ".json").then(r => r.ok ? r.json() : {});
     const a = balde[slug];
     if (!a) return null;
     const [nome, , res] = a;

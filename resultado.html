@@ -87,6 +87,15 @@ tr.voce td{background:var(--sol-wash)}
 
 <script>
 (() => {
+// Resultados por atleta: servidos pela Cloudflare (dados.cuponsdecorrida.com.br).
+// Se falhar, a copia antiga do site serve de reserva. Em localhost, os locais.
+const DADOS_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? "" : "https://dados.cuponsdecorrida.com.br/";
+async function buscarDados(caminho, opcoes){
+  if (DADOS_URL){
+    try { const r = await fetch(DADOS_URL + caminho, opcoes); if (r.ok) return r; } catch (e) { /* tenta a reserva */ }
+  }
+  return fetch((/^bi\./.test(location.hostname) ? "https://www.cuponsdecorrida.com.br/" : "") + caminho, opcoes);
+}
   const params = new URLSearchParams(location.search);
   const slug = (params.get("p") || "").trim();
   const conteudo = document.getElementById("conteudo");
@@ -121,11 +130,9 @@ tr.voce td{background:var(--sol-wash)}
   async function carregar() {
     // Endereco do Open Results: pode ter acento; so nao pode ter barra.
     if (slug.length < 3 || slug.length > 250 || /[\/\?#]/.test(slug)) return semDados("Prova não informada.");
-    // No site o arquivo esta ao lado; no BI, vem do site publico.
-    const base = /^bi\./.test(location.hostname) ? "https://www.cuponsdecorrida.com.br/" : "";
     let d;
     try {
-      const r = await fetch(base + "atletas/provas/" + arquivo(slug) + ".json");
+      const r = await buscarDados("atletas/provas/" + arquivo(slug) + ".json");
       if (!r.ok) throw new Error("sem arquivo");
       d = await r.json();
     } catch (e) {

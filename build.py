@@ -132,6 +132,7 @@ SO_BI = [
     r'[ \t]*<button class="chip" id="btn-crono"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-foto"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-raiox"[^\n]*\n',
+    r'[ \t]*<a class="chip" id="btn-patrocinios"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-cupons"[^\n]*\n',
     r'<dialog class="orgs cp" id="cupons".*?</dialog>\n\n',
     r'[ \t]*<button class="chip" id="btn-fotos"[^\n]*\n',

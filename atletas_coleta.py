@@ -219,11 +219,25 @@ def arquivo_de(slug):
     return PASTA / (re.sub(r"[^a-z0-9]+", "-", slug.lower()).strip("-") + ".json")
 
 
+REVER_403_DIAS = 14
+
+
+def rever(arquivo):
+    """Marca de prova recusada (403) cujo prazo de espera ja passou."""
+    if arquivo.stat().st_size > 400:
+        return False
+    try:
+        d = json.loads(arquivo.read_text(encoding="utf-8"))
+    except ValueError:
+        return False
+    return bool(d.get("rever_apos")) and d["rever_apos"] <= datetime.date.today().isoformat()
+
+
 def coletar(anos, limite=None, registrar=print):
     PASTA.mkdir(parents=True, exist_ok=True)
     historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
     alvo = provas_alvo(historico, anos)
-    pendentes = [p for p in alvo if not arquivo_de(p["or_slug"]).exists()]
+    pendentes = [p for p in alvo if not arquivo_de(p["or_slug"]).exists() or rever(arquivo_de(p["or_slug"]))]
     registrar(f"{len(alvo)} provas de {', '.join(map(str, anos))} com resultado; "
               f"{len(pendentes)} ainda sem atletas")
     feitas, linhas_total = 0, 0
@@ -232,6 +246,13 @@ def coletar(anos, limite=None, registrar=print):
             registro = coletar_prova(p)
         except Exception as erro:
             registrar(f"  {p['data']} {p['nome'][:40]}: FALHOU ({erro.__class__.__name__}: {erro})")
+            # O portal recusa algumas provas (403) e cada tentativa custa minutos
+            # de espera: marca e so tenta de novo depois de REVER_403_DIAS.
+            if isinstance(erro, urllib.error.HTTPError) and erro.code == 403:
+                volta = (datetime.date.today() + datetime.timedelta(days=REVER_403_DIAS)).isoformat()
+                arquivo_de(p["or_slug"]).write_text(json.dumps(
+                    {"slug": p["or_slug"], "erro": "recusado pelo portal (403)", "rever_apos": volta},
+                    ensure_ascii=False), encoding="utf-8")
             continue
         if registro.get("erro"):
             registrar(f"  {p['data']} {p['nome'][:40]}: {registro['erro']}")

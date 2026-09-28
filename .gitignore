@@ -13,3 +13,5 @@ _*.html
 
 # Registro da coleta local (resultados_locais.py): fica so neste computador.
 coleta-local.log
+.segredos/
+.estado_r2.json
