@@ -320,6 +320,28 @@ h1 em{font-style:normal; color:#FFC21A}
   .as__nums{grid-template-columns:1fr 1fr}
 }
 
+/* ---------- resultados: provas realizadas, da mais recente ---------- */
+.rs{width:min(50rem, 100% - 2rem)}
+.rs__busca{padding:0 1.2rem .6rem}
+.rs__busca input{width:100%; font:inherit; font-size:.92rem; padding:.55rem .75rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); box-sizing:border-box}
+.rs__lista{list-style:none; margin:0; padding:0 .8rem .8rem; overflow-y:auto}
+.rs__mes{position:sticky; top:0; z-index:1; background:var(--surface); display:flex; justify-content:space-between; gap:.6rem; align-items:baseline;
+  padding:.7rem .4rem .35rem; border-bottom:2px solid var(--ink); font-family:var(--f-display); font-weight:800; font-size:.95rem}
+.rs__mes small{font-family:var(--f-mono); font-weight:400; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.rs__item{display:grid; grid-template-columns:3.2rem minmax(0,1fr) auto; gap:.2rem .8rem; align-items:start; padding:.55rem .4rem; border-bottom:1px solid var(--line-soft)}
+.rs__data{font-family:var(--f-mono); font-size:.78rem; color:var(--muted); line-height:1.25; text-align:center}
+.rs__data b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.15rem; color:var(--ink)}
+.rs__prova{font-weight:600; font-size:.92rem; overflow-wrap:anywhere}
+.rs__prova small{display:block; font-weight:400; font-size:.76rem; color:var(--muted)}
+.rs__dist{display:block; font-family:var(--f-mono); font-size:.68rem; color:var(--ink-2); margin-top:.15rem}
+.rs__dist a{color:var(--azul-ink)}
+.rs__n{text-align:right; white-space:nowrap}
+.rs__n b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.15rem; color:var(--azul-ink); font-variant-numeric:tabular-nums}
+.rs__n small{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.rs__mais{display:block; margin:.8rem auto 0; font:inherit; font-size:.85rem; cursor:pointer; border:1px solid var(--line); background:none; color:var(--ink-2); border-radius:999px; padding:.4rem 1rem}
+.rs__vazio{padding:1rem .4rem; color:var(--muted)}
+@media (max-width:720px){ .rs__busca{padding-inline:.9rem} .rs__item{grid-template-columns:2.8rem minmax(0,1fr) auto; gap:.2rem .55rem} }
+
 /* ---------- cupom no cartao da prova ---------- */
 /* Seletor mais especifico que .tag (definido depois): senao fica cinza. */
 .race .tag.tag--cupom{background:#FFC21A; color:#0A2F73; font-weight:800; font-size:.8rem; letter-spacing:.01em;
@@ -999,6 +1021,7 @@ h1 em{font-style:normal; color:#FFC21A}
         <button class="chip" id="btn-leads" type="button" aria-haspopup="dialog" title="Atletas cadastrados para a newsletter e os cupons">Leads</button>
         <button class="chip" id="btn-assessorias" type="button" aria-haspopup="dialog" title="Quantos alunos cada assessoria ou equipe levou às provas do recorte">Assessorias</button>
         <button class="chip" id="btn-raiox" type="button" aria-haspopup="dialog" title="Onde as provas de Florianópolis largam e chegam: mapa e lista por local">Raio-X Floripa</button>
+        <button class="chip" id="btn-resultados" type="button" aria-haspopup="dialog" title="Provas já realizadas, da mais recente, com o número de concluintes">Resultados</button>
         <button class="chip" id="btn-campeoes" type="button" aria-haspopup="dialog" title="Os vencedores de cada distância, nas provas do recorte">Campeões</button>
         <button class="chip" id="btn-recordes" type="button" aria-haspopup="dialog" title="Os dez melhores tempos em cada distância, nas provas do recorte">Recordes</button>
         <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html" title="Busque um atleta pelo nome e veja as provas, o pace e os melhores tempos">Resultados por atleta ↗</a>
@@ -1132,6 +1155,18 @@ h1 em{font-style:normal; color:#FFC21A}
       <div class="rx__lista" id="raiox-lista"></div>
     </div>
     <p class="orgs__rodape" id="raiox-rodape"></p>
+  </div>
+</dialog>
+
+<dialog class="orgs rs" id="resultados" aria-labelledby="resultados-titulo">
+  <div class="orgs__caixa">
+    <div class="orgs__topo">
+      <h2 id="resultados-titulo">Resultados <small id="resultados-recorte"></small></h2>
+      <button class="orgs__fechar" id="resultados-fechar" type="button">Fechar</button>
+    </div>
+    <div class="rs__busca"><input id="resultados-busca" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade"></div>
+    <ol class="rs__lista" id="resultados-lista"></ol>
+    <p class="orgs__rodape" id="resultados-rodape"></p>
   </div>
 </dialog>
 
@@ -2322,6 +2357,7 @@ function render(){
   if (dialogoFoto && dialogoFoto.open) montarFoto();
   if (dialogoRec.open) montarRecordes();
   if (dialogoCampeoes.open) montarCampeoes();
+  if (dialogoResultados && dialogoResultados.open) montarResultados();
   if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
   if (dialogoAssess && dialogoAssess.open) montarAssessorias();
 
@@ -2995,6 +3031,109 @@ ao("assess-pdf", () => {
 });
 if (buscaAssess) buscaAssess.oninput = () => montarAssessorias();
 fechaNoFundo(dialogoAssess);
+
+/* ---------- resultados ----------
+   As provas ja realizadas que tem numero de concluintes, da mais recente
+   para a mais antiga. Segue os filtros da pagina (estado, regiao, cidade,
+   organizadora, tipo, distancia, ano e mes), mas nao o periodo: aqui e
+   sempre "realizadas". */
+const dialogoResultados = document.getElementById("resultados");
+const buscaResultados = document.getElementById("resultados-busca");
+const LOTE_RESULTADOS = 150;
+let mostrarResultados = LOTE_RESULTADOS;
+
+function provasComResultado(){
+  const alvo = norm(buscaResultados.value.trim());
+  return RACES.filter(r => r._passada && r.concluintes_total && passaFiltrosGerais(r)
+      && (!state.anos.size || state.anos.has(r.ano)) && (!state.meses.size || state.meses.has(r._key))
+      && (!alvo || r._busca.includes(alvo)))
+    .sort((a, b) => b._d - a._d || (b.concluintes_total || 0) - (a.concluintes_total || 0));
+}
+
+function montarResultados(){
+  const partesRecorte = [];
+  if (state.anos.size) partesRecorte.push([...state.anos].sort().join(", "));
+  if (state.cidade) partesRecorte.push(state.cidade);
+  else if (state.regioes.size) partesRecorte.push([...state.regioes].join(", "));
+  else partesRecorte.push(NOME_ESTADO);
+  if (state.organizador) partesRecorte.push(state.organizador);
+  document.getElementById("resultados-recorte").textContent = partesRecorte.join(" · ");
+
+  const provas = provasComResultado();
+  const lista = document.getElementById("resultados-lista");
+  lista.replaceChildren();
+  if (!provas.length){
+    lista.append(el("li", { className:"rs__vazio", textContent:"Nenhuma prova com resultado neste recorte." }));
+    document.getElementById("resultados-rodape").textContent = "";
+    return;
+  }
+
+  // Totais por mes (de todas as provas do recorte, nao so das mostradas).
+  const porMes = new Map();
+  provas.forEach(r => {
+    const m = porMes.get(r._key) || { provas:new Set(), conc:0 };
+    m.provas.add(r._ev); m.conc += temResultado(r) ? r.concluintes_total : 0;
+    porMes.set(r._key, m);
+  });
+
+  let mesAtual = null;
+  provas.slice(0, mostrarResultados).forEach(r => {
+    if (r._key !== mesAtual){
+      mesAtual = r._key;
+      const m = porMes.get(r._key);
+      lista.append(el("li", { className:"rs__mes" }, [
+        el("span", { textContent: MES_NOME[r.mes - 1] + " " + r.ano }),
+        el("small", { textContent: m.provas.size + (m.provas.size === 1 ? " prova · " : " provas · ") + num(m.conc) + " concluintes" }),
+      ]));
+    }
+    const equipes = r.concluintes_unidade === "equipes";
+    const dist = Object.entries(r.concluintes || {})
+      .map(([km, n]) => [Number(km), n]).filter(([km, n]) => km && n)
+      .sort((a, b) => a[0] - b[0])
+      .map(([km, n]) => (km === 21.1 ? "21 km" : km === 42.2 ? "42 km" : String(km).replace(".", ",") + " km") + " " + num(n));
+    const linhaDist = el("span", { className:"rs__dist", textContent: dist.join(" · ") });
+    if (r.or_slug){
+      if (dist.length) linhaDist.append(document.createTextNode(" · "));
+      linhaDist.append(el("a", { href:"https://openresults.run/evento/" + encodeURIComponent(r.or_slug) + "/",
+        target:"_blank", rel:"noopener", textContent:"classificação ↗" }));
+    }
+    lista.append(el("li", { className:"rs__item" }, [
+      el("div", { className:"rs__data" }, [el("b", { textContent:String(r.dia).padStart(2, "0") }),
+        document.createTextNode(MES_ABBR[r.mes - 1] + " " + String(r.ano).slice(2))]),
+      el("div", { className:"rs__prova", textContent:r.nome }, [
+        el("small", { textContent: r.cidade + (r.organizadores && r.organizadores.length ? " · " + r.organizadores.join(", ") : "") }),
+        linhaDist]),
+      el("div", { className:"rs__n" }, [
+        el("b", { textContent:num(r.concluintes_total) }),
+        el("small", { textContent: (equipes ? "equipes" : "concluintes") + (r.resultado_parcial ? " · parcial" : "") })]),
+    ]));
+  });
+  if (provas.length > mostrarResultados){
+    const mais = el("button", { className:"rs__mais", type:"button",
+      textContent:"Mostrar mais " + Math.min(LOTE_RESULTADOS, provas.length - mostrarResultados) + " provas" });
+    mais.onclick = () => { mostrarResultados += LOTE_RESULTADOS; const y = lista.scrollTop; montarResultados(); lista.scrollTop = y; };
+    lista.append(el("li", {}, [mais]));
+  }
+
+  const eventos = new Set(provas.map(r => r._ev)).size;
+  const total = provas.reduce((s, r) => s + (temResultado(r) ? r.concluintes_total : 0), 0);
+  document.getElementById("resultados-rodape").replaceChildren(
+    el("b", { textContent:num(eventos) }),
+    document.createTextNode(eventos === 1 ? " prova com resultado · " : " provas com resultado · "),
+    el("b", { textContent:num(total) }),
+    document.createTextNode(" concluintes. Conta quem cruzou a chegada com tempo registrado; resultado parcial não entra na soma."));
+}
+
+ao("btn-resultados", () => {
+  buscaResultados.value = "";
+  mostrarResultados = LOTE_RESULTADOS;
+  montarResultados();
+  dialogoResultados.showModal();
+  document.getElementById("resultados-lista").scrollTop = 0;
+});
+ao("resultados-fechar", () => dialogoResultados.close());
+if (buscaResultados) buscaResultados.oninput = () => { mostrarResultados = LOTE_RESULTADOS; montarResultados(); };
+fechaNoFundo(dialogoResultados);
 
 /* ---------- galeria dos campeoes ----------
    atletas/campeoes.json: por prova (or_slug), a lista de distancias com a
