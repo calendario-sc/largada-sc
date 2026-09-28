@@ -4427,26 +4427,12 @@ render();
 <script src="cadastro.js"></script>
 <!-- painel do BI -->
 <style id="bi-painel">
-/* O BI e a mesma pagina do site com mais paineis. Aqui ele ganha cara de
-   painel: menu lateral com as secoes, topo escuro e compacto. */
-body.bi{padding-left:15rem; background:#EEF1F6}
+/* O BI e a mesma pagina do site com mais paineis. O menu lateral (modulos do
+   Sports BI) vem de /painel.js, o mesmo de todas as paginas do BI; aqui fica
+   so o visual do calendario dentro do painel. */
+body.bi{background:#EEF1F6}
 @media (prefers-color-scheme: dark){ body.bi{background:var(--ground)} }
 body.bi .wrap{width:min(1280px,100% - 2.5rem)}
-.bi-nav{position:fixed; inset:0 auto 0 0; width:15rem; z-index:60; overflow-y:auto; background:#0B1220; color:#C4CEDF;
-  padding:1rem .75rem 2rem; border-right:1px solid #1C2740; font-family:var(--f-body)}
-.bi-marca{display:flex; align-items:center; gap:.4rem; white-space:nowrap; padding:.2rem .5rem 1rem; font-family:var(--f-display); font-weight:800; font-size:1.02rem; color:#fff; letter-spacing:-.01em}
-.bi-marca em{font-style:normal; color:#FFC21A}
-.bi-marca span{font-family:var(--f-mono); font-weight:500; font-size:.6rem; letter-spacing:.12em; background:#FFC21A; color:#0A2F73; border-radius:5px; padding:.1rem .35rem}
-.bi-nav h6{margin:1rem .55rem .3rem; font-family:var(--f-mono); font-weight:400; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:#6F7F9B}
-.bi-nav .chip,.bi-nav .bi-item{display:flex; align-items:center; justify-content:space-between; gap:.5rem; width:100%; margin:0 0 1px; text-align:left;
-  font:inherit; font-size:.88rem; line-height:1.25; color:#C4CEDF; background:none; border:0; border-radius:8px; padding:.46rem .6rem; cursor:pointer; text-decoration:none; box-shadow:none}
-.bi-nav .chip:hover,.bi-nav .bi-item:hover{background:#18233A; color:#fff}
-.bi-nav .chip[aria-pressed="true"]{background:#1E3A8A; color:#fff}
-.bi-nav .chip:focus-visible,.bi-nav .bi-item:focus-visible{outline:2px solid #FFC21A; outline-offset:-2px}
-.bi-nav .chip::before{display:none}
-.bi-badge{font-family:var(--f-mono); font-size:.66rem; background:#FFC21A; color:#0A2F73; border-radius:999px; padding:.05rem .45rem}
-.bi-menu{display:none}
-/* Topo: sem o visual de vitrine do site. */
 body.bi .top{background:#111A2E}
 body.bi .top::before,body.bi .top::after{display:none}
 body.bi .top__inner{padding:1.3rem 0 1.2rem; gap:1rem 2rem; align-items:flex-start}
@@ -4457,66 +4443,6 @@ body.bi .stat{background:#18233A; border-color:#26345A; min-width:96px; padding:
 body.bi .stat b{font-size:1.55rem}
 body.bi .top__acoes{width:100%}
 body.bi .top__botoes .top__sep{display:none}
-@media (max-width:900px){
-  body.bi{padding-left:0}
-  .bi-nav{transform:translateX(-100%); transition:transform .2s; box-shadow:0 0 40px rgba(0,0,0,.4)}
-  body.bi.bi-aberto .bi-nav{transform:none}
-  .bi-menu{display:inline-flex; position:fixed; left:.7rem; bottom:.9rem; z-index:61; font:inherit; font-weight:700; font-size:.9rem;
-    border:0; border-radius:999px; padding:.6rem 1rem; background:#FFC21A; color:#0A2F73; box-shadow:0 8px 20px rgba(0,0,0,.3); cursor:pointer}
-}
-@media print{ .bi-nav,.bi-menu{display:none !important} body.bi{padding-left:0} }
+body.bi #btn-patrocinios,body.bi .top__botoes a.chip--link{display:none}
 </style>
-<script id="bi-painel-js">
-(() => {
-  const $ = id => document.getElementById(id);
-  const link = (texto, href, externo) => Object.assign(document.createElement("a"),
-    { className:"bi-item", href, textContent: texto + (externo ? " ↗" : ""), ...(externo ? { target:"_blank", rel:"noopener" } : {}) });
-  const botao = (texto, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "bi-item"; b.textContent = texto; b.onclick = fn; return b; };
-  const pega = seletor => typeof seletor === "string" ? ($(seletor) || document.querySelector(seletor)) : seletor;
-  const site = "https://www.cuponsdecorrida.com.br/";
-  const grupos = [
-    ["Calendário", [botao("Provas", () => window.scrollTo({ top:0, behavior:"smooth" })), "btn-comparativo", "btn-cal-pdf"]],
-    ["Mercado", ["btn-ticketeiras", "btn-crono", "btn-foto", "btn-assessorias", "btn-raiox",
-                 botao("Organizadoras", () => $("stat-orgs") && $("stat-orgs").click())]],
-    ["Resultados", ["btn-resultados", "btn-campeoes", "btn-recordes", 'a.chip--link[href*="atletas.html"]:not([href*="supertrunfo"])', 'a.chip--link[href*="supertrunfo"]']],
-    ["Atletas", ["btn-leads", "btn-fotos"]],
-    ["Negócios", [link("Minhas corridas", "/minhas-corridas/"), link("NPS", "/minhas-corridas/nps.html"), link("CRM", "/crm/"), link("Assessorias", "/assessorias/"), "btn-cupons", "btn-empresas", "btn-patrocinios"]],
-    ["Site público", [link("Calendário", site, true), link("Central de Cupons", site + "cupons.html", true), link("Portal do parceiro", site + "parceiros.html", true)]],
-  ];
-  const nav = document.createElement("nav");
-  nav.className = "bi-nav";
-  nav.setAttribute("aria-label", "Seções do BI");
-  nav.innerHTML = '<div class="bi-marca">Sports <em>BI</em></div>';
-  grupos.forEach(([titulo, itens]) => {
-    const h = document.createElement("h6");
-    h.textContent = titulo;
-    nav.append(h);
-    itens.forEach(i => {
-      const e = pega(i);
-      if (!e) return;
-      nav.append(e);
-    });
-  });
-  document.body.prepend(nav);
-  document.body.classList.add("bi");
-  const menu = botao("☰ Menu", () => document.body.classList.toggle("bi-aberto"));
-  menu.className = "bi-menu";
-  document.body.append(menu);
-  nav.addEventListener("click", ev => { if (ev.target.closest(".chip,.bi-item")) document.body.classList.remove("bi-aberto"); });
-
-  const h1 = document.querySelector(".top h1");
-  if (h1) h1.innerHTML = "Painel de <em>corridas</em>";
-
-  // Empresas esperando aprovacao: numero ao lado do item do menu.
-  window.biPendentes = n => {
-    const b = $("btn-empresas");
-    if (!b) return;
-    let s = b.querySelector(".bi-badge");
-    if (!n) { if (s) s.remove(); return; }
-    if (!s) { s = document.createElement("span"); s.className = "bi-badge"; b.append(s); }
-    s.textContent = n;
-  };
-  fetch("/api/empresas", { cache:"no-store", credentials:"same-origin" }).then(r => r.ok ? r.json() : null)
-    .then(d => d && window.biPendentes((d.empresas || []).filter(e => e.status === "pendente").length)).catch(() => {});
-})();
-</script>
+<script src="/painel.js"></script>

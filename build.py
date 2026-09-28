@@ -237,7 +237,13 @@ def build():
             (AQUI / "artifact.html").write_text(pagina_bi, encoding="utf-8")
             tamanho = len(pagina_bi)
         if BI_DIR.is_dir():
-            (BI_DIR / arquivo).write_text(completa(pagina_bi), encoding="utf-8")
+            # No BI o calendario mora em /corridas/ (a raiz e a Visao geral dos
+            # modulos); os arquivos de apoio continuam na raiz.
+            (BI_DIR / "corridas").mkdir(exist_ok=True)
+            pagina_bi_dir = (completa(pagina_bi).replace('src="cadastro.js"', 'src="/cadastro.js"')
+                             .replace('href="cupons.html"', 'href="/cupons.html"')
+                             .replace('fetch("assessorias.json"', 'fetch("/assessorias.json"'))
+            (BI_DIR / "corridas" / arquivo).write_text(pagina_bi_dir, encoding="utf-8")
             # O formulario de cadastro e um arquivo a parte, usado pelas paginas.
             (BI_DIR / "cadastro.js").write_text((AQUI / "cadastro.js").read_text(encoding="utf-8"), encoding="utf-8")
             # Central de Cupons: o botao do topo aponta para ela tambem no BI

@@ -215,7 +215,7 @@ def publicar_bi():
             minhas_corridas.montar(registrar=registrar)
         except Exception as erro:
             registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
-        g("add", "index.html", "pr.html", "todos.html", "cadastro.js", "cupons.html")
+        g("add", "corridas/index.html", "corridas/pr.html", "corridas/todos.html", "cadastro.js", "cupons.html")
         if (pasta / "minhas-corridas" / "dados.json").exists():
             g("add", "minhas-corridas/dados.json")
         if (pasta / "assessorias.json").exists():
