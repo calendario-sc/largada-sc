@@ -493,6 +493,16 @@ h1 em{font-style:normal; color:#FFC21A}
   backdrop-filter:blur(10px);
   border-block:1px solid var(--line);
 }
+/* Aviso "perto de voce": o site abriu filtrado na regiao do visitante. */
+.perto{display:flex; gap:.6rem 1rem; align-items:center; flex-wrap:wrap; margin:.9rem auto 0; padding:.6rem .9rem;
+  border:1px solid var(--line-soft); border-radius:12px; background:var(--surface); font-size:.9rem; color:var(--ink-2)}
+.perto b{color:var(--ink)}
+.perto > span{flex:1 1 14rem}
+.perto::before{content:""; width:.55rem; height:.55rem; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-wash); flex:none}
+.perto button{font:inherit; font-size:.84rem; font-weight:600; cursor:pointer; border:1px solid var(--line); background:none; color:var(--ink-2);
+  border-radius:999px; padding:.25rem .8rem; margin-left:auto}
+.perto button:hover{border-color:var(--accent); color:var(--ink)}
+@media print{ .perto{display:none} }
 .filters__inner{display:flex; flex-wrap:wrap; gap:.6rem 1.3rem; align-items:center; padding:.8rem 0}
 .groups{flex:1 1 auto; display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1.3rem; min-width:0}
 .search{position:relative; flex:0 1 250px; min-width:0}
@@ -4172,6 +4182,71 @@ window.addEventListener("resize", setOffset);
 
 montarMeses();
 render();
+
+/* ---------- abre perto do visitante ----------
+   Pela localizacao aproximada (IP, pela API /onde; nada e gravado), o site
+   publico abre na pagina do estado e filtrado na regiao de quem visita e no
+   ano corrente. Quem clica em "Ver todas" nao recebe mais o filtro. */
+(function abrirPertoDeVoce(){
+  if (BI) return;
+  const guarda = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) { /* sem armazenamento */ } };
+  const le = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  if (le("cc_perto") === "nao") return;
+  let aplicado = false;
+
+  function aplicar(onde){
+    if (aplicado || !onde || !onde.uf) return;
+    // Estado: veio de fora do site e esta no outro estado? Vai para a pagina dele.
+    const pagina = { SC:"./", PR:"pr.html" }[onde.uf];
+    const doSite = /(^|\.)cuponsdecorrida\.com\.br$/.test((() => { try { return new URL(document.referrer).hostname; } catch (e) { return ""; } })());
+    if (UF && pagina && onde.uf !== UF && !doSite) { aplicado = true; location.replace(pagina); return; }
+    if (!REGIOES.includes(onde.regiao)) return;
+    // Quem ja mexeu nos filtros manda.
+    if (state.regioes.size || state.anos.size || state.q || state.cidade || state.organizador) return;
+    aplicado = true;
+    const aperta = (id, texto) => {
+      const b = [...document.getElementById(id).querySelectorAll(".chip")].find(x => x.textContent === texto);
+      if (b && b.getAttribute("aria-pressed") !== "true") b.click();
+      return b;
+    };
+    const ano = String(new Date().getFullYear());
+    const chipRegiao = aperta("g-regiao", onde.regiao);
+    const chipAno = ANOS.map(String).includes(ano) ? aperta("g-ano", ano) : null;
+    if (typeof gtag === "function") gtag("event", "abriu_perto", { regiao: onde.regiao });
+
+    const verTodas = el("button", { type:"button", textContent:"Ver todas as provas" });
+    const aviso = el("p", { className:"wrap perto", role:"status" }, [
+      el("span", {}, [document.createTextNode("Mostrando as provas de "), el("b", { textContent:onde.regiao }),
+        document.createTextNode(chipAno ? " em " + ano : ""), document.createTextNode(", perto de você.")]),
+      verTodas,
+    ]);
+    const tirarAviso = () => aviso.remove();
+    verTodas.onclick = () => {
+      guarda("cc_perto", "nao");
+      if (chipRegiao && chipRegiao.getAttribute("aria-pressed") === "true") chipRegiao.click();
+      if (chipAno && chipAno.getAttribute("aria-pressed") === "true") chipAno.click();
+      trocarEscopo("proximas");
+      render();
+      tirarAviso();
+    };
+    ["g-regiao", "g-ano", "reset", "reset-top"].forEach(id => {
+      const x = document.getElementById(id);
+      if (x) x.addEventListener("click", ev => { if (ev.isTrusted) tirarAviso(); });
+    });
+    document.getElementById("bar").after(aviso);
+  }
+
+  // Guarda por uma semana: na proxima visita o filtro entra sem esperar a API.
+  let salvo = null;
+  try { salvo = JSON.parse(le("cc_onde") || "null"); } catch (e) { /* ignora */ }
+  if (salvo && Date.now() - salvo.em < 7 * 86400000) { aplicar(salvo.onde); return; }
+  fetch(API_CUPONS + "/onde", { cache:"no-store" }).then(r => r.json()).then(d => {
+    if (!d.ok) return;
+    const onde = { uf:d.uf, regiao:d.regiao };
+    guarda("cc_onde", JSON.stringify({ em:Date.now(), onde }));
+    aplicar(onde);
+  }).catch(() => { /* sem API: abre como sempre */ });
+})();
 </script>
 <script src="cadastro.js"></script>
 
