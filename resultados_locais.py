@@ -218,6 +218,8 @@ def publicar_bi():
             minhas_corridas.montar_acorsj(registrar=registrar)
             import crm_acorsj          # CRM de atletas (nomes): vai para o R2 privado, nunca para o git
             crm_acorsj.publicar(registrar=registrar)
+            import organizadores       # Mercado de corridas > Organizadores (portfolio + sugestoes da Receita)
+            organizadores.montar(registrar=registrar)
         except Exception as erro:
             registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
         g("add", "corridas/index.html", "corridas/pr.html", "corridas/todos.html", "cadastro.js", "cupons.html")
@@ -225,6 +227,8 @@ def publicar_bi():
             g("add", "minhas-corridas/dados.json")
         if (pasta / "acorsj" / "dados.json").exists():
             g("add", "acorsj/dados.json")
+        if (pasta / "organizadores" / "dados.json").exists():
+            g("add", "organizadores/dados.json", "ferramentas/cache_cnpj.json")
         if (pasta / "assessorias.json").exists():
             g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")
