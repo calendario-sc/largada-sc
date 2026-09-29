@@ -220,6 +220,8 @@ def publicar_bi():
             crm_acorsj.publicar(registrar=registrar)
             import organizadores       # Mercado de corridas > Organizadores (portfolio + sugestoes da Receita)
             organizadores.montar(registrar=registrar)
+            import mercado             # Mercado de corridas > Painel do mercado
+            mercado.montar(registrar=registrar)
         except Exception as erro:
             registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
         g("add", "corridas/index.html", "corridas/pr.html", "corridas/todos.html", "cadastro.js", "cupons.html")
@@ -229,6 +231,8 @@ def publicar_bi():
             g("add", "acorsj/dados.json")
         if (pasta / "organizadores" / "dados.json").exists():
             g("add", "organizadores/dados.json", "ferramentas/cache_cnpj.json")
+        if (pasta / "mercado" / "dados.json").exists():
+            g("add", "mercado/dados.json")
         if (pasta / "assessorias.json").exists():
             g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")
