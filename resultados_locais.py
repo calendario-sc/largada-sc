@@ -213,11 +213,14 @@ def publicar_bi():
             sys.path.insert(0, str(pasta / "ferramentas"))
             import minhas_corridas
             minhas_corridas.montar(registrar=registrar)
+            minhas_corridas.montar_acorsj(registrar=registrar)
         except Exception as erro:
             registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
         g("add", "corridas/index.html", "corridas/pr.html", "corridas/todos.html", "cadastro.js", "cupons.html")
         if (pasta / "minhas-corridas" / "dados.json").exists():
             g("add", "minhas-corridas/dados.json")
+        if (pasta / "acorsj" / "dados.json").exists():
+            g("add", "acorsj/dados.json")
         if (pasta / "assessorias.json").exists():
             g("add", "assessorias.json")
         hoje = datetime.date.today().strftime("%d/%m/%Y")
