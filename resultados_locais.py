@@ -216,6 +216,8 @@ def publicar_bi():
             import minhas_corridas
             minhas_corridas.montar(registrar=registrar)
             minhas_corridas.montar_acorsj(registrar=registrar)
+            import crm_acorsj          # CRM de atletas (nomes): vai para o R2 privado, nunca para o git
+            crm_acorsj.publicar(registrar=registrar)
         except Exception as erro:
             registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
         g("add", "corridas/index.html", "corridas/pr.html", "corridas/todos.html", "cadastro.js", "cupons.html")
