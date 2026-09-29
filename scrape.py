@@ -1534,6 +1534,13 @@ def _evidencia_de_serie(a, b):
     return False
 
 
+# Edicoes que o nome sozinho nao liga (a prova trocou muito de nome de um ano
+# para o outro), informadas pelo usuario: (cidade, trecho do nome).
+SERIES_MANUAIS = [
+    ("Florianópolis", re.compile(r"movimento rosa", re.I)),     # 2026: "... da Sociedade Catarinense de Mastologia"
+]
+
+
 def mesma_serie(a, b):
     """Duas edicoes da mesma prova, em anos diferentes?
 
@@ -1544,6 +1551,9 @@ def mesma_serie(a, b):
     """
     if a["ano"] == b["ano"] or a.get("cidade") != b.get("cidade"):
         return False
+    for cidade, trecho in SERIES_MANUAIS:
+        if a.get("cidade") == cidade and trecho.search(a["nome"]) and trecho.search(b["nome"]):
+            return _mesma_epoca(a, b, JANELA_MESMO_NOME)
     janela = JANELA_MESMO_NOME if _quase_o_mesmo_nome(a, b) else JANELA_SERIE
     return _mesma_epoca(a, b, janela) and _evidencia_de_serie(a, b)
 
