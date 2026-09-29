@@ -1,0 +1,41 @@
+*{box-sizing:border-box}
+:root{--azul:#0A2F73;--azul2:#1450C8;--sol:#FFC21A;--ink:#0E1726;--ink2:#2E3A50;--muted:#5B6880;--line:#DDE3EC;--ground:#F4F6FA;--surface:#fff;--accent:#1450C8}
+@media (prefers-color-scheme:dark){:root{--ink:#E8EDF6;--ink2:#C4CCDA;--muted:#8C97AA;--line:#223049;--ground:#0B1220;--surface:#121B2E;--accent:#8FB2FF}}
+body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.55 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent)}
+.topo{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff}
+.topo .w{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.8rem 0}
+.marca{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.25rem;color:#fff;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
+.marca em{font-style:normal;color:var(--sol)}
+.topo nav a{color:#fff;text-decoration:none;font-size:.9rem;margin-left:1rem;white-space:nowrap}
+.topo nav a.cc{background:var(--sol);color:var(--azul);font-weight:700;border-radius:999px;padding:.35rem .8rem}
+.faixa{height:5px;background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.w{width:min(960px,100% - 2rem);margin:0 auto}
+.migalha{font-size:.82rem;color:var(--muted);margin:1rem 0 .4rem}
+.migalha a{color:var(--muted)}
+h1{font-family:"Archivo",system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.1;font-size:clamp(1.7rem,4.5vw,2.5rem);margin:.2rem 0 .4rem}
+.sub{color:var(--ink2);margin:0 0 1.2rem;font-size:1.02rem}
+h2{font-family:"Archivo",system-ui,sans-serif;font-size:1.2rem;margin:1.8rem 0 .7rem}
+.cartao{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem}
+dl.fatos{display:grid;grid-template-columns:max-content 1fr;gap:.45rem 1rem;margin:0}
+dl.fatos dt{color:var(--muted);font-size:.9rem}
+dl.fatos dd{margin:0}
+.pills span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.05rem .55rem;margin:0 .25rem .25rem 0;font-size:.88rem}
+.acoes{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 0}
+.botao{display:inline-block;text-decoration:none;font-weight:700;border-radius:999px;padding:.6rem 1.1rem;background:var(--azul2);color:#fff}
+.botao.sol{background:var(--sol);color:var(--azul)}
+.botao.claro{background:none;color:var(--accent);border:1px solid var(--line)}
+ul.lista{list-style:none;margin:0;padding:0}
+ul.lista li{display:grid;grid-template-columns:6.5rem 1fr;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+ul.lista li:last-child{border-bottom:0}
+ul.lista time{font-size:.88rem;color:var(--muted);font-variant-numeric:tabular-nums}
+ul.lista small{display:block;color:var(--muted);font-size:.85rem}
+table.res{width:100%;border-collapse:collapse;font-size:.95rem}
+table.res td,table.res th{padding:.4rem .3rem;border-bottom:1px solid var(--line);text-align:left}
+table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums}
+.nota{font-size:.85rem;color:var(--muted)}
+.cidades{columns:2 12rem;font-size:.92rem}
+.cidades a{display:block;padding:.15rem 0}
+footer{margin:3rem 0 0;padding:1.4rem 0 2rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+footer a{color:var(--muted);margin-right:1rem}
+@media (max-width:560px){.topo nav a:not(.cc){display:none} .marca{font-size:1.05rem} .topo nav a.cc{font-size:.8rem;padding:.3rem .65rem} ul.lista li{grid-template-columns:5.2rem 1fr} dl.fatos{grid-template-columns:1fr} dl.fatos dt{margin-top:.3rem}}

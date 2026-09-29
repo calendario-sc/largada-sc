@@ -9,6 +9,7 @@ Uso:  python build.py
 """
 
 import datetime
+import seo
 import json
 import re
 import sys
@@ -21,7 +22,6 @@ CABECALHO = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Calendario de corridas de rua e trail em Santa Catarina e no Parana.">
 """
 
 
@@ -192,10 +192,15 @@ GOOGLE_ANALYTICS = """<!-- Google tag (gtag.js) -->
 """
 
 
-def completa(pagina, publica=False):
+def completa(pagina, publica=False, uf="SC", seo_info=None):
     """A pagina standalone precisa do <head>: o <style> sobe para dentro dele."""
     estilo, corpo = pagina.split("</style>", 1)
-    return (CABECALHO + (GOOGLE_ANALYTICS if publica else "") + estilo
+    if publica:
+        titulo, cabeca = cabeca_publica(uf, seo_info or {})
+        estilo = estilo.replace("<title>Cupons de Corrida</title>", f"<title>{titulo}</title>", 1)
+    else:
+        cabeca = '<meta name="robots" content="noindex">\n'
+    return (CABECALHO + cabeca + (GOOGLE_ANALYTICS if publica else "") + estilo
             + "</style>\n</head>\n<body>\n" + corpo + "\n</body>\n</html>\n")
 
 
@@ -205,12 +210,61 @@ PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("todos.html", "")]
 PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
 
 
+# Titulo, descricao e dados estruturados de cada pagina publica do calendario.
+UF_TITULO = {"SC": ("Calendário de Corridas em SC {ano} | Cupons de Corrida", "Santa Catarina", "/"),
+             "PR": ("Calendário de Corridas no Paraná {ano} | Cupons de Corrida", "Paraná", "/pr.html"),
+             "": ("Corridas de Rua em SC e PR {ano} | Cupons de Corrida", "Santa Catarina e Paraná", "/todos.html")}
+
+
+def cabeca_publica(uf, info):
+    import html as _h
+    ano = datetime.date.today().year
+    titulo, lugar, caminho = UF_TITULO[uf]
+    titulo = titulo.format(ano=ano)
+    cidades = [c for u, lista in (info.get("cidades") or {}).items() if not uf or u == uf for c, _, fut, _ in lista if fut][:3]
+    n_cid = sum(1 for u, lista in (info.get("cidades") or {}).items() if not uf or u == uf for _ in lista)
+    desc = (f"Calendário completo de corridas de rua e trail em {lugar} {ano}: datas, distâncias, inscrições, "
+            f"resultados e cupons de desconto" + (f" em {', '.join(cidades)} e mais {max(n_cid - len(cidades), 0)} cidades." if cidades else "."))
+    url = seo.SITE + caminho
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebSite", "name": "Cupons de Corrida", "url": seo.SITE + "/", "inLanguage": "pt-BR"},
+        {"@type": "Organization", "name": "Cupons de Corrida", "url": seo.SITE + "/", "logo": seo.SITE + "/og-cupons-de-corrida.png",
+         "email": "contato@cuponsdecorrida.com.br"},
+        {"@type": "WebPage", "name": titulo, "url": url, "description": desc}]}
+    e = lambda s: _h.escape(s, quote=True)
+    cabeca = (f'<meta name="description" content="{e(desc)}">\n<link rel="canonical" href="{e(url)}">\n'
+              f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Cupons de Corrida">\n'
+              f'<meta property="og:locale" content="pt_BR">\n<meta property="og:title" content="{e(titulo)}">\n'
+              f'<meta property="og:description" content="{e(desc)}">\n<meta property="og:url" content="{e(url)}">\n'
+              f'<meta property="og:image" content="{seo.SITE}/og-cupons-de-corrida.png">\n<meta name="twitter:card" content="summary_large_image">\n'
+              f'<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+              f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>\n')
+    return e(titulo), cabeca
+
+
+def rodape_cidades(uf, info):
+    """Links para as paginas de cidade (seo.py): o Google chega nelas pelo calendario."""
+    lista = [(c, u) for u2, l in (info.get("cidades") or {}).items() if not uf or u2 == uf for c, u, fut, n in l][:48]
+    if not lista:
+        return ""
+    import html as _h
+    links = " · ".join(f'<a href="/corridas-em/{seo.slug_cidade(c, u)}/">{_h.escape(c)}</a>' for c, u in lista)
+    return f'    <p class="foot__cidades"><b>Corridas por cidade:</b> {links}</p>\n'
+
+
 def build():
     template = (AQUI / "template.html").read_text(encoding="utf-8")
     for marcador in ("__DATA__", "__COLETA__", "__BI__", "__FLORIPA__", "__UF__"):
         if marcador not in template:
             raise SystemExit(f"template.html perdeu o marcador {marcador}")
     historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
+    # Paginas de prova e de cidade, sitemap e robots (seo.py). O calendario
+    # linka cada prova pela pagina dela (campo "pg").
+    seo_info = seo.gerar(historico, GOOGLE_ANALYTICS)
+    for p in historico:
+        pg = seo_info["slugs"].get((p["data"], p["nome"], p.get("cidade")))
+        if pg:
+            p["pg"] = pg
     coleta = data_coleta()
     publico = so_publico(template)
 
@@ -258,7 +312,8 @@ def build():
         dados_pub = dados_da_pagina(json.loads(json.dumps(provas)), bi=False)
         pagina_pub = (publico.replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
                       .replace("__FLORIPA__", "null").replace("__UF__", uf))
-        (AQUI / arquivo).write_text(completa(pagina_pub, publica=True), encoding="utf-8")
+        pagina_pub = pagina_pub.replace(RODAPE_PUBLICO, RODAPE_PUBLICO.replace("  </div>\n</footer>", rodape_cidades(uf, seo_info) + "  </div>\n</footer>"), 1)
+        (AQUI / arquivo).write_text(completa(pagina_pub, publica=True, uf=uf, seo_info=seo_info), encoding="utf-8")
 
     return tamanho
 

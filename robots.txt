@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /area.html
+Disallow: /template.html
+Disallow: /artifact.html
+
+Sitemap: https://www.cuponsdecorrida.com.br/sitemap.xml
