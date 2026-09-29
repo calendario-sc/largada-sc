@@ -1,20 +1,21 @@
 == coleta ==
 == fontes ==
-  corridasbr: 210 provas
+  corridasbr: 213 provas
   corridasbr/arquivo: 350 provas
-  ticketsports: 76 provas
-  roadrunners: 202 provas
+  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  roadrunners: 201 provas
   movnow: 18 provas
   atletis: 2 provas
-  fca: 1842 provas
-  corridasbr (PR): 161 provas
+  fca: 1845 provas
+  corridasbr (PR): 163 provas
   corridasbr/arquivo (PR): 383 provas
-  ticketsports (PR): 73 provas
-  roadrunners (PR): 139 provas
+  ticketsports (PR): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  roadrunners (PR): 146 provas
   fap: 586 provas
+  parceiros: 0 provas
 
 2875 provas distintas depois de fundir as fontes
-descartadas (17): fora de SC/PR ou nao sao corrida
+descartadas (12): fora de SC/PR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
   - 2026-10-11  Cianorte - Corrida e Duathlon AMAFIL [duathlon]
@@ -23,33 +24,39 @@ descartadas (17): fora de SC/PR ou nao sao corrida
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
-  - ... e mais 9
-restam 2858 provas
+  - ... e mais 4
+restam 2863 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 concluintes (chiprun): 7 provas consultadas, 6 preenchidas
 genero: 10 provas consultadas, 0 preenchidas
-organizador: 9 provas consultadas, 7 preenchidas
-organizador: 136 provas preenchidas pela FCA
-organizador: 83 provas tiveram a grafia padronizada
+organizador: 3 provas consultadas, 1 preenchidas
+organizador: 138 provas preenchidas pela FCA
+organizador: 43 provas tiveram a grafia padronizada
 fca: 146 provas juntadas as que ja existiam
-series: 2876 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 4799 provas (4297 ja realizadas) | 423 cidades
-novas nesta rodada: 150
+series: 2882 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 4807 provas (4299 ja realizadas) | 423 cidades
+novas nesta rodada: 153
   + 2026-04-11  Gaspar - Running X
-  + 2026-09-27  Itajaí - CORRIDA MAX IMÓVEIS
-  + 2026-10-03  Araranguá - COREUP NIGHT RUN - 1° EDIÇÃO
-  + 2026-10-12  Coronel Freitas - 1ª Maia Maratona e Corrida Rústica de Coronel Freitas
-  + 2027-02-12  São José - CORRIDA DE CARNAVAL BEIRA-MAR DE SÃO JOSÉ - 5 KM
+  + 2026-08-30  Itaperuçu - CORRIDA AGOSTO LILÁS - ITAPERUÇU/PR
+  + 2026-10-03  Tubarão - BPM RUN
+  + 2026-10-24  Campo Largo - 1ª PIB Run
+  + 2026-10-24  Curitiba - HALF MARATHON SERRA DA GRACIOSA 2026
+  + 2026-11-02  Palhoça - Treinão de Corrida Baixa Pace
+  + 2026-12-05  Cascavel - 1ª CORRIDA GUARDIÕES dos MANANCIAIS
+  + 2026-12-13  Campo Largo - 1ª Corrida Mundo de Yasmin
 
-futuras que nao apareceram hoje (3) - possivel cancelamento, mantidas no historico:
+futuras que nao apareceram hoje (4) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
   ? 2026-11-01  Curitiba - Track&Field Run Series 2026 - Parkshoppingbarigüi (visto pela ultima vez em 2026-09-25)
   ? 2026-12-06  São Bento do Sul - CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL (visto pela ultima vez em 2026-09-26)
+  ? 2026-12-31  São José - REGISTRO DE TREINADORES DE SANTA CATARINA 2026 (visto pela ultima vez em 2026-09-28)
 
 == perfis ==
+  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (1,997,240 bytes)
+artifact.html e index.html gerados (2,165,608 bytes)
 
-RESULTADO: pronto para publicar (coleta de 28/09/2026).
+RESULTADO: pronto para publicar (coleta de 29/09/2026).
