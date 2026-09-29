@@ -468,7 +468,9 @@ h1 em{font-style:normal; color:#FFC21A}
 .month-btn.passado .bar{background:repeating-linear-gradient(45deg,var(--azul) 0 3px,transparent 3px 6px); opacity:.55}
 .month-btn .lbl{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:flex; justify-content:space-between; gap:.3rem}
 .month-btn .lbl i{font-style:normal; font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums}
-.month-btn .lbl .ano{font-size:.9em; letter-spacing:0; opacity:.75}
+.month-btn .ano{margin-bottom:auto; font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; color:var(--muted); line-height:1}
+.month-btn.virada .ano{color:var(--accent); font-weight:500}
+.month-btn .bar{flex-shrink:0}
 /* Janeiro abre um ano novo: uma linha a esquerda marca a virada. */
 .month-btn.virada{box-shadow:-4px 0 0 -1px var(--accent)}
 
@@ -934,7 +936,7 @@ body:not(.bi) .entrar-topo{top:.7rem}
 /* Ritmo do ano: uma fita baixa de meses, que continua filtrando. */
 body:not(.bi) .pulse{padding:.8rem 0 .7rem}
 body:not(.bi) .pulse__head{margin-bottom:.45rem}
-body:not(.bi) .month-btn{height:56px; min-width:62px; flex-basis:62px; padding:.4rem .45rem .38rem; gap:.3rem}
+body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.4rem .45rem .38rem; gap:.3rem}
 /* Filtros guardados atras do botao em qualquer largura: a barra presa no
    alto fica com uma linha so (busca, Filtros, Treinos, Limpar). */
 #btn-filtros{display:inline-flex; align-items:center}
@@ -1691,13 +1693,13 @@ function montarMeses(){
     b.setAttribute("aria-pressed", String(state.meses.has(k)));
     b.setAttribute("aria-label", MES_NOME[mes - 1] + " de " + ano + ", " + n + " corridas");
     const bar = el("div", { className:"bar" });
-    bar.style.height = Math.max(4, Math.round(n / maxMes * 56)) + "px";
+    bar.style.height = Math.max(3, Math.round(n / maxMes * 28)) + "px";
     const lbl = el("div", { className:"lbl" });
-    // O ano no quadradinho: a fita cruza a virada do ano (dez/26, jan/27...).
-    lbl.append(el("span", {}, [document.createTextNode(MES_ABBR[mes - 1]), el("small", { className:"ano", textContent:" ’" + String(ano).slice(2) })]),
-               el("i", { textContent:String(n) }));
+    // O ano no alto do quadradinho (a fita cruza a virada do ano), a barra no
+    // meio e, embaixo, o mes e o numero de corridas.
+    lbl.append(document.createTextNode(MES_ABBR[mes - 1]), el("i", { textContent:String(n) }));
     if (mes === 1) b.classList.add("virada");
-    b.append(bar, lbl);
+    b.append(el("div", { className:"ano", textContent:String(ano) }), bar, lbl);
     b.onclick = () => { toggle(state.meses, k); b.setAttribute("aria-pressed", String(state.meses.has(k))); render(); };
     monthsBox.append(b);
   });
