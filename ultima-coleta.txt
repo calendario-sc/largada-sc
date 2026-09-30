@@ -2,20 +2,20 @@
 == fontes ==
   corridasbr: 213 provas
   corridasbr/arquivo: 350 provas
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports: 79 provas
   roadrunners: 201 provas
   movnow: 18 provas
   atletis: 2 provas
-  fca: 1845 provas
-  corridasbr (PR): 163 provas
+  fca: 1852 provas
+  corridasbr (PR): 162 provas
   corridasbr/arquivo (PR): 383 provas
-  ticketsports (PR): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports (PR): 72 provas
   roadrunners (PR): 146 provas
-  fap: 586 provas
+  fap: 595 provas
   parceiros: 0 provas
 
-2875 provas distintas depois de fundir as fontes
-descartadas (12): fora de SC/PR ou nao sao corrida
+2889 provas distintas depois de fundir as fontes
+descartadas (16): fora de SC/PR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
   - 2026-10-11  Cianorte - Corrida e Duathlon AMAFIL [duathlon]
@@ -24,39 +24,37 @@ descartadas (12): fora de SC/PR ou nao sao corrida
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
-  - ... e mais 4
-restam 2863 provas
+  - ... e mais 8
+restam 2873 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 concluintes (chiprun): 7 provas consultadas, 6 preenchidas
 genero: 10 provas consultadas, 0 preenchidas
-organizador: 3 provas consultadas, 1 preenchidas
-organizador: 138 provas preenchidas pela FCA
-organizador: 43 provas tiveram a grafia padronizada
-fca: 146 provas juntadas as que ja existiam
-series: 2882 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 4807 provas (4299 ja realizadas) | 423 cidades
-novas nesta rodada: 153
+organizador: 146 provas preenchidas pela FCA
+organizador: 80 provas tiveram a grafia padronizada
+fca: 149 provas juntadas as que ja existiam
+series: 2886 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 4815 provas (4300 ja realizadas) | 423 cidades
+novas nesta rodada: 157
   + 2026-04-11  Gaspar - Running X
-  + 2026-08-30  Itaperuçu - CORRIDA AGOSTO LILÁS - ITAPERUÇU/PR
-  + 2026-10-03  Tubarão - BPM RUN
-  + 2026-10-24  Campo Largo - 1ª PIB Run
-  + 2026-10-24  Curitiba - HALF MARATHON SERRA DA GRACIOSA 2026
-  + 2026-11-02  Palhoça - Treinão de Corrida Baixa Pace
-  + 2026-12-05  Cascavel - 1ª CORRIDA GUARDIÕES dos MANANCIAIS
-  + 2026-12-13  Campo Largo - 1ª Corrida Mundo de Yasmin
+  + 2026-10-10  Cornélio Procópio - 2º Corrida do 3º Cpm
+  + 2026-10-11  Foz do Iguaçu - Meia Maratona das 3 Fronteiras
+  + 2026-11-07  Araucária - CORRIDA ARAUCO - VÁLIDO PELO RANKING CORRIDAS AENT - ETAPA 7
+  + 2026-11-21  Blumenau - NEUMARKT NIGHT RUN
+  + 2026-11-22  Florianópolis - MOVIMENTE-SE PELO SEU CORAÇÃO - CORRIDA UNICARDIO 2026
+  + 2026-11-29  Rio Negro - 10ª CORRIDA DA COLONIZAÇÃO DE RIO NEGRO
+  + 2027-05-22  Jaraguá do Sul - Rico Run
 
 futuras que nao apareceram hoje (4) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
   ? 2026-11-01  Curitiba - Track&Field Run Series 2026 - Parkshoppingbarigüi (visto pela ultima vez em 2026-09-25)
+  ? 2026-11-15  Guaíra - Circuito Paulista Supermercados - Guaíra (visto pela ultima vez em 2026-09-29)
   ? 2026-12-06  São Bento do Sul - CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL (visto pela ultima vez em 2026-09-26)
-  ? 2026-12-31  São José - REGISTRO DE TREINADORES DE SANTA CATARINA 2026 (visto pela ultima vez em 2026-09-28)
 
 == perfis ==
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,165,608 bytes)
+artifact.html e index.html gerados (2,170,515 bytes)
 
-RESULTADO: pronto para publicar (coleta de 29/09/2026).
+RESULTADO: pronto para publicar (coleta de 30/09/2026).
