@@ -170,6 +170,11 @@ h1 em{font-style:normal; color:#FFC21A}
 .top .chip{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.35); color:#FFFFFF}
 .top .chip:hover{background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.7); color:#FFFFFF}
 .top .chip--reset{background:none; border-style:dashed; color:rgba(255,255,255,.8)}
+.sel-ano{font:inherit; font-size:.82rem; font-weight:600; cursor:pointer; border:1px solid rgba(255,255,255,.35); border-radius:999px;
+  padding:.32rem .55rem; background:rgba(255,255,255,.12); color:#FFFFFF; max-width:9rem}
+.sel-ano:hover{background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.7)}
+.sel-ano[aria-pressed="true"]{background:#FFC21A; border-color:#FFC21A; color:#0E1726}
+.sel-ano option{color:#0E1726; background:#FFFFFF}
 .top .chip--link{text-decoration:none; display:inline-block; line-height:1}
 .top .chip[aria-pressed="true"],.top #org-btn[aria-pressed="true"],.top #cid-btn[aria-pressed="true"]{background:#FFC21A; border-color:#FFC21A; color:#0E1726}
 
@@ -1395,10 +1400,21 @@ const TIPOS = ordenar(RACES.flatMap(r => r.tags),
   ["Trail","Ultra","Noturna","Revezamento","Rua"]);
 
 const ANOS = [...new Set(RACES.map(r => r.ano))].sort();
-chipGroup("g-ano", ANOS.map(a => [a, String(a)]), state.anos, null, () => {
+// Ano: lista suspensa (Todos os anos, 2022, 2023...), um ano por vez.
+const selAno = el("select", { className:"sel-ano", ariaLabel:"Ano" },
+  [el("option", { value:"", textContent:"Todos os anos" }), ...ANOS.map((a, i) => el("option", { value:String(i), textContent:String(a) }))]);
+selAno.setAttribute("aria-pressed", "false");
+function escolherAno(ano){
+  state.anos.clear();
+  const i = ano == null ? -1 : ANOS.findIndex(a => String(a) === String(ano));
+  if (i >= 0) state.anos.add(ANOS[i]);
+  selAno.value = i >= 0 ? String(i) : "";
+  selAno.setAttribute("aria-pressed", String(i >= 0));
   // Ano passado com o período em "Próximas" não mostraria nada.
   if (state.anos.size) trocarEscopo("todas");
-});
+}
+selAno.onchange = () => { escolherAno(selAno.value === "" ? null : ANOS[+selAno.value]); render(); };
+document.getElementById("g-ano").append(selAno);
 
 chipGroup("g-regiao", REGIOES.map(r => [r, r]), state.regioes, corRegiao);
 chipGroup("g-faixa", FAIXAS.filter(([f]) => RACES.some(r => r.faixas.includes(f))), state.faixas,
@@ -1556,6 +1572,7 @@ input.oninput = () => {
 document.getElementById("reset").onclick = () => {
   state.q = ""; input.value = "";
   [state.anos, state.meses, state.regioes, state.faixas, state.tipos].forEach(s => s.clear());
+  selAno.value = ""; selAno.setAttribute("aria-pressed", "false");
   seletorEmpresa.limpar();
   seletorCidade.limpar();
   seletorProva.limpar();
@@ -4324,8 +4341,8 @@ render();
     // o que vem pela frente); o ano inteiro fica a um clique.
     const ano = String(new Date().getFullYear());
     const chipRegiao = aperta("g-regiao", onde.regiao);
-    const chipAno = () => [...document.getElementById("g-ano").querySelectorAll(".chip")].find(x => x.textContent === ano);
-    const anoLigado = () => { const b = chipAno(); return !!b && b.getAttribute("aria-pressed") === "true"; };
+    const temAno = ANOS.some(a => String(a) === ano);
+    const anoLigado = () => state.anos.size === 1 && String([...state.anos][0]) === ano;
     if (typeof gtag === "function") gtag("event", "abriu_perto", { regiao: onde.regiao });
 
     const quando = el("span", { textContent:"as próximas provas" });
@@ -4338,9 +4355,9 @@ render();
     ]);
     const tirarAviso = () => aviso.remove();
     anoInteiro.onclick = () => {
-      const b = chipAno();
-      if (!b) return;
-      b.click();                                   // liga/desliga o ano atual (janeiro a dezembro)
+      if (!temAno) return;
+      escolherAno(anoLigado() ? null : ano);       // liga/desliga o ano atual (janeiro a dezembro)
+      render();
       if (!anoLigado()) { trocarEscopo("proximas"); render(); }
       quando.textContent = anoLigado() ? "todas as provas de " + ano : "as próximas provas";
       anoInteiro.textContent = anoLigado() ? "Ver só as próximas" : "Ver o ano inteiro";
@@ -4348,15 +4365,16 @@ render();
     verTodas.onclick = () => {
       guarda("cc_perto", "nao");
       if (chipRegiao && chipRegiao.getAttribute("aria-pressed") === "true") chipRegiao.click();
-      if (anoLigado()) chipAno().click();
+      if (anoLigado()) escolherAno(null);
       trocarEscopo("proximas");
       render();
       tirarAviso();
     };
-    ["g-regiao", "g-ano", "reset", "reset-top"].forEach(id => {
+    ["g-regiao", "reset", "reset-top"].forEach(id => {
       const x = document.getElementById(id);
       if (x) x.addEventListener("click", ev => { if (ev.isTrusted) tirarAviso(); });
     });
+    selAno.addEventListener("change", ev => { if (ev.isTrusted) tirarAviso(); });
     document.getElementById("bar").after(aviso);
   }
 
