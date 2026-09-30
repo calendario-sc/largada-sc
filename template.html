@@ -991,7 +991,8 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
   body:not(.bi) .stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); overflow:visible; gap:.35rem}
   body:not(.bi) .stat{padding:.38rem .5rem .34rem; text-align:left}
   body:not(.bi) .stat span{font-size:.5rem; letter-spacing:.06em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block}
-  body:not(.bi) .top__botoes{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.4rem; width:100%}
+  body:not(.bi) .top__botoes{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:.4rem; width:100%}
+  body:not(.bi) .top__grupo, body:not(.bi) .top__botoes .org-picker{grid-column:span 2}
   body:not(.bi) .top__grupo{margin:0; min-width:0}
   body:not(.bi) .top__grupo > b{display:none}
   body:not(.bi) #g-ano, body:not(.bi) .sel-ano{width:100%; min-width:0}
@@ -999,8 +1000,9 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
   body:not(.bi) .top__botoes .org-picker > .chip, body:not(.bi) .sel-ano{width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left}
   body:not(.bi) .top__botoes .org-picker > .chip, body:not(.bi) .top__botoes .sel-ano{font-size:.74rem; padding-left:.55rem; padding-right:.45rem}
   body:not(.bi) #org-menu{left:auto; right:0}
-  body:not(.bi) .top__links{grid-column:1 / 3}
-  body:not(.bi) #reset-top{grid-column:3; justify-self:stretch; text-align:center}
+  /* A fita some aos poucos na ponta: o botao cortado ali e sinal de que ela rola, nao de algo por baixo do Limpar. */
+  body:not(.bi) .top__links{grid-column:1 / 6; -webkit-mask-image:linear-gradient(90deg,#000 82%,transparent); mask-image:linear-gradient(90deg,#000 82%,transparent); padding-right:1.2rem}
+  body:not(.bi) #reset-top{grid-column:6; justify-self:stretch; text-align:center; padding-left:.2rem; padding-right:.2rem; font-size:.74rem}
 }
 
 /* ---------- impressao: so o comparativo, em papel ----------
