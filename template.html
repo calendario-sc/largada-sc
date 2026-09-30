@@ -1097,21 +1097,29 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
   .rel__share .tk__legenda li{font-size:.76rem}
   .rel__share .tk__legenda .pct{color:var(--ink)}
 }
-/* Janela de oferta (vitrine das lojas parceiras): um produto por visita, em rodizio */
-.oferta{display:grid; grid-template-columns:9rem minmax(0,1fr); gap:.2rem 1rem; align-items:center; background:var(--surface);
-  border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); padding:.6rem 1rem .6rem .6rem; margin:0 0 1rem;
-  text-decoration:none; color:var(--ink); position:relative}
-.oferta:hover, .oferta:focus-visible{border-color:var(--azul); outline:none}
-.oferta img{grid-row:1 / 5; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; background:#fff; border-radius:10px}
-.oferta__rotulo{margin:0; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
-.oferta__nome{margin:0; font-family:var(--f-display); font-weight:700; font-size:1rem; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
-.oferta__preco{margin:0; display:flex; align-items:baseline; gap:.5rem; flex-wrap:wrap}
-.oferta__preco s{font-size:.8rem; color:var(--muted)}
-.oferta__preco b{font-family:var(--f-display); font-weight:800; font-size:1.15rem}
-.oferta__pct{background:var(--sol); color:var(--sol-ink); font-family:var(--f-display); font-weight:800; font-size:.8rem; border-radius:7px; padding:.05rem .4rem}
-.oferta__pe{margin:0; font-size:.72rem; color:var(--muted)}
-.oferta__pe span{color:var(--azul-ink); font-weight:600}
-@media (max-width:560px){ .oferta{grid-template-columns:6.5rem minmax(0,1fr); gap:.1rem .7rem; padding:.5rem .8rem .5rem .5rem} .oferta__nome{font-size:.88rem} .oferta__preco b{font-size:1.02rem} }
+/* Faixa de ofertas (vitrine das lojas parceiras), em rodizio a cada visita:
+   3 lado a lado no computador, 2 no tablet, e no celular cartoes que se arrastam para o lado. */
+.ofertas-bloco{margin:0 0 1.1rem}
+.ofertas{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem}
+.oferta{display:grid; grid-template-columns:7.5rem minmax(0,1fr); gap:.12rem .85rem; align-items:center; background:var(--surface);
+  border:1px solid var(--line); border-radius:var(--r); padding:.5rem .85rem .5rem .5rem; text-decoration:none; color:var(--ink); min-width:0}
+.oferta:hover, .oferta:focus-visible{border-color:var(--azul); box-shadow:var(--shadow); outline:none}
+.oferta img{grid-row:1 / 5; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; background:#fff; border-radius:9px}
+.oferta__rotulo{margin:0; font-family:var(--f-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.oferta__nome{margin:0; font-family:var(--f-display); font-weight:700; font-size:.9rem; line-height:1.22; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.oferta__preco{margin:0; display:flex; align-items:baseline; gap:.4rem; white-space:nowrap}
+.oferta__preco s{font-size:.74rem; color:var(--muted)}
+.oferta__preco b{font-family:var(--f-display); font-weight:800; font-size:1.02rem}
+.oferta__pct{background:var(--sol); color:var(--sol-ink); font-family:var(--f-display); font-weight:800; font-size:.72rem; border-radius:6px; padding:.02rem .35rem}
+.oferta__pe{margin:0; font-size:.74rem; color:var(--azul-ink); font-weight:600}
+.ofertas__nota{margin:.35rem 0 0; font-size:.7rem; color:var(--muted)}
+@media (max-width:1000px){ .ofertas{grid-template-columns:repeat(2,minmax(0,1fr))} .oferta:nth-child(n+3){display:none} }
+@media (max-width:640px){
+  .ofertas{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:.6rem; padding-bottom:.3rem; scrollbar-width:none}
+  .ofertas::-webkit-scrollbar{display:none}
+  .oferta, .oferta:nth-child(n+3){display:grid; flex:0 0 84%; scroll-snap-align:start; grid-template-columns:6rem minmax(0,1fr); gap:.1rem .7rem}
+  .oferta__nome{font-size:.86rem}
+}
 </style>
 
 <header class="top">
@@ -1249,7 +1257,10 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
     <div class="painel__anos" id="painel-anos"></div>
   </section>
   <p class="count" id="count" role="status" aria-live="polite"></p>
-  <a class="oferta" id="oferta" hidden target="_blank" rel="noopener sponsored"></a>
+  <section class="ofertas-bloco" id="ofertas" hidden aria-label="Em promoção nas lojas parceiras">
+    <div class="ofertas" id="ofertas-lista"></div>
+    <p class="ofertas__nota">Preços das lojas, atualizados todo dia. Links de afiliado: o Cupons de Corrida pode receber uma comissão pela compra, sem custo a mais para você.</p>
+  </section>
   <div id="list"></div>
 </main>
 
@@ -2745,38 +2756,39 @@ function cupomDaProva(r){
   } catch (e) { /* sem API (Artifact, offline): sem selo */ }
 })();
 
-/* ---------- janela de oferta (so no site publico) ----------
-   Um produto da vitrine das lojas parceiras (/vitrine da API), trocando a cada
-   visita: o navegador guarda qual foi o ultimo e mostra o seguinte. */
+/* ---------- faixa de ofertas (so no site publico) ----------
+   Produtos da vitrine das lojas parceiras (/vitrine da API), trocando a cada
+   visita: o navegador guarda onde parou e comeca pelos seguintes. */
 (async () => {
   if (BI) return;
+  const QUANTAS = 3;
   try {
     const d = await fetch(API_CUPONS + "/vitrine").then(r => r.json());
     const ps = d.produtos || [];
     if (!ps.length) return;
     let vez = -1;
-    try { vez = Number(localStorage.getItem("oferta-vez")); } catch (e) { /* sem armazenamento */ }
-    vez = Number.isInteger(vez) && vez >= 0 ? (vez + 1) % ps.length : Math.floor(Math.random() * ps.length);
+    try { vez = Number(localStorage.getItem("oferta-vez") ?? -1); } catch (e) { /* sem armazenamento */ }
+    vez = Number.isInteger(vez) && vez >= 0 ? (vez + QUANTAS) % ps.length : Math.floor(Math.random() * ps.length);
     try { localStorage.setItem("oferta-vez", String(vez)); } catch (e) { /* sem armazenamento */ }
-    const p = ps[vez];
+    const escolhidos = [...new Set(Array.from({ length:Math.min(QUANTAS, ps.length) }, (_, k) => ps[(vez + k) % ps.length]))];
     const reais = n => Number(n).toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
-    const a = document.getElementById("oferta");
-    a.href = p.link;
-    a.replaceChildren(
-      el("img", { src:p.imagem, alt:"", width:400, height:400, loading:"lazy" }),
-      el("p", { className:"oferta__rotulo", textContent:"Em promoção · " + p.marca }),
-      el("p", { className:"oferta__nome", textContent:p.nome }),
-      el("p", { className:"oferta__preco" }, [
-        p.preco_de > p.preco ? el("s", { textContent:reais(p.preco_de) }) : null,
-        el("b", { textContent:reais(p.preco) }),
-        p.desconto_pct ? el("span", { className:"oferta__pct", textContent:"-" + p.desconto_pct + "%" }) : null,
-      ].filter(Boolean)),
-      el("p", { className:"oferta__pe", title:"Link de afiliado: o Cupons de Corrida pode receber uma comissão pela compra, sem custo a mais para você." },
-        [el("span", { textContent:"Ver na loja ↗" }), document.createTextNode(" · link de afiliado")]),
-    );
-    a.onclick = () => { if (typeof gtag === "function") gtag("event", "oferta_home_clique", { marca:p.marca, produto:p.nome }); };
-    a.hidden = false;
-  } catch (e) { /* sem API: sem janela */ }
+    document.getElementById("ofertas-lista").replaceChildren(...escolhidos.map(p => {
+      const a = el("a", { className:"oferta", href:p.link, target:"_blank", rel:"noopener sponsored" }, [
+        el("img", { src:p.imagem, alt:"", width:400, height:400, loading:"lazy" }),
+        el("p", { className:"oferta__rotulo", textContent:p.marca + " · em promoção" }),
+        el("p", { className:"oferta__nome", textContent:p.nome }),
+        el("p", { className:"oferta__preco" }, [
+          p.preco_de > p.preco ? el("s", { textContent:reais(p.preco_de) }) : null,
+          el("b", { textContent:reais(p.preco) }),
+          p.desconto_pct ? el("span", { className:"oferta__pct", textContent:"-" + p.desconto_pct + "%" }) : null,
+        ]),
+        el("p", { className:"oferta__pe", textContent:"Ver na loja ↗" }),
+      ]);
+      a.onclick = () => { if (typeof gtag === "function") gtag("event", "oferta_home_clique", { marca:p.marca, produto:p.nome }); };
+      return a;
+    }));
+    document.getElementById("ofertas").hidden = false;
+  } catch (e) { /* sem API: sem faixa */ }
 })();
 
 /* ---------- gestao de cupons (so no BI) ----------
