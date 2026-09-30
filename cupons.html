@@ -78,6 +78,16 @@ h3.categoria{font-family:var(--f-mono); font-weight:400; font-size:.7rem; letter
 .convite p{margin:0; max-width:36rem}
 .convite .botao{white-space:nowrap}
 .carregando{color:var(--muted); padding:1rem 0}
+.vitrine{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(10.5rem,12rem); gap:.7rem; overflow-x:auto; scroll-snap-type:x mandatory; padding:.1rem .1rem .6rem; margin:0 0 .3rem}
+.produto{scroll-snap-align:start; background:var(--surface); border:1px solid var(--line-soft); border-radius:14px; overflow:hidden; text-decoration:none; color:var(--ink); display:flex; flex-direction:column; position:relative}
+.produto:hover, .produto:focus-visible{border-color:var(--azul-ink); outline:none}
+.produto img{display:block; width:100%; aspect-ratio:1; object-fit:contain; background:#fff}
+.produto .pct{position:absolute; top:.5rem; left:.5rem; background:var(--sol); color:#0A2F73; font-family:var(--f-display); font-weight:800; font-size:.85rem; border-radius:8px; padding:.1rem .45rem}
+.produto .info{padding:.55rem .7rem .75rem; display:flex; flex-direction:column; gap:.1rem; flex:1}
+.produto .nome{margin:0 0 .2rem; font-size:.85rem; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.produto .de{font-size:.75rem; color:var(--muted); text-decoration:line-through}
+.produto .por{font-family:var(--f-display); font-weight:800; font-size:1.05rem; margin-top:auto}
+.aviso-afiliado{margin:0 0 .4rem; font-size:.78rem; color:var(--muted)}
 footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
 </style>
 </head>
@@ -166,8 +176,9 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
   }
 
   async function montar() {
-    const [d, atleta] = await Promise.all([
+    const [d, vit, atleta] = await Promise.all([
       api("/cupons").catch(() => ({ ok: false })),
+      fetch(API + "/vitrine").then(r => r.json()).catch(() => ({ produtos: [] })),
       (window.cuponsSessao || Promise.resolve(null)).catch(() => null),
     ]);
     if (!d.ok) {
@@ -189,6 +200,30 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
             el("p", { className: "suave", textContent: "Quando surgir, ela aparece aqui e no calendário, e quem é cadastrado fica sabendo pela newsletter." })]),
     ]);
 
+    // Vitrine: produtos de corrida em promocao das lojas parceiras (link de afiliado, sem cadastro)
+    const reais = n => Number(n).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    const porMarca = new Map();
+    (vit.produtos || []).forEach(p => (porMarca.get(p.marca) || porMarca.set(p.marca, []).get(p.marca)).push(p));
+    const vitrine = [...porMarca].flatMap(([marca, ps]) => [
+      el("h3", { className: "categoria", textContent: "Em promoção · " + marca }),
+      el("div", { className: "vitrine", role: "list" }, ps.map(p => {
+        const a = el("a", { className: "produto", href: p.link, target: "_blank", rel: "noopener sponsored", role: "listitem",
+          title: p.nome + " — " + reais(p.preco) }, [
+          el("img", { src: p.imagem, alt: p.nome, loading: "lazy", width: 400, height: 400 }),
+          p.desconto_pct ? el("span", { className: "pct", textContent: "-" + p.desconto_pct + "%" }) : null,
+          el("span", { className: "info" }, [
+            el("span", { className: "nome", textContent: p.nome }),
+            p.preco_de > p.preco ? el("span", { className: "de", textContent: "de " + reais(p.preco_de) }) : null,
+            el("span", { className: "por", textContent: reais(p.preco) }),
+          ]),
+        ]);
+        a.onclick = () => { if (typeof gtag === "function") gtag("event", "vitrine_clique", { marca, produto: p.nome }); };
+        return a;
+      })),
+    ]);
+    if (vitrine.length) vitrine.push(el("p", { className: "aviso-afiliado",
+      textContent: "Preços da loja, atualizados todo dia. Link de afiliado: o Cupons de Corrida pode receber uma comissão pela compra, sem custo a mais para você." }));
+
     // Lojas e servicos, por categoria
     const porCategoria = new Map();
     parceiros.forEach(c => { const k = c.categoria || "Outros"; (porCategoria.get(k) || porCategoria.set(k, []).get(k)).push(c); });
@@ -196,8 +231,10 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
     const secParc = el("section", { className: "bloco", id: "parceiros" }, [
       el("h2", { textContent: "Lojas e serviços parceiros" }),
       el("p", { className: "suave", textContent: "Tênis, roupas, nutrição, fisioterapia, assessorias e mais, com desconto para quem corre." }),
+      ...vitrine,
       ...(parceiros.length
         ? categorias.flatMap(k => [el("h3", { className: "categoria", textContent: k }), el("div", { className: "grade" }, porCategoria.get(k).map(c => cartao(c, logado)))])
+        : vitrine.length ? []
         : [el("div", { className: "vazio" }, [el("p", { textContent: "Os primeiros parceiros estão chegando." }),
             el("p", { className: "suave" }, [document.createTextNode("Tem uma loja, assessoria ou serviço para corredores? "),
               el("a", { href: "parceiros.html", textContent: "Seja parceiro" }), document.createTextNode(" e cadastre seus cupons.")])])]),
