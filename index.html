@@ -1130,14 +1130,14 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
 .oferta:hover, .oferta:focus-visible{border-color:var(--azul); outline:none}
 .oferta img{grid-row:1 / 5; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; background:#fff; border-radius:10px}
 .oferta__rotulo{margin:0; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
-.oferta__nome{margin:0; font-family:var(--f-display); font-weight:700; font-size:1rem; line-height:1.25}
+.oferta__nome{margin:0; font-family:var(--f-display); font-weight:700; font-size:1rem; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
 .oferta__preco{margin:0; display:flex; align-items:baseline; gap:.5rem; flex-wrap:wrap}
 .oferta__preco s{font-size:.8rem; color:var(--muted)}
 .oferta__preco b{font-family:var(--f-display); font-weight:800; font-size:1.15rem}
 .oferta__pct{background:var(--sol); color:var(--sol-ink); font-family:var(--f-display); font-weight:800; font-size:.8rem; border-radius:7px; padding:.05rem .4rem}
 .oferta__pe{margin:0; font-size:.72rem; color:var(--muted)}
 .oferta__pe span{color:var(--azul-ink); font-weight:600}
-@media (max-width:560px){ .oferta{grid-template-columns:6.5rem minmax(0,1fr); gap:.1rem .7rem} .oferta__nome{font-size:.9rem} }
+@media (max-width:560px){ .oferta{grid-template-columns:6.5rem minmax(0,1fr); gap:.1rem .7rem; padding:.5rem .8rem .5rem .5rem} .oferta__nome{font-size:.88rem} .oferta__preco b{font-size:1.02rem} }
 </style>
 </head>
 <body>
@@ -2611,8 +2611,8 @@ function cupomDaProva(r){
         el("b", { textContent:reais(p.preco) }),
         p.desconto_pct ? el("span", { className:"oferta__pct", textContent:"-" + p.desconto_pct + "%" }) : null,
       ].filter(Boolean)),
-      el("p", { className:"oferta__pe" }, [el("span", { textContent:"Ver na loja ↗" }),
-        document.createTextNode(" · link de afiliado: podemos receber comissão, sem custo a mais para você")]),
+      el("p", { className:"oferta__pe", title:"Link de afiliado: o Cupons de Corrida pode receber uma comissão pela compra, sem custo a mais para você." },
+        [el("span", { textContent:"Ver na loja ↗" }), document.createTextNode(" · link de afiliado")]),
     );
     a.onclick = () => { if (typeof gtag === "function") gtag("event", "oferta_home_clique", { marca:p.marca, produto:p.nome }); };
     a.hidden = false;
