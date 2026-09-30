@@ -1097,6 +1097,21 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
   .rel__share .tk__legenda li{font-size:.76rem}
   .rel__share .tk__legenda .pct{color:var(--ink)}
 }
+/* Janela de oferta (vitrine das lojas parceiras): um produto por visita, em rodizio */
+.oferta{display:grid; grid-template-columns:9rem minmax(0,1fr); gap:.2rem 1rem; align-items:center; background:var(--surface);
+  border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); padding:.6rem 1rem .6rem .6rem; margin:0 0 1rem;
+  text-decoration:none; color:var(--ink); position:relative}
+.oferta:hover, .oferta:focus-visible{border-color:var(--azul); outline:none}
+.oferta img{grid-row:1 / 5; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; background:#fff; border-radius:10px}
+.oferta__rotulo{margin:0; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.oferta__nome{margin:0; font-family:var(--f-display); font-weight:700; font-size:1rem; line-height:1.25}
+.oferta__preco{margin:0; display:flex; align-items:baseline; gap:.5rem; flex-wrap:wrap}
+.oferta__preco s{font-size:.8rem; color:var(--muted)}
+.oferta__preco b{font-family:var(--f-display); font-weight:800; font-size:1.15rem}
+.oferta__pct{background:var(--sol); color:var(--sol-ink); font-family:var(--f-display); font-weight:800; font-size:.8rem; border-radius:7px; padding:.05rem .4rem}
+.oferta__pe{margin:0; font-size:.72rem; color:var(--muted)}
+.oferta__pe span{color:var(--azul-ink); font-weight:600}
+@media (max-width:560px){ .oferta{grid-template-columns:6.5rem minmax(0,1fr); gap:.1rem .7rem} .oferta__nome{font-size:.9rem} }
 </style>
 
 <header class="top">
@@ -1234,6 +1249,7 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
     <div class="painel__anos" id="painel-anos"></div>
   </section>
   <p class="count" id="count" role="status" aria-live="polite"></p>
+  <a class="oferta" id="oferta" hidden target="_blank" rel="noopener sponsored"></a>
   <div id="list"></div>
 </main>
 
@@ -2727,6 +2743,40 @@ function cupomDaProva(r){
     CUPONS = d.cupons || [];
     if (CUPONS.length) render();
   } catch (e) { /* sem API (Artifact, offline): sem selo */ }
+})();
+
+/* ---------- janela de oferta (so no site publico) ----------
+   Um produto da vitrine das lojas parceiras (/vitrine da API), trocando a cada
+   visita: o navegador guarda qual foi o ultimo e mostra o seguinte. */
+(async () => {
+  if (BI) return;
+  try {
+    const d = await fetch(API_CUPONS + "/vitrine").then(r => r.json());
+    const ps = d.produtos || [];
+    if (!ps.length) return;
+    let vez = -1;
+    try { vez = Number(localStorage.getItem("oferta-vez")); } catch (e) { /* sem armazenamento */ }
+    vez = Number.isInteger(vez) && vez >= 0 ? (vez + 1) % ps.length : Math.floor(Math.random() * ps.length);
+    try { localStorage.setItem("oferta-vez", String(vez)); } catch (e) { /* sem armazenamento */ }
+    const p = ps[vez];
+    const reais = n => Number(n).toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
+    const a = document.getElementById("oferta");
+    a.href = p.link;
+    a.replaceChildren(
+      el("img", { src:p.imagem, alt:"", width:400, height:400, loading:"lazy" }),
+      el("p", { className:"oferta__rotulo", textContent:"Em promoção · " + p.marca }),
+      el("p", { className:"oferta__nome", textContent:p.nome }),
+      el("p", { className:"oferta__preco" }, [
+        p.preco_de > p.preco ? el("s", { textContent:reais(p.preco_de) }) : null,
+        el("b", { textContent:reais(p.preco) }),
+        p.desconto_pct ? el("span", { className:"oferta__pct", textContent:"-" + p.desconto_pct + "%" }) : null,
+      ].filter(Boolean)),
+      el("p", { className:"oferta__pe" }, [el("span", { textContent:"Ver na loja ↗" }),
+        document.createTextNode(" · link de afiliado: podemos receber comissão, sem custo a mais para você")]),
+    );
+    a.onclick = () => { if (typeof gtag === "function") gtag("event", "oferta_home_clique", { marca:p.marca, produto:p.nome }); };
+    a.hidden = false;
+  } catch (e) { /* sem API: sem janela */ }
 })();
 
 /* ---------- gestao de cupons (so no BI) ----------
