@@ -134,21 +134,22 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
     const acao = el("div", { className: "acao" });
     const mostrar = (codigo, link, regras) => {
       acao.replaceChildren();
-      if (c.sem_codigo || !codigo) acao.append(el("span", { className: "suave", textContent: "Sem cupom: o desconto já está no link." }));
+      if (c.loja) acao.append(el("span", { className: "suave", textContent: "Loja parceira: comprando por este link você apoia o Cupons de Corrida." }));
+      else if (c.sem_codigo || !codigo) acao.append(el("span", { className: "suave", textContent: "Sem cupom: o desconto já está no link." }));
       else {
         const copiar = el("button", { className: "pequeno", type: "button", textContent: "Copiar" });
         copiar.onclick = () => navigator.clipboard.writeText(codigo).then(() => { copiar.textContent = "Copiado ✓"; });
         acao.append(el("span", { className: "codigo", textContent: codigo }), copiar);
       }
       if (link) acao.append(el("a", { className: "pequeno", href: link, target: "_blank", rel: c.afiliado ? "noopener sponsored" : "noopener",
-        textContent: c.alvo === "parceiro" ? (c.sem_codigo ? "Ver a oferta na loja ↗" : "Ir para a loja ↗") : "Ir para a inscrição ↗" }));
+        textContent: c.alvo === "parceiro" ? (c.loja ? "Ir para a " + c.parceiro + " ↗" : c.sem_codigo ? "Ver a oferta na loja ↗" : "Ir para a loja ↗") : "Ir para a inscrição ↗" }));
       if (regras) acao.append(el("p", { className: "regras", textContent: regras }));
       if (c.afiliado) acao.append(el("p", { className: "regras", textContent: "Link de afiliado: o Cupons de Corrida pode receber uma comissão pela compra, sem custo a mais para você." }));
     };
     if (c.revelado) mostrar(c.codigo, c.link_inscricao, c.regras);
     else if (c.esgotado) acao.append(el("p", { className: "suave", textContent: "Esgotado." }));
     else if (logado) {
-      const ver = el("button", { className: "botao", type: "button", textContent: c.sem_codigo ? "Ver oferta" : "Ver código" });
+      const ver = el("button", { className: "botao", type: "button", textContent: c.loja ? "Ver a loja" : c.sem_codigo ? "Ver oferta" : "Ver código" });
       ver.onclick = async () => {
         ver.disabled = true;
         const r = await api("/cupons/" + c.id + "/revelar", { method: "POST" }).catch(() => ({ ok: false, erro: "Sem conexão." }));
