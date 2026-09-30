@@ -2766,6 +2766,16 @@ function listarCuponsAdm(){
   const corpo = document.getElementById("cupons-corpo");
   const novo = el("button", { className:"cta-cadastro cp__novo", type:"button", textContent:"Novo cupom" });
   novo.onclick = () => formularioCupom(null);
+  // Cupons da AWIN chegam sozinhos todo dia as 8h; o botao busca agora.
+  const sinc = el("button", { className:"cp__novo", type:"button", textContent:"Sincronizar AWIN agora", style:"margin-left:.5rem" });
+  const sincMsg = el("span", { className:"cp__vazio", style:"margin-left:.6rem" });
+  sinc.onclick = async () => {
+    sinc.disabled = true; sincMsg.textContent = "Buscando na AWIN…";
+    const r = await fetch("/api/cupons?sincronizar=awin", { method:"POST", credentials:"same-origin" }).then(x => x.json()).catch(() => ({ erro:"Sem conexão." }));
+    sinc.disabled = false;
+    sincMsg.textContent = r.erro ? "Não sincronizou: " + r.erro : r.ofertas + " ofertas na AWIN · " + r.gravadas + " gravadas · " + r.desativadas + " tiradas do ar";
+    if (!r.erro) setTimeout(carregarCuponsAdm, 800);
+  };
   const lista = el("ul", { className:"cp__lista" });
   cuponsAdm.forEach(c => {
     const vencido = c.valido_ate && c.valido_ate < hojeIso();
@@ -2782,11 +2792,14 @@ function listarCuponsAdm(){
     lista.append(el("li", { className:"cp__item" + (situacao === "ativo" ? "" : " inativo") }, [
       el("div", {}, [
         el("h4", { textContent:c.titulo }, [el("small", { textContent:c.desconto + " · " + situacao })]),
+        c.origem ? el("p", {}, [el("span", { className:"cp__parceiro", textContent:"via " + c.origem.toUpperCase() }),
+          document.createTextNode(c.sincronizar ? "atualizado sozinho" + (c.sincronizado_em ? " · última busca " + dataBr(c.sincronizado_em.slice(0, 10)) : "")
+            : "editado no BI: o robô não altera mais este cupom")]) : null,
         el("p", { textContent:"Vale para: " + descreverAlvo(c) }),
         c.empresa_nome ? el("p", {}, [el("span", { className:"cp__parceiro", textContent:"portal do parceiro" }),
           document.createTextNode(c.empresa_nome + (c.empresa_status !== "aprovada" ? " (" + (c.empresa_status || "?") + ")" : "") +
             " · cashback " + String(c.cashback_pct == null ? "—" : c.cashback_pct).replace(".", ",") + "%")]) : null,
-        el("p", {}, [document.createTextNode("Código: "), el("code", { textContent:c.codigo }),
+        el("p", {}, [document.createTextNode(c.tipo_oferta === "oferta" ? "Sem código (desconto no link)" : "Código: "), c.tipo_oferta === "oferta" ? null : el("code", { textContent:c.codigo }),
           document.createTextNode((c.valido_ate ? " · até " + dataBr(c.valido_ate) : " · sem prazo") + (c.limite ? " · limite " + c.limite + " atletas" : ""))]),
         el("p", {}, [el("span", { className:"cp__vistos", textContent:num(c.vistos || 0) }),
           document.createTextNode((c.vistos === 1 ? " atleta viu o código" : " atletas viram o código") + (c.ultimo_visto ? " · último em " + dataBr(c.ultimo_visto.slice(0, 10)) : ""))]),
@@ -2794,7 +2807,7 @@ function listarCuponsAdm(){
       acoes,
     ]));
   });
-  corpo.replaceChildren(novo, cuponsAdm.length ? lista : el("p", { className:"cp__vazio",
+  corpo.replaceChildren(el("div", {}, [novo, sinc, sincMsg]), cuponsAdm.length ? lista : el("p", { className:"cp__vazio",
     textContent:"Nenhum cupom ainda. Crie o primeiro quando tiver o código de uma organizadora: ele aparece na área dos atletas cadastrados e como selo no cartão da prova." }));
 }
 
@@ -2880,7 +2893,7 @@ function formularioCupom(c){
     erro.textContent = "";
     if (alvo === "prova" && !provaEscolhida) return (erro.textContent = "Escolha a prova na lista de sugestões.");
     const dados = {
-      titulo:titulo.value, desconto:desconto.value, codigo:codigo.value, alvo,
+      titulo:titulo.value, desconto:desconto.value, codigo:codigo.value, alvo, sem_codigo: !!(c && c.tipo_oferta === "oferta"),
       prova_chave: provaEscolhida && provaEscolhida.chave, prova_nome: provaEscolhida && provaEscolhida.nome,
       prova_data: provaEscolhida && provaEscolhida.data, prova_cidade: provaEscolhida && provaEscolhida.cidade,
       organizadora: orgs.value, uf: uf.value, link_inscricao: link.value, regras: regras.value,
