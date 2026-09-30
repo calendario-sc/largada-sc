@@ -984,6 +984,24 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
   body:not(.bi) .stat{flex:0 0 auto}
   body:not(.bi) .stat b{font-size:1.15rem}
 }
+/* Celular (30/09/2026): numeros em grade de 3 (nada cortado na borda) e os
+   filtros do topo em duas linhas certinhas: ano, cidades e empresas lado a
+   lado; embaixo a fita de links, que rola de lado, e o Limpar. */
+@media (max-width:720px){
+  body:not(.bi) .stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); overflow:visible; gap:.35rem}
+  body:not(.bi) .stat{padding:.38rem .5rem .34rem; text-align:left}
+  body:not(.bi) .stat span{font-size:.5rem; letter-spacing:.06em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block}
+  body:not(.bi) .top__botoes{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.4rem; width:100%}
+  body:not(.bi) .top__grupo{margin:0; min-width:0}
+  body:not(.bi) .top__grupo > b{display:none}
+  body:not(.bi) #g-ano, body:not(.bi) .sel-ano{width:100%; min-width:0}
+  body:not(.bi) .top__botoes .org-picker{min-width:0}
+  body:not(.bi) .top__botoes .org-picker > .chip, body:not(.bi) .sel-ano{width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left}
+  body:not(.bi) .top__botoes .org-picker > .chip, body:not(.bi) .top__botoes .sel-ano{font-size:.74rem; padding-left:.55rem; padding-right:.45rem}
+  body:not(.bi) #org-menu{left:auto; right:0}
+  body:not(.bi) .top__links{grid-column:1 / 3}
+  body:not(.bi) #reset-top{grid-column:3; justify-self:stretch; text-align:center}
+}
 
 /* ---------- impressao: so o comparativo, em papel ----------
    Nao ha gerador de PDF embutido aqui; quem gera o arquivo e o proprio
