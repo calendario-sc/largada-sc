@@ -1,20 +1,20 @@
 == coleta ==
 == fontes ==
-  corridasbr: 213 provas
+  corridasbr: 216 provas
   corridasbr/arquivo: 350 provas
-  ticketsports: 79 provas
-  roadrunners: 201 provas
+  ticketsports: 77 provas
+  roadrunners: 208 provas
   movnow: 18 provas
   atletis: 2 provas
-  fca: 1852 provas
-  corridasbr (PR): 162 provas
+  fca: 1861 provas
+  corridasbr (PR): 169 provas
   corridasbr/arquivo (PR): 383 provas
-  ticketsports (PR): 72 provas
-  roadrunners (PR): 146 provas
-  fap: 595 provas
+  ticketsports (PR): 74 provas
+  roadrunners (PR): 148 provas
+  fap: 597 provas
   parceiros: 0 provas
 
-2889 provas distintas depois de fundir as fontes
+2899 provas distintas depois de fundir as fontes
 descartadas (16): fora de SC/PR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
@@ -25,24 +25,29 @@ descartadas (16): fora de SC/PR ou nao sao corrida
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
   - ... e mais 8
-restam 2873 provas
+restam 2883 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 concluintes (chiprun): 7 provas consultadas, 6 preenchidas
 genero: 10 provas consultadas, 0 preenchidas
-organizador: 146 provas preenchidas pela FCA
+organizador: 7 provas consultadas, 6 preenchidas
+organizador: 142 provas preenchidas pela FCA
 organizador: 80 provas tiveram a grafia padronizada
 fca: 149 provas juntadas as que ja existiam
-series: 2886 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 4815 provas (4300 ja realizadas) | 423 cidades
-novas nesta rodada: 157
+series: 2893 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 4827 provas (4302 ja realizadas) | 423 cidades
+novas nesta rodada: 161
   + 2026-04-11  Gaspar - Running X
-  + 2026-10-10  Cornélio Procópio - 2º Corrida do 3º Cpm
-  + 2026-10-11  Foz do Iguaçu - Meia Maratona das 3 Fronteiras
-  + 2026-11-07  Araucária - CORRIDA ARAUCO - VÁLIDO PELO RANKING CORRIDAS AENT - ETAPA 7
-  + 2026-11-21  Blumenau - NEUMARKT NIGHT RUN
-  + 2026-11-22  Florianópolis - MOVIMENTE-SE PELO SEU CORAÇÃO - CORRIDA UNICARDIO 2026
-  + 2026-11-29  Rio Negro - 10ª CORRIDA DA COLONIZAÇÃO DE RIO NEGRO
-  + 2027-05-22  Jaraguá do Sul - Rico Run
+  + 2026-10-05  Itapoá - Corrida Previne
+  + 2026-10-11  Araucária - 1ª Corrida do Lesgilativo
+  + 2026-10-30  Araucária - 7ª Corrida Noturna da GMA - Edição Especial Patrulha Maria da Penha
+  + 2026-10-31  Colombo - Corrida da Lua Cheia
+  + 2026-10-31  Imbituba - 24 Horas por Imbituba
+  + 2026-11-07  Curitiba - CORRIDA KIDS DECATHLON 2026
+  + 2026-11-14  Bom Sucesso do Sul - 2ª Corre Bom Sucesso
+  + 2026-11-14  Francisco Beltrão - Corrida da Câmara de Vereadores de Francisco Beltrão
+  + 2026-11-21  Irati - Circuito das 4 Estações - Edição Verão
+  + 2026-12-31  Matinhos - 3ª CORRIDA DA VIRADA MATINHOS PR
+  + 2027-09-26  Criciúma - MARATONA DE CRICIÚMA 2027
 
 futuras que nao apareceram hoje (4) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
@@ -55,6 +60,6 @@ parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,170,515 bytes)
+artifact.html e index.html gerados (2,181,207 bytes)
 
-RESULTADO: pronto para publicar (coleta de 30/09/2026).
+RESULTADO: pronto para publicar (coleta de 01/10/2026).
