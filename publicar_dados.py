@@ -44,6 +44,8 @@ def arquivos():
         saida[f"atletas/provas/{p.name}"] = (p, "longo")
     for p in sorted((ATLETAS / "dados").glob("*.json")):
         saida[f"atletas/dados/{p.name}"] = (p, "curto")
+    for p in sorted((ATLETAS / "ranking").glob("*.json")):
+        saida[f"atletas/ranking/{p.name}"] = (p, "curto")
     for nome in ("indice", "campeoes", "recordes"):
         p = ATLETAS / f"{nome}.json"
         if p.exists():

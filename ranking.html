@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Ranking das corridas de rua e trail de Santa Catarina e do Paraná desde 2022: pontos acumulados por distância e sexo, campeões de cada edição e recordes.">
+<title>Ranking das corridas · Cupons de Corrida</title>
+<link rel="canonical" href="https://www.cuponsdecorrida.com.br/ranking.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cupons de Corrida">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Ranking das corridas · Cupons de Corrida">
+<meta property="og:description" content="Ranking das corridas de SC e do PR desde 2022: pontos acumulados por distância e sexo, campeões e recordes.">
+<meta property="og:url" content="https://www.cuponsdecorrida.com.br/ranking.html">
+<meta property="og:image" content="https://www.cuponsdecorrida.com.br/og-cupons-de-corrida.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P0JZLDPQ7W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P0JZLDPQ7W');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F3F5FA; --surface:#FFFFFF; --surface-2:#EEF2F8;
+  --line:#D5DCE8; --line-soft:#E4E9F2;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880;
+  --accent:#EF4E16; --accent-wash:#FFE6DA;
+  --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD;
+  --sol:#FFC21A; --sol-ink:#3A2A00; --sol-wash:#FFF5D6;
+  --prata:#E9EDF3; --bronze-wash:#FBE7DA;
+  --shadow:0 1px 2px rgba(14,23,38,.06), 0 12px 26px -16px rgba(14,23,38,.38);
+  --r:14px;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628;
+    --line:#26324C; --line-soft:#1B2539;
+    --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3;
+    --accent:#FF7143; --accent-wash:#3B1A0E;
+    --azul:#6B97FF; --azul-ink:#A9C2FF; --azul-wash:#15234A;
+    --sol:#FFC940; --sol-ink:#2A1E00; --sol-wash:#2E2508;
+    --prata:#1C2639; --bronze-wash:#33200F;
+    --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628;
+  --line:#26324C; --line-soft:#1B2539;
+  --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3;
+  --accent:#FF7143; --accent-wash:#3B1A0E;
+  --azul:#6B97FF; --azul-ink:#A9C2FF; --azul-wash:#15234A;
+  --sol:#FFC940; --sol-ink:#2A1E00; --sol-wash:#2E2508;
+  --prata:#1C2639; --bronze-wash:#33200F;
+  --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+.wrap{width:min(1120px,100% - 2rem); margin-inline:auto}
+a{color:var(--azul-ink)}
+/* cabecalho: mesma faixa do calendario */
+.top{position:relative; overflow:hidden; color:#fff;
+  background:radial-gradient(90% 130% at 100% 0%, rgba(255,194,26,.26), transparent 58%), linear-gradient(135deg,#0A2F73 0%,#1450C8 100%)}
+.top::after{content:""; position:absolute; inset:auto 0 0 0; height:8px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.top__inner{position:relative; display:flex; flex-wrap:wrap; gap:1.4rem 3rem; align-items:flex-end; justify-content:space-between; padding:2.6rem 0 2.2rem}
+.eyebrow{font-family:var(--f-mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:0 0 .6rem}
+.eyebrow a{color:rgba(255,255,255,.9)}
+h1{font-family:var(--f-display); font-weight:800; margin:0; font-size:clamp(2.2rem,6vw,3.4rem); line-height:.95; letter-spacing:-.03em}
+h1 em{font-style:normal; color:#FFC21A}
+.lede{margin:.8rem 0 0; max-width:48ch; color:rgba(255,255,255,.88)}
+.stats{display:flex; gap:.7rem; flex-wrap:wrap}
+.stat{padding:.6rem .9rem; border-radius:12px; min-width:100px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18)}
+.stat b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.6rem; line-height:1; font-variant-numeric:tabular-nums}
+.stat:first-child b{color:#FFC21A}
+.stat span{font-family:var(--f-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.72)}
+/* busca da corrida */
+.busca{padding:1.5rem 0 .4rem}
+.busca label{display:block; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 .45rem}
+.busca input{width:100%; font:inherit; font-size:1.1rem; padding:.8rem 1rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px}
+.busca input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-wash)}
+.busca p{margin:.45rem 0 0; font-size:.82rem; color:var(--muted)}
+.lista{list-style:none; margin:.6rem 0 1.5rem; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(19rem,1fr)); gap:.4rem}
+.lista button{width:100%; text-align:left; font:inherit; cursor:pointer; display:grid; gap:.1rem; padding:.65rem .9rem; background:var(--surface);
+  border:1px solid var(--line-soft); border-radius:10px; color:var(--ink)}
+.lista button:hover{border-color:var(--accent); box-shadow:var(--shadow)}
+.lista b{font-weight:600}
+.lista small{font-family:var(--f-mono); font-size:.7rem; color:var(--muted)}
+/* corrida escolhida */
+.corrida[hidden], .lista[hidden]{display:none}
+.corrida__topo{display:flex; flex-wrap:wrap; gap:.8rem; align-items:flex-end; justify-content:space-between; margin:1rem 0 .4rem}
+.corrida h2{font-family:var(--f-display); font-weight:800; font-size:clamp(1.5rem,4vw,2.2rem); margin:0; letter-spacing:-.02em; line-height:1.1}
+.corrida h2 small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:.4rem}
+.voltar{font:inherit; font-size:.85rem; cursor:pointer; color:var(--muted); background:none; border:1px dashed var(--line); border-radius:999px; padding:.4rem .9rem}
+.voltar:hover{border-color:var(--accent); color:var(--ink)}
+.aviso{background:var(--azul-wash); color:var(--ink-2); border-radius:12px; padding:.7rem .95rem; font-size:.88rem; margin:.6rem 0 1rem}
+.aviso b{color:var(--ink)}
+.abas{display:flex; gap:.4rem; flex-wrap:wrap; margin:0 0 .6rem}
+.aba{font:inherit; font-size:.92rem; font-weight:600; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.45rem 1rem}
+.aba[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
+.aba.sexo[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--ground)}
+.filtro{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; margin:.2rem 0 .6rem}
+.filtro input{font:inherit; font-size:.92rem; padding:.45rem .7rem; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); flex:1 1 14rem; max-width:24rem}
+.filtro small{color:var(--muted); font-size:.82rem}
+.tabela{overflow-x:auto; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r)}
+table{width:100%; border-collapse:collapse; font-size:.9rem}
+th{font-family:var(--f-mono); font-weight:400; font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.6rem .6rem; border-bottom:1px solid var(--line); white-space:nowrap}
+td{padding:.5rem .6rem; border-bottom:1px solid var(--line-soft); vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.pos{font-family:var(--f-mono); color:var(--muted); width:3rem}
+td.nome{min-width:12rem}
+td.nome a{color:var(--ink); text-decoration:none; font-weight:600}
+td.nome a:hover{color:var(--azul-ink); text-decoration:underline}
+.total{font-family:var(--f-display); font-weight:800; font-size:1rem}
+.vazio{color:var(--line)}
+tr.ouro td{background:var(--sol-wash)} tr.ouro .pos{color:var(--ink); font-weight:600}
+tr.prata td{background:var(--prata)}
+tr.bronze td{background:var(--bronze-wash)}
+.mais{display:block; margin:.8rem auto 0; font:inherit; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.45rem 1.1rem}
+h3{font-family:var(--f-display); font-weight:800; font-size:1.15rem; margin:1.8rem 0 .3rem}
+.sub{margin:0 0 .7rem; color:var(--muted); font-size:.86rem}
+.galeria{display:grid; grid-template-columns:repeat(auto-fit,minmax(18rem,1fr)); gap:.8rem}
+.galeria h4{margin:0; padding:.55rem .8rem; font-size:.78rem; font-family:var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:#fff; background:var(--azul); border-radius:var(--r) var(--r) 0 0}
+.galeria .F h4{background:var(--accent)}
+.galeria .tabela{border-radius:0 0 var(--r) var(--r)}
+.recorde{color:#B8860B; font-weight:700}
+.recorde::before{content:"★ "}
+details.regra{margin:1.8rem 0 0; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); padding:.8rem 1rem}
+details.regra summary{cursor:pointer; font-weight:600}
+.pontos{display:grid; grid-template-columns:repeat(auto-fill,minmax(5.2rem,1fr)); gap:.3rem; margin:.7rem 0 .2rem; padding:0; list-style:none}
+.pontos li{font-family:var(--f-mono); font-size:.8rem; background:var(--surface-2); border-radius:8px; padding:.3rem .5rem; display:flex; justify-content:space-between}
+.carregando{color:var(--muted); padding:1rem 0}
+footer{padding:2.5rem 0 3rem; color:var(--muted); font-size:.85rem}
+footer a{color:var(--muted); margin-right:1rem}
+@media (max-width:640px){
+  .top__inner{padding:2.6rem 0 1.6rem}
+  .stat{min-width:0; flex:1 1 0}
+  td,th{padding:.45rem .45rem}
+  table{font-size:.85rem}
+  td.nome{min-width:9.5rem}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="entrar-topo" href="area.html" data-entrar>Entrar · Área do atleta</a>
+  <div class="wrap top__inner">
+    <div>
+      <p class="eyebrow"><a href="./">Cupons de Corrida</a> &middot; ranking das corridas</p>
+      <h1>Ranking das <em>corridas</em></h1>
+      <p class="lede">Escolha a corrida e veja quem mais pontuou em cada distância, os campeões de cada edição e os recordes. Resultados desde 2022.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="s-corridas">—</b><span>corridas</span></div>
+      <div class="stat"><b id="s-edicoes">—</b><span>edições</span></div>
+      <div class="stat"><b>2022</b><span>desde</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="busca" id="busca">
+    <label for="q">Qual corrida?</label>
+    <input id="q" type="search" placeholder="Nome da corrida ou cidade…" autocomplete="off">
+    <p id="q-dica">As corridas com mais edições aparecem primeiro.</p>
+  </section>
+  <ul class="lista" id="lista"><li class="carregando">Carregando as corridas…</li></ul>
+  <section class="corrida" id="corrida" hidden></section>
+
+  <details class="regra">
+    <summary>Como funciona a pontuação</summary>
+    <p>Em cada edição, os <b>20 primeiros colocados gerais</b> de cada distância, separados em masculino e feminino, ganham pontos pela tabela abaixo. Os pontos se somam ao longo das edições, <b>desde 2022</b>. Empate no total: na frente quem tem o melhor resultado numa só edição.</p>
+    <ul class="pontos" id="pontos"></ul>
+    <p class="sub">A classificação usa o tempo líquido dos resultados oficiais publicados pelas cronometragens. Edições sem resultado publicado não entram. Tempos incompatíveis com o histórico do atleta (ex.: corte de percurso) ficam de fora, como fazem as cronometragens. A mesma pessoa com o nome escrito de jeitos diferentes em anos diferentes é somada uma vez.</p>
+  </details>
+</main>
+<footer class="wrap">
+  <p><a href="./">Calendário de SC</a><a href="pr.html">Calendário do PR</a><a href="cupons.html">Central de Cupons</a><a href="atletas.html">Resultados por atleta</a><a href="parceiros.html">Seja parceiro</a></p>
+  <p>Viu algum erro no ranking? Escreva para <a href="mailto:contato@cuponsdecorrida.com.br">contato@cuponsdecorrida.com.br</a>.</p>
+</footer>
+
+<script>
+(() => {
+  // Dados servidos pela Cloudflare (dados.cuponsdecorrida.com.br), como os de atletas.
+  const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  const DADOS = LOCAL ? "" : "https://dados.cuponsdecorrida.com.br/";
+  const buscar = caminho => fetch(DADOS + caminho, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+  const el = (tag, props = {}, kids = []) => { const n = Object.assign(document.createElement(tag), props); kids.forEach(k => k != null && n.append(k)); return n; };
+  const norm = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const num = n => (n || 0).toLocaleString("pt-BR");
+  const tempo = s => { const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(x).padStart(2, "0"); };
+  const lista = document.getElementById("lista"), corrida = document.getElementById("corrida"), q = document.getElementById("q");
+  let corridas = [], atual = null;
+
+  function mostrarLista() {
+    const t = norm(q.value).trim();
+    const achadas = (t ? corridas.filter(c => norm(c[1] + " " + c[2] + " " + c[3]).includes(t))
+                       : [...corridas].sort((a, b) => b[4].length - a[4].length || b[6] - a[6])).slice(0, 60);
+    document.getElementById("q-dica").textContent = t ? (achadas.length ? num(achadas.length) + (achadas.length === 60 ? "+ corridas" : achadas.length === 1 ? " corrida" : " corridas") : "Nenhuma corrida com esse nome.")
+                                                      : "As corridas com mais edições aparecem primeiro.";
+    lista.replaceChildren(...achadas.map(c => el("li", {}, [Object.assign(el("button", { type: "button" }, [
+      el("b", { textContent: c[1] }),
+      el("small", { textContent: [c[2] && c[2] + "/" + c[3], (c[4].length === 1 ? "edição " : "edições ") + c[4].join(", "), c[5].join(" · ")].filter(Boolean).join(" · ") }),
+    ]), { onclick: () => abrir(c[0]) })])));
+  }
+
+  async function abrir(serie, empurrar = true) {
+    lista.hidden = true; document.getElementById("busca").hidden = true;
+    corrida.hidden = false;
+    corrida.replaceChildren(el("p", { className: "carregando", textContent: "Carregando o ranking…" }));
+    if (empurrar) history.pushState(null, "", "#" + serie);
+    try { atual = await buscar("atletas/ranking/" + encodeURIComponent(serie) + ".json"); }
+    catch (e) { corrida.replaceChildren(el("p", { className: "carregando", textContent: "Não encontrei o ranking desta corrida." })); return; }
+    if (typeof gtag === "function") gtag("event", "ranking_corrida", { corrida: atual.nome });
+    document.title = "Ranking · " + atual.nome + " · Cupons de Corrida";
+    desenhar(0, "M");
+    scrollTo(0, 0);
+  }
+
+  function voltar() {
+    history.pushState(null, "", location.pathname);
+    corrida.hidden = true; lista.hidden = false; document.getElementById("busca").hidden = false;
+    document.title = "Ranking das corridas · Cupons de Corrida";
+  }
+
+  function desenhar(iDist, sexo) {
+    const r = atual, d = r.distancias[iDist];
+    if (!d[sexo]) sexo = sexo === "M" ? "F" : "M";
+    const g = d[sexo];
+    const importadas = r.edicoes.filter(e => e.importado).map(e => e.rotulo);
+    const topo = el("div", { className: "corrida__topo" }, [
+      el("h2", {}, [document.createTextNode(r.nome), el("small", { textContent: [r.cidade && r.cidade + "/" + r.uf,
+        (r.edicoes.length === 1 ? "edição " : "edições ") + r.edicoes.map(e => e.rotulo).join(", "),
+        r.proxima ? "próxima: " + r.proxima.split("-").reverse().join("/") : ""].filter(Boolean).join(" · ") })]),
+      Object.assign(el("button", { type: "button", className: "voltar", textContent: "← Outras corridas" }), { onclick: voltar }),
+    ]);
+    const aviso = el("p", { className: "aviso" }, [el("b", { textContent: "Ranking desde 2022. " }),
+      document.createTextNode("Soma os pontos dos 20 primeiros de cada edição, por distância e sexo (1º = 250 pontos). "
+        + (importadas.length ? "Edições " + importadas.join(" e ") + ": classificação oficial em PDF da cronometragem. " : "")
+        + "Clique no nome para ver todas as provas do atleta.")]);
+    const abasDist = el("div", { className: "abas", role: "group", ariaLabel: "Distância" }, r.distancias.map((x, i) => {
+      const b = el("button", { type: "button", className: "aba", textContent: x.rotulo });
+      b.setAttribute("aria-pressed", String(i === iDist)); b.onclick = () => desenhar(i, sexo); return b;
+    }));
+    const abasSexo = el("div", { className: "abas", role: "group", ariaLabel: "Categoria" }, [["M", "Masculino"], ["F", "Feminino"]].filter(([s]) => d[s]).map(([s, rot]) => {
+      const b = el("button", { type: "button", className: "aba sexo", textContent: rot });
+      b.setAttribute("aria-pressed", String(s === sexo)); b.onclick = () => desenhar(iDist, s); return b;
+    }));
+
+    // Ranking acumulado
+    const filtroNome = el("input", { type: "search", placeholder: "Procurar atleta neste ranking…", autocomplete: "off" });
+    const contagem = el("small");
+    const corpo = el("tbody");
+    let limite = 50;
+    const mais = Object.assign(el("button", { type: "button", className: "mais" }), { onclick: () => { limite = Infinity; pintar(); } });
+    function pintar() {
+      const t = norm(filtroNome.value).trim();
+      const linhas = g.ranking.map((a, i) => [i + 1, a]).filter(([, a]) => !t || norm(a[0]).includes(t));
+      contagem.textContent = num(g.ranking.length) + " atletas pontuaram";
+      corpo.replaceChildren(...linhas.slice(0, t ? Infinity : limite).map(([pos, a]) => {
+        const tr = el("tr", { className: pos === 1 ? "ouro" : pos === 2 ? "prata" : pos === 3 ? "bronze" : "" }, [
+          el("td", { className: "pos", textContent: pos + "º" }),
+          el("td", { className: "nome" }, [a[1] ? el("a", { href: "atletas.html#" + encodeURIComponent(a[1]), textContent: a[0] }) : document.createTextNode(a[0])]),
+          ...a[2].map(p => el("td", { className: "n" + (p == null ? " vazio" : ""), textContent: p == null ? "—" : p })),
+          el("td", { className: "n total", textContent: num(a[3]) }),
+        ]);
+        return tr;
+      }));
+      const resta = t ? 0 : linhas.length - limite;
+      mais.hidden = resta <= 0;
+      mais.textContent = "Ver todos (" + num(linhas.length) + ")";
+    }
+    filtroNome.oninput = pintar;
+    const tabela = el("div", { className: "tabela" }, [el("table", {}, [
+      el("thead", {}, [el("tr", {}, [el("th", { textContent: "Pos." }), el("th", { textContent: "Atleta" }),
+        ...r.edicoes.map(e => el("th", { className: "n", textContent: e.rotulo })), el("th", { className: "n", textContent: "Total" })])]),
+      corpo])]);
+    pintar();
+
+    // Galeria de campeoes (as duas categorias da distancia)
+    const galeria = el("div", { className: "galeria" }, [["M", "Masculino"], ["F", "Feminino"]].filter(([s]) => d[s]).map(([s, rot]) =>
+      el("div", { className: s }, [el("h4", { textContent: d.rotulo + " · " + rot }), el("div", { className: "tabela" }, [el("table", {}, [
+        el("thead", {}, [el("tr", {}, [el("th", { textContent: "Ano" }), el("th", { textContent: s === "F" ? "Campeã" : "Campeão" }), el("th", { className: "n", textContent: "Tempo" })])]),
+        el("tbody", {}, d[s].campeoes.map(c => el("tr", {}, [el("td", { className: "pos", textContent: r.edicoes[c[0]].rotulo }),
+          el("td", { className: "nome" }, [c[3] ? el("a", { href: "atletas.html#" + encodeURIComponent(c[3]), textContent: c[1] }) : document.createTextNode(c[1])]),
+          el("td", { className: "n" + (c[4] && r.edicoes.length > 1 ? " recorde" : ""), textContent: tempo(c[2]) })]))),
+      ])])])));
+
+    corrida.replaceChildren(topo, aviso, abasDist, abasSexo,
+      el("h3", { textContent: "Ranking acumulado · " + d.rotulo + " " + (sexo === "F" ? "feminino" : "masculino") }),
+      el("div", { className: "filtro" }, [filtroNome, contagem]), tabela, mais,
+      el("h3", { textContent: "Galeria de campeões · " + d.rotulo }),
+      el("p", { className: "sub", textContent: r.edicoes.length > 1 ? "★ recorde da prova na distância, entre as edições desde 2022 (tempo líquido)." : "Tempo líquido." }),
+      galeria);
+  }
+
+  q.oninput = mostrarLista;
+  addEventListener("popstate", () => { const s = decodeURIComponent(location.hash.slice(1)); if (s) abrir(s, false); else voltar(); });
+  buscar("atletas/ranking/indice.json").then(d => {
+    corridas = d.corridas;
+    document.getElementById("s-corridas").textContent = num(corridas.length);
+    document.getElementById("s-edicoes").textContent = num(corridas.reduce((s, c) => s + c[4].length, 0));
+    document.getElementById("pontos").replaceChildren(...d.pontos.map((p, i) => el("li", {}, [el("span", { textContent: (i + 1) + "º" }), el("b", { textContent: p })])));
+    const s = decodeURIComponent(location.hash.slice(1));
+    if (s) abrir(s, false); else mostrarLista();
+  }).catch(e => lista.replaceChildren(el("li", { className: "carregando", textContent: "Não foi possível carregar o ranking agora (" + e.message + "). Tente de novo em instantes." })));
+})();
+</script>
+<script src="cadastro.js"></script>
+</body>
+</html>

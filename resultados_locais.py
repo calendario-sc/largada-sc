@@ -149,6 +149,8 @@ def coletar_atletas():
     feitas = atletas_coleta.coletar(atletas_coleta.ANOS_ATLETAS, limite=80, registrar=registrar)
     if feitas:
         atletas_build.montar(registrar=registrar)
+        import ranking_build                     # ranking de cada corrida (ranking.html)
+        ranking_build.montar(registrar=registrar)
     # Alunos por assessoria (so para o BI): refeito todo dia, e barato.
     import assessorias
     assessorias.montar(registrar=registrar)

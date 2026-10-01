@@ -168,7 +168,7 @@ def cabeca(titulo, descricao, caminho, ld, analytics, extra=""):
 <body>
 <header class="topo"><div class="w">
   <a class="marca" href="/">Cupons de <em>Corrida</em></a>
-  <nav><a href="/">Santa Catarina</a><a href="/pr.html">Paraná</a><a class="cc" href="/cupons.html">% Central de Cupons</a></nav>
+  <nav><a href="/">Santa Catarina</a><a href="/pr.html">Paraná</a><a href="/ranking.html">Ranking</a><a class="cc" href="/cupons.html">% Central de Cupons</a></nav>
 </div><div class="faixa"></div></header>
 <main class="w">
 """
@@ -176,7 +176,7 @@ def cabeca(titulo, descricao, caminho, ld, analytics, extra=""):
 
 RODAPE = """</main>
 <footer class="w">
-  <p><a href="/">Calendário de corridas em SC</a><a href="/pr.html">Calendário de corridas no PR</a><a href="/cupons.html">Central de Cupons</a><a href="/atletas.html">Resultados por atleta</a><a href="/parceiros.html">Seja parceiro</a><a href="/privacidade.html">Privacidade</a></p>
+  <p><a href="/">Calendário de corridas em SC</a><a href="/pr.html">Calendário de corridas no PR</a><a href="/cupons.html">Central de Cupons</a><a href="/atletas.html">Resultados por atleta</a><a href="/ranking.html">Ranking das corridas</a><a href="/parceiros.html">Seja parceiro</a><a href="/privacidade.html">Privacidade</a></p>
   <p>Cupons de Corrida · calendário de corridas de rua e trail de Santa Catarina e do Paraná, com cupons de desconto nas inscrições.</p>
 </footer>
 </body>
@@ -476,7 +476,7 @@ def gerar(historico, analytics=""):
 
     # Sitemap: paginas fixas, cidades e provas (futuras primeiro na prioridade).
     urls = [("/", hoje, "1.0"), ("/pr.html", hoje, "0.9"), ("/todos.html", hoje, "0.6"), ("/cupons.html", hoje, "0.8"),
-            ("/atletas.html", hoje, "0.6"), ("/parceiros.html", hoje, "0.5"), ("/privacidade.html", None, "0.2")]
+            ("/atletas.html", hoje, "0.6"), ("/ranking.html", hoje, "0.7"), ("/parceiros.html", hoje, "0.5"), ("/privacidade.html", None, "0.2")]
     for (c, u), ps in sorted(por_cidade.items(), key=lambda x: -len(x[1])):
         if c:
             urls.append((f"/corridas-em/{slug_cidade(c, u)}/", max(x.get("visto_em") or x["data"] for x in ps), "0.7"))
