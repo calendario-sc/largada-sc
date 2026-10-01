@@ -231,6 +231,7 @@ footer a{color:var(--muted); margin-right:1rem}
   function voltar() {
     history.pushState(null, "", location.pathname);
     corrida.hidden = true; lista.hidden = false; document.getElementById("busca").hidden = false;
+    mostrarLista();
     document.title = "Ranking das corridas · Cupons de Corrida";
   }
 
