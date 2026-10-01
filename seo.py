@@ -6,6 +6,9 @@ embutidos -- otimo para filtrar, ruim para busca: nenhuma prova tinha endereco
 proprio. Aqui cada prova ganha /provas/<slug>/ e cada cidade /corridas-em/<cidade-uf>/,
 em HTML simples (sem JS), com titulo, descricao, dados estruturados (schema.org
 SportsEvent) e links entre si. O sitemap.xml lista tudo para o Search Console.
+Gera tambem as agendas para assinar (agenda/sc.ics, pr.ics, todas.ics), que o
+Google Agenda e o iPhone atualizam sozinhos, e o botao "Adicionar ao Google
+Agenda" de cada prova.
 
 Chamado pelo build.py. So biblioteca padrao.
 """
@@ -15,6 +18,7 @@ import html
 import json
 import re
 import shutil
+import urllib.parse
 from collections import defaultdict
 from pathlib import Path
 
@@ -67,6 +71,8 @@ table.res{width:100%;border-collapse:collapse;font-size:.95rem}
 table.res td,table.res th{padding:.4rem .3rem;border-bottom:1px solid var(--line);text-align:left}
 table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums}
 .nota{font-size:.85rem;color:var(--muted)}
+.agenda{font-size:.9rem;color:var(--ink2);margin:.9rem 0 0}
+.agenda a{font-weight:600}
 .cidades{columns:2 12rem;font-size:.92rem}
 .cidades a{display:block;padding:.15rem 0}
 footer{margin:3rem 0 0;padding:1.4rem 0 2rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
@@ -195,6 +201,77 @@ def linha_prova(p, hoje):
             f'<span><a href="/provas/{p["_slug"]}/">{e(p["nome"])}</a><small>{e(" · ".join(extra))}</small></span></li>')
 
 
+# ---------------------------------------------------------------- agenda
+AGENDAS = {"sc": "Corridas em Santa Catarina", "pr": "Corridas no Paraná", "todas": "Corridas em SC e PR"}
+
+
+def _um_dia_depois(iso):
+    return (datetime.date.fromisoformat(iso) + datetime.timedelta(days=1)).strftime("%Y%m%d")
+
+
+def link_google_agenda(p, nome_ano, inscricao, caminho):
+    """Evento de dia inteiro no Google Agenda, ja preenchido."""
+    dists = ", ".join(p.get("pills") or [])
+    detalhes = "\n".join(x for x in (
+        f"{tipo_prova(p).capitalize()}" + (f" · {dists}" if dists else ""),
+        f"Inscrição: {inscricao}" if inscricao else "",
+        f"Cupons e detalhes: {SITE}{caminho}") if x)
+    q = {"action": "TEMPLATE", "text": nome_ano, "dates": p["data"].replace("-", "") + "/" + _um_dia_depois(p["data"]),
+         "details": detalhes, "location": f"{p.get('cidade') or ''}, {p.get('uf') or 'SC'}, Brasil", "ctz": "America/Sao_Paulo"}
+    return "https://calendar.google.com/calendar/render?" + urllib.parse.urlencode(q)
+
+
+def assinar_webcal(chave):
+    return f"webcal://{SITE.split('://', 1)[1]}/agenda/{chave}.ics"
+
+
+def assinar_google(chave):
+    return "https://calendar.google.com/calendar/r?cid=" + urllib.parse.quote(assinar_webcal(chave), safe="")
+
+
+def _ics_texto(s):
+    return str(s or "").replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+
+def _ics_dobrar(linha):
+    """Linhas de no maximo 75 bytes (RFC 5545): o resto continua com um espaco."""
+    b = linha.encode("utf-8")
+    if len(b) <= 75:
+        return linha
+    partes, atual = [], b""
+    for ch in linha:
+        c = ch.encode("utf-8")
+        if len(atual) + len(c) > (75 if not partes else 74):
+            partes.append(atual.decode("utf-8"))
+            atual = b""
+        atual += c
+    partes.append(atual.decode("utf-8"))
+    return "\r\n ".join(partes)
+
+
+def agenda_ics(chave, provas, hoje, carimbo):
+    linhas = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR",
+              "CALSCALE:GREGORIAN", "METHOD:PUBLISH", f"X-WR-CALNAME:{_ics_texto(AGENDAS[chave] + ' · Cupons de Corrida')}",
+              "X-WR-TIMEZONE:America/Sao_Paulo", "X-WR-CALDESC:" + _ics_texto(
+                  "Calendário de corridas de rua e trail do Cupons de Corrida, com cupons de desconto nas inscrições."),
+              "REFRESH-INTERVAL;VALUE=DURATION:PT12H", "X-PUBLISHED-TTL:PT12H"]
+    for p in provas:
+        inscricao = link_inscricao(p)
+        dists = ", ".join(p.get("pills") or [])
+        nome_ano = p["nome"] if str(p["ano"]) in p["nome"] else f"{p['nome']} {p['ano']}"
+        url = f"{SITE}/provas/{p['_slug']}/"
+        desc = "\n".join(x for x in (
+            tipo_prova(p).capitalize() + (f" · {dists}" if dists else ""),
+            f"Inscrição: {inscricao}" if inscricao else "",
+            f"Cupons e detalhes: {url}") if x)
+        linhas += ["BEGIN:VEVENT", f"UID:{p['_slug']}@cuponsdecorrida.com.br", f"DTSTAMP:{carimbo}",
+                   f"DTSTART;VALUE=DATE:{p['data'].replace('-', '')}", f"DTEND;VALUE=DATE:{_um_dia_depois(p['data'])}",
+                   f"SUMMARY:{_ics_texto(nome_ano)}", f"LOCATION:{_ics_texto((p.get('cidade') or '') + ' - ' + (p.get('uf') or 'SC'))}",
+                   f"DESCRIPTION:{_ics_texto(desc)}", f"URL:{url}", "TRANSP:TRANSPARENT", "END:VEVENT"]
+    linhas.append("END:VCALENDAR")
+    return "\r\n".join(_ics_dobrar(x) for x in linhas) + "\r\n"
+
+
 def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
     uf = p.get("uf") or "SC"
     cidade, regiao = p.get("cidade") or "", p.get("regiao") or ""
@@ -228,6 +305,7 @@ def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
         "location": {"@type": "Place", "name": f"{cidade}, {UF_NOME.get(uf, uf)}",
                      "address": {"@type": "PostalAddress", "addressLocality": cidade, "addressRegion": uf, "addressCountry": "BR"}},
         "description": desc, "url": SITE + caminho,
+        "endDate": p["data"], "image": [SITE + "/og-cupons-de-corrida.png"],
     }
     if orgs:
         evento["organizer"] = [{"@type": "Organization", "name": o} for o in orgs]
@@ -256,10 +334,18 @@ def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
         if inscricao:
             acoes.append(f'<a class="botao" href="{e(inscricao)}" rel="noopener nofollow" target="_blank">Fazer a inscrição</a>')
         acoes.append('<a class="botao sol" href="/cupons.html">Ver cupons de desconto</a>')
+        acoes.append(f'<a class="botao claro" href="{e(link_google_agenda(p, nome_ano, inscricao, caminho))}" '
+                     'rel="noopener nofollow" target="_blank">Adicionar ao Google Agenda</a>')
     elif p.get("or_slug") and conc:
         acoes.append(f'<a class="botao" href="/resultado.html?p={e(p["or_slug"])}">Ver a classificação completa</a>')
     acoes.append(f'<a class="botao claro" href="{PAGINA_UF.get(uf, "/")}">Calendário de {e(UF_NOME.get(uf, uf))}</a>')
-    corpo.append('<div class="acoes">' + "".join(acoes) + "</div></section>")
+    corpo.append('<div class="acoes">' + "".join(acoes) + "</div>")
+    if futura:
+        chave = uf.lower() if uf in UF_NOME else "todas"
+        corpo.append(f'<p class="agenda">Todas as corridas {e({"SC": "de Santa Catarina", "PR": "do Paraná"}.get(uf, "de SC e do PR"))} na sua agenda, atualizadas sozinhas: '
+                     f'<a href="{e(assinar_google(chave))}" rel="noopener nofollow" target="_blank">Google Agenda</a> · '
+                     f'<a href="{e(assinar_webcal(chave))}">iPhone e Outlook</a></p>')
+    corpo.append("</section>")
 
     if conc:
         linhas = sorted((p.get("concluintes") or {}).items(), key=lambda x: -x[1])
@@ -370,6 +456,23 @@ def gerar(historico, analytics=""):
                 shutil.rmtree(velha)
 
     (AQUI / "provas.css").write_text(CSS, encoding="utf-8")
+
+    # Agendas para assinar: provas dos ultimos 60 dias em diante (quem assina
+    # nao perde da agenda a prova que acabou de correr).
+    desde = (datetime.date.fromisoformat(hoje) - datetime.timedelta(days=60)).isoformat()
+    recentes = [p for p in provas if p["data"] >= desde]
+    carimbo = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    (AQUI / "agenda").mkdir(exist_ok=True)
+    for chave, filtro in (("sc", "SC"), ("pr", "PR"), ("todas", None)):
+        lista = [p for p in recentes if not filtro or (p.get("uf") or "SC") == filtro]
+        destino = AQUI / "agenda" / f"{chave}.ics"
+        novo = agenda_ics(chave, lista, hoje, carimbo)
+        antigo = destino.read_bytes().decode("utf-8") if destino.exists() else ""   # bytes: preserva o 
+
+
+        # So o carimbo mudou: mantem o arquivo (evita um commit por dia sem prova nova).
+        if re.sub(r"DTSTAMP:\S+", "", antigo) != re.sub(r"DTSTAMP:\S+", "", novo):
+            destino.write_bytes(novo.encode("utf-8"))
 
     # Sitemap: paginas fixas, cidades e provas (futuras primeiro na prioridade).
     urls = [("/", hoje, "1.0"), ("/pr.html", hoje, "0.9"), ("/todos.html", hoje, "0.6"), ("/cupons.html", hoje, "0.8"),

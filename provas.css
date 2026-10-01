@@ -34,6 +34,8 @@ table.res{width:100%;border-collapse:collapse;font-size:.95rem}
 table.res td,table.res th{padding:.4rem .3rem;border-bottom:1px solid var(--line);text-align:left}
 table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums}
 .nota{font-size:.85rem;color:var(--muted)}
+.agenda{font-size:.9rem;color:var(--ink2);margin:.9rem 0 0}
+.agenda a{font-weight:600}
 .cidades{columns:2 12rem;font-size:.92rem}
 .cidades a{display:block;padding:.15rem 0}
 footer{margin:3rem 0 0;padding:1.4rem 0 2rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}

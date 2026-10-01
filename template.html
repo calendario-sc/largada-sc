@@ -1207,6 +1207,8 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
         <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html" title="Busque um atleta pelo nome e veja as provas, o pace e os melhores tempos">Resultados por atleta ↗</a>
         <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html#supertrunfo" title="Compare dois atletas lado a lado: provas, km, títulos e melhores tempos">Supertrunfo ↗</a>
         <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
+        <a class="chip chip--link" id="btn-agenda" href="https://calendar.google.com/" target="_blank" rel="noopener nofollow"
+           title="Assine e receba as corridas no seu Google Agenda, atualizadas sozinhas">Assinar no Google Agenda ↗</a>
         </span>
         <button class="chip chip--reset" id="reset-top" type="button" title="Limpar todos os filtros">Limpar</button>
       </div>
@@ -1499,6 +1501,9 @@ const BI = __BI__;
 // Estado da pagina: "SC" (index), "PR" (pr.html) ou "" (todos.html, os dois).
 const UF = "__UF__";
 const NOME_ESTADO = { SC:"Santa Catarina", PR:"Paraná", "":"Santa Catarina e Paraná" }[UF];
+// Agenda para assinar do estado da pagina (agenda/*.ics, gerada pelo seo.py).
+document.getElementById("btn-agenda").href = "https://calendar.google.com/calendar/r?cid=" +
+  encodeURIComponent("webcal://www.cuponsdecorrida.com.br/agenda/" + ({ SC:"sc", PR:"pr" }[UF] || "todas") + ".ics");
 document.querySelectorAll("#uf a").forEach(a => {
   if (a.dataset.uf === UF) a.setAttribute("aria-current", "page");
 });
