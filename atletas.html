@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="paginas.css">
 <style>
 :root{
   --ground:#F3F5FA; --surface:#FFFFFF; --surface-2:#EEF2F8;
@@ -98,7 +99,49 @@ h1 em{font-style:normal; color:#FFC21A}
 .stat:first-child b{color:#FFC21A}
 
 /* ---- busca ---- */
-.busca{padding:1.6rem 0 .6rem}
+.busca{margin:1.4rem 0 .4rem; padding:1rem 1.1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:18px; box-shadow:var(--shadow)}
+.busca[hidden]{display:none}
+.busca input{padding-left:2.9rem !important; background:var(--surface-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B6880' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 1rem center / 1.15rem !important}
+.busca .lista{margin-bottom:0}
+.busca .lista:empty{display:none}
+.busca .dica:empty{min-height:0; margin:0}
+
+/* ---- curiosidades (atletas/destaques.json) ---- */
+.destaques[hidden]{display:none}
+.destaques{margin:0 0 2.5rem}
+.dq-numeros{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.6rem; margin:0 0 .9rem}
+.dq-numeros div{padding:.8rem .95rem; border-radius:14px; background:var(--surface); border:1px solid var(--line-soft)}
+.dq-numeros b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.5rem; line-height:1.05; color:var(--azul-ink); font-variant-numeric:tabular-nums}
+.dq-numeros span{font-size:.8rem; color:var(--muted)}
+.dq-grade{display:grid; grid-template-columns:repeat(auto-fill,minmax(19rem,1fr)); gap:.9rem; align-items:stretch}
+.dq{padding:1rem 1rem .8rem; border-top:4px solid var(--c)}
+.dq--largo{grid-column:1 / -1}
+.dq header{display:flex; gap:.7rem; align-items:flex-start; margin:0 0 .7rem}
+.dq-ic{flex:0 0 auto; display:grid; place-items:center; width:2.4rem; height:2.4rem; border-radius:12px; font-size:1.25rem; background:color-mix(in srgb,var(--c) 14%,var(--surface))}
+.dq h3{font-family:var(--f-display); font-weight:800; font-size:1.05rem; margin:.05rem 0 .1rem; letter-spacing:-.01em}
+.dq header p{margin:0; font-size:.78rem; color:var(--muted); line-height:1.35}
+.dq .pg-seg{margin:0 0 .6rem}
+.dq-lista{list-style:none; margin:0; padding:0}
+.dq-lista li{display:grid; grid-template-columns:1.7rem minmax(0,1fr) auto; gap:.1rem .6rem; align-items:center; padding:.45rem 0; border-bottom:1px solid var(--line-soft)}
+.dq-lista li:last-child{border-bottom:0}
+.dq-pos{grid-row:1 / 3; display:grid; place-items:center; width:1.6rem; height:1.6rem; border-radius:8px; font-family:var(--f-display); font-weight:800; font-size:.8rem; background:var(--surface-2); color:var(--ink-2)}
+.dq-lista li:nth-child(1) .dq-pos{background:#FFC21A; color:#3A2A00}
+.dq-lista li:nth-child(2) .dq-pos{background:#D5DCE6; color:#1F2A3C}
+.dq-lista li:nth-child(3) .dq-pos{background:#EBB28F; color:#3B1A08}
+.dq-lista a{font-weight:600; font-size:.9rem; color:var(--ink); text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.dq-lista a:hover{color:var(--azul-ink); text-decoration:underline}
+.dq-lista b{grid-row:1 / 3; grid-column:3; font-family:var(--f-display); font-weight:800; font-size:.98rem; color:var(--ink); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+.dq-lista small{grid-column:2; font-size:.72rem; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.dq-sx{display:inline-block; margin-left:.3rem; font-family:var(--f-mono); font-size:.6rem; font-weight:500; padding:0 .25rem; border-radius:4px; vertical-align:1px; color:var(--muted); border:1px solid var(--line)}
+.dq-duplo{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 1.4rem}
+.dq-duplo h4{margin:.2rem 0 .1rem; font-family:var(--f-mono); font-weight:500; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.dq-nota{margin:.8rem 0 0; font-size:.76rem; color:var(--muted)}
+@media (max-width:640px){
+  .dq-duplo{grid-template-columns:1fr}
+  .dq-grade{grid-template-columns:1fr}
+  .dq-numeros{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dq-numeros b{font-size:1.25rem}
+}
 .busca label{display:block; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 .45rem}
 .busca input{width:100%; font:inherit; font-size:1.15rem; padding:.85rem 1rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px}
 .busca input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-wash)}
@@ -362,11 +405,17 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
 </head>
 <body>
 
+<nav class="sitenav" aria-label="Seções do site"><div class="sitenav__in">
+  <a class="sitenav__marca" href="./"><img src="favicon.svg" alt=""><span>Cupons de Corrida</span></a>
+  <div class="sitenav__links">
+    <a href="./">Calendário</a><a href="./#resultados">Resultados</a><a href="ranking.html">Ranking</a><a href="atletas.html" aria-current="page">Atletas</a><a href="atletas.html#supertrunfo">Supertrunfo</a><a href="cupons.html">Cupons</a>
+  </div>
+  <a class="entrar-topo" href="area.html" data-entrar>Entrar</a>
+</div></nav>
 <header class="top">
-  <a class="entrar-topo" href="area.html" data-entrar>Entrar · Área do atleta</a>
   <div class="wrap top__inner">
     <div>
-      <p class="eyebrow"><a href="./">Cupons de Corrida</a> &middot; resultados por atleta</p>
+      <p class="eyebrow">Resultados por atleta · desde 2022</p>
       <h1>Quem <em>correu</em></h1>
       <p class="lede">Busque um nome e veja as provas, as distâncias, o pace e os melhores tempos.</p>
       <button class="cta-cadastro" type="button" data-cadastro hidden>Cadastre-se e ganhe cupons</button>
@@ -408,10 +457,17 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
   </section>
 
   <section class="busca">
-    <label for="q">Nome do atleta</label>
+    <label for="q">Procure um atleta pelo nome</label>
     <input id="q" type="search" placeholder="Comece pelo primeiro nome: ex. Simone Ponte" autocomplete="off" autofocus>
     <p class="dica" id="dica"></p>
     <ul class="lista" id="lista"></ul>
+  </section>
+
+  <section class="destaques" id="destaques" hidden>
+    <div class="pg-secao"><div><span class="pg-olho">Curiosidades</span><h2>Quem se destaca nas corridas</h2><p id="dq-sub"></p></div></div>
+    <div class="dq-numeros" id="dq-numeros"></div>
+    <div class="dq-grade" id="dq-grade"></div>
+    <p class="dq-nota">Contam os resultados publicados pelas cronometragens. Atletas com o mesmo nome de outra pessoa (duas provas no mesmo dia, ou ritmos muito diferentes na mesma distância) ficam fora das listas, assim como tempos de trilha e montanha nas listas de tempo e pace.</p>
   </section>
 
   <section class="perfil" id="perfil" hidden>
@@ -649,7 +705,7 @@ window.addEventListener("afterprint", () => {
   document.querySelectorAll(".duelo .imp, .st .imp").forEach(x => x.replaceChildren());
 });
 
-document.getElementById("voltar").onclick = () => { document.getElementById("perfil").hidden = true; history.replaceState(null, "", location.pathname); input.focus(); };
+document.getElementById("voltar").onclick = () => { document.getElementById("perfil").hidden = true; mostrarDestaques(); history.replaceState(null, "", location.pathname); input.focus(); };
 
 /* ---------- foto do atleta ----------
    Vem da API, so para quem esta logado; sem foto (ou sem autorizacao do
@@ -701,6 +757,7 @@ function abrir(a){
   marcarSouEu(a);
   st.hidden = true;
   document.querySelector(".busca").hidden = false;
+  document.getElementById("destaques").hidden = true;
 
   perfil.hidden = false;
   mostrarFotoPerfil(a);
@@ -1217,6 +1274,7 @@ async function stDuelo(){
 function abrirSupertrunfo(a = null, b = null){
   st.hidden = false;
   document.querySelector(".busca").hidden = true;
+  document.getElementById("destaques").hidden = true;
   perfil.hidden = true;
   document.getElementById("st-cartas").replaceChildren();
   ["a", "b"].forEach(lado => {
@@ -1233,8 +1291,106 @@ function abrirSupertrunfo(a = null, b = null){
   else { history.replaceState(null, "", "#supertrunfo"); document.getElementById(a ? "st-b" : "st-a").focus(); }
 }
 
+/* ---------- curiosidades ----------
+   atletas/destaques.json, montado pelo destaques_build.py com a base inteira. */
+let DESTAQUES = null;
+const sxRot = sx => sx === "F" ? "F" : sx === "M" ? "M" : "";
+const linkDq = (nome, slug, sx) => {
+  const a = el("a", { href: "#" + slug, textContent: titulo(nome), title: titulo(nome) });
+  return sxRot(sx) ? [a, el("span", { className: "dq-sx", textContent: sxRot(sx), title: sx === "F" ? "Feminino" : "Masculino" })] : [a];
+};
+const linhaDq = (pos, nome, slug, sx, valor, det) => el("li", {}, [
+  el("span", { className: "dq-pos", textContent: pos }), el("span", { style: "min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap" }, linkDq(nome, slug, sx)),
+  el("b", { textContent: valor }), el("small", { textContent: det || "" })]);
+const provaDq = p => p ? p[0] + " · " + dataCurta(p[1]) : "";
+function caixaDq(ic, cor, tituloCx, sub, corpo, largo){
+  return el("article", { className: "dq pg-card" + (largo ? " dq--largo" : ""), style: "--c:" + cor }, [
+    el("header", {}, [el("span", { className: "dq-ic", textContent: ic }), el("div", {}, [el("h3", { textContent: tituloCx }), el("p", { textContent: sub })])]),
+    ...corpo]);
+}
+function abasDq(opcoes, aoTrocar){
+  const seg = el("div", { className: "pg-seg", role: "group" });
+  const lista = el("ol", { className: "dq-lista" });
+  opcoes.forEach(([v, rot], i) => {
+    const b = el("button", { type: "button", textContent: rot });
+    b.setAttribute("aria-pressed", String(i === 0));
+    b.onclick = () => { seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); aoTrocar(v, lista); };
+    seg.append(b);
+  });
+  aoTrocar(opcoes[0][0], lista);
+  return [seg, lista];
+}
+const kmRot = km => km === 21.1 ? "21 km" : km === 42.2 ? "42 km" : String(km).replace(".", ",") + " km";
+
+async function carregarDestaques(){
+  try {
+    const r = await buscarDados("atletas/destaques.json", { cache: "no-cache" });
+    if (!r.ok) return;
+    DESTAQUES = await r.json();
+  } catch (e) { return; }
+  const d = DESTAQUES, t = d.totais;
+  document.getElementById("dq-sub").textContent = "Desde " + d.desde + " · atualizado em " + dataCurta(d.gerado);
+  document.getElementById("dq-numeros").replaceChildren(...[
+    [t.ativos_ano, "correram em " + d.ano], [t.estreantes_ano, "estrearam em " + d.ano],
+    [t.maratonistas, "já completaram uma maratona"], [t.todos_os_anos, "correram todos os anos desde " + d.desde],
+  ].map(([v, rot]) => el("div", {}, [el("b", { textContent: num(v) }), el("span", { textContent: rot })])));
+
+  const caixas = [];
+  // mais rapidos do ano: abas por distancia, elas e eles lado a lado
+  const duplo = el("div", { className: "dq-duplo" });
+  const segKm = el("div", { className: "pg-seg", role: "group", ariaLabel: "Distância" });
+  const kms = Object.keys(d.rapidos_ano);
+  const pintarKm = km => duplo.replaceChildren(...[["F", "Elas"], ["M", "Eles"]].map(([sx, rot]) => el("div", {}, [el("h4", { textContent: rot }),
+    el("ol", { className: "dq-lista" }, (d.rapidos_ano[km][sx] || []).map((x, i) => linhaDq(i + 1, x[1], x[3], "", tempo(x[0]), provaDq(x[4]))))])));
+  kms.forEach((km, i) => {
+    const b = el("button", { type: "button", textContent: kmRot(Number(km)) });
+    b.setAttribute("aria-pressed", String(i === 1 || kms.length === 1));
+    b.onclick = () => { segKm.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintarKm(km); };
+    segKm.append(b);
+  });
+  pintarKm(kms[Math.min(1, kms.length - 1)]);
+  caixas.push(caixaDq("⚡", "#EF4E16", "Mais rápidos de " + d.ano, "O melhor tempo do ano em cada distância (provas de asfalto).", [segKm, duplo], true));
+
+  caixas.push(caixaDq("🏆", "#E0A100", "Empilhadores de troféus", "Mais vitórias gerais (1º lugar do sexo) numa distância de uma prova.",
+    [el("ol", { className: "dq-lista" }, d.trofeus.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], num(x[0]), x[0] === 1 ? "vitória" : "vitórias gerais")))]));
+  caixas.push(caixaDq("🚀", "#7C3AED", "Melhores paces", "O ritmo médio mais rápido em provas de 10 km ou mais.",
+    abasDq([["F", "Elas"], ["M", "Eles"]], (sx, lista) => lista.replaceChildren(...d.paces[sx].map((x, i) =>
+      linhaDq(i + 1, x[1], x[3], "", pace(Math.round(x[0])), kmRot(x[4]) + " em " + tempo(x[5]) + " · " + x[6][0]))))));
+  caixas.push(caixaDq("🧭", "#0891B2", "Papa-distâncias", num(t.papa_distancias) + " atletas já completaram 5, 10, 21 e 42 km. Os que mais variaram de distância:",
+    [el("ol", { className: "dq-lista" }, d.papa_distancias.map((x, i) => linhaDq(i + 1, x[2], x[4], x[3], x[0] + " dist.", num(x[1]) + " provas")))]));
+  caixas.push(caixaDq("🔁", "#1250C4", "Rato de largada", "Quem mais largou desde " + d.desde + ".",
+    [el("ol", { className: "dq-lista" }, d.mais_provas.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], num(x[0]), "provas")))]));
+  caixas.push(caixaDq("🛣️", "#07734F", "Devoradores de quilômetros", "Mais quilômetros somados em provas.",
+    [el("ol", { className: "dq-lista" }, d.mais_km.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], num(x[0]) + " km", "")))]));
+  caixas.push(caixaDq("📅", "#DB2777", "Agenda cheia em " + d.ano, "Mais provas corridas neste ano.",
+    [el("ol", { className: "dq-lista" }, d.mais_provas_ano.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], num(x[0]), "provas em " + d.ano)))]));
+  caixas.push(caixaDq("🏅", "#B81C26", "Colecionadores de maratonas", "Mais maratonas (42 km) completadas.",
+    [el("ol", { className: "dq-lista" }, d.maratonas.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], num(x[0]), x[0] === 1 ? "maratona" : "maratonas")))]));
+  caixas.push(caixaDq("🧳", "#4A2FBF", "Viajantes", "Correram em mais cidades diferentes.",
+    [el("ol", { className: "dq-lista" }, d.viajantes.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], num(x[0]), "cidades")))]));
+  caixas.push(caixaDq("💛", "#C98A00", "Fiéis às provas", num(t.fieis) + " atletas já correram " + d.edicoes_fiel + " ou mais edições da mesma prova. Os mais fiéis:",
+    [el("ol", { className: "dq-lista" }, d.fieis.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], num(x[0]), x[0] === 1 ? "prova com " + d.edicoes_fiel + "+ edições" : "provas com " + d.edicoes_fiel + "+ edições")))]));
+  caixas.push(caixaDq("📈", "#16A34A", "Maior evolução nos 10 km", "Do primeiro 10 km ao melhor tempo, com pelo menos seis meses entre eles.",
+    [el("ol", { className: "dq-lista" }, d.evolucao_10k.map((x, i) => linhaDq(i + 1, x[1], x[3], x[2], "−" + tempo(x[0]), tempo(x[4]) + " → " + tempo(x[5]))))]));
+  document.getElementById("dq-grade").replaceChildren(...caixas);
+  mostrarDestaques();
+}
+function mostrarDestaques(){
+  document.getElementById("destaques").hidden = !DESTAQUES || !perfil.hidden || !st.hidden;
+}
+
+// Links internos (#slug das curiosidades, #supertrunfo da barra) sem recarregar a pagina.
+addEventListener("hashchange", async () => {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h === "supertrunfo"){ abrirSupertrunfo(); return; }
+  if (!h || h.includes("~") || (atletaAtual && atletaAtual.slug === h)) return;
+  const a = await atletaPorSlug(h);
+  if (a){ input.value = titulo(a.nome); lista.replaceChildren(); dica.textContent = ""; abrir(a); scrollTo({ top: document.getElementById("perfil").offsetTop - 70 }); }
+});
+
 /* ---------- inicio ---------- */
 carregarIndice().then(async () => {
+  carregarDestaques();
   if (modoSupertrunfo){ abrirSupertrunfo(); return; }
   const [slug, slugB] = decodeURIComponent(location.hash.slice(1)).split("~");
   if (slug && slugB){

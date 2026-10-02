@@ -18,67 +18,74 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="paginas.css">
 <style>
 :root{
-  --ground:#F1F4F9; --surface:#FFFFFF; --surface-2:#F1F4F9; --line:#BFC7D4; --line-soft:#D8DEE8;
-  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880; --azul:#0A2F73; --azul-ink:#0D3F9E; --sol:#FFC21A; --sol-wash:#FFF4D1;
-  --f-display:"Archivo",system-ui,sans-serif; --f-mono:"DM Mono",ui-monospace,monospace;
+  --ground:#F3F5FA; --surface:#FFFFFF; --surface-2:#EEF2F8; --line:#D5DCE8; --line-soft:#E4E9F2;
+  --ink:#0E1726; --ink-2:#2E3A50; --muted:#5B6880; --accent:#EF4E16; --accent-wash:#FFE6DA;
+  --azul:#1250C4; --azul-ink:#0D3F9E; --azul-wash:#E1EAFD; --sol:#FFC21A; --sol-wash:#FFF4D1;
+  --shadow:0 1px 2px rgba(14,23,38,.06), 0 12px 26px -16px rgba(14,23,38,.38);
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif; --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"DM Mono",ui-monospace,monospace;
 }
-@media (prefers-color-scheme: dark){ :root{
-  --ground:#0B1220; --surface:#121B2E; --surface-2:#0E1628; --line:#33415C; --line-soft:#26324A;
-  --ink:#E8EDF6; --ink-2:#C4CCDA; --muted:#8C97AA; --azul-ink:#8FB2FF; --sol-wash:#3A2F0A } }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --ground:#0A0F1C; --surface:#131B2D; --surface-2:#0F1628; --line:#26324C; --line-soft:#1B2539;
+  --ink:#EAF0FA; --ink-2:#C0CBE0; --muted:#8C99B3; --accent:#FF7143; --accent-wash:#3B1A0E;
+  --azul:#6B97FF; --azul-ink:#A9C2FF; --azul-wash:#15234A; --sol:#FFC940; --sol-wash:#3A2F0A;
+  --shadow:0 1px 0 rgba(0,0,0,.35), 0 14px 30px -18px #000 } }
 *{box-sizing:border-box}
-body{margin:0; background:var(--ground); color:var(--ink); font:16px/1.5 "Instrument Sans",system-ui,sans-serif}
+body{margin:0; background:var(--ground); color:var(--ink); font:16px/1.5 var(--f-body); -webkit-font-smoothing:antialiased}
 a{color:inherit}
-header.top{background:var(--azul); color:#fff; padding:1.8rem 1rem 1.6rem; position:relative}
+[hidden]{display:none !important}
+.wrap{width:min(1120px,100% - 2rem); margin-inline:auto}
+header.top{position:relative; overflow:hidden; color:#fff;
+  background:radial-gradient(90% 130% at 100% 0%, rgba(255,194,26,.26), transparent 58%), linear-gradient(135deg,#0A2F73 0%,#1450C8 100%)}
 header.top::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
-.wrap{max-width:60rem; margin:0 auto}
-.eyebrow{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin:0}
-.eyebrow a{color:#FFC21A; text-decoration:none}
-h1{font-family:var(--f-display); font-weight:800; font-size:clamp(1.6rem,5vw,2.5rem); margin:.35rem 0 .3rem; letter-spacing:-.025em; line-height:1.05}
-.sub{margin:0; opacity:.9; font-size:.95rem}
-.nums{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
-.nums div{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:.5rem .8rem}
-.nums b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.35rem; color:#FFC21A; line-height:1.1}
-.nums span{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; opacity:.8}
-main{padding:1.2rem 1rem 3rem}
-.filtros{display:grid; gap:.6rem; margin:0 0 1rem}
-.grupo{display:flex; flex-wrap:wrap; gap:.35rem; align-items:center}
-.grupo > span{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:.3rem}
-.chip{font:inherit; font-size:.84rem; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.3rem .8rem}
-.chip[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
-.linha{display:flex; gap:.6rem; flex-wrap:wrap}
-.linha input,.linha select{font:inherit; font-size:.92rem; padding:.5rem .7rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); min-width:0}
-.linha input{flex:1 1 14rem}
-.caixa{background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; overflow:hidden}
-table{width:100%; border-collapse:collapse; font-size:.88rem}
-th{font-family:var(--f-mono); font-weight:400; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.6rem .6rem; border-bottom:1px solid var(--line); background:var(--surface)}
-td{padding:.5rem .6rem; border-bottom:1px solid var(--line-soft); vertical-align:top}
-tr:last-child td{border-bottom:0}
-td.pos{font-family:var(--f-display); font-weight:800; font-size:1rem; width:3rem; text-align:center; color:var(--ink-2)}
-tr.podio td.pos{color:#0A2F73}
-tr.podio td.pos span{display:inline-block; min-width:1.8rem; background:var(--sol); border-radius:8px; padding:.05rem .3rem}
-td.pos small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.62rem; color:var(--muted)}
-td.atleta a{font-weight:600; text-decoration:none; border-bottom:1px solid var(--line)}
-td.atleta a:hover{color:var(--azul-ink); border-color:var(--azul-ink)}
+.top__inner{padding:1.8rem 0 2rem}
+.migalha{display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; font-family:var(--f-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:0}
+.migalha a{color:#FFC21A; text-decoration:none}
+.migalha a:hover{text-decoration:underline}
+h1{font-family:var(--f-display); font-weight:800; font-size:clamp(1.7rem,4.6vw,2.7rem); margin:.4rem 0 .25rem; letter-spacing:-.025em; line-height:1.05; max-width:28ch}
+.sub{margin:0; opacity:.9; font-size:.98rem}
+.nums{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1.1rem}
+.nums div{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:.55rem .85rem; min-width:6.5rem}
+.nums b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.4rem; color:#fff; line-height:1.1; font-variant-numeric:tabular-nums}
+.nums div:first-child b{color:#FFC21A}
+.nums span{font-family:var(--f-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; opacity:.8}
+main{padding:1.4rem 0 3rem}
+td.atleta a{font-weight:600; text-decoration:none; color:var(--ink)}
+td.atleta a:hover{color:var(--azul-ink); text-decoration:underline}
 td.atleta small{display:block; color:var(--muted); font-size:.76rem}
-td.num{font-family:var(--f-mono); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
-td.num b{font-weight:500; color:var(--ink)}
-tr.voce td{background:var(--sol-wash)}
+td.pos small{display:block; font-family:var(--f-mono); font-size:.6rem; color:var(--muted); margin-top:.15rem; text-align:center}
+td.tempo{font-family:var(--f-display); font-weight:800; font-size:.98rem}
+td.pace{font-family:var(--f-mono); font-size:.82rem; color:var(--ink-2)}
+td.cat{font-size:.82rem; color:var(--ink-2)}
+tr.voce td{background:var(--sol-wash) !important}
 .voce-tag{display:inline-block; margin-left:.35rem; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; background:var(--sol); color:#0A2F73; border-radius:5px; padding:.05rem .35rem}
-.mais{display:block; margin:1rem auto 0; font:inherit; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.5rem 1.2rem}
-.aviso{padding:1.4rem; color:var(--ink-2)}
-.nota{font-size:.78rem; color:var(--muted); margin:.8rem 0 0}
+.vazia{padding:1.4rem; color:var(--ink-2); text-align:center}
+.aviso{padding:1.4rem}
+.aviso a{color:var(--azul-ink); font-weight:600}
+.nota{font-size:.8rem; color:var(--muted); margin:.9rem 0 0}
+.nota a{color:var(--azul-ink)}
 .carregando{color:var(--muted); padding:1.5rem 0}
 .cat-cel{display:none}
-@media (max-width:640px){ .opc{display:none} .cat-cel{display:inline} td,th{padding:.45rem .4rem} table{font-size:.82rem} }
+@media (max-width:640px){
+  .opc{display:none} .cat-cel{display:inline}
+  .pg-tabela td,.pg-tabela th{padding:.5rem .4rem} .pg-tabela table{font-size:.84rem}
+  .nums div{min-width:0; flex:1 1 40%}
+}
 </style>
 </head>
 <body>
+<nav class="sitenav" aria-label="Seções do site"><div class="sitenav__in">
+  <a class="sitenav__marca" href="./"><img src="favicon.svg" alt=""><span>Cupons de Corrida</span></a>
+  <div class="sitenav__links">
+    <a href="./">Calendário</a><a href="./#resultados" aria-current="page">Resultados</a><a href="ranking.html">Ranking</a><a href="atletas.html">Atletas</a><a href="atletas.html#supertrunfo">Supertrunfo</a><a href="cupons.html">Cupons</a>
+  </div>
+  <a class="entrar-topo" href="area.html" data-entrar>Entrar</a>
+</div></nav>
 <header class="top">
-  <a class="entrar-topo" href="area.html" data-entrar>Entrar · Área do atleta</a>
-  <div class="wrap">
-    <p class="eyebrow"><a href="./">Cupons de Corrida</a> · resultado</p>
+  <div class="wrap top__inner">
+    <p class="migalha"><a href="./#resultados">Resultados</a><span>›</span><span>Classificação completa</span></p>
     <h1 id="titulo">Resultado</h1>
     <p class="sub" id="sub"></p>
     <div class="nums" id="nums"></div>
@@ -121,7 +128,7 @@ async function buscarDados(caminho, opcoes){
 
   function semDados(msg) {
     document.getElementById("titulo").textContent = "Resultado";
-    conteudo.replaceChildren(el("div", { className: "caixa aviso" }, [
+    conteudo.replaceChildren(el("div", { className: "pg-card aviso" }, [
       el("p", { textContent: msg }),
       slug ? el("p", {}, [el("a", { href: openResults, target: "_blank", rel: "noopener", textContent: "Ver a classificação no Open Results ↗" })]) : null,
       el("p", {}, [el("a", { href: "./", textContent: "← voltar ao calendário" })]),
@@ -176,25 +183,28 @@ async function buscarDados(caminho, opcoes){
     ].map(([v, r]) => el("div", {}, [el("b", { textContent: String(v) }), el("span", { textContent: r })])));
 
     const estado = { mod: mods[0], sexo: "", cat: "", q: "", mostrar: 100 };
-    const grupoMod = el("div", { className: "grupo" }, [el("span", { textContent: "Distância" })]);
+    const segMod = el("div", { className: "pg-seg", role: "group", ariaLabel: "Distância" });
+    const grupoMod = el("div", { className: "pg-barra__grupo" }, [el("span", { className: "pg-barra__rotulo", textContent: "Distância" }), segMod]);
     mods.forEach(m => {
-      const b = el("button", { className: "chip", type: "button", textContent: m + " · " + num(linhas.filter(l => l.mod === m).length) });
+      const b = el("button", { type: "button" }, [document.createTextNode(m), el("small", { textContent: num(linhas.filter(l => l.mod === m).length) })]);
+      b.dataset.mod = m;
       b.setAttribute("aria-pressed", String(m === estado.mod));
       b.onclick = () => { estado.mod = m; estado.cat = ""; estado.mostrar = 100;
-        grupoMod.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintarCategorias(); pintar(); };
-      grupoMod.append(b);
+        segMod.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintarCategorias(); pintar(); };
+      segMod.append(b);
     });
-    const grupoSexo = el("div", { className: "grupo" }, [el("span", { textContent: "Sexo" })]);
+    const segSexo = el("div", { className: "pg-seg", role: "group", ariaLabel: "Sexo" });
+    const grupoSexo = el("div", { className: "pg-barra__grupo" }, [el("span", { className: "pg-barra__rotulo", textContent: "Sexo" }), segSexo]);
     [["", "Geral"], ["F", "Feminino"], ["M", "Masculino"]].forEach(([v, rot]) => {
-      const b = el("button", { className: "chip", type: "button", textContent: rot });
+      const b = el("button", { type: "button", textContent: rot });
       b.setAttribute("aria-pressed", String(v === estado.sexo));
       b.onclick = () => { estado.sexo = v; estado.mostrar = 100;
-        grupoSexo.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintar(); };
-      grupoSexo.append(b);
+        segSexo.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintar(); };
+      segSexo.append(b);
     });
-    const busca = el("input", { type: "search", placeholder: "Buscar atleta ou equipe…", autocomplete: "off" });
+    const busca = el("input", { type: "search", placeholder: "Buscar atleta ou equipe…", autocomplete: "off", ariaLabel: "Buscar atleta ou equipe" });
     busca.oninput = () => { estado.q = norm(busca.value.trim()); estado.mostrar = 100; pintar(); };
-    const categorias = el("select", { ariaLabel: "Categoria" });
+    const categorias = el("select", { className: "pg-select", ariaLabel: "Categoria" });
     categorias.onchange = () => { estado.cat = categorias.value; estado.mostrar = 100; pintar(); };
     function pintarCategorias() {
       const cats = [...new Set(linhas.filter(l => l.mod === estado.mod).map(l => l.cat).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR", { numeric: true }));
@@ -206,12 +216,17 @@ async function buscarDados(caminho, opcoes){
     const corpo = el("tbody");
     const tabela = el("table", {}, [el("thead", {}, [el("tr", {}, [
       el("th", { textContent: "Pos." }), el("th", { textContent: "Atleta" }), el("th", { className: "opc", textContent: "Categoria" }),
-      el("th", { textContent: "Tempo", style: "text-align:right" }), el("th", { className: "opc", textContent: "Pace", style: "text-align:right" }),
+      el("th", { className: "n", textContent: "Tempo" }), el("th", { className: "n opc", textContent: "Pace" }),
     ])]), corpo]);
     const rodape = el("div");
+    const podio = el("div", { className: "pg-podio" });
+    const tituloTabela = el("h2");
     conteudo.replaceChildren(
-      el("div", { className: "filtros" }, [grupoMod, grupoSexo, el("div", { className: "linha" }, [busca, categorias])]),
-      el("div", { className: "caixa" }, [tabela]), rodape,
+      el("div", { className: "pg-card pg-barra" }, [grupoMod, grupoSexo]),
+      el("div", { className: "pg-card pg-barra" }, [el("label", { className: "pg-busca" }, [busca]), categorias]),
+      el("div", { className: "pg-secao" }, [el("div", {}, [el("span", { className: "pg-olho", textContent: "Classificação" }), tituloTabela])]),
+      podio,
+      el("div", { className: "pg-tabela" }, [tabela]), rodape,
       el("p", { className: "nota" }, [document.createTextNode("Posição calculada pelo tempo publicado pela cronometragem, na distância e no sexo. Resultado oficial: "),
         el("a", { href: openResults, target: "_blank", rel: "noopener", textContent: "Open Results ↗" }), document.createTextNode(".")]),
     );
@@ -221,26 +236,36 @@ async function buscarDados(caminho, opcoes){
       const lista = linhas.filter(l => l.mod === estado.mod && (!estado.sexo || l.sexo === estado.sexo)
         && (!estado.cat || l.cat === estado.cat) && (!estado.q || l.busca.includes(estado.q)))
         .sort((a, b) => (a.t || 9e9) - (b.t || 9e9));
+      tituloTabela.textContent = estado.mod + " · " + (estado.sexo === "F" ? "Feminino" : estado.sexo === "M" ? "Masculino" : "Geral") + (estado.cat ? " · " + estado.cat : "");
+      // podio: os tres primeiros do recorte (some quando ha busca por nome)
+      const tres = estado.q ? [] : lista.filter(l => l.t).slice(0, 3);
+      podio.hidden = tres.length < 3;
+      const degrau = (l, n) => { const d = el("div", { className: "pg-podio__item p" + n }, [
+        el("a", { className: "pg-podio__nome", href: "atletas.html#" + l.slug, textContent: l.nome }),
+        el("span", { className: "pg-podio__valor", textContent: tempo(l.t) }),
+        el("span", { className: "pg-podio__det", textContent: [pace(l.p), l.equipe || l.cat].filter(Boolean).join(" · ") })]);
+        d.dataset.pos = n + "º"; return d; };
+      if (tres.length === 3) podio.replaceChildren(degrau(tres[1], 2), degrau(tres[0], 1), degrau(tres[2], 3));
       corpo.replaceChildren(...lista.slice(0, estado.mostrar).map(l => {
         const pos = estado.sexo ? l.noSexo : l.geral;
-        const podio = l.noSexo && l.noSexo <= 3;
-        return el("tr", { className: (podio ? "podio" : "") + (l.slug === meuSlug ? " voce" : "") }, [
-          el("td", { className: "pos" }, [el("span", { textContent: pos ? pos + "º" : "—" }),
+        const naPosicao = estado.cat ? lista.indexOf(l) + 1 : pos;
+        return el("tr", { className: l.slug === meuSlug ? "voce" : "" }, [
+          el("td", { className: "pos" }, [el("span", { className: "pg-pos" + (naPosicao && naPosicao <= 3 && !estado.q ? " p" + naPosicao : ""), textContent: pos ? pos + "º" : "—" }),
             !estado.sexo && l.noSexo ? el("small", { textContent: l.noSexo + "º " + (l.sexo === "F" ? "fem" : "masc") }) : null]),
           el("td", { className: "atleta" }, [
             el("a", { href: "atletas.html#" + l.slug, textContent: l.nome }),
             l.slug === meuSlug ? el("span", { className: "voce-tag", textContent: "você" }) : null,
             el("small", {}, [document.createTextNode(l.equipe),
               l.cat ? el("span", { className: "cat-cel", textContent: (l.equipe ? " · " : "") + l.cat }) : null])]),
-          el("td", { className: "opc", textContent: l.cat || "—" }),
-          el("td", { className: "num" }, [el("b", { textContent: tempo(l.t) })]),
-          el("td", { className: "num opc", textContent: pace(l.p) }),
+          el("td", { className: "opc cat", textContent: l.cat || "—" }),
+          el("td", { className: "n tempo", textContent: tempo(l.t) }),
+          el("td", { className: "n pace opc", textContent: pace(l.p) }),
         ]);
       }));
       rodape.replaceChildren();
-      if (!lista.length) rodape.append(el("p", { className: "aviso", textContent: "Nenhum atleta encontrado com esses filtros." }));
+      if (!lista.length) rodape.append(el("p", { className: "vazia", textContent: "Nenhum atleta encontrado com esses filtros." }));
       if (lista.length > estado.mostrar) {
-        const mais = el("button", { className: "mais", type: "button", textContent: "Mostrar mais (" + num(lista.length - estado.mostrar) + " restantes)" });
+        const mais = el("button", { className: "pg-mais", type: "button", textContent: "Mostrar mais (" + num(lista.length - estado.mostrar) + " restantes)" });
         mais.onclick = () => { estado.mostrar += 200; pintar(); };
         rodape.append(mais);
       }
@@ -253,7 +278,7 @@ async function buscarDados(caminho, opcoes){
       meuSlug = a.slug_atleta;
       const minha = linhas.find(l => l.slug === meuSlug);
       if (minha && minha.mod !== estado.mod) {
-        const b = [...grupoMod.querySelectorAll(".chip")].find(x => x.textContent.startsWith(minha.mod + " ·"));
+        const b = [...segMod.querySelectorAll("button")].find(x => x.dataset.mod === minha.mod);
         if (b) return b.click();
       }
       pintar();

@@ -151,6 +151,8 @@ def coletar_atletas():
         atletas_build.montar(registrar=registrar)
         import ranking_build                     # ranking de cada corrida (ranking.html)
         ranking_build.montar(registrar=registrar)
+        import destaques_build                   # curiosidades da abertura de atletas.html
+        destaques_build.montar(registrar=registrar)
     # Alunos por assessoria (so para o BI): refeito todo dia, e barato.
     import assessorias
     assessorias.montar(registrar=registrar)

@@ -3590,6 +3590,9 @@ ao("btn-resultados", () => {
   document.getElementById("resultados-lista").scrollTop = 0;
 });
 ao("resultados-fechar", () => dialogoResultados.close());
+// Link "Resultados" das outras paginas (./#resultados): abre a lista direto.
+if (location.hash === "#resultados" && document.getElementById("btn-resultados"))
+  setTimeout(() => document.getElementById("btn-resultados").click(), 0);
 if (buscaResultados) buscaResultados.oninput = () => { mostrarResultados = LOTE_RESULTADOS; montarResultados(); };
 fechaNoFundo(dialogoResultados);
 

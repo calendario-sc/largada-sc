@@ -1,0 +1,99 @@
+/* Pecas comuns das paginas de resultados (ranking.html, resultado.html e
+   atletas.html): a barra de navegacao do site e os componentes pg-*.
+   As cores vem dos tokens de cada pagina (--surface, --ink, --azul...). */
+
+/* ---- barra de navegacao ---- */
+.sitenav{position:sticky; top:0; z-index:60; background:#071F4D; color:#FFFFFF; box-shadow:0 1px 0 rgba(255,255,255,.06), 0 6px 18px -12px rgba(0,0,0,.6)}
+.sitenav__in{width:min(1120px,100% - 2rem); margin-inline:auto; display:flex; align-items:center; gap:.9rem; height:3.3rem}
+.sitenav__marca{display:flex; align-items:center; gap:.5rem; flex:0 0 auto; color:#FFFFFF; text-decoration:none;
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif; font-weight:800; font-size:1rem; letter-spacing:-.01em; white-space:nowrap}
+.sitenav__marca img{width:26px; height:26px; display:block}
+.sitenav__links{display:flex; align-items:center; gap:.1rem; flex:1 1 auto; min-width:0; overflow-x:auto; scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 1.5rem),transparent); mask-image:linear-gradient(90deg,#000 calc(100% - 1.5rem),transparent)}
+.sitenav__links::-webkit-scrollbar{display:none}
+.sitenav__links a{color:rgba(255,255,255,.76); text-decoration:none; font-size:.86rem; font-weight:500; padding:.42rem .68rem; border-radius:8px; white-space:nowrap}
+.sitenav__links a:hover{color:#FFFFFF; background:rgba(255,255,255,.08)}
+.sitenav__links a[aria-current="page"]{color:#FFFFFF; background:rgba(255,255,255,.1); box-shadow:inset 0 -2px 0 #FFC21A}
+.sitenav .entrar-topo{position:static !important; flex:0 0 auto; margin:0 !important; white-space:nowrap}
+@media (max-width:720px){
+  .sitenav__in{gap:.5rem; width:calc(100% - 1.2rem)}
+  .sitenav__marca span{display:none}
+  .sitenav__links a{padding:.42rem .5rem; font-size:.82rem}
+  .sitenav .entrar-topo{font-size:.74rem !important; padding:.28rem .6rem !important; max-width:9.5rem; overflow:hidden; text-overflow:ellipsis}
+}
+@media print{ .sitenav{display:none !important} }
+
+/* ---- titulos de secao ---- */
+.pg-secao{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:.4rem 1rem; margin:2rem 0 .8rem}
+.pg-secao h2,.pg-secao h3{font-family:var(--f-display); font-weight:800; font-size:1.3rem; letter-spacing:-.015em; margin:0; line-height:1.15}
+.pg-secao p{margin:.2rem 0 0; color:var(--muted); font-size:.86rem}
+.pg-olho{display:block; font-family:var(--f-mono); font-size:.66rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 .3rem}
+
+/* ---- cartao e barra de filtros ---- */
+.pg-card{background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; box-shadow:var(--shadow)}
+.pg-barra{display:flex; flex-wrap:wrap; align-items:center; gap:.7rem 1.1rem; padding:.8rem .9rem; margin:0 0 1rem}
+.pg-barra__grupo{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem}
+.pg-barra__rotulo{font-family:var(--f-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-right:.15rem}
+.pg-busca{position:relative; flex:1 1 15rem; min-width:0}
+.pg-busca input,.pg-busca select{width:100%; font:inherit; font-size:.92rem; padding:.55rem .8rem .55rem 2.2rem; border:1px solid var(--line); border-radius:10px; background:var(--surface-2); color:var(--ink)}
+.pg-busca::before{content:""; position:absolute; left:.75rem; top:50%; width:.95rem; height:.95rem; transform:translateY(-50%); background:var(--muted);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.pg-busca input:focus,.pg-select:focus{outline:none; border-color:var(--azul); box-shadow:0 0 0 3px var(--azul-wash)}
+.pg-select{font:inherit; font-size:.9rem; padding:.52rem .7rem; border:1px solid var(--line); border-radius:10px; background:var(--surface-2); color:var(--ink); max-width:100%}
+
+/* ---- controle segmentado (abas) ---- */
+.pg-seg{display:inline-flex; flex-wrap:wrap; gap:.2rem; padding:.22rem; background:var(--surface-2); border:1px solid var(--line-soft); border-radius:12px}
+.pg-seg button{font:inherit; font-size:.86rem; font-weight:600; cursor:pointer; border:0; background:none; color:var(--ink-2); border-radius:9px; padding:.38rem .8rem; white-space:nowrap}
+.pg-seg button small{font-family:var(--f-mono); font-weight:400; font-size:.7rem; color:var(--muted); margin-left:.3rem}
+.pg-seg button:hover{color:var(--ink); background:var(--surface)}
+.pg-seg button[aria-pressed="true"]{background:var(--azul); color:#FFFFFF; box-shadow:0 1px 3px rgba(14,23,38,.25)}
+.pg-seg button[aria-pressed="true"] small{color:rgba(255,255,255,.8)}
+
+/* ---- numeros em destaque ---- */
+.pg-kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.6rem; margin:0 0 1rem}
+.pg-kpi{padding:.75rem .9rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:14px}
+.pg-kpi b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.45rem; line-height:1.05; color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+.pg-kpi span{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+
+/* ---- podio ---- */
+.pg-podio{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.7rem; margin:0 0 1rem; align-items:end}
+.pg-podio__item{position:relative; padding:1rem 1rem .9rem; border-radius:16px; background:var(--surface); border:1px solid var(--line-soft); box-shadow:var(--shadow); min-width:0; text-align:center}
+.pg-podio__item::before{content:attr(data-pos); position:absolute; top:-.85rem; left:50%; transform:translateX(-50%); width:1.9rem; height:1.9rem; border-radius:50%;
+  display:grid; place-items:center; font-family:var(--f-display); font-weight:800; font-size:.95rem; color:#3A2A00; background:var(--med); box-shadow:0 0 0 3px var(--surface), 0 2px 6px rgba(0,0,0,.2)}
+.pg-podio__item.p1{--med:#FFC21A; padding-top:1.4rem; border-color:#F2C14E; background:linear-gradient(180deg,rgba(255,194,26,.16),var(--surface) 60%)}
+.pg-podio__item.p2{--med:#C9D2DE}
+.pg-podio__item.p3{--med:#E3A27A}
+.pg-podio__nome{display:block; font-weight:700; font-size:.98rem; line-height:1.25; color:var(--ink); text-decoration:none; overflow-wrap:anywhere}
+a.pg-podio__nome:hover{color:var(--azul-ink); text-decoration:underline}
+.pg-podio__valor{display:block; font-family:var(--f-display); font-weight:800; font-size:1.35rem; color:var(--azul-ink); margin-top:.3rem; font-variant-numeric:tabular-nums}
+.pg-podio__det{display:block; font-family:var(--f-mono); font-size:.68rem; color:var(--muted); margin-top:.15rem}
+@media (max-width:560px){
+  .pg-podio{gap:.4rem}
+  .pg-podio__item{padding:1rem .45rem .7rem; border-radius:12px}
+  .pg-podio__nome{font-size:.8rem}
+  .pg-podio__valor{font-size:1.02rem}
+  .pg-podio__det{font-size:.6rem}
+}
+
+/* ---- tabela ---- */
+.pg-tabela{background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; overflow:auto; box-shadow:var(--shadow)}
+.pg-tabela table{width:100%; border-collapse:separate; border-spacing:0; font-size:.9rem}
+.pg-tabela th{position:sticky; top:0; z-index:1; background:var(--surface-2); font-family:var(--f-mono); font-weight:500; font-size:.63rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); text-align:left; padding:.65rem .7rem; border-bottom:1px solid var(--line); white-space:nowrap}
+.pg-tabela td{padding:.6rem .7rem; border-bottom:1px solid var(--line-soft); vertical-align:middle}
+.pg-tabela tbody tr:last-child td{border-bottom:0}
+.pg-tabela tbody tr:hover td{background:var(--surface-2)}
+.pg-tabela .n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.pg-pos{display:inline-grid; place-items:center; min-width:2rem; height:2rem; padding:0 .3rem; border-radius:9px; font-family:var(--f-display); font-weight:800; font-size:.9rem;
+  color:var(--ink-2); background:var(--surface-2); font-variant-numeric:tabular-nums}
+.pg-pos.p1{background:#FFC21A; color:#3A2A00}
+.pg-pos.p2{background:#D5DCE6; color:#1F2A3C}
+.pg-pos.p3{background:#EBB28F; color:#3B1A08}
+.pg-mais{display:block; margin:1rem auto 0; font:inherit; font-size:.9rem; font-weight:600; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.5rem 1.3rem}
+.pg-mais:hover{border-color:var(--azul); color:var(--azul-ink)}
+.pg-voltar{display:inline-flex; align-items:center; gap:.35rem; font:inherit; font-size:.86rem; font-weight:600; cursor:pointer; color:var(--ink-2); background:var(--surface);
+  border:1px solid var(--line); border-radius:999px; padding:.42rem .95rem; text-decoration:none}
+.pg-voltar:hover{border-color:var(--azul); color:var(--azul-ink)}
+.pg-pilula{display:inline-block; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.04em; padding:.12rem .45rem; border-radius:6px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--line-soft); white-space:nowrap}
+.pg-pilula.forte{background:var(--azul-wash); color:var(--azul-ink); border-color:transparent}

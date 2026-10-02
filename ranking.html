@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="paginas.css">
 <style>
 :root{
   --ground:#F3F5FA; --surface:#FFFFFF; --surface-2:#EEF2F8;
@@ -69,116 +70,131 @@ body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-b
 :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
 .wrap{width:min(1120px,100% - 2rem); margin-inline:auto}
 a{color:var(--azul-ink)}
-/* cabecalho: mesma faixa do calendario */
+/* cabecalho */
 .top{position:relative; overflow:hidden; color:#fff;
   background:radial-gradient(90% 130% at 100% 0%, rgba(255,194,26,.26), transparent 58%), linear-gradient(135deg,#0A2F73 0%,#1450C8 100%)}
-.top::after{content:""; position:absolute; inset:auto 0 0 0; height:8px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
-.top__inner{position:relative; display:flex; flex-wrap:wrap; gap:1.4rem 3rem; align-items:flex-end; justify-content:space-between; padding:2.6rem 0 2.2rem}
+.top::after{content:""; position:absolute; inset:auto 0 0 0; height:6px; background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.top__inner{position:relative; display:flex; flex-wrap:wrap; gap:1.4rem 3rem; align-items:flex-end; justify-content:space-between; padding:2.2rem 0 2rem}
 .eyebrow{font-family:var(--f-mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:0 0 .6rem}
-.eyebrow a{color:rgba(255,255,255,.9)}
-h1{font-family:var(--f-display); font-weight:800; margin:0; font-size:clamp(2.2rem,6vw,3.4rem); line-height:.95; letter-spacing:-.03em}
+h1{font-family:var(--f-display); font-weight:800; margin:0; font-size:clamp(2.1rem,5.5vw,3.2rem); line-height:.95; letter-spacing:-.03em}
 h1 em{font-style:normal; color:#FFC21A}
-.lede{margin:.8rem 0 0; max-width:48ch; color:rgba(255,255,255,.88)}
-.stats{display:flex; gap:.7rem; flex-wrap:wrap}
+.lede{margin:.8rem 0 0; max-width:50ch; color:rgba(255,255,255,.88)}
+.stats{display:flex; gap:.6rem; flex-wrap:wrap}
 .stat{padding:.6rem .9rem; border-radius:12px; min-width:100px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18)}
-.stat b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.6rem; line-height:1; font-variant-numeric:tabular-nums}
+.stat b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.55rem; line-height:1; font-variant-numeric:tabular-nums}
 .stat:first-child b{color:#FFC21A}
 .stat span{font-family:var(--f-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.72)}
-/* busca da corrida */
-.busca{padding:1.5rem 0 .4rem}
-.busca label{display:block; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 .45rem}
-.busca input{width:100%; font:inherit; font-size:1.1rem; padding:.8rem 1rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px}
-.busca input:focus{border-color:var(--accent); outline:none; box-shadow:0 0 0 3px var(--accent-wash)}
-.busca p{margin:.45rem 0 0; font-size:.82rem; color:var(--muted)}
-.lista{list-style:none; margin:.6rem 0 1.5rem; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(19rem,1fr)); gap:.4rem}
-.lista button{width:100%; text-align:left; font:inherit; cursor:pointer; display:grid; gap:.1rem; padding:.65rem .9rem; background:var(--surface);
-  border:1px solid var(--line-soft); border-radius:10px; color:var(--ink)}
-.lista button:hover{border-color:var(--accent); box-shadow:var(--shadow)}
-.lista b{font-weight:600}
-.lista small{font-family:var(--f-mono); font-size:.7rem; color:var(--muted)}
+main{padding:1.4rem 0 1rem}
+[hidden]{display:none !important}
+.corrida{scroll-margin-top:4.2rem}
+
+/* lista de corridas */
+.contagem{font-size:.84rem; color:var(--muted); margin:0 0 .7rem}
+.corridas{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(17.5rem,1fr)); gap:.75rem}
+.cartao-corrida{width:100%; height:100%; text-align:left; font:inherit; color:var(--ink); cursor:pointer; display:flex; flex-direction:column; gap:.55rem;
+  padding:.9rem 1rem .85rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:16px; box-shadow:var(--shadow); transition:border-color .15s, transform .15s}
+.cartao-corrida:hover{border-color:var(--azul); transform:translateY(-2px)}
+.cartao-corrida__local{display:flex; align-items:center; gap:.4rem; font-size:.78rem; color:var(--muted)}
+.uf{font-family:var(--f-mono); font-weight:500; font-size:.66rem; letter-spacing:.06em; color:#fff; background:var(--azul); border-radius:5px; padding:.08rem .35rem}
+.uf.PR{background:#07734F}
+.cartao-corrida b{font-family:var(--f-display); font-weight:800; font-size:1.05rem; line-height:1.2; letter-spacing:-.01em}
+.anos{display:flex; gap:.25rem; flex-wrap:wrap}
+.ano{font-family:var(--f-mono); font-size:.66rem; padding:.1rem .38rem; border-radius:5px; border:1px dashed var(--line); color:var(--muted)}
+.ano.tem{border:1px solid transparent; background:var(--azul-wash); color:var(--azul-ink); font-weight:500}
+.cartao-corrida__pe{display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-top:auto; padding-top:.5rem; border-top:1px solid var(--line-soft); font-size:.78rem; color:var(--muted)}
+.cartao-corrida__pe strong{color:var(--azul-ink); font-weight:600; white-space:nowrap}
+.carregando{color:var(--muted); padding:1rem 0}
+
 /* corrida escolhida */
-.corrida[hidden], .lista[hidden]{display:none}
-.corrida__topo{display:flex; flex-wrap:wrap; gap:.8rem; align-items:flex-end; justify-content:space-between; margin:1rem 0 .4rem}
-.corrida h2{font-family:var(--f-display); font-weight:800; font-size:clamp(1.5rem,4vw,2.2rem); margin:0; letter-spacing:-.02em; line-height:1.1}
-.corrida h2 small{display:block; font-family:var(--f-mono); font-weight:400; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:.4rem}
-.voltar{font:inherit; font-size:.85rem; cursor:pointer; color:var(--muted); background:none; border:1px dashed var(--line); border-radius:999px; padding:.4rem .9rem}
-.voltar:hover{border-color:var(--accent); color:var(--ink)}
-.aviso{background:var(--azul-wash); color:var(--ink-2); border-radius:12px; padding:.7rem .95rem; font-size:.88rem; margin:.6rem 0 1rem}
+.cabeca{display:flex; flex-wrap:wrap; gap:1rem; align-items:flex-start; justify-content:space-between; padding:1.1rem 1.2rem; margin:0 0 1rem}
+.cabeca h2{font-family:var(--f-display); font-weight:800; font-size:clamp(1.45rem,3.6vw,2.1rem); margin:0; letter-spacing:-.02em; line-height:1.1}
+.cabeca__info{display:flex; flex-wrap:wrap; gap:.35rem .5rem; align-items:center; margin-top:.55rem; font-size:.84rem; color:var(--muted)}
+.aviso{display:flex; gap:.6rem; align-items:flex-start; background:var(--azul-wash); color:var(--ink-2); border-radius:12px; padding:.7rem .95rem; font-size:.86rem; margin:0 0 1rem}
+.aviso::before{content:"i"; flex:0 0 auto; display:grid; place-items:center; width:1.25rem; height:1.25rem; border-radius:50%; background:var(--azul); color:#fff; font:700 .75rem var(--f-mono)}
 .aviso b{color:var(--ink)}
-.abas{display:flex; gap:.4rem; flex-wrap:wrap; margin:0 0 .6rem}
-.aba{font:inherit; font-size:.92rem; font-weight:600; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.45rem 1rem}
-.aba[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
-.aba.sexo[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--ground)}
-.filtro{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; margin:.2rem 0 .6rem}
-.filtro input{font:inherit; font-size:.92rem; padding:.45rem .7rem; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); flex:1 1 14rem; max-width:24rem}
-.filtro small{color:var(--muted); font-size:.82rem}
-.tabela{overflow-x:auto; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r)}
-table{width:100%; border-collapse:collapse; font-size:.9rem}
-th{font-family:var(--f-mono); font-weight:400; font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.6rem .6rem; border-bottom:1px solid var(--line); white-space:nowrap}
-td{padding:.5rem .6rem; border-bottom:1px solid var(--line-soft); vertical-align:middle}
-tr:last-child td{border-bottom:0}
-.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
-.pos{font-family:var(--f-mono); color:var(--muted); width:3rem}
+.filtro-nome{display:flex; gap:.8rem; align-items:center; flex-wrap:wrap; margin:0 0 .7rem}
+.filtro-nome small{color:var(--muted); font-size:.82rem}
 td.nome{min-width:12rem}
 td.nome a{color:var(--ink); text-decoration:none; font-weight:600}
 td.nome a:hover{color:var(--azul-ink); text-decoration:underline}
-.total{font-family:var(--f-display); font-weight:800; font-size:1rem}
+.pts{font-family:var(--f-mono); font-size:.82rem; color:var(--ink-2)}
 .vazio{color:var(--line)}
-tr.ouro td{background:var(--sol-wash)} tr.ouro .pos{color:var(--ink); font-weight:600}
-tr.prata td{background:var(--prata)}
-tr.bronze td{background:var(--bronze-wash)}
-.mais{display:block; margin:.8rem auto 0; font:inherit; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.45rem 1.1rem}
-h3{font-family:var(--f-display); font-weight:800; font-size:1.15rem; margin:1.8rem 0 .3rem}
-.sub{margin:0 0 .7rem; color:var(--muted); font-size:.86rem}
-.galeria{display:grid; grid-template-columns:repeat(auto-fit,minmax(18rem,1fr)); gap:.8rem}
-.galeria h4{margin:0; padding:.55rem .8rem; font-size:.78rem; font-family:var(--f-mono); letter-spacing:.1em; text-transform:uppercase; color:#fff; background:var(--azul); border-radius:var(--r) var(--r) 0 0}
-.galeria .F h4{background:var(--accent)}
-.galeria .tabela{border-radius:0 0 var(--r) var(--r)}
-.recorde{color:#B8860B; font-weight:700}
-.recorde::before{content:"★ "}
-details.regra{margin:1.8rem 0 0; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); padding:.8rem 1rem}
-details.regra summary{cursor:pointer; font-weight:600}
+.total{font-family:var(--f-display); font-weight:800; font-size:1.05rem; color:var(--azul-ink)}
+td.melhor{font-family:var(--f-mono); font-size:.8rem; color:var(--muted)}
+tr.top3 td{background:color-mix(in srgb,var(--sol) 7%,var(--surface))}
+/* galeria de campeoes */
+.galeria{display:grid; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr)); gap:.9rem}
+.galeria__col{padding:.2rem 0 .3rem}
+.galeria__col h4{display:flex; align-items:center; gap:.5rem; margin:0; padding:.75rem 1rem; font-family:var(--f-display); font-size:1rem; font-weight:800; border-bottom:1px solid var(--line-soft)}
+.galeria__col h4 i{width:.65rem; height:.65rem; border-radius:50%; background:var(--azul)}
+.galeria__col.F h4 i{background:var(--accent)}
+.campeao{display:grid; grid-template-columns:3.4rem minmax(0,1fr) auto; gap:.7rem; align-items:center; padding:.6rem 1rem; border-bottom:1px solid var(--line-soft)}
+.campeao:last-child{border-bottom:0}
+.campeao__ano{font-family:var(--f-display); font-weight:800; font-size:1rem; color:var(--muted)}
+.campeao a{color:var(--ink); font-weight:600; text-decoration:none; overflow-wrap:anywhere}
+.campeao a:hover{color:var(--azul-ink); text-decoration:underline}
+.campeao__tempo{font-family:var(--f-mono); font-size:.86rem; font-variant-numeric:tabular-nums; white-space:nowrap}
+.campeao__tempo.recorde{color:#B8860B; font-weight:700}
+.campeao__tempo.recorde::before{content:"★ "}
+/* regra */
+details.regra{margin:2rem 0 0; padding:.9rem 1.1rem}
+details.regra summary{cursor:pointer; font-weight:700; font-family:var(--f-display)}
+details.regra p{font-size:.9rem; color:var(--ink-2)}
 .pontos{display:grid; grid-template-columns:repeat(auto-fill,minmax(5.2rem,1fr)); gap:.3rem; margin:.7rem 0 .2rem; padding:0; list-style:none}
 .pontos li{font-family:var(--f-mono); font-size:.8rem; background:var(--surface-2); border-radius:8px; padding:.3rem .5rem; display:flex; justify-content:space-between}
-.carregando{color:var(--muted); padding:1rem 0}
+.sub{margin:0 0 .7rem; color:var(--muted); font-size:.84rem}
 footer{padding:2.5rem 0 3rem; color:var(--muted); font-size:.85rem}
 footer a{color:var(--muted); margin-right:1rem}
 @media (max-width:640px){
-  .top__inner{padding:2.6rem 0 1.6rem}
+  .top__inner{padding:1.8rem 0 1.6rem}
   .stat{min-width:0; flex:1 1 0}
-  td,th{padding:.45rem .45rem}
-  table{font-size:.85rem}
-  td.nome{min-width:9.5rem}
+  .pg-tabela td,.pg-tabela th{padding:.5rem .45rem}
+  .pg-tabela table{font-size:.84rem}
+  td.nome{min-width:9rem}
+  .so-largo{display:none}
 }
 </style>
 </head>
 <body>
+<nav class="sitenav" aria-label="Seções do site"><div class="sitenav__in">
+  <a class="sitenav__marca" href="./"><img src="favicon.svg" alt=""><span>Cupons de Corrida</span></a>
+  <div class="sitenav__links">
+    <a href="./">Calendário</a><a href="./#resultados">Resultados</a><a href="ranking.html" aria-current="page">Ranking</a><a href="atletas.html">Atletas</a><a href="atletas.html#supertrunfo">Supertrunfo</a><a href="cupons.html">Cupons</a>
+  </div>
+  <a class="entrar-topo" href="area.html" data-entrar>Entrar</a>
+</div></nav>
 <header class="top">
-  <a class="entrar-topo" href="area.html" data-entrar>Entrar · Área do atleta</a>
   <div class="wrap top__inner">
     <div>
-      <p class="eyebrow"><a href="./">Cupons de Corrida</a> &middot; ranking das corridas</p>
+      <p class="eyebrow">Resultados desde 2022 · SC e PR</p>
       <h1>Ranking das <em>corridas</em></h1>
-      <p class="lede">Escolha a corrida e veja quem mais pontuou em cada distância, os campeões de cada edição e os recordes. Resultados desde 2022.</p>
+      <p class="lede">Escolha a corrida e veja quem mais pontuou em cada distância, os campeões de cada edição e os recordes.</p>
     </div>
     <div class="stats">
       <div class="stat"><b id="s-corridas">—</b><span>corridas</span></div>
       <div class="stat"><b id="s-edicoes">—</b><span>edições</span></div>
-      <div class="stat"><b>2022</b><span>desde</span></div>
+      <div class="stat"><b id="s-atletas">—</b><span>atletas pontuaram</span></div>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="busca" id="busca">
-    <label for="q">Qual corrida?</label>
-    <input id="q" type="search" placeholder="Nome da corrida ou cidade…" autocomplete="off">
-    <p id="q-dica">As corridas com mais edições aparecem primeiro.</p>
+  <section id="busca">
+    <div class="pg-card pg-barra">
+      <label class="pg-busca"><input id="q" type="search" placeholder="Buscar corrida ou cidade…" autocomplete="off" aria-label="Buscar corrida ou cidade"></label>
+      <div class="pg-barra__grupo"><span class="pg-barra__rotulo">Estado</span><div class="pg-seg" id="f-uf" role="group" aria-label="Estado"></div></div>
+      <div class="pg-barra__grupo"><span class="pg-barra__rotulo">Ordem</span>
+        <select class="pg-select" id="ordem" aria-label="Ordem">
+          <option value="edicoes">Mais edições</option><option value="atletas">Mais atletas</option><option value="recente">Edição mais recente</option><option value="az">Nome (A–Z)</option>
+        </select></div>
+    </div>
+    <p class="contagem" id="q-dica"></p>
+    <ul class="corridas" id="lista"><li class="carregando">Carregando as corridas…</li></ul>
+    <button class="pg-mais" id="lista-mais" type="button" hidden>Mostrar mais corridas</button>
   </section>
-  <ul class="lista" id="lista"><li class="carregando">Carregando as corridas…</li></ul>
   <section class="corrida" id="corrida" hidden></section>
 
-  <details class="regra">
+  <details class="regra pg-card">
     <summary>Como funciona a pontuação</summary>
     <p>Em cada edição, os <b>20 primeiros colocados gerais</b> de cada distância, separados em masculino e feminino, ganham pontos pela tabela abaixo. Os pontos se somam ao longo das edições, <b>desde 2022</b>. Empate no total: na frente quem tem o melhor resultado numa só edição.</p>
     <ul class="pontos" id="pontos"></ul>
@@ -197,26 +213,49 @@ footer a{color:var(--muted); margin-right:1rem}
   const DADOS = LOCAL ? "" : "https://dados.cuponsdecorrida.com.br/";
   const buscar = caminho => fetch(DADOS + caminho, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
   const el = (tag, props = {}, kids = []) => { const n = Object.assign(document.createElement(tag), props); kids.forEach(k => k != null && n.append(k)); return n; };
-  const norm = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   const num = n => (n || 0).toLocaleString("pt-BR");
   const tempo = s => { const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(x).padStart(2, "0"); };
+  const dataBr = s => s ? s.split("-").reverse().join("/") : "";
+  const botaoSeg = (texto, ativo, aoClicar, extra) => { const b = el("button", { type: "button" }, [document.createTextNode(texto), extra != null ? el("small", { textContent: extra }) : null]);
+    b.setAttribute("aria-pressed", String(ativo)); b.onclick = aoClicar; return b; };
   const lista = document.getElementById("lista"), corrida = document.getElementById("corrida"), q = document.getElementById("q");
-  let corridas = [], atual = null;
+  const ordem = document.getElementById("ordem"), maisLista = document.getElementById("lista-mais");
+  let corridas = [], atual = null, ANOS = [], uf = "", limiteLista = 60;
+
+  function pintarUf() {
+    const caixa = document.getElementById("f-uf");
+    caixa.replaceChildren(...[["", "Todos"], ["SC", "SC"], ["PR", "PR"]].map(([v, rot]) =>
+      botaoSeg(rot, v === uf, () => { uf = v; limiteLista = 60; pintarUf(); mostrarLista(); }, num(corridas.filter(c => !v || c[3] === v).length))));
+  }
 
   function mostrarLista() {
     const t = norm(q.value).trim();
-    const achadas = (t ? corridas.filter(c => norm(c[1] + " " + c[2] + " " + c[3]).includes(t))
-                       : [...corridas].sort((a, b) => b[4].length - a[4].length || b[6] - a[6])).slice(0, 60);
-    document.getElementById("q-dica").textContent = t ? (achadas.length ? num(achadas.length) + (achadas.length === 60 ? "+ corridas" : achadas.length === 1 ? " corrida" : " corridas") : "Nenhuma corrida com esse nome.")
-                                                      : "As corridas com mais edições aparecem primeiro.";
-    lista.replaceChildren(...achadas.map(c => el("li", {}, [Object.assign(el("button", { type: "button" }, [
+    const ultima = c => c[4][c[4].length - 1] || "";
+    const ordens = {
+      edicoes: (a, b) => b[4].length - a[4].length || b[6] - a[6],
+      atletas: (a, b) => b[6] - a[6],
+      recente: (a, b) => ultima(b).localeCompare(ultima(a)) || b[6] - a[6],
+      az: (a, b) => a[1].localeCompare(b[1], "pt-BR"),
+    };
+    const achadas = corridas.filter(c => (!uf || c[3] === uf) && (!t || norm(c[1] + " " + c[2] + " " + c[3]).includes(t))).sort(ordens[ordem.value]);
+    document.getElementById("q-dica").textContent = achadas.length
+      ? num(achadas.length) + (achadas.length === 1 ? " corrida" : " corridas") + (t ? " encontradas" : "") + "."
+      : "Nenhuma corrida com esse nome.";
+    lista.replaceChildren(...achadas.slice(0, limiteLista).map(c => el("li", {}, [Object.assign(el("button", { type: "button", className: "cartao-corrida" }, [
+      el("span", { className: "cartao-corrida__local" }, [el("span", { className: "uf " + c[3], textContent: c[3] }), document.createTextNode(c[2] || "")]),
       el("b", { textContent: c[1] }),
-      el("small", { textContent: [c[2] && c[2] + "/" + c[3], (c[4].length === 1 ? "edição " : "edições ") + c[4].join(", "), c[5].join(" · ")].filter(Boolean).join(" · ") }),
+      el("span", { className: "anos", title: "Edições com resultado" }, ANOS.map(a => el("span", { className: "ano" + (c[4].includes(a) ? " tem" : ""), textContent: a }))),
+      el("span", { className: "anos" }, c[5].slice(0, 6).map(d => el("span", { className: "pg-pilula", textContent: d }))),
+      el("span", { className: "cartao-corrida__pe" }, [
+        document.createTextNode(num(c[6]) + " atletas pontuaram"), el("strong", { textContent: "Ver ranking →" })]),
     ]), { onclick: () => abrir(c[0]) })])));
+    maisLista.hidden = achadas.length <= limiteLista;
+    maisLista.textContent = "Mostrar mais corridas (" + num(achadas.length - limiteLista) + ")";
   }
 
   async function abrir(serie, empurrar = true) {
-    lista.hidden = true; document.getElementById("busca").hidden = true;
+    document.getElementById("busca").hidden = true;
     corrida.hidden = false;
     corrida.replaceChildren(el("p", { className: "carregando", textContent: "Carregando o ranking…" }));
     if (empurrar) history.pushState(null, "", "#" + serie);
@@ -225,12 +264,12 @@ footer a{color:var(--muted); margin-right:1rem}
     if (typeof gtag === "function") gtag("event", "ranking_corrida", { corrida: atual.nome });
     document.title = "Ranking · " + atual.nome + " · Cupons de Corrida";
     desenhar(0, "M");
-    scrollTo(0, 0);
+    corrida.scrollIntoView({ block: "start" });
   }
 
   function voltar() {
     history.pushState(null, "", location.pathname);
-    corrida.hidden = true; lista.hidden = false; document.getElementById("busca").hidden = false;
+    corrida.hidden = true; document.getElementById("busca").hidden = false;
     mostrarLista();
     document.title = "Ranking das corridas · Cupons de Corrida";
   }
@@ -240,79 +279,101 @@ footer a{color:var(--muted); margin-right:1rem}
     if (!d[sexo]) sexo = sexo === "M" ? "F" : "M";
     const g = d[sexo];
     const importadas = r.edicoes.filter(e => e.importado).map(e => e.rotulo);
-    const topo = el("div", { className: "corrida__topo" }, [
-      el("h2", {}, [document.createTextNode(r.nome), el("small", { textContent: [r.cidade && r.cidade + "/" + r.uf,
-        (r.edicoes.length === 1 ? "edição " : "edições ") + r.edicoes.map(e => e.rotulo).join(", "),
-        r.proxima ? "próxima: " + r.proxima.split("-").reverse().join("/") : ""].filter(Boolean).join(" · ") })]),
-      Object.assign(el("button", { type: "button", className: "voltar", textContent: "← Outras corridas" }), { onclick: voltar }),
+    const linkAtleta = (nome, slug, classe) => slug ? el("a", { className: classe || "", href: "atletas.html#" + encodeURIComponent(slug), textContent: nome }) : el("span", { className: classe || "", textContent: nome });
+
+    const voltarBtn = el("button", { type: "button", className: "pg-voltar", textContent: "← Todas as corridas" });
+    voltarBtn.onclick = voltar;
+    const cabeca = el("div", { className: "pg-card cabeca" }, [
+      el("div", {}, [el("span", { className: "pg-olho", textContent: "Ranking da corrida" }), el("h2", { textContent: r.nome }),
+        el("div", { className: "cabeca__info" }, [
+          r.cidade ? el("span", { className: "uf " + r.uf, textContent: r.uf }) : null, r.cidade ? document.createTextNode(r.cidade) : null,
+          el("span", { textContent: "·" }), document.createTextNode((r.edicoes.length === 1 ? "Edição " : "Edições ") + r.edicoes.map(e => e.rotulo).join(", ")),
+          r.proxima ? el("span", { className: "pg-pilula forte", textContent: "Próxima: " + dataBr(r.proxima) }) : null])]),
+      voltarBtn,
     ]);
-    const aviso = el("p", { className: "aviso" }, [el("b", { textContent: "Ranking desde 2022. " }),
+    const atletasDist = new Set([...(d.M ? d.M.ranking : []), ...(d.F ? d.F.ranking : [])].map(a => a[1] || a[0])).size;
+    const recorde = g.campeoes.filter(c => c[4]).map(c => c[2])[0] || (g.campeoes.length ? Math.min(...g.campeoes.map(c => c[2])) : null);
+    const kpis = el("div", { className: "pg-kpis" }, [
+      [r.edicoes.length, r.edicoes.length === 1 ? "edição" : "edições"], [r.distancias.length, r.distancias.length === 1 ? "distância" : "distâncias"],
+      [num(atletasDist), "atletas pontuaram no " + d.rotulo], [recorde ? tempo(recorde) : "—", "recorde " + (sexo === "F" ? "feminino" : "masculino")],
+    ].map(([v, rot]) => el("div", { className: "pg-kpi" }, [el("b", { textContent: String(v) }), el("span", { textContent: rot })])));
+    const barra = el("div", { className: "pg-card pg-barra" }, [
+      el("div", { className: "pg-barra__grupo" }, [el("span", { className: "pg-barra__rotulo", textContent: "Distância" }),
+        el("div", { className: "pg-seg", role: "group", ariaLabel: "Distância" }, r.distancias.map((x, i) => botaoSeg(x.rotulo, i === iDist, () => desenhar(i, sexo))))]),
+      el("div", { className: "pg-barra__grupo" }, [el("span", { className: "pg-barra__rotulo", textContent: "Categoria" }),
+        el("div", { className: "pg-seg", role: "group", ariaLabel: "Categoria" }, [["M", "Masculino"], ["F", "Feminino"]].filter(([s]) => d[s]).map(([s, rot]) => botaoSeg(rot, s === sexo, () => desenhar(iDist, s))))]),
+    ]);
+    const aviso = el("p", { className: "aviso" }, [el("span", {}, [el("b", { textContent: "Ranking desde 2022. " }),
       document.createTextNode("Soma os pontos dos 20 primeiros de cada edição, por distância e sexo (1º = 250 pontos). "
         + (importadas.length ? "Edições " + importadas.join(" e ") + ": classificação oficial em PDF da cronometragem. " : "")
-        + "Clique no nome para ver todas as provas do atleta.")]);
-    const abasDist = el("div", { className: "abas", role: "group", ariaLabel: "Distância" }, r.distancias.map((x, i) => {
-      const b = el("button", { type: "button", className: "aba", textContent: x.rotulo });
-      b.setAttribute("aria-pressed", String(i === iDist)); b.onclick = () => desenhar(i, sexo); return b;
-    }));
-    const abasSexo = el("div", { className: "abas", role: "group", ariaLabel: "Categoria" }, [["M", "Masculino"], ["F", "Feminino"]].filter(([s]) => d[s]).map(([s, rot]) => {
-      const b = el("button", { type: "button", className: "aba sexo", textContent: rot });
-      b.setAttribute("aria-pressed", String(s === sexo)); b.onclick = () => desenhar(iDist, s); return b;
-    }));
+        + "Clique no nome para ver todas as provas do atleta.")])]);
 
-    // Ranking acumulado
-    const filtroNome = el("input", { type: "search", placeholder: "Procurar atleta neste ranking…", autocomplete: "off" });
+    // podio do ranking acumulado
+    const degrau = (pos, kids) => { const n = el("div", { className: "pg-podio__item p" + pos }, kids); n.dataset.pos = pos + "º"; return n; };
+    const podio = el("div", { className: "pg-podio" }, [1, 0, 2].map(i => g.ranking[i]).map((a, k) => a ? degrau([2, 1, 3][k], [
+      linkAtleta(a[0], a[1], "pg-podio__nome"), el("span", { className: "pg-podio__valor", textContent: num(a[3]) + " pts" }),
+      el("span", { className: "pg-podio__det", textContent: a[2].filter(p => p != null).length + (a[2].filter(p => p != null).length === 1 ? " edição pontuada" : " edições pontuadas") }),
+    ]) : el("div")));
+
+    // ranking acumulado
+    const filtroNome = el("input", { type: "search", placeholder: "Procurar atleta neste ranking…", autocomplete: "off", ariaLabel: "Procurar atleta neste ranking" });
     const contagem = el("small");
     const corpo = el("tbody");
     let limite = 50;
-    const mais = Object.assign(el("button", { type: "button", className: "mais" }), { onclick: () => { limite = Infinity; pintar(); } });
+    const mais = Object.assign(el("button", { type: "button", className: "pg-mais" }), { onclick: () => { limite = Infinity; pintar(); } });
     function pintar() {
       const t = norm(filtroNome.value).trim();
       const linhas = g.ranking.map((a, i) => [i + 1, a]).filter(([, a]) => !t || norm(a[0]).includes(t));
-      contagem.textContent = num(g.ranking.length) + " atletas pontuaram";
-      corpo.replaceChildren(...linhas.slice(0, t ? Infinity : limite).map(([pos, a]) => {
-        const tr = el("tr", { className: pos === 1 ? "ouro" : pos === 2 ? "prata" : pos === 3 ? "bronze" : "" }, [
-          el("td", { className: "pos", textContent: pos + "º" }),
-          el("td", { className: "nome" }, [a[1] ? el("a", { href: "atletas.html#" + encodeURIComponent(a[1]), textContent: a[0] }) : document.createTextNode(a[0])]),
-          ...a[2].map(p => el("td", { className: "n" + (p == null ? " vazio" : ""), textContent: p == null ? "—" : p })),
-          el("td", { className: "n total", textContent: num(a[3]) }),
-        ]);
-        return tr;
-      }));
+      contagem.textContent = num(g.ranking.length) + " atletas pontuaram" + (t ? " · " + num(linhas.length) + " com esse nome" : "");
+      corpo.replaceChildren(...linhas.slice(0, t ? Infinity : limite).map(([pos, a]) => el("tr", { className: pos <= 3 ? "top3" : "" }, [
+        el("td", {}, [el("span", { className: "pg-pos" + (pos <= 3 ? " p" + pos : ""), textContent: pos + "º" })]),
+        el("td", { className: "nome" }, [linkAtleta(a[0], a[1])]),
+        ...a[2].map(p => el("td", { className: "n pts so-largo" + (p == null ? " vazio" : ""), textContent: p == null ? "—" : p })),
+        el("td", { className: "n melhor so-largo", textContent: a[4] ? tempo(a[4]) : "—" }),
+        el("td", { className: "n total", textContent: num(a[3]) }),
+      ])));
       const resta = t ? 0 : linhas.length - limite;
       mais.hidden = resta <= 0;
       mais.textContent = "Ver todos (" + num(linhas.length) + ")";
     }
     filtroNome.oninput = pintar;
-    const tabela = el("div", { className: "tabela" }, [el("table", {}, [
+    const tabela = el("div", { className: "pg-tabela" }, [el("table", {}, [
       el("thead", {}, [el("tr", {}, [el("th", { textContent: "Pos." }), el("th", { textContent: "Atleta" }),
-        ...r.edicoes.map(e => el("th", { className: "n", textContent: e.rotulo })), el("th", { className: "n", textContent: "Total" })])]),
+        ...r.edicoes.map(e => el("th", { className: "n so-largo", textContent: e.rotulo })), el("th", { className: "n so-largo", textContent: "Melhor tempo" }), el("th", { className: "n", textContent: "Pontos" })])]),
       corpo])]);
     pintar();
 
-    // Galeria de campeoes (as duas categorias da distancia)
+    // galeria de campeoes (as duas categorias da distancia)
     const galeria = el("div", { className: "galeria" }, [["M", "Masculino"], ["F", "Feminino"]].filter(([s]) => d[s]).map(([s, rot]) =>
-      el("div", { className: s }, [el("h4", { textContent: d.rotulo + " · " + rot }), el("div", { className: "tabela" }, [el("table", {}, [
-        el("thead", {}, [el("tr", {}, [el("th", { textContent: "Ano" }), el("th", { textContent: s === "F" ? "Campeã" : "Campeão" }), el("th", { className: "n", textContent: "Tempo" })])]),
-        el("tbody", {}, d[s].campeoes.map(c => el("tr", {}, [el("td", { className: "pos", textContent: r.edicoes[c[0]].rotulo }),
-          el("td", { className: "nome" }, [c[3] ? el("a", { href: "atletas.html#" + encodeURIComponent(c[3]), textContent: c[1] }) : document.createTextNode(c[1])]),
-          el("td", { className: "n" + (c[4] && r.edicoes.length > 1 ? " recorde" : ""), textContent: tempo(c[2]) })]))),
-      ])])])));
+      el("div", { className: "pg-card galeria__col " + s }, [el("h4", {}, [el("i"), document.createTextNode(d.rotulo + " · " + rot)]),
+        ...d[s].campeoes.map(c => el("div", { className: "campeao" }, [
+          el("span", { className: "campeao__ano", textContent: r.edicoes[c[0]].rotulo }),
+          linkAtleta(c[1], c[3]),
+          el("span", { className: "campeao__tempo" + (c[4] && r.edicoes.length > 1 ? " recorde" : ""), textContent: tempo(c[2]), title: c[4] && r.edicoes.length > 1 ? "Recorde da prova" : "" })]))])));
 
-    corrida.replaceChildren(topo, aviso, abasDist, abasSexo,
-      el("h3", { textContent: "Ranking acumulado · " + d.rotulo + " " + (sexo === "F" ? "feminino" : "masculino") }),
-      el("div", { className: "filtro" }, [filtroNome, contagem]), tabela, mais,
-      el("h3", { textContent: "Galeria de campeões · " + d.rotulo }),
-      el("p", { className: "sub", textContent: r.edicoes.length > 1 ? "★ recorde da prova na distância, entre as edições desde 2022 (tempo líquido)." : "Tempo líquido." }),
+    corrida.replaceChildren(cabeca, kpis, barra, aviso,
+      el("div", { className: "pg-secao" }, [el("div", {}, [el("span", { className: "pg-olho", textContent: "Pontos somados" }),
+        el("h3", { textContent: "Ranking acumulado · " + d.rotulo + " " + (sexo === "F" ? "feminino" : "masculino") })])]),
+      podio, el("div", { className: "filtro-nome" }, [el("label", { className: "pg-busca" }, [filtroNome]), contagem]), tabela, mais,
+      el("div", { className: "pg-secao" }, [el("div", {}, [el("span", { className: "pg-olho", textContent: "Edição a edição" }),
+        el("h3", { textContent: "Galeria de campeões · " + d.rotulo }),
+        el("p", { textContent: r.edicoes.length > 1 ? "★ recorde da prova na distância, entre as edições desde 2022 (tempo líquido)." : "Tempo líquido." })])]),
       galeria);
   }
 
-  q.oninput = mostrarLista;
+  q.oninput = () => { limiteLista = 60; mostrarLista(); };
+  ordem.onchange = () => { limiteLista = 60; mostrarLista(); };
+  maisLista.onclick = () => { limiteLista += 120; mostrarLista(); };
   addEventListener("popstate", () => { const s = decodeURIComponent(location.hash.slice(1)); if (s) abrir(s, false); else voltar(); });
   buscar("atletas/ranking/indice.json").then(d => {
     corridas = d.corridas;
+    const ultimo = Math.max(...corridas.flatMap(c => c[4].map(Number)).filter(Boolean));
+    for (let a = Number(d.desde || 2022); a <= ultimo; a++) ANOS.push(String(a));
     document.getElementById("s-corridas").textContent = num(corridas.length);
     document.getElementById("s-edicoes").textContent = num(corridas.reduce((s, c) => s + c[4].length, 0));
+    document.getElementById("s-atletas").textContent = num(corridas.reduce((s, c) => s + (c[6] || 0), 0));
     document.getElementById("pontos").replaceChildren(...d.pontos.map((p, i) => el("li", {}, [el("span", { textContent: (i + 1) + "º" }), el("b", { textContent: p })])));
+    pintarUf();
     const s = decodeURIComponent(location.hash.slice(1));
     if (s) abrir(s, false); else mostrarLista();
   }).catch(e => lista.replaceChildren(el("li", { className: "carregando", textContent: "Não foi possível carregar o ranking agora (" + e.message + "). Tente de novo em instantes." })));
