@@ -297,15 +297,53 @@ h1 em{font-style:normal; color:#FFC21A}
 .galeria a{color:inherit; text-decoration:none; border-bottom:1px solid var(--line)}
 .galeria a:hover{color:var(--azul-ink); border-color:var(--azul-ink)}
 .galeria .vazio{color:var(--muted); font-size:.8rem}
-.camp{width:min(46rem, 100% - 2rem)}
-.camp__lista{list-style:none; margin:0; padding:0 .8rem .6rem; overflow-y:auto}
-.camp__lista > li{padding:.55rem .5rem; border-bottom:1px solid var(--line-soft)}
-.camp__lista .prova{font-weight:700; font-size:.92rem}
-.camp__lista .prova small{display:block; font-weight:400; font-family:var(--f-mono); font-size:.68rem; color:var(--muted); letter-spacing:.04em}
-.camp__lista .venc{margin:.3rem 0 0; font-size:.76rem; color:var(--ink-2); line-height:1.5}
-.camp__lista .venc b{font-family:var(--f-display); color:var(--azul-ink); margin-right:.25rem}
-.camp__lista .venc span{white-space:nowrap}
-.camp__lista .venc i{font-style:normal; font-family:var(--f-mono); color:var(--muted)}
+.camp{width:min(62rem, 100% - 2rem)}
+.camp .orgs__caixa{max-height:min(90vh, 52rem)}
+.camp__ferr{display:flex; gap:.45rem; flex-wrap:wrap; align-items:center; padding:0 1.2rem .7rem}
+.camp__ferr input{flex:1 1 15rem; max-width:22rem; font:inherit; font-size:.88rem; padding:.45rem .7rem; border:1px solid var(--line); border-radius:999px; background:var(--surface); color:var(--ink)}
+.camp__ferr input:focus{outline:none; border-color:var(--azul); box-shadow:0 0 0 3px var(--azul-wash)}
+.camp__km{font:inherit; font-size:.8rem; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:.3rem .75rem}
+.camp__km[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
+.camp__lista{overflow-y:auto; padding:0 1.2rem 1rem}
+.camp__resumo{display:grid; grid-template-columns:minmax(0,11rem) minmax(0,1fr) minmax(0,1fr); gap:.7rem; margin:0 0 1rem}
+.camp__num{background:linear-gradient(135deg,#0A2F73,#1450C8); color:#fff; border-radius:12px; padding:.7rem .85rem; display:flex; flex-direction:column; justify-content:center; gap:.35rem}
+.camp__num b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.5rem; line-height:1; color:#FFC21A}
+.camp__num span{font-size:.74rem; opacity:.85}
+.camp__top{background:var(--surface); border:1px solid var(--line-soft); border-radius:12px; padding:.6rem .8rem}
+.camp__top h4{margin:0 0 .4rem; font-family:var(--f-mono); font-weight:400; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.camp__top ol{list-style:none; margin:0; padding:0; display:grid; gap:.2rem}
+.camp__top li{display:grid; grid-template-columns:1.4rem minmax(0,1fr) auto; gap:.4rem; align-items:baseline; font-size:.82rem}
+.camp__top li .pos{font-family:var(--f-mono); font-size:.7rem; color:var(--muted)}
+.camp__top li:first-child .pos{color:#B8860B; font-weight:700}
+.camp__top li .n{font-family:var(--f-mono); font-size:.72rem; color:var(--muted); white-space:nowrap}
+.camp__top a, .camp__tab a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.camp__top a:hover, .camp__tab a:hover{color:var(--azul-ink); text-decoration:underline}
+.camp__mes{position:sticky; top:0; z-index:1; margin:.4rem 0 .5rem; padding:.45rem 0 .35rem; background:var(--surface);
+  font-family:var(--f-display); font-weight:800; font-size:1rem; color:var(--azul-ink); border-bottom:2px solid var(--sol); display:flex; justify-content:space-between; align-items:baseline}
+.camp__mes small{font-family:var(--f-mono); font-weight:400; font-size:.66rem; color:var(--muted); letter-spacing:.06em}
+.camp__prova{display:grid; grid-template-columns:3.4rem minmax(0,1fr); gap:.2rem .8rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:12px; padding:.65rem .75rem; margin:0 0 .55rem}
+.camp__data{align-self:start; text-align:center; background:var(--azul-wash); color:var(--azul-ink); border-radius:9px; padding:.3rem .2rem; line-height:1.05}
+.camp__data b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.3rem}
+.camp__data span{font-family:var(--f-mono); font-size:.6rem; text-transform:uppercase; letter-spacing:.08em}
+.camp__nome{font-weight:700; font-size:.95rem; line-height:1.25}
+.camp__nome small{display:block; font-weight:400; font-size:.76rem; color:var(--muted); margin-top:.1rem}
+.camp__tab{grid-column:1 / -1; display:grid; grid-template-columns:4.6rem minmax(0,1fr) minmax(0,1fr); border-top:1px solid var(--line-soft); margin-top:.45rem}
+.camp__tab > div{padding:.32rem .4rem; border-bottom:1px solid var(--line-soft); font-size:.82rem; display:flex; align-items:baseline; gap:.45rem; min-width:0}
+.camp__tab > .cab{font-family:var(--f-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--line)}
+.camp__tab .dist{font-family:var(--f-display); font-weight:800; color:var(--ink); white-space:nowrap}
+.camp__tab .med{flex:0 0 auto; width:.55rem; height:.55rem; border-radius:50%; background:#E0B33A; box-shadow:inset 0 -1px 0 rgba(0,0,0,.2); align-self:center}
+.camp__tab .t{margin-left:auto; font-family:var(--f-mono); font-size:.76rem; color:var(--ink-2); font-variant-numeric:tabular-nums; white-space:nowrap}
+.camp__tab .sem{color:var(--muted)}
+.camp__tab > div:nth-last-child(-n+3){border-bottom:0}
+.camp__vazio{padding:1rem 0; color:var(--muted); font-size:.9rem}
+@media (max-width:640px){
+  .camp__resumo{grid-template-columns:1fr; gap:.5rem} .camp__num{flex-direction:row; justify-content:space-around}
+  .camp__tab{grid-template-columns:3.6rem minmax(0,1fr)} .camp__tab > .cab{display:none}
+  .camp__tab .fem, .camp__tab .masc{grid-column:2} .camp__tab .dist{grid-row:span 2; align-items:center}
+  .camp__tab .fem::before{content:"F"; font-family:var(--f-mono); font-size:.6rem; color:var(--muted)}
+  .camp__tab .masc::before{content:"M"; font-family:var(--f-mono); font-size:.6rem; color:var(--muted)}
+  .camp__prova{grid-template-columns:2.9rem minmax(0,1fr)}
+}
 
 /* ---------- raio-x floripa: mapa + lista ---------- */
 .rx{width:min(72rem, 100% - 2rem)}
@@ -1310,7 +1348,8 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
       <h2 id="campeoes-titulo">Campeões <small id="campeoes-recorte"></small></h2>
       <button class="orgs__fechar" id="campeoes-fechar" type="button">Fechar</button>
     </div>
-    <ol class="camp__lista" id="campeoes-lista"></ol>
+    <div class="camp__ferr" id="campeoes-ferr"></div>
+    <div class="camp__lista" id="campeoes-lista"></div>
     <p class="orgs__rodape" id="campeoes-rodape"></p>
   </div>
 </dialog>
@@ -3460,42 +3499,100 @@ function desenharGaleria(caixa, r){
 
 const dialogoCampeoes = document.getElementById("campeoes");
 
+// Janela dos campeoes: resumo (quem mais venceu no recorte), filtros por prova/atleta
+// e distancia, e as provas por mes, cada uma com a tabela Distancia | Feminino | Masculino.
+const campFiltro = { q:"", km:"" };
+let campLimite = 100;      // provas na tela (mais de mil no periodo "Realizadas": o resto vem no "Mostrar mais")
+const MESES_CAMP = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+const faixaKm = km => km >= 40 ? "42" : km >= 20 ? "21" : km >= 9.5 && km <= 10.5 ? "10" : km >= 4.5 && km <= 5.5 ? "5" : "outras";
+const ROT_FAIXA = { "5":"5 km", "10":"10 km", "21":"21 km", "42":"42 km", "outras":"Outras" };
+
 function montarCampeoes(){
   document.getElementById("campeoes-recorte").textContent = descreverRecorte();
-  const lista = document.getElementById("campeoes-lista"), rodape = document.getElementById("campeoes-rodape");
-  lista.replaceChildren(); rodape.textContent = "";
-  if (campeoesErro){ lista.append(el("li", { className:"rec__vazio", textContent:campeoesErro })); return; }
-  if (!CAMPEOES){ lista.append(el("li", { className:"rec__vazio", textContent:"Carregando os campeões…" })); return; }
-  const provas = ultimoRecorte.filter(r => r.or_slug && CAMPEOES[r.or_slug])
-    .sort((a, b) => b._d - a._d);
-  const dataCurta = r => String(r.dia).padStart(2, "0") + "/" + String(r.mes).padStart(2, "0") + "/" + r.ano;
-  provas.forEach(r => {
-    const li = el("li");
-    li.append(el("div", { className:"prova", textContent:r.nome }, [
-      el("small", { textContent:dataCurta(r) + " · " + r.cidade }) ]));
-    const venc = el("div", { className:"venc" });
-    CAMPEOES[r.or_slug].forEach(([km, f, m], i) => {
-      if (i) venc.append(document.createElement("br"));
-      venc.append(el("b", { textContent:kmRotulo(km) }));
-      [["F", f], ["M", m]].forEach(([sx, v], j) => {
-        if (!v) return;
-        const s = el("span");
-        if (j && f) s.append(document.createTextNode(" · "));
-        s.append(el("i", { textContent:sx + " " }), linkAtleta(v[0], v[2]), el("i", { textContent:" " + tempoCamp(v[1]) }));
-        venc.append(s);
-      });
-    });
-    li.append(venc);
-    lista.append(li);
+  const lista = document.getElementById("campeoes-lista"), rodape = document.getElementById("campeoes-rodape"), ferr = document.getElementById("campeoes-ferr");
+  lista.replaceChildren(); rodape.textContent = ""; ferr.replaceChildren();
+  if (campeoesErro){ lista.append(el("p", { className:"camp__vazio", textContent:campeoesErro })); return; }
+  if (!CAMPEOES){ lista.append(el("p", { className:"camp__vazio", textContent:"Carregando os campeões…" })); return; }
+  const todas = ultimoRecorte.filter(r => r.or_slug && CAMPEOES[r.or_slug]).sort((a, b) => b._d - a._d);
+  // filtros
+  const faixas = [...new Set(todas.flatMap(r => CAMPEOES[r.or_slug].map(([km]) => faixaKm(km))))]
+    .sort((a, b) => (a === "outras") - (b === "outras") || Number(a) - Number(b));
+  const busca = el("input", { type:"search", placeholder:"Buscar prova, cidade ou atleta…", value:campFiltro.q, "aria-label":"Buscar" });
+  busca.oninput = () => { campFiltro.q = busca.value; campLimite = 100; pintar(); };
+  const botoes = ["", ...faixas].map(f => {
+    const b = el("button", { type:"button", className:"camp__km", textContent:f ? ROT_FAIXA[f] : "Todas" });
+    b.setAttribute("aria-pressed", String(campFiltro.km === f));
+    b.onclick = () => { campFiltro.km = f; campLimite = 100; botoes.forEach(x => x.setAttribute("aria-pressed", String(x === b))); pintar(); };
+    return b;
   });
-  if (!provas.length)
-    lista.append(el("li", { className:"rec__vazio", textContent:"Nenhuma prova do recorte com vencedores identificados. Os campeões vêm dos resultados por atleta, de 2022 em diante; escolha um ano ou o período \"Realizadas\"." }));
-  rodape.textContent = provas.length
-    ? num(provas.length) + (provas.length === 1 ? " prova" : " provas") + " com vencedores identificados, da mais recente à mais antiga. F = feminino, M = masculino; tempo como a cronometragem publicou. Clique no nome para ver o perfil do atleta."
-    : "";
+  ferr.append(busca, ...botoes);
+
+  function pintar(){
+    const q = norm(campFiltro.q.trim());
+    const provas = todas.map(r => {
+      const linhas = CAMPEOES[r.or_slug].filter(([km]) => !campFiltro.km || faixaKm(km) === campFiltro.km);
+      const casa = !q || norm(r.nome + " " + r.cidade).includes(q)
+        || linhas.some(([, f, m]) => [f, m].some(v => v && norm(v[0]).includes(q)));
+      return linhas.length && casa ? { r, linhas } : null;
+    }).filter(Boolean);
+    // resumo: quem mais venceu no que esta na tela
+    const vit = { F:new Map(), M:new Map() };
+    provas.forEach(({ linhas }) => linhas.forEach(([, f, m]) => [["F", f], ["M", m]].forEach(([sx, v]) => {
+      if (!v) return;
+      const o = vit[sx].get(v[2]) || vit[sx].set(v[2], { nome:v[0], slug:v[2], n:0 }).get(v[2]); o.n++;
+    })));
+    const ranking = (sx, titulo) => {
+      const top = [...vit[sx].values()].sort((a, b) => b.n - a.n || a.nome.localeCompare(b.nome)).slice(0, 5);
+      return el("div", { className:"camp__top" }, [el("h4", { textContent:titulo }),
+        top.length ? el("ol", {}, top.map((o, i) => el("li", {}, [el("span", { className:"pos", textContent:(i + 1) + "º" }),
+          linkAtleta(o.nome, o.slug), el("span", { className:"n", textContent:o.n + (o.n === 1 ? " vitória" : " vitórias") })])))
+          : el("p", { className:"camp__vazio", textContent:"—" })]);
+    };
+    const nCampeoes = vit.F.size + vit.M.size;
+    lista.replaceChildren();
+    if (!provas.length){
+      lista.append(el("p", { className:"camp__vazio", textContent: todas.length ? "Nada encontrado com esses filtros."
+        : "Nenhuma prova do recorte com vencedores identificados. Os campeões vêm dos resultados por atleta, de 2022 em diante; escolha um ano ou o período \"Realizadas\"." }));
+      rodape.textContent = "";
+      return;
+    }
+    lista.append(el("div", { className:"camp__resumo" }, [
+      el("div", { className:"camp__num" }, [el("div", {}, [el("b", { textContent:num(provas.length) }), el("span", { textContent:provas.length === 1 ? "prova" : "provas" })]),
+        el("div", {}, [el("b", { textContent:num(nCampeoes) }), el("span", { textContent:"campeões e campeãs" })])]),
+      ranking("F", "Mais vitórias · feminino"), ranking("M", "Mais vitórias · masculino")]));
+    let mesAtual = "";
+    let bloco = null;
+    provas.slice(0, campLimite).forEach(({ r, linhas }) => {
+      const chaveMes = r.ano + "-" + r.mes;
+      if (chaveMes !== mesAtual){
+        mesAtual = chaveMes;
+        const n = provas.filter(x => x.r.ano + "-" + x.r.mes === chaveMes).length;
+        lista.append(el("h3", { className:"camp__mes" }, [MESES_CAMP[r.mes - 1].replace(/^./, c => c.toUpperCase()) + " de " + r.ano,
+          el("small", { textContent:n + (n === 1 ? " prova" : " provas") })]));
+      }
+      const tab = el("div", { className:"camp__tab" }, [el("div", { className:"cab", textContent:"Distância" }), el("div", { className:"cab", textContent:"Feminino" }), el("div", { className:"cab", textContent:"Masculino" })]);
+      linhas.forEach(([km, f, m]) => {
+        const cel = (v, cls) => el("div", { className:cls }, v ? [el("span", { className:"med", "aria-hidden":"true" }), linkAtleta(v[0], v[2]), el("span", { className:"t", textContent:tempoCamp(v[1]) })]
+          : [el("span", { className:"sem", textContent:"—" })]);
+        tab.append(el("div", { className:"dist", textContent:kmRotulo(km) }), cel(f, "fem"), cel(m, "masc"));
+      });
+      lista.append(el("article", { className:"camp__prova" }, [
+        el("div", { className:"camp__data" }, [el("b", { textContent:String(r.dia).padStart(2, "0") }), el("span", { textContent:MESES_CAMP[r.mes - 1].slice(0, 3) })]),
+        el("div", { className:"camp__nome", textContent:r.nome }, [el("small", { textContent:r.cidade + (r.uf && UF === "" ? "/" + r.uf : "") })]),
+        tab]));
+    });
+    if (provas.length > campLimite){
+      const mais = el("button", { type:"button", className:"camp__km", style:"display:block;margin:.6rem auto 0", textContent:"Mostrar mais (" + num(provas.length - campLimite) + " provas)" });
+      mais.onclick = () => { const y = lista.scrollTop; campLimite += 100; pintar(); lista.scrollTop = y; };
+      lista.append(mais);
+    }
+    rodape.textContent = "Vencedor e vencedora de cada distância, com o tempo publicado pela cronometragem; de 2022 em diante. Clique no nome para ver o perfil do atleta.";
+  }
+  pintar();
 }
 
 ao("btn-campeoes", async () => {
+  campLimite = 100;
   montarCampeoes();
   dialogoCampeoes.showModal();
   await carregarCampeoes();
