@@ -222,7 +222,21 @@ h1 em{font-style:normal; color:#FFC21A}
 .orgs__rodape{padding:.6rem 1.2rem .9rem; border-top:1px solid var(--line-soft); font-size:.8rem; color:var(--muted)}
 .orgs__rodape b{color:var(--ink-2)}
 .orgs__acoes{display:flex; gap:.4rem; flex:none}
-#orgs-pdf::before,#btn-cal-pdf::before{content:"\2193\00a0"}
+#orgs-pdf::before,body.bi #btn-cal-pdf::before{content:"\2193\00a0"}
+/* Icones dos atalhos do topo (site publico): traco amarelo sobre o azul. No BI os mesmos
+   botoes vao para o menu lateral, fora de .top, e ficam sem icone. */
+.top .chip[data-icone]{display:inline-flex; align-items:center; gap:.4rem; line-height:1.1}
+.top .chip[data-icone]::before{content:""; flex:0 0 auto; width:1.05em; height:1.05em; background:#FFC21A;
+  -webkit-mask:var(--ic) center/contain no-repeat; mask:var(--ic) center/contain no-repeat}
+.top .chip[data-icone]:hover::before{background:#FFFFFF}
+.top .chip[data-icone="resultados"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z'/%3E%3Cline x1='4' x2='4' y1='22' y2='15'/%3E%3C/svg%3E")}
+.top .chip[data-icone="campeoes"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9H4.5a2.5 2.5 0 0 1 0-5H6'/%3E%3Cpath d='M18 9h1.5a2.5 2.5 0 0 0 0-5H18'/%3E%3Cpath d='M4 22h16'/%3E%3Cpath d='M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22'/%3E%3Cpath d='M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22'/%3E%3Cpath d='M18 2H6v7a6 6 0 0 0 12 0V2Z'/%3E%3C/svg%3E")}
+.top .chip[data-icone="recordes"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='10' x2='14' y1='2' y2='2'/%3E%3Cline x1='12' x2='15' y1='14' y2='11'/%3E%3Ccircle cx='12' cy='14' r='8'/%3E%3C/svg%3E")}
+.top .chip[data-icone="atleta"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='10' cy='7' r='4'/%3E%3Cpath d='M10.3 15H7a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='17' cy='17' r='3'/%3E%3Cpath d='m21 21-1.9-1.9'/%3E%3C/svg%3E")}
+.top .chip[data-icone="ranking"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 21V10h8v11'/%3E%3Cpath d='M2 21v-6h6'/%3E%3Cpath d='M16 21v-8h6v8'/%3E%3Cpath d='M2 21h20'/%3E%3Cpath d='M12 4l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2L9.1 6.1l2-.3z'/%3E%3C/svg%3E")}
+.top .chip[data-icone="supertrunfo"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='14.5 17.5 3 6 3 3 6 3 17.5 14.5'/%3E%3Cline x1='13' x2='19' y1='19' y2='13'/%3E%3Cline x1='16' x2='20' y1='16' y2='20'/%3E%3Cline x1='19' x2='21' y1='21' y2='19'/%3E%3Cpolyline points='14.5 6.5 18 3 21 3 21 6 17.5 9.5'/%3E%3Cline x1='5' x2='9' y1='14' y2='18'/%3E%3Cline x1='7' x2='4' y1='17' y2='20'/%3E%3Cline x1='3' x2='5' y1='19' y2='21'/%3E%3C/svg%3E")}
+.top .chip[data-icone="pdf"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' x2='12' y1='15' y2='3'/%3E%3C/svg%3E")}
+.top .chip[data-icone="agenda"]{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cline x1='16' x2='16' y1='2' y2='6'/%3E%3Cline x1='8' x2='8' y1='2' y2='6'/%3E%3Cline x1='3' x2='21' y1='10' y2='10'/%3E%3Cline x1='12' x2='12' y1='14' y2='18'/%3E%3Cline x1='10' x2='14' y1='16' y2='16'/%3E%3C/svg%3E")}
 
 /* ---------- ticketeiras: pizza + legenda ---------- */
 .tk,.orgs{width:min(40rem, 100% - 2rem)}
@@ -1218,15 +1232,15 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
         </div>
         <span class="top__sep" aria-hidden="true"></span>
         <span class="top__links">
-        <button class="chip" id="btn-resultados" type="button" aria-haspopup="dialog" title="Provas já realizadas, da mais recente, com o número de concluintes">Resultados</button>
-        <button class="chip" id="btn-campeoes" type="button" aria-haspopup="dialog" title="Os vencedores de cada distância, nas provas do recorte">Campeões</button>
-        <button class="chip" id="btn-recordes" type="button" aria-haspopup="dialog" title="Os dez melhores tempos em cada distância, nas provas do recorte">Recordes</button>
-        <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html" title="Busque um atleta pelo nome e veja as provas, o pace e os melhores tempos">Resultados por atleta ↗</a>
-        <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/ranking.html" title="Ranking de cada corrida desde 2022: pontos por distância, campeões e recordes">Ranking ↗</a>
-        <a class="chip chip--link" href="https://www.cuponsdecorrida.com.br/atletas.html#supertrunfo" title="Compare dois atletas lado a lado: provas, km, títulos e melhores tempos">Supertrunfo ↗</a>
-        <button class="chip" id="btn-cal-pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
-        <a class="chip chip--link" id="btn-agenda" href="https://calendar.google.com/" target="_blank" rel="noopener nofollow"
-           title="Assine e receba as corridas no seu Google Agenda, atualizadas sozinhas">Assinar no Google Agenda ↗</a>
+        <button class="chip" id="btn-resultados" data-icone="resultados" type="button" aria-haspopup="dialog" title="Provas já realizadas, da mais recente, com o número de concluintes">Resultados</button>
+        <button class="chip" id="btn-campeoes" data-icone="campeoes" type="button" aria-haspopup="dialog" title="Os vencedores de cada distância, nas provas do recorte">Campeões</button>
+        <button class="chip" id="btn-recordes" data-icone="recordes" type="button" aria-haspopup="dialog" title="Os dez melhores tempos em cada distância, nas provas do recorte">Recordes</button>
+        <a class="chip chip--link" data-icone="atleta" href="https://www.cuponsdecorrida.com.br/atletas.html" title="Busque um atleta pelo nome e veja as provas, o pace e os melhores tempos">Resultados por atleta</a>
+        <a class="chip chip--link" data-icone="ranking" href="https://www.cuponsdecorrida.com.br/ranking.html" title="Ranking de cada corrida desde 2022: pontos por distância, campeões e recordes">Ranking</a>
+        <a class="chip chip--link" data-icone="supertrunfo" href="https://www.cuponsdecorrida.com.br/atletas.html#supertrunfo" title="Compare dois atletas lado a lado: provas, km, títulos e melhores tempos">Supertrunfo</a>
+        <button class="chip" id="btn-cal-pdf" data-icone="pdf" type="button" title="Salvar o calendário filtrado em PDF">Calendário em PDF</button>
+        <a class="chip chip--link" id="btn-agenda" data-icone="agenda" href="https://calendar.google.com/" target="_blank" rel="noopener nofollow"
+           title="Assine e receba as corridas no seu Google Agenda, atualizadas sozinhas">Google Agenda</a>
         </span>
         <button class="chip chip--reset" id="reset-top" type="button" title="Limpar todos os filtros">Limpar</button>
       </div>
