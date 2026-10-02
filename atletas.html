@@ -126,20 +126,97 @@ h1 em{font-style:normal; color:#FFC21A}
 .st[hidden]{display:none}
 .st h2{font-family:var(--f-display); font-weight:800; font-size:clamp(1.4rem,3.5vw,2rem); margin:.4rem 0 .2rem; letter-spacing:-.02em}
 .st__sub{margin:0 0 1rem; color:var(--muted); font-size:.9rem}
-.st__escolha{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:.8rem; align-items:start}
-.st__lado label{display:block; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 .3rem}
-.st__lado input{width:100%; font:inherit; font-size:1rem; padding:.7rem .9rem; border-radius:12px; border:2px solid var(--line); background:var(--surface); color:var(--ink)}
-.st__lado--a input{border-color:#1450C8}
-.st__lado--b input{border-color:#EF4E16}
-.st__lado input.escolhido{font-weight:700}
-.st__lado .lista{margin-top:.4rem; max-height:22rem; overflow-y:auto}
-.st__x{align-self:center; font-family:var(--f-display); font-weight:800; font-size:2rem; color:var(--muted); padding-top:1.3rem}
-.st__cartas{margin-top:1.2rem; padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow)}
+.st__escolha{display:grid; grid-template-columns:minmax(0,22rem) auto minmax(0,22rem); justify-content:center; gap:1.2rem; align-items:start}
+.st__x{align-self:center; font-family:var(--f-display); font-weight:800; font-size:2.2rem; color:var(--muted)}
+.st__cartas{margin-top:1.4rem}
 .st__cartas:empty{display:none}
+
+/* ---- cartas do Supertrunfo: visual de carta de baralho (borda branca, faixa de atributos) ---- */
+.st__lado,.scarta{--c1:#2A6EF0; --c2:#0A2F73; position:relative; color:#FFFFFF; border:7px solid #FFFFFF; border-radius:22px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 9px,transparent 9px 18px),linear-gradient(165deg,var(--c1),var(--c2));
+  box-shadow:0 0 0 1px rgba(14,23,38,.22), 0 18px 34px -16px rgba(14,23,38,.55)}
+.st__lado--b,.scarta--b{--c1:#FF7A3D; --c2:#8A2A0B}
+.sc-topo{display:flex; align-items:center; gap:.5rem}
+.sc-cod{flex:0 0 auto; min-width:2.3rem; padding:.18rem .45rem; border-radius:8px; background:#FFFFFF; color:var(--c2); font-family:var(--f-display); font-weight:800; font-size:.95rem; text-align:center; line-height:1.2}
+.sc-marca{flex:1; font-family:var(--f-display); font-weight:800; font-style:italic; text-transform:uppercase; font-size:.72rem; letter-spacing:.04em; line-height:1; color:#FFFFFF}
+.sc-marca b{display:block; font-size:1.18rem; letter-spacing:-.01em; color:#FFC21A; text-shadow:0 2px 0 #0E1726, 1px 0 0 #0E1726, -1px 0 0 #0E1726, 0 -1px 0 #0E1726}
+.sc-arte{position:relative; overflow:hidden; display:grid; place-items:center; height:8.5rem; margin:.55rem 0 0; border-radius:14px; border:3px solid rgba(255,255,255,.9);
+  background:radial-gradient(70% 90% at 50% 100%,rgba(255,255,255,.35),transparent 70%),linear-gradient(180deg,rgba(255,255,255,.18),rgba(0,0,0,.18))}
+.sc-corredor{width:5.2rem; height:5.2rem; color:rgba(255,255,255,.92); filter:drop-shadow(0 3px 0 rgba(0,0,0,.25))}
+
+/* escolha: a carta mostra o verso ate ter atleta */
+.st__lado{padding:.75rem .8rem .9rem; min-height:25rem}
+.st__lado .sc-arte span{position:absolute; right:.6rem; top:.2rem; font-family:var(--f-display); font-weight:800; font-size:3rem; line-height:1; color:rgba(255,255,255,.75)}
+.st__lado .sc-nome{margin:.55rem 0 .6rem; min-height:1.6rem; font-family:var(--f-display); font-weight:800; font-size:1.2rem; line-height:1.15; overflow-wrap:anywhere}
+.st__lado .sc-nome:empty::before{content:"Escolha o atleta"; opacity:.7; font-weight:600; font-size:1rem}
+.st__lado.tem .sc-arte{border-color:#FFC21A}
+.st__lado.tem .sc-arte span{display:none}
+.st__lado label{display:block; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.85); margin:0 0 .3rem}
+.st__lado input{width:100%; font:inherit; font-size:1rem; padding:.65rem .85rem; border-radius:12px; border:0; background:#FFFFFF; color:#0E1726; box-shadow:inset 0 0 0 2px rgba(14,23,38,.12)}
+.st__lado input::placeholder{color:#5B6880}
+.st__lado input.escolhido{font-weight:700}
+.st__lado .dica{margin:.45rem 0 0; font-size:.8rem; color:rgba(255,255,255,.9); min-height:1.2em}
+.st__lado .lista{margin:.4rem 0 0; max-height:17rem; overflow-y:auto; padding:2px}
+.st__lado .lista button{background:#FFFFFF; color:#0E1726; border-color:transparent; border-left:5px solid var(--c1)}
+.st__lado .lista button small{color:#5B6880}
+.st__lado .lista .vazio{color:rgba(255,255,255,.85); font-size:.8rem}
+
+/* duelo: as duas cartas na mesa */
+.mesa{display:grid; grid-template-columns:minmax(0,21rem) auto minmax(0,21rem); justify-content:center; align-items:start; gap:1rem; margin:.5rem 0 1rem}
+.mesa__x{align-self:center; font-family:var(--f-display); font-weight:800; font-size:2rem; color:var(--muted)}
+.scarta{padding:.6rem .6rem .5rem; transform:rotate(-1.2deg)}
+.scarta--b{transform:rotate(1.2deg)}
+.scarta.vence{box-shadow:0 0 0 1px rgba(14,23,38,.22), 0 0 0 5px #FFC21A, 0 22px 40px -16px rgba(14,23,38,.6)}
+.sc-pts{margin-left:auto; display:grid; place-items:center; width:2.6rem; height:2.6rem; border-radius:50%; background:#FFFFFF; color:var(--c2);
+  font-family:var(--f-display); font-weight:800; font-size:1.35rem; box-shadow:inset 0 0 0 3px var(--c1)}
+.scarta.vence .sc-pts{background:#FFC21A; color:#3A2A00; box-shadow:inset 0 0 0 3px #3A2A00}
+.sc-foto{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.sc-selo{position:absolute; left:-2.2rem; top:.9rem; transform:rotate(-30deg); padding:.2rem 2.4rem; background:#FFC21A; color:#3A2A00;
+  font-family:var(--f-display); font-weight:800; font-style:italic; text-transform:uppercase; font-size:.68rem; letter-spacing:.06em; box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.scarta .sc-nome{margin:.5rem .1rem .45rem}
+.scarta .sc-nome b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.12rem; line-height:1.15; overflow-wrap:anywhere;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.3em}
+.scarta .sc-nome small{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.04em; opacity:.88}
+.sc-attrs{list-style:none; margin:0; padding:0; border-radius:10px; overflow:hidden; background:rgba(255,255,255,.94); color:#0E1726}
+.sc-l{display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-areas:"rot val" "sub sub"; align-content:center; column-gap:.4rem; height:2.25rem; padding:0 .6rem}
+.sc-l.com-sub{height:2.9rem}
+.sc-l:nth-child(even){background:color-mix(in srgb,var(--c1) 13%,#FFFFFF)}
+.sc-rot{grid-area:rot; align-self:center; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:#2E3A50; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.sc-l b{grid-area:val; font-family:var(--f-display); font-weight:800; font-size:1rem; font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
+.sc-l small{grid-area:sub; font-family:var(--f-mono); font-size:.62rem; color:#5B6880; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.sc-l.ganha{background:#FFC21A !important; color:#3A2A00}
+.sc-l.ganha .sc-rot,.sc-l.ganha small{color:#3A2A00}
+.sc-l.ganha b::before{content:"\2605\00a0"; font-size:.8em}
+.sc-g{height:1.7rem; display:flex; align-items:center; justify-content:center; padding:0 .5rem; background:var(--c2); color:#FFFFFF;
+  font-family:var(--f-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; overflow:hidden}
+.sc-pe{display:flex; justify-content:space-between; margin:.4rem .15rem 0; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.06em; opacity:.85}
 @media (max-width:720px){
-  .st__escolha{grid-template-columns:1fr}
-  .st__x{padding:0; text-align:center; font-size:1.5rem}
+  .st__escolha{grid-template-columns:minmax(0,24rem); gap:.6rem}
+  .st__lado{min-height:0}
+  .st__lado .sc-arte{height:5.5rem}
+  .st__lado .sc-corredor{width:3.6rem; height:3.6rem}
+  .st__x{text-align:center; font-size:1.5rem}
+  .mesa{grid-template-columns:1fr 1fr; gap:.55rem}
+  .mesa__x{display:none}
+  .scarta{border-width:5px; border-radius:16px; padding:.4rem .35rem .4rem; transform:none}
+  .scarta--b{transform:none}
+  .sc-cod{min-width:0; font-size:.75rem; padding:.12rem .3rem}
+  .sc-marca{font-size:.55rem} .sc-marca b{font-size:.85rem}
+  .sc-pts{width:2rem; height:2rem; font-size:1.05rem}
+  .scarta .sc-arte{height:5.5rem; margin-top:.4rem}
+  .scarta .sc-corredor{width:3.4rem; height:3.4rem}
+  .sc-selo{font-size:.55rem; left:-2.4rem; top:.6rem}
+  .scarta .sc-nome b{font-size:.88rem}
+  .scarta .sc-nome small{font-size:.58rem}
+  .sc-l{grid-template-columns:1fr; grid-template-areas:"rot" "val"; height:2.7rem; padding:0 .4rem}
+  .sc-l.com-sub{grid-template-areas:"rot" "val" "sub"; height:3.5rem}
+  .sc-rot{font-size:.56rem}
+  .sc-l b{text-align:left; font-size:.92rem}
+  .sc-l small{font-size:.56rem}
+  .sc-g{font-size:.52rem; letter-spacing:.06em}
+  .sc-pe{font-size:.5rem; justify-content:center} .sc-pe span + span{display:none}
 }
+@media print{ .scarta,.scarta--b{transform:none; break-inside:avoid; box-shadow:0 0 0 1px #BFC7D4} .scarta.vence{box-shadow:0 0 0 1px #BFC7D4, 0 0 0 4px #FFC21A} .mesa{grid-template-columns:1fr auto 1fr} }
 
 /* ---- duelo estilo Super Trunfo ---- */
 .duelo{margin:0 0 1.2rem; padding:1rem 1.1rem; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); box-shadow:var(--shadow)}
@@ -149,31 +226,7 @@ h1 em{font-style:normal; color:#FFC21A}
 .duelo__busca{margin:.7rem 0 0}
 .duelo__busca input{width:100%; font:inherit; padding:.6rem .8rem; border:1px solid var(--line); border-radius:10px; background:var(--surface-2); color:var(--ink)}
 .duelo__busca .lista{margin-top:.5rem}
-.placar{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.6rem; margin:.9rem 0 .8rem}
-.carta{padding:.8rem .9rem; border-radius:12px; color:#FFFFFF; min-width:0}
-/* Foto do atleta (so para quem esta logado e se o dono autorizou). */
-.carta .foto{display:block; width:64px; height:64px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,.85); margin:0 0 .45rem}
-.carta--b .foto{margin-left:auto}
 .foto-perfil{width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid #FFC21A; vertical-align:middle; margin-right:.7rem; float:left}
-.carta--a{background:linear-gradient(135deg,#0A2F73,#1450C8)}
-.carta--b{background:linear-gradient(135deg,#8A2A0B,#EF4E16); text-align:right}
-.carta b{display:block; font-family:var(--f-display); font-weight:800; font-size:1.05rem; line-height:1.2; overflow-wrap:anywhere}
-.carta small{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.06em; opacity:.85}
-.carta .pts{font-family:var(--f-display); font-weight:800; font-size:2.2rem; line-height:1; margin-top:.35rem}
-.carta.vence{box-shadow:0 0 0 3px #FFC21A}
-.placar__x{font-family:var(--f-display); font-weight:800; font-size:1.1rem; color:var(--muted)}
-.atributos{width:100%; border-collapse:collapse; font-size:.9rem}
-.atributos td{padding:.45rem .55rem; border-bottom:1px solid var(--line-soft); vertical-align:middle}
-.atributos td.a{text-align:left; width:38%}
-.atributos td.b{text-align:right; width:38%}
-.atributos td.rot{text-align:center; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
-.atributos td.a b,.atributos td.b b{font-family:var(--f-display); font-weight:800; font-size:1.05rem; font-variant-numeric:tabular-nums}
-.atributos td small{display:block; font-family:var(--f-mono); font-size:.68rem; color:var(--muted)}
-.atributos td.ganha{background:var(--sol); color:var(--sol-ink); border-radius:8px}
-.atributos td.ganha small{color:var(--sol-ink); opacity:.8}
-.atributos tr.grupo td{padding-top:.9rem; border-bottom:2px solid var(--ink); font-family:var(--f-mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); text-align:center}
-.duelo__nota{margin:.6rem 0 0; font-size:.76rem; color:var(--muted)}
-@media (max-width:720px){ .carta b{font-size:.9rem} .carta .pts{font-size:1.7rem} .atributos{font-size:.8rem} }
 .duelo__acoes{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.8rem}
 .duelo__acoes .pdf::before{content:"\2193\00a0"}
 @media print{ .duelo__busca,.duelo__topo button,.duelo__acoes{display:none !important} .duelo{box-shadow:none; border-color:var(--line)} }
@@ -302,7 +355,7 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
   body.pdf-duelo .duelo,
   body.pdf-duelo .st__cartas{margin:0; padding:0; border:0; box-shadow:none}
   body.pdf-duelo .duelo__titulo{display:block; font-family:var(--f-display); font-weight:800; font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .8rem}
-  body.pdf-duelo .placar{margin-bottom:.8rem}
+  body.pdf-duelo .mesa{margin-bottom:.8rem}
 }
 .duelo__titulo{display:none}
 </style>
@@ -331,14 +384,20 @@ td .melhor{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.06em; te
     <h2>Supertrunfo</h2>
     <p class="st__sub">Escolha dois atletas: um ponto por atributo, e vence quem somar mais.</p>
     <div class="st__escolha">
-      <div class="st__lado st__lado--a">
+      <div class="st__lado st__lado--a" id="st-carta-a">
+        <div class="sc-topo"><span class="sc-cod">A1</span><span class="sc-marca">Super<b>trunfo</b></span></div>
+        <div class="sc-arte"><svg class="sc-corredor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14.5" cy="4.2" r="2"/><path d="M6 10.5l3-2.5h4l3 3.2h3"/><path d="M13 8l-2 6"/><path d="M11 14l-3 3H5"/><path d="M11 14l3 3v4"/></svg><span>?</span></div>
+        <div class="sc-nome" id="st-nome-a"></div>
         <label for="st-a">Atleta 1</label>
         <input id="st-a" type="search" placeholder="Nome do primeiro atleta" autocomplete="off">
         <p class="dica" id="st-dica-a"></p>
         <ul class="lista" id="st-lista-a"></ul>
       </div>
       <span class="st__x" aria-hidden="true">×</span>
-      <div class="st__lado st__lado--b">
+      <div class="st__lado st__lado--b" id="st-carta-b">
+        <div class="sc-topo"><span class="sc-cod">B1</span><span class="sc-marca">Super<b>trunfo</b></span></div>
+        <div class="sc-arte"><svg class="sc-corredor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14.5" cy="4.2" r="2"/><path d="M6 10.5l3-2.5h4l3 3.2h3"/><path d="M13 8l-2 6"/><path d="M11 14l-3 3H5"/><path d="M11 14l3 3v4"/></svg><span>?</span></div>
+        <div class="sc-nome" id="st-nome-b"></div>
         <label for="st-b">Atleta 2</label>
         <input id="st-b" type="search" placeholder="Nome do segundo atleta" autocomplete="off">
         <p class="dica" id="st-dica-b"></p>
@@ -949,6 +1008,8 @@ function tabelaTodas(res){
     el("tbody", {}, linhas)]));
 }
 
+const CORREDOR = '<svg class="sc-corredor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14.5" cy="4.2" r="2"/><path d="M6 10.5l3-2.5h4l3 3.2h3"/><path d="M13 8l-2 6"/><path d="M11 14l-3 3H5"/><path d="M11 14l3 3v4"/></svg>';
+
 /* ---------- duelo estilo Super Trunfo ----------
    Dois atletas lado a lado. Cada atributo vale um ponto para quem vence:
    mais provas, mais km, maior distancia e, distancia por distancia, o
@@ -1014,25 +1075,28 @@ async function montarDuelo(b, a = atletaAtual, destino = null){
   history.replaceState(null, "", "#" + A.slug + "~" + B.slug);
   if (!naTela) document.getElementById("duelo-busca").hidden = true;
   let pa = 0, pb = 0;
-  const corpo = el("tbody");
-  // maior vence (true) ou menor vence (false)
+  const linhasA = [], linhasB = [];
+  // maior vence (true) ou menor vence (false); a mesma linha sai nas duas cartas, na mesma altura
   const linha = (rotulo, va, vb, texto, sub, maiorVence) => {
     const tem = va != null && vb != null;
     const ganhaA = tem && (maiorVence ? va > vb : va < vb);
     const ganhaB = tem && (maiorVence ? vb > va : vb < va);
     if (ganhaA) pa++;
     if (ganhaB) pb++;
-    const cel = (v, lado, ganha) => el("td", { className: lado + (ganha ? " ganha" : "") },
-      v == null ? [el("b", { textContent:"—" })] : [el("b", { textContent:texto(v) }), sub ? el("small", { textContent:sub(v, lado) }) : null].filter(Boolean));
-    corpo.append(el("tr", {}, [cel(va, "a", ganhaA), el("td", { className:"rot", textContent:rotulo }), cel(vb, "b", ganhaB)]));
+    const cel = (v, lado, ganha) => el("li", { className:"sc-l" + (sub ? " com-sub" : "") + (ganha ? " ganha" : "") }, [
+      el("span", { className:"sc-rot", textContent:rotulo }),
+      el("b", { textContent: v == null ? "—" : texto(v) }),
+      sub ? el("small", { textContent: v == null ? "não correu" : sub(v, lado) }) : null]);
+    linhasA.push(cel(va, "a", ganhaA));
+    linhasB.push(cel(vb, "b", ganhaB));
   };
-  const grupo = texto => corpo.append(el("tr", { className:"grupo" }, [el("td", { colSpan:3, textContent:texto })]));
+  const grupo = texto => [linhasA, linhasB].forEach(l => l.push(el("li", { className:"sc-g", textContent:texto })));
 
   grupo("Volume");
   linha("Provas", A.provas, B.provas, v => num(v), null, true);
   linha("Km percorridos", A.km, B.km, v => num(Math.round(v)) + " km", null, true);
   linha("Maior distância", A.maior || null, B.maior || null, v => String(v).replace(".", ",") + " km", null, true);
-  linha("Total de títulos", A.titulos, B.titulos, v => num(v), v => v === 1 ? "vitória geral" : "vitórias gerais", true);
+  linha("Títulos", A.titulos, B.titulos, v => num(v), null, true);
 
   const kms = [...new Set([...A.melhor.keys(), ...B.melhor.keys()])].sort((x, y) => x - y);
   const disputadas = kms.filter(k => A.melhor.has(k) && B.melhor.has(k));
@@ -1045,22 +1109,33 @@ async function montarDuelo(b, a = atletaAtual, destino = null){
     };
     linha(String(km).replace(".", ",") + " km", ra ? ra.tempo : null, rb ? rb.tempo : null, v => tempo(v), sub, false);
   };
-  grupo(disputadas.length ? "Melhor tempo e pace nas distâncias que os dois correram" : "Nenhuma distância em comum");
+  grupo(disputadas.length ? "Melhor tempo" : "Nenhuma distância em comum");
   disputadas.forEach(porDistancia);
   if (soUm.length){
-    grupo("Só um dos dois correu (não vale ponto)");
+    grupo("Só um correu · sem ponto");
     soUm.forEach(porDistancia);
   }
 
   const logado = window.cuponsSessao ? await window.cuponsSessao : null;
-  const carta = (X, pts, lado, vence) => el("div", { className:"carta carta--" + lado + (vence ? " vence" : "") }, [
-    logado ? fotoDoAtleta(X.slug, "foto") : null,
-    el("b", { textContent:X.nome }),
-    el("small", { textContent: num(X.provas) + (X.provas === 1 ? " prova" : " provas") }),
-    el("div", { className:"pts", textContent:String(pts) }),
-  ]);
-  const placar = el("div", { className:"placar" }, [
-    carta(A, pa, "a", pa > pb), el("span", { className:"placar__x", textContent:"×" }), carta(B, pb, "b", pb > pa),
+  const carta = (X, pts, lado, vence, linhas) => {
+    const arte = el("div", { className:"sc-arte" });
+    arte.innerHTML = CORREDOR;
+    if (logado) arte.append(fotoDoAtleta(X.slug, "sc-foto"));
+    if (vence) arte.append(el("span", { className:"sc-selo", textContent:"Super Trunfo" }));
+    const marca = el("span", { className:"sc-marca", textContent:"Super" });
+    marca.append(el("b", { textContent:"trunfo" }));
+    return el("article", { className:"scarta scarta--" + lado + (vence ? " vence" : "") }, [
+      el("div", { className:"sc-topo" }, [el("span", { className:"sc-cod", textContent: lado.toUpperCase() + "1" }), marca,
+        el("span", { className:"sc-pts", title:"Pontos no duelo", textContent:String(pts) })]),
+      arte,
+      el("div", { className:"sc-nome" }, [el("b", { textContent:X.nome }),
+        el("small", { textContent: num(X.provas) + (X.provas === 1 ? " prova · " : " provas · ") + num(Math.round(X.km)) + " km" })]),
+      el("ul", { className:"sc-attrs" }, linhas),
+      el("div", { className:"sc-pe" }, [el("span", { textContent:"cuponsdecorrida.com.br" }), el("span", { textContent: pts + (pts === 1 ? " ponto" : " pontos") })]),
+    ]);
+  };
+  const placar = el("div", { className:"mesa" }, [
+    carta(A, pa, "a", pa > pb, linhasA), el("span", { className:"mesa__x", textContent:"×" }), carta(B, pb, "b", pb > pa, linhasB),
   ]);
   const veredito = pa === pb ? "Empate." : (pa > pb ? A.nome : B.nome) + " vence o duelo, " + Math.max(pa, pb) + " a " + Math.min(pa, pb) + ".";
   const trocar = el("button", { className:"voltar", type:"button", textContent: naTela ? "Novo duelo" : "Trocar adversário" });
@@ -1083,7 +1158,6 @@ async function montarDuelo(b, a = atletaAtual, destino = null){
     imp,
     el("h2", { className:"duelo__titulo", textContent:"Supertrunfo: " + A.nome + " × " + B.nome }),
     placar,
-    el("table", { className:"atributos" }, [corpo]),
     el("p", { className:"duelo__nota", textContent: veredito + " Cada atributo vale um ponto; nas distâncias, vence o menor tempo, e o pace vem embaixo. Distância que só um dos dois correu não vale ponto. Título é a vitória geral (1º lugar do sexo) numa distância de uma prova, pela Galeria dos Campeões; empate em zero não dá ponto." }),
     el("div", { className:"duelo__acoes" }, [pdf, trocar]),
   );
@@ -1107,16 +1181,23 @@ const st = document.getElementById("st");
 const stEscolha = { a: null, b: null };
 const stPedidos = { a: { n: 0 }, b: { n: 0 } };
 
+function stCarta(lado, a){
+  document.getElementById("st-nome-" + lado).textContent = a ? titulo(a.nome) : "";
+  document.getElementById("st-carta-" + lado).classList.toggle("tem", !!a);
+}
+
 function stLado(lado){
   const inp = document.getElementById("st-" + lado), dic = document.getElementById("st-dica-" + lado),
         lis = document.getElementById("st-lista-" + lado);
   inp.oninput = () => {
     stEscolha[lado] = null;
+    stCarta(lado, null);
     inp.classList.remove("escolhido");
     document.getElementById("st-cartas").replaceChildren();
     clearTimeout(inp._t);
     inp._t = setTimeout(() => buscarEm(inp, dic, lis, a => {
       stEscolha[lado] = a;
+      stCarta(lado, a);
       inp.value = titulo(a.nome);
       inp.classList.add("escolhido");
       lis.replaceChildren(); dic.textContent = "";
@@ -1142,6 +1223,7 @@ function abrirSupertrunfo(a = null, b = null){
     const x = lado === "a" ? a : b;
     const inp = document.getElementById("st-" + lado);
     stEscolha[lado] = x;
+    stCarta(lado, x);
     inp.value = x ? titulo(x.nome) : "";
     inp.classList.toggle("escolhido", !!x);
     document.getElementById("st-lista-" + lado).replaceChildren();
