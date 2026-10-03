@@ -38,6 +38,18 @@ table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums
 .agenda a{font-weight:600}
 .cidades{columns:2 12rem;font-size:.92rem}
 .cidades a{display:block;padding:.15rem 0}
+.ofertas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem}
+.oferta{display:flex;flex-direction:column;gap:.25rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem;text-decoration:none;color:var(--ink)}
+.oferta:hover{border-color:var(--accent)}
+.oferta img{width:100%;height:auto;aspect-ratio:1;object-fit:contain;border-radius:10px;background:#fff}
+.oferta .rot{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oferta .nome{font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:.9rem;line-height:1.22;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.2em}
+.oferta .preco{display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .4rem}
+.oferta .preco s{font-size:.76rem;color:var(--muted)}
+.oferta .preco b{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1rem}
+.oferta .pct{background:var(--sol);color:var(--azul);font-weight:800;font-size:.72rem;border-radius:6px;padding:.02rem .35rem}
+.oferta .pe{font-size:.76rem;color:var(--accent);font-weight:600}
+@media (max-width:760px){.ofertas{grid-template-columns:repeat(2,minmax(0,1fr))}}
 footer{margin:3rem 0 0;padding:1.4rem 0 2rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
 footer a{color:var(--muted);margin-right:1rem}
 @media (max-width:560px){.topo nav a:not(.cc){display:none} .marca{font-size:1.05rem} .topo nav a.cc{font-size:.8rem;padding:.3rem .65rem} ul.lista li{grid-template-columns:5.2rem 1fr} dl.fatos{grid-template-columns:1fr} dl.fatos dt{margin-top:.3rem}}

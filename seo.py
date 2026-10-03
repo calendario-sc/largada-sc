@@ -75,6 +75,18 @@ table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums
 .agenda a{font-weight:600}
 .cidades{columns:2 12rem;font-size:.92rem}
 .cidades a{display:block;padding:.15rem 0}
+.ofertas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem}
+.oferta{display:flex;flex-direction:column;gap:.25rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem;text-decoration:none;color:var(--ink)}
+.oferta:hover{border-color:var(--accent)}
+.oferta img{width:100%;height:auto;aspect-ratio:1;object-fit:contain;border-radius:10px;background:#fff}
+.oferta .rot{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oferta .nome{font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:.9rem;line-height:1.22;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.2em}
+.oferta .preco{display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .4rem}
+.oferta .preco s{font-size:.76rem;color:var(--muted)}
+.oferta .preco b{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1rem}
+.oferta .pct{background:var(--sol);color:var(--azul);font-weight:800;font-size:.72rem;border-radius:6px;padding:.02rem .35rem}
+.oferta .pe{font-size:.76rem;color:var(--accent);font-weight:600}
+@media (max-width:760px){.ofertas{grid-template-columns:repeat(2,minmax(0,1fr))}}
 footer{margin:3rem 0 0;padding:1.4rem 0 2rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
 footer a{color:var(--muted);margin-right:1rem}
 @media (max-width:560px){.topo nav a:not(.cc){display:none} .marca{font-size:1.05rem} .topo nav a.cc{font-size:.8rem;padding:.3rem .65rem} ul.lista li{grid-template-columns:5.2rem 1fr} dl.fatos{grid-template-columns:1fr} dl.fatos dt{margin-top:.3rem}}
@@ -141,6 +153,54 @@ def link_inscricao(p):
 def preco(p):
     from build import _para_o_cartao          # mesma regra do cartao do calendario
     return (_para_o_cartao(p.get("perfil") or {}) or {}).get("preco")
+
+
+# Caixas de produtos em promocao das lojas parceiras (Mizuno, Centauro...): o bloco vem vazio e escondido na pagina
+# e o /provas.js busca a vitrine na API e preenche, alternando as lojas e trocando os produtos a cada visita.
+OFERTAS = ('<section id="ofertas" hidden aria-label="Em promoção nas lojas parceiras"><h2>Em promoção nas lojas parceiras</h2>'
+           '<div class="ofertas" id="ofertas-lista"></div>'
+           '<p class="nota">Preços das lojas, atualizados todo dia. Links de afiliado: o Cupons de Corrida pode receber uma comissão '
+           'pela compra, sem custo a mais para você.</p></section><script src="/provas.js" defer></script>')
+
+JS = """// Caixas de ofertas nas paginas de prova (bloco #ofertas, gerado pelo seo.py): produtos da vitrine das lojas
+// parceiras (API /vitrine), alternando as lojas; o navegador guarda a vez e cada visita mostra os seguintes.
+(async () => {
+  const bloco = document.getElementById("ofertas"), lista = document.getElementById("ofertas-lista");
+  if (!bloco || !lista) return;
+  const API = /^(localhost|127\\.0\\.0\\.1)$/.test(location.hostname) ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
+  const QUANTAS = 4;
+  try {
+    const d = await fetch(API + "/vitrine").then(r => r.json());
+    const lojas = new Map();
+    (d.produtos || []).forEach(p => (lojas.get(p.marca) || lojas.set(p.marca, []).get(p.marca)).push(p));
+    if (!lojas.size) return;
+    let vez = -1;
+    try { vez = Number(localStorage.getItem("oferta-prova-vez") ?? -1); } catch (e) { /* sem armazenamento */ }
+    vez = Number.isInteger(vez) && vez >= 0 ? vez + 1 : Math.floor(Math.random() * 1000);
+    try { localStorage.setItem("oferta-prova-vez", String(vez)); } catch (e) { /* sem armazenamento */ }
+    const porLoja = Math.ceil(QUANTAS / lojas.size), escolhidos = [];
+    for (let k = 0; k < porLoja; k++) for (const ps of lojas.values()) {
+      const p = ps[(vez * porLoja + k) % ps.length];
+      if (escolhidos.length < QUANTAS && !escolhidos.includes(p)) escolhidos.push(p);
+    }
+    const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
+    const reais = n => Number(n).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    lista.replaceChildren(...escolhidos.map(p => {
+      const a = el("a", "oferta");
+      a.href = p.link; a.target = "_blank"; a.rel = "noopener sponsored";
+      const img = el("img"); img.src = p.imagem; img.alt = ""; img.width = 400; img.height = 400; img.loading = "lazy";
+      const preco = el("span", "preco");
+      if (p.preco_de > p.preco) preco.append(el("s", "", reais(p.preco_de)));
+      preco.append(el("b", "", reais(p.preco) + (p.nota ? " " + p.nota : "")));
+      if (p.desconto_pct) preco.append(el("span", "pct", "-" + p.desconto_pct + "%"));
+      a.append(img, el("span", "rot", p.marca + " · em promoção"), el("span", "nome", p.nome), preco, el("span", "pe", "Ver na loja ↗"));
+      a.onclick = () => { if (typeof gtag === "function") gtag("event", "oferta_prova_clique", { marca: p.marca, produto: p.nome }); };
+      return a;
+    }));
+    bloco.hidden = false;
+  } catch (e) { /* sem API: sem ofertas */ }
+})();
+"""
 
 
 def cabeca(titulo, descricao, caminho, ld, analytics, extra=""):
@@ -361,6 +421,8 @@ def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
         corpo.append(f'<p class="nota">Datas, distâncias e preços podem mudar: confirme sempre no site de inscrição. '
                      f'Viu algo errado? Escreva para <a href="mailto:contato@cuponsdecorrida.com.br">contato@cuponsdecorrida.com.br</a>.</p>')
 
+    corpo.append(OFERTAS)
+
     if provas_cidade:
         corpo.append(f"<h2>Outras corridas em {e(cidade)}</h2>")
         corpo.append('<div class="cartao"><ul class="lista">' + "".join(linha_prova(x, hoje) for x in provas_cidade) + "</ul></div>")
@@ -406,7 +468,7 @@ def pagina_cidade(cidade, uf, provas, vizinhas, hoje, analytics):
 
 
 def gerar(historico, analytics=""):
-    """Escreve provas/, corridas-em/, provas.css, sitemap.xml, robots.txt e 404.html.
+    """Escreve provas/, corridas-em/, provas.css, provas.js, sitemap.xml, robots.txt e 404.html.
     Devolve {uf: [(cidade, uf, n_futuras), ...]} para o rodape das paginas do calendario."""
     hoje = datetime.date.today().isoformat()
     provas = sorted((dict(p) for p in historico if publicavel(p)), key=lambda p: (p["data"], p["nome"]))
@@ -456,6 +518,7 @@ def gerar(historico, analytics=""):
                 shutil.rmtree(velha)
 
     (AQUI / "provas.css").write_text(CSS, encoding="utf-8")
+    (AQUI / "provas.js").write_text(JS, encoding="utf-8")
 
     # Agendas para assinar: provas dos ultimos 60 dias em diante (quem assina
     # nao perde da agenda a prova que acabou de correr).
