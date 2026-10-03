@@ -209,13 +209,13 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
       el("h3", { className: "categoria", textContent: "Em promoção · " + marca }),
       el("div", { className: "vitrine", role: "list" }, ps.map(p => {
         const a = el("a", { className: "produto", href: p.link, target: "_blank", rel: "noopener sponsored", role: "listitem",
-          title: p.nome + " — " + reais(p.preco) }, [
+          title: p.nome + " — " + reais(p.preco) + (p.nota ? " " + p.nota : "") }, [
           el("img", { src: p.imagem, alt: p.nome, loading: "lazy", width: 400, height: 400 }),
           p.desconto_pct ? el("span", { className: "pct", textContent: "-" + p.desconto_pct + "%" }) : null,
           el("span", { className: "info" }, [
             el("span", { className: "nome", textContent: p.nome }),
             p.preco_de > p.preco ? el("span", { className: "de", textContent: "de " + reais(p.preco_de) }) : null,
-            el("span", { className: "por", textContent: reais(p.preco) }),
+            el("span", { className: "por", textContent: reais(p.preco) + (p.nota ? " " + p.nota : "") }),
           ]),
         ]);
         a.onclick = () => { if (typeof gtag === "function") gtag("event", "vitrine_clique", { marca, produto: p.nome }); };

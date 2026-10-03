@@ -2858,7 +2858,7 @@ function cupomDaProva(r){
         el("p", { className:"oferta__nome", textContent:p.nome }),
         el("p", { className:"oferta__preco" }, [
           p.preco_de > p.preco ? el("s", { textContent:reais(p.preco_de) }) : null,
-          el("b", { textContent:reais(p.preco) }),
+          el("b", { textContent:reais(p.preco) + (p.nota ? " " + p.nota : "") }),
           p.desconto_pct ? el("span", { className:"oferta__pct", textContent:"-" + p.desconto_pct + "%" }) : null,
         ]),
         el("p", { className:"oferta__pe", textContent:"Ver na loja ↗" }),
