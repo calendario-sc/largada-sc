@@ -1,12 +1,12 @@
 == coleta ==
 == fontes ==
-  corridasbr: 217 provas
+  corridasbr: 219 provas
   corridasbr/arquivo: 350 provas
   ticketsports: 79 provas
   roadrunners: 209 provas
   movnow: 18 provas
   atletis: 2 provas
-  fca: 1861 provas
+  fca: 1862 provas
   corridasbr (PR): 171 provas
   corridasbr/arquivo (PR): 383 provas
   ticketsports (PR): 73 provas
@@ -14,7 +14,7 @@
   fap: 597 provas
   parceiros: 0 provas
 
-2905 provas distintas depois de fundir as fontes
+2907 provas distintas depois de fundir as fontes
 descartadas (16): fora de SC/PR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
@@ -25,27 +25,20 @@ descartadas (16): fora de SC/PR ou nao sao corrida
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
   - ... e mais 8
-restam 2889 provas
+restam 2891 provas
 concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 concluintes (chiprun): 6 provas consultadas, 5 preenchidas
 genero: 10 provas consultadas, 0 preenchidas
 organizador: 1 provas consultadas, 1 preenchidas
 organizador: 140 provas preenchidas pela FCA
-organizador: 80 provas tiveram a grafia padronizada
+organizador: 79 provas tiveram a grafia padronizada
 fca: 149 provas juntadas as que ja existiam
-series: 2901 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 4837 provas (4303 ja realizadas) | 423 cidades
-novas nesta rodada: 159
+series: 2903 eventos com uma ou mais edicoes | 3 resultados parciais marcados
+historico: 4840 provas (4304 ja realizadas) | 423 cidades
+novas nesta rodada: 152
   + 2026-04-11  Gaspar - Running X
-  + 2026-10-11  Araucária - 1ª CORRIDA do LEGISLATIVO ARAUCÁRIA
-  + 2026-10-17  Curitiba - TODA JOANA RUN
-  + 2026-10-30  Araucária - 7ª CORRIDA NOTURNA da GUARDA MUNICIPAL de ARAUCÁRIA
-  + 2026-10-31  Curitiba - Santander Night Run - Etapa 1 - Curitiba 2026
-  + 2026-11-01  Pinhais - 1ª CORRIDA SOU MAIS CRISTO RUN
-  + 2026-11-07  São Lourenço do Oeste - EVOLUA EM MOVIMENTO KIDS SÃO LOURENÇO DO OESTE - SC - 2026
-  + 2026-11-21  Santa Rosa do Sul - MATTRIC RUN 2026
-  + 2026-11-29  Lages - 1ª Corrida Ab Run
-  + 2027-09-25  Criciúma - MARATONA DE CRICIÚMA 2027
+  + 2027-03-07  Porto Belo - Corrida e Caminhada Phacz
+  + 2027-04-10  Araranguá - Circuito Sesc de Corridas 2027 - Etapa Araranguá
 
 futuras que nao apareceram hoje (7) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Lages - 1ª Corrida Ab Run (visto pela ultima vez em 2026-10-01)
@@ -61,6 +54,6 @@ parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,200,760 bytes)
+artifact.html e index.html gerados (2,201,872 bytes)
 
-RESULTADO: pronto para publicar (coleta de 02/10/2026).
+RESULTADO: pronto para publicar (coleta de 03/10/2026).
