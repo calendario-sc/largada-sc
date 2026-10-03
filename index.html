@@ -2760,10 +2760,12 @@ function listarCuponsAdm(){
   const lista = el("ul", { className:"cp__lista" });
   cuponsAdm.forEach(c => {
     const vencido = c.valido_ate && c.valido_ate < hojeIso();
-    const situacao = !c.ativo ? (c.tipo_oferta === "loja" && c.sincronizar ? "aguardando você ativar" : "desativado") : vencido ? "vencido" : "ativo";
+    const escondido = !!(c.ativo && c.fora_do_tema && c.sincronizar);        // oferta da AWIN que nao e de corrida: fora do site
+    const situacao = !c.ativo ? (c.tipo_oferta === "loja" && c.sincronizar ? "aguardando você ativar" : "desativado") : vencido ? "vencido" : escondido ? "fora do tema (não aparece no site)" : "ativo";
     const acoes = el("div", { className:"cp__acoes" });
     const b = (txt, fn) => { const x = el("button", { type:"button", textContent:txt }); x.onclick = fn; acoes.append(x); };
     b("Editar", () => formularioCupom(c));
+    if (escondido) b("Mostrar no site", () => salvarCupom({ ...c, ativo: true }, c.id));
     b(c.ativo ? "Desativar" : "Ativar", () => salvarCupom({ ...c, ativo: !c.ativo }, c.id));
     if (!c.vistos) b("Apagar", async () => {
       if (!confirm("Apagar o cupom \"" + c.titulo + "\"?")) return;
