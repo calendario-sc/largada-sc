@@ -9,6 +9,7 @@ Uso:  python build.py
 """
 
 import datetime
+import shutil
 import seo
 import json
 import re
@@ -306,6 +307,7 @@ def build():
             if GOOGLE_ANALYTICS not in central:
                 raise SystemExit("cupons.html: trecho do Google Analytics diferente do build.py")
             (BI_DIR / "cupons.html").write_text(central.replace(GOOGLE_ANALYTICS, ""), encoding="utf-8")
+            shutil.copyfile(AQUI / "logo-cupons-de-corrida.png", BI_DIR / "logo-cupons-de-corrida.png")
 
         # Pagina publica: sem os paineis e sem os campos de BI.
         # Copia: dados_da_pagina tira campos, e a proxima pagina precisa deles.

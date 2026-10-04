@@ -103,6 +103,10 @@ h1{
   text-wrap:balance;
 }
 h1 em{font-style:normal; color:#FFC21A}
+/* a marca no topo: logo no site publico, escrita no BI */
+h1 .logo{display:none; height:clamp(3.1rem,5.6vw,4.3rem); width:auto}
+body:not(.bi) h1 .logo{display:block}
+body:not(.bi) h1 .logo-txt{display:none}
 .lede{margin:.9rem 0 0; max-width:38ch; color:rgba(255,255,255,.85); font-size:1.02rem}
 .lede__link{display:inline-block; margin-top:.35rem; color:#FFC21A; font-weight:600; text-decoration:none; border-bottom:1px solid rgba(255,194,26,.5)}
 .lede__link:hover{border-color:#FFC21A}
@@ -1199,7 +1203,7 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
   <div class="wrap top__inner">
     <div>
       <p class="eyebrow"><span id="eyebrow-uf">Santa Catarina</span> &middot; corridas de rua e trail</p>
-      <h1>Cupons de <em>Corrida</em></h1>
+      <h1><img class="logo" src="logo-cupons-de-corrida.png" alt="Cupons de Corrida" width="960" height="221" loading="lazy"><span class="logo-txt">Cupons de <em>Corrida</em></span></h1>
       <p class="lede">Filtre por mês, região, distância e tipo.</p>
       <div class="top__ctas">
         <a class="central-cupons" href="cupons.html"><span aria-hidden="true">%</span>Central de Cupons</a>

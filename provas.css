@@ -6,7 +6,7 @@ a{color:var(--accent)}
 .topo{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff}
 .topo .w{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.8rem 0}
 .marca{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.25rem;color:#fff;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
-.marca em{font-style:normal;color:var(--sol)}
+.marca img{display:block;height:2.7rem;width:auto}
 .topo nav a{color:#fff;text-decoration:none;font-size:.9rem;margin-left:1rem;white-space:nowrap}
 .topo nav a.cc{background:var(--sol);color:var(--azul);font-weight:700;border-radius:999px;padding:.35rem .8rem}
 .faixa{height:5px;background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
@@ -52,4 +52,4 @@ table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums
 @media (max-width:760px){.ofertas{grid-template-columns:repeat(2,minmax(0,1fr))}}
 footer{margin:3rem 0 0;padding:1.4rem 0 2rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
 footer a{color:var(--muted);margin-right:1rem}
-@media (max-width:560px){.topo nav a:not(.cc){display:none} .marca{font-size:1.05rem} .topo nav a.cc{font-size:.8rem;padding:.3rem .65rem} ul.lista li{grid-template-columns:5.2rem 1fr} dl.fatos{grid-template-columns:1fr} dl.fatos dt{margin-top:.3rem}}
+@media (max-width:560px){.topo nav a:not(.cc){display:none} .marca img{height:2.2rem} .topo nav a.cc{font-size:.8rem;padding:.3rem .65rem} ul.lista li{grid-template-columns:5.2rem 1fr} dl.fatos{grid-template-columns:1fr} dl.fatos dt{margin-top:.3rem}}
