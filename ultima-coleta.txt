@@ -1,44 +1,72 @@
 == coleta ==
 == fontes ==
-  corridasbr: 219 provas
+  corridasbr: 215 provas
   corridasbr/arquivo: 350 provas
-  ticketsports: 79 provas
-  roadrunners: 209 provas
-  movnow: 18 provas
-  atletis: 2 provas
+  ticketsports: 78 provas
+  roadrunners: 207 provas
+  movnow: 19 provas
+  atletis: 1 provas
+  sympla: 19 provas
+  blueticket: 4 provas
   fca: 1862 provas
-  corridasbr (PR): 171 provas
+  corridasbr (PR): 167 provas
   corridasbr/arquivo (PR): 383 provas
-  ticketsports (PR): 73 provas
-  roadrunners (PR): 154 provas
+  ticketsports (PR): 71 provas
+  roadrunners (PR): 150 provas
+  corridasbr (RS): 236 provas
+  corridasbr/arquivo (RS): 407 provas
+  ticketsports (RS): 26 provas
+  roadrunners (RS): 120 provas
   fap: 597 provas
   parceiros: 0 provas
 
-2907 provas distintas depois de fundir as fontes
-descartadas (16): fora de SC/PR ou nao sao corrida
+datas de ticketeira acertadas pela outra fonte: 1
+  ~ 2026-10-17 -> 2026-10-18  Meia Maratona de Garopaba [blueticket]
+
+3597 provas distintas depois de fundir as fontes
+descartadas (17): fora de SC/PR/RS ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
+  - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
   - 2026-10-11  Cianorte - Corrida e Duathlon AMAFIL [duathlon]
   - 2026-10-12  Araucária - Cross Run & Duathlon Araucária [duathlon]
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
-  - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
-  - ... e mais 8
-restam 2891 provas
-concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
-concluintes (chiprun): 6 provas consultadas, 5 preenchidas
-genero: 10 provas consultadas, 0 preenchidas
-organizador: 1 provas consultadas, 1 preenchidas
-organizador: 140 provas preenchidas pela FCA
-organizador: 79 provas tiveram a grafia padronizada
-fca: 149 provas juntadas as que ja existiam
-series: 2903 eventos com uma ou mais edicoes | 3 resultados parciais marcados
-historico: 4840 provas (4304 ja realizadas) | 423 cidades
-novas nesta rodada: 152
-  + 2026-04-11  Gaspar - Running X
-  + 2027-03-07  Porto Belo - Corrida e Caminhada Phacz
-  + 2027-04-10  Araranguá - Circuito Sesc de Corridas 2027 - Etapa Araranguá
+  - ... e mais 9
+restam 3580 provas
+provas que mudaram de nome: 4 registros unificados
+  = 2026-07-05  Tramandaí - 31ª Rústica do Festival do Peixe  <-  31ª FESTA do PEIXE
+  = 2026-08-30  Santa Cruz do Sul - 2ª Corrida pela Saúde HAN  <-  2ª CORRIDA da SAUDE HOSPITAL ANA NERY
+  = 2026-09-06  São Jerônimo - Corre Leo  <-  CORRE JEO
+  = 2026-09-27  Parobé - Corrida do Cinquentenário do Rotary Cl  <-  Corrida do Cinquentenário do Rotary Cl
+concluintes: 499 provas no Open Results, 452 casadas, 20 com numero novo, 14 provas criadas
+concluintes (chiprun): 5 provas consultadas, 4 preenchidas
+concluintes (link do corridasbr): 150 provas consultadas, 16 preenchidas
+genero: 400 provas consultadas, 381 preenchidas
+organizador: 226 provas consultadas, 168 preenchidas
+organizador: 137 provas preenchidas pela FCA
+organizador: 100 provas tiveram a grafia padronizada
+fca: 147 provas juntadas as que ja existiam
+resultados repetidos removidos: 14
+series: 4255 eventos com uma ou mais edicoes | 8 resultados parciais marcados
+historico: 6826 provas (6017 ja realizadas) | 710 cidades
+novas nesta rodada: 150
+  + 2022-01-04  Santiago - Corrida Chicão Gorski
+  + 2022-01-09  Salto do Jacuí - 19ª Corrida da Paz
+  + 2022-01-16  Gramado - Maratona de Gramado Trail
+  + 2022-01-22  Teutônia - Circuito 7k - 3ª Etapa
+  + 2022-01-23  Giruá - IV Desafio 10k - 1ª Etapa Circuito Noroeste Missões de Corrida de Rua
+  + 2022-01-23  Ivoti - 1ª Corrida do Kerb in Ivoti
+  + 2022-01-23  Mata - 1° Desafio Rota dos Dinossauros
+  + 2022-01-23  Vera Cruz - 1ª Caminhada e Corrida de Rua de Vera Cruz
+  + 2022-01-30  Campo Bom - Rústica de Aniversário de Campo Bom
+  + 2022-02-06  Santo Ângelo - 3ª Rústica Clube Gaúcho 120 Anos
+  + 2022-02-12  Três Coroas - Trilhas das Laranjeiras - 2ª Etapa CTM 2022
+  + 2022-02-13  Santa Maria - Corrida de Carnaval
+  + 2022-02-19  Capão da Canoa - Hospital Moinhos de Vento Summer Night Run
+  + 2022-02-20  Santa Rosa - Corrida Ecológica Ser Cisne/Maratona Clube Santa Rosa
+  + 2022-02-26  Santa Maria - Corrida Noturna - 1ª Etapa
 
 futuras que nao apareceram hoje (7) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Lages - 1ª Corrida Ab Run (visto pela ultima vez em 2026-10-01)
@@ -49,11 +77,13 @@ futuras que nao apareceram hoje (7) - possivel cancelamento, mantidas no histori
   ? 2026-11-15  Guaíra - Circuito Paulista Supermercados - Guaíra (visto pela ultima vez em 2026-09-29)
   ? 2026-12-06  São Bento do Sul - CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL (visto pela ultima vez em 2026-09-26)
 
+cidades sem regiao (adicionar em REGIOES no comum.py): ['Litoral Gaúcho', 'VARGEM BONITA (Vila Campina da Alegria)']
+
 == perfis ==
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,201,872 bytes)
+artifact.html e index.html gerados (2,211,041 bytes)
 
-RESULTADO: pronto para publicar (coleta de 03/10/2026).
+RESULTADO: pronto para publicar (coleta de 04/10/2026).
