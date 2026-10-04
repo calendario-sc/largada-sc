@@ -729,6 +729,13 @@ def montar_perfil(p, rr_links, hoje):
             regulamentos += links_de_regulamento(pagina)
             anota_links(_links(pagina), "site oficial")
 
+    # A prova veio da propria ticketeira (Sympla, Blueticket): o link dela e o de inscricao.
+    if p.get("inscricao_url") and not perfil["inscricao"] and ticketeira_de(p["inscricao_url"]):
+        perfil["inscricao"], perfil["ticketeira"] = p["inscricao_url"], ticketeira_de(p["inscricao_url"])
+        fonte = perfil["ticketeira"].lower()
+        if fonte not in perfil["fontes"]:
+            perfil["fontes"].append(fonte)
+
     # 4. Ticket Sports: o id vem da lista dela ou de um link de inscricao.
     ts_id = p.get("ts_id") or id_ticketsports(perfil["inscricao"] or "")
     if ts_id:

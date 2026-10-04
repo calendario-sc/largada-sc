@@ -20,7 +20,7 @@ from comum import (PROVA_REMARCADA, mesmo_evento_renomeado, FAIXAS, MESMA_PROVA,
                    canonizar_cidade,
                    classificar, esta_excluida, faixas_de, mesma_prova,
                    mesmo_evento_renomeado, palavras_distintivas, parecidos,
-                   separar_organizadores, sem_acento)
+                   separar_organizadores, sem_acento, tokens_nome)
 
 AQUI = Path(__file__).resolve().parent
 SAIDA = AQUI / "corridas.json"
@@ -90,6 +90,8 @@ def fundir(grupo):
         "ts_id": next((g["ts_id"] for g in grupo if g.get("ts_id")), None),
         "ts_url": next((g["ts_url"] for g in grupo if g.get("ts_url")), None),
         "rr_slug": next((g["rr_slug"] for g in grupo if g.get("rr_slug")), None),
+        # Link de inscricao quando a fonte e a propria ticketeira (Sympla, Blueticket).
+        "inscricao_url": next((g["inscricao_url"] for g in grupo if g.get("inscricao_url")), None),
         # Co-organizacao e comum: vale a uniao do que cada fonte informa.
         "organizadores": sorted({o for g in grupo for o in g.get("organizadores", [])},
                                 key=sem_acento),
@@ -1104,6 +1106,42 @@ def coletar():
     return registros, relatorio
 
 
+# Ticketeiras gerais, que nao sao de corrida: a data do evento nelas as vezes e a da vespera (abertura,
+# retirada de kit) ou a do dia seguinte.
+DATA_SOLTA = {"sympla", "blueticket"}
+
+
+def acertar_data_de_ticketeira(registros, historico):
+    """Registro do Sympla ou da Blueticket sem par no proprio dia, mas com a mesma prova na vespera ou no
+    dia seguinte (mesma cidade, nome parecido) em outra fonte: vale a data da outra fonte. Sem isso a
+    prova apareceria duas vezes, em dias vizinhos."""
+    hoje = datetime.date.today().isoformat()
+    outras = [r for r in registros if r.get("fonte") not in DATA_SOLTA]
+    outras += [p for p in historico if p["data"] >= hoje and set(p.get("fontes") or []) - DATA_SOLTA]
+    por_data = {}
+    for o in outras:
+        por_data.setdefault(o["data"], []).append(o)
+
+    def vizinha(r, o):
+        if not (r.get("uf") and r.get("uf") == o.get("uf") and r.get("cidade") and r["cidade"] == o.get("cidade")):
+            return False
+        return parecidos(r["nome"], o["nome"], frozenset(tokens_nome(r["cidade"])))
+
+    acertadas = []
+    for r in registros:
+        if r.get("fonte") not in DATA_SOLTA or any(mesma_prova(r, o) for o in por_data.get(r["data"], [])):
+            continue
+        dia = datetime.date.fromisoformat(r["data"])
+        for passo in (1, -1):
+            perto = dia + datetime.timedelta(days=passo)
+            achada = next((o for o in por_data.get(perto.isoformat(), []) if vizinha(r, o)), None)
+            if achada:
+                acertadas.append((r["data"], perto.isoformat(), r["nome"], r["fonte"]))
+                r.update({"data": perto.isoformat(), "dia": perto.day, "mes": perto.month, "ano": perto.year})
+                break
+    return acertadas
+
+
 def consolidar_historico(historico):
     """Junta registros do historico que sao a mesma prova na mesma data.
 
@@ -1249,6 +1287,13 @@ def main():
         print("Historico preservado, nada foi gravado.")
         return 1
 
+    antes = json.loads(SAIDA.read_text(encoding="utf-8")) if SAIDA.exists() else []
+    acertadas = acertar_data_de_ticketeira(registros, antes)
+    if acertadas:
+        print(f"\ndatas de ticketeira acertadas pela outra fonte: {len(acertadas)}")
+        for velha, nova, nome, fonte in acertadas[:8]:
+            print(f"  ~ {velha} -> {nova}  {nome[:44]} [{fonte}]")
+
     atuais = agrupar(registros)
     print(f"\n{len(atuais)} provas distintas depois de fundir as fontes")
 
@@ -1319,7 +1364,7 @@ def main():
                           "locais", "locais_km", "largada", "largada_em", "local_banlek", "local_texto", "local_texto_em")
                          if antiga.get(c)}
             enderecos = {c: antiga[c] for c in
-                         ("corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug")
+                         ("corrida_id", "resultado_id", "ts_id", "ts_url", "rr_slug", "inscricao_url")
                          if antiga.get(c)}
             # So a FCA listou a prova hoje: o nome e as etiquetas do historico
             # sao melhores que os do permit e ficam.

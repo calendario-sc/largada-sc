@@ -28,8 +28,8 @@ AQUI = Path(__file__).resolve().parent
 SITE = "https://www.cuponsdecorrida.com.br"
 PASTA_PROVAS = AQUI / "provas"
 PASTA_CIDADES = AQUI / "corridas-em"
-UF_NOME = {"SC": "Santa Catarina", "PR": "Paraná"}
-PAGINA_UF = {"SC": "/", "PR": "/pr.html"}
+UF_NOME = {"SC": "Santa Catarina", "PR": "Paraná", "RS": "Rio Grande do Sul"}
+PAGINA_UF = {"SC": "/", "PR": "/pr.html", "RS": "/rs.html"}
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
 SEMANA = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"]
 # Nunca linkar: agregadores concorrentes e fonte nao confiavel.
@@ -228,7 +228,7 @@ def cabeca(titulo, descricao, caminho, ld, analytics, extra=""):
 <body>
 <header class="topo"><div class="w">
   <a class="marca" href="/"><img src="/logo-cupons-de-corrida.png" alt="Cupons de Corrida" width="960" height="221"></a>
-  <nav><a href="/">Santa Catarina</a><a href="/pr.html">Paraná</a><a href="/ranking.html">Ranking</a><a class="cc" href="/cupons.html">% Central de Cupons</a></nav>
+  <nav><a href="/">Santa Catarina</a><a href="/pr.html">Paraná</a><a href="/rs.html">Rio Grande do Sul</a><a href="/ranking.html">Ranking</a><a class="cc" href="/cupons.html">% Central de Cupons</a></nav>
 </div><div class="faixa"></div></header>
 <main class="w">
 """
@@ -236,8 +236,8 @@ def cabeca(titulo, descricao, caminho, ld, analytics, extra=""):
 
 RODAPE = """</main>
 <footer class="w">
-  <p><a href="/">Calendário de corridas em SC</a><a href="/pr.html">Calendário de corridas no PR</a><a href="/cupons.html">Central de Cupons</a><a href="/atletas.html">Resultados por atleta</a><a href="/ranking.html">Ranking das corridas</a><a href="/parceiros.html">Seja parceiro</a><a href="/privacidade.html">Privacidade</a></p>
-  <p>Cupons de Corrida · calendário de corridas de rua e trail de Santa Catarina e do Paraná, com cupons de desconto nas inscrições.</p>
+  <p><a href="/">Calendário de corridas em SC</a><a href="/pr.html">Calendário de corridas no PR</a><a href="/rs.html">Calendário de corridas no RS</a><a href="/cupons.html">Central de Cupons</a><a href="/atletas.html">Resultados por atleta</a><a href="/ranking.html">Ranking das corridas</a><a href="/parceiros.html">Seja parceiro</a><a href="/privacidade.html">Privacidade</a></p>
+  <p>Cupons de Corrida · calendário de corridas de rua e trail de Santa Catarina, do Paraná e do Rio Grande do Sul, com cupons de desconto nas inscrições.</p>
 </footer>
 </body>
 </html>
@@ -262,7 +262,7 @@ def linha_prova(p, hoje):
 
 
 # ---------------------------------------------------------------- agenda
-AGENDAS = {"sc": "Corridas em Santa Catarina", "pr": "Corridas no Paraná", "todas": "Corridas em SC e PR"}
+AGENDAS = {"sc": "Corridas em Santa Catarina", "pr": "Corridas no Paraná", "rs": "Corridas no Rio Grande do Sul", "todas": "Corridas em SC, PR e RS"}
 
 
 def _um_dia_depois(iso):
@@ -402,7 +402,7 @@ def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
     corpo.append('<div class="acoes">' + "".join(acoes) + "</div>")
     if futura:
         chave = uf.lower() if uf in UF_NOME else "todas"
-        corpo.append(f'<p class="agenda">Todas as corridas {e({"SC": "de Santa Catarina", "PR": "do Paraná"}.get(uf, "de SC e do PR"))} na sua agenda, atualizadas sozinhas: '
+        corpo.append(f'<p class="agenda">Todas as corridas {e({"SC": "de Santa Catarina", "PR": "do Paraná", "RS": "do Rio Grande do Sul"}.get(uf, "da Região Sul"))} na sua agenda, atualizadas sozinhas: '
                      f'<a href="{e(assinar_google(chave))}" rel="noopener nofollow" target="_blank">Google Agenda</a> · '
                      f'<a href="{e(assinar_webcal(chave))}">iPhone e Outlook</a></p>')
     corpo.append("</section>")
@@ -526,7 +526,7 @@ def gerar(historico, analytics=""):
     recentes = [p for p in provas if p["data"] >= desde]
     carimbo = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     (AQUI / "agenda").mkdir(exist_ok=True)
-    for chave, filtro in (("sc", "SC"), ("pr", "PR"), ("todas", None)):
+    for chave, filtro in (("sc", "SC"), ("pr", "PR"), ("rs", "RS"), ("todas", None)):
         lista = [p for p in recentes if not filtro or (p.get("uf") or "SC") == filtro]
         destino = AQUI / "agenda" / f"{chave}.ics"
         novo = agenda_ics(chave, lista, hoje, carimbo)
@@ -538,7 +538,7 @@ def gerar(historico, analytics=""):
             destino.write_bytes(novo.encode("utf-8"))
 
     # Sitemap: paginas fixas, cidades e provas (futuras primeiro na prioridade).
-    urls = [("/", hoje, "1.0"), ("/pr.html", hoje, "0.9"), ("/todos.html", hoje, "0.6"), ("/cupons.html", hoje, "0.8"),
+    urls = [("/", hoje, "1.0"), ("/pr.html", hoje, "0.9"), ("/rs.html", hoje, "0.9"), ("/todos.html", hoje, "0.6"), ("/cupons.html", hoje, "0.8"),
             ("/atletas.html", hoje, "0.6"), ("/ranking.html", hoje, "0.7"), ("/parceiros.html", hoje, "0.5"), ("/privacidade.html", None, "0.2")]
     for (c, u), ps in sorted(por_cidade.items(), key=lambda x: -len(x[1])):
         if c:
@@ -555,11 +555,11 @@ def gerar(historico, analytics=""):
         "User-agent: *\nAllow: /\nDisallow: /area.html\nDisallow: /template.html\nDisallow: /artifact.html\n\n"
         f"Sitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     (AQUI / "404.html").write_text(
-        cabeca("Página não encontrada | Cupons de Corrida", "Esta página não existe mais. Veja o calendário de corridas de SC e do PR.",
+        cabeca("Página não encontrada | Cupons de Corrida", "Esta página não existe mais. Veja o calendário de corridas de SC, do PR e do RS.",
                "/404.html", {"@context": "https://schema.org", "@type": "WebPage", "name": "Página não encontrada"}, analytics,
                '<meta name="robots" content="noindex">\n')
         + '<h1>Página não encontrada</h1><p>A prova pode ter mudado de nome ou de data. '
-          'Procure no <a href="/">calendário de Santa Catarina</a>, no <a href="/pr.html">do Paraná</a> '
+          'Procure no <a href="/">calendário de Santa Catarina</a>, no <a href="/pr.html">do Paraná</a>, no <a href="/rs.html">do Rio Grande do Sul</a> '
           'ou na <a href="/cupons.html">Central de Cupons</a>.</p>' + RODAPE, encoding="utf-8")
 
     ranking = defaultdict(list)

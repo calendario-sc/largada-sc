@@ -72,6 +72,8 @@ def _para_o_cartao(perfil):
 BI_DIR = AQUI.parent / "cupons-bi"
 # O que so a pagina de BI leva: quem vende a inscricao, quem cronometra e
 # quem fotografa cada prova.
+# Fontes que a coleta usa e o BI mostra, mas que nao aparecem na pagina publica (pedido do dono em 04/10/2026).
+FONTES_OCULTAS = {"roadrunners"}
 CAMPOS_BI = ("ticketeira", "cronometragem", "fotografia", "locais", "locais_km", "largada", "local_banlek")
 
 
@@ -100,7 +102,7 @@ def dados_da_pagina(historico, bi=True):
     hoje = datetime.date.today().isoformat()
     for p in historico:
         perfil = p.pop("perfil", None)
-        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "cronometragem_url", "cronometragem_em",
+        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "inscricao_url", "cronometragem_url", "cronometragem_em",
                       "fotografia_em", "fotografia_detalhe", "maissport_tentado",
                       "largada_em", "local_texto", "local_texto_em", "permit_status", "organizador_fca"):
             p.pop(campo, None)
@@ -112,7 +114,8 @@ def dados_da_pagina(historico, bi=True):
         # quando o perfil nao achou o link.
         fontes = p.get("fontes") or []
         ticketeira = (perfil or {}).get("ticketeira") or (
-            "Ticket Sports" if "ticketsports" in fontes else "MovNow" if "movnow" in fontes else "")
+            "Ticket Sports" if "ticketsports" in fontes else "MovNow" if "movnow" in fontes
+            else "Sympla" if "sympla" in fontes else "Blueticket" if "blueticket" in fontes else "")
         if ticketeira:
             p["ticketeira"] = ticketeira
         if perfil and p["data"] >= hoje:
@@ -122,6 +125,9 @@ def dados_da_pagina(historico, bi=True):
         if not bi:
             for campo in CAMPOS_BI:
                 p.pop(campo, None)
+            # Fonte que continua sendo coletada, mas nao e informada na pagina publica.
+            if any(f in FONTES_OCULTAS for f in fontes):
+                p["fontes"] = [f for f in fontes if f not in FONTES_OCULTAS]
     return json.dumps(historico, ensure_ascii=False, separators=(",", ":"))
 
 
@@ -207,14 +213,15 @@ def completa(pagina, publica=False, uf="SC", seo_info=None):
 
 # Uma pagina por estado: o seletor do cabecalho troca de pagina. Cada uma
 # leva so as provas do seu estado, e a de SC continua sendo a index.
-PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("todos.html", "")]
+PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("rs.html", "RS"), ("todos.html", "")]
 PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
 
 
 # Titulo, descricao e dados estruturados de cada pagina publica do calendario.
 UF_TITULO = {"SC": ("Calendário de Corridas em SC {ano} | Cupons de Corrida", "Santa Catarina", "/"),
              "PR": ("Calendário de Corridas no Paraná {ano} | Cupons de Corrida", "Paraná", "/pr.html"),
-             "": ("Corridas de Rua em SC e PR {ano} | Cupons de Corrida", "Santa Catarina e Paraná", "/todos.html")}
+             "RS": ("Calendário de Corridas no Rio Grande do Sul {ano} | Cupons de Corrida", "Rio Grande do Sul", "/rs.html"),
+             "": ("Corridas de Rua na Região Sul {ano}: SC, PR e RS | Cupons de Corrida", "Santa Catarina, Paraná e Rio Grande do Sul", "/todos.html")}
 
 
 def cabeca_publica(uf, info):
@@ -281,7 +288,7 @@ def build():
     tamanho = 0
     for arquivo, uf in PAGINAS:
         provas = [p for p in historico if not uf or (p.get("uf") or "SC") == uf]
-        floripa = dados_floripa() if uf != "PR" else "null"
+        floripa = dados_floripa() if uf in ("SC", "") else "null"      # o Raio-X e de Florianopolis
 
         # Pagina de BI: tudo. A de SC vai tambem para o Artifact (privado do
         # dono); todas vao para o repositorio privado, se a pasta existir.

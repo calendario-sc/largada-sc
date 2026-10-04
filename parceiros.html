@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Seja parceiro do Cupons de Corrida: organizadoras de provas, lojas e serviços para corredores cadastram seus cupons de desconto e chegam a quem corre em SC e PR.">
+<meta name="description" content="Seja parceiro do Cupons de Corrida: organizadoras de provas, lojas e serviços para corredores cadastram seus cupons de desconto e chegam a quem corre em SC, PR e RS.">
 <title>Seja parceiro · Cupons de Corrida</title>
 <link rel="canonical" href="https://www.cuponsdecorrida.com.br/parceiros.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cupons de Corrida">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Seja parceiro · Cupons de Corrida">
-<meta property="og:description" content="Seja parceiro do Cupons de Corrida: organizadoras de provas, lojas e serviços para corredores cadastram seus cupons de desconto e chegam a quem corre em SC e PR.">
+<meta property="og:description" content="Seja parceiro do Cupons de Corrida: organizadoras de provas, lojas e serviços para corredores cadastram seus cupons de desconto e chegam a quem corre em SC, PR e RS.">
 <meta property="og:url" content="https://www.cuponsdecorrida.com.br/parceiros.html">
 <meta property="og:image" content="https://www.cuponsdecorrida.com.br/og-cupons-de-corrida.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -141,7 +141,7 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
     <a class="logo-topo" href="./"><img src="logo-cupons-de-corrida.png" alt="Cupons de Corrida" width="960" height="221"></a>
     <p class="eyebrow">parceiros</p>
     <h1 id="titulo">Seja <em>parceiro</em></h1>
-    <p class="lede" id="lede">Organizadoras de provas, lojas e serviços para corredores: cadastre seus cupons de desconto e chegue a quem corre em SC e PR.</p>
+    <p class="lede" id="lede">Organizadoras de provas, lojas e serviços para corredores: cadastre seus cupons de desconto e chegue a quem corre em SC, PR e RS.</p>
   </div>
   <button class="sair" id="sair" type="button" hidden>Sair</button>
 </div></header>
@@ -209,7 +209,7 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
     const msg = params.get("acesso") === "expirado" ? "O link de acesso venceu. Peça um novo abaixo."
               : params.get("acesso") === "invalido" ? "Esse link de acesso não vale mais. Peça um novo abaixo." : "";
     const vantagens = el("div", { className: "vantagens" }, [
-      ["Atletas de SC e PR", "Seu cupom aparece para os corredores cadastrados, no calendário e na newsletter."],
+      ["Atletas de SC, PR e RS", "Seu cupom aparece para os corredores cadastrados, no calendário e na newsletter."],
       ["Você no controle", "Crie, altere e desligue os cupons quando quiser, pelo seu painel."],
       ["Resultado medido", "Veja quantos atletas pegaram o código de cada cupom."],
     ].map(([b, s]) => el("div", {}, [el("b", { textContent: b }), el("span", { textContent: s })])));
@@ -605,7 +605,7 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
     if (!data || isNaN(new Date(data + "T12:00:00"))) return "Data inválida (use dd/mm/aaaa).";
     if (data < hojeIso()) return "A data já passou.";
     if (!String(p.cidade || "").trim()) return "Falta a cidade.";
-    if (!["SC", "PR"].includes(String(p.uf || "").trim().toUpperCase())) return "UF deve ser SC ou PR.";
+    if (!["SC", "PR", "RS"].includes(String(p.uf || "").trim().toUpperCase())) return "UF deve ser SC, PR ou RS.";
     const link = String(p.link || "").trim();
     if (link && !/^(https?:\/\/|www\.)/i.test(link)) return "Link deve começar com https://";
     return "";
@@ -683,8 +683,8 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
       const nome = inp("text", { maxLength: 150, value: p ? p.nome : "", placeholder: "Ex.: Corrida da Lagoa 2027" });
       const data = inp("date", { value: p ? p.data : "", min: hojeIso() });
       const cidade = inp("text", { maxLength: 80, value: p ? p.cidade : e.cidade || "" });
-      const uf = el("select", {}, ["SC", "PR"].map(u => el("option", { value: u, textContent: u })));
-      uf.value = p ? p.uf : (["SC", "PR"].includes(e.uf) ? e.uf : "SC");
+      const uf = el("select", {}, ["SC", "PR", "RS"].map(u => el("option", { value: u, textContent: u })));
+      uf.value = p ? p.uf : (["SC", "PR", "RS"].includes(e.uf) ? e.uf : "SC");
       const dist = inp("text", { value: p ? kmTexto(p.distancias) : "", placeholder: "Ex.: 5, 10, 21" });
       const tipo = el("select", {}, [el("option", { value: "", textContent: "—" }), ...TIPOS_PROVA.map(x => el("option", { value: x, textContent: x }))]);
       tipo.value = p ? (p.tipo || "") : "";

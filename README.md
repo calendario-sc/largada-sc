@@ -10,10 +10,11 @@ banco nem build. Qualquer hospedagem estática serve.
 
 `atualizar.py` faz tudo:
 
-1. `scrape.py` coleta seis origens de cinco sites (corridasbr.com.br — calendário
-   e arquivo de resultados —, ticketsports.com.br, roadrunners.run,
-   movnow.com.br e atletis.com.br), funde as provas anunciadas em mais de um
-   lugar e acumula em `corridas.json`.
+1. `scrape.py` coleta as fontes de calendário de Santa Catarina, do Paraná e do
+   Rio Grande do Sul (corridasbr.com.br — calendário e arquivo de resultados —,
+   ticketsports.com.br, movnow.com.br, atletis.com.br, sympla.com.br,
+   blueticket.com.br e os permits das federações, entre outras), funde as provas
+   anunciadas em mais de um lugar e acumula em `corridas.json`.
 2. Para as provas já realizadas, busca quantos atletas concluíram: primeiro em
    openresults.run, que publica a quebra por distância de uma vez só, e depois
    nas cronometragens, uma prova por vez — supercrono.com.br, chiprun.com.br e
@@ -22,7 +23,7 @@ banco nem build. Qualquer hospedagem estática serve.
 3. `perfis.py` monta o perfil das provas de 2026 e 2027: site e Instagram
    oficiais, ticketeira e link de inscrição, tabela de preços, patrocinadores
    e lei de incentivo com o proponente. Cada campo sai de uma fonte citável
-   (página do evento no roadrunners, link oficial do corridasbr, API da
+   (página do evento, link oficial do corridasbr, API da
    Ticket Sports, regulamento); o que não for achado aparece como "não
    encontrado", nunca deduzido. Provas futuras são revistas a cada 3 dias,
    porque o preço muda a cada lote.

@@ -111,6 +111,7 @@
       uf.append(el("option", { value: v, textContent: t })));
     // A pagina do Parana ja sugere PR.
     if (/\/pr\.html$/.test(location.pathname)) uf.value = "PR";
+    if (/\/rs\.html$/.test(location.pathname)) uf.value = "RS";
     else if (!/todos\.html$/.test(location.pathname)) uf.value = "SC";
 
     const erro = el("p", { className: "cad__erro", role: "alert" });

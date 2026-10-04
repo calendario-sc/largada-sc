@@ -16,7 +16,7 @@ import urllib.request
 from comum import UA_NAVEGADOR
 import urllib.parse
 
-from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, UF_NOME, UFS, arrumar_titulo, baixar,
+from comum import (MESES_ABBR, MESES_NOME, UF_ALVO, UF_NOME, UFS, arrumar_caixa, arrumar_titulo, baixar,
                    canonizar_cidade, classificar, consertar_mojibake,
                    distancias, limpar, separar_organizadores, sem_acento)
 
@@ -1012,12 +1012,142 @@ def fap(registrar=None):
     return provas
 
 
+# ------------------------------------------------------------------ sympla
+
+# A busca do sympla.com.br roda num indice de busca (Algolia) consultado pelo proprio navegador, com uma
+# chave publica so de leitura que vem num dos scripts da pagina. A chave nao fica guardada aqui: e lida da
+# pagina a cada coleta (se o Sympla trocar, a coleta acompanha). Cada evento traz estado, cidade, data,
+# organizador e o subtema ("CORRIDA DE RUA", "TRAIL RUN", "MARATONA"...), entao o filtro nao depende do nome.
+SY_PAGINA = "https://www.sympla.com.br/eventos?s=corrida"
+SY_CHUNK = re.compile(r'https://[a-z0-9.-]+\.sympla\.com\.br/_next/static/chunks/[^"\\ ]+?\.js')
+SY_CHAVE = re.compile(r'="([A-Z0-9]{10})",\w+="([0-9a-f]{32})",\w+="(prod_sympla_events)"')
+SY_SUBTEMAS = {"corrida de rua", "trail run", "corrida de montanha", "maratona", "meia maratona", "ultramaratona",
+               "corrida de aventura", "corrida de obstaculos", "cross country", "caminhada"}
+# Com o subtema de corrida aparecem tambem clinicas, testes e palestras para corredores: nao sao prova.
+SY_NAO_E_PROVA = re.compile(r"\b(teste|clinica|palestra|workshop|curso|aula|aulao|mentoria|imersao|encontro|por que corremos)\b")
+SY_POR_PAGINA = 100
+SY_MAX_PAGINAS = 10
+
+
+@functools.lru_cache(maxsize=1)
+def _sympla_busca():
+    """(aplicativo, chave publica, indice) da busca do Sympla, lidos dos scripts da pagina."""
+    html = baixar(SY_PAGINA, {"User-Agent": UA_NAVEGADOR})
+    for chunk in sorted(set(SY_CHUNK.findall(html))):
+        try:
+            achado = SY_CHAVE.search(baixar(chunk, {"User-Agent": UA_NAVEGADOR}))
+        except Exception:
+            continue
+        if achado:
+            return achado.groups()
+    raise RuntimeError("a pagina do Sympla nao trouxe a chave publica da busca")
+
+
+def _sympla_pagina(pagina):
+    app, chave, indice = _sympla_busca()
+    pedido = {"requests": [{
+        "indexName": indice, "query": "", "hitsPerPage": SY_POR_PAGINA, "page": pagina,
+        "facetFilters": [["state:" + u for u in UFS], ["theme:ESPORTE E SAÚDE"]],
+        "attributesToRetrieve": ["name", "start_date", "city", "state", "subtheme", "type", "event_status",
+                                 "event_url", "organizer.name"],
+        "attributesToHighlight": []}]}
+    req = urllib.request.Request(
+        f"https://{app}-dsn.algolia.net/1/indexes/*/queries", data=json.dumps(pedido).encode("utf-8"),
+        headers={"x-algolia-application-id": app, "x-algolia-api-key": chave, "Content-Type": "application/json",
+                 "User-Agent": UA_NAVEGADOR, "Referer": "https://www.sympla.com.br/"})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return json.loads(resp.read().decode("utf-8"))["results"][0]
+
+
+def sympla():
+    """Corridas publicadas no sympla.com.br nos estados cobertos (pelo subtema do evento)."""
+    hoje = datetime.date.today().isoformat()
+    provas, vistos = [], set()
+    for pagina in range(SY_MAX_PAGINAS):
+        res = _sympla_pagina(pagina)
+        for e in res.get("hits") or []:
+            if e.get("event_status") != "PUBLICADO" or e.get("type") != "NORMAL":
+                continue
+            if sem_acento(e.get("subtheme") or "") not in SY_SUBTEMAS or not e.get("start_date"):
+                continue
+            url = e.get("event_url") or ""
+            if url in vistos:
+                continue
+            vistos.add(url)
+            # start_date e a hora do evento em UTC; o calendario usa o dia de Brasilia.
+            quando = datetime.datetime.fromtimestamp(int(e["start_date"]), datetime.timezone.utc) - datetime.timedelta(hours=3)
+            data = quando.date().isoformat()
+            if data < hoje:
+                continue
+            cidade, regiao, uf = canonizar_cidade(e.get("city") or "", e.get("state") if e.get("state") in UFS else None)
+            if uf not in UFS:
+                continue
+            nome = " ".join((e.get("name") or "").split())
+            if SY_NAO_E_PROVA.search(sem_acento(nome)):
+                continue
+            extras = ["Trail"] if sem_acento(e.get("subtheme") or "") in ("trail run", "corrida de montanha") else []
+            provas.append({
+                "fonte": "sympla",
+                "data": data, "dia": quando.day, "mes": quando.month, "ano": quando.year,
+                "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
+                "pills": [], "km": [],
+                # O "organizador" do Sympla e a conta que publicou o evento, muitas vezes uma pessoa:
+                # nao entra na conta das organizadoras (subcontar e melhor que inventar).
+                "inscricao_url": url.split("?")[0],
+                "tags": classificar(nome, [], extras),
+            })
+        if pagina + 1 >= (res.get("nbPages") or 0):
+            break
+    return provas
+
+
+# ---------------------------------------------------------------- blueticket
+
+# A blueticket.com.br vende principalmente shows; a lista publica de eventos (a mesma que o site carrega)
+# traz a categoria. Entre os "Esportivos" ha travessias, remo e feiras: fica so o que tem nome de corrida.
+BT_EVENTOS = "https://api2-cdn.blueticket.com.br/events"
+BT_PAGINA = "https://www.blueticket.com.br/evento/{id}/{slug}"
+BT_CORRIDA = re.compile(r"\b(corrida|corre|run|running|maratona|trail|rustica|caminhada|desafio)\b")
+
+
+def blueticket():
+    """Corridas a venda na blueticket.com.br nos estados cobertos."""
+    hoje = datetime.date.today().isoformat()
+    provas = []
+    for e in json.loads(baixar(BT_EVENTOS, {"Accept": "application/json", "User-Agent": UA_NAVEGADOR})):
+        if "Esportivos" not in (e.get("category"), e.get("altCategory")) or e.get("indefiniteDate"):
+            continue
+        data = (e.get("date") or "")[:10]
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", data) or data < hoje:
+            continue
+        # "MEIA MARATONA DE GAROPABA | 2ª EDIÇÃO - 2026": o nome e o que vem antes da barra.
+        nome = arrumar_caixa(" ".join((e.get("name") or "").split("|")[0].split()))
+        if not BT_CORRIDA.search(sem_acento(nome)):
+            continue
+        cidade, regiao, uf = canonizar_cidade(e.get("cityName") or "", e.get("cityState") if e.get("cityState") in UFS else None)
+        if uf not in UFS:
+            continue
+        km = sorted({round(float(m) / 1000, 1) for m in e.get("distances") or [] if m})
+        ano, mes, dia = (int(x) for x in data.split("-"))
+        provas.append({
+            "fonte": "blueticket",
+            "data": data, "dia": dia, "mes": mes, "ano": ano,
+            "cidade": cidade, "regiao": regiao, "uf": uf, "nome": nome,
+            "pills": [f"{v:g}km" for v in km], "km": km,
+            "inscricao_url": BT_PAGINA.format(id=e.get("id"), slug=e.get("slug") or ""),
+            "tags": classificar(nome, km),
+        })
+    return provas
+
+
 TODAS = [("corridasbr", corridasbr),
          ("corridasbr/arquivo", corridasbr_arquivo),
          ("ticketsports", ticketsports),
          ("roadrunners", roadrunners),
          ("movnow", movnow),
          ("atletis", atletis),
+         ("sympla", sympla),
+         ("blueticket", blueticket),
          ("fca", fca)]
 # As fontes que se consultam por estado rodam de novo para cada UF extra.
 for _uf in UFS[1:]:

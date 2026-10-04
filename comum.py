@@ -31,9 +31,9 @@ FAIXAS = ["5k", "10k", "21k", "42k", "ultra"]
 
 # Estados que a coleta cobre. O primeiro e o padrao: cidade sem UF
 # informada e procurada nele antes dos outros.
-UFS = ("SC", "PR")
+UFS = ("SC", "PR", "RS")
 UF_ALVO = UFS[0]
-UF_NOME = {"SC": "santa catarina", "PR": "parana"}
+UF_NOME = {"SC": "santa catarina", "PR": "parana", "RS": "rio grande do sul"}
 # Federacoes cujos permits entram como fonte: FCA (SC) e FAP (PR). Nome de
 # prova escrito pela federacao so vale quando nenhuma outra fonte a tem.
 FEDERACOES = {"fca", "fap"}
@@ -58,6 +58,14 @@ APELIDOS = {
         "mairinck": "Conselheiro Mairinck",
         "candido rondon": "Marechal Cândido Rondon",
         "foz do iguacu pr": "Foz do Iguaçu",
+    },
+    "RS": {
+        "poa": "Porto Alegre",
+        "porto alegre rs": "Porto Alegre",
+        "santana do livramento": "Sant'Ana do Livramento",
+        "livramento": "Sant'Ana do Livramento",
+        "barao do cotegipe": "Barão de Cotegipe",
+        "xangri": "Xangri-lá",
     },
 }
 
@@ -300,7 +308,7 @@ def classificar(nome, km, extras=()):
 VAZIAS = {
     "a", "as", "o", "os", "de", "da", "do", "das", "dos", "e", "em", "no", "na",
     "nos", "nas", "para", "por", "com", "corrida", "corridas", "caminhada",
-    "prova", "etapa", "edicao", "run", "running", "race", "sc", "santa", "pr", "parana",
+    "prova", "etapa", "edicao", "run", "running", "race", "sc", "santa", "pr", "parana", "rs",
     "catarina", "2024", "2025", "2026", "2027", "2028",
 }
 
