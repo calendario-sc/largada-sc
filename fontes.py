@@ -1408,6 +1408,185 @@ def _baixar_bytes(url):
         return resp.read()
 
 
+# ------------------------------------------- resultado apontado pelo corridasbr
+
+# O Open Results cobre bem SC e PR e pouco o RS, onde cada cronometragem publica no proprio site. A pagina
+# de resultado da prova no corridasbr tem o link "Resultados desta Corrida": e por ele que se chega la.
+CBR_LINK_RESULTADO = re.compile(
+    r'<a\b[^>]*href\s*=\s*["\']?([^"\'\s>]+)[^>]*>\s*(?:<[^>]+>\s*)*Resultados? desta Corrida', re.I)
+
+
+def link_do_resultado(resultado_id, uf=UF_ALVO):
+    """Endereco onde o resultado da prova foi publicado, segundo o corridasbr ("" se nao ha)."""
+    html = baixar(CBR_BASE.format(uf=uf) + f"mostraresultado.asp?escolha={resultado_id}")
+    achado = CBR_LINK_RESULTADO.search(html)
+    if not achado:
+        return ""
+    return urllib.parse.urljoin(CBR_BASE.format(uf=uf), entidades.unescape(achado.group(1)))
+
+
+def url_do_clax(link):
+    """'.../g-live.html?f=eventos/2026/x/y.clax' -> o endereco do arquivo .clax (None se o link nao e de um)."""
+    partes = urllib.parse.urlparse(link)
+    consulta = urllib.parse.parse_qs(partes.query)
+    if consulta.get("u"):                       # pagina que embrulha outra: o endereco de verdade vem em ?u=
+        return url_do_clax(consulta["u"][0])
+    arquivo = (consulta.get("f") or [""])[0]
+    if not arquivo.lower().endswith(".clax"):
+        return None
+    base = link.split("?")[0]
+    if not base.endswith("/"):
+        base = base.rsplit("/", 1)[0] + "/"
+    return urllib.parse.urljoin(base, urllib.parse.quote(arquivo, safe="/%"))
+
+
+def _texto_bruto(url):
+    """Bytes de uma pagina de resultado -> texto (utf-8, ou cp1252 dos sites antigos)."""
+    raw = _baixar_bytes(url)
+    if raw[:4] == b"%PDF":
+        import pdftexto
+        return pdftexto.texto_do_pdf(raw)
+    try:
+        return raw.decode("utf-8")
+    except UnicodeDecodeError:
+        return raw.decode("cp1252", errors="replace")
+
+
+# UCRSM (Uniao dos Corredores de Rua de Santa Maria): uma pagina por prova, em texto ou tabela, com uma
+# classificacao geral por distancia e, depois, as mesmas pessoas de novo na premiacao e nas categorias. O
+# formato mudou varias vezes ("Classificacao Geral da Prova de 5 Km", "CLASSIFICACAO GERAL - 5 KM",
+# "Classificacao de atletas - corrida 5 KM"), entao a regra e uma so: todo titulo com a distancia abre o
+# bloco dela, e dentro do bloco conta-se cada numero de peito com tempo uma unica vez.
+UC_SECAO = re.compile(r"(?:classifica|premia|categoria|geral|corrida|prova)\D*?(\d+(?:[.,]\d+)?)\s*km\b", re.I)
+# "1º 0129 FULANO ... 00:11:48" e "1º (00:05:26) - [315] FULANA ... (1-Fem.-De 00 a 09 anos)"
+UC_LINHA = re.compile(r"^\s*\d{1,4}\s*[ºo°]?\s+(\d{1,5})\s+(.+?)\s\d{1,2}:\d{2}:\d{2}"
+                      r"|^\s*\d{1,4}\s*[ºo°]?\s*\(\d{1,2}:\d{2}:\d{2}\)\s*-\s*\[(\d{1,5})\]\s*(.*)")
+UC_CATEGORIA = re.compile(r"categoria\s+(\d+)\s*-\s*\(([^)]*)\)", re.I)
+UC_SEXO = re.compile(r"\s([MF])\s+\d{1,2}\s")            # "EDUARDO PASTORIO M 34 M3034 ..."
+
+
+def ucrsm_ler(url):
+    """Concluintes por distancia de uma pagina de resultado da UCRSM (None se nao tem classificacao geral)."""
+    texto = _texto_bruto(url)
+    if re.search(r"(?i)<html|<table|<p\b", texto[:5000]):
+        # Pagina gerada pelo Word: as quebras de linha do arquivo caem no meio das frases. Vale a estrutura:
+        # uma linha por linha de tabela e, fora das tabelas, uma por paragrafo.
+        texto = re.sub(r"(?is)<(script|style).*?</\1>", " ", texto)
+        texto = " ".join(texto.split())
+        texto = re.sub(r"(?is)<tr\b.*?</tr>", lambda m: re.sub(r"(?i)</p>|<br\s*/?>|</div>", " ", m.group(0)) + "\n", texto)
+        texto = re.sub(r"(?i)<br\s*/?>|</p>|</div>|</h\d>|</pre>", "\n", texto)
+    linhas = [" ".join(entidades.unescape(re.sub(r"<[^>]+>", " ", l)).split()) for l in texto.splitlines()]
+    # nas paginas em texto a categoria e um numero; o sexo dela esta no titulo "Categoria 1 - (5KM MASCULINO)"
+    sexo_da_categoria = {}
+    for l in linhas:
+        for numero, rotulo in UC_CATEGORIA.findall(l):
+            r = sem_acento(rotulo)
+            if "fem" in r or "masc" in r:
+                sexo_da_categoria.setdefault(numero, "f" if "fem" in r else "m")
+    por_distancia, por_genero, vistos, km = {}, {}, set(), None
+    for l in linhas:
+        linha = UC_LINHA.match(l)
+        if not linha:
+            secao = UC_SECAO.search(l)
+            if secao:
+                valor = float(secao.group(1).replace(",", "."))
+                if valor > 170:                 # "400 KM" na prova infantil e 400 metros
+                    valor /= 1000
+                km = str(round(valor, 1)).rstrip("0").rstrip(".")
+            continue
+        peito, miolo = (linha.group(1), linha.group(2)) if linha.group(1) else (linha.group(3), linha.group(4))
+        if not km or (km, peito) in vistos:
+            continue
+        vistos.add((km, peito))
+        por_distancia[km] = por_distancia.get(km, 0) + 1
+        baixo = sem_acento(miolo)
+        letra = UC_SEXO.search(" " + miolo + " ")
+        sexo = "f" if re.search(r"\bfem", baixo) else "m" if re.search(r"\bmasc", baixo) else letra.group(1).lower() if letra else ""
+        if not sexo:
+            categoria = re.search(r"\s(\d{1,2})$", miolo)
+            sexo = sexo_da_categoria.get(categoria.group(1), "") if categoria else ""
+        if sexo:
+            por_genero.setdefault(km, {"f": 0, "m": 0})[sexo] += 1
+    total = sum(por_distancia.values())
+    if not total:
+        return None
+    # sexo so vale se cobre quase todo mundo; pela metade enganaria
+    if sum(v["f"] + v["m"] for v in por_genero.values()) < total * 0.9:
+        por_genero = {}
+    return {"por_distancia": por_distancia, "total": total, "por_genero": por_genero}
+
+
+# Cronometra Eventos: a pagina do evento tem uma aba por modalidade ("4KM FEMININO", "6KM INDIVIDUAL"), e cada
+# aba carrega uma classificacao com o geral e as categorias. Conta-se um atleta por numero de peito com tempo.
+CE_PAGINA = "https://cronometraeventos.com.br/resultadosDetalhes.php?id={id}"
+CE_ABA = re.compile(r'data-tab="(tab-[^"]+)"[^>]*>\s*([^<]+?)\s*<', re.S)
+CE_QUADRO = re.compile(r'id="(tab-[^"]+)"(?:(?!id="tab-).)*?<iframe[^>]*src="([^"]+)"', re.S)
+CE_KM = re.compile(r"(\d+(?:[.,]\d+)?)\s*k", re.I)
+CE_TEMPO = re.compile(r"^\d{1,2}:\d{2}:\d{2}")
+
+
+def cronometra_ler(link):
+    """Concluintes por distancia de um evento da Cronometra Eventos."""
+    ident = re.search(r"[?&](?:codID|id)=(\d+)", link)
+    if not ident:
+        return None
+    pagina = CE_PAGINA.format(id=ident.group(1))
+    html = baixar(pagina, {"User-Agent": UA_NAVEGADOR})
+    rotulos = dict(CE_ABA.findall(html))
+    por_distancia, por_genero = {}, {}
+    for aba, origem in CE_QUADRO.findall(html):
+        rotulo = sem_acento(rotulos.get(aba, ""))
+        km = CE_KM.search(rotulo)
+        if not km:
+            continue                            # modalidade sem distancia no nome (kids, PCD geral): fica de fora
+        km = str(round(float(km.group(1).replace(",", ".")), 1)).rstrip("0").rstrip(".")
+        try:
+            quadro = baixar(urllib.parse.urljoin(pagina, entidades.unescape(origem)), {"User-Agent": UA_NAVEGADOR})
+        except Exception:
+            continue
+        peitos = set()
+        for tr in re.findall(r"<tr.*?</tr>", quadro, re.S | re.I):
+            celulas = [" ".join(re.sub(r"<[^>]+>", " ", c).split()) for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S | re.I)]
+            if celulas and celulas[0].isdigit() and any(CE_TEMPO.match(c) for c in celulas[1:]):
+                peitos.add(celulas[0])
+        if not peitos:
+            continue
+        por_distancia[km] = por_distancia.get(km, 0) + len(peitos)
+        sexo = "f" if "feminin" in rotulo else "m" if "masculin" in rotulo else ""
+        if sexo:
+            por_genero.setdefault(km, {"f": 0, "m": 0})[sexo] += len(peitos)
+        time.sleep(0.2)
+    total = sum(por_distancia.values())
+    if not total:
+        return None
+    if sum(v["f"] + v["m"] for v in por_genero.values()) < total * 0.9:
+        por_genero = {}
+    return {"por_distancia": por_distancia, "total": total, "por_genero": por_genero}
+
+
+RK_LINK = re.compile(r"https?://resultados\.runking\.com\.br/([^/?#]+)/([^/?#]+)")
+
+
+def resultado_do_link(link):
+    """Le o resultado no endereco que o corridasbr aponta, quando o formato e conhecido.
+
+    Devolve (dados, fonte) -- dados com por_distancia, total, por_genero e, no .clax, equipes -- ou None."""
+    baixo = link.lower()
+    clax = url_do_clax(link) if ".clax" in baixo else None
+    if clax:
+        return clax_ler(clax), "clax"
+    achado = RK_LINK.match(link)
+    if achado:
+        por_distancia, total, por_genero = runking_concluintes(achado.group(1), achado.group(2))
+        return {"por_distancia": por_distancia, "total": total, "por_genero": por_genero}, "runking"
+    # Da UCRSM so as paginas: o texto tirado dos PDFs dela perde distancias inteiras (resultado pela metade).
+    if "ucrsm.com.br" in baixo and not baixo.split("?")[0].endswith(".pdf"):
+        return ucrsm_ler(link), "ucrsm"
+    if "cronometraeventos.com.br" in baixo:
+        return cronometra_ler(link), "cronometra"
+    return None
+
+
 MS_BASE = "https://maissport.com.br/resultados/eventos/"
 MS_PASTA = re.compile(r'href="([^"?/][^"]*)/"')
 

@@ -102,7 +102,7 @@ def dados_da_pagina(historico, bi=True):
     hoje = datetime.date.today().isoformat()
     for p in historico:
         perfil = p.pop("perfil", None)
-        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "inscricao_url", "cronometragem_url", "cronometragem_em",
+        for campo in ("perfil_em", "ts_id", "ts_url", "rr_slug", "inscricao_url", "resultado_url", "link_resultado_em", "cronometragem_url", "cronometragem_em",
                       "fotografia_em", "fotografia_detalhe", "maissport_tentado",
                       "largada_em", "local_texto", "local_texto_em", "permit_status", "organizador_fca"):
             p.pop(campo, None)

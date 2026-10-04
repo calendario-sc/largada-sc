@@ -803,6 +803,24 @@ CRONO_DOMINIOS = {
     "esportecorrida.com.br": "Esporte Corrida",
     "tbfsports.com.br": "TBF Sports",
     "cronoserra.com.br": "Crono Serra",
+    # Achadas nas paginas de resultado das provas do RS.
+    "ucrsm.com.br": "UCRSM",
+    "cronometraeventos.com.br": "Cronometra Eventos",
+    "goeresultados.com.br": "GOE Cronometragem",
+    "lgoecronometragem.com": "LGOE Cronometragem",
+    "lemureventos.com.br": "Lêmur Eventos",
+    "vqvcorridas.com.br": "VQV Corridas",
+    "vamoquevamo.net.br": "Vamo que Vamo",
+    "apuracrono.com.br": "Apura Crono",
+    "xcmcrono.com.br": "XCM Crono",
+    "cronotag.com.br": "Cronotag",
+    "audax4.com.br": "Audax4",
+    "wommerrunning.net": "Wommer Running",
+    "wommerrunning.com.br": "Wommer Running",
+    "sesc-rs.com.br": "Sesc RS",
+    "chipbrasil.com.br": "Chip Brasil",
+    "brlive.info": "Chip Brasil",
+    "multiaventuras.com.br": "Multi Aventuras",
 }
 # O Racezone hospeda o resultado de varias cronometragens: a conta no
 # endereco (racezone.com.br/<conta>/) e quem cronometrou.
@@ -919,6 +937,49 @@ def completar_extras(historico, registrar=print):
                   + ("equipes" if dados["equipes"] else "concluintes"))
         achados += 1
     return achados
+
+
+REVER_LINK_DIAS = 30
+
+
+def completar_pelo_link(historico, limite=150, registrar=print):
+    """Onde o Open Results nao alcanca: a pagina da prova no corridasbr aponta onde o resultado foi publicado
+    (fontes.link_do_resultado) e, quando o formato e conhecido, os concluintes saem de la. O endereco fica
+    guardado em resultado_url; prova sem resultado legivel volta a ser tentada depois de REVER_LINK_DIAS."""
+    hoje = datetime.date.today()
+    limite_data = (hoje - datetime.timedelta(days=REVER_LINK_DIAS)).isoformat()
+    pendentes = [p for p in historico if p["data"] < hoje.isoformat() and not p.get("concluintes_total")
+                 and p.get("resultado_id") and (p.get("link_resultado_em") or "") <= limite_data]
+    pendentes.sort(key=lambda p: p["data"], reverse=True)
+    consultadas = achadas = 0
+    for p in pendentes[:limite] if limite else pendentes:
+        consultadas += 1
+        p["link_resultado_em"] = hoje.isoformat()
+        try:
+            link = p.get("resultado_url") or fontes.link_do_resultado(p["resultado_id"], p.get("uf") or UF_ALVO)
+        except Exception:
+            continue
+        if not link:
+            continue
+        p["resultado_url"] = link
+        try:
+            lido = fontes.resultado_do_link(link)
+        except Exception as erro:
+            registrar(f"  resultado {p['data']} {p['nome'][:40]}: FALHOU ({erro.__class__.__name__})")
+            continue
+        time.sleep(PAUSA_DETALHES)
+        if not lido or not lido[0] or not lido[0].get("total"):
+            continue
+        dados, fonte = lido
+        _guardar_resultado(p, dados["por_distancia"], dados["total"], dados.get("por_genero") or {}, fonte)
+        if dados.get("equipes") or "Revezamento" in (p.get("tags") or []):
+            p["concluintes_unidade"] = "equipes"
+        if not p.get("cronometragem"):
+            nome = nome_da_cronometragem(link)
+            if nome:
+                p["cronometragem"], p["cronometragem_url"] = nome, link
+        achadas += 1
+    return consultadas, achadas
 
 
 REVER_MAISSPORT_DIAS = 7
@@ -1354,7 +1415,7 @@ def main():
             organizadores = antiga.get("organizadores") or []
             resultado = {c: antiga[c] for c in
                          ("concluintes", "concluintes_total", "or_slug",
-                          "fonte_resultado", "runking_tentado",
+                          "fonte_resultado", "runking_tentado", "resultado_url", "link_resultado_em",
                           "concluintes_genero", "concluintes_f", "concluintes_m",
                           "genero_tentado", "perfil", "perfil_em",
                           "cronometragem", "cronometragem_url", "cronometragem_em",
@@ -1427,7 +1488,8 @@ def main():
         print(f"concluintes (runking): FALHOU ({erro.__class__.__name__}: {erro})")
 
     for nome, funcao in (("supercrono", completar_supercrono),
-                         ("chiprun", completar_chiprun)):
+                         ("chiprun", completar_chiprun),
+                         ("link do corridasbr", completar_pelo_link)):
         try:
             consultadas, achadas = funcao(historico)
             if consultadas:
