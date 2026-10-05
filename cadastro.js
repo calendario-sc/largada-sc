@@ -1,5 +1,7 @@
-/* Cadastro de atletas (newsletter + cupons), comum a todas as paginas.
-   Qualquer elemento com [data-cadastro] abre o formulario. O envio vai para
+/* Cadastro de atletas (perfil + newsletter + cupons), comum a todas as paginas.
+   Qualquer elemento com [data-cadastro] abre o formulario; os blocos de chamada
+   ([data-cadastro-bloco], a faixa "Crie seu perfil de atleta") aparecem so para
+   quem ainda nao entrou. O envio vai para
    a API (Cloudflare Worker); o cadastro so vale depois do clique no link do
    e-mail. Na volta, ?cadastro=confirmado|expirado|invalido mostra o aviso. */
 (() => {
@@ -8,6 +10,8 @@
   // Chave publica do Turnstile (anti-robo). Em localhost, a chave de teste.
   const TURNSTILE = LOCAL ? "1x00000000000000000000AA" : "0x4AAAAAAFE1fT4EqE1SSerz";
   const PRIVACIDADE = "https://www.cuponsdecorrida.com.br/privacidade.html";
+  // As paginas de prova e de cidade ficam em subpastas: os links para a area partem da raiz.
+  const RAIZ = /^\/(provas|corridas-em)\//.test(location.pathname) ? "/" : "";
   const DISTANCIAS = [["5k", "5 km"], ["10k", "10 km"], ["21k", "Meia (21 km)"], ["42k", "Maratona"],
                       ["trail", "Trail"], ["ultra", "Ultra"]];
 
@@ -18,6 +22,22 @@
 .cta-cadastro:hover{background:#FFD24D}
 .cta-cadastro::before{content:"%"; display:inline-grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:50%;
   background:#0A2F73; color:#FFC21A; font-size:.8rem}
+.perfil-cta{position:relative; overflow:hidden; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.8rem 1.4rem;
+  margin:1.2rem 0; padding:1rem 1.2rem 1.25rem; border-radius:16px; background:linear-gradient(135deg,#0A2F73,#1450C8); color:#fff}
+.perfil-cta[hidden]{display:none}
+.perfil-cta::after{content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
+  background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.perfil-cta__txt{flex:1 1 18rem; min-width:0}
+.perfil-cta__txt b{display:block; font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; font-weight:800; font-size:1.2rem; line-height:1.2; letter-spacing:-.01em}
+.perfil-cta__txt span{display:block; margin-top:.25rem; font-size:.9rem; line-height:1.4; opacity:.92}
+.perfil-cta .cta-cadastro{margin-top:0; flex:none; font-size:1rem; padding:.75rem 1.3rem}
+.perfil-cta--sol{background:#FFC21A; color:#0A2F73}
+.perfil-cta--sol::after{background:repeating-linear-gradient(90deg,#0A2F73 0 20px,#EF4E16 20px 40px)}
+.perfil-cta--sol .cta-cadastro{background:#0A2F73; color:#fff; box-shadow:0 6px 18px rgba(10,47,115,.3)}
+.perfil-cta--sol .cta-cadastro:hover{background:#1450C8}
+.perfil-cta--sol .cta-cadastro::before{background:#FFC21A; color:#0A2F73}
+@media (max-width:560px){ .perfil-cta{padding:.9rem 1rem 1.15rem} .perfil-cta__txt b{font-size:1.08rem} .perfil-cta .cta-cadastro{width:100%; justify-content:center} }
+@media print{ .perfil-cta{display:none !important} }
 .top{position:relative}
 .entrar-topo{position:absolute; top:.75rem; right:1rem; z-index:3; font-size:.82rem; font-weight:600; text-decoration:none;
   color:#fff; border:1px solid rgba(255,255,255,.45); border-radius:999px; padding:.35rem .85rem; background:rgba(10,47,115,.35)}
@@ -109,13 +129,15 @@
     const uf = el("select", { name: "uf", required: true });
     [["", "UF"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"], ["OU", "Outro"]].forEach(([v, t]) =>
       uf.append(el("option", { value: v, textContent: t })));
-    // A pagina do Parana ja sugere PR.
-    if (/\/pr\.html$/.test(location.pathname)) uf.value = "PR";
-    if (/\/rs\.html$/.test(location.pathname)) uf.value = "RS";
+    // A pagina de cada estado (ou da prova) ja sugere o estado dela.
+    const daPagina = document.querySelector("[data-cadastro-uf]");
+    if (daPagina) uf.value = daPagina.dataset.cadastroUf;
+    else if (/\/pr\.html$/.test(location.pathname)) uf.value = "PR";
+    else if (/\/rs\.html$/.test(location.pathname)) uf.value = "RS";
     else if (!/todos\.html$/.test(location.pathname)) uf.value = "SC";
 
     const erro = el("p", { className: "cad__erro", role: "alert" });
-    const enviar = el("button", { className: "cad__enviar", type: "submit", textContent: "Quero receber os cupons" });
+    const enviar = el("button", { className: "cad__enviar", type: "submit", textContent: "Criar meu perfil grátis" });
     const captcha = el("div", { className: "cad__captcha" });
     const campo = (rotulo, input, extra) => el("label", { className: "campo" }, [
       el("span", {}, [document.createTextNode(rotulo), extra ? el("span", { className: "opcional", textContent: " " + extra }) : ""]), input]);
@@ -142,15 +164,15 @@
           el("a", { href: PRIVACIDADE, target: "_blank", rel: "noopener", textContent: "Política de Privacidade" }), document.createTextNode(".")])]),
       captcha, erro, enviar, cidades,
       el("p", { className: "cad__ja" }, [document.createTextNode("Já tem cadastro? "),
-        el("a", { href: "area.html", textContent: "Entre na sua área do atleta" })]),
+        el("a", { href: RAIZ + "area.html", textContent: "Entre na sua área do atleta" })]),
     ]);
 
     const fechar = el("button", { className: "cad__fechar", type: "button", textContent: "×", title: "Fechar" });
     const corpo = el("div", {}, [form]);
     dialogo = el("dialog", { className: "cad", ariaLabel: "Cadastro" }, [
       el("div", { className: "cad__topo" }, [
-        el("h2", { textContent: "Ganhe cupons de desconto" }),
-        el("p", { textContent: "Cadastre-se para receber a newsletter com cupons nas inscrições e as provas da sua região." }),
+        el("h2", { textContent: "Crie seu perfil de atleta" }),
+        el("p", { textContent: "Grátis e sem senha: cupons de desconto nas inscrições, seus resultados reunidos e as provas da sua região por e-mail." }),
         fechar]),
       corpo]);
     fechar.onclick = () => dialogo.close();
@@ -195,7 +217,7 @@
         erro.textContent = x.message === "Failed to fetch" ? "Sem conexão com o servidor. Tente de novo em instantes." : x.message;
         if (window.turnstile && widget != null) window.turnstile.reset(widget);
       } finally {
-        enviar.disabled = false; enviar.textContent = "Quero receber os cupons";
+        enviar.disabled = false; enviar.textContent = "Criar meu perfil grátis";
       }
     };
 
@@ -204,7 +226,10 @@
     }).catch(() => {});
   }
 
-  function abrir() {
+  function abrir(ev) {
+    // De qual botao veio (topo, faixa, prova, cidade): mede no Analytics qual chamada funciona.
+    const de = ev && ev.currentTarget && ev.currentTarget.dataset ? ev.currentTarget.dataset.cadastro || "topo" : "pagina";
+    if (typeof gtag === "function") gtag("event", "cadastro_abrir", { local: de });
     if (!dialogo) montar();
     dialogo.showModal();
     const nome = dialogo.querySelector("input[name=nome]");
@@ -226,13 +251,15 @@
     if (!ATIVO) return;
     document.head.append(el("style", { textContent: css }));
     document.querySelectorAll("[data-cadastro]").forEach(b => { b.hidden = false; b.addEventListener("click", abrir); });
+    document.querySelectorAll("[data-cadastro-bloco]").forEach(b => { b.hidden = false; });
     window.cuponsSessao.then(atleta => {
       if (!atleta) return;
+      document.querySelectorAll("[data-cadastro-bloco]").forEach(b => b.remove());
       // Logado: o topo mostra o nome e leva a area; o "Cadastre-se" vira atalho para os cupons.
       const primeiro = (atleta.nome || "").split(/\s+/)[0];
       document.querySelectorAll("[data-entrar]").forEach(a => { a.textContent = "Olá, " + primeiro + " · Minha área"; });
       document.querySelectorAll("[data-cadastro]").forEach(b => {
-        const link = el("a", { className: b.className, href: "area.html", textContent: "Ver meus cupons" });
+        const link = el("a", { className: b.className, href: RAIZ + "area.html", textContent: "Ver meus cupons" });
         b.replaceWith(link);
       });
     });
@@ -252,5 +279,5 @@
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
   else iniciar();
-  window.abrirCadastro = abrir;
+  window.abrirCadastro = () => abrir();
 })();

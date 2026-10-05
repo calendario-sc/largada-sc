@@ -234,11 +234,22 @@ def cabeca(titulo, descricao, caminho, ld, analytics, extra=""):
 """
 
 
+def chamada_perfil(titulo, onde, uf=""):
+    """Faixa "Crie seu perfil de atleta": vem escondida e o /cadastro.js mostra para quem ainda nao entrou."""
+    return (f'<aside class="perfil-cta" data-cadastro-bloco hidden aria-label="Crie seu perfil de atleta"'
+            + (f' data-cadastro-uf="{e(uf)}"' if uf in UF_NOME else "") + '>'
+            f'<div class="perfil-cta__txt"><b>{e(titulo)}</b>'
+            '<span>É grátis e sem senha: cupons de desconto nas inscrições, seus resultados reunidos num só lugar '
+            'e as provas da sua região por e-mail.</span></div>'
+            f'<button class="cta-cadastro" type="button" data-cadastro="{onde}">Criar meu perfil grátis</button></aside>')
+
+
 RODAPE = """</main>
 <footer class="w">
   <p><a href="/">Calendário de corridas em SC</a><a href="/pr.html">Calendário de corridas no PR</a><a href="/rs.html">Calendário de corridas no RS</a><a href="/cupons.html">Central de Cupons</a><a href="/atletas.html">Resultados por atleta</a><a href="/ranking.html">Ranking das corridas</a><a href="/parceiros.html">Seja parceiro</a><a href="/privacidade.html">Privacidade</a></p>
   <p>Cupons de Corrida · calendário de corridas de rua e trail de Santa Catarina, do Paraná e do Rio Grande do Sul, com cupons de desconto nas inscrições.</p>
 </footer>
+<script src="/cadastro.js" defer></script>
 </body>
 </html>
 """
@@ -406,6 +417,9 @@ def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
                      f'<a href="{e(assinar_google(chave))}" rel="noopener nofollow" target="_blank">Google Agenda</a> · '
                      f'<a href="{e(assinar_webcal(chave))}">iPhone e Outlook</a></p>')
     corpo.append("</section>")
+    corpo.append(chamada_perfil("Vai correr esta prova? Crie seu perfil de atleta" if futura
+                                else "Correu esta prova? Crie seu perfil de atleta" if conc and p.get("or_slug")
+                                else "Crie seu perfil de atleta. É grátis!", "prova", uf))
 
     if conc:
         linhas = sorted((p.get("concluintes") or {}).items(), key=lambda x: -x[1])
@@ -458,6 +472,7 @@ def pagina_cidade(cidade, uf, provas, vizinhas, hoje, analytics):
     else:
         corpo.append(f'<p>Nenhuma prova futura em {e(cidade)} no calendário agora. '
                      f'<a href="{PAGINA_UF.get(uf, "/")}">Veja o calendário de {e(UF_NOME.get(uf, uf))}</a>.</p>')
+    corpo.append(chamada_perfil(f"Corre em {cidade}? Crie seu perfil de atleta", "cidade", uf))
     if passadas:
         corpo.append(f"<h2>Provas realizadas</h2>")
         corpo.append('<div class="cartao"><ul class="lista">' + "".join(linha_prova(p, hoje) for p in passadas[:60]) + "</ul></div>")
