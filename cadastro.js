@@ -251,10 +251,16 @@
     if (!ATIVO) return;
     document.head.append(el("style", { textContent: css }));
     document.querySelectorAll("[data-cadastro]").forEach(b => { b.hidden = false; b.addEventListener("click", abrir); });
-    document.querySelectorAll("[data-cadastro-bloco]").forEach(b => { b.hidden = false; });
+    // A faixa e so para quem ainda nao entrou. Quem ja entrou neste navegador nao a ve nem por
+    // um instante: ela espera a sessao responder (o navegador lembra do ultimo estado).
+    const blocos = () => document.querySelectorAll("[data-cadastro-bloco]");
+    let jaEntrou = false;
+    try { jaEntrou = localStorage.getItem("cupons-logado") === "1"; } catch (e) { /* sem armazenamento */ }
+    if (!jaEntrou) blocos().forEach(b => { b.hidden = false; });
     window.cuponsSessao.then(atleta => {
-      if (!atleta) return;
-      document.querySelectorAll("[data-cadastro-bloco]").forEach(b => b.remove());
+      try { atleta ? localStorage.setItem("cupons-logado", "1") : localStorage.removeItem("cupons-logado"); } catch (e) { /* sem armazenamento */ }
+      if (!atleta) { blocos().forEach(b => { b.hidden = false; }); return; }
+      blocos().forEach(b => b.remove());
       // Logado: o topo mostra o nome e leva a area; o "Cadastre-se" vira atalho para os cupons.
       const primeiro = (atleta.nome || "").split(/\s+/)[0];
       document.querySelectorAll("[data-entrar]").forEach(a => { a.textContent = "Olá, " + primeiro + " · Minha área"; });
