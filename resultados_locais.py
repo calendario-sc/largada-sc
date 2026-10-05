@@ -173,7 +173,7 @@ def publicar():
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return
-    git("add", "corridas.json", "index.html", "pr.html", "todos.html", "provas-futuras.json")
+    git("add", "corridas.json", "index.html", "pr.html", "rs.html", "todos.html", "provas-futuras.json")
     git("add", "-A", "provas", "corridas-em", "agenda", "sitemap.xml", "robots.txt", "404.html", "provas.css")
     hoje = datetime.date.today().strftime("%d/%m/%Y")
     git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
@@ -187,7 +187,7 @@ def publicar():
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
         build.build()
-        git("add", "corridas.json", "index.html", "pr.html", "todos.html", "provas-futuras.json")
+        git("add", "corridas.json", "index.html", "pr.html", "rs.html", "todos.html", "provas-futuras.json")
         git("add", "-A", "provas", "corridas-em", "agenda", "sitemap.xml", "robots.txt", "404.html", "provas.css")
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
@@ -228,7 +228,8 @@ def publicar_bi():
             mercado.montar(registrar=registrar)
         except Exception as erro:
             registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
-        g("add", "corridas/index.html", "corridas/pr.html", "corridas/todos.html", "cadastro.js", "cupons.html")
+        g("add", "corridas/index.html", "corridas/pr.html", "corridas/rs.html", "corridas/todos.html", "cadastro.js", "cupons.html",
+          "logo-cupons-de-corrida.png")
         if (pasta / "minhas-corridas" / "dados.json").exists():
             g("add", "minhas-corridas/dados.json")
         if (pasta / "acorsj" / "dados.json").exists():
