@@ -1,30 +1,30 @@
 == coleta ==
 == fontes ==
-  corridasbr: 215 provas
-  corridasbr/arquivo: 350 provas
-  ticketsports: 78 provas
-  roadrunners: 207 provas
+  corridasbr: 214 provas
+  corridasbr/arquivo: 352 provas
+  ticketsports: 74 provas
+  roadrunners: 210 provas
   movnow: 19 provas
   atletis: 1 provas
   sympla: 19 provas
   blueticket: 4 provas
-  fca: 1862 provas
-  corridasbr (PR): 167 provas
-  corridasbr/arquivo (PR): 383 provas
-  ticketsports (PR): 71 provas
-  roadrunners (PR): 150 provas
-  corridasbr (RS): 236 provas
-  corridasbr/arquivo (RS): 407 provas
-  ticketsports (RS): 26 provas
-  roadrunners (RS): 120 provas
-  fap: 597 provas
+  fca: 0 provas
+  corridasbr (PR): 165 provas
+  corridasbr/arquivo (PR): 388 provas
+  ticketsports (PR): 78 provas
+  roadrunners (PR): 152 provas
+  corridasbr (RS): 239 provas
+  corridasbr/arquivo (RS): 411 provas
+  ticketsports (RS): 27 provas
+  roadrunners (RS): 122 provas
+  fap: 599 provas
   parceiros: 0 provas
 
 datas de ticketeira acertadas pela outra fonte: 1
   ~ 2026-10-17 -> 2026-10-18  Meia Maratona de Garopaba [blueticket]
 
-3597 provas distintas depois de fundir as fontes
-descartadas (17): fora de SC/PR/RS ou nao sao corrida
+2176 provas distintas depois de fundir as fontes
+descartadas (18): fora de SC/PR/RS ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
@@ -33,57 +33,60 @@ descartadas (17): fora de SC/PR/RS ou nao sao corrida
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
-  - ... e mais 9
-restam 3580 provas
-provas que mudaram de nome: 4 registros unificados
-  = 2026-07-05  Tramandaí - 31ª Rústica do Festival do Peixe  <-  31ª FESTA do PEIXE
-  = 2026-08-30  Santa Cruz do Sul - 2ª Corrida pela Saúde HAN  <-  2ª CORRIDA da SAUDE HOSPITAL ANA NERY
-  = 2026-09-06  São Jerônimo - Corre Leo  <-  CORRE JEO
-  = 2026-09-27  Parobé - Corrida do Cinquentenário do Rotary Cl  <-  Corrida do Cinquentenário do Rotary Cl
-concluintes: 499 provas no Open Results, 452 casadas, 20 com numero novo, 14 provas criadas
-concluintes (chiprun): 5 provas consultadas, 4 preenchidas
-concluintes (link do corridasbr): 150 provas consultadas, 16 preenchidas
-genero: 400 provas consultadas, 381 preenchidas
-organizador: 226 provas consultadas, 168 preenchidas
-organizador: 137 provas preenchidas pela FCA
-organizador: 100 provas tiveram a grafia padronizada
-fca: 147 provas juntadas as que ja existiam
-resultados repetidos removidos: 14
-series: 4255 eventos com uma ou mais edicoes | 8 resultados parciais marcados
-historico: 6826 provas (6017 ja realizadas) | 710 cidades
-novas nesta rodada: 150
-  + 2022-01-04  Santiago - Corrida Chicão Gorski
-  + 2022-01-09  Salto do Jacuí - 19ª Corrida da Paz
-  + 2022-01-16  Gramado - Maratona de Gramado Trail
-  + 2022-01-22  Teutônia - Circuito 7k - 3ª Etapa
-  + 2022-01-23  Giruá - IV Desafio 10k - 1ª Etapa Circuito Noroeste Missões de Corrida de Rua
-  + 2022-01-23  Ivoti - 1ª Corrida do Kerb in Ivoti
-  + 2022-01-23  Mata - 1° Desafio Rota dos Dinossauros
-  + 2022-01-23  Vera Cruz - 1ª Caminhada e Corrida de Rua de Vera Cruz
-  + 2022-01-30  Campo Bom - Rústica de Aniversário de Campo Bom
-  + 2022-02-06  Santo Ângelo - 3ª Rústica Clube Gaúcho 120 Anos
-  + 2022-02-12  Três Coroas - Trilhas das Laranjeiras - 2ª Etapa CTM 2022
-  + 2022-02-13  Santa Maria - Corrida de Carnaval
-  + 2022-02-19  Capão da Canoa - Hospital Moinhos de Vento Summer Night Run
-  + 2022-02-20  Santa Rosa - Corrida Ecológica Ser Cisne/Maratona Clube Santa Rosa
-  + 2022-02-26  Santa Maria - Corrida Noturna - 1ª Etapa
+  - ... e mais 10
+restam 2158 provas
+concluintes: 499 provas no Open Results, 455 casadas, 18 com numero novo, 15 provas criadas
+concluintes (chiprun): 1 provas consultadas, 0 preenchidas
+  resultado 2025-05-10 Fall Neon Night Run: FALHOU (HTTPError)
+  resultado 2025-04-27 2ª Corrida Let´s Go Training em Prol do : FALHOU (HTTPError)
+  resultado 2025-03-30 Circuito Asteri Trail Run - 21k Caminhos: FALHOU (HTTPError)
+  resultado 2024-11-17 Rancho dos Bugres Trail Run: FALHOU (HTTPError)
+concluintes (link do corridasbr): 150 provas consultadas, 30 preenchidas
+genero: 28 provas consultadas, 18 preenchidas
+organizador: 8 provas consultadas, 8 preenchidas
+organizador: 28 provas preenchidas pela FCA
+organizador: 68 provas tiveram a grafia padronizada
+percurso: 1 provas consultadas no arquivo, 1 preenchidas
+fca: 27 provas juntadas as que ja existiam
+resultados repetidos removidos: 15
+series: 4268 eventos com uma ou mais edicoes | 8 resultados parciais marcados
+historico: 6848 provas (6028 ja realizadas) | 710 cidades
+novas nesta rodada: 45
+  + 2026-10-03  Monte Belo do Sul - Wine Run Brasil - Vale dos Vinhedos
+  + 2026-10-17  Curitiba - PRIMEIRA CAMINHADA LEGACY
+  + 2026-10-25  Cascavel - 7ª CASCAVEL XTRAIL RUN
+  + 2026-11-07  Tramandaí - Treinão 41 Anos do Vitão
+  + 2026-11-14  Curitiba - EXPERIÊNCIA DA ARTE DE CULTIVAR BONSAI
+  + 2026-11-14  Porto Belo - SUPERE RUN – Porto Belo 2026
+  + 2026-11-20  Joinville - ALLEYCAT RUN
+  + 2026-11-20  São José dos Pinhais - FIREFIGHTERS NIGHT RUN 3ª EDIÇÃO - SÃO JOSÉ DOS PINHAIS
+  + 2026-11-29  Porto Alegre - POA DAY RUN 2026 - 3ª ETAPA
+  + 2026-12-01  Curitiba - EXPERIÊNCIA DE CERVEJA 2.0 CWB
+  + 2026-12-06  Curitiba - CORRIDA DO NATAL DE CURITIBA
+  + 2026-12-13  Araucária - CORRIDA E CAMINHADA DE ARAUCÁRIA 2026
+  + 2026-12-20  Viamão - 12 Horas de Tarumã - 46ª Edição
+  + 2027-01-09  Tramandaí - Corrida 6 anos by Joy
+  + 2027-01-16  Imbé - 5ª Imbé Night Run
 
-futuras que nao apareceram hoje (7) - possivel cancelamento, mantidas no historico:
+futuras que nao apareceram hoje (60) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Lages - 1ª Corrida Ab Run (visto pela ultima vez em 2026-10-01)
   ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
+  ? 2026-10-12  Joinville - Mãe Aparecida Run (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-16  Bombinhas - Indomit Bombinhas 2026 5k (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-17  Araranguá - Grêmio Fronteira Night Run (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-17  Campo Largo - Santander Night Run 2026 (visto pela ultima vez em 2026-10-04)
   ? 2026-10-17  Curitiba - Santander Night Run - Etapa 1 - Curitiba 2026 (visto pela ultima vez em 2026-10-01)
-  ? 2026-10-31  Araranguá - Corrida Gremio Fronteira (visto pela ultima vez em 2026-10-01)
-  ? 2026-11-01  Curitiba - Track&Field Run Series 2026 - Parkshoppingbarigüi (visto pela ultima vez em 2026-09-25)
-  ? 2026-11-15  Guaíra - Circuito Paulista Supermercados - Guaíra (visto pela ultima vez em 2026-09-29)
-  ? 2026-12-06  São Bento do Sul - CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL (visto pela ultima vez em 2026-09-26)
+  ? 2026-10-18  Concórdia - Corrida de Rua e Caminhada SEST SENAT (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-18  Jaraguá do Sul - Desafio Morro das Antenas - Jovem PAN (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-24  Imbituba - Imbituba 5k (visto pela ultima vez em 2026-10-04)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['Litoral Gaúcho', 'VARGEM BONITA (Vila Campina da Alegria)']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['Litoral Gaúcho']
 
 == perfis ==
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,211,041 bytes)
+artifact.html e index.html gerados (2,218,495 bytes)
 
-RESULTADO: pronto para publicar (coleta de 04/10/2026).
+RESULTADO: pronto para publicar (coleta de 06/10/2026).

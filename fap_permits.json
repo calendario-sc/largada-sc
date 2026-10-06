@@ -4732,6 +4732,20 @@
 "largada": "18:00",
 "numero": "494/2026"
 },
+"1aJLeQ0ytCSqGiLlgLBdA_Yo3a5M04224": {
+"arquivo": "603-2026-The Hardest Run.pdf",
+"cidade": "Curitiba",
+"data": "2026-10-18",
+"entidade": "INSTITUTO THE HARDEST RUN",
+"evento": "The Hardest Run",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "Praça Nossa Senhora da Salete, Curitiba-PR",
+"numero": "603/2026"
+},
 "1aPgjzE_kOk8-87wmFd51_fwAGiFzUhwb": {
 "arquivo": "070.2026-1ª Etapa Circuito Prosperitá de Corrida de Rua.pdf",
 "cidade": "Cascavel",
@@ -5790,6 +5804,19 @@
 ],
 "largada": "16:30",
 "numero": "322/2026"
+},
+"1jFeViczi4_C4oK9O9ucc1mEkO38taMo9": {
+"arquivo": "604-2026-1ª Corrida Do Legislativo Araucária.pdf",
+"cidade": "Araucária",
+"data": "2026-10-11",
+"entidade": "ASSESSOCOR ASSESSORIA ESPORTIVA LTDA",
+"evento": "1ª Corrida Do Legislativo Araucária",
+"km": [
+5.0
+],
+"largada": "07:00",
+"local": "R. Irmã Elizabeth Werka, 55 - Estação, Araucária-PR",
+"numero": "604/2026"
 },
 "1jGi7K33onXKS9jOSTXNy1fmT_skw7zE0": {
 "arquivo": "200.2026-10° Desafio de Rua Capal.pdf",
