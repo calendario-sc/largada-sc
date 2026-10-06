@@ -152,12 +152,15 @@
         campo("Estado", uf),
       ]),
       el("fieldset", {}, [el("legend", { textContent: "Distâncias que você corre" }), dist]),
-      campo("WhatsApp", el("input", { type: "tel", name: "whatsapp", autocomplete: "tel", placeholder: "(48) 99999-0000", maxLength: 20 }), "(opcional)"),
-      el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaWhatsapp" }),
-        el("span", { textContent: "Aceito receber avisos de cupons e provas pelo WhatsApp." })]),
+      // Sem caixa a parte para o WhatsApp: quem informa o numero ja sabe para que ele serve
+      // (o texto fica junto do campo) e o aceite e registrado com o numero.
+      campo("WhatsApp", el("input", { type: "tel", name: "whatsapp", autocomplete: "tel", placeholder: "(48) 99999-0000", maxLength: 20 }),
+            "(opcional) · ao informar, você aceita receber avisos de cupons e provas pelo WhatsApp"),
       el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "maiorDeIdade" }),
         el("span", { textContent: "Tenho 18 anos ou mais." })]),
-      el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaNewsletter" }),
+      // Ja vem marcada: receber os cupons e o proprio motivo do cadastro, e o aceite
+      // definitivo e o clique no link do e-mail de confirmacao.
+      el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaNewsletter", checked: true }),
         el("span", { textContent: "Quero receber a newsletter e os cupons de desconto por e-mail." })]),
       el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaPrivacidade" }),
         el("span", {}, [document.createTextNode("Li e aceito a "),
@@ -187,7 +190,7 @@
         nome: (f.get("nome") || "").trim(), email: (f.get("email") || "").trim(),
         cidade: (f.get("cidade") || "").trim(), uf: f.get("uf") || "",
         distancias: f.getAll("distancias"), whatsapp: (f.get("whatsapp") || "").trim(),
-        aceitaWhatsapp: f.get("aceitaWhatsapp") === "on",
+        aceitaWhatsapp: Boolean((f.get("whatsapp") || "").trim()),
         aceitaNewsletter: f.get("aceitaNewsletter") === "on", aceitaPrivacidade: f.get("aceitaPrivacidade") === "on",
         maiorDeIdade: f.get("maiorDeIdade") === "on",
         origem: location.pathname, turnstile: window.turnstile && widget != null ? window.turnstile.getResponse(widget) : "",
