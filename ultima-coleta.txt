@@ -1,29 +1,29 @@
 == coleta ==
 == fontes ==
-  corridasbr: 214 provas
+  corridasbr: 215 provas
   corridasbr/arquivo: 352 provas
-  ticketsports: 74 provas
+  ticketsports: 75 provas
   roadrunners: 210 provas
   movnow: 19 provas
   atletis: 1 provas
-  sympla: 19 provas
+  sympla: 20 provas
   blueticket: 4 provas
   fca: 0 provas
-  corridasbr (PR): 165 provas
+  corridasbr (PR): 170 provas
   corridasbr/arquivo (PR): 388 provas
   ticketsports (PR): 78 provas
   roadrunners (PR): 152 provas
-  corridasbr (RS): 239 provas
+  corridasbr (RS): 259 provas
   corridasbr/arquivo (RS): 411 provas
-  ticketsports (RS): 27 provas
+  ticketsports (RS): 26 provas
   roadrunners (RS): 122 provas
-  fap: 599 provas
+  fap: 610 provas
   parceiros: 0 provas
 
 datas de ticketeira acertadas pela outra fonte: 1
   ~ 2026-10-17 -> 2026-10-18  Meia Maratona de Garopaba [blueticket]
 
-2176 provas distintas depois de fundir as fontes
+2201 provas distintas depois de fundir as fontes
 descartadas (18): fora de SC/PR/RS ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
@@ -34,39 +34,43 @@ descartadas (18): fora de SC/PR/RS ou nao sao corrida
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - ... e mais 10
-restam 2158 provas
-concluintes: 499 provas no Open Results, 455 casadas, 18 com numero novo, 15 provas criadas
+restam 2183 provas
+concluintes: 499 provas no Open Results, 455 casadas, 19 com numero novo, 16 provas criadas
 concluintes (chiprun): 1 provas consultadas, 0 preenchidas
-  resultado 2025-05-10 Fall Neon Night Run: FALHOU (HTTPError)
-  resultado 2025-04-27 2ª Corrida Let´s Go Training em Prol do : FALHOU (HTTPError)
-  resultado 2025-03-30 Circuito Asteri Trail Run - 21k Caminhos: FALHOU (HTTPError)
-  resultado 2024-11-17 Rancho dos Bugres Trail Run: FALHOU (HTTPError)
-concluintes (link do corridasbr): 150 provas consultadas, 30 preenchidas
-genero: 28 provas consultadas, 18 preenchidas
-organizador: 8 provas consultadas, 8 preenchidas
-organizador: 28 provas preenchidas pela FCA
-organizador: 68 provas tiveram a grafia padronizada
-percurso: 1 provas consultadas no arquivo, 1 preenchidas
+  resultado 2024-11-10 Corrida 360 Mohawk: FALHOU (HTTPError)
+  resultado 2024-08-17 Desafio 24 Horas de Criciúma 2024: FALHOU (HTTPError)
+  resultado 2024-07-27 Circuito de Corridas Fecam 2024 - 3ª Eta: FALHOU (ParseError)
+  resultado 2024-07-21 Trail Run do Mineiro: FALHOU (HTTPError)
+  resultado 2024-07-06 1º Trail Run - Barra do Norte: FALHOU (HTTPError)
+  resultado 2024-06-09 Itá Trail: FALHOU (HTTPError)
+  resultado 2024-05-19 Circuito de Corridas Fecam 2024 - 2ª Eta: FALHOU (ParseError)
+  resultado 2024-04-20 24 Horas Torao Takada - 11ª Edição: FALHOU (ParseError)
+  resultado 2024-04-13 Desafio Braves Mud Race: FALHOU (ParseError)
+concluintes (link do corridasbr): 150 provas consultadas, 42 preenchidas
+genero: 29 provas consultadas, 19 preenchidas
+organizador: 20 provas consultadas, 15 preenchidas
+organizador: 34 provas preenchidas pela FCA
+organizador: 70 provas tiveram a grafia padronizada
 fca: 27 provas juntadas as que ja existiam
-resultados repetidos removidos: 15
-series: 4268 eventos com uma ou mais edicoes | 8 resultados parciais marcados
-historico: 6848 provas (6028 ja realizadas) | 710 cidades
-novas nesta rodada: 45
-  + 2026-10-03  Monte Belo do Sul - Wine Run Brasil - Vale dos Vinhedos
-  + 2026-10-17  Curitiba - PRIMEIRA CAMINHADA LEGACY
-  + 2026-10-25  Cascavel - 7ª CASCAVEL XTRAIL RUN
-  + 2026-11-07  Tramandaí - Treinão 41 Anos do Vitão
-  + 2026-11-14  Curitiba - EXPERIÊNCIA DA ARTE DE CULTIVAR BONSAI
-  + 2026-11-14  Porto Belo - SUPERE RUN – Porto Belo 2026
-  + 2026-11-20  Joinville - ALLEYCAT RUN
-  + 2026-11-20  São José dos Pinhais - FIREFIGHTERS NIGHT RUN 3ª EDIÇÃO - SÃO JOSÉ DOS PINHAIS
-  + 2026-11-29  Porto Alegre - POA DAY RUN 2026 - 3ª ETAPA
-  + 2026-12-01  Curitiba - EXPERIÊNCIA DE CERVEJA 2.0 CWB
-  + 2026-12-06  Curitiba - CORRIDA DO NATAL DE CURITIBA
-  + 2026-12-13  Araucária - CORRIDA E CAMINHADA DE ARAUCÁRIA 2026
-  + 2026-12-20  Viamão - 12 Horas de Tarumã - 46ª Edição
-  + 2027-01-09  Tramandaí - Corrida 6 anos by Joy
-  + 2027-01-16  Imbé - 5ª Imbé Night Run
+resultados repetidos removidos: 16
+series: 4285 eventos com uma ou mais edicoes | 8 resultados parciais marcados
+historico: 6872 provas (6027 ja realizadas) | 710 cidades
+novas nesta rodada: 52
+  + 2026-10-10  Caxias do Sul - Choque Night Run
+  + 2026-10-10  Fazenda Rio Grande - 5ª Corrida da Guarda Municipal Fazenda Rio Grande
+  + 2026-10-10  Jardim Alegre - 2º Corrida Juntos por Ela Contra a Violência da Mulher
+  + 2026-10-10  Santa Terezinha de Itaipu - Circuito Correr É Massa - Santa Terezinha do Itaipu
+  + 2026-10-11  Arapoti - 1ª Desafio Corrida pela Vida
+  + 2026-10-11  Mallet - Bahniuk Run
+  + 2026-10-12  Maringá - 1ª Corrida Católica de Maringá
+  + 2026-10-18  Santa Maria - 1º TREINÃO SÓ PARA MULHERES - Alusivo ao Outubro Rosa
+  + 2026-10-24  Colombo - corrida kids colombo
+  + 2026-10-31  Igrejinha - Move Pro Fantasy Run
+  + 2026-11-01  Cerrito - Corrida Aniversário de Cerrito
+  + 2026-11-01  Itaqui - 1ª Rústica do Sindserpi Alusiva ao Dia do Servidor Público
+  + 2026-11-08  Cachoeira do Sul - Circuito Cachoeirinha de Corrida de Rua - 3ª Etapa
+  + 2026-11-08  São Martinho - 3ª Rústica de São Martinho
+  + 2026-11-14  Santo Ângelo - II Rústica Conecta Missões
 
 futuras que nao apareceram hoje (60) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Lages - 1ª Corrida Ab Run (visto pela ultima vez em 2026-10-01)
@@ -87,6 +91,6 @@ parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,218,495 bytes)
+artifact.html e index.html gerados (2,232,297 bytes)
 
-RESULTADO: pronto para publicar (coleta de 06/10/2026).
+RESULTADO: pronto para publicar (coleta de 07/10/2026).
