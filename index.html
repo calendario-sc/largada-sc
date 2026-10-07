@@ -448,6 +448,8 @@ body:not(.bi) h1 .logo-txt{display:none}
   box-shadow:0 2px 10px rgba(255,194,26,.55); border:1px solid #E5A800}
 .race .tag.tag--cupom:hover{background:#FFD24D; box-shadow:0 3px 14px rgba(255,194,26,.75)}
 .race .tag.tag--cupom::before{content:"% "; font-weight:800}
+.race .tag.tag--cupom.tag--cupom-parceiro{background:#FFF4CC; box-shadow:none}
+.race .tag.tag--cupom.tag--cupom-parceiro:hover{background:#FFE89A}
 
 /* ---------- cupons (gestao), so no BI ---------- */
 .cp{width:min(56rem, 100% - 2rem)}
@@ -485,6 +487,12 @@ body:not(.bi) h1 .logo-txt{display:none}
 .cp__form label.largo{grid-column:1 / -1}
 .cp__form input,.cp__form select,.cp__form textarea{font:inherit; font-size:.88rem; padding:.45rem .55rem; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink); width:100%; min-width:0; box-sizing:border-box}
 .cp__form input[type=checkbox]{width:auto}
+.cp__sugestoes{list-style:none; margin:.2rem 0 0; padding:0; max-height:12rem; overflow:auto; border:1px solid var(--line); border-radius:8px; background:var(--surface)}
+.cp__sugestoes li{padding:.35rem .55rem; cursor:pointer; font-weight:400; font-size:.84rem}
+.cp__sugestoes li:hover{background:var(--surface-2)}
+.cp__escolhidas{display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.3rem}
+.cp__escolhidas span{display:inline-flex; gap:.3rem; align-items:center; font-weight:400; font-size:.78rem; padding:.2rem .5rem; border-radius:999px; background:var(--azul-wash); color:var(--azul-ink)}
+.cp__escolhidas button{border:0; background:none; cursor:pointer; color:inherit; font-size:.9rem; padding:0; line-height:1}
 .cp__form label,.cp__form > *{min-width:0}
 .cp__corpo{overflow-x:hidden}
 .cp__form textarea{min-height:3.2rem; resize:vertical}
@@ -2673,12 +2681,21 @@ const API_CUPONS = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? "http:
 let CUPONS = [];
 const chaveDaProva = r => r.data + "|" + r.nome;
 
-function cupomDaProva(r){
-  if (!CUPONS.length) return null;
+// Palavras do nome ("jurerê, floripa") que ligam um cupom de parceiro a toda prova cujo nome as contenha.
+const termosDoCupom = c => String(c.provas_termo || "").split(",").map(t => norm(t.trim())).filter(t => t.length >= 3);
+function cupomValeNaProva(c, r, chave){
+  if (c.esgotado) return false;
+  if (c.alvo === "prova") return c.prova_chave === chave;
+  if (c.alvo === "organizadora") return (r.organizadores || []).includes(c.organizadora);
+  if (c.alvo === "parceiro") return (c.provas || []).some(p => p.chave === chave) || termosDoCupom(c).some(t => norm(r.nome).includes(t));
+  return false;
+}
+function cuponsDaProva(r){
+  if (!CUPONS.length) return [];
   const chave = chaveDaProva(r);
-  return CUPONS.find(c => !c.esgotado && c.alvo === "prova" && c.prova_chave === chave)
-      || CUPONS.find(c => !c.esgotado && c.alvo === "organizadora" && (r.organizadores || []).includes(c.organizadora))
-      || null;
+  const lista = CUPONS.filter(c => cupomValeNaProva(c, r, chave));
+  // O cupom da inscricao vem primeiro; depois os parceiros ligados a prova (hotel, loja...), ate tres.
+  return lista.filter(c => c.alvo !== "parceiro").slice(0, 1).concat(lista.filter(c => c.alvo === "parceiro").slice(0, 3));
 }
 
 (async () => {
@@ -2754,8 +2771,18 @@ const hojeIso = () => new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 
 function descreverAlvo(c){
   if (c.alvo === "prova") return (c.prova_nome || "prova") + (c.prova_data ? " · " + dataBr(c.prova_data) : "") + (c.prova_cidade ? " · " + c.prova_cidade : "");
   if (c.alvo === "organizadora") return "todas as provas de " + c.organizadora;
-  if (c.alvo === "parceiro") return "parceiro: " + c.parceiro + (c.categoria ? " · " + c.categoria : "") + (c.cidade ? " · " + c.cidade : "") + (c.uf ? " · " + c.uf : "");
+  if (c.alvo === "parceiro"){
+    const ligadas = provasLigadasDe(c);
+    return "parceiro: " + c.parceiro + (c.categoria ? " · " + c.categoria : "") + (c.cidade ? " · " + c.cidade : "") + (c.uf ? " · " + c.uf : "")
+      + (ligadas.length ? " · no cartão de " + ligadas.length + (ligadas.length === 1 ? " prova" : " provas") : "")
+      + (c.provas_termo ? " · provas com \"" + c.provas_termo + "\"" : "");
+  }
   return "geral" + (c.uf ? " · " + c.uf : "");
+}
+// A API do BI devolve a coluna como texto JSON; a publica, ja como lista.
+function provasLigadasDe(c){
+  if (Array.isArray(c.provas)) return c.provas;
+  try { const v = JSON.parse(c.provas || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; }
 }
 
 function listarCuponsAdm(){
@@ -2863,10 +2890,34 @@ function formularioCupom(c){
   const cidadeParc = inp("cidade", "text", c.cidade, { placeholder:"Vazio = online ou todo o estado", maxLength:80 });
   const campoProva = campo("Prova", provaInp, true), campoOrg = campo("Organizadora", orgs, true), campoUf = campo("Estado", uf);
   const campoParc = campo("Loja ou serviço", parceiro), campoCat = campo("Categoria", categoria), campoCid = campo("Cidade", cidadeParc);
+  // Parceiro ligado a provas: escolhidas uma a uma (busca nas futuras) e/ou por palavra no nome ("jurerê").
+  let ligadas = provasLigadasDe(c).map(p => ({ chave:p.chave, nome:p.nome, data:p.data, cidade:p.cidade }));
+  const buscaLig = inp("busca_provas", "search", "", { placeholder:"Digite o nome da prova ou a cidade…", autocomplete:"off" });
+  const sugLig = el("ul", { className:"cp__sugestoes", hidden:true });
+  const chipsLig = el("div", { className:"cp__escolhidas" });
+  const pintarLig = () => chipsLig.replaceChildren(...ligadas.map(p => el("span", {}, [document.createTextNode(dataBr(p.data) + " · " + p.nome + " "),
+    Object.assign(el("button", { type:"button", textContent:"×", title:"Tirar" }), { onclick: () => { ligadas = ligadas.filter(x => x.chave !== p.chave); pintarLig(); } })])));
+  buscaLig.oninput = () => {
+    const q = norm(buscaLig.value.trim());
+    const base = q.length >= 2 ? futuras.filter(r => norm(r.nome + " " + r.cidade).includes(q)).slice(0, 30) : [];
+    sugLig.replaceChildren(...base.map(r => {
+      const li = el("li", { textContent:rotuloProva(r) });
+      li.onclick = () => {
+        if (!ligadas.some(x => x.chave === chaveDaProva(r))) ligadas.push({ chave:chaveDaProva(r), nome:r.nome, data:r.data, cidade:r.cidade });
+        pintarLig(); buscaLig.value = ""; sugLig.hidden = true;
+      };
+      return li;
+    }));
+    sugLig.hidden = !base.length;
+  };
+  pintarLig();
+  const termoLig = inp("provas_termo", "text", c.provas_termo, { placeholder:"Ex.: jurerê, floripa (separe por vírgula)", maxLength:200 });
+  const campoLig = el("label", { className:"largo" }, [el("span", { textContent:"Aparece também no cartão destas provas (opcional)" }), buscaLig, sugLig, chipsLig]);
+  const campoTermo = campo("…ou de toda prova cujo nome contenha (opcional)", termoLig, true);
   const rotuloLink = campo("Link de inscrição", link, true);
   function mostrarAlvo(){
     campoProva.hidden = alvo !== "prova"; campoOrg.hidden = alvo !== "organizadora"; campoUf.hidden = alvo !== "geral" && alvo !== "parceiro";
-    campoParc.hidden = campoCat.hidden = campoCid.hidden = alvo !== "parceiro";
+    campoParc.hidden = campoCat.hidden = campoCid.hidden = campoLig.hidden = campoTermo.hidden = alvo !== "parceiro";
     rotuloLink.firstChild.textContent = alvo === "parceiro" ? "Link da loja ou do serviço" : "Link de inscrição";
   }
   mostrarAlvo();
@@ -2881,7 +2932,7 @@ function formularioCupom(c){
 
   f.append(
     campo("Desconto", desconto), campo("Código", codigo), campo("Título", titulo, true), alvoBox,
-    campoProva, lista, campoOrg, campoParc, campoCat, categorias, campoCid, campoUf,
+    campoProva, lista, campoOrg, campoParc, campoCat, categorias, campoCid, campoUf, campoLig, campoTermo,
     rotuloLink, campo("Válido até", validade), campo("Limite de atletas", limite),
     campo("Regras (aparecem para o atleta)", regras, true),
     el("label", { className:"largo" }, [el("span", {}, [ativo, document.createTextNode(" Cupom ativo (aparece para os atletas)")])]),
@@ -2898,6 +2949,7 @@ function formularioCupom(c){
       organizadora: orgs.value, uf: uf.value, link_inscricao: link.value, regras: regras.value,
       valido_ate: validade.value, limite: limite.value, ativo: ativo.checked,
       parceiro: parceiro.value, categoria: categoria.value, cidade: cidadeParc.value,
+      provas: alvo === "parceiro" ? ligadas : [], provas_termo: alvo === "parceiro" ? termoLig.value : "",
     };
     const d = await salvarCupom(dados, c.id);
     if (d && d.erro) erro.textContent = d.erro;
@@ -4065,8 +4117,8 @@ const PIZZA_CRONO = {
 const PIZZA_FOTO = {
   id:"foto", campo:"fotografia", titulo:"Participação das plataformas de fotografia", rotulo:"fotografia",
   base: r => r._passada && !(r.tags || []).includes("Treino"), universo:"realizadas", semRotulo:"sem cobertura encontrada",
-  vazio:"Nenhuma prova realizada do recorte aparece nas plataformas de fotografia (Foco Radical, Banlek e Fotop).",
-  nota:"Cobertura achada nas listas de eventos da Foco Radical, da Banlek e da Fotop. Prova coberta por mais de uma plataforma conta em cada uma, e o percentual é sobre a soma.",
+  vazio:"Nenhuma prova realizada do recorte aparece nas plataformas de fotografia (Foco Radical, Banlek, Fotop e Fotto).",
+  nota:"Cobertura achada nas listas de eventos da Foco Radical, da Banlek, da Fotop e do Fotto. Prova coberta por mais de uma plataforma conta em cada uma, e o percentual é sobre a soma.",
 };
 function montarFoto(){ montarParticipacao(PIZZA_FOTO); }
 function montarTicketeiras(){ montarParticipacao(PIZZA_TICKETEIRAS); }
@@ -4389,12 +4441,13 @@ function linha(r, destaque){
     meta.append(el("span", { className:"tag tag--permit", textContent: r.uf === "PR" ? "Permit FAP" : "Permit FCA",
                              title:"Permit nº " + r.permit + (r.uf === "PR" ? " na Federação de Atletismo do Paraná"
                                                                         : " na Federação Catarinense de Atletismo") }));
-  const cupom = !r._passada && cupomDaProva(r);
-  if (cupom){
-    const selo = el("a", { className:"tag tag--cupom", href:"cupons.html#c-" + cupom.id,
-      textContent:"Cupom " + cupom.desconto, title:cupom.titulo + " — entre na sua área do atleta para ver o código" });
+  if (!r._passada) cuponsDaProva(r).forEach(cupom => {
+    const parceiro = cupom.alvo === "parceiro";
+    const selo = el("a", { className:"tag tag--cupom" + (parceiro ? " tag--cupom-parceiro" : ""), href:"cupons.html#c-" + cupom.id,
+      textContent:(parceiro ? cupom.parceiro + " " : "Cupom ") + cupom.desconto,
+      title:cupom.titulo + " — entre na sua área do atleta para ver o código" });
     meta.append(selo);
-  }
+  });
   if (r.evento_dias > 1)
     meta.append(el("span", { className:"tag tag--dia", textContent:"dia " + r.evento_dia + " de " + r.evento_dias,
                              title:"Evento de " + r.evento_dias + " dias: conta uma prova só nos totais" }));

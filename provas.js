@@ -1,3 +1,35 @@
+// Cupons da prova (bloco #cupons-prova, gerado pelo seo.py): o cupom da inscricao, o da organizadora e os de
+// parceiros ligados a prova (escolhida no cupom ou por palavra no nome), da API /cupons. Os codigos ficam na Central.
+(async () => {
+  const sec = document.getElementById("cupons-prova"), lista = document.getElementById("cupons-prova-lista");
+  if (!sec || !lista) return;
+  const API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
+  const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const chave = sec.dataset.chave, nome = norm(sec.dataset.nome);
+  let orgs = [];
+  try { orgs = JSON.parse(sec.dataset.orgs || "[]"); } catch (e) { /* sem organizadora */ }
+  const termos = c => String(c.provas_termo || "").split(",").map(t => norm(t.trim())).filter(t => t.length >= 3);
+  const vale = c => !c.esgotado && (c.alvo === "prova" ? c.prova_chave === chave
+    : c.alvo === "organizadora" ? orgs.includes(c.organizadora)
+    : c.alvo === "parceiro" ? (c.provas || []).some(p => p.chave === chave) || termos(c).some(t => nome.includes(t)) : false);
+  try {
+    const d = await fetch(API + "/cupons").then(r => r.json());
+    const cupons = (d.cupons || []).filter(vale);
+    if (!cupons.length) return;
+    const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
+    lista.replaceChildren(...cupons.map(c => {
+      const a = el("a", "cupom-prova");
+      a.href = "/cupons.html#c-" + c.id;
+      a.append(el("span", "selo", c.desconto), el("span", "nome", c.titulo),
+               el("span", "quem", c.alvo === "parceiro" ? c.parceiro + (c.categoria ? " · " + c.categoria : "") : "Desconto na inscrição"),
+               el("span", "pe", "Pegar cupom →"));
+      a.onclick = () => { if (typeof gtag === "function") gtag("event", "cupom_prova_clique", { cupom_id: c.id }); };
+      return a;
+    }));
+    sec.hidden = false;
+  } catch (e) { /* sem API: sem cupons */ }
+})();
+
 // Caixas de ofertas nas paginas de prova (bloco #ofertas, gerado pelo seo.py): produtos da vitrine das lojas
 // parceiras (API /vitrine), alternando as lojas; o navegador guarda a vez e cada visita mostra os seguintes.
 (async () => {

@@ -3,9 +3,10 @@
 
 Cada plataforma lista os eventos que fotografou, com data e cidade:
 
-  Foco Radical  API do site, por estado (next-api/home/competitions): SC e PR
+  Foco Radical  API do site, por estado (next-api/home/competitions): SC, PR e RS
   Banlek        GraphQL (graphql.banlek.com), por estado e categoria
   Fotop         busca por nome (webservices/eventos/nome-eventos)
+  Fotto         API do site (api.fotto.com.br/api/galleries), por estado, categoria e periodo
 
 A prova casa com o evento da plataforma pela data, pela cidade e pelo nome.
 Uma prova pode ter mais de uma plataforma: fica a lista. O campo vai em
@@ -30,11 +31,14 @@ AQUI = Path(__file__).resolve().parent
 PAUSA = 0.4
 FOCO_ESTADO_SC = 24
 # Codigo de cada estado na Foco Radical (ordem alfabetica dos nomes).
-FOCO_ESTADO = {"SC": 24, "PR": 16}
+FOCO_ESTADO = {"SC": 24, "PR": 16, "RS": 21}
 FOCO_URL = ("https://www.focoradical.com.br/next-api/home/competitions"
             "?CompetitionSearch%5Bstate%5D={estado}&page={pagina}")
 BANLEK_URL = "https://graphql.banlek.com/graphql"
 FOTOP_URL = "https://fotop.com.br/fotos/webservices/eventos/nome-eventos?h=1&n={nome}"
+# Fotto (Alboom): galerias publicas, 100 por pagina; category_id 1 = Corrida.
+FOTTO_URL = ("https://api.fotto.com.br/api/galleries?state={estado}&category_id=1&start_date={desde}&end_date={ate}"
+             "&order_dir=DESC&per_page=100&page={pagina}")
 # O que na Foco Radical e corrida (treino e outros esportes ficam de fora).
 FOCO_CORRIDA = re.compile(r"corrida|trail|maratona|atletismo|r[uú]stica|montanha|cross|ultra", re.I)
 FOCO_NAO = re.compile(r"treino|esteira|orienta", re.I)
@@ -47,9 +51,10 @@ BANLEK_QUERY = """query Q($nav: NavInput, $categoria: String, $estado: String, $
     metadata { hasMorePages } } }"""
 
 
-def _baixar(url, dados=None):
+def _baixar(url, dados=None, origem="https://banlek.com"):
+    # Cada API so aceita o proprio site como origem (CORS): Banlek por padrao, Fotto na funcao dela.
     cab = {"User-Agent": UA_NAVEGADOR, "Accept": "application/json,*/*", "Accept-Language": "pt-BR",
-           "Origin": "https://banlek.com", "Referer": "https://banlek.com/"}
+           "Origin": origem, "Referer": origem + "/"}
     if dados is not None:
         cab["Content-Type"] = "application/json"
         dados = json.dumps(dados).encode()
@@ -117,6 +122,31 @@ def banlek_albuns(desde, ate, registrar=print, estado="SC"):
                           "fotografo": ((i.get("usuario") or {}).get("nome_exibicao") or "").strip(),
                           "fonte": "Banlek"})
         if not bloco.get("metadata", {}).get("hasMorePages"):
+            break
+        pagina += 1
+        time.sleep(PAUSA)
+    return saida
+
+
+def fotto_galerias(desde, ate, estado="SC", registrar=print):
+    """Galerias de corrida do Fotto no estado entre as datas (aaaa-mm-dd).
+    A data do evento vem em UTC: 03:00Z e a meia-noite no Brasil."""
+    saida, pagina = [], 1
+    while True:
+        try:
+            d = json.loads(_baixar(FOTTO_URL.format(estado=estado, desde=desde, ate=ate, pagina=pagina), origem="https://www.fotto.com.br"))
+        except Exception as erro:
+            registrar(f"  fotto pagina {pagina}: FALHOU ({erro.__class__.__name__})")
+            break
+        for g in d.get("galleries") or []:
+            inicio = g.get("eventStartDate") or ""
+            if not inicio:
+                continue
+            quando = datetime.datetime.fromisoformat(inicio.replace("Z", "+00:00")) - datetime.timedelta(hours=3)
+            saida.append({"nome": (g.get("title") or "").strip(), "data": quando.date().isoformat(),
+                          "cidade": (g.get("city") or "").strip(), "fotografo": ((g.get("owner") or {}).get("name") or "").strip(),
+                          "fonte": "Fotto"})
+        if pagina >= int(d.get("pages") or 1):
             break
         pagina += 1
         time.sleep(PAUSA)
@@ -218,17 +248,16 @@ def completar_fotografia(historico, limite=None, registrar=print, foco=None, ban
     alvo = alvo[:limite] if limite else alvo
     if not alvo:
         return 0, 0
-    # Foco Radical e Banlek listam por estado: um indice para cada UF das
-    # provas alvo (foco/banlek dados de fora valem so para SC).
+    # Foco Radical, Banlek e Fotto listam por estado: um indice para cada UF
+    # das provas alvo (foco/banlek dados de fora valem so para SC).
     indices = {}
     for uf in sorted({p.get("uf") or "SC" for p in alvo}):
-        if uf not in FOCO_ESTADO:
-            continue
         desde = min(p["data"] for p in alvo if (p.get("uf") or "SC") == uf)
-        f = foco if (foco is not None and uf == "SC") else foco_eventos(desde, FOCO_ESTADO[uf], registrar=registrar)
+        f = foco if (foco is not None and uf == "SC") else (foco_eventos(desde, FOCO_ESTADO[uf], registrar=registrar) if uf in FOCO_ESTADO else [])
         b = banlek if (banlek is not None and uf == "SC") else banlek_albuns(desde, hoje.isoformat(), registrar=registrar, estado=uf)
-        registrar(f"  fotografia {uf}: {len(f)} corridas na Foco Radical, {len(b)} álbuns na Banlek desde {desde}")
-        indices[uf] = _indexar(f + b)
+        t = fotto_galerias(desde, hoje.isoformat(), estado=uf, registrar=registrar)
+        registrar(f"  fotografia {uf}: {len(f)} corridas na Foco Radical, {len(b)} álbuns na Banlek, {len(t)} galerias no Fotto desde {desde}")
+        indices[uf] = _indexar(f + b + t)
     achadas = 0
     for p in alvo:
         indice = indices.get(p.get("uf") or "SC", {})

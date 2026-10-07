@@ -38,6 +38,13 @@ table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums
 .agenda a{font-weight:600}
 .cidades{columns:2 12rem;font-size:.92rem}
 .cidades a{display:block;padding:.15rem 0}
+.cupons-prova{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.7rem}
+.cupom-prova{display:grid;grid-template-columns:auto 1fr;gap:.1rem .7rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.7rem .9rem;text-decoration:none;color:var(--ink)}
+.cupom-prova:hover{border-color:var(--accent)}
+.cupom-prova .selo{grid-row:1/4;font-family:"Archivo",system-ui,sans-serif;font-weight:800;background:var(--sol);color:var(--azul);border-radius:10px;padding:.35rem .5rem;font-size:.95rem;white-space:nowrap}
+.cupom-prova .nome{font-weight:700;font-size:.92rem;line-height:1.25}
+.cupom-prova .quem{font-size:.8rem;color:var(--muted)}
+.cupom-prova .pe{font-size:.8rem;color:var(--accent);font-weight:600}
 .ofertas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem}
 .oferta{display:flex;flex-direction:column;gap:.25rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem;text-decoration:none;color:var(--ink)}
 .oferta:hover{border-color:var(--accent)}

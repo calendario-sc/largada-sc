@@ -126,8 +126,14 @@ footer{padding:0 1rem 2.5rem; color:var(--muted); font-size:.85rem}
   function paraQuem(c) {
     if (c.alvo === "prova") return [c.prova_nome, c.prova_cidade].filter(Boolean).join(" · ");
     if (c.alvo === "organizadora") return "Todas as provas de " + c.organizadora;
-    if (c.alvo === "parceiro") return c.parceiro + " · " + (c.cidade ? c.cidade + (c.uf ? " – " + c.uf : "") : c.uf ? "todo o estado de " + c.uf : "online e em todo lugar");
+    if (c.alvo === "parceiro") return c.parceiro + " · " + (c.cidade ? c.cidade + (c.uf ? " – " + c.uf : "") : c.uf ? "todo o estado de " + c.uf : "online e em todo lugar") + provasLigadas(c);
     return "Várias provas" + (c.uf ? " de " + c.uf : "");
+  }
+  // Parceiro ligado a provas (hotel perto da largada, por exemplo): diz quais.
+  function provasLigadas(c) {
+    const ps = c.provas || [];
+    if (ps.length) return " · nas provas " + ps.slice(0, 3).map(p => p.nome).join(", ") + (ps.length > 3 ? " e mais " + (ps.length - 3) : "");
+    return c.provas_termo ? " · nas provas com \"" + c.provas_termo + "\" no nome" : "";
   }
   function quando(c) {
     if (c.alvo === "prova" && c.prova_data) return "Prova em " + dataBr(c.prova_data) + (c.valido_ate && c.valido_ate !== c.prova_data ? " · cupom até " + dataBr(c.valido_ate) : "");

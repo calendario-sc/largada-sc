@@ -75,6 +75,13 @@ table.res td.n,table.res th.n{text-align:right;font-variant-numeric:tabular-nums
 .agenda a{font-weight:600}
 .cidades{columns:2 12rem;font-size:.92rem}
 .cidades a{display:block;padding:.15rem 0}
+.cupons-prova{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.7rem}
+.cupom-prova{display:grid;grid-template-columns:auto 1fr;gap:.1rem .7rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.7rem .9rem;text-decoration:none;color:var(--ink)}
+.cupom-prova:hover{border-color:var(--accent)}
+.cupom-prova .selo{grid-row:1/4;font-family:"Archivo",system-ui,sans-serif;font-weight:800;background:var(--sol);color:var(--azul);border-radius:10px;padding:.35rem .5rem;font-size:.95rem;white-space:nowrap}
+.cupom-prova .nome{font-weight:700;font-size:.92rem;line-height:1.25}
+.cupom-prova .quem{font-size:.8rem;color:var(--muted)}
+.cupom-prova .pe{font-size:.8rem;color:var(--accent);font-weight:600}
 .ofertas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem}
 .oferta{display:flex;flex-direction:column;gap:.25rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem;text-decoration:none;color:var(--ink)}
 .oferta:hover{border-color:var(--accent)}
@@ -162,7 +169,39 @@ OFERTAS = ('<section id="ofertas" hidden aria-label="Em promoção nas lojas par
            '<p class="nota">Preços das lojas, atualizados todo dia. Links de afiliado: o Cupons de Corrida pode receber uma comissão '
            'pela compra, sem custo a mais para você.</p></section><script src="/provas.js" defer></script>')
 
-JS = """// Caixas de ofertas nas paginas de prova (bloco #ofertas, gerado pelo seo.py): produtos da vitrine das lojas
+JS = """// Cupons da prova (bloco #cupons-prova, gerado pelo seo.py): o cupom da inscricao, o da organizadora e os de
+// parceiros ligados a prova (escolhida no cupom ou por palavra no nome), da API /cupons. Os codigos ficam na Central.
+(async () => {
+  const sec = document.getElementById("cupons-prova"), lista = document.getElementById("cupons-prova-lista");
+  if (!sec || !lista) return;
+  const API = /^(localhost|127\\.0\\.0\\.1)$/.test(location.hostname) ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
+  const norm = s => String(s || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase();
+  const chave = sec.dataset.chave, nome = norm(sec.dataset.nome);
+  let orgs = [];
+  try { orgs = JSON.parse(sec.dataset.orgs || "[]"); } catch (e) { /* sem organizadora */ }
+  const termos = c => String(c.provas_termo || "").split(",").map(t => norm(t.trim())).filter(t => t.length >= 3);
+  const vale = c => !c.esgotado && (c.alvo === "prova" ? c.prova_chave === chave
+    : c.alvo === "organizadora" ? orgs.includes(c.organizadora)
+    : c.alvo === "parceiro" ? (c.provas || []).some(p => p.chave === chave) || termos(c).some(t => nome.includes(t)) : false);
+  try {
+    const d = await fetch(API + "/cupons").then(r => r.json());
+    const cupons = (d.cupons || []).filter(vale);
+    if (!cupons.length) return;
+    const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
+    lista.replaceChildren(...cupons.map(c => {
+      const a = el("a", "cupom-prova");
+      a.href = "/cupons.html#c-" + c.id;
+      a.append(el("span", "selo", c.desconto), el("span", "nome", c.titulo),
+               el("span", "quem", c.alvo === "parceiro" ? c.parceiro + (c.categoria ? " · " + c.categoria : "") : "Desconto na inscrição"),
+               el("span", "pe", "Pegar cupom →"));
+      a.onclick = () => { if (typeof gtag === "function") gtag("event", "cupom_prova_clique", { cupom_id: c.id }); };
+      return a;
+    }));
+    sec.hidden = false;
+  } catch (e) { /* sem API: sem cupons */ }
+})();
+
+// Caixas de ofertas nas paginas de prova (bloco #ofertas, gerado pelo seo.py): produtos da vitrine das lojas
 // parceiras (API /vitrine), alternando as lojas; o navegador guarda a vez e cada visita mostra os seguintes.
 (async () => {
   const bloco = document.getElementById("ofertas"), lista = document.getElementById("ofertas-lista");
@@ -435,6 +474,12 @@ def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
         corpo.append(f'<p class="nota">Datas, distâncias e preços podem mudar: confirme sempre no site de inscrição. '
                      f'Viu algo errado? Escreva para <a href="mailto:contato@cuponsdecorrida.com.br">contato@cuponsdecorrida.com.br</a>.</p>')
 
+    if futura:
+        # Cupons da prova: o bloco vem vazio e escondido; o /provas.js busca na API e preenche.
+        corpo.append(f'<section id="cupons-prova" hidden aria-label="Cupons de desconto para esta prova" data-chave="{e(p["data"] + "|" + nome)}" '
+                     f'data-nome="{e(nome)}" data-orgs="{e(json.dumps(orgs, ensure_ascii=False))}"><h2>Cupons de desconto para esta prova</h2>'
+                     '<div class="cupons-prova" id="cupons-prova-lista"></div>'
+                     '<p class="nota">Crie seu perfil de atleta grátis para ver os códigos na Central de Cupons.</p></section>')
     corpo.append(OFERTAS)
 
     if provas_cidade:

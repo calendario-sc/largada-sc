@@ -389,7 +389,8 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
         el("p", {}, [txt("Cashback para o Cupons de Corrida: " + String(c.cashback_pct).replace(".", ",") + "%"), el("span", { className: "privado", textContent: "privado" })]),
         e.tipo === "organizadora"
           ? el("ul", {}, c.provas.map(p => el("li", { textContent: dataBr(p.data) + " · " + p.nome + (p.cidade ? " · " + p.cidade : "") + " — " + p.vistos + (p.vistos === 1 ? " atleta pegou o código" : " atletas pegaram o código") + (p.ativo ? "" : " (desativada)") })))
-          : el("p", { textContent: "Vale em: " + descricaoOnde(c) + " · " + c.vistos + (c.vistos === 1 ? " atleta pegou o código" : " atletas pegaram o código") + (c.valido_ate ? " · até " + dataBr(c.valido_ate) : "") }),
+          : el("p", { textContent: "Vale em: " + descricaoOnde(c) + " · " + c.vistos + (c.vistos === 1 ? " atleta pegou o código" : " atletas pegaram o código") + (c.valido_ate ? " · até " + dataBr(c.valido_ate) : "")
+              + ((c.provas_ligadas || []).length ? " · no cartão de: " + c.provas_ligadas.map(p => p.nome).join(", ") : "") + (c.provas_termo ? " · provas com \"" + c.provas_termo + "\"" : "") }),
         el("div", { className: "acoes" }, [editar, ligar]),
       ]);
     }));
@@ -415,37 +416,44 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
     const cancelar = c ? Object.assign(el("button", { className: "botao botao--leve", type: "button", textContent: "Cancelar" }), { onclick: () => montarNovo(sec, d, null) }) : null;
 
     // Organizadora: provas do calendario. Loja: onde o cupom vale.
-    let escolhidas = c && org ? c.provas.filter(p => p.ativo).map(p => ({ chave: p.chave, nome: p.nome, data: p.data, cidade: p.cidade, uf: p.uf })) : [];
+    let escolhidas = c ? (org ? c.provas.filter(p => p.ativo) : (c.provas_ligadas || [])).map(p => ({ chave: p.chave, nome: p.nome, data: p.data, cidade: p.cidade, uf: p.uf })) : [];
     let blocoAlvo;
     const onde = { v: c && !org ? (c.cidade ? "cidade" : c.uf ? "estado" : "online") : "online" };
     const ufOnde = selectUf(c && c.uf ? c.uf : e.uf);
     const cidadeOnde = inp("text", { maxLength: 80, value: c && c.cidade ? c.cidade : e.cidade || "" });
+    // Busca de provas do calendario: obrigatoria para a organizadora; opcional para loja ou servico
+    // (o cupom entra no cartao dessas provas, ou de toda prova cujo nome tenha certas palavras).
+    const busca = inp("search", { placeholder: "Digite o nome da prova ou a cidade…" });
+    const sugestoes = el("ul", { className: "sugestoes" });
+    const chips = el("div", { className: "escolhidas" });
+    const pintarChips = () => chips.replaceChildren(...escolhidas.map(p => el("span", {}, [txt(dataBr(p.data) + " · " + p.nome),
+      Object.assign(el("button", { type: "button", ariaLabel: "Tirar " + p.nome, textContent: "×" }), { onclick: () => { escolhidas = escolhidas.filter(x => x.chave !== p.chave); pintarChips(); } })])));
+    const provas = await provasFuturas();
+    const minhas = org ? provas.filter(p => (p.org || []).some(o => norm(o).length > 3 && (norm(e.nome).includes(norm(o)) || norm(o).includes(norm(e.nome))))) : [];
+    const listar = () => {
+      const q = norm(busca.value.trim());
+      const base = q.length >= 2 ? provas.filter(p => p._busca.includes(q)) : minhas;
+      sugestoes.replaceChildren(...base.slice(0, 40).map(p => {
+        const li = el("li", { tabIndex: 0 }, [txt(dataBr(p.data) + " · " + p.nome + " "), el("small", { textContent: p.cidade + " – " + p.uf + ((p.org || []).length ? " · " + p.org.join(", ") : "") })]);
+        const pegar = () => { if (!escolhidas.some(x => x.chave === p.chave)) escolhidas.push({ chave: p.chave, nome: p.nome, data: p.data, cidade: p.cidade, uf: p.uf }); pintarChips(); };
+        li.onclick = pegar;
+        li.onkeydown = ev => { if (ev.key === "Enter") { ev.preventDefault(); pegar(); } };
+        return li;
+      }));
+      sugestoes.hidden = !base.length;
+    };
+    busca.oninput = listar;
+    listar(); pintarChips();
+    const termo = inp("text", { maxLength: 200, placeholder: "Ex.: jurerê, floripa (separe por vírgula)", value: c && c.provas_termo ? c.provas_termo : "" });
+    const blocoProvas = el("div", { className: "c6 provas-busca" }, [
+      campo(org ? "Provas em que o cupom vale" : "Aparece também no cartão destas provas", busca, "",
+            org ? (minhas.length ? "(abaixo, as provas que parecem ser suas; busque outras pelo nome)" : "(busque pelo nome ou pela cidade)")
+                : "(opcional: busque pelo nome ou pela cidade; o cupom aparece junto dessas provas no calendário)"),
+      sugestoes, chips,
+      org ? el("p", { className: "suave", textContent: "Não achou a prova? Ela precisa estar no calendário. Escreva para contato@cuponsdecorrida.com.br com o link da inscrição." })
+          : campo("…ou de toda prova cujo nome contenha", termo, "", "(opcional; ex.: \"jurerê\" pega Jurerê Night Run, Maratona de Jurerê…)")]);
     if (org) {
-      const busca = inp("search", { placeholder: "Digite o nome da prova ou a cidade…" });
-      const sugestoes = el("ul", { className: "sugestoes" });
-      const chips = el("div", { className: "escolhidas" });
-      const pintarChips = () => chips.replaceChildren(...escolhidas.map(p => el("span", {}, [txt(dataBr(p.data) + " · " + p.nome),
-        Object.assign(el("button", { type: "button", ariaLabel: "Tirar " + p.nome, textContent: "×" }), { onclick: () => { escolhidas = escolhidas.filter(x => x.chave !== p.chave); pintarChips(); } })])));
-      const provas = await provasFuturas();
-      const minhas = provas.filter(p => (p.org || []).some(o => norm(o).length > 3 && (norm(e.nome).includes(norm(o)) || norm(o).includes(norm(e.nome)))));
-      const listar = () => {
-        const q = norm(busca.value.trim());
-        const base = q.length >= 2 ? provas.filter(p => p._busca.includes(q)) : minhas;
-        sugestoes.replaceChildren(...base.slice(0, 40).map(p => {
-          const li = el("li", { tabIndex: 0 }, [txt(dataBr(p.data) + " · " + p.nome + " "), el("small", { textContent: p.cidade + " – " + p.uf + ((p.org || []).length ? " · " + p.org.join(", ") : "") })]);
-          const pegar = () => { if (!escolhidas.some(x => x.chave === p.chave)) escolhidas.push({ chave: p.chave, nome: p.nome, data: p.data, cidade: p.cidade, uf: p.uf }); pintarChips(); };
-          li.onclick = pegar;
-          li.onkeydown = ev => { if (ev.key === "Enter") { ev.preventDefault(); pegar(); } };
-          return li;
-        }));
-        sugestoes.hidden = !base.length;
-      };
-      busca.oninput = listar;
-      listar(); pintarChips();
-      blocoAlvo = el("div", { className: "c6 provas-busca" }, [
-        campo("Provas em que o cupom vale", busca, "", minhas.length ? "(abaixo, as provas que parecem ser suas; busque outras pelo nome)" : "(busque pelo nome ou pela cidade)"),
-        sugestoes, chips,
-        el("p", { className: "suave", textContent: "Não achou a prova? Ela precisa estar no calendário. Escreva para contato@cuponsdecorrida.com.br com o link da inscrição." })]);
+      blocoAlvo = blocoProvas;
     } else {
       const opcoes = el("div", { className: "tipos" }, [["online", "Online / todo o Brasil"], ["estado", "Em um estado"], ["cidade", "Em uma cidade"]].map(([v, t]) => {
         const r = el("input", { type: "radio", name: "onde", value: v, checked: onde.v === v });
@@ -455,7 +463,7 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
       const cUf = campo("Estado", ufOnde, "c2"), cCid = campo("Cidade", cidadeOnde, "c4");
       const mostrar = () => { cUf.hidden = onde.v === "online"; cCid.hidden = onde.v !== "cidade"; };
       mostrar();
-      blocoAlvo = el("div", { className: "c6 grade" }, [el("div", { className: "c6" }, [el("span", { className: "suave", textContent: "Onde o cupom vale" }), opcoes]), cCid, cUf]);
+      blocoAlvo = el("div", { className: "c6 grade" }, [el("div", { className: "c6" }, [el("span", { className: "suave", textContent: "Onde o cupom vale" }), opcoes]), cCid, cUf, blocoProvas]);
     }
 
     const form = el("form", { className: "grade", noValidate: true }, [
@@ -476,7 +484,8 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
       const corpo = { codigo: codigo.value, desconto_pct: desconto.value, cashback_pct: cashback.value, titulo: titulo.value,
         link: link.value, regras: regras.value, valido_ate: validade.value, limite: limite.value };
       if (org) corpo.provas = escolhidas;
-      else Object.assign(corpo, { uf: onde.v === "online" ? "" : ufOnde.value, cidade: onde.v === "cidade" ? cidadeOnde.value : "" });
+      else Object.assign(corpo, { uf: onde.v === "online" ? "" : ufOnde.value, cidade: onde.v === "cidade" ? cidadeOnde.value : "",
+                                  provas: escolhidas, provas_termo: termo.value });
       const r = await api("/empresa/cupons" + (c ? "/" + c.grupo : ""), { method: c ? "PUT" : "POST", body: JSON.stringify(corpo) })
         .catch(() => ({ ok: false, erro: "Sem conexão. Tente de novo." }));
       salvar.disabled = false;
