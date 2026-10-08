@@ -429,6 +429,9 @@ body:not(.bi) h1 .logo-txt{display:none}
 .cp{width:min(56rem, 100% - 2rem)}
 .cp__corpo{padding:0 1.2rem 1rem; overflow-y:auto}
 .cp__novo{margin:0 0 .8rem}
+/* "Novo cupom": botao proprio (a classe .cta-cadastro do site e escondida no BI). */
+.cp__novo--principal{font:inherit; font-weight:700; cursor:pointer; border:0; border-radius:999px; padding:.55rem 1.1rem; background:#FFC21A; color:#0A2F73}
+.cp__novo--principal:hover{background:#FFD24D}
 .cp__lista{list-style:none; margin:0; padding:0; display:grid; gap:.5rem}
 .cp__item{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.3rem 1rem; padding:.7rem .85rem; border:1px solid var(--line-soft); border-radius:12px; background:var(--surface)}
 .cp__item.inativo{opacity:.6}
@@ -2947,7 +2950,7 @@ function provasLigadasDe(c){
 
 function listarCuponsAdm(){
   const corpo = document.getElementById("cupons-corpo");
-  const novo = el("button", { className:"cta-cadastro cp__novo", type:"button", textContent:"Novo cupom" });
+  const novo = el("button", { className:"cp__novo cp__novo--principal", type:"button", textContent:"Novo cupom" });
   novo.onclick = () => formularioCupom(null);
   // Cupons da AWIN chegam sozinhos todo dia as 8h; o botao busca agora.
   const sinc = el("button", { className:"cp__novo", type:"button", textContent:"Sincronizar AWIN agora", style:"margin-left:.5rem" });
