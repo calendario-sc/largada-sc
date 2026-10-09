@@ -1540,6 +1540,17 @@
 "largada": "07:00",
 "numero": "360/2026"
 },
+"1APpeFwHILoPCVM0_7AOUMQ-F8v5O5_Wa": {
+"arquivo": "624-2026-4° Samas Run Kids inclusivo .pdf",
+"cidade": "em São Mateus do Sul",
+"data": "2026-10-11",
+"entidade": "PREFEITURA DE SÃO MATEUS DO SUL",
+"evento": "4° Samas Run Kids inclusivo",
+"km": [],
+"largada": "14:00",
+"local": "Rua Domingos Cunha Maciel, s/n, na Vila Amaral, em São Mateus do Sul-PR.",
+"numero": "624/2026"
+},
 "1AaSaYxYltwYqfazO_zkwi36aRtSH3jU0": {
 "arquivo": "312.2026-Circuito CRC - Correr, Respirar, Cuidar.pdf",
 "cidade": "Ponta Grossa",
@@ -2469,6 +2480,21 @@
 "largada": "08:00",
 "numero": "272/2026"
 },
+"1IpxouTPSXZUYFQUIxhlQTw-5jfRJstDp": {
+"arquivo": "620-2026-Fresh Run Super Muffato 2026 - Ponta Grossa.pdf",
+"cidade": "Ponta Grossa",
+"data": "2026-10-18",
+"entidade": "NOSSO TIME ASSOCIACAO ESPORTIVA",
+"evento": "Fresh Run Super Muffato 2026 - Ponta Grossa",
+"km": [
+21.0,
+10.0,
+5.0
+],
+"largada": "06:00",
+"local": "Super Muffato Olarias – Av. R. Jacob Holzmann, 333 - Olarias, Ponta Grossa-PR.",
+"numero": "620/2026"
+},
 "1Izi97o6Y0twu-DtGPqG2Eq-iP-KRWAek": {
 "arquivo": "351.2026-XIV Corrida da Rone.pdf",
 "cidade": "Curitiba",
@@ -2977,6 +3003,19 @@
 "largada": "07:15",
 "numero": "378/2026"
 },
+"1MUI8qnHRpeOsrzfBT2938vRz7h5w3eVK": {
+"arquivo": "622-2026-Peregrinação - Caminho Da Padroeira.pdf",
+"cidade": "Umuarama",
+"data": "2026-10-11",
+"entidade": "ALONSO E FERREIRA EVENTOS LTDA",
+"evento": "Peregrinação - Caminho Da Padroeira",
+"km": [
+8.0
+],
+"largada": "05:30",
+"local": "Av. Tiradentes, 3240 - Jardim Paraíso - Umuarama-PR.",
+"numero": "622/2026"
+},
 "1MWQmFuUnN84W_dJT2IjOo9O8AgwbkQxY": {
 "arquivo": "244.2026-Marvin Night Run And Beer.pdf",
 "cidade": "",
@@ -2989,6 +3028,20 @@
 "largada": "19:00",
 "local": "Rua Gaspar Ricardo, 333, Maringá, PR.",
 "numero": "244/2026"
+},
+"1MgF7Y-y446PWMFowkrxHk2WXYBIHcid2": {
+"arquivo": "621-2026-Corridas Sanepar 2026 - Etapa Guarapuava.pdf",
+"cidade": "Guarapuava",
+"data": "2026-11-01",
+"entidade": "NOSSO TIME ASSOCIACAO ESPORTIVA",
+"evento": "Corridas Sanepar 2026 - Etapa Guarapuava",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "Shopping Cidade dos Lagos, na Avenida Guarapuava, 1400, Guarapuava-PR.",
+"numero": "621/2026"
 },
 "1MhjDvITEYPnVPN-hKaRntvof-J0S8GvW": {
 "arquivo": "216.2026-1ª Corrida 18º BPM Contra a Violência Doméstica Cornélio Procópio.pdf",
@@ -4252,6 +4305,20 @@
 "largada": "19:00",
 "numero": "107/2026"
 },
+"1WgAoYYiIBR6o0ReeICb3TlUFQEmAfQcR": {
+"arquivo": "623-2026-1º Corrida Da Padroeira.pdf",
+"cidade": "Rio Negro",
+"data": "2026-10-12",
+"entidade": "ACADEMIA GARCIA & PORTELA LTDA",
+"evento": "1º Corrida Da Padroeira",
+"km": [
+12.0,
+5.0
+],
+"largada": "07:00",
+"local": "Paróquia Nossa Senhora Aparecida Rio Negro, Rio Negro-PR.",
+"numero": "623/2026"
+},
 "1WjrNfLBziHZiciTTSRzZw5xnu8YFvA_0": {
 "arquivo": "613-2026- 1ª Corrida Católica De Maringá.pdf",
 "cidade": "Maringá",
@@ -4277,6 +4344,19 @@
 ],
 "largada": "19:00",
 "numero": "577/2026"
+},
+"1WtDfuFcT7VcEZ_FjVjivmszEwMkHUU5w": {
+"arquivo": "625-2026-Yellow Run.pdf",
+"cidade": "Goioerê",
+"data": "2026-10-11",
+"entidade": "VELHO OESTE EVENTOS",
+"evento": "Yellow Run",
+"km": [
+5.0
+],
+"largada": "08:00",
+"local": "Av. Santos Dumont, 2078, Goioerê-PR.",
+"numero": "625/2026"
 },
 "1WwCKxXlpJhlMaPa-UopSPtOuHvFbh82J": {
 "arquivo": "036.2026-Circuito Sesc de Corridas Paraná - Etapa de Palmas-PR.pdf",
