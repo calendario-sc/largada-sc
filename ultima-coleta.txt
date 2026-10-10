@@ -2,18 +2,18 @@
 == fontes ==
   corridasbr: 217 provas
   corridasbr/arquivo: 352 provas
-  ticketsports: 76 provas
+  ticketsports: 74 provas
   roadrunners: 209 provas
   movnow: 19 provas
   atletis: 1 provas
-  sympla: 21 provas
+  sympla: 22 provas
   blueticket: 4 provas
   fca: 0 provas
   corridasbr (PR): 171 provas
   corridasbr/arquivo (PR): 388 provas
-  ticketsports (PR): 75 provas
+  ticketsports (PR): 74 provas
   roadrunners (PR): 152 provas
-  corridasbr (RS): 259 provas
+  corridasbr (RS): 258 provas
   corridasbr/arquivo (RS): 411 provas
   ticketsports (RS): 24 provas
   roadrunners (RS): 122 provas
@@ -23,7 +23,7 @@
 datas de ticketeira acertadas pela outra fonte: 1
   ~ 2026-10-17 -> 2026-10-18  Meia Maratona de Garopaba [blueticket]
 
-2206 provas distintas depois de fundir as fontes
+2207 provas distintas depois de fundir as fontes
 descartadas (18): fora de SC/PR/RS ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
@@ -34,24 +34,22 @@ descartadas (18): fora de SC/PR/RS ou nao sao corrida
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - ... e mais 10
-restam 2188 provas
+restam 2189 provas
 concluintes: 499 provas no Open Results, 455 casadas, 19 com numero novo, 16 provas criadas
 concluintes (chiprun): 1 provas consultadas, 0 preenchidas
-  resultado 2023-03-19 Corrida de Obstáculos Greenxrace - 6º Ed: FALHOU (HTTPError)
-  resultado 2023-02-19 3ª Corrida de Obstáculos Militares - Pea: FALHOU (HTTPError)
-  resultado 2022-11-20 2ª Corrida de Obstáculos Militares - Pea: FALHOU (HTTPError)
+  resultado 2022-07-31 Peak Running Trail Run 2022: FALHOU (HTTPError)
+  resultado 2022-06-05 VII Revezamento Morro Azul: FALHOU (HTTPError)
 concluintes (link do corridasbr): 150 provas consultadas, 3 preenchidas
 genero: 29 provas consultadas, 19 preenchidas
-organizador: 31 provas preenchidas pela FCA
-organizador: 65 provas tiveram a grafia padronizada
+organizador: 27 provas preenchidas pela FCA
+organizador: 63 provas tiveram a grafia padronizada
 fca: 27 provas juntadas as que ja existiam
 resultados repetidos removidos: 16
-series: 4289 eventos com uma ou mais edicoes | 8 resultados parciais marcados
-historico: 6878 provas (6028 ja realizadas) | 711 cidades
-novas nesta rodada: 30
-  + 2026-10-11  Goioerê - Yellow Run
-  + 2026-10-11  São Mateus do Sul - 4° Samas Run Kids inclusivo
-  + 2026-10-12  Rio Negro - 1º Corrida da Padroeira
+series: 4290 eventos com uma ou mais edicoes | 8 resultados parciais marcados
+historico: 6880 provas (6029 ja realizadas) | 711 cidades
+novas nesta rodada: 29
+  + 2026-11-21  Lapa - Trail Experience - Além da Trilha
+  + 2026-12-20  Ponta Grossa - TRAIL RUN - BURACO DO PADRE
 
 futuras que nao apareceram hoje (60) - possivel cancelamento, mantidas no historico:
   ? 2026-10-11  Lages - 1ª Corrida Ab Run (visto pela ultima vez em 2026-10-01)
@@ -72,6 +70,6 @@ parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,237,299 bytes)
+artifact.html e index.html gerados (2,237,919 bytes)
 
-RESULTADO: pronto para publicar (coleta de 09/10/2026).
+RESULTADO: pronto para publicar (coleta de 10/10/2026).
