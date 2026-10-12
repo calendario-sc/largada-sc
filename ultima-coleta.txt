@@ -1,61 +1,62 @@
 == coleta ==
 == fontes ==
-  corridasbr: 212 provas
+  corridasbr: 201 provas
   corridasbr/arquivo: 352 provas
-  ticketsports: 74 provas
-  roadrunners: 206 provas
-  movnow: 18 provas
-  atletis: 1 provas
-  sympla: 24 provas
+  ticketsports: 73 provas
+  roadrunners: 199 provas
+  movnow: 17 provas
+  atletis: 2 provas
+  sympla: 25 provas
   blueticket: 4 provas
   fca: 0 provas
-  corridasbr (PR): 169 provas
+  corridasbr (PR): 156 provas
   corridasbr/arquivo (PR): 388 provas
-  ticketsports (PR): 73 provas
-  roadrunners (PR): 152 provas
-  corridasbr (RS): 251 provas
+  ticketsports (PR): 72 provas
+  roadrunners (PR): 144 provas
+  corridasbr (RS): 232 provas
   corridasbr/arquivo (RS): 411 provas
   ticketsports (RS): 23 provas
-  roadrunners (RS): 119 provas
+  roadrunners (RS): 116 provas
   fap: 620 provas
   parceiros: 0 provas
 
 datas de ticketeira acertadas pela outra fonte: 1
   ~ 2026-10-17 -> 2026-10-18  Meia Maratona de Garopaba [blueticket]
 
-2197 provas distintas depois de fundir as fontes
-descartadas (18): fora de SC/PR/RS ou nao sao corrida
+2156 provas distintas depois de fundir as fontes
+descartadas (17): fora de SC/PR/RS ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
-  - 2026-10-11  Cianorte - Corrida e Duathlon AMAFIL [duathlon]
   - 2026-10-12  Araucária - Cross Run & Duathlon Araucária [duathlon]
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
-  - ... e mais 10
-restam 2179 provas
-concluintes: 499 provas no Open Results, 455 casadas, 19 com numero novo, 16 provas criadas
-concluintes (runking): 1 provas consultadas, 1 preenchidas
-concluintes (chiprun): 1 provas consultadas, 0 preenchidas
-  resultado 2022-04-23 Desafio Sparta - Corrida De Obstáculos: FALHOU (HTTPError)
-  resultado 2022-04-10 Corrida de Obstáculos GreenXRace: FALHOU (HTTPError)
-concluintes (link do corridasbr): 106 provas consultadas, 2 preenchidas
-genero: 29 provas consultadas, 15 preenchidas
+  - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
+  - ... e mais 9
+restam 2139 provas
+concluintes: 499 provas no Open Results, 441 casadas, 146 com numero novo, 114 provas criadas
+concluintes (chiprun): 3 provas consultadas, 2 preenchidas
+genero: 156 provas consultadas, 144 preenchidas
 organizador: 27 provas preenchidas pela FCA
-organizador: 62 provas tiveram a grafia padronizada
-fca: 27 provas juntadas as que ja existiam
-resultados repetidos removidos: 16
-series: 4293 eventos com uma ou mais edicoes | 8 resultados parciais marcados
-historico: 6883 provas (6047 ja realizadas) | 711 cidades
+organizador: 63 provas tiveram a grafia padronizada
+fca: 28 provas juntadas as que ja existiam
+resultados repetidos removidos: 107
+series: 4301 eventos com uma ou mais edicoes | 8 resultados parciais marcados
+historico: 6892 provas (6114 ja realizadas) | 713 cidades
 novas nesta rodada: 30
-  + 2026-10-18  Londrina - Adidas Experience - Londrina
-  + 2026-10-18  Santo Antônio da Patrulha - TD Caminho Gaúcho de Santiago de Compostela
-  + 2026-10-31  Ponta Grossa - 1º CORRE PRA TEMPO
+  + 2026-09-20  Medianeira - CIRCUITO de CORRIDA de RUA de MEDIANIERA - ETAPA do GA&Uacute;CHO
+  + 2026-10-09  Carlópolis - 4&deg;CARL&Oacute;POLIS RUNNING
+  + 2026-10-11  Chapecó - 7&deg; Desafio das Montanhas Chapec&oacute;
+  + 2026-10-11  Cianorte - CORRIDA E DUATHLON AMAFIL
+  + 2026-10-11  Florianópolis - Maratona de Jurer&ecirc; 2026
+  + 2026-10-11  Itapoá - CORRIDA ITAPO&Aacute; OUTUBRO ROSA
+  + 2026-10-11  Londrina - MAIS SA&Uacute;DE RUN 2026
+  + 2026-10-12  Santa Amélia - 1º SANTA AMÉLIA RUNNING
+  + 2026-10-24  Curitiba - Movimento Inspira Run
+  + 2027-03-21  a 4 km do Centro de Dona Emma - GREENXRACE 2027
 
-futuras que nao apareceram hoje (60) - possivel cancelamento, mantidas no historico:
-  ? 2026-10-11  Lages - 1ª Corrida Ab Run (visto pela ultima vez em 2026-10-01)
-  ? 2026-10-11  Rio dos Cedros - Corrida Rústica Trentina 2026 (visto pela ultima vez em 2026-08-31)
+futuras que nao apareceram hoje (58) - possivel cancelamento, mantidas no historico:
   ? 2026-10-12  Joinville - Mãe Aparecida Run (visto pela ultima vez em 2026-10-04)
   ? 2026-10-16  Bombinhas - Indomit Bombinhas 2026 5k (visto pela ultima vez em 2026-10-04)
   ? 2026-10-17  Araranguá - Grêmio Fronteira Night Run (visto pela ultima vez em 2026-10-04)
@@ -64,14 +65,16 @@ futuras que nao apareceram hoje (60) - possivel cancelamento, mantidas no histor
   ? 2026-10-18  Concórdia - Corrida de Rua e Caminhada SEST SENAT (visto pela ultima vez em 2026-10-04)
   ? 2026-10-18  Jaraguá do Sul - Desafio Morro das Antenas - Jovem PAN (visto pela ultima vez em 2026-10-04)
   ? 2026-10-24  Imbituba - Imbituba 5k (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-24  Jaraguá do Sul - 1ª Corrida Húngara (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-24  Nova Veneza - Passos da Fé Night Run 2026 (visto pela ultima vez em 2026-10-04)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['Litoral Gaúcho']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['Litoral Gaúcho', 'a 4 km do Centro de Dona Emma']
 
 == perfis ==
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,237,594 bytes)
+artifact.html e index.html gerados (2,243,864 bytes)
 
-RESULTADO: pronto para publicar (coleta de 11/10/2026).
+RESULTADO: pronto para publicar (coleta de 12/10/2026).
