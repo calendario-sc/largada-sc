@@ -1,80 +1,77 @@
 == coleta ==
 == fontes ==
-  corridasbr: 201 provas
+  corridasbr: 197 provas
   corridasbr/arquivo: 352 provas
-  ticketsports: 73 provas
-  roadrunners: 199 provas
+  ticketsports: 72 provas
+  roadrunners: FALHOU (HTTPError: HTTP Error 522: <none>)
   movnow: 17 provas
-  atletis: 2 provas
-  sympla: 25 provas
+  atletis: 1 provas
+  sympla: 27 provas
   blueticket: 4 provas
   fca: 0 provas
-  corridasbr (PR): 156 provas
+  corridasbr (PR): 151 provas
   corridasbr/arquivo (PR): 388 provas
-  ticketsports (PR): 72 provas
-  roadrunners (PR): 144 provas
-  corridasbr (RS): 232 provas
+  ticketsports (PR): 71 provas
+  roadrunners (PR): 139 provas
+  corridasbr (RS): 226 provas
   corridasbr/arquivo (RS): 411 provas
   ticketsports (RS): 23 provas
-  roadrunners (RS): 116 provas
+  roadrunners (RS): 118 provas
   fap: 620 provas
   parceiros: 0 provas
 
 datas de ticketeira acertadas pela outra fonte: 1
   ~ 2026-10-17 -> 2026-10-18  Meia Maratona de Garopaba [blueticket]
 
-2156 provas distintas depois de fundir as fontes
-descartadas (17): fora de SC/PR/RS ou nao sao corrida
+2113 provas distintas depois de fundir as fontes
+descartadas (13): fora de SC/PR/RS ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
   - 2026-10-12  Araucária - Cross Run & Duathlon Araucária [duathlon]
-  - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
-  - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
-  - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
   - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
-  - ... e mais 9
-restam 2139 provas
-concluintes: 499 provas no Open Results, 441 casadas, 146 com numero novo, 114 provas criadas
-concluintes (chiprun): 3 provas consultadas, 2 preenchidas
-genero: 156 provas consultadas, 144 preenchidas
-organizador: 27 provas preenchidas pela FCA
-organizador: 63 provas tiveram a grafia padronizada
+  - 2026-10-25  Palhoça - Corrida Virtual CBCR - Campeonato Brasileiro [corrida virtual]
+  - 2026-11-08  Curitiba - 3ª ETAPA DUATHLON CAMPEONATO PARANAENSE [duathlon]
+  - 2026-11-15  Araucária - CAMPEONATO BRASILEIRO DE TRIATHLON INFANTOJU [triathlon]
+  - ... e mais 5
+restam 2100 provas
+concluintes: 499 provas no Open Results, 437 casadas, 115 com numero novo, 111 provas criadas
+concluintes (chiprun): 2 provas consultadas, 1 preenchidas
+genero: 125 provas consultadas, 114 preenchidas
+organizador: 28 provas preenchidas pela FCA
+organizador: 62 provas tiveram a grafia padronizada
 fca: 28 provas juntadas as que ja existiam
-resultados repetidos removidos: 107
-series: 4301 eventos com uma ou mais edicoes | 8 resultados parciais marcados
-historico: 6892 provas (6114 ja realizadas) | 713 cidades
-novas nesta rodada: 30
-  + 2026-09-20  Medianeira - CIRCUITO de CORRIDA de RUA de MEDIANIERA - ETAPA do GA&Uacute;CHO
-  + 2026-10-09  Carlópolis - 4&deg;CARL&Oacute;POLIS RUNNING
-  + 2026-10-11  Chapecó - 7&deg; Desafio das Montanhas Chapec&oacute;
-  + 2026-10-11  Cianorte - CORRIDA E DUATHLON AMAFIL
-  + 2026-10-11  Florianópolis - Maratona de Jurer&ecirc; 2026
-  + 2026-10-11  Itapoá - CORRIDA ITAPO&Aacute; OUTUBRO ROSA
-  + 2026-10-11  Londrina - MAIS SA&Uacute;DE RUN 2026
-  + 2026-10-12  Santa Amélia - 1º SANTA AMÉLIA RUNNING
-  + 2026-10-24  Curitiba - Movimento Inspira Run
-  + 2027-03-21  a 4 km do Centro de Dona Emma - GREENXRACE 2027
+resultados repetidos removidos: 111
+series: 4305 eventos com uma ou mais edicoes | 8 resultados parciais marcados
+historico: 6899 provas (6134 ja realizadas) | 713 cidades
+novas nesta rodada: 34
+  + 2026-10-12  Maringá - 1&deg; Corrida Cat&oacute;lica de Maring&aacute;
+  + 2026-10-24  Tapes - 1º CORRIDA da INCLUSÃO AFAAT- TAPES RS
+  + 2026-10-31  Passo Fundo - CAMINHADA ITR SPORTS
+  + 2026-11-15  Ijuí - CORRIDA E CAMINHADA DO BEM SEST SENAT
+  + 2026-11-29  Sapucaia do Sul - Atacadão MS Farma Run
+  + 2026-12-12  Porto Alegre - CAEA RUN - 1° Corrida do Centro Acadêmico da Escola de Administração da UFRGS
+  + 2026-12-12  Santa Cruz do Sul - Santa Cruz Night Run 7°corrida de final de ano
 
-futuras que nao apareceram hoje (58) - possivel cancelamento, mantidas no historico:
-  ? 2026-10-12  Joinville - Mãe Aparecida Run (visto pela ultima vez em 2026-10-04)
+futuras que nao apareceram hoje (87) - possivel cancelamento, mantidas no historico:
   ? 2026-10-16  Bombinhas - Indomit Bombinhas 2026 5k (visto pela ultima vez em 2026-10-04)
   ? 2026-10-17  Araranguá - Grêmio Fronteira Night Run (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-17  Bombinhas - Indomit Trail Bombinhas 12k (visto pela ultima vez em 2026-10-12)
   ? 2026-10-17  Campo Largo - Santander Night Run 2026 (visto pela ultima vez em 2026-10-04)
   ? 2026-10-17  Curitiba - Santander Night Run - Etapa 1 - Curitiba 2026 (visto pela ultima vez em 2026-10-01)
+  ? 2026-10-17  Sombrio - 5 MILHAS DE MARIA (visto pela ultima vez em 2026-10-12)
   ? 2026-10-18  Concórdia - Corrida de Rua e Caminhada SEST SENAT (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-18  Criciúma - Track&Field Etapa Weber (visto pela ultima vez em 2026-10-12)
   ? 2026-10-18  Jaraguá do Sul - Desafio Morro das Antenas - Jovem PAN (visto pela ultima vez em 2026-10-04)
-  ? 2026-10-24  Imbituba - Imbituba 5k (visto pela ultima vez em 2026-10-04)
-  ? 2026-10-24  Jaraguá do Sul - 1ª Corrida Húngara (visto pela ultima vez em 2026-10-04)
-  ? 2026-10-24  Nova Veneza - Passos da Fé Night Run 2026 (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-18  Porto Belo - 6hs de Porto Belo (visto pela ultima vez em 2026-10-12)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['Litoral Gaúcho', 'a 4 km do Centro de Dona Emma']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['Litoral Gaúcho']
 
 == perfis ==
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,243,864 bytes)
+artifact.html e index.html gerados (2,244,397 bytes)
 
-RESULTADO: pronto para publicar (coleta de 12/10/2026).
+RESULTADO: pronto para publicar (coleta de 13/10/2026).

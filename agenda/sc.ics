@@ -2913,10 +2913,10 @@ DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Maratona Internacional de Pomerode - 1º Dia 2026
 LOCATION:Pomerode - SC
-DESCRIPTION:Corrida de rua · 6km\, 21km\, 42km\nInscrição: https://vemco
- rrer.com/evento/345-maratona-internacional-de-pomerode-2026\nCupons e deta
- lhes: https://www.cuponsdecorrida.com.br/provas/2026-10-17-maratona-intern
- acional-de-pomerode-1-dia/
+DESCRIPTION:Corrida de rua · 6km\nInscrição: https://vemcorrer.com/event
+ o/345-maratona-internacional-de-pomerode-2026\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-17-maratona-internacional-de-pom
+ erode-1-dia/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-maratona-internaci
  onal-de-pomerode-1-dia/
 TRANSP:TRANSPARENT
@@ -2940,16 +2940,14 @@ UID:2026-10-18-2-corrida-dos-bombeiros-voluntarios-de-sao-francisco-do-sul@
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
-SUMMARY:2ª CORRIDA dos BOMBEIROS VOLUNTÁRIOS de SÃO FRANCISCO do SUL 202
- 6
+SUMMARY:2ª Corrida dos Bombeiros de São Francisco do Sul 2026
 LOCATION:São Francisco do Sul - SC
 DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
  m.br/e/+2%C2%AA+CORRIDA+DOS+BOMBEIROS+VOLUNT%C3%81RIOS+DE+S%C3%83O+FRANCIS
  CO+DO+SUL-86590\nCupons e detalhes: https://www.cuponsdecorrida.com.br/pro
- vas/2026-10-18-2-corrida-dos-bombeiros-voluntarios-de-sao-francisco-do-sul
- /
+ vas/2026-10-18-2-corrida-dos-bombeiros-de-sao-francisco-do-sul/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-2-corrida-dos-bomb
- eiros-voluntarios-de-sao-francisco-do-sul/
+ eiros-de-sao-francisco-do-sul/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2973,9 +2971,9 @@ DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:8ª Corrida Rústica Juntos contra o Câncer 2026
 LOCATION:Chapecó - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-10-18-8-corrida-rustica-juntos-cont
- ra-o-cancer-chapeco/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-8-corrida-rustica-juntos-contra-o-c
+ ancer-chapeco/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-8-corrida-rustica-
  juntos-contra-o-cancer-chapeco/
 TRANSP:TRANSPARENT
@@ -2985,13 +2983,12 @@ UID:2026-10-18-circuito-angeloni-2026-etapa-sao-jose@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
-SUMMARY:Circuito Angeloni 2026 - Etapa São José
+SUMMARY:Circuito Angeloni - Etapa São José 2026
 LOCATION:São José - SC
 DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2026-10-18-circuito-angeloni-2026-etapa-sao-jo
- se/
+ ponsdecorrida.com.br/provas/2026-10-18-circuito-angeloni-etapa-sao-jose/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-circuito-angeloni-
- 2026-etapa-sao-jose/
+ etapa-sao-jose/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -3064,10 +3061,10 @@ DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Corrida e Caminhada SEST SENAT - Catanduvas 2026
 LOCATION:Catanduvas - SC
-DESCRIPTION:Caminhada · 2km\, 5km\nInscrição: https://www.pfeventos.com.
- br/evento/2026/corrida-de-rua/corrida-e-caminhada-sest-senat-edicao-corrid
- a-do-fogo\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/20
- 26-10-18-corrida-e-caminhada-sest-senat-catanduvas/
+DESCRIPTION:Caminhada · 5km\nInscrição: https://www.pfeventos.com.br/eve
+ nto/2026/corrida-de-rua/corrida-e-caminhada-sest-senat-edicao-corrida-do-f
+ ogo\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-10-
+ 18-corrida-e-caminhada-sest-senat-catanduvas/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-e-caminhad
  a-sest-senat-catanduvas/
 TRANSP:TRANSPARENT
@@ -3147,6 +3144,21 @@ DESCRIPTION:Corrida de rua · 42km\, 21km\nInscrição: https://vemcorrer.c
  l-de-pomerode-2-dia/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-maratona-internaci
  onal-de-pomerode-2-dia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-meia-maratona-de-garopaba@cuponsdecorrida.com.br
+DTSTAMP:20261013T180611Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Meia Maratona de Garopaba 2026
+LOCATION:Garopaba - SC
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nInscrição: https://site.
+ blueticket.com.br/evento/39871/ponta-do-papagaio-beach-run-7a-edicao-2026\
+ nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-10-18-m
+ eia-maratona-de-garopaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-meia-maratona-de-g
+ aropaba/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -3235,6 +3247,24 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-1-corrida-hungara-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-24-1-corrida-da-rede-feminina-de-combate-ao-cancer-de-guaramiri
+ m@cuponsdecorrida.com.br
+DTSTAMP:20261013T180611Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:1ª Corrida da Rede Feminina de Combate ao Câncer de Guaramirim 20
+ 26
+LOCATION:Guaramirim - SC
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nInscrição: https://www.mo
+ vnow.com.br/event/221-circuito-marias-run-1a-corrida-da-rede-feminina-de-c
+ ombate-ao-cancer-de-guaramirim\nCupons e detalhes: https://www.cuponsdecor
+ rida.com.br/provas/2026-10-24-1-corrida-da-rede-feminina-de-combate-ao-can
+ cer-de-guaramirim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-1-corrida-da-rede-
+ feminina-de-combate-ao-cancer-de-guaramirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-24-1-corrida-e-caminhada-da-rede-feminina-de-combate-ao-cancer-
  sao-francisco-do-su@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
@@ -3259,10 +3289,10 @@ DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:2ª Corrida da Matriz Oxford 2026
 LOCATION:São Bento do Sul - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
- rts.com.br/e/2%C2%AA+CORRIDA+DA+MATRIZ+OXFORD-87381\nCupons e detalhes: ht
- tps://www.cuponsdecorrida.com.br/provas/2026-10-24-2-corrida-da-matriz-oxf
- ord-sao-bento-do-sul/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/2%C2%AA+CORRIDA+DA+MATRIZ+OXFORD-87381\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-24-2-corrida-da-matriz-oxford-sa
+ o-bento-do-sul/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-2-corrida-da-matri
  z-oxford-sao-bento-do-sul/
 TRANSP:TRANSPARENT
@@ -3498,9 +3528,9 @@ DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:1ª Maratona de Joinville 2026
 LOCATION:Joinville - SC
-DESCRIPTION:Corrida de rua · 6km\, 42km\nInscrição: https://www.ticketsp
- orts.com.br/e/1%C2%BA+MARATONA+DE+JOINVILLE-87159\nCupons e detalhes: http
- s://www.cuponsdecorrida.com.br/provas/2026-11-01-1-maratona-de-joinville/
+DESCRIPTION:Corrida de rua · 42km\nInscrição: https://www.ticketsports.c
+ om.br/e/1%C2%BA+MARATONA+DE+JOINVILLE-87159\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2026-11-01-1-maratona-de-joinville/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-1-maratona-de-join
  ville/
 TRANSP:TRANSPARENT
@@ -3512,10 +3542,9 @@ DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:2ª Corrida Ceraçá 2026
 LOCATION:Saudades - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.pfeventos
- .com.br/evento/2026/corrida-de-rua/2-corrida-cera\nCupons e detalhes: http
- s://www.cuponsdecorrida.com.br/provas/2026-11-01-2-corrida-ceraca-saudades
- /
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
+ r/evento/2026/corrida-de-rua/2-corrida-cera\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2026-11-01-2-corrida-ceraca-saudades/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-2-corrida-ceraca-s
  audades/
 TRANSP:TRANSPARENT
@@ -3588,9 +3617,9 @@ DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Corrida Solidária Abba Pai Church - 5ª Edição 2026
 LOCATION:Criciúma - SC
-DESCRIPTION:Corrida de rua · 2km\, 5km\, 10km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-solidaria-abba-pai-ch
- urch-5-edicao-criciuma/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-01-corrida-solidaria-abba-pai-church-5
+ -edicao-criciuma/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-solidaria-
  abba-pai-church-5-edicao-criciuma/
 TRANSP:TRANSPARENT
@@ -3632,10 +3661,9 @@ DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:1ª Corrida Delas 2026
 LOCATION:São Carlos - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.pfeventos
- .com.br/evento/2026/corrida-de-rua/1-corrida-delas\nCupons e detalhes: htt
- ps://www.cuponsdecorrida.com.br/provas/2026-11-07-1-corrida-delas-sao-carl
- os/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
+ r/evento/2026/corrida-de-rua/1-corrida-delas\nCupons e detalhes: https://w
+ ww.cuponsdecorrida.com.br/provas/2026-11-07-1-corrida-delas-sao-carlos/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-1-corrida-delas-sa
  o-carlos/
 TRANSP:TRANSPARENT
@@ -3646,13 +3674,29 @@ UID:2026-11-07-2-corrida-bombeiros-voluntarios-de-ilhota-2026@cuponsdecorri
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
-SUMMARY:2° Corrida Bombeiros Voluntários de Ilhota 2026
+SUMMARY:1ª Corrida Night Run All Resort Club Residence 2026
+LOCATION:Porto Belo - SC
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/1%C2%AA++NIGHT+RUN+ALL+RESORT+CLUB+RESIDENCE+-+2026+-88180\n
+ Cupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-07-1-
+ corrida-night-run-all-resort-club-residence-porto-belo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-1-corrida-night-ru
+ n-all-resort-club-residence-porto-belo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-2-corrida-dos-bombeiros-voluntarios-de-ilhota@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261013T180611Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:2ª Corrida dos Bombeiros Voluntários de Ilhota 2026
 LOCATION:Ilhota - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-11-07-2-corrida-bombeiros-voluntari
- os-de-ilhota-2026/
-URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-2-corrida-bombeiro
- s-voluntarios-de-ilhota-2026/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-07-2-corrida-dos-bombeiros-voluntarios
+ -de-ilhota/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-2-corrida-dos-bomb
+ eiros-voluntarios-de-ilhota/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -3764,10 +3808,9 @@ DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:1ª União do Oeste Running 2026
 LOCATION:União do Oeste - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://eventos.rsfpr
- oeventos.com.br/evento/1-uniao-do-oeste-running-9091\nCupons e detalhes: h
- ttps://www.cuponsdecorrida.com.br/provas/2026-11-08-1-uniao-do-oeste-runni
- ng/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://eventos.rsfproevent
+ os.com.br/evento/1-uniao-do-oeste-running-9091\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-08-1-uniao-do-oeste-running/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-1-uniao-do-oeste-r
  unning/
 TRANSP:TRANSPARENT
@@ -3796,10 +3839,10 @@ DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:2ª Corrida CDL Movimenta Bom Jesus do Oeste 2026
 LOCATION:Bom Jesus do Oeste - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.pfeventos
- .com.br/evento/2026/corrida-de-rua/2-corrida-cdl-movimenta-bom-jesus-do-oe
- ste\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-
- 08-2-corrida-cdl-movimenta-bom-jesus-do-oeste/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
+ r/evento/2026/corrida-de-rua/2-corrida-cdl-movimenta-bom-jesus-do-oeste\nC
+ upons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-08-2-c
+ orrida-cdl-movimenta-bom-jesus-do-oeste/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-2-corrida-cdl-movi
  menta-bom-jesus-do-oeste/
 TRANSP:TRANSPARENT
@@ -3826,10 +3869,10 @@ DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:6ª Corrida Crevisc em Movimento 2026
 LOCATION:Guaramirim - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
- cketsports.com.br/e/6%C2%AA+CREVISC+EM+MOVIMENTO-87794\nCupons e detalhes:
-  https://www.cuponsdecorrida.com.br/provas/2026-11-08-6-corrida-crevisc-em
- -movimento-guaramirim/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/6%C2%AA+CREVISC+EM+MOVIMENTO-87794\nCupons e detalhes: https
+ ://www.cuponsdecorrida.com.br/provas/2026-11-08-6-corrida-crevisc-em-movim
+ ento-guaramirim/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-6-corrida-crevisc-
  em-movimento-guaramirim/
 TRANSP:TRANSPARENT
@@ -4019,9 +4062,9 @@ DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:FitLife Run 2026
 LOCATION:Biguaçu - SC
-DESCRIPTION:Corrida de rua · 1km\, 3km\, 5km\, 10km\nInscrição: https://
- www.ticketsports.com.br/e/FITLIFE+RUN+2026-87628\nCupons e detalhes: https
- ://www.cuponsdecorrida.com.br/provas/2026-11-08-fitlife-run-biguacu/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/FITLIFE+RUN+2026-87628\nCupons e detalhes: https://www.cupon
+ sdecorrida.com.br/provas/2026-11-08-fitlife-run-biguacu/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-fitlife-run-biguac
  u/
 TRANSP:TRANSPARENT
@@ -4032,13 +4075,13 @@ UID:2026-11-08-nahassa-street-run-2-edicao-alfredo-wagner@cuponsdecorrida.c
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
-SUMMARY:Nahassa Street Run 2 º Edição 2026
+SUMMARY:Nahassa Street Run 2026
 LOCATION:Alfredo Wagner - SC
 DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-11-08-nahassa-street-run-2-edicao-a
- lfredo-wagner/
+ www.cuponsdecorrida.com.br/provas/2026-11-08-nahassa-street-run-alfredo-wa
+ gner/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-nahassa-street-run
- -2-edicao-alfredo-wagner/
+ -alfredo-wagner/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -4142,13 +4185,13 @@ UID:2026-11-14-corrida-santo-s-dumont-florianopolis@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
-SUMMARY:Corrida Santo S Dumont 2026
+SUMMARY:Corrida Rústica Santos Dumont 2026
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 4km\, 8km\nCupons e detalhes: https://www.cup
- onsdecorrida.com.br/provas/2026-11-14-corrida-santo-s-dumont-florianopolis
- /
-URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-corrida-santo-s-du
- mont-florianopolis/
+DESCRIPTION:Corrida de rua · 8km\, 4km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-14-corrida-rustica-santos-dumont-floria
+ nopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-corrida-rustica-sa
+ ntos-dumont-florianopolis/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -4159,9 +4202,9 @@ DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Farol Fast Marathon 2026 - Revezamento
 LOCATION:Tubarão - SC
-DESCRIPTION:Corrida de rua · 5km\, 42km\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2026-11-14-farol-fast-marathon-2026-revezament
- o-tubarao/
+DESCRIPTION:Corrida de rua · 42km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-14-farol-fast-marathon-2026-revezamento-tuba
+ rao/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-farol-fast-maratho
  n-2026-revezamento-tubarao/
 TRANSP:TRANSPARENT
@@ -4203,10 +4246,10 @@ DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:Mons Ultra Trail 2026 - 3º Dia
 LOCATION:Nova Trento - SC
-DESCRIPTION:Corrida de trail · 5km\, 12km\, 25km\, 55km\, 100mi\, 104km\, 
- 160km\, 200mi\, 320km\nInscrição: https://www.ticketsports.com.br/e/Mons
- +Ultra+Trail+2026-85210\nCupons e detalhes: https://www.cuponsdecorrida.co
- m.br/provas/2026-11-14-mons-ultra-trail-2026-3-dia-nova-trento/
+DESCRIPTION:Corrida de trail · 55km\, 25km\, 12km\, 5km\nInscrição: http
+ s://www.ticketsports.com.br/e/Mons+Ultra+Trail+2026-85210\nCupons e detalh
+ es: https://www.cuponsdecorrida.com.br/provas/2026-11-14-mons-ultra-trail-
+ 2026-3-dia-nova-trento/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-mons-ultra-trail-2
  026-3-dia-nova-trento/
 TRANSP:TRANSPARENT
@@ -4216,12 +4259,12 @@ UID:2026-11-14-supere-run-porto-belo-2026@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
-SUMMARY:SUPERE RUN – Porto Belo 2026
+SUMMARY:Supere Run 2026
 LOCATION:Porto Belo - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-11-14-supere-run-porto-belo-2026/
-URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-supere-run-porto-b
- elo-2026/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-14-supere-run-2026-porto-belo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-supere-run-2026-po
+ rto-belo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -4232,10 +4275,10 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:16ª Volta da Lagoa da Conceição 2026
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 4km\, 5km\, 7km\, 12km\nInscrição: https://
- www.ticketsports.com.br/e/16%C2%AA+VOLTA+A+LAGOA+DA+CONCEI%C3%87%C3%83O+-8
- 7753\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11
- -15-16-volta-da-lagoa-da-conceicao-florianopolis/
+DESCRIPTION:Corrida de rua · 12km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/16%C2%AA+VOLTA+A+LAGOA+DA+CONCEI%C3%87%C3%83O+-87753\nCupons
+  e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-15-16-volta
+ -da-lagoa-da-conceicao-florianopolis/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-16-volta-da-lagoa-
  da-conceicao-florianopolis/
 TRANSP:TRANSPARENT
@@ -4294,8 +4337,8 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:5ª Corrida Alfa 2026
 LOCATION:Chapecó - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-11-15-5-corrida-alfa-chapeco/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-15-5-corrida-alfa-chapeco/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-5-corrida-alfa-cha
  peco/
 TRANSP:TRANSPARENT
@@ -4354,10 +4397,10 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Circuito Ocean - Florianópolis 2026
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://site.bluetick
- et.com.br/evento/39238/circuito-ocean-etapa-floripa-2026\nCupons e detalhe
- s: https://www.cuponsdecorrida.com.br/provas/2026-11-15-circuito-ocean-flo
- rianopolis/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://site.blueticket.com
+ .br/evento/39238/circuito-ocean-etapa-floripa-2026\nCupons e detalhes: htt
+ ps://www.cuponsdecorrida.com.br/provas/2026-11-15-circuito-ocean-florianop
+ olis/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-circuito-ocean-flo
  rianopolis/
 TRANSP:TRANSPARENT
@@ -4400,10 +4443,10 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Corrida Novembro Azul 2026
 LOCATION:São José - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://site.t
- icketsports.com.br/Inscricao/categoria.aspx?__idEvento=87060&lang=en-US\nC
- upons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-15-cor
- rida-novembro-azul-sao-jose/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://site.tickets
+ ports.com.br/Inscricao/categoria.aspx?__idEvento=87060&lang=en-US\nCupons 
+ e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-n
+ ovembro-azul-sao-jose/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-novembro-a
  zul-sao-jose/
 TRANSP:TRANSPARENT
@@ -4454,9 +4497,9 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Manah Run 2026
 LOCATION:Campos Novos - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.pf
- eventos.com.br/evento/2026/corrida-de-rua/manah-run\nCupons e detalhes: ht
- tps://www.cuponsdecorrida.com.br/provas/2026-11-15-manah-run-campos-novos/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.pfevento
+ s.com.br/evento/2026/corrida-de-rua/manah-run\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-11-15-manah-run-campos-novos/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-manah-run-campos-n
  ovos/
 TRANSP:TRANSPARENT
@@ -4482,9 +4525,9 @@ DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Select Run 2026
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
- cketsports.com.br/e/SELECT+RUN-86985\nCupons e detalhes: https://www.cupon
- sdecorrida.com.br/provas/2026-11-15-select-run-florianopolis/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/SELECT+RUN-86985\nCupons e detalhes: https://www.cuponsdecor
+ rida.com.br/provas/2026-11-15-select-run-florianopolis/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-select-run-florian
  opolis/
 TRANSP:TRANSPARENT
@@ -4568,10 +4611,9 @@ DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:I Corrida do Marista 2026
 LOCATION:Jaraguá do Sul - SC
-DESCRIPTION:Corrida de rua · 1.5km\, 4km\nInscrição: https://www.tickets
- ports.com.br/e/I+CORRIDA+DO+MARISTA-87692\nCupons e detalhes: https://www.
- cuponsdecorrida.com.br/provas/2026-11-20-i-corrida-do-marista-jaragua-do-s
- ul/
+DESCRIPTION:Corrida de rua · 4km\nInscrição: https://www.ticketsports.co
+ m.br/e/I+CORRIDA+DO+MARISTA-87692\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-20-i-corrida-do-marista-jaragua-do-sul/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-i-corrida-do-maris
  ta-jaragua-do-sul/
 TRANSP:TRANSPARENT
@@ -4613,9 +4655,9 @@ DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:2ª NIGHT RUN 2026
 LOCATION:Campo Alegre - SC
-DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
- orts.com.br/e/2%C2%AA+NIGHT+RUN-87812\nCupons e detalhes: https://www.cupo
- nsdecorrida.com.br/provas/2026-11-21-2-night-run-campo-alegre/
+DESCRIPTION:Corrida de rua · 5 a 10km\nInscrição: https://www.ticketspor
+ ts.com.br/e/2%C2%AA+NIGHT+RUN-87812\nCupons e detalhes: https://www.cupons
+ decorrida.com.br/provas/2026-11-21-2-night-run-campo-alegre/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-2-night-run-campo-
  alegre/
 TRANSP:TRANSPARENT
@@ -4640,9 +4682,9 @@ DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:PDS Run 2026
 LOCATION:São Francisco do Sul - SC
-DESCRIPTION:Corrida de rua · 3km\, 8km\nInscrição: https://www.ticketspo
- rts.com.br/e/PDS+RUN-88457\nCupons e detalhes: https://www.cuponsdecorrida
- .com.br/provas/2026-11-21-pds-run-sao-francisco-do-sul/
+DESCRIPTION:Corrida de rua · 8km\nInscrição: https://www.ticketsports.co
+ m.br/e/PDS+RUN-88457\nCupons e detalhes: https://www.cuponsdecorrida.com.b
+ r/provas/2026-11-21-pds-run-sao-francisco-do-sul/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-pds-run-sao-franci
  sco-do-sul/
 TRANSP:TRANSPARENT
@@ -4654,10 +4696,10 @@ DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:1ª Corrida Shark Run & ADC Seara 2026
 LOCATION:Seara - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.pfeventos
- .com.br/evento/2026/corrida-de-rua/1-corrida-shark-run-adc-seara\nCupons e
-  detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-
- shark-run-adc-seara/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
+ r/evento/2026/corrida-de-rua/1-corrida-shark-run-adc-seara\nCupons e detal
+ hes: https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-shark-
+ run-adc-seara/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-shark-ru
  n-adc-seara/
 TRANSP:TRANSPARENT
@@ -4686,10 +4728,10 @@ DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Circuito Asteri Trail Run - Etapa Morro dos Conventos 2026
 LOCATION:Araranguá - SC
-DESCRIPTION:Corrida de trail · 3km\, 6km\, 12km\, 21km\nInscrição: https
- ://eventos.rsfproeventos.com.br/evento/morro-dos-conventos-trail-63\nCupon
- s e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-22-circuit
- o-asteri-trail-run-etapa-morro-dos-conventos-ararangua/
+DESCRIPTION:Corrida de trail · 21km\, 12km\, 6km\nInscrição: https://eve
+ ntos.rsfproeventos.com.br/evento/morro-dos-conventos-trail-63\nCupons e de
+ talhes: https://www.cuponsdecorrida.com.br/provas/2026-11-22-circuito-aste
+ ri-trail-run-etapa-morro-dos-conventos-ararangua/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-circuito-asteri-tr
  ail-run-etapa-morro-dos-conventos-ararangua/
 TRANSP:TRANSPARENT
@@ -4759,11 +4801,10 @@ DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Movimente-se pelo seu Coração - Corrida Unicardio 2026
 LOCATION:Florianópolis - SC
-DESCRIPTION:Caminhada · 2km\, 5km\nInscrição: https://www.ticketsports.c
- om.br/e/MOVIMENTE-SE+PELO+SEU+CORA%C3%87%C3%83O+-+CORRIDA+E+CAMINHADA+UNIC
- ARDIO+2026-88576\nCupons e detalhes: https://www.cuponsdecorrida.com.br/pr
- ovas/2026-11-22-movimente-se-pelo-seu-coracao-corrida-unicardio-florianopo
- lis/
+DESCRIPTION:Caminhada · 5km\nInscrição: https://www.ticketsports.com.br/
+ e/MOVIMENTE-SE+PELO+SEU+CORA%C3%87%C3%83O+-+CORRIDA+E+CAMINHADA+UNICARDIO+
+ 2026-88576\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2
+ 026-11-22-movimente-se-pelo-seu-coracao-corrida-unicardio-florianopolis/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-movimente-se-pelo-
  seu-coracao-corrida-unicardio-florianopolis/
 TRANSP:TRANSPARENT
@@ -4775,10 +4816,10 @@ DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Run for Câncer Floripa 2026
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
- cketsports.com.br/e/RUN+FOR+CANCER+FLORIPA+2026-85332\nCupons e detalhes: 
- https://www.cuponsdecorrida.com.br/provas/2026-11-22-run-for-cancer-florip
- a-florianopolis/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/RUN+FOR+CANCER+FLORIPA+2026-85332\nCupons e detalhes: https:
+ //www.cuponsdecorrida.com.br/provas/2026-11-22-run-for-cancer-floripa-flor
+ ianopolis/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-run-for-cancer-flo
  ripa-florianopolis/
 TRANSP:TRANSPARENT
@@ -4804,8 +4845,8 @@ DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:12K Missão Doação 2026
 LOCATION:Tubarão - SC
-DESCRIPTION:Corrida de rua · 4km\, 12km\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2026-11-28-12k-missao-doacao-tubarao/
+DESCRIPTION:Corrida de rua · 12km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-28-12k-missao-doacao-tubarao/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-12k-missao-doacao-
  tubarao/
 TRANSP:TRANSPARENT
@@ -4845,10 +4886,10 @@ DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:3ª Corrida e Caminhada de Natal 2026
 LOCATION:Maravilha - SC
-DESCRIPTION:Caminhada · 3km\, 5km\nInscrição: https://www.pfeventos.com.
- br/evento/2026/corrida-de-rua/3-corrida-e-caminhada-de-natal\nCupons e det
- alhes: https://www.cuponsdecorrida.com.br/provas/2026-11-28-3-corrida-e-ca
- minhada-de-natal-maravilha/
+DESCRIPTION:Caminhada · 5km\nInscrição: https://www.pfeventos.com.br/eve
+ nto/2026/corrida-de-rua/3-corrida-e-caminhada-de-natal\nCupons e detalhes:
+  https://www.cuponsdecorrida.com.br/provas/2026-11-28-3-corrida-e-caminhad
+ a-de-natal-maravilha/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-3-corrida-e-caminh
  ada-de-natal-maravilha/
 TRANSP:TRANSPARENT
@@ -4859,14 +4900,13 @@ UID:2026-11-28-dino-parque-run-2026-corrida-e-caminhada-ararangua@cuponsdec
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
-SUMMARY:Dino Parque Run 2026 – Corrida e Caminhada
+SUMMARY:Dino Parque Run 2026
 LOCATION:Araranguá - SC
-DESCRIPTION:Caminhada · 2km\, 3km\, 5km\, 8km\nInscrição: https://www.at
- letis.com.br/evento/dino-parque-run-3588\nCupons e detalhes: https://www.c
- uponsdecorrida.com.br/provas/2026-11-28-dino-parque-run-2026-corrida-e-cam
- inhada-ararangua/
+DESCRIPTION:Corrida de rua · 8km\, 5km\, 3km\nInscrição: https://www.atl
+ etis.com.br/evento/dino-parque-run-3588\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-28-dino-parque-run-2026-ararangua/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-dino-parque-run-20
- 26-corrida-e-caminhada-ararangua/
+ 26-ararangua/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -4876,10 +4916,9 @@ DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Neon Music Run 2026
 LOCATION:Brusque - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://app.sp
- rinta.com.br/e/neon-music-night-run-brusque-2026_212a\nCupons e detalhes: 
- https://www.cuponsdecorrida.com.br/provas/2026-11-28-neon-music-run-brusqu
- e/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://app.sprinta.
+ com.br/e/neon-music-night-run-brusque-2026_212a\nCupons e detalhes: https:
+ //www.cuponsdecorrida.com.br/provas/2026-11-28-neon-music-run-brusque/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-neon-music-run-bru
  sque/
 TRANSP:TRANSPARENT
@@ -4904,7 +4943,7 @@ DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:Run 100% Jesus 2026
 LOCATION:Itapema - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.mo
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nInscrição: https://www.mo
  vnow.com.br/eventos/356-run-100-jesus\nCupons e detalhes: https://www.cupo
  nsdecorrida.com.br/provas/2026-11-28-run-100-jesus-itapema/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-run-100-jesus-itap
@@ -4933,10 +4972,10 @@ DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:1ª Corrida Lino Supermercado 2026
 LOCATION:Balneário Rincão - SC
-DESCRIPTION:Corrida de rua · 2.5km\, 4km\, 8km\nInscrição: https://event
- os.rsfproeventos.com.br/evento/1-corrida-lino-supermercado-7853\nCupons e 
- detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-corrida-l
- ino-supermercado-balneario-rincao/
+DESCRIPTION:Corrida de rua · 8km\, 4km\nInscrição: https://eventos.rsfpr
+ oeventos.com.br/evento/1-corrida-lino-supermercado-7853\nCupons e detalhes
+ : https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-corrida-lino-supe
+ rmercado-balneario-rincao/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-corrida-lino-sup
  ermercado-balneario-rincao/
 TRANSP:TRANSPARENT
@@ -4948,9 +4987,9 @@ DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:1ª Rafitec Run 2026
 LOCATION:Xaxim - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.pfeventos
- .com.br/evento/2026/corrida-de-rua/1-rafitec-run\nCupons e detalhes: https
- ://www.cuponsdecorrida.com.br/provas/2026-11-29-1-rafitec-run-xaxim/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
+ r/evento/2026/corrida-de-rua/1-rafitec-run\nCupons e detalhes: https://www
+ .cuponsdecorrida.com.br/provas/2026-11-29-1-rafitec-run-xaxim/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-rafitec-run-xaxi
  m/
 TRANSP:TRANSPARENT
@@ -5136,7 +5175,7 @@ DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Ventus Trail Run 2026
 LOCATION:Bom Jardim da Serra - SC
-DESCRIPTION:Corrida de trail · 4km\, 10km\, 22km\nInscrição: https://www
+DESCRIPTION:Corrida de trail · 22km\, 10km\, 4km\nInscrição: https://www
  .movnow.com.br/eventos/333-ventus-trail-run\nCupons e detalhes: https://ww
  w.cuponsdecorrida.com.br/provas/2026-11-29-ventus-trail-run-bom-jardim-da-
  serra/
@@ -5222,10 +5261,10 @@ DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:II Corrida e Caminhada ExpoAnita 2026
 LOCATION:Anita Garibaldi - SC
-DESCRIPTION:Caminhada · 3km\, 5km\nInscrição: https://www.pfeventos.com.
- br/evento/2026/corrida-de-rua/ii-corrida-e-caminhada-expoanita\nCupons e d
- etalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-05-ii-corrida-e
- -caminhada-expoanita-anita-garibaldi/
+DESCRIPTION:Caminhada · 5km\nInscrição: https://www.pfeventos.com.br/eve
+ nto/2026/corrida-de-rua/ii-corrida-e-caminhada-expoanita\nCupons e detalhe
+ s: https://www.cuponsdecorrida.com.br/provas/2026-12-05-ii-corrida-e-camin
+ hada-expoanita-anita-garibaldi/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-ii-corrida-e-camin
  hada-expoanita-anita-garibaldi/
 TRANSP:TRANSPARENT
@@ -5261,12 +5300,12 @@ UID:2026-12-06-2-corrida-lions-treze-tilias@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
-SUMMARY:2ª Corrida Lions Treze Tilias 2026
+SUMMARY:2ª Corrida Lions 2026
 LOCATION:Treze Tílias - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.pfeventos
- .com.br/evento/2026/corrida-de-rua/2-corrida-lions-treze-tilias\nCupons e 
- detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-corrida-l
- ions-treze-tilias/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
+ r/evento/2026/corrida-de-rua/2-corrida-lions-treze-tilias\nCupons e detalh
+ es: https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-corrida-lions-t
+ reze-tilias/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-corrida-lions-tr
  eze-tilias/
 TRANSP:TRANSPARENT
@@ -5278,9 +5317,8 @@ DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:3ª Corrida Pelznickel 2026
 LOCATION:Guabiruba - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-12-06-3-corrida-pelznickel-guabirub
- a/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-06-3-corrida-pelznickel-guabiruba/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-3-corrida-pelznick
  el-guabiruba/
 TRANSP:TRANSPARENT
@@ -5321,13 +5359,12 @@ UID:2026-12-06-circuito-angeloni-2026-etapa-criciuma@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
-SUMMARY:Circuito Angeloni 2026 - Etapa Criciúma
+SUMMARY:Circuito Angeloni - Etapa Criciúma 2026
 LOCATION:Criciúma - SC
 DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2026-12-06-circuito-angeloni-2026-etapa-criciu
- ma/
+ ponsdecorrida.com.br/provas/2026-12-06-circuito-angeloni-etapa-criciuma/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-circuito-angeloni-
- 2026-etapa-criciuma/
+ etapa-criciuma/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5384,10 +5421,9 @@ DTEND;VALUE=DATE:20261207
 SUMMARY:Corrida Rústica Trentina 2026
 LOCATION:Rio dos Cedros - SC
 DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
- orrida.com.br/provas/2026-12-06-corrida-rustica-trentina-2026-rio-dos-cedr
- os/
+ orrida.com.br/provas/2026-12-06-corrida-rustica-trentina-rio-dos-cedros/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-corrida-rustica-tr
- entina-2026-rio-dos-cedros/
+ entina-rio-dos-cedros/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5427,10 +5463,10 @@ DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
 SUMMARY:1ª Corrida Super Auriverde 2026
 LOCATION:São Carlos - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.pfeventos
- .com.br/evento/2026/corrida-de-rua/1-corrida-super-auriverde\nCupons e det
- alhes: https://www.cuponsdecorrida.com.br/provas/2026-12-12-1-corrida-supe
- r-auriverde-sao-carlos/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
+ r/evento/2026/corrida-de-rua/1-corrida-super-auriverde\nCupons e detalhes:
+  https://www.cuponsdecorrida.com.br/provas/2026-12-12-1-corrida-super-auri
+ verde-sao-carlos/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-1-corrida-super-au
  riverde-sao-carlos/
 TRANSP:TRANSPARENT
@@ -5514,14 +5550,14 @@ UID:2026-12-12-ponta-do-papagaio-beach-run-7-edicao-2026-palhoca@cuponsdeco
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261212
 DTEND;VALUE=DATE:20261213
-SUMMARY:PONTA do PAPAGAIO BEACH RUN | 7ª EDIÇÃO - 2026
+SUMMARY:Ponta do Papagaio Beach Run - 7ª Edição 2026
 LOCATION:Palhoça - SC
 DESCRIPTION:Corrida de rua · 8km\, 4km\nInscrição: https://site.bluetick
  et.com.br/evento/39871/ponta-do-papagaio-beach-run-7a-edicao-2026\nCupons 
  e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-12-ponta-do-
- papagaio-beach-run-7-edicao-2026-palhoca/
+ papagaio-beach-run-7-edicao-palhoca/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-ponta-do-papagaio-
- beach-run-7-edicao-2026-palhoca/
+ beach-run-7-edicao-palhoca/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5591,11 +5627,11 @@ DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Corrida Ailos Civia pela Cooperação 2026
 LOCATION:São Bento do Sul - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
- rts.com.br/e/CORRIDA+AILOS+CIVIA+PELA+COOPERA%C3%87%C3%83O+-+EDI%C3%87%C3%
- 83O+S%C3%83O+BENTO+DO+SUL-87819\nCupons e detalhes: https://www.cuponsdeco
- rrida.com.br/provas/2026-12-13-corrida-ailos-civia-pela-cooperacao-sao-ben
- to-do-sul/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/CORRIDA+AILOS+CIVIA+PELA+COOPERA%C3%87%C3%83O+-+EDI%C3%87%C3%83O+S%
+ C3%83O+BENTO+DO+SUL-87819\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-13-corrida-ailos-civia-pela-cooperacao-sao-bento-do-
+ sul/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-ailos-civi
  a-pela-cooperacao-sao-bento-do-sul/
 TRANSP:TRANSPARENT
@@ -5607,9 +5643,9 @@ DTSTART;VALUE=DATE:20261213
 DTEND;VALUE=DATE:20261214
 SUMMARY:Corrida de Natal 2026
 LOCATION:Salete - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
- rts.com.br/e/CORRIDA+DE+NATAL+DE+SALETE-88348\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-de-natal-2026-salete/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/CORRIDA+DE+NATAL+DE+SALETE-88348\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-corrida-de-natal-2026-salete/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-de-natal-2
  026-salete/
 TRANSP:TRANSPARENT
@@ -5676,10 +5712,10 @@ DTSTART;VALUE=DATE:20261219
 DTEND;VALUE=DATE:20261220
 SUMMARY:NIGHT RUN NATAL LUZ - KOERICH 2026
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
- cketsports.com.br/e/NIGHT+RUN+NATAL+LUZ+-+KOERICH+-87837\nCupons e detalhe
- s: https://www.cuponsdecorrida.com.br/provas/2026-12-19-night-run-natal-lu
- z-koerich-florianopolis/
+DESCRIPTION:Corrida de rua · até 4km\, 5 a 10km\nInscrição: https://www
+ .ticketsports.com.br/e/NIGHT+RUN+NATAL+LUZ+-+KOERICH+-87837\nCupons e deta
+ lhes: https://www.cuponsdecorrida.com.br/provas/2026-12-19-night-run-natal
+ -luz-koerich-florianopolis/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-19-night-run-natal-lu
  z-koerich-florianopolis/
 TRANSP:TRANSPARENT
@@ -5703,14 +5739,14 @@ UID:2026-12-20-15-corrida-rustica-prefeito-valdecir-angelo-zampieri-irani@c
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
-SUMMARY:15ª Corrida Rustica Prefeito Valdecir Angelo Zampieri 2026
+SUMMARY:15ª Corrida Rústica Valdecir Ângelo Zampieri 2026
 LOCATION:Irani - SC
 DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.pfeventos.com.b
  r/evento/2026/corrida-rustica/15-corrida-rustica-prefeito-valdecir-angelo-
  zampieri\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/202
- 6-12-20-15-corrida-rustica-prefeito-valdecir-angelo-zampieri-irani/
+ 6-12-20-15-corrida-rustica-valdecir-angelo-zampieri-irani/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-15-corrida-rustica
- -prefeito-valdecir-angelo-zampieri-irani/
+ -valdecir-angelo-zampieri-irani/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5734,10 +5770,10 @@ DTSTART;VALUE=DATE:20261220
 DTEND;VALUE=DATE:20261221
 SUMMARY:4ª CORRIDA DE NATAL DE APIÚNA 2026
 LOCATION:Apiúna - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
- cketsports.com.br/e/4%C2%AA+CORRIDA+DE+NATAL+DE+API%C3%9ANA-88216\nCupons 
- e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-20-4-corrida
- -de-natal-de-apiuna/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/4%C2%AA+CORRIDA+DE+NATAL+DE+API%C3%9ANA-88216\nCupons e deta
+ lhes: https://www.cuponsdecorrida.com.br/provas/2026-12-20-4-corrida-de-na
+ tal-de-apiuna/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-4-corrida-de-natal
  -de-apiuna/
 TRANSP:TRANSPARENT
@@ -5837,9 +5873,9 @@ DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:6ª Corrida e Caminhada da Virada Acorde 2026
 LOCATION:Blumenau - SC
-DESCRIPTION:Caminhada · 3km\, 8km\nCupons e detalhes: https://www.cuponsde
- corrida.com.br/provas/2026-12-31-6-corrida-e-caminhada-da-virada-acorde-bl
- umenau/
+DESCRIPTION:Caminhada · 8km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-12-31-6-corrida-e-caminhada-da-virada-acorde-blumenau
+ /
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-31-6-corrida-e-caminh
  ada-da-virada-acorde-blumenau/
 TRANSP:TRANSPARENT
@@ -5852,9 +5888,9 @@ DTEND;VALUE=DATE:20270101
 SUMMARY:Corrida da Virada 2026
 LOCATION:Florianópolis - SC
 DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
- orrida.com.br/provas/2026-12-31-corrida-da-virada-2026-florianopolis/
+ orrida.com.br/provas/2026-12-31-corrida-da-virada-florianopolis/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-31-corrida-da-virada-
- 2026-florianopolis/
+ florianopolis/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5969,10 +6005,10 @@ DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
 SUMMARY:3ª Corrida de São José 2027
 LOCATION:Rio Negrinho - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
- cketsports.com.br/e/3%C2%AA+CORRIDA+DE+S%C3%83O+JOSE-88255\nCupons e detal
- hes: https://www.cuponsdecorrida.com.br/provas/2027-01-31-3-corrida-de-sao
- -jose-rio-negrinho/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/3%C2%AA+CORRIDA+DE+S%C3%83O+JOSE-88255\nCupons e detalhes: h
+ ttps://www.cuponsdecorrida.com.br/provas/2027-01-31-3-corrida-de-sao-jose-
+ rio-negrinho/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-3-corrida-de-sao-j
  ose-rio-negrinho/
 TRANSP:TRANSPARENT
@@ -6186,7 +6222,7 @@ DTSTART;VALUE=DATE:20270307
 DTEND;VALUE=DATE:20270308
 SUMMARY:Baden Run 2027
 LOCATION:Blumenau - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.mo
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nInscrição: https://www.mo
  vnow.com.br/eventos/369-baden-run\nCupons e detalhes: https://www.cuponsde
  corrida.com.br/provas/2027-03-07-baden-run-blumenau/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-03-07-baden-run-blumenau
@@ -6224,13 +6260,13 @@ UID:2027-03-13-imarui-ultra-trail-2027@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20270313
 DTEND;VALUE=DATE:20270314
-SUMMARY:Imaruí Ultra Trail 2027
+SUMMARY:Imarui Ultra Trail Run 2027
 LOCATION:Imaruí - SC
 DESCRIPTION:Corrida de trail · 50km\, 23km\, 10km\, 6km\nCupons e detalhes
  : https://www.cuponsdecorrida.com.br/provas/2027-03-13-imarui-ultra-trail-
- 2027/
+ run/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-03-13-imarui-ultra-trail
- -2027/
+ -run/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6419,10 +6455,10 @@ DTSTART;VALUE=DATE:20270404
 DTEND;VALUE=DATE:20270405
 SUMMARY:6ª Meia Maratona da Palhoça 2027
 LOCATION:Palhoça - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\, 21km\nInscrição: https:/
- /www.ticketsports.com.br/e/MEIA+MARATONA+DE+PALHO%C3%87A+2027-88249\nCupon
- s e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-04-04-6-meia-
- maratona-da-palhoca/
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nInscrição: https://www.t
+ icketsports.com.br/e/MEIA+MARATONA+DE+PALHO%C3%87A+2027-88249\nCupons e de
+ talhes: https://www.cuponsdecorrida.com.br/provas/2027-04-04-6-meia-marato
+ na-da-palhoca/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-04-04-6-meia-maratona-da
  -palhoca/
 TRANSP:TRANSPARENT
@@ -6505,13 +6541,13 @@ UID:2027-04-25-xi-revezamento-10-milhas-morro-azul-2027-timbo@cuponsdecorri
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20270425
 DTEND;VALUE=DATE:20270426
-SUMMARY:XI Revezamento 10 Milhas Morro Azul 2027
+SUMMARY:XII Revezamento 10 Milhas Morro Azul 2027
 LOCATION:Timbó - SC
 DESCRIPTION:Corrida de rua · 12 milhas\, 10 milhas\nCupons e detalhes: htt
- ps://www.cuponsdecorrida.com.br/provas/2027-04-25-xi-revezamento-10-milhas
- -morro-azul-2027-timbo/
-URL:https://www.cuponsdecorrida.com.br/provas/2027-04-25-xi-revezamento-10-
- milhas-morro-azul-2027-timbo/
+ ps://www.cuponsdecorrida.com.br/provas/2027-04-25-xii-revezamento-10-milha
+ s-morro-azul-timbo/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-25-xii-revezamento-10
+ -milhas-morro-azul-timbo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6554,10 +6590,10 @@ DTSTART;VALUE=DATE:20270502
 DTEND;VALUE=DATE:20270503
 SUMMARY:Meia Maratona Internacional de Florianópolis Oakberry 2027
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nInscrição: https://www.t
- icketsports.com.br/e/MEIA+MARATONA+INTERNACIONAL+DE+FLORIAN%C3%93POLIS+OAK
- BERRY+2027-87178\nCupons e detalhes: https://www.cuponsdecorrida.com.br/pr
- ovas/2027-05-02-meia-maratona-internacional-de-florianopolis-oakberry/
+DESCRIPTION:Corrida de rua · 21km\nInscrição: https://www.ticketsports.c
+ om.br/e/MEIA+MARATONA+INTERNACIONAL+DE+FLORIAN%C3%93POLIS+OAKBERRY+2027-87
+ 178\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-05-
+ 02-meia-maratona-internacional-de-florianopolis-oakberry/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-05-02-meia-maratona-inte
  rnacional-de-florianopolis-oakberry/
 TRANSP:TRANSPARENT
@@ -6626,10 +6662,10 @@ DTSTART;VALUE=DATE:20270523
 DTEND;VALUE=DATE:20270524
 SUMMARY:3ª Corrida e Caminhada Bella Cittá 2027
 LOCATION:Arroio Trinta - SC
-DESCRIPTION:Caminhada · 3km\, 5km\, 10km\nInscrição: https://www.pfevent
- os.com.br/evento/2027/corrida-de-rua/3-corrida-e-caminhada-bella-citta\nCu
- pons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-05-23-3-co
- rrida-e-caminhada-bella-citta-arroio-trinta/
+DESCRIPTION:Caminhada · 10km\, 5km\nInscrição: https://www.pfeventos.com
+ .br/evento/2027/corrida-de-rua/3-corrida-e-caminhada-bella-citta\nCupons e
+  detalhes: https://www.cuponsdecorrida.com.br/provas/2027-05-23-3-corrida-
+ e-caminhada-bella-citta-arroio-trinta/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-05-23-3-corrida-e-caminh
  ada-bella-citta-arroio-trinta/
 TRANSP:TRANSPARENT
@@ -6640,13 +6676,12 @@ UID:2027-05-23-maratona-de-tubarao-2027-circuito-cortuba@cuponsdecorrida.co
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20270523
 DTEND;VALUE=DATE:20270524
-SUMMARY:Maratona de Tubarão 2027 - Circuito Cortuba
+SUMMARY:Maratona de Tubarão 2027
 LOCATION:Tubarão - SC
-DESCRIPTION:Corrida de rua · 5km\, 10km\, 15km\, 21km\, 30km\, 42km\nCupon
- s e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-05-23-maraton
- a-de-tubarao-2027-circuito-cortuba/
+DESCRIPTION:Corrida de rua · Diversas\nCupons e detalhes: https://www.cupo
+ nsdecorrida.com.br/provas/2027-05-23-maratona-de-tubarao-2027/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-05-23-maratona-de-tubara
- o-2027-circuito-cortuba/
+ o-2027/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6670,13 +6705,13 @@ UID:2027-05-30-16-meia-maratona-de-florianopolis-42k-de-floripa-2027@cupons
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20270530
 DTEND;VALUE=DATE:20270531
-SUMMARY:16º Meia & Maratona de Florianópolis - 42K de Floripa - 2027
+SUMMARY:16ª Meia & Maratona de Florianópolis - 42K de Floripa 2027
 LOCATION:Florianópolis - SC
 DESCRIPTION:Corrida de rua · 42km\, 21km\, 5km\nCupons e detalhes: https:/
  /www.cuponsdecorrida.com.br/provas/2027-05-30-16-meia-maratona-de-floriano
- polis-42k-de-floripa-2027/
+ polis-42k-de-floripa/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-05-30-16-meia-maratona-d
- e-florianopolis-42k-de-floripa-2027/
+ e-florianopolis-42k-de-floripa/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6712,12 +6747,12 @@ UID:2027-06-06-2-corrida-verde-de-blumenau@cuponsdecorrida.com.br
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20270606
 DTEND;VALUE=DATE:20270607
-SUMMARY:2ª Corrida Verde de Blumenau 2027
+SUMMARY:2ª Corrida Verde 2027
 LOCATION:Blumenau - SC
 DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2027-06-06-2-corrida-verde-de-blumenau/
-URL:https://www.cuponsdecorrida.com.br/provas/2027-06-06-2-corrida-verde-de
- -blumenau/
+ ponsdecorrida.com.br/provas/2027-06-06-2-corrida-verde-blumenau/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-06-06-2-corrida-verde-bl
+ umenau/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6726,13 +6761,12 @@ UID:2027-06-13-10-milhas-de-anita-2027-circuito-cortuba-laguna@cuponsdecorr
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20270613
 DTEND;VALUE=DATE:20270614
-SUMMARY:10 Milhas de Anita 2027 - Circuito Cortuba
+SUMMARY:10 Milhas de Anita 2027
 LOCATION:Laguna - SC
-DESCRIPTION:Corrida de rua · 5km\, 16km\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2027-06-13-10-milhas-de-anita-2027-circuito-co
- rtuba-laguna/
+DESCRIPTION:Corrida de rua · 16km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-06-13-10-milhas-de-anita-laguna/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-06-13-10-milhas-de-anita
- -2027-circuito-cortuba-laguna/
+ -laguna/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6814,13 +6848,12 @@ UID:2027-07-24-21k-garopaba-run-adventure-2027-circuito-cortuba@cuponsdecor
 DTSTAMP:20261013T224845Z
 DTSTART;VALUE=DATE:20270724
 DTEND;VALUE=DATE:20270725
-SUMMARY:21k Garopaba Run Adventure 2027 - Circuito Cortuba
+SUMMARY:21k Garopaba Run Adventure 2027
 LOCATION:Garopaba - SC
 DESCRIPTION:Corrida de rua · 21km\, 8km\, 5km\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2027-07-24-21k-garopaba-run-adventure-20
- 27-circuito-cortuba/
+ www.cuponsdecorrida.com.br/provas/2027-07-24-21k-garopaba-run-adventure/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-07-24-21k-garopaba-run-a
- dventure-2027-circuito-cortuba/
+ dventure/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6883,10 +6916,9 @@ DTEND;VALUE=DATE:20270808
 SUMMARY:Paulo Lopes Trail Run 2027
 LOCATION:Paulo Lopes - SC
 DESCRIPTION:Corrida de trail · 21km\, 10km\, 5km\nCupons e detalhes: https
- ://www.cuponsdecorrida.com.br/provas/2027-08-07-paulo-lopes-trail-run-2027
- /
+ ://www.cuponsdecorrida.com.br/provas/2027-08-07-paulo-lopes-trail-run/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-08-07-paulo-lopes-trail-
- run-2027/
+ run/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6955,10 +6987,10 @@ DTSTART;VALUE=DATE:20270829
 DTEND;VALUE=DATE:20270830
 SUMMARY:Maratona Internacional de Floripa 2027
 LOCATION:Florianópolis - SC
-DESCRIPTION:Corrida de rua · 5km\, 21km\, 42km\nInscrição: https://www.t
- icketsports.com.br/e/MARATONA+INTERNACIONAL+DE+FLORIPA+FIBRA+2027-88278\nC
- upons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-08-29-mar
- atona-internacional-de-floripa-2027-florianopolis/
+DESCRIPTION:Corrida de rua · 42km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/MARATONA+INTERNACIONAL+DE+FLORIPA+FIBRA+2027-88278\nCupons e
+  detalhes: https://www.cuponsdecorrida.com.br/provas/2027-08-29-maratona-i
+ nternacional-de-floripa-2027-florianopolis/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-08-29-maratona-internaci
  onal-de-floripa-2027-florianopolis/
 TRANSP:TRANSPARENT
