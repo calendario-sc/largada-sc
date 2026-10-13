@@ -535,8 +535,9 @@ def openresults(desde="2024-01-01", uf=None):
                 continue
             vistos.add(slug.group(1))
 
+            # O Open Results manda o titulo e o local com entidades HTML ("S&atilde;o", "2&ordf;").
             local = re.search(r'location-dot[^>]*></i>(.*?)</span>', card, re.S)
-            cidade = limpar(local.group(1)).split("-")[0].strip() if local else ""
+            cidade = limpar(entidades.unescape(local.group(1))).split("-")[0].strip() if local else ""
             total = re.search(r'([\d.]+)\s*concluintes', limpar(card))
 
             por_distancia = {}
@@ -548,7 +549,7 @@ def openresults(desde="2024-01-01", uf=None):
             eventos.append({
                 "slug": slug.group(1),
                 "data": data,
-                "nome": consertar_mojibake(limpar(titulo.group(1))),
+                "nome": consertar_mojibake(limpar(entidades.unescape(titulo.group(1)))),
                 "cidade": cidade, "regiao": regiao, "uf": uf_achada,
                 "concluintes": por_distancia,
                 "concluintes_total": _numero(total.group(1)) if total else 0,
