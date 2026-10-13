@@ -134,6 +134,7 @@
     if (daPagina) uf.value = daPagina.dataset.cadastroUf;
     else if (/\/pr\.html$/.test(location.pathname)) uf.value = "PR";
     else if (/\/rs\.html$/.test(location.pathname)) uf.value = "RS";
+    else if (/\/sp\.html$/.test(location.pathname)) uf.value = "SP";
     else if (!/todos\.html$/.test(location.pathname)) uf.value = "SC";
 
     const erro = el("p", { className: "cad__erro", role: "alert" });

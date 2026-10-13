@@ -298,6 +298,19 @@
 "largada": "08:00",
 "numero": "442/2026"
 },
+"118TDZhaAKPVHlwWLNP3ZjjtxKXnJqnWO": {
+"arquivo": "633-2026-Corrida Do Outubro Rosa #Treine Pela Vida.pdf",
+"cidade": "União da Vitória",
+"data": "2026-10-18",
+"entidade": "MUNICIPIO DE UNIÃO DA VITÓRIA",
+"evento": "Corrida Do Outubro Rosa #Treine Pela Vida",
+"km": [
+5.0
+],
+"largada": "08:00",
+"local": "Estádio Municipal Antiocho Pereira, União da Vitória-PR",
+"numero": "633/2026"
+},
 "118UauWykoCJwuAxKgHu7cTxuxRjBnz4o": {
 "arquivo": "573-2026-Corrida Contra A Pólio .pdf",
 "cidade": "Chopinzinho",
@@ -2289,6 +2302,19 @@
 "largada": "07:00",
 "numero": "054/2026"
 },
+"1GeTYjizc2d7QoKy8na0xTHhPiz26mmhH": {
+"arquivo": "632-2026-10ª Corrida E Caminhada Cuide-Se Agora, Cuide-Se Sempre.pdf",
+"cidade": "São José dos Pinhais",
+"data": "2026-10-18",
+"entidade": "ASSESSOCOR ASSESSORIA ESPORTIVA LTDA",
+"evento": "10ª Corrida E Caminhada Cuide-Se Agora, Cuide-Se Sempre",
+"km": [
+5.0
+],
+"largada": "07:00",
+"local": "R. Veríssimo Marques, 55 - Centro, São José dos Pinhais-PR.",
+"numero": "632/2026"
+},
 "1GiPC98cSCgIUpnGTVARXg4hohNU3bpDN": {
 "arquivo": "363.2026-3ª Corrida do Choque.pdf",
 "cidade": "Ponta Grossa",
@@ -3759,6 +3785,19 @@
 ],
 "largada": "07:00",
 "numero": "314/2026"
+},
+"1RKqy1xkahFIJ0znElYt-UTdVkvWWM5P4": {
+"arquivo": "630-2026-4ª Corrida Internacional La Frontera.pdf",
+"cidade": "Santo Antônio do Sudoeste",
+"data": "2026-10-18",
+"entidade": "QUEDAS ADVENTURE - CRONOMETRAGEM E EVENTOS ESPORTIVOS LTDA",
+"evento": "4ª Corrida Internacional La Frontera",
+"km": [
+6.0
+],
+"largada": "07:30",
+"local": "Praça Percy Schreiner - Santo Antônio do Sudoeste-PR.",
+"numero": "630/2026"
 },
 "1RLKlSM2r2ojoUpu8MlJhGC5OEkYwUPz1": {
 "arquivo": "118.2026-1ª Corrida das Nações-SPDC.pdf",
@@ -6540,6 +6579,19 @@
 "largada": "08:00",
 "numero": "583/2026"
 },
+"1nhiqwfqGXrT4DELsHIaUBNlY2kOtl1-E": {
+"arquivo": "629-2026-2ª Corrida E Caminhada Pela Vida Onco Rosas.pdf",
+"cidade": "Capitão Leônidas Marques",
+"data": "2026-10-17",
+"entidade": "QUEDAS ADVENTURE - CRONOMETRAGEM E EVENTOS ESPORTIVOS LTDA",
+"evento": "2ª Corrida E Caminhada Pela Vida Onco Rosas",
+"km": [
+5.0
+],
+"largada": "19:30",
+"local": "Praça São Cristóvão, Avenida Iguaçu, Capitão Leônidas Marques-PR.",
+"numero": "629/2026"
+},
 "1nzSBcXbuid0g-OwbF8KpLVQ1VXu2OIMV": {
 "arquivo": "202.2026-Operário Night Run.pdf",
 "cidade": "Ponta Grossa",
@@ -6920,6 +6972,20 @@
 "largada": "21:00",
 "numero": "227/2026"
 },
+"1qzQRvKnkJ-yAOCKYWv356q4LFZxLdZTT": {
+"arquivo": "631-2026-Corrida Da Castrolanda 75 Anos.pdf",
+"cidade": "Castrolanda",
+"data": "2026-10-18",
+"entidade": "CAVALI PRO EVENTOS",
+"evento": "Corrida Da Castrolanda 75 Anos",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "Parque Tecnológico, Castrolanda-PR.",
+"numero": "631/2026"
+},
 "1r2liFkpn9zywsFqEuLoli6DS8uuKi675": {
 "arquivo": "373.2026-S Run Londrina.pdf",
 "cidade": "Londrina",
@@ -7214,6 +7280,34 @@
 ],
 "largada": "04:00",
 "numero": "566/2026"
+},
+"1tLiyYnjs5_-Ju8fSTiZTTysWxN_wyILp": {
+"arquivo": "627-2026-Santander Track&Field Run Series Motiva Aeroportos - Londrina.pdf",
+"cidade": "Londrina",
+"data": "2026-10-18",
+"entidade": "TFSPORTS S.A",
+"evento": "Santander Track&Field Run Series Motiva Aeroportos - Londrina",
+"km": [
+8.0,
+4.0
+],
+"largada": "02:00",
+"local": "Rua Tenente João Maurício Medeiros, 300,Londrina-PR.",
+"numero": "627/2026"
+},
+"1tYbPu6q1NFIcLffgbgUoxTKQtmu811_D": {
+"arquivo": "628-2026-V Corrida Santos Dumont - Cindacta II.pdf",
+"cidade": "Curitiba",
+"data": "2026-10-16",
+"entidade": "KENYA EVENTOS ESPORTIVOS E MARKETING LTDA",
+"evento": "V Corrida Santos Dumont - Cindacta II",
+"km": [
+10.0,
+5.0
+],
+"largada": "23:00",
+"local": "Av. Pref. Erasto Gaertner, 1000 - Bacacheri, Curitiba-PR.",
+"numero": "628/2026"
 },
 "1u1TCNk6hpyG6dP71DKJWv7wchSmdDgHR": {
 "arquivo": "264.2026-Meia Maratona Internacional de Curitiba.pdf",

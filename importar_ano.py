@@ -54,14 +54,22 @@ def importar(anos, uf="SC"):
 
     # Preenche percurso e organizador das provas novas. Uma pagina por prova:
     # o cache faz os dois campos saírem da mesma requisicao.
+    # Prova cuja pagina falha (erro do site) continua pendente: uma rodada que
+    # so repete essas poucas, sem preencher nada, encerra o laco em vez de
+    # girar para sempre (a rodada diaria tenta de novo).
+    sem_progresso = 0
     while True:
         tentados, achados = scrape.completar_organizadores(historico, limite=500)
         if tentados:
-            print(f"organizador: {tentados} consultadas, {achados} preenchidas")
+            print(f"organizador: {tentados} consultadas, {achados} preenchidas", flush=True)
         tentadas, achadas = scrape.completar_distancias(historico, limite=500)
         if tentadas:
-            print(f"percurso: {tentadas} consultadas, {achadas} preenchidas")
+            print(f"percurso: {tentadas} consultadas, {achadas} preenchidas", flush=True)
         if not tentados and not tentadas:
+            break
+        sem_progresso = sem_progresso + 1 if not achados and not achadas else 0
+        if sem_progresso >= 2 and tentados + tentadas < 50:
+            print("detalhes: parando, as provas restantes falham na fonte", flush=True)
             break
 
     scrape.padronizar_organizadores(historico)

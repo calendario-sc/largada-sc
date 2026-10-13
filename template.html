@@ -122,6 +122,11 @@ body:not(.bi) h1 .logo-txt{display:none}
 .top__lugar small{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:#FFC21A}
 .top__lugar b{font-family:var(--f-display); font-weight:800; font-size:clamp(1.4rem,3vw,2rem); line-height:1.05; letter-spacing:-.02em; color:#FFFFFF; text-wrap:balance}
 .stats{display:flex; gap:1.2rem; flex-wrap:wrap}
+/* O que os numeros do cabecalho contam: recorte e periodo, atualizados a cada filtro. */
+.stats__legenda{margin:0 0 .4rem; font-size:.82rem; line-height:1.35; color:rgba(255,255,255,.88)}
+.stats__legenda b{font-weight:700; color:#fff}
+body:not(.bi) .stats__legenda{text-align:right}
+@media (max-width:720px){ body:not(.bi) .stats__legenda{text-align:left} }
 .stat{
   padding:.75rem 1rem .7rem; border-radius:12px; min-width:108px;
   background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18);
@@ -1226,9 +1231,11 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
         <a href="./" data-uf="SC">Santa Catarina</a>
         <a href="pr.html" data-uf="PR">Paraná</a>
         <a href="rs.html" data-uf="RS">Rio Grande do Sul</a>
-        <a href="todos.html" data-uf="">Região Sul</a>
+        <a href="sp.html" data-uf="SP">São Paulo</a>
+        <a href="todos.html" data-uf="">Todos os estados</a>
       </nav>
       <p class="top__lugar" id="top-lugar"><small id="lugar-tipo">Estado</small><b id="lugar-nome">Santa Catarina</b></p>
+    <p class="stats__legenda" id="stats-legenda"></p>
     <div class="stats">
       <div class="stat"><b id="s-corridas">0</b><span>corridas</span></div>
       <div class="stat"><b id="s-cidades">0</b><span>cidades</span></div>
@@ -1556,7 +1563,7 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
 
 <footer class="foot">
   <div class="wrap">
-    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina, do Paraná e do Rio Grande do Sul a partir de sete fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b> (só aqui no BI; não é informada no site público), <b>movnow.com.br</b>, <b>atletis.com.br</b>, <b>sympla.com.br</b>, <b>blueticket.com.br</b> e os permits da <b>Federação Catarinense de Atletismo</b> e da <b>Federação de Atletismo do Paraná</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
+    <p><b>Cupons de Corrida</b> reúne o calendário de corridas de Santa Catarina, do Paraná, do Rio Grande do Sul e de São Paulo a partir de sete fontes públicas — <b>corridasbr.com.br</b>, <b>ticketsports.com.br</b>, <b>roadrunners.run</b> (só aqui no BI; não é informada no site público), <b>movnow.com.br</b>, <b>atletis.com.br</b>, <b>sympla.com.br</b>, <b>blueticket.com.br</b> e os permits da <b>Federação Catarinense de Atletismo</b> e da <b>Federação de Atletismo do Paraná</b> — coletadas diariamente e fundidas quando anunciam a mesma prova. Última coleta em <b>__COLETA__</b>.</p>
     <p>Os números de concluintes vêm de <b>openresults.run</b> e, onde ele não alcança, das cronometragens que publicam os resultados: <b>supercrono.com.br</b>, <b>chiprun.com.br</b> e <b>resultados.runking.com.br</b>. Conta quem cruzou a linha de chegada com tempo registrado.</p>
     <p id="cobertura"></p>
     <p>Provas já realizadas continuam aqui: uma vez coletadas, permanecem no histórico mesmo depois de saírem do ar nas fontes.</p>
@@ -1578,17 +1585,17 @@ const COLETA = "__COLETA__";
 // BI: a pagina completa (bi.cuponsdecorrida.com.br). Na publica, os paineis
 // de BI nao existem no HTML, e este sinalizador desliga o que os usaria.
 const BI = __BI__;
-// Estado da pagina: "SC" (index), "PR" (pr.html), "RS" (rs.html) ou "" (todos.html, os tres).
+// Estado da pagina: "SC" (index), "PR" (pr.html), "RS" (rs.html), "SP" (sp.html) ou "" (todos.html, todos).
 const UF = "__UF__";
-const NOME_ESTADO = { SC:"Santa Catarina", PR:"Paraná", RS:"Rio Grande do Sul", "":"Região Sul" }[UF];
+const NOME_ESTADO = { SC:"Santa Catarina", PR:"Paraná", RS:"Rio Grande do Sul", SP:"São Paulo", "":"Todos os estados" }[UF];
 // Agenda para assinar do estado da pagina (agenda/*.ics, gerada pelo seo.py).
 document.getElementById("btn-agenda").href = "https://calendar.google.com/calendar/r?cid=" +
   encodeURIComponent("webcal://www.cuponsdecorrida.com.br/agenda/" + ({ SC:"sc", PR:"pr", RS:"rs" }[UF] || "todas") + ".ics");
 document.querySelectorAll("#uf a").forEach(a => {
   if (a.dataset.uf === UF) a.setAttribute("aria-current", "page");
 });
-document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "SC, PR e RS";
-if (UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC, PR e RS");
+document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "SC, PR, RS e SP";
+if (UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC, PR, RS e SP");
 // O Raio-X e de Florianopolis: nao cabe na pagina dos outros estados.
 if (UF && UF !== "SC" && document.getElementById("btn-raiox")) document.getElementById("btn-raiox").hidden = true;
 // Liga um evento so se o elemento existe: na pagina publica varios nao existem.
@@ -2625,6 +2632,19 @@ function render(){
   const organizadoras = new Set(res.flatMap(r => r.organizadores || []));
   const maiorKm = res.reduce((m, r) => Math.max(m, r.max_km), 0);
   const nProvas = contarProvas(res);
+  // Legenda dos numeros: o que esta sendo contado, onde e em que periodo.
+  (() => {
+    const br = s => s.slice(8, 10) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4);
+    const datas = res.map(r => r.data).sort();
+    const que = state.treinos ? "Treinos" : state.anos.size ? "Provas de " + [...state.anos].sort().join(", ")
+      : { proximas:"Próximas provas", realizadas:"Provas realizadas", todas:"Todas as provas" }[state.escopo];
+    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : (UF ? NOME_ESTADO : "SC, PR, RS e SP"));
+    let periodo = "";
+    if (datas.length) periodo = state.escopo === "proximas" && !state.anos.size && !state.meses.size
+      ? "de hoje até " + br(datas[datas.length - 1]) : "de " + br(datas[0]) + " a " + br(datas[datas.length - 1]);
+    const leg = document.getElementById("stats-legenda");
+    leg.replaceChildren(el("b", { textContent: que }), document.createTextNode(" em " + onde + (periodo ? ", " + periodo : "") + ":"));
+  })();
   document.getElementById("s-corridas").textContent = String(nProvas);
   document.getElementById("s-cidades").textContent = String(cidades.size);
   document.getElementById("s-orgs").textContent = String(organizadoras.size);
@@ -2758,7 +2778,7 @@ function mostrarRecorte(){
     && !state.organizador && !state.tipos.size && !state.faixas.size && !state.treinos && !state.q;
   document.getElementById("top-recorte").replaceChildren(
     el("b", { textContent:"Filtro" }),
-    document.createTextNode(descreverRecorte() + (semNada ? " · " + ({ SC:"Santa Catarina inteira", PR:"Paraná inteiro", RS:"Rio Grande do Sul inteiro" }[UF] || "SC, PR e RS") : "")));
+    document.createTextNode(descreverRecorte() + (semNada ? " · " + ({ SC:"Santa Catarina inteira", PR:"Paraná inteiro", RS:"Rio Grande do Sul inteiro", SP:"São Paulo inteiro" }[UF] || "SC, PR, RS e SP") : "")));
 }
 
 function montarOrgs(){
@@ -3043,7 +3063,7 @@ function formularioCupom(c){
   const orgs = el("select", { name:"organizadora" }, [el("option", { value:"", textContent:"Escolha…" })]);
   ordenaPorUso(porOrganizador).forEach(([o]) => orgs.append(el("option", { value:o, textContent:o })));
   orgs.value = c.organizadora || "";
-  const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"]].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
+  const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"]].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
   uf.value = c.uf || "";
   // Loja ou servico parceiro: aparece na Central de Cupons, por categoria.
   const parceiro = inp("parceiro", "text", c.parceiro, { placeholder:"Ex.: Loja do Corredor", maxLength:120 });
@@ -4774,7 +4794,7 @@ render();
   function aplicar(onde){
     if (aplicado || !onde || !onde.uf) return;
     // Estado: veio de fora do site e esta no outro estado? Vai para a pagina dele.
-    const pagina = { SC:"./", PR:"pr.html", RS:"rs.html" }[onde.uf];
+    const pagina = { SC:"./", PR:"pr.html", RS:"rs.html", SP:"sp.html" }[onde.uf];
     const doSite = /(^|\.)cuponsdecorrida\.com\.br$/.test((() => { try { return new URL(document.referrer).hostname; } catch (e) { return ""; } })());
     if (UF && pagina && onde.uf !== UF && !doSite) { aplicado = true; location.replace(pagina); return; }
     if (!REGIOES.includes(onde.regiao)) return;

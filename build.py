@@ -213,7 +213,7 @@ def completa(pagina, publica=False, uf="SC", seo_info=None):
 
 # Uma pagina por estado: o seletor do cabecalho troca de pagina. Cada uma
 # leva so as provas do seu estado, e a de SC continua sendo a index.
-PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("rs.html", "RS"), ("todos.html", "")]
+PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("rs.html", "RS"), ("sp.html", "SP"), ("todos.html", "")]
 PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
 
 
@@ -221,7 +221,8 @@ PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
 UF_TITULO = {"SC": ("Calendário de Corridas em SC {ano} | Cupons de Corrida", "Santa Catarina", "/"),
              "PR": ("Calendário de Corridas no Paraná {ano} | Cupons de Corrida", "Paraná", "/pr.html"),
              "RS": ("Calendário de Corridas no Rio Grande do Sul {ano} | Cupons de Corrida", "Rio Grande do Sul", "/rs.html"),
-             "": ("Corridas de Rua na Região Sul {ano}: SC, PR e RS | Cupons de Corrida", "Santa Catarina, Paraná e Rio Grande do Sul", "/todos.html")}
+             "SP": ("Calendário de Corridas em São Paulo {ano} | Cupons de Corrida", "São Paulo", "/sp.html"),
+             "": ("Corridas de Rua {ano}: SC, PR, RS e SP | Cupons de Corrida", "Santa Catarina, Paraná, Rio Grande do Sul e São Paulo", "/todos.html")}
 
 
 def cabeca_publica(uf, info):
