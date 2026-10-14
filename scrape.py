@@ -486,7 +486,7 @@ def _candidato_unico(provas_do_dia, evento):
     """A unica prova da mesma cidade e data que ainda nao tem resultado."""
     candidatos = [p for p in provas_do_dia
                   if p.get("cidade") == evento["cidade"]
-                  and not p.get("concluintes_total")
+                  and not p.get("concluintes_total") and not p.get("resultado_no_dia")
                   and p.get("fontes") != ["openresults"]]
     if len(candidatos) != 1:
         return None
@@ -538,6 +538,36 @@ def unificar_openresults(historico):
         por_data[p["data"]].remove(p)
         juntadas.append((alvo, p))
     return juntadas
+
+
+def unificar_resultado_multidia(historico):
+    """Evento de mais de um dia com o MESMO resultado gravado em cada dia.
+
+    As fontes publicam um resultado so para o evento inteiro (Maratona de
+    Jurere: 1o e 2o dia), e cada dia casava com ele, dobrando os concluintes
+    nos totais. O resultado fica no ultimo dia que o tem; os outros dias
+    apontam para ele em resultado_no_dia. Totais diferentes entre os dias
+    (prova de obstaculos com um resultado por dia) ficam como estao.
+    """
+    grupos = {}
+    for p in historico:
+        if p.get("evento") and (p.get("evento_dias") or 1) > 1:
+            grupos.setdefault(p["evento"], []).append(p)
+    unificados = 0
+    for dias in grupos.values():
+        com = sorted([p for p in dias if p.get("concluintes_total")], key=lambda p: p["data"])
+        if len(com) < 2:
+            continue
+        totais = [p["concluintes_total"] for p in com]
+        if max(totais) - min(totais) > 0.02 * max(totais):
+            continue          # resultados realmente diferentes
+        fica = com[-1]
+        for p in com[:-1]:
+            for campo in ("concluintes", "concluintes_total", "concluintes_f", "concluintes_m", "or_slug", "fonte_resultado"):
+                p.pop(campo, None)
+            p["resultado_no_dia"] = fica["data"]
+            unificados += 1
+    return unificados
 
 
 def remover_resultado_duplicado(historico):
@@ -702,7 +732,7 @@ def completar_runking(historico, limite=60):
     """
     hoje = datetime.date.today().isoformat()
     pendentes = [p for p in historico
-                 if p["data"] < hoje and not p.get("concluintes_total")
+                 if p["data"] < hoje and not p.get("concluintes_total") and not p.get("resultado_no_dia")
                  and not p.get("runking_tentado")]
     if not pendentes:
         return 0, 0
@@ -948,7 +978,7 @@ def completar_pelo_link(historico, limite=150, registrar=print):
     guardado em resultado_url; prova sem resultado legivel volta a ser tentada depois de REVER_LINK_DIAS."""
     hoje = datetime.date.today()
     limite_data = (hoje - datetime.timedelta(days=REVER_LINK_DIAS)).isoformat()
-    pendentes = [p for p in historico if p["data"] < hoje.isoformat() and not p.get("concluintes_total")
+    pendentes = [p for p in historico if p["data"] < hoje.isoformat() and not p.get("concluintes_total") and not p.get("resultado_no_dia")
                  and p.get("resultado_id") and (p.get("link_resultado_em") or "") <= limite_data]
     pendentes.sort(key=lambda p: p["data"], reverse=True)
     consultadas = achadas = 0
@@ -993,7 +1023,7 @@ def completar_maissport(historico, registrar=print):
     recente = (hoje - datetime.timedelta(days=JANELA_MAISSPORT)).isoformat()
     limite = (hoje - datetime.timedelta(days=REVER_MAISSPORT_DIAS)).isoformat()
     alvo = [p for p in historico
-            if p["data"] < hoje.isoformat() and not p.get("concluintes_total")
+            if p["data"] < hoje.isoformat() and not p.get("concluintes_total") and not p.get("resultado_no_dia")
             and "Treino" not in (p.get("tags") or [])
             and (not p.get("maissport_tentado")
                  or (p["data"] >= recente and p["maissport_tentado"] <= limite))]
@@ -1024,7 +1054,7 @@ def _sem_resultado(historico, marca):
     procuradas nesta cronometragem."""
     hoje = datetime.date.today().isoformat()
     return [p for p in historico
-            if p["data"] < hoje and not p.get("concluintes_total")
+            if p["data"] < hoje and not p.get("concluintes_total") and not p.get("resultado_no_dia")
             and not p.get(marca)]
 
 
@@ -1522,6 +1552,9 @@ def main():
     # As fontes de hoje podem ter recriado uma prova ja unificada.
     unificar_manualmente(historico)
     duplicadas = remover_resultado_duplicado(historico)
+    multidia = unificar_resultado_multidia(historico)
+    if multidia:
+        print(f"resultado repetido nos dias de um mesmo evento: {multidia} dia(s) limpo(s)")
     if duplicadas:
         print(f"resultados repetidos removidos: {duplicadas}")
     series = agrupar_series(historico)

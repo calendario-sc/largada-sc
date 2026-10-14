@@ -78,6 +78,9 @@ def coletar():
     if manuais:
         registrar(f"provas declaradas iguais: {manuais} unificadas")
     duplicadas = scrape.remover_resultado_duplicado(historico)
+    multidia = scrape.unificar_resultado_multidia(historico)
+    if multidia:
+        registrar(f"resultado repetido nos dias de um mesmo evento: {multidia} dia(s) limpo(s)")
     if duplicadas:
         registrar(f"resultados repetidos removidos: {duplicadas}")
 

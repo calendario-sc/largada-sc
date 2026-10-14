@@ -460,6 +460,8 @@ def pagina_prova(p, provas_cidade, provas_regiao_mes, hoje, analytics):
                                 else "Correu esta prova? Crie seu perfil de atleta" if conc and p.get("or_slug")
                                 else "Crie seu perfil de atleta. É grátis!", "prova", uf))
 
+    if not conc and p.get("resultado_no_dia") and not futura:
+        corpo.append(f'<p class="nota">Evento de mais de um dia: o resultado completo está na página do dia {e(data_extenso(p["resultado_no_dia"], False))}.</p>')
     if conc:
         linhas = sorted((p.get("concluintes") or {}).items(), key=lambda x: -x[1])
         corpo.append("<h2>Resultado</h2>")
