@@ -290,4 +290,36 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
   else iniciar();
   window.abrirCadastro = () => abrir();
+
+  // ---- App (PWA): service worker e botao "Instalar o app" ----
+  // O service worker guarda as paginas ja vistas (abrem offline) e os arquivos fixos; a API e os dados ficam fora.
+  if ("serviceWorker" in navigator && !LOCAL && !/^bi\./.test(location.hostname)) {
+    window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+  }
+  // Android/Chrome avisam quando da para instalar (beforeinstallprompt); o botao so aparece nessa hora.
+  // No iPhone nao existe esse aviso: o botao mostra como fazer pelo Safari (Compartilhar > Tela de Inicio).
+  let pedidoInstalar = null;
+  const emApp = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const iphone = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  const botoesInstalar = () => document.querySelectorAll("[data-instalar]");
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault();
+    pedidoInstalar = e;
+    if (!emApp) botoesInstalar().forEach(b => { b.hidden = false; });
+  });
+  window.addEventListener("appinstalled", () => {
+    botoesInstalar().forEach(b => { b.hidden = true; });
+    if (typeof gtag === "function") gtag("event", "app_instalado");
+  });
+  const instalar = async () => {
+    if (typeof gtag === "function") gtag("event", "app_instalar_clique", { modo: pedidoInstalar ? "prompt" : iphone ? "ios" : "sem_prompt" });
+    if (pedidoInstalar) { pedidoInstalar.prompt(); await pedidoInstalar.userChoice.catch(() => null); pedidoInstalar = null; return; }
+    aviso(iphone ? "No iPhone: toque em Compartilhar (ícone com a seta) e depois em “Adicionar à Tela de Início”."
+                 : "No menu do navegador (⋮), toque em “Instalar app” ou “Adicionar à tela inicial”.");
+  };
+  const ligarInstalar = () => {
+    botoesInstalar().forEach(b => { b.addEventListener("click", instalar); if (iphone && !emApp) b.hidden = false; });
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", ligarInstalar);
+  else ligarInstalar();
 })();

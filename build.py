@@ -247,6 +247,10 @@ def cabeca_publica(uf, info):
               f'<meta property="og:description" content="{e(desc)}">\n<meta property="og:url" content="{e(url)}">\n'
               f'<meta property="og:image" content="{seo.SITE}/og-cupons-de-corrida.png">\n<meta name="twitter:card" content="summary_large_image">\n'
               f'<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+              # App (PWA): manifesto, cor da barra e icone do iPhone
+              '<link rel="manifest" href="/app.webmanifest">\n<meta name="theme-color" content="#0A2F73">\n'
+              '<link rel="apple-touch-icon" href="/icone-app-180.png">\n<meta name="apple-mobile-web-app-capable" content="yes">\n'
+              '<meta name="apple-mobile-web-app-title" content="Cupons">\n<meta name="mobile-web-app-capable" content="yes">\n'
               f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>\n')
     return e(titulo), cabeca
 
