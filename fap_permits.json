@@ -3478,6 +3478,20 @@
 "largada": "08:00",
 "numero": "334/2026"
 },
+"1PB46ZzXemPA4S1SZ2_Ik_eucmnejdzpg": {
+"arquivo": "647-2026-CAPI RUN.pdf",
+"cidade": "Paranavaí",
+"data": "2026-10-18",
+"entidade": "MA FERA ESPORTES LTDA",
+"evento": "CAPI Run",
+"km": [
+6.0,
+3.0
+],
+"largada": "07:00",
+"local": "Pista de Atletismo do Colégio Estadual - R. Luís Spigolon, - Centro, Paranavaí-PR",
+"numero": "647/2026"
+},
 "1PKrrbln6UpAjt3ZXGrfWxwnp4e7VSUJB": {
 "arquivo": "124.2026-Corrida KM1-Caminho da Uva.pdf",
 "cidade": "Colombo",
@@ -4787,6 +4801,20 @@
 "largada": "06:55",
 "local": "Rua Luiz Dante Junior, 280, Matinhos-PR",
 "numero": "641/2026"
+},
+"1ZQiGDjb_-w3zl8A8MWab17uHA6N_7OUE": {
+"arquivo": "645-2026-7° Etapa Joaquim Tàvora, Ix Circuito Forma Ativa De Corridas 2026.pdf",
+"cidade": "Joaquim Távora",
+"data": "2026-10-18",
+"entidade": "O. C. NUNES SOUZA & CIA LTDA",
+"evento": "7° Etapa Joaquim Távora, Ix Circuito Forma Ativa De Corridas 2026",
+"km": [
+6.0,
+3.0
+],
+"largada": "07:30",
+"local": "Ginásio De Esportes Miguel D. Nicolelli, Joaquim Távora-PR",
+"numero": "645/2026"
 },
 "1ZQzlyzxRdjjtwI1lejh1h8TMExLPvms6": {
 "arquivo": "380.2026-10 Milhas de Morretes - 2026.pdf",
@@ -8075,6 +8103,19 @@
 ],
 "largada": "07:00",
 "numero": "026/2026"
+},
+"1zDvdSkmUfEVkZjCOElBNZnzuiUT4AAVu": {
+"arquivo": "648-2026-1º Run IFPR- Palmas.pdf",
+"cidade": "Palmas",
+"data": "2026-10-18",
+"entidade": "QUEDAS ADVENTURE",
+"evento": "1º Run IFPR- Palmas",
+"km": [
+5.0
+],
+"largada": "08:00",
+"local": "Prédio do Curso de Educação Física IFPR – Campus Palmas AV. Bento Munhoz da Rocha Neto, PRT-280 - Bairro Universitário, Palmas - PR.",
+"numero": "648/2026"
 },
 "1zJxhXf7v5NDO5pBZFtx4CurEke3eq4iL": {
 "arquivo": "081.2026-6ª Corrida da Mulher Sertanópolis Super 6K.pdf",
