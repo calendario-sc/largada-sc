@@ -1,27 +1,27 @@
 == coleta ==
 == fontes ==
   corridasbr: 202 provas
-  corridasbr/arquivo: 352 provas
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  corridasbr/arquivo: 369 provas
+  ticketsports: 72 provas
   roadrunners: 202 provas
   movnow: 28 provas
   atletis: 1 provas
-  sympla: 156 provas
+  sympla: 155 provas
   blueticket: 4 provas
   fca: 0 provas
-  corridasbr (PR): 151 provas
-  corridasbr/arquivo (PR): 388 provas
-  ticketsports (PR): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (PR): 141 provas
+  corridasbr (PR): 156 provas
+  corridasbr/arquivo (PR): 399 provas
+  ticketsports (PR): 73 provas
+  roadrunners (PR): 140 provas
   corridasbr (RS): 225 provas
-  corridasbr/arquivo (RS): 411 provas
-  ticketsports (RS): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  corridasbr/arquivo (RS): 427 provas
+  ticketsports (RS): 21 provas
   roadrunners (RS): 118 provas
-  corridasbr (SP): 501 provas
-  corridasbr/arquivo (SP): 897 provas
-  ticketsports (SP): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  corridasbr (SP): 514 provas
+  corridasbr/arquivo (SP): 939 provas
+  ticketsports (SP): 238 provas
   roadrunners (SP): 500 provas
-  fap: 640 provas
+  fap: 641 provas
   parceiros: 0 provas
 
 datas de ticketeira acertadas pela outra fonte: 3
@@ -29,67 +29,67 @@ datas de ticketeira acertadas pela outra fonte: 3
   ~ 2026-11-08 -> 2026-11-07  Movimento Rosa - 2º Edição [sympla]
   ~ 2026-10-17 -> 2026-10-18  Meia Maratona de Garopaba [blueticket]
 
-3788 provas distintas depois de fundir as fontes
-descartadas (16): fora de SC/PR/RS/SP ou nao sao corrida
+3936 provas distintas depois de fundir as fontes
+descartadas (25): fora de SC/PR/RS/SP ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
+  - 2026-10-11  Cianorte - Corrida e Duathlon AMAFIL [duathlon]
   - 2026-10-12  Araucária - Cross Run & Duathlon Araucária [duathlon]
   - 2026-10-17  Florianópolis - 2026 NUBANK ULTRAVIOLETA IRONKIDS IRONMAN 70 [ironman]
   - 2026-10-17  Porto Belo - Aquathlon de Porto Belo [aquathlon]
   - 2026-10-18  Florianópolis - 2026 Itaú BBA IRONMAN 70.3 Florianópolis [ironman]
-  - 2026-10-18  Matinhos - 21º Circuito de Triathlon - Primavera [triathlon]
-  - ... e mais 8
-restam 3772 provas
-concluintes: 999 provas no Open Results, 838 casadas, 37 com numero novo, 32 provas criadas
+  - ... e mais 17
+restam 3911 provas
+concluintes: 999 provas no Open Results, 836 casadas, 37 com numero novo, 33 provas criadas
 concluintes (chiprun): 2 provas consultadas, 1 preenchidas
-concluintes (link do corridasbr): 3 provas consultadas, 0 preenchidas
+  resultado 2026-10-11 Eco Run - Navegantes: FALHOU (ValueError)
+concluintes (link do corridasbr): 38 provas consultadas, 3 preenchidas
 genero: 46 provas consultadas, 35 preenchidas
-organizador: 8 provas consultadas, 5 preenchidas
-organizador: 30 provas preenchidas pela FCA
-organizador: 22 provas tiveram a grafia padronizada
-percurso: 5 provas consultadas no arquivo, 4 preenchidas
+organizador: 48 provas consultadas, 36 preenchidas
+organizador: 29 provas preenchidas pela FCA
+organizador: 124 provas tiveram a grafia padronizada
+percurso: 23 provas consultadas no arquivo, 22 preenchidas
 fca: 29 provas juntadas as que ja existiam
 resultados repetidos removidos: 33
-series: 8262 eventos com uma ou mais edicoes | 12 resultados parciais marcados
-historico: 13121 provas (11548 ja realizadas) | 1180 cidades
-novas nesta rodada: 44
+series: 8287 eventos com uma ou mais edicoes | 12 resultados parciais marcados
+historico: 13158 provas (11573 ja realizadas) | 1179 cidades
+novas nesta rodada: 66
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-03-15  São Roque - Santa Running 2026
   + 2026-03-29  São Simão - Corrida S.S. Run
-  + 2026-09-06  Salto - Corrida da Santa
-  + 2026-10-11  Itu - ANJOS QUE CORREM
-  + 2026-10-11  Pirassununga - Corrida do Aviador 2026 - 3ª Etapa do Circuito AFA de Corrida de Rua
-  + 2026-10-12  Ourinhos - RUN BEER - OKTOBERFEST
-  + 2026-10-16  São José dos Campos - corrida gabriel
-  + 2026-10-18  Joaquim Távora - 7° Etapa Joaquim Távora, IX Circuito Forma Ativa de Corridas 2026
-  + 2026-10-28  São Bernardo do Campo - DESAFIO ABC RUN 1ª Edição
-  + 2026-10-31  São Paulo - Treinão Outubro ROSA - FrRunners e Corredores da madrugada
-  + 2026-11-01  São José - 5K Platz Night Run 2026
-  + 2026-11-15  Itapecerica da Serra - DESAFIO MILITAR MOVAMENTE
-  + 2026-11-15  São Roque - SANTA RUNNING Etapa 2.0 - 2026
-  + 2026-12-06  Campinas - MAIS ENERGIA QUE CAFEÍNA - TREINÃO NA AREIA
+  + 2026-10-10  Ribeirão Preto - Comercial Night Run - 1ª Edição
+  + 2026-10-10  São Paulo - Music Run
+  + 2026-10-10  São Paulo - Run for Your Lives - A Corrida Oficial do Iron Maiden
+  + 2026-10-10  Suzano - Klaro Chopp Night Run
+  + 2026-10-10  Vargem Grande do Sul - 1ª Corrida Life Fitness
+  + 2026-10-11  Américo Brasiliense - 2ª Corrida Solidária Belineli
+  + 2026-10-11  Avaré - 10ª Corrida do 53º Batalhão da PM de Avaré
+  + 2026-10-11  Bauru - 3ª Corrida do 13º BAEP
+  + 2026-10-11  Botucatu - Corrida e Caminhada 80 Anos BTC
+  + 2026-10-11  Capão Bonito - Desafio em Dose Dupla - 2ª Edição
+  + 2026-10-11  Guarulhos - Meia Maratona Cidade de Guarulhos Lopes Supermercado
+  + 2026-10-11  Itapetininga - Correr e Caminhar com Saúde - 4ª Etapa
 
-futuras que nao apareceram hoje (124) - possivel cancelamento, mantidas no historico:
-  ? 2026-10-16  Bombinhas - Indomit Bombinhas 2026 5k (visto pela ultima vez em 2026-10-04)
+futuras que nao apareceram hoje (76) - possivel cancelamento, mantidas no historico:
   ? 2026-10-17  Araranguá - Grêmio Fronteira Night Run (visto pela ultima vez em 2026-10-04)
   ? 2026-10-17  Campo Largo - Santander Night Run 2026 (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-17  Curitiba - PRIMEIRA CAMINHADA LEGACY (visto pela ultima vez em 2026-10-16)
   ? 2026-10-17  Curitiba - Santander Night Run - Etapa 1 - Curitiba 2026 (visto pela ultima vez em 2026-10-01)
-  ? 2026-10-18  Campos do Jordão - WTR CAMPOS DO JORDÃO 2026 (visto pela ultima vez em 2026-10-15)
+  ? 2026-10-17  São José dos Campos - 5° Edição Caminhada Assecon (visto pela ultima vez em 2026-10-16)
   ? 2026-10-18  Concórdia - Corrida de Rua e Caminhada SEST SENAT (visto pela ultima vez em 2026-10-04)
   ? 2026-10-18  Jaraguá do Sul - Desafio Morro das Antenas - Jovem PAN (visto pela ultima vez em 2026-10-04)
   ? 2026-10-18  Londrina - Adidas Experience - Londrina (visto pela ultima vez em 2026-10-15)
   ? 2026-10-18  Picada Café - Caminhada do Chopp - Cerveja Faraó (visto pela ultima vez em 2026-10-13)
   ? 2026-10-18  Santo Antônio da Patrulha - TD Caminho Gaúcho de Santiago de Compostela (visto pela ultima vez em 2026-10-15)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['274', 'Litoral Gaúcho', 'Presidente Bernades', 'São Luis do Paraitinga', 'Varpa', 'Vila Ophélia', 'a 4 km do Centro de Dona Emma']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['', 'Litoral Gaúcho', 'São Luis do Paraitinga', 'Varpa', 'Vila Ophélia', 'a 4 km do Centro de Dona Emma']
 
 == perfis ==
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,274,927 bytes)
+artifact.html e index.html gerados (2,275,246 bytes)
 
-RESULTADO: pronto para publicar (coleta de 16/10/2026).
+RESULTADO: pronto para publicar (coleta de 17/10/2026).
