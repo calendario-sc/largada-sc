@@ -2640,6 +2640,20 @@
 "largada": "06:00",
 "numero": "100/2026"
 },
+"1JK3ZQm0tIA5a8D4JmEmCKL1lbdN8xv1M": {
+"arquivo": "654-2026-Circuito Sesi De Corridas - Etapa Foz Do Iguaçu.pdf",
+"cidade": "Foz do Iguaçu",
+"data": "2026-11-08",
+"entidade": "SPORTS360 CONSULTORIA E EVENTOS LTDA",
+"evento": "Circuito Sesi De Corridas - Etapa Foz Do Iguaçu",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "R. Perdigão, 58 - Itaipu A, Foz do Iguaçu - PR",
+"numero": "654/2026"
+},
 "1JNaYW_oc6QWQ63WlZVLrFyTu9pQeIPaa": {
 "arquivo": "085.2026-Corrida Rústica da Mulher.pdf",
 "cidade": "Medianeira",
@@ -4440,6 +4454,20 @@
 "local": "Paróquia Nossa Senhora Aparecida Rio Negro, Rio Negro-PR.",
 "numero": "623/2026"
 },
+"1WgJTvVOMMT1rkUP2shknOmLTRVHSc_cR": {
+"arquivo": "653-2026-Corrida Do Bope.pdf",
+"cidade": "São José dos Pinhais",
+"data": "2026-11-01",
+"entidade": "SPORTS360 CONSULTORIA E EVENTOS LTDA",
+"evento": "Corrida do BOPE",
+"km": [
+10.0,
+5.0
+],
+"largada": "06:30",
+"local": "R. Ilo Antoninho Mozer, 81 - Cristal, São José dos Pinhais-PR",
+"numero": "653/2026"
+},
 "1WjrNfLBziHZiciTTSRzZw5xnu8YFvA_0": {
 "arquivo": "613-2026- 1ª Corrida Católica De Maringá.pdf",
 "cidade": "Maringá",
@@ -5022,6 +5050,19 @@
 "largada": "06:30",
 "numero": "292/2026"
 },
+"1_gY52VJsIzDZ0V5Boq830qxvS7p6QeFv": {
+"arquivo": "650-2026-Outubro Rosa Night Run.pdf",
+"cidade": "Londrina",
+"data": "2026-10-24",
+"entidade": "ASSESSOCOR ASSESSORIA ESPORTIVA",
+"evento": "Outubro Rosa Night Run",
+"km": [
+5.0
+],
+"largada": "19:00",
+"local": "Travessa Deodoro - Estacionamento ao Lado da Prefeitura, Londrina-PR.",
+"numero": "650/2026"
+},
 "1_nogbOg89evIrtssonNR0FIIpq5eZ8RR": {
 "arquivo": "061.2026-Etapa Final Corrida Forma Ativa.pdf",
 "cidade": "Ribeirão do Pinhal",
@@ -5133,6 +5174,19 @@
 ],
 "largada": "06:30",
 "numero": "070/2026"
+},
+"1aZ1PBDGl4qCeZ2nf4TnkzuFIQvf4wjOC": {
+"arquivo": "652-2026-Treinão De Halloween Guarapuava Lobos Da Serra.pdf",
+"cidade": "Guarapuava",
+"data": "2026-10-31",
+"entidade": "MUNICÍPIO DE GUARAPUAVA",
+"evento": "Treinão De Halloween Guarapuava Lobos Da Serra",
+"km": [
+5.0
+],
+"largada": "16:30",
+"local": "Av. Guarapuava,1400, Guarapuava-PR",
+"numero": "652/2026"
 },
 "1a_zs9jyzyhwg0VIPj69fkJVexIZOEEhy": {
 "arquivo": "500-2026-1ª Corrida am Alusão ao Agosto Lilás.pdf",
@@ -5654,6 +5708,20 @@
 "local": "Av. Expedicionário João Protzek, 2290 - Irati, PR",
 "numero": "084/2026"
 },
+"1dz1Dv5Df7Xditl56VB6kd4C-Erz1ppwd": {
+"arquivo": "651-2026-7ª Corrida Noturna Da Guarda Municipal De Araucária.pdf",
+"cidade": "Araucária",
+"data": "2026-10-30",
+"entidade": "ASSESSOCOR ASSESSORIA ESPORTIVA",
+"evento": "7ª Corrida Noturna Da Guarda Municipal De Araucária",
+"km": [
+10.0,
+5.0
+],
+"largada": "20:00",
+"local": "Parque Cachoeira, R. Guanabara, 2-74 - Iguaçu, Araucária - PR",
+"numero": "651/2026"
+},
 "1e5cUTlnGx7VOrP0hR35u-J63gHvX1r9b": {
 "arquivo": "456.2026-3° Corrida Rústica do Rancho Boiadeiro .pdf",
 "cidade": "Mandirituba",
@@ -5691,6 +5759,20 @@
 ],
 "largada": "07:00",
 "numero": "525/2026"
+},
+"1eCKJk0q_o48FB0pp9JbpCeRajOnZx64J": {
+"arquivo": "656-2026-Circuito Correr É Massa - Etapa Curitiba.pdf",
+"cidade": "Curitiba",
+"data": "2026-11-21",
+"entidade": "SPORTS360 CONSULTORIA E EVENTOS LTDA",
+"evento": "Circuito Correr É Massa - Etapa Curitiba",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "Praça Afonso Botelho, Curitiba-PR",
+"numero": "656/2026"
 },
 "1eHjFu3RDMzie5ANVdHqAyForryJfUT7h": {
 "arquivo": "522-2026-1ª Vida Run Pato Branco.pdf",
@@ -6579,6 +6661,19 @@
 ],
 "largada": "07:00",
 "numero": "172/2026"
+},
+"1mZHncbs7sNTrHumE26uDYKhEg-6I4pz8": {
+"arquivo": "655-2026-Circuito Procorrer - Final.pdf",
+"cidade": "Curitiba",
+"data": "2026-11-21",
+"entidade": "SPORTS360 CONSULTORIA E EVENTOS LTDA",
+"evento": "Circuito Procorrer - Final",
+"km": [
+5.0
+],
+"largada": "15:00",
+"local": "Pista de Atletismo da UFPR, Curitiba-PR",
+"numero": "655/2026"
 },
 "1mgjmUGKQ0vQDUkXQ1dB-y1A5RgeZMzMC": {
 "arquivo": "217.2026-2º R. I. Run Londrina.pdf",
@@ -8092,6 +8187,20 @@
 ],
 "largada": "07:00",
 "numero": "131/2026"
+},
+"1ylOxssA3FNWhAB0h0jBBRZqdT9JW1Kkd": {
+"arquivo": "657-2026-Circuito Sesi De Corridas De Rua - Etapa Toledo.pdf",
+"cidade": "Toledo",
+"data": "2026-11-29",
+"entidade": "SPORTS360 CONSULTORIA E EVENTOS LTDA",
+"evento": "Circuito Sesi De Corridas De Rua - Etapa Toledo",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "R. Santos Dumont, 2626 - Vila Industrial, Toledo-PR",
+"numero": "657/2026"
 },
 "1z2VtQ6wTCsiNe1pLYtcGCIfBdRai1l5L": {
 "arquivo": "219.2026-1ª COT Prime Run.pdf",
