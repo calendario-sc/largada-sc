@@ -308,6 +308,8 @@ def build():
             # modulos); os arquivos de apoio continuam na raiz.
             (BI_DIR / "corridas").mkdir(exist_ok=True)
             pagina_bi_dir = (completa(pagina_bi).replace('src="cadastro.js"', 'src="/cadastro.js"')
+                             # o layout novo do site publico (publico.css/js) nao vai para o BI
+                             .replace('<link rel="stylesheet" href="publico.css">', '').replace('<script src="publico.js" defer></script>', '')
                              .replace('href="cupons.html"', 'href="/cupons.html"')
                              .replace('fetch("assessorias.json"', 'fetch("/assessorias.json"'))
             (BI_DIR / "corridas" / arquivo).write_text(pagina_bi_dir, encoding="utf-8")

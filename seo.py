@@ -40,13 +40,14 @@ CSS = """*{box-sizing:border-box}
 @media (prefers-color-scheme:dark){:root{--ink:#E8EDF6;--ink2:#C4CCDA;--muted:#8C97AA;--line:#223049;--ground:#0B1220;--surface:#121B2E;--accent:#8FB2FF}}
 body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.55 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 a{color:var(--accent)}
-.topo{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff}
+.topo{background:var(--surface);color:#12306B;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 .topo .w{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.8rem 0}
-.marca{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.25rem;color:#fff;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
+.marca{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.25rem;color:#12306B;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
 .marca img{display:block;height:2.7rem;width:auto}
-.topo nav a{color:#fff;text-decoration:none;font-size:.9rem;margin-left:1rem;white-space:nowrap}
-.topo nav a.cc{background:var(--sol);color:var(--azul);font-weight:700;border-radius:999px;padding:.35rem .8rem}
-.faixa{height:5px;background:repeating-linear-gradient(90deg,#FFC21A 0 20px,#EF4E16 20px 40px)}
+.topo nav a{color:#12306B;text-decoration:none;font-family:"Archivo",system-ui,sans-serif;font-weight:600;font-size:.92rem;margin-left:.9rem;white-space:nowrap}
+.topo nav a.cc{background:#E8591C;color:#fff;font-weight:700;border-radius:10px;padding:.5rem .9rem;box-shadow:0 6px 14px rgba(232,89,28,.25)}
+.faixa{display:none}
+@media (prefers-color-scheme:dark){.topo,.marca,.topo nav a{color:#E8EDF6}}
 .w{width:min(960px,100% - 2rem);margin:0 auto}
 .migalha{font-size:.82rem;color:var(--muted);margin:1rem 0 .4rem}
 .migalha a{color:var(--muted)}
@@ -272,7 +273,7 @@ def cabeca(titulo, descricao, caminho, ld, analytics, extra=""):
 {analytics}</head>
 <body>
 <header class="topo"><div class="w">
-  <a class="marca" href="/"><img src="/logo-cupons-de-corrida.png" alt="Cupons de Corrida" width="960" height="221"></a>
+  <a class="marca" href="/"><img src="/logo-cupons-de-corrida-escuro.png" alt="Cupons de Corrida" width="960" height="221"></a>
   <nav><a href="/">Santa Catarina</a><a href="/pr.html">Paraná</a><a href="/rs.html">Rio Grande do Sul</a><a href="/sp.html">São Paulo</a><a href="/ranking.html">Ranking</a><a class="cc" href="/cupons.html">% Central de Cupons</a></nav>
 </div><div class="faixa"></div></header>
 <main class="w">
