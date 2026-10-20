@@ -32,7 +32,9 @@
   const menu = el("button", { className: "pub-menu", type: "button", ariaLabel: "Menu" });
   menu.innerHTML = '<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
   const nav = el("nav", { className: "pub-nav", ariaLabel: "Principal" }, [el("div", { className: "wrap pub-nav__in" }, [
-    el("a", { className: "pub-nav__logo", href: "./" }, [el("img", { src: "logo-cupons-de-corrida-escuro.png", alt: "Cupons de Corrida", width: 960, height: 221 })]),
+    el("a", { className: "pub-nav__logo", href: "./" }, [el("picture", {}, [
+      Object.assign(document.createElement("source"), { srcset: "logo-cupons-de-corrida.png", media: "(prefers-color-scheme: dark)" }),
+      el("img", { src: "logo-cupons-de-corrida-escuro.png", alt: "Cupons de Corrida", width: 960, height: 221 })])]),
     links, el("label", { className: "pub-uf" }, [pino, sel]), entrar, perfil, menu])]);
   menu.onclick = () => nav.classList.toggle("aberto");
   top.before(nav);
@@ -70,7 +72,7 @@
     new MutationObserver(marcar).observe(bar, { subtree: true, attributes: true, attributeFilter: ["aria-pressed"] });
     marcar();
   }
-  top.append(el("div", { className: "pub-ilustra", ariaHidden: "true" }));
+  inner.append(el("div", { className: "pub-ilustra", ariaHidden: "true" }));   // coluna da direita da grade do hero
   // o eyebrow fica so "Calendario de corridas · Estado": o texto solto depois do estado sai
   const eyebrow = marca.querySelector(".eyebrow");
   if (eyebrow) [...eyebrow.childNodes].forEach(n => { if (n.nodeType === 3 && n.previousSibling) n.remove(); });
