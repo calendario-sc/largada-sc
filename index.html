@@ -1042,8 +1042,17 @@ body:not(.bi) .top__botoes{gap:.35rem .4rem}
 body:not(.bi) .top .chip{padding:.34rem .6rem; font-size:.78rem}
 body:not(.bi) .top::after{height:5px}
 body:not(.bi) .entrar-topo{top:.7rem}
-/* Ritmo do ano: uma fita baixa de meses, que continua filtrando. */
-body:not(.bi) .pulse{padding:.8rem 0 .7rem}
+/* Ritmo do ano (fita de meses): so no BI, a pedido (20/10/2026). O filtro por mes continua existindo no estado. */
+body:not(.bi) .pulse{display:none}
+/* Busca centralizada, numa linha so; os botoes (Filtros, Treinos, Limpar) ficam centralizados embaixo. */
+body:not(.bi) .filters__inner{justify-content:center; gap:.55rem 1rem}
+body:not(.bi) .search{flex:1 1 100%; max-width:40rem; margin-inline:auto}
+body:not(.bi) .search input{font-size:1rem; padding:.72rem 1rem .72rem 2.5rem; border-radius:12px}
+body:not(.bi) .search svg{left:.85rem; width:18px; height:18px}
+body:not(.bi) .groups{flex:1 1 100%; justify-content:center}
+body:not(.bi) .busca-atleta{margin:0 0 1rem; padding:.7rem .9rem; border:1px dashed var(--line); border-radius:10px; background:var(--surface); font-size:.88rem; color:var(--ink-2); text-align:center}
+body:not(.bi) .busca-atleta a{font-weight:600; color:var(--accent)}
+.bi .busca-atleta{display:none}
 body:not(.bi) .pulse__head{margin-bottom:.45rem}
 body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.4rem .45rem .38rem; gap:.3rem}
 /* Filtros guardados atras do botao em qualquer largura: a barra presa no
@@ -1338,7 +1347,7 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
   <div class="wrap filters__inner">
     <label class="search">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
-      <input id="q" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade">
+      <input id="q" type="search" placeholder="Buscar prova, cidade ou atleta…" autocomplete="off" aria-label="Buscar prova, cidade ou atleta">
     </label>
     <div class="groups">
       <button class="chip" id="btn-filtros" type="button" aria-expanded="false" aria-controls="g-escopo">Filtros</button>
@@ -2525,6 +2534,12 @@ function render(){
   if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
   if (dialogoAssess && dialogoAssess.open) montarAssessorias();
 
+  // A busca tambem alcanca atletas: o nome digitado vira um atalho para os resultados por atleta.
+  const textoBusca = (input.value || "").trim();
+  const linkAtletaBusca = () => el("p", { className:"busca-atleta" }, [
+    document.createTextNode(res.length ? "Procurando um atleta? " : "Procurando um atleta? "),
+    el("a", { href:"https://www.cuponsdecorrida.com.br/atletas.html?q=" + encodeURIComponent(textoBusca),
+      textContent:"Ver os resultados de \u201c" + textoBusca + "\u201d" })]);
   if (!res.length){
     const arquivo = state.escopo === "realizadas" && !filtros;
     listBox.append(el("div", { className:"empty" }, [
@@ -2535,8 +2550,10 @@ function render(){
         ? "As provas entram aqui conforme suas datas passam."
         : "Tente ampliar a distância, mudar a região ou limpar a busca." })
     ]));
+    if (textoBusca.length >= 3 && !BI) listBox.append(linkAtletaBusca());
     return;
   }
+  if (textoBusca.length >= 3 && !BI) listBox.append(linkAtletaBusca());
 
   const porMesRes = new Map(), vistosMes = new Set();
   res.forEach(r => {

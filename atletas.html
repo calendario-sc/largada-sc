@@ -1404,7 +1404,11 @@ carregarIndice().then(async () => {
     abrirSupertrunfo(a, b);
     return;
   }
-  if (!slug) return;
+  if (!slug){
+    const q = new URLSearchParams(location.search).get("q");
+    if (q){ input.value = q.trim(); input.focus(); buscar(); }
+    return;
+  }
   const prefs = baldesPara(slug);
   for (const pref of prefs.slice(0, MAX_BALDES)){
     const b = await balde(pref);
