@@ -1013,8 +1013,8 @@ body:not(.bi) .entrar-topo{top:.7rem}
 /* Ritmo do ano (fita de meses): so no BI, a pedido (20/10/2026). O filtro por mes continua existindo no estado. */
 body:not(.bi) .pulse{display:none}
 /* Busca centralizada, numa linha so; os botoes (Filtros, Treinos, Limpar) ficam centralizados embaixo. */
-body:not(.bi) .filters__inner{justify-content:center; gap:.55rem 1rem}
-body:not(.bi) .search{flex:1 1 100%; max-width:40rem; margin-inline:auto}
+body:not(.bi) .filters__inner{flex-direction:column; align-items:center; gap:.55rem 1rem}
+body:not(.bi) .search{flex:0 0 auto; width:min(40rem,100%)}
 body:not(.bi) .search input{font-size:1rem; padding:.72rem 1rem .72rem 2.5rem; border-radius:12px}
 body:not(.bi) .search svg{left:.85rem; width:18px; height:18px}
 body:not(.bi) .groups{flex:1 1 100%; justify-content:center}
