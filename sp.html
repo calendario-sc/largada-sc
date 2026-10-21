@@ -1125,10 +1125,13 @@ body:not(.bi) .month-btn{height:78px; min-width:62px; flex-basis:62px; padding:.
    seletores de ano, cidades e empresas descem para a linha dos filtros. Os blocos sao reorganizados por um
    trecho de JS no fim do script (so fora do BI); os ids nao mudam. */
 body:not(.bi) .top{background:
-    linear-gradient(90deg,#0A2F73 0%,#0D3A8C 38%,rgba(13,58,140,.72) 58%,rgba(13,58,140,.42) 78%,rgba(13,58,140,.55) 100%),
-    url(hero-ponte.webp) right top/min(62%,900px) auto no-repeat, linear-gradient(135deg,#0A2F73,#1450C8)}
+    radial-gradient(70% 120% at 100% 0%, rgba(255,194,26,.16), transparent 60%),
+    radial-gradient(60% 90% at 85% 100%, rgba(20,80,200,.55), transparent 70%),
+    linear-gradient(135deg,#0A2F73 0%,#0E3B8F 60%,#1450C8 100%)}
 body:not(.bi) .top::after{display:none}
-body:not(.bi) .top::before{inset:0 0 0 30%; opacity:.6}
+body:not(.bi) .top::before{inset:0 0 0 30%; opacity:.5}
+/* em telas largas o cabecalho e a faixa de atalhos usam ate 1400px (a lista continua em 1120px) */
+body:not(.bi) .top .wrap,body:not(.bi) .top__ferr__in{width:min(1400px,100% - 2.5rem)}
 body:not(.bi) .top__inner{display:block; padding:1rem 0 1.4rem !important}
 body:not(.bi) .top__acoes,body:not(.bi) .top__recorte,body:not(.bi) #reset-top{display:none}
 /* linha 1 */
@@ -1136,7 +1139,7 @@ body:not(.bi) .top__l1{display:flex; align-items:center; gap:1rem; min-width:0}
 body:not(.bi) .top__marca{display:flex; align-items:center; gap:1rem; min-width:0}
 body:not(.bi) .top__marca h1{font-size:0; line-height:0}
 body:not(.bi) .top__marca h1 .logo{height:3.3rem}
-body:not(.bi) .top__marca .eyebrow{display:grid; margin:0; padding-left:1rem; border-left:1px solid rgba(255,255,255,.35); font-size:.56rem; line-height:1.75; letter-spacing:.16em; color:rgba(255,255,255,.88); white-space:nowrap; opacity:1}
+body:not(.bi) .top__marca .eyebrow{display:grid; margin:0; padding-left:.9rem; border-left:1px solid rgba(255,255,255,.35); font-size:.54rem; line-height:1.75; letter-spacing:.13em; color:rgba(255,255,255,.88); white-space:nowrap; opacity:1}
 body:not(.bi) .top__l1 .uf{margin:0 auto; display:flex; flex-wrap:nowrap; gap:.1rem; padding:.25rem; border-radius:999px; background:rgba(255,255,255,.1); flex:none}
 body:not(.bi) .top__l1 .uf a{border:0; padding:.5rem .8rem; font-size:.64rem; font-weight:600; letter-spacing:.1em; white-space:nowrap}
 @media (max-width:1300px){
@@ -1157,7 +1160,7 @@ body:not(.bi) .top__titulo{margin:0; font-family:var(--f-display); font-weight:8
 body:not(.bi) .top__titulo em{display:block; font-style:normal; color:#FFC21A}
 body:not(.bi) .top__sub{margin:.75rem 0 0; font-size:.95rem; color:rgba(255,255,255,.88); white-space:nowrap}
 body:not(.bi) .top__sub span + span::before{content:"|"; margin:0 .45rem; color:rgba(255,255,255,.4)}
-body:not(.bi) .top__esq .top__ctas{margin-top:1.1rem; gap:.5rem; flex-wrap:nowrap}
+body:not(.bi) .top__esq .top__ctas{margin-top:1.1rem; gap:.5rem; flex-wrap:wrap}
 body:not(.bi) .top__esq .central-cupons{font-size:.92rem; padding:.55rem .9rem .55rem .5rem; border-radius:999px; box-shadow:0 8px 20px rgba(255,194,26,.4); white-space:nowrap}
 body:not(.bi) .top__esq .central-cupons::after{content:"\203A"; font-size:1.3rem; line-height:0; margin-left:.3rem; opacity:.85}
 body:not(.bi) .top__esq .top__ctas .cta-cadastro{display:inline-flex; align-items:center; gap:.45rem; border-radius:999px; border:1.5px solid rgba(255,255,255,.55); font-size:.86rem; font-weight:700; padding:.58rem .95rem; white-space:nowrap}
