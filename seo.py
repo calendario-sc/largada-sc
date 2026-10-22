@@ -508,7 +508,7 @@ def pagina_cidade(cidade, uf, provas, vizinhas, hoje, analytics):
     caminho = f"/corridas-em/{slug_cidade(cidade, uf)}/"
     titulo = f"Corridas em {cidade} ({uf}) {ano} | Calendário de provas"
     desc = (f"Calendário de corridas de rua e trail em {cidade}/{uf}: "
-            + (f"{len(futuras)} próximas provas, " if futuras else "")
+            + (("1 próxima prova, " if len(futuras) == 1 else f"{len(futuras)} próximas provas, ") if futuras else "")
             + f"datas, distâncias, inscrições, cupons de desconto e resultados das provas realizadas.")
     mig_html, mig_ld = migalha([("Início", "/"), (UF_NOME.get(uf, uf), PAGINA_UF.get(uf, "/")), (f"Corridas em {cidade}", None)])
     lista_ld = {"@type": "ItemList", "name": f"Próximas corridas em {cidade}", "itemListElement": [

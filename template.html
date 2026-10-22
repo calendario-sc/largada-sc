@@ -823,6 +823,15 @@ a.chip{text-decoration:none; display:inline-block}
 /* ---------- resultados ---------- */
 .results{padding:1.6rem 0 4rem}
 .count{font-family:var(--f-mono); font-size:.75rem; letter-spacing:.06em; color:var(--muted); margin:0 0 1.2rem}
+/* SEO (22/10/2026): texto do h1 so para leitores de tela e buscadores; abertura visivel; lista estatica
+   que o JavaScript substitui ao montar o calendario. */
+.h1-seo{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.intro-seo{margin:0 0 1rem; font-size:.9rem; line-height:1.55; color:var(--ink-2)}
+.intro-seo a{color:var(--azul-ink); text-decoration:underline; text-underline-offset:2px}
+.lista-seo h2{font-family:var(--f-display); font-size:1.2rem; margin:0 0 .6rem}
+.lista-seo ul{list-style:none; margin:0; padding:0}
+.lista-seo li{padding:.4rem 0; border-bottom:1px solid var(--line-soft); font-size:.9rem}
+.lista-seo time{font-family:var(--f-mono); font-size:.8rem; color:var(--muted); margin-right:.4rem}
 .count b{color:var(--accent-ink); font-weight:500}
 
 .month-head{
@@ -1833,7 +1842,8 @@ document.querySelectorAll("#uf a").forEach(a => {
   if (a.dataset.uf === UF) a.setAttribute("aria-current", "page");
 });
 document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "SC, PR, RS e SP";
-if (UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC, PR, RS e SP");
+// No BI o titulo da aba diz o estado; no site publico o <title> de SEO (build.py) fica como esta.
+if (BI && UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC, PR, RS e SP");
 // O Raio-X e de Florianopolis: nao cabe na pagina dos outros estados.
 if (UF && UF !== "SC" && document.getElementById("btn-raiox")) document.getElementById("btn-raiox").hidden = true;
 // Liga um evento so se o elemento existe: na pagina publica varios nao existem.

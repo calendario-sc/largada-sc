@@ -221,7 +221,7 @@ PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
 UF_TITULO = {"SC": ("Calendário de Corridas em SC {ano} | Cupons de Corrida", "Santa Catarina", "/"),
              "PR": ("Calendário de Corridas no Paraná {ano} | Cupons de Corrida", "Paraná", "/pr.html"),
              "RS": ("Calendário de Corridas no Rio Grande do Sul {ano} | Cupons de Corrida", "Rio Grande do Sul", "/rs.html"),
-             "SP": ("Calendário de Corridas em São Paulo {ano} | Cupons de Corrida", "São Paulo", "/sp.html"),
+             "SP": ("Calendário de Corridas em São Paulo (SP) {ano} | Cupons de Corrida", "São Paulo", "/sp.html"),
              "": ("Corridas de Rua {ano}: SC, PR, RS e SP | Cupons de Corrida", "Santa Catarina, Paraná, Rio Grande do Sul e São Paulo", "/todos.html")}
 
 
@@ -253,6 +253,34 @@ def cabeca_publica(uf, info):
               '<meta name="apple-mobile-web-app-title" content="Cupons">\n<meta name="mobile-web-app-capable" content="yes">\n'
               f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>\n')
     return e(titulo), cabeca
+
+
+def abertura_seo(uf, info, provas, hoje):
+    """Paragrafo de abertura (visivel) e lista estatica das proximas provas, para quem chega sem JavaScript
+    (buscadores e leitores): o calendario em JavaScript substitui a lista ao montar a pagina."""
+    import html as _h
+    e = lambda s: _h.escape(str(s), quote=True)
+    ano = datetime.date.today().year
+    _, lugar, _ = UF_TITULO[uf]
+    nomes_uf = {"SC": "Santa Catarina", "PR": "Paraná", "RS": "Rio Grande do Sul", "SP": "São Paulo"}
+    futuras = sorted((p for p in provas if p["data"] >= hoje and "Treino" not in (p.get("tags") or [])), key=lambda p: (p["data"], p["nome"]))
+    cidades_fut = {(p.get("cidade"), p.get("uf") or "SC") for p in futuras if p.get("cidade")}
+    top = [(c, u) for u2, l in (info.get("cidades") or {}).items() if not uf or u2 == uf for c, u, fut, n in l if fut][:12]
+    links = ", ".join(f'<a href="/corridas-em/{seo.slug_cidade(c, u)}/">{e(c)}</a>' for c, u in top)
+    em = {"SC": "em Santa Catarina", "PR": "no Paraná", "RS": "no Rio Grande do Sul", "SP": "em São Paulo", "": "em SC, PR, RS e SP"}[uf]
+    abertura = (f'<p class="intro-seo">Calendário de corridas de rua e trail {em} {ano}: <b>{len(futuras)} próximas provas em {len(cidades_fut)} cidades</b>, '
+                f'com datas, distâncias, inscrições, resultados e cupons de desconto'
+                + (f'. Corridas por cidade: {links}.' if links else '.') + '</p>\n')
+    itens = []
+    for p in futuras[:80]:
+        d = datetime.date.fromisoformat(p["data"])
+        nome = f'<a href="/provas/{p["pg"]}/">{e(p["nome"])}</a>' if p.get("pg") else e(p["nome"])
+        cid = (f'<a href="/corridas-em/{seo.slug_cidade(p["cidade"], p.get("uf") or "SC")}/">{e(p["cidade"])}</a>' if p.get("cidade") else "")
+        dist = ", ".join(p.get("pills") or [])
+        itens.append(f'<li><time datetime="{p["data"]}">{d.day:02d}/{d.month:02d}/{d.year}</time> {nome}' + (f' · {cid}' if cid else "") + (f' · {e(dist)}' if dist else "") + '</li>')
+    lista = (f'<section class="lista-seo"><h2>Próximas corridas {em}</h2><ul>' + "".join(itens) + '</ul>'
+             f'<p>Lista completa, com filtros por mês, região, distância e tipo, logo acima. As corridas por cidade estão no fim da página.</p></section>')
+    return abertura, lista
 
 
 def rodape_cidades(uf, info):
@@ -327,6 +355,20 @@ def build():
         pagina_pub = (publico.replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
                       .replace("__FLORIPA__", "null").replace("__UF__", uf))
         pagina_pub = pagina_pub.replace(RODAPE_PUBLICO, RODAPE_PUBLICO.replace("  </div>\n</footer>", rodape_cidades(uf, seo_info) + "  </div>\n</footer>"), 1)
+        # SEO (22/10/2026): h1 com o estado, abertura visivel com as cidades e lista estatica das proximas provas.
+        _, lugar, _ = UF_TITULO[uf]
+        pagina_pub = pagina_pub.replace('<span class="logo-txt">', f'<span class="h1-seo">Calendário de corridas em {lugar} {datetime.date.today().year}</span><span class="logo-txt">', 1)
+        abertura, lista_estatica = abertura_seo(uf, seo_info, provas, hoje)
+        pagina_pub = pagina_pub.replace('<div id="list"></div>', abertura + '<div id="list">' + lista_estatica + '</div>', 1)
+        # Os dados das provas vao para um arquivo proprio (dados-<uf>.js): o HTML fica leve para os buscadores
+        # e o arquivo de dados e guardado pelo navegador; ?v= com a data da coleta renova quando os dados mudam.
+        nome_dados = "dados-" + (uf.lower() or "todos") + ".js"
+        (AQUI / nome_dados).write_text("window.__RACES__=" + dados_pub + ";\n", encoding="utf-8")
+        versao = "".join(reversed(coleta.split("/")))
+        k = pagina_pub.index("const BI = "); i = pagina_pub.rfind("<script>", 0, k)
+        pagina_pub = (pagina_pub[:i] + f'<script src="{nome_dados}?v={versao}"></script>\n' + pagina_pub[i:]).replace("const RACES = " + dados_pub + ";", "const RACES = window.__RACES__;", 1)
+        if "window.__RACES__;" not in pagina_pub:
+            raise SystemExit("template.html: nao achei 'const RACES = __DATA__;' para apontar para " + nome_dados)
         (AQUI / arquivo).write_text(completa(pagina_pub, publica=True, uf=uf, seo_info=seo_info), encoding="utf-8")
 
     return tamanho
