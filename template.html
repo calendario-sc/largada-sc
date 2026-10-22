@@ -1251,6 +1251,18 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
   body:not(.bi) .groups #org-menu,body:not(.bi) .groups #cid-menu{left:50%; right:auto; transform:translateX(-50%)}
 }
 
+/* ---------- lista em duas colunas no computador (21/10/2026, so no site publico) ----------
+   Com 1120px sobrava espaco: cada cartao fica com a data a esquerda, nome e cidade ao lado e as
+   distancias embaixo. Os titulos de mes e os avisos ocupam a linha inteira. */
+@media (min-width:1000px){
+  body:not(.bi) #list{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem .8rem; align-items:start}
+  body:not(.bi) #list > :not(.race){grid-column:1 / -1}
+  body:not(.bi) #list .month-head{margin:1.4rem 0 .1rem}
+  body:not(.bi) #list .race{margin:0; align-self:stretch; grid-template-columns:60px minmax(0,1fr); grid-template-areas:"date main" "date dist"; gap:.35rem .9rem; align-content:center}
+  body:not(.bi) #list .race__dists{justify-content:flex-start}
+  body:not(.bi) #list .fontes{margin-left:0; flex-basis:100%}
+}
+
 /* ---------- impressao: so o comparativo, em papel ----------
    Nao ha gerador de PDF embutido aqui; quem gera o arquivo e o proprio
    navegador, pelo "Salvar como PDF" da caixa de impressao. Em troca, o PDF
