@@ -1252,15 +1252,31 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
 }
 
 /* ---------- lista em duas colunas no computador (21/10/2026, so no site publico) ----------
-   Com 1120px sobrava espaco: cada cartao fica com a data a esquerda, nome e cidade ao lado e as
-   distancias embaixo. Os titulos de mes e os avisos ocupam a linha inteira. */
+   Cada cartao: data compacta a esquerda; nome, cidade, selos e organizadora ao lado, alinhados no topo;
+   embaixo as distancias a esquerda e, a direita, o botao de inscricao com preco e regulamento.
+   Os titulos de mes e os avisos ocupam a linha inteira. */
 @media (min-width:1000px){
-  body:not(.bi) #list{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem .8rem; align-items:start}
+  body:not(.bi) #list{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem .9rem; align-items:stretch}
   body:not(.bi) #list > :not(.race){grid-column:1 / -1}
   body:not(.bi) #list .month-head{margin:1.4rem 0 .1rem}
-  body:not(.bi) #list .race{margin:0; align-self:stretch; grid-template-columns:60px minmax(0,1fr); grid-template-areas:"date main" "date dist"; gap:.35rem .9rem; align-content:center}
-  body:not(.bi) #list .race__dists{justify-content:flex-start}
-  body:not(.bi) #list .fontes{margin-left:0; flex-basis:100%}
+  body:not(.bi) #list .race{margin:0; padding:.9rem 1rem .9rem .8rem; border-radius:14px; align-items:start; align-content:start;
+    grid-template-columns:3.6rem minmax(0,1fr) auto; grid-template-rows:auto auto 1fr; gap:.35rem .9rem;
+    grid-template-areas:"date name name" "date meta meta" "date dist acoes"}
+  body:not(.bi) #list .race__date{grid-area:date; align-self:start; padding:.5rem 0 .45rem}
+  body:not(.bi) #list .race__date .d{font-size:1.45rem}
+  body:not(.bi) #list .race__main{display:contents}
+  body:not(.bi) #list .race__name{grid-area:name; font-size:1.05rem; line-height:1.25}
+  body:not(.bi) #list .race__meta{grid-area:meta; margin:0; gap:.35rem .5rem; align-content:start}
+  body:not(.bi) #list .race__meta .fontes{flex-basis:100%; margin:.1rem 0 0}
+  body:not(.bi) #list .galeria{grid-column:2 / -1}
+  body:not(.bi) #list .race__dists{grid-area:dist; justify-content:flex-start; align-self:end; margin:.35rem 0 0}
+  body:not(.bi) #list .race__acoes{grid-area:acoes; align-self:end; justify-self:end; margin:.35rem 0 0; display:grid; grid-template-columns:auto auto;
+    justify-content:end; justify-items:end; align-items:center; gap:.2rem .4rem; text-align:right; font-size:.78rem}
+  body:not(.bi) #list .race__acoes .inscrever{grid-column:1 / -1; font-size:.86rem; padding:.45rem .9rem}
+  body:not(.bi) #list .race__acoes .inscrever:only-child{margin:0}
+  body:not(.bi) #list .race__acoes .ticketeira::after{content:" ·"}
+  body:not(.bi) #list .race__acoes a:not(.inscrever){grid-column:1 / -1; font-size:.76rem}
+  body:not(.bi) #list .race.passada .race__dists{grid-column:2 / -1}
 }
 
 /* ---------- impressao: so o comparativo, em papel ----------
