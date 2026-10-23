@@ -1,94 +1,107 @@
 == coleta ==
 == fontes ==
-  corridasbr: 189 provas
+  corridasbr: 190 provas
   corridasbr/arquivo: 383 provas
   ticketsports: 70 provas
   roadrunners: 188 provas
-  movnow: 25 provas
-  atletis: 0 provas
-  sympla: 153 provas
+  movnow: 24 provas
+  atletis: 1 provas
+  sympla: 180 provas
   blueticket: 3 provas
   fca: 0 provas
   corridasbr (PR): 155 provas
   corridasbr/arquivo (PR): 410 provas
-  ticketsports (PR): 72 provas
+  ticketsports (PR): 71 provas
   roadrunners (PR): 132 provas
   corridasbr (RS): 242 provas
   corridasbr/arquivo (RS): 445 provas
   ticketsports (RS): 19 provas
   roadrunners (RS): 116 provas
-  corridasbr (SP): 471 provas
+  corridasbr (SP): 476 provas
   corridasbr/arquivo (SP): 979 provas
-  ticketsports (SP): 238 provas
+  ticketsports (SP): 239 provas
   roadrunners (SP): 500 provas
-  fap: 657 provas
+  corridasbr (RJ): 212 provas
+  corridasbr/arquivo (RJ): 335 provas
+  ticketsports (RJ): 94 provas
+  roadrunners (RJ): 183 provas
+  corridasbr (DF): FALHOU (HTTPError: HTTP Error 404: Not Found)
+  corridasbr/arquivo (DF): 113 provas
+  ticketsports (DF): 10 provas
+  roadrunners (DF): 25 provas
+  corridasbr (MG): 269 provas
+  corridasbr/arquivo (MG): 615 provas
+  ticketsports (MG): 35 provas
+  roadrunners (MG): 181 provas
+  fap: 660 provas
   parceiros: 0 provas
 
-datas de ticketeira acertadas pela outra fonte: 3
+datas de ticketeira acertadas pela outra fonte: 4
+  ~ 2026-12-11 -> 2026-12-12  BOI PRETO ULTRA [sympla]
   ~ 2026-10-31 -> 2026-11-01  Shake Out Run | Running Hour | Wellhub e Pac [sympla]
   ~ 2026-11-08 -> 2026-11-07  Movimento Rosa - 2º Edição [sympla]
-  ~ 2027-07-09 -> 2027-07-10  Mountain Do Costão do Santinho 2027 [sympla]
+  ~ 2026-11-28 -> 2026-11-29  Festival UP! [sympla]
 
-3963 provas distintas depois de fundir as fontes
-descartadas (20): fora de SC/PR/RS/SP ou nao sao corrida
+5652 provas distintas depois de fundir as fontes
+descartadas (36): fora de SC/PR/RS/SP/RJ/DF/MG ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
-  - 2026-10-11  Cianorte - Corrida e Duathlon AMAFIL [duathlon]
-  - 2026-10-12  Araucária - Cross Run & Duathlon Araucária [duathlon]
-  - 2026-10-25  Palhoça - Corrida Virtual CBCR - Campeonato Brasileiro [corrida virtual]
-  - 2026-11-07  Rio Negrinho - Volta Grande Cross Aquathlon Rio Negrinho [aquathlon]
-  - 2026-11-08  Curitiba - 3ª ETAPA DUATHLON CAMPEONATO PARANAENSE [duathlon]
-  - ... e mais 12
-restam 3943 provas
-concluintes: 1099 provas no Open Results, 901 casadas, 35 com numero novo, 30 provas criadas
+  - 2026-04-26  Poços de Caldas - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
+  - 2026-05-31  Pouso Alegre - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
+  - 2026-06-21  Muzambinho - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
+  - 2026-07-05  Machado - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
+  - 2026-07-12  Prata - Corrida e Ciclismo em Louvor a Nossa Senhora [ciclismo]
+  - ... e mais 28
+restam 5616 provas
+concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 concluintes (chiprun): 2 provas consultadas, 1 preenchidas
-concluintes (link do corridasbr): 3 provas consultadas, 0 preenchidas
-genero: 44 provas consultadas, 33 preenchidas
-organizador: 25 provas consultadas, 19 preenchidas
-organizador: 34 provas preenchidas pela FCA
-organizador: 124 provas tiveram a grafia padronizada
+concluintes (link do corridasbr): 4 provas consultadas, 0 preenchidas
+genero: 400 provas consultadas, 0 preenchidas
+organizador: 16 provas consultadas, 7 preenchidas
+organizador: 33 provas preenchidas pela FCA
+organizador: 158 provas tiveram a grafia padronizada
 percurso: 5 provas consultadas no arquivo, 4 preenchidas
 fca: 33 provas juntadas as que ja existiam
-resultados repetidos removidos: 31
-series: 8427 eventos com uma ou mais edicoes | 13 resultados parciais marcados
-historico: 13346 provas (11831 ja realizadas) | 1187 cidades
-novas nesta rodada: 61
+resultado repetido nos dias de um mesmo evento: 1 dia(s) limpo(s)
+series: 12201 eventos com uma ou mais edicoes | 23 resultados parciais marcados
+historico: 18972 provas (16807 ja realizadas) | 1695 cidades
+novas nesta rodada: 54
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-03-15  São Roque - Santa Running 2026
   + 2026-03-29  São Simão - Corrida S.S. Run
   + 2026-09-06  Salto - Corrida da Santa
-  + 2026-10-22  São Paulo - VENDA DE CAMISETAS - 9ª Caminhada Pelo Fim da Violência contra Mulheres e Meninas
-  + 2026-10-31  Passo Fundo - Porto Saúde Track&Field Experience Running Mahai Night
-  + 2026-11-01  Londrina - Track&Field Experience - Fábrica da Alegria Brinquedos
-  + 2026-11-01  São Vicente - CORRIDA PELA VIDA
-  + 2026-11-08  Jaú - Porto Saúde Track&Field Experience Running Jaú
-  + 2026-11-08  Praia Grande - Porto Saúde Track&Field Experience Running - La Ganexa
-  + 2026-11-08  São Mateus do Sul - UpFit Run 2026
-  + 2026-11-08  São Paulo - Porto Saúde Track&Field Experience Woman Run&Dance
-  + 2026-11-15  Cerquilho - 2ª Descida do Lago Cerquilho (Corrida Maluca)
+  + 2026-11-07  Cotia - HALLOWEEN - SSRUNCLUB
+  + 2026-11-13  Orlândia - Corrida FTTH Telecom
+  + 2026-11-15  Franca - Corre e Curti Corre Delax
   + 2026-11-15  São Roque - SANTA RUNNING Etapa 2.0 - 2026
-  + 2026-11-20  Bauru - Porto Saúde Track&Field Experience Running Desafio
+  + 2026-11-21  São Joaquim da Barra - 7ª Night Run - Outubro Rosa
+  + 2026-11-21  São Sebastião do Paraíso - 1ª Corrida Rústica São Sebastião do Paraíso
+  + 2026-11-28  Orlândia - Corrida e Caminhada Intelli
+  + 2026-12-06  Iguaba Grande - Corrida da Padroeira 2026
+  + 2026-12-06  Prudente de Morais - 2ª Corrida Prudente em Movimento
+  + 2026-12-13  Olímpia - VZ Trail Run
+  + 2027-01-24  Angra dos Reis - GYM RUN 2027
 
-futuras que nao apareceram hoje (76) - possivel cancelamento, mantidas no historico:
+futuras que nao apareceram hoje (107) - possivel cancelamento, mantidas no historico:
   ? 2026-10-23  São Paulo - OUTUBRO ROSA - PREVENÇÃO EM MOVIMENTO (visto pela ultima vez em 2026-10-20)
+  ? 2026-10-24  Atibaia - MISSION S0020 | BRIZZEE SECRET MISSIONS (visto pela ultima vez em 2026-10-22)
   ? 2026-10-24  Imbituba - Imbituba 5k (visto pela ultima vez em 2026-10-04)
   ? 2026-10-24  Jaraguá do Sul - 1ª Corrida Húngara (visto pela ultima vez em 2026-10-04)
   ? 2026-10-24  Nova Veneza - Passos da Fé Night Run 2026 (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-24  Passo Fundo - Lídera em Movimento - Caminhada Outubro Rosa (visto pela ultima vez em 2026-10-22)
+  ? 2026-10-24  São Paulo - B-Day Thaís Run 3km (visto pela ultima vez em 2026-10-22)
   ? 2026-10-24  São Paulo - Beauty Legs Day 2026 (visto pela ultima vez em 2026-10-21)
-  ? 2026-10-25  Mogi Guaçu - Circuito de Corridas Pague Menos - 7ª Etapa (visto pela ultima vez em 2026-10-18)
-  ? 2026-10-30  Joinville - Corrida São Judas Tadeu (visto pela ultima vez em 2026-10-04)
-  ? 2026-10-31  Araranguá - Corrida Gremio Fronteira (visto pela ultima vez em 2026-10-01)
-  ? 2026-11-01  Curitiba - Track&Field Run Series 2026 - Parkshoppingbarigüi (visto pela ultima vez em 2026-09-25)
-  ? 2026-11-08  Cocal do Sul - Corrida Saude 360 Eliane (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-24  São Paulo - Caminhada Outubro Rosa e Novembro Azul (visto pela ultima vez em 2026-10-22)
+  ? 2026-10-24  São Roque - Outubro Rosa (visto pela ultima vez em 2026-10-22)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['', 'Arena Multiuso', 'São Luis do Paraitinga', 'Varpa', 'Vila Ophélia', 'a 4 km do Centro de Dona Emma']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['', 'Arena Multiuso', 'Brejo Bonito', 'Estância das Amendoeiras', 'Paty dos Alferes', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Varpa', 'Vila Ophélia', 'a 4 km do Centro de Dona Emma']
 
 == perfis ==
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,309,686 bytes)
+artifact.html e index.html gerados (2,325,407 bytes)
 
-RESULTADO: pronto para publicar (coleta de 22/10/2026).
+RESULTADO: pronto para publicar (coleta de 23/10/2026).
