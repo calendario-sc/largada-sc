@@ -615,6 +615,8 @@ body:not(.bi) .stats__legenda{text-align:right}
 .search svg{position:absolute; left:.72rem; top:50%; transform:translateY(-50%); width:16px; height:16px; stroke:var(--accent); fill:none; stroke-width:2.2}
 .group{display:flex; align-items:center; gap:.35rem; flex-wrap:wrap}
 .group > b{font-family:var(--f-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:400; margin-right:.15rem}
+/* Grupo que nao se aplica a pagina (Estado fora de todos.html; Regiao antes de escolher o estado). */
+.group--oculto{display:none !important}
 .chip{
   font:inherit; font-size:.82rem; line-height:1; cursor:pointer;
   padding:.42rem .68rem; border-radius:999px; color:var(--ink-2);
@@ -1563,6 +1565,7 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
     <div class="groups">
       <button class="chip" id="btn-filtros" type="button" aria-expanded="false" aria-controls="g-escopo">Filtros</button>
       <div class="escopo" id="g-escopo" role="group" aria-label="Período"></div>
+      <div class="group" id="g-estado"><b>Estado</b></div>
       <div class="group" id="g-regiao"><b>Região</b></div>
       <div class="group" id="g-faixa"><b>Distância</b></div>
       <div class="group" id="g-tipo"><b>Tipo</b></div>
@@ -1689,7 +1692,8 @@ if (!BI) (() => {
 })();
 // Estado da pagina: "SC" (index), "PR", "RS", "SP", "RJ", "DF", "MG" (uf.html) ou "" (todos.html, todos).
 const UF = "PR";
-const NOME_ESTADO = { SC:"Santa Catarina", PR:"Paraná", RS:"Rio Grande do Sul", SP:"São Paulo", RJ:"Rio de Janeiro", DF:"Distrito Federal", MG:"Minas Gerais", "":"Todos os estados" }[UF];
+const NOMES_UF = { SC:"Santa Catarina", PR:"Paraná", RS:"Rio Grande do Sul", SP:"São Paulo", RJ:"Rio de Janeiro", DF:"Distrito Federal", MG:"Minas Gerais" };
+const NOME_ESTADO = UF ? NOMES_UF[UF] : "Todos os estados";
 // Agenda para assinar do estado da pagina (agenda/*.ics, gerada pelo seo.py).
 document.getElementById("btn-agenda").href = "https://calendar.google.com/calendar/r?cid=" +
   encodeURIComponent("webcal://www.cuponsdecorrida.com.br/agenda/" + ({ SC:"sc", PR:"pr", RS:"rs" }[UF] || "todas") + ".ics");
@@ -1739,7 +1743,7 @@ RACES.forEach((r, i) => {
    dois dias do calendario e conta uma vez. */
 const contarProvas = lista => new Set(lista.map(r => r._ev)).size;
 
-const state = { escopo:"proximas", q:"", organizador:"", cidade:"", treinos:false,
+const state = { escopo:"proximas", q:"", organizador:"", cidade:"", uf:"", treinos:false,
                 comparativo:false, anoRanking:"", faixaRanking:"", serie:"", serie2:"",
                 anos:new Set(), meses:new Set(), regioes:new Set(), faixas:new Set(), tipos:new Set() };
 
@@ -1819,6 +1823,35 @@ selAno.onchange = () => { escolherAno(selAno.value === "" ? null : ANOS[+selAno.
 document.getElementById("g-ano").append(selAno);
 
 chipGroup("g-regiao", REGIOES.map(r => [r, r]), state.regioes, corRegiao);
+/* Pagina de todos os estados: escolhe-se o estado primeiro e so entao as regioes
+   dele aparecem (as 7 malhas juntas eram uma salada de 70 nomes). Uma regiao
+   pode existir em mais de um estado ("Outras"), por isso o conjunto. */
+const UFS_DA_REGIAO = new Map();
+RACES.forEach(r => { if (!UFS_DA_REGIAO.has(r.regiao)) UFS_DA_REGIAO.set(r.regiao, new Set()); UFS_DA_REGIAO.get(r.regiao).add(r.uf || "SC"); });
+const caixaEstado = document.getElementById("g-estado"), caixaRegiao = document.getElementById("g-regiao");
+function mostrarRegioes(){
+  if (UF) return;
+  caixaRegiao.classList.toggle("group--oculto", !state.uf);
+  caixaRegiao.querySelectorAll(".chip").forEach(b => { b.hidden = !state.uf || !(UFS_DA_REGIAO.get(b.textContent) || new Set()).has(state.uf); });
+}
+function escolherEstado(uf){
+  state.uf = state.uf === uf ? "" : uf;
+  caixaEstado.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.uf === state.uf)));
+  // Regiao e do estado: trocar o estado solta a regiao escolhida.
+  state.regioes.clear();
+  caixaRegiao.querySelectorAll('.chip[aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed", "false"));
+  mostrarRegioes();
+}
+if (UF) caixaEstado.classList.add("group--oculto");
+else {
+  Object.keys(NOMES_UF).filter(uf => RACES.some(r => (r.uf || "SC") === uf)).forEach(uf => {
+    const b = el("button", { className:"chip", type:"button", textContent:NOMES_UF[uf] });
+    b.dataset.uf = uf; b.setAttribute("aria-pressed", "false");
+    b.onclick = () => { escolherEstado(uf); render(); };
+    caixaEstado.append(b);
+  });
+  mostrarRegioes();
+}
 chipGroup("g-faixa", FAIXAS.filter(([f]) => RACES.some(r => r.faixas.includes(f))), state.faixas,
           () => "#1250C4");
 chipGroup("g-tipo", TIPOS.map(t => [t, t]), state.tipos, t => TAG_COR[t] || "#2E3A50");
@@ -1982,6 +2015,7 @@ document.getElementById("reset").onclick = () => {
   state.treinos = false;
   btnTreinos.setAttribute("aria-pressed", "false");
   document.querySelectorAll('.group [aria-pressed="true"], .top__grupo [aria-pressed="true"]').forEach(b => b.setAttribute("aria-pressed","false"));
+  state.uf = ""; mostrarRegioes();
   montarMeses();
   render();
 };
@@ -2002,6 +2036,7 @@ function passaFiltrosGerais(r){
   // que se peça o calendário de treinos.
   if ((r.tags || []).includes("Treino") !== state.treinos) return false;
   if (state.q && !r._busca.includes(state.q)) return false;
+  if (state.uf && (r.uf || "SC") !== state.uf) return false;
   if (state.regioes.size && !state.regioes.has(r.regiao)) return false;
   if (state.cidade && r.cidade !== state.cidade) return false;
   if (state.organizador && !(r.organizadores || []).includes(state.organizador)) return false;
@@ -2623,6 +2658,7 @@ function recorteAtual(){
   else partes.push("todas as distâncias");
   if (state.cidade) partes.push(state.cidade);
   if (state.organizador) partes.push(state.organizador);
+  if (state.uf) partes.push(NOMES_UF[state.uf]);
   if (state.regioes.size) partes.push([...state.regioes].join(", "));
   if (state.tipos.size) partes.push([...state.tipos].join(", "));
   if (state.faixas.size)
@@ -2741,7 +2777,7 @@ function render(){
     const datas = res.map(r => r.data).sort();
     const que = state.treinos ? "Treinos" : state.anos.size ? "Provas de " + [...state.anos].sort().join(", ")
       : { proximas:"Próximas provas", realizadas:"Provas realizadas", todas:"Todas as provas" }[state.escopo];
-    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : (UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG"));
+    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : state.uf ? NOMES_UF[state.uf] : (UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG"));
     let periodo = "";
     if (datas.length) periodo = state.escopo === "proximas" && !state.anos.size && !state.meses.size
       ? "de hoje até " + br(datas[datas.length - 1]) : "de " + br(datas[0]) + " a " + br(datas[datas.length - 1]);
@@ -2757,7 +2793,7 @@ function render(){
   document.getElementById("s-km").textContent = maiorKm ? String(Math.round(maiorKm)) : "—";
 
   const filtros = state.anos.size + state.meses.size + state.regioes.size + state.faixas.size
-    + state.tipos.size + (state.q ? 1 : 0) + (state.organizador ? 1 : 0) + (state.cidade ? 1 : 0);
+    + state.tipos.size + (state.q ? 1 : 0) + (state.organizador ? 1 : 0) + (state.cidade ? 1 : 0) + (state.uf ? 1 : 0);
   const palavra = state.treinos
     ? (nProvas === 1 ? "treino" : "treinos")
     : (nProvas === 1 ? "prova" : "provas");
@@ -2861,6 +2897,7 @@ function descreverRecorte(){
   else partes.push({ proximas:"próximas provas", realizadas:"provas realizadas", todas:"todos os anos" }[state.escopo]);
   if (state.meses.size)
     partes.push([...state.meses].sort().map(k => MES_NOME[k % 100 - 1] + " " + Math.floor(k / 100)).join(", "));
+  if (state.uf) partes.push(NOMES_UF[state.uf]);
   if (state.regioes.size) partes.push([...state.regioes].join(", "));
   if (state.cidade) partes.push(state.cidade);
   if (state.organizador) partes.push(state.organizador);
@@ -2879,13 +2916,14 @@ function mostrarLugar(){
     tipo = state.regioes.size === 1 ? "Região" : "Regiões";
     nome = [...state.regioes].join(" · ");
   }
+  else if (state.uf){ tipo = "Estado"; nome = NOMES_UF[state.uf]; }
   document.getElementById("lugar-tipo").textContent = tipo;
   document.getElementById("lugar-nome").textContent = nome;
 }
 
 function mostrarRecorte(){
   mostrarLugar();
-  const semNada = !state.anos.size && !state.meses.size && !state.regioes.size && !state.cidade
+  const semNada = !state.anos.size && !state.meses.size && !state.regioes.size && !state.cidade && !state.uf
     && !state.organizador && !state.tipos.size && !state.faixas.size && !state.treinos && !state.q;
   document.getElementById("top-recorte").replaceChildren(
     el("b", { textContent:"Filtro" }),
@@ -3717,7 +3755,7 @@ function montarResultados(){
   if (state.anos.size) partesRecorte.push([...state.anos].sort().join(", "));
   if (state.cidade) partesRecorte.push(state.cidade);
   else if (state.regioes.size) partesRecorte.push([...state.regioes].join(", "));
-  else partesRecorte.push(NOME_ESTADO);
+  else partesRecorte.push(state.uf ? NOMES_UF[state.uf] : NOME_ESTADO);
   if (state.organizador) partesRecorte.push(state.organizador);
   document.getElementById("resultados-recorte").textContent = partesRecorte.join(" · ");
 
@@ -4468,7 +4506,7 @@ function montarRelatorioOrgs(){
   const recorte = [
     ["Ano", ano],
     ["Cidade", state.cidade || "todas"],
-    [state.regioes.size ? "Região" : (UF ? "Estado" : "Estados"), state.regioes.size ? [...state.regioes].join(", ") : NOME_ESTADO],
+    [state.regioes.size ? "Região" : (UF || state.uf ? "Estado" : "Estados"), state.regioes.size ? [...state.regioes].join(", ") : (state.uf ? NOMES_UF[state.uf] : NOME_ESTADO)],
   ];
   const extras = [];
   if (state.meses.size)
@@ -4554,7 +4592,7 @@ function cabecalhoDoRecorte(){
   const recorte = [
     ["Ano", ano],
     ["Cidade", state.cidade || "todas"],
-    [state.regioes.size ? "Região" : (UF ? "Estado" : "Estados"), state.regioes.size ? [...state.regioes].join(", ") : NOME_ESTADO],
+    [state.regioes.size ? "Região" : (UF || state.uf ? "Estado" : "Estados"), state.regioes.size ? [...state.regioes].join(", ") : (state.uf ? NOMES_UF[state.uf] : NOME_ESTADO)],
   ];
   const extras = [];
   if (state.meses.size)
@@ -4645,6 +4683,7 @@ function nomeDoRelatorioCal(){
   if (state.anos.size) pedacos.push([...state.anos].sort().join("-"));
   else pedacos.push({ proximas:"proximas", realizadas:"realizadas", todas:"todas" }[state.escopo]);
   if (state.cidade) pedacos.push(state.cidade);
+  if (state.uf) pedacos.push(state.uf);
   if (state.regioes.size) pedacos.push([...state.regioes].join(", "));
   if (state.organizador) pedacos.push(state.organizador);
   return pedacos.join(" - ").replace(/[\\/:*?"<>|]/g, "");
@@ -4661,6 +4700,7 @@ function nomeDoRelatorioOrgs(){
   const pedacos = ["Cupons de Corrida - Organizadoras"];
   if (state.anos.size) pedacos.push([...state.anos].sort().join("-"));
   if (state.cidade) pedacos.push(state.cidade);
+  if (state.uf) pedacos.push(state.uf);
   if (state.regioes.size) pedacos.push([...state.regioes].join(", "));
   return pedacos.join(" - ").replace(/[\\/:*?"<>|]/g, "");
 }
@@ -4863,7 +4903,7 @@ const btnFiltros = document.getElementById("btn-filtros");
 
 function filtrosLigados(){
   return (state.q ? 1 : 0) + (state.escopo !== "proximas" ? 1 : 0)
-       + state.regioes.size + state.faixas.size + state.tipos.size
+       + state.regioes.size + state.faixas.size + state.tipos.size + (state.uf ? 1 : 0)
        + state.anos.size + state.meses.size
        + (state.cidade ? 1 : 0) + (state.organizador ? 1 : 0)
        + (state.treinos ? 1 : 0);
@@ -4910,7 +4950,7 @@ render();
     if (UF && pagina && onde.uf !== UF && !doSite) { aplicado = true; location.replace(pagina); return; }
     if (!REGIOES.includes(onde.regiao)) return;
     // Quem ja mexeu nos filtros manda.
-    if (state.regioes.size || state.anos.size || state.q || state.cidade || state.organizador) return;
+    if (state.uf || state.regioes.size || state.anos.size || state.q || state.cidade || state.organizador) return;
     aplicado = true;
     const aperta = (id, texto) => {
       const b = [...document.getElementById(id).querySelectorAll(".chip")].find(x => x.textContent === texto);
@@ -4920,6 +4960,7 @@ render();
     // So a regiao: o calendario abre nas PROXIMAS provas (quem entra quer saber
     // o que vem pela frente); o ano inteiro fica a um clique.
     const ano = String(new Date().getFullYear());
+    if (!UF) aperta("g-estado", NOMES_UF[onde.uf] || "");
     const chipRegiao = aperta("g-regiao", onde.regiao);
     const temAno = ANOS.some(a => String(a) === ano);
     const anoLigado = () => state.anos.size === 1 && String([...state.anos][0]) === ano;
@@ -4950,7 +4991,7 @@ render();
       render();
       tirarAviso();
     };
-    ["g-regiao", "reset", "reset-top"].forEach(id => {
+    ["g-estado", "g-regiao", "reset", "reset-top"].forEach(id => {
       const x = document.getElementById(id);
       if (x) x.addEventListener("click", ev => { if (ev.isTrusted) tirarAviso(); });
     });
