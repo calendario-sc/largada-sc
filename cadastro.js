@@ -127,7 +127,7 @@
       el("input", { type: "checkbox", name: "distancias", value: v }), el("span", { textContent: rot })])));
 
     const uf = el("select", { name: "uf", required: true });
-    [["", "UF"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"], ["OU", "Outro"]].forEach(([v, t]) =>
+    [["", "UF"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"], ["RJ", "RJ"], ["DF", "DF"], ["MG", "MG"], ["OU", "Outro"]].forEach(([v, t]) =>
       uf.append(el("option", { value: v, textContent: t })));
     // A pagina de cada estado (ou da prova) ja sugere o estado dela.
     const daPagina = document.querySelector("[data-cadastro-uf]");
@@ -135,6 +135,9 @@
     else if (/\/pr\.html$/.test(location.pathname)) uf.value = "PR";
     else if (/\/rs\.html$/.test(location.pathname)) uf.value = "RS";
     else if (/\/sp\.html$/.test(location.pathname)) uf.value = "SP";
+    else if (/\/rj\.html$/.test(location.pathname)) uf.value = "RJ";
+    else if (/\/df\.html$/.test(location.pathname)) uf.value = "DF";
+    else if (/\/mg\.html$/.test(location.pathname)) uf.value = "MG";
     else if (!/todos\.html$/.test(location.pathname)) uf.value = "SC";
 
     const erro = el("p", { className: "cad__erro", role: "alert" });

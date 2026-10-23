@@ -4548,6 +4548,20 @@
 "largada": "19:00",
 "numero": "577/2026"
 },
+"1WpYUpZK_gLo-nU831RK-eM0zwUcDSQhH": {
+"arquivo": "664-2026-Corrida De Natal De Curitiba .pdf",
+"cidade": "Curitiba",
+"data": "2026-12-06",
+"entidade": "VOA ESPORTES LTDA",
+"evento": "Corrida De Natal De Curitiba",
+"km": [
+6.0,
+3.0
+],
+"largada": "20:00",
+"local": "Arena da Baixada, Curitiba-PR",
+"numero": "664/2026"
+},
 "1WtDfuFcT7VcEZ_FjVjivmszEwMkHUU5w": {
 "arquivo": "625-2026-Yellow Run.pdf",
 "cidade": "Goioerê",
@@ -5129,6 +5143,20 @@
 ],
 "largada": "07:30",
 "numero": "061/2026"
+},
+"1_qARxPEPvkmdvurUdIPDM6MC6fChOwWt": {
+"arquivo": "665-2026-Circuito Sesc De Corridas - Etapa Maringá.pdf",
+"cidade": "Maringá",
+"data": "2026-11-08",
+"entidade": "SESC MARINGÁ",
+"evento": "Circuito Sesc De Corridas - Etapa Maringá",
+"km": [
+10.0,
+5.0
+],
+"largada": "06:30",
+"local": "Sesc Maringá - Av. Duque de Caxias, 1517. Maringá-PR",
+"numero": "665/2026"
 },
 "1_q_B0cvKijRVSUpCiaEXof4MpccGYrof": {
 "arquivo": "103.2026-1ª Corrida Iguacon Imobiliária.pdf",
@@ -7581,6 +7609,19 @@
 ],
 "largada": "23:59",
 "numero": "224/2026"
+},
+"1smuedWpFmuSnY8IeJBX0TXrzCiO6DSGf": {
+"arquivo": "663-2026-Maratona Internacional De Maringá - 10Km.pdf",
+"cidade": "Maringá",
+"data": "2026-11-22",
+"entidade": "VOA ESPORTES LTDA",
+"evento": "Maratona Internacional De Maringá - 10 Km",
+"km": [
+10.0
+],
+"largada": "05:50",
+"local": "Sociedade Rural de Maringá, Av. Colombo 2186, Maringá-PR",
+"numero": "663/2026"
 },
 "1spaVhDJTA5NYB88Xh-6Zz_UqwqJsGX-s": {
 "arquivo": "541-2026-1a Corrida da Independência de Boa Esperança .pdf",

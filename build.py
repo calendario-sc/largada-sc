@@ -213,7 +213,7 @@ def completa(pagina, publica=False, uf="SC", seo_info=None):
 
 # Uma pagina por estado: o seletor do cabecalho troca de pagina. Cada uma
 # leva so as provas do seu estado, e a de SC continua sendo a index.
-PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("rs.html", "RS"), ("sp.html", "SP"), ("todos.html", "")]
+PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("rs.html", "RS"), ("sp.html", "SP"), ("rj.html", "RJ"), ("df.html", "DF"), ("mg.html", "MG"), ("todos.html", "")]
 PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
 
 
@@ -222,7 +222,10 @@ UF_TITULO = {"SC": ("Calendário de Corridas em SC {ano} | Cupons de Corrida", "
              "PR": ("Calendário de Corridas no Paraná {ano} | Cupons de Corrida", "Paraná", "/pr.html"),
              "RS": ("Calendário de Corridas no Rio Grande do Sul {ano} | Cupons de Corrida", "Rio Grande do Sul", "/rs.html"),
              "SP": ("Calendário de Corridas em São Paulo (SP) {ano} | Cupons de Corrida", "São Paulo", "/sp.html"),
-             "": ("Corridas de Rua {ano}: SC, PR, RS e SP | Cupons de Corrida", "Santa Catarina, Paraná, Rio Grande do Sul e São Paulo", "/todos.html")}
+             "RJ": ("Calendário de Corridas no Rio de Janeiro (RJ) {ano} | Cupons de Corrida", "Rio de Janeiro", "/rj.html"),
+             "DF": ("Calendário de Corridas em Brasília e no Distrito Federal {ano} | Cupons de Corrida", "Distrito Federal", "/df.html"),
+             "MG": ("Calendário de Corridas em Minas Gerais (MG) {ano} | Cupons de Corrida", "Minas Gerais", "/mg.html"),
+             "": ("Corridas de Rua {ano}: SC, PR, RS, SP, RJ, DF e MG | Cupons de Corrida", "Santa Catarina, Paraná, Rio Grande do Sul, São Paulo, Rio de Janeiro, Distrito Federal e Minas Gerais", "/todos.html")}
 
 
 def cabeca_publica(uf, info):
@@ -262,12 +265,13 @@ def abertura_seo(uf, info, provas, hoje):
     e = lambda s: _h.escape(str(s), quote=True)
     ano = datetime.date.today().year
     _, lugar, _ = UF_TITULO[uf]
-    nomes_uf = {"SC": "Santa Catarina", "PR": "Paraná", "RS": "Rio Grande do Sul", "SP": "São Paulo"}
+    nomes_uf = {"SC": "Santa Catarina", "PR": "Paraná", "RS": "Rio Grande do Sul", "SP": "São Paulo", "RJ": "Rio de Janeiro", "DF": "Distrito Federal", "MG": "Minas Gerais"}
     futuras = sorted((p for p in provas if p["data"] >= hoje and "Treino" not in (p.get("tags") or [])), key=lambda p: (p["data"], p["nome"]))
     cidades_fut = {(p.get("cidade"), p.get("uf") or "SC") for p in futuras if p.get("cidade")}
     top = [(c, u) for u2, l in (info.get("cidades") or {}).items() if not uf or u2 == uf for c, u, fut, n in l if fut][:12]
     links = ", ".join(f'<a href="/corridas-em/{seo.slug_cidade(c, u)}/">{e(c)}</a>' for c, u in top)
-    em = {"SC": "em Santa Catarina", "PR": "no Paraná", "RS": "no Rio Grande do Sul", "SP": "em São Paulo", "": "em SC, PR, RS e SP"}[uf]
+    em = {"SC": "em Santa Catarina", "PR": "no Paraná", "RS": "no Rio Grande do Sul", "SP": "em São Paulo", "RJ": "no Rio de Janeiro",
+          "DF": "no Distrito Federal", "MG": "em Minas Gerais", "": "em SC, PR, RS, SP, RJ, DF e MG"}[uf]
     abertura = (f'<p class="intro-seo">Calendário de corridas de rua e trail {em} {ano}: <b>{len(futuras)} próximas provas em {len(cidades_fut)} cidades</b>, '
                 f'com datas, distâncias, inscrições, resultados e cupons de desconto'
                 + (f'. Corridas por cidade: {links}.' if links else '.') + '</p>\n')

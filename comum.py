@@ -31,9 +31,10 @@ FAIXAS = ["5k", "10k", "21k", "42k", "ultra"]
 
 # Estados que a coleta cobre. O primeiro e o padrao: cidade sem UF
 # informada e procurada nele antes dos outros.
-UFS = ("SC", "PR", "RS", "SP")
+UFS = ("SC", "PR", "RS", "SP", "RJ", "DF", "MG")
 UF_ALVO = UFS[0]
-UF_NOME = {"SC": "santa catarina", "PR": "parana", "RS": "rio grande do sul", "SP": "sao paulo"}
+UF_NOME = {"SC": "santa catarina", "PR": "parana", "RS": "rio grande do sul", "SP": "sao paulo",
+           "RJ": "rio de janeiro", "DF": "distrito federal", "MG": "minas gerais"}
 # Federacoes cujos permits entram como fonte: FCA (SC) e FAP (PR). Nome de
 # prova escrito pela federacao so vale quando nenhuma outra fonte a tem.
 FEDERACOES = {"fca", "fap"}
@@ -77,6 +78,47 @@ APELIDOS = {
         "sao jose do rio preto sp": "São José do Rio Preto",
         "campinas sp": "Campinas",
         "santos sp": "Santos",
+    },
+    "RJ": {
+        "rio": "Rio de Janeiro",
+        "rio rj": "Rio de Janeiro",
+        "rio de janeiro rj": "Rio de Janeiro",
+        "rio de janeiro capital": "Rio de Janeiro",
+        "niteroi rj": "Niterói",
+        "barra da tijuca": "Rio de Janeiro",
+        "copacabana": "Rio de Janeiro",
+        "recreio dos bandeirantes": "Rio de Janeiro",
+        "aterro do flamengo": "Rio de Janeiro",
+        "jacarepagua": "Rio de Janeiro",
+        "campo grande rj": "Rio de Janeiro",
+        "ilha do governador": "Rio de Janeiro",
+        "paqueta": "Rio de Janeiro",
+        "santa cruz rj": "Rio de Janeiro",
+    },
+    # O DF tem um municipio so (Brasilia): as regioes administrativas viram Brasilia.
+    "DF": {
+        "brasilia df": "Brasília", "df": "Brasília", "plano piloto": "Brasília", "asa sul": "Brasília", "asa norte": "Brasília",
+        "aguas claras": "Brasília", "taguatinga": "Brasília", "ceilandia": "Brasília", "gama": "Brasília", "sobradinho": "Brasília",
+        "sobradinho ii": "Brasília", "planaltina": "Brasília", "guara": "Brasília", "lago sul": "Brasília", "lago norte": "Brasília",
+        "samambaia": "Brasília", "nucleo bandeirante": "Brasília", "paranoa": "Brasília", "sao sebastiao": "Brasília",
+        "santa maria": "Brasília", "recanto das emas": "Brasília", "riacho fundo": "Brasília", "riacho fundo ii": "Brasília",
+        "candangolandia": "Brasília", "cruzeiro": "Brasília", "sudoeste": "Brasília", "octogonal": "Brasília", "vicente pires": "Brasília",
+        "jardim botanico": "Brasília", "itapoa": "Brasília", "park way": "Brasília", "sia": "Brasília", "sol nascente": "Brasília",
+        "fercal": "Brasília", "arniqueira": "Brasília", "varjao": "Brasília", "estrutural": "Brasília", "brazlandia": "Brasília",
+        "setor noroeste": "Brasília", "noroeste": "Brasília", "parque da cidade": "Brasília", "esplanada": "Brasília",
+    },
+    "MG": {
+        "bh": "Belo Horizonte",
+        "belo horizonte mg": "Belo Horizonte",
+        "belzonte": "Belo Horizonte",
+        "pampulha": "Belo Horizonte",
+        "uberlandia mg": "Uberlândia",
+        "juiz de fora mg": "Juiz de Fora",
+        "contagem mg": "Contagem",
+        "betim mg": "Betim",
+        "montes claros mg": "Montes Claros",
+        "pocos de caldas mg": "Poços de Caldas",
+        "governador valadares mg": "Governador Valadares",
     },
 }
 
@@ -319,7 +361,7 @@ def classificar(nome, km, extras=()):
 VAZIAS = {
     "a", "as", "o", "os", "de", "da", "do", "das", "dos", "e", "em", "no", "na",
     "nos", "nas", "para", "por", "com", "corrida", "corridas", "caminhada",
-    "prova", "etapa", "edicao", "run", "running", "race", "sc", "santa", "pr", "parana", "rs", "sp",
+    "prova", "etapa", "edicao", "run", "running", "race", "sc", "santa", "pr", "parana", "rs", "sp", "rj", "df", "mg",
     "catarina", "2024", "2025", "2026", "2027", "2028",
 }
 

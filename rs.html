@@ -1152,7 +1152,7 @@ body:not(.bi) .top__marca h1 .logo{height:3.3rem}
 body:not(.bi) .top__marca .eyebrow{display:grid; margin:0; padding-left:.9rem; border-left:1px solid rgba(255,255,255,.35); font-size:.54rem; line-height:1.75; letter-spacing:.13em; color:rgba(255,255,255,.88); white-space:nowrap; opacity:1}
 body:not(.bi) .top__l1 .uf{margin:0 auto; display:flex; flex-wrap:nowrap; gap:.1rem; padding:.25rem; border-radius:999px; background:rgba(255,255,255,.1); flex:none}
 body:not(.bi) .top__l1 .uf a{border:0; padding:.5rem .8rem; font-size:.64rem; font-weight:600; letter-spacing:.1em; white-space:nowrap}
-@media (max-width:1300px){
+@media (max-width:5000px){  /* sete estados: sempre as siglas na barra (nomes por extenso so na fita do celular) */
   body:not(.bi) .top__l1 .uf a{font-size:0; padding:.5rem .75rem}
   body:not(.bi) .top__l1 .uf a::before{content:attr(data-uf); font-size:.68rem; letter-spacing:.12em}
   body:not(.bi) .top__l1 .uf a[data-uf=""]::before{content:"Todos"}
@@ -1484,6 +1484,9 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
         <a href="pr.html" data-uf="PR">Paraná</a>
         <a href="rs.html" data-uf="RS">Rio Grande do Sul</a>
         <a href="sp.html" data-uf="SP">São Paulo</a>
+        <a href="rj.html" data-uf="RJ">Rio de Janeiro</a>
+        <a href="df.html" data-uf="DF">Distrito Federal</a>
+        <a href="mg.html" data-uf="MG">Minas Gerais</a>
         <a href="todos.html" data-uf="">Todos os estados</a>
       </nav>
       <p class="top__lugar" id="top-lugar"><small id="lugar-tipo">Estado</small><b id="lugar-nome">Santa Catarina</b></p>
@@ -1683,18 +1686,18 @@ if (!BI) (() => {
     busca.append(b);
   }
 })();
-// Estado da pagina: "SC" (index), "PR" (pr.html), "RS" (rs.html), "SP" (sp.html) ou "" (todos.html, todos).
+// Estado da pagina: "SC" (index), "PR", "RS", "SP", "RJ", "DF", "MG" (uf.html) ou "" (todos.html, todos).
 const UF = "RS";
-const NOME_ESTADO = { SC:"Santa Catarina", PR:"Paraná", RS:"Rio Grande do Sul", SP:"São Paulo", "":"Todos os estados" }[UF];
+const NOME_ESTADO = { SC:"Santa Catarina", PR:"Paraná", RS:"Rio Grande do Sul", SP:"São Paulo", RJ:"Rio de Janeiro", DF:"Distrito Federal", MG:"Minas Gerais", "":"Todos os estados" }[UF];
 // Agenda para assinar do estado da pagina (agenda/*.ics, gerada pelo seo.py).
 document.getElementById("btn-agenda").href = "https://calendar.google.com/calendar/r?cid=" +
   encodeURIComponent("webcal://www.cuponsdecorrida.com.br/agenda/" + ({ SC:"sc", PR:"pr", RS:"rs" }[UF] || "todas") + ".ics");
 document.querySelectorAll("#uf a").forEach(a => {
   if (a.dataset.uf === UF) a.setAttribute("aria-current", "page");
 });
-document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "SC, PR, RS e SP";
+document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG";
 // No BI o titulo da aba diz o estado; no site publico o <title> de SEO (build.py) fica como esta.
-if (BI && UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC, PR, RS e SP");
+if (BI && UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG");
 // O Raio-X e de Florianopolis: nao cabe na pagina dos outros estados.
 if (UF && UF !== "SC" && document.getElementById("btn-raiox")) document.getElementById("btn-raiox").hidden = true;
 // Liga um evento so se o elemento existe: na pagina publica varios nao existem.
@@ -2737,7 +2740,7 @@ function render(){
     const datas = res.map(r => r.data).sort();
     const que = state.treinos ? "Treinos" : state.anos.size ? "Provas de " + [...state.anos].sort().join(", ")
       : { proximas:"Próximas provas", realizadas:"Provas realizadas", todas:"Todas as provas" }[state.escopo];
-    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : (UF ? NOME_ESTADO : "SC, PR, RS e SP"));
+    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : (UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG"));
     let periodo = "";
     if (datas.length) periodo = state.escopo === "proximas" && !state.anos.size && !state.meses.size
       ? "de hoje até " + br(datas[datas.length - 1]) : "de " + br(datas[0]) + " a " + br(datas[datas.length - 1]);
@@ -2885,7 +2888,7 @@ function mostrarRecorte(){
     && !state.organizador && !state.tipos.size && !state.faixas.size && !state.treinos && !state.q;
   document.getElementById("top-recorte").replaceChildren(
     el("b", { textContent:"Filtro" }),
-    document.createTextNode(descreverRecorte() + (semNada ? " · " + ({ SC:"Santa Catarina inteira", PR:"Paraná inteiro", RS:"Rio Grande do Sul inteiro", SP:"São Paulo inteiro" }[UF] || "SC, PR, RS e SP") : "")));
+    document.createTextNode(descreverRecorte() + (semNada ? " · " + ({ SC:"Santa Catarina inteira", PR:"Paraná inteiro", RS:"Rio Grande do Sul inteiro", SP:"São Paulo inteiro", RJ:"Rio de Janeiro inteiro", DF:"Distrito Federal inteiro", MG:"Minas Gerais inteira" }[UF] || "SC, PR, RS, SP, RJ, DF e MG") : "")));
 }
 
 function montarOrgs(){
@@ -3170,7 +3173,7 @@ function formularioCupom(c){
   const orgs = el("select", { name:"organizadora" }, [el("option", { value:"", textContent:"Escolha…" })]);
   ordenaPorUso(porOrganizador).forEach(([o]) => orgs.append(el("option", { value:o, textContent:o })));
   orgs.value = c.organizadora || "";
-  const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"]].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
+  const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"], ["RJ", "RJ"], ["DF", "DF"], ["MG", "MG"]].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
   uf.value = c.uf || "";
   // Loja ou servico parceiro: aparece na Central de Cupons, por categoria.
   const parceiro = inp("parceiro", "text", c.parceiro, { placeholder:"Ex.: Loja do Corredor", maxLength:120 });
@@ -4901,7 +4904,7 @@ render();
   function aplicar(onde){
     if (aplicado || !onde || !onde.uf) return;
     // Estado: veio de fora do site e esta no outro estado? Vai para a pagina dele.
-    const pagina = { SC:"./", PR:"pr.html", RS:"rs.html", SP:"sp.html" }[onde.uf];
+    const pagina = { SC:"./", PR:"pr.html", RS:"rs.html", SP:"sp.html", RJ:"rj.html", DF:"df.html", MG:"mg.html" }[onde.uf];
     const doSite = /(^|\.)cuponsdecorrida\.com\.br$/.test((() => { try { return new URL(document.referrer).hostname; } catch (e) { return ""; } })());
     if (UF && pagina && onde.uf !== UF && !doSite) { aplicado = true; location.replace(pagina); return; }
     if (!REGIOES.includes(onde.regiao)) return;

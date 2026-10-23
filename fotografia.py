@@ -31,7 +31,7 @@ AQUI = Path(__file__).resolve().parent
 PAUSA = 0.4
 FOCO_ESTADO_SC = 24
 # Codigo de cada estado na Foco Radical (ordem alfabetica dos nomes).
-FOCO_ESTADO = {"SC": 24, "PR": 16, "RS": 21, "SP": 25}
+FOCO_ESTADO = {"SC": 24, "PR": 16, "RS": 21, "SP": 25, "RJ": 19, "DF": 7, "MG": 13}
 FOCO_URL = ("https://www.focoradical.com.br/next-api/home/competitions"
             "?CompetitionSearch%5Bstate%5D={estado}&page={pagina}")
 BANLEK_URL = "https://graphql.banlek.com/graphql"
