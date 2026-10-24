@@ -4,36 +4,36 @@
   corridasbr/arquivo: 383 provas
   ticketsports: 70 provas
   roadrunners: 188 provas
-  movnow: 24 provas
+  movnow: 26 provas
   atletis: 1 provas
-  sympla: 180 provas
+  sympla: 174 provas
   blueticket: 3 provas
   fca: 0 provas
   corridasbr (PR): 155 provas
   corridasbr/arquivo (PR): 410 provas
-  ticketsports (PR): 71 provas
-  roadrunners (PR): 132 provas
+  ticketsports (PR): 72 provas
+  roadrunners (PR): 134 provas
   corridasbr (RS): 242 provas
   corridasbr/arquivo (RS): 445 provas
   ticketsports (RS): 19 provas
   roadrunners (RS): 116 provas
   corridasbr (SP): 476 provas
   corridasbr/arquivo (SP): 979 provas
-  ticketsports (SP): 239 provas
+  ticketsports (SP): 238 provas
   roadrunners (SP): 500 provas
   corridasbr (RJ): 212 provas
   corridasbr/arquivo (RJ): 335 provas
   ticketsports (RJ): 94 provas
-  roadrunners (RJ): 183 provas
+  roadrunners (RJ): 188 provas
   corridasbr (DF): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (DF): 113 provas
   ticketsports (DF): 10 provas
-  roadrunners (DF): 25 provas
+  roadrunners (DF): 26 provas
   corridasbr (MG): 269 provas
   corridasbr/arquivo (MG): 615 provas
-  ticketsports (MG): 35 provas
-  roadrunners (MG): 181 provas
-  fap: 660 provas
+  ticketsports (MG): 34 provas
+  roadrunners (MG): FALHOU (HTTPError: HTTP Error 522: <none>)
+  fap: 661 provas
   parceiros: 0 provas
 
 datas de ticketeira acertadas pela outra fonte: 4
@@ -42,8 +42,8 @@ datas de ticketeira acertadas pela outra fonte: 4
   ~ 2026-11-08 -> 2026-11-07  Movimento Rosa - 2º Edição [sympla]
   ~ 2026-11-28 -> 2026-11-29  Festival UP! [sympla]
 
-5652 provas distintas depois de fundir as fontes
-descartadas (36): fora de SC/PR/RS/SP/RJ/DF/MG ou nao sao corrida
+5604 provas distintas depois de fundir as fontes
+descartadas (35): fora de SC/PR/RS/SP/RJ/DF/MG ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
@@ -52,56 +52,55 @@ descartadas (36): fora de SC/PR/RS/SP/RJ/DF/MG ou nao sao corrida
   - 2026-06-21  Muzambinho - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - 2026-07-05  Machado - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - 2026-07-12  Prata - Corrida e Ciclismo em Louvor a Nossa Senhora [ciclismo]
-  - ... e mais 28
-restam 5616 provas
-concluintes: FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  - ... e mais 27
+restam 5569 provas
+concluintes: 1749 provas no Open Results, 1368 casadas, 43 com numero novo, 39 provas criadas
 concluintes (chiprun): 2 provas consultadas, 1 preenchidas
 concluintes (link do corridasbr): 4 provas consultadas, 0 preenchidas
-genero: 400 provas consultadas, 0 preenchidas
-organizador: 16 provas consultadas, 7 preenchidas
+genero: 400 provas consultadas, 391 preenchidas
+organizador: 6 provas consultadas, 3 preenchidas
 organizador: 33 provas preenchidas pela FCA
-organizador: 158 provas tiveram a grafia padronizada
+organizador: 159 provas tiveram a grafia padronizada
 percurso: 5 provas consultadas no arquivo, 4 preenchidas
 fca: 33 provas juntadas as que ja existiam
-resultado repetido nos dias de um mesmo evento: 1 dia(s) limpo(s)
-series: 12201 eventos com uma ou mais edicoes | 23 resultados parciais marcados
-historico: 18972 provas (16807 ja realizadas) | 1695 cidades
-novas nesta rodada: 54
+resultados repetidos removidos: 39
+series: 12212 eventos com uma ou mais edicoes | 23 resultados parciais marcados
+historico: 18986 provas (16815 ja realizadas) | 1696 cidades
+novas nesta rodada: 47
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-03-15  São Roque - Santa Running 2026
   + 2026-03-29  São Simão - Corrida S.S. Run
   + 2026-09-06  Salto - Corrida da Santa
-  + 2026-11-07  Cotia - HALLOWEEN - SSRUNCLUB
-  + 2026-11-13  Orlândia - Corrida FTTH Telecom
-  + 2026-11-15  Franca - Corre e Curti Corre Delax
+  + 2026-11-08  Porto Alegre - 16ª CAMINHADA SOLIDÁRIA da APAE PORTO ALEGRE
+  + 2026-11-14  São Bernardo do Campo - 2ª Edição Noel Kids Run
   + 2026-11-15  São Roque - SANTA RUNNING Etapa 2.0 - 2026
-  + 2026-11-21  São Joaquim da Barra - 7ª Night Run - Outubro Rosa
-  + 2026-11-21  São Sebastião do Paraíso - 1ª Corrida Rústica São Sebastião do Paraíso
-  + 2026-11-28  Orlândia - Corrida e Caminhada Intelli
-  + 2026-12-06  Iguaba Grande - Corrida da Padroeira 2026
-  + 2026-12-06  Prudente de Morais - 2ª Corrida Prudente em Movimento
-  + 2026-12-13  Olímpia - VZ Trail Run
-  + 2027-01-24  Angra dos Reis - GYM RUN 2027
+  + 2026-11-22  Confins - Corrida e caminhada: Confins em Movimento. Santuário da Mãe e Rainha
+  + 2026-11-29  Ferraz de Vasconcelos - 1ª Cãominhada de Ferraz de Vasconcelos Saúde e Bem-Estar Animal
+  + 2027-01-10  São Paulo - SAMPA RUN 5KM
+  + 2027-01-17  Belo Horizonte - CIRCUITO DO FOGO - 15ª EDIÇÃO
+  + 2027-02-03  Belo Horizonte - Caminhada para Mulheres
+  + 2027-04-18  Rio Negro - MEIA MARATONA INTERESTADUAL RIOMAFRA
+  + 2027-09-25  Siderópolis - FODAXMAN SOLO POINT FIVE 2027
 
-futuras que nao apareceram hoje (107) - possivel cancelamento, mantidas no historico:
-  ? 2026-10-23  São Paulo - OUTUBRO ROSA - PREVENÇÃO EM MOVIMENTO (visto pela ultima vez em 2026-10-20)
+futuras que nao apareceram hoje (160) - possivel cancelamento, mantidas no historico:
   ? 2026-10-24  Atibaia - MISSION S0020 | BRIZZEE SECRET MISSIONS (visto pela ultima vez em 2026-10-22)
+  ? 2026-10-24  Belo Horizonte - 3ª Caminhada Outubro Rosa - Bema Tintas (visto pela ultima vez em 2026-10-23)
   ? 2026-10-24  Imbituba - Imbituba 5k (visto pela ultima vez em 2026-10-04)
   ? 2026-10-24  Jaraguá do Sul - 1ª Corrida Húngara (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-24  Muzambinho - MUZAS DA CORRIDA NIGHT RUN (visto pela ultima vez em 2026-10-23)
   ? 2026-10-24  Nova Veneza - Passos da Fé Night Run 2026 (visto pela ultima vez em 2026-10-04)
+  ? 2026-10-24  Novo Hamburgo - WAKE UP | 8º EDIÇÃO (visto pela ultima vez em 2026-10-23)
   ? 2026-10-24  Passo Fundo - Lídera em Movimento - Caminhada Outubro Rosa (visto pela ultima vez em 2026-10-22)
+  ? 2026-10-24  Pilar do Sul - TREINÃO CORRIDA E CAMINHADA OUTUBRO ROSA - DESAFIO SHAPE UP (visto pela ultima vez em 2026-10-23)
   ? 2026-10-24  São Paulo - B-Day Thaís Run 3km (visto pela ultima vez em 2026-10-22)
-  ? 2026-10-24  São Paulo - Beauty Legs Day 2026 (visto pela ultima vez em 2026-10-21)
-  ? 2026-10-24  São Paulo - Caminhada Outubro Rosa e Novembro Azul (visto pela ultima vez em 2026-10-22)
-  ? 2026-10-24  São Roque - Outubro Rosa (visto pela ultima vez em 2026-10-22)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['', 'Arena Multiuso', 'Brejo Bonito', 'Estância das Amendoeiras', 'Paty dos Alferes', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Varpa', 'Vila Ophélia', 'a 4 km do Centro de Dona Emma']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['', 'Arena Multiuso', 'Brejo Bonito', 'Paty dos Alferes', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Varpa', 'Vila Ophélia', 'a 4 km do Centro de Dona Emma']
 
 == perfis ==
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,325,407 bytes)
+artifact.html e index.html gerados (2,328,623 bytes)
 
-RESULTADO: pronto para publicar (coleta de 23/10/2026).
+RESULTADO: pronto para publicar (coleta de 24/10/2026).
