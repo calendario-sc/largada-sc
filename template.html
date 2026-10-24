@@ -2963,12 +2963,14 @@ function render(){
     const datas = res.map(r => r.data).sort();
     const que = state.treinos ? "Treinos" : state.anos.size ? "Provas de " + [...state.anos].sort().join(", ")
       : { proximas:"Próximas provas", realizadas:"Provas realizadas", todas:"Todas as provas" }[state.escopo];
-    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : state.uf ? NOMES_UF[state.uf] : (UF ? NOME_ESTADO : "todo o Brasil"));
+    // "em Florianópolis", "na Bahia", "no Paraná", "em todo o Brasil": a preposicao vem de ESTADOS.
+    const onde = state.cidade ? "em " + state.cidade : state.regioes.size ? "em " + [...state.regioes].join(", ")
+      : (state.uf || UF) ? ESTADOS[state.uf || UF].em + " " + NOMES_UF[state.uf || UF] : "em todo o Brasil";
     let periodo = "";
     if (datas.length) periodo = state.escopo === "proximas" && !state.anos.size && !state.meses.size
       ? "de hoje até " + br(datas[datas.length - 1]) : "de " + br(datas[0]) + " a " + br(datas[datas.length - 1]);
     const leg = document.getElementById("stats-legenda");
-    leg.replaceChildren(el("b", { textContent: que }), document.createTextNode(" em " + onde + (periodo ? ", " + periodo : "") + ":"));
+    leg.replaceChildren(el("b", { textContent: que }), document.createTextNode(" " + onde + (periodo ? ", " + periodo : "") + ":"));
   })();
   document.getElementById("s-corridas").textContent = String(nProvas);
   document.getElementById("s-cidades").textContent = String(cidades.size);

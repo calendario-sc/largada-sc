@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-08-30-corrida-do-sesi-colatina@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Corrida do SESI - Colatina 2026
@@ -23,8 +23,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-do-sesi-co
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-08-30-maratona-de-vitoria-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:MARATONA DE VITÓRIA 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-maratona-de-vitoria-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-maratona-de-vitori
+ a-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-06-corrida-betel-escolha-viver-serra@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:Corrida Betel – Escolha Viver 2026
@@ -36,9 +49,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-betel-esco
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-13-corrida-da-guarda-de-anchieta@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:CORRIDA DA GUARDA DE ANCHIETA 2026
+LOCATION:Anchieta - ES
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-corrida-da-guarda-de-anchieta/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-da-guarda-
+ de-anchieta/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-13-circuito-capixaba-de-montanhas-etapa-matilde-alfredo-chaves@
  cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Circuito Capixaba de Montanhas - Etapa Matilde 2026
@@ -52,7 +78,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-corrida-farmes-vila-velha@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Corrida Farmes 2026
@@ -66,7 +92,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-corrida-do-coracao-cachoeiro-de-itapemirim@cuponsdecorrida.c
  om.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Corrida do Coração 2026
@@ -80,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-corrida-do-rio-branco-vitoria@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Corrida do Rio Branco 2026
@@ -93,7 +119,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-meia-maratona-da-serra@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Meia Maratona da Serra 2026
@@ -106,7 +132,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-suzano-faz-bem-aracruz@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Suzano faz Bem 2026
@@ -120,7 +146,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-1-corrida-do-hortiverdi-especial-73-anos-rio-novo-do-sul@cup
  onsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:1ª Corrida Do Hortiverdi - Especial 73 Anos 2026
@@ -134,7 +160,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-1-corrida-pag-dores-do-rio-preto@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:1ª Corrida PAG 2026
@@ -147,7 +173,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-corrida-apae-serra@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Corrida APAE 2026
@@ -160,7 +186,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-corrida-do-sesi-etapa-guarapari@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Corrida do SESI - Etapa Guarapari 2026
@@ -173,7 +199,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-corrida-e-caminhada-vports-vitoria@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Corrida e Caminhada Vports 2026
@@ -185,8 +211,36 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-corrida-e-caminhad
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-20-mato-dentro-extreme-2026-divino-de-sao-lourenco@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:MATO DENTRO EXTREME 2026
+LOCATION:Divino de São Lourenço - ES
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-mato-dentro-extreme-2026-divino-de-sao-lou
+ renco/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-mato-dentro-extrem
+ e-2026-divino-de-sao-lourenco/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-23-corrida-garotada-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:23ª Corrida Garotada 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 2km\, 1km\, 0km\nCupons e detalhes: https://w
+ ww.cuponsdecorrida.com.br/provas/2026-09-26-23-corrida-garotada-vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-23-corrida-garotad
+ a-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-26-5-cachorrida-garoto-vitoria@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
 SUMMARY:5ª Cachorrida Garoto 2026
@@ -199,7 +253,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-10-milhas-garoto-35-edicao-vitoria@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:10 Milhas Garoto - 35ª Edição 2026
@@ -211,9 +265,35 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-10-milhas-garoto-3
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-27-dez-milhas-garoto-2026-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Dez Milhas Garoto 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 16km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-09-27-dez-milhas-garoto-2026-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-dez-milhas-garoto-
+ 2026-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-03-corrida-espetaria-royal-aracruz@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:CORRIDA ESPETARIA ROYAL 2026
+LOCATION:Aracruz - ES
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-03-corrida-espetaria-royal-aracruz/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-03-corrida-espetaria-
+ royal-aracruz/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-2-corrida-nossa-senhora-aparecida-piuma@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:2ª Corrida Nossa Senhora Aparecida 2026
@@ -226,7 +306,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-corrida-extrabom-etapa-serra@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Corrida Extrabom - Etapa Serra 2026
@@ -240,7 +320,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-corrida-e-caminhada-caminho-da-fe-serra@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Corrida e Caminhada Caminho da Fé 2026
@@ -253,7 +333,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-corridas-unimed-vitoria@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Corridas Unimed - Vitória 2026
@@ -266,7 +346,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-12-corrida-passos-de-maria-vitoria@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261012
 DTEND;VALUE=DATE:20261013
 SUMMARY:Corrida Passos de Maria 2026
@@ -279,7 +359,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-12-fun-collor-run-vila-velha@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261012
 DTEND;VALUE=DATE:20261013
 SUMMARY:Fun Collor Run 2026
@@ -293,7 +373,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-17-posto-cavil-night-run-bom-jesus-do-norte@cuponsdecorrida.com
  .br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Posto Cavil Night Run 2026
@@ -305,8 +385,35 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-posto-cavil-night-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-18-construrunner-2026-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:CONSTRURUNNER 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-18-construrunner-2026-vila-velha
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-construrunner-2026
+ -vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corrida-herois-do-fogo-2026-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:CORRIDA HEROIS DO FOGO 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-corrida-herois-do-fogo-2026-vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-herois-do-
+ fogo-2026-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-18-corre-itaipava-run-itapemirim@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Corre Itaipava Run 2026
@@ -319,7 +426,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-corrida-construrunners-vila-velha@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Corrida ConstruRunners 2026
@@ -332,7 +439,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-corrida-herois-do-fogo-vila-velha@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Corrida Heróis do Fogo 2026
@@ -345,7 +452,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-corrida-do-sesi-etapa-linhares@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Corrida do SESI - Etapa Linhares 2026
@@ -358,7 +465,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-meia-maratona-dos-reis-magos-serra@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Meia Maratona dos Reis Magos 2026
@@ -367,6 +474,1174 @@ DESCRIPTION:Corrida de rua · 21km\, 5km\nCupons e detalhes: https://www.cu
  ponsdecorrida.com.br/provas/2026-10-18-meia-maratona-dos-reis-magos-serra/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-meia-maratona-dos-
  reis-magos-serra/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-2-corrida-vila-araguaya-marechal-floriano@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:2ª Corrida Vila Araguaya 2026
+LOCATION:Marechal Floriano - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-31-2-corrida-vila-araguaya-marechal-floriano/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-2-corrida-vila-ara
+ guaya-marechal-floriano/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-anchieta-night-run@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Anchieta Night Run 2026
+LOCATION:Anchieta - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-31-anchieta-night-run/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-anchieta-night-run
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-corrida-outubro-rosa-2-edicao-cachoeiro-de-itapemirim@cupons
+ decorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Corrida Outubro Rosa - 2ª Edição 2026
+LOCATION:Cachoeiro de Itapemirim - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-31-corrida-outubro-rosa-2-edicao-cachoeiro-de
+ -itapemirim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-corrida-outubro-ro
+ sa-2-edicao-cachoeiro-de-itapemirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-santander-night-run-etapa-1-vitoria-2026@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Santander Night Run - Etapa 1 - Vitória 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-31-santander-night-run-etapa-1-vitoria
+ -2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-santander-night-ru
+ n-etapa-1-vitoria-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-v-caminhada-nos-trilhos-das-montanhas-capixabas-a-grande-tra
+ vessia-da-antiga-le@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:V Caminhada nos Trilhos das Montanhas Capixabas: A Grande Travessia
+  da Antiga Leopoldina Railway. 2026
+LOCATION:Viana - ES
+DESCRIPTION:Corrida de trail\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-10-31-v-caminhada-nos-trilhos-das-montanhas-capixabas
+ -a-grande-travessia-da-antiga-le/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-v-caminhada-nos-tr
+ ilhos-das-montanhas-capixabas-a-grande-travessia-da-antiga-le/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-1-corrida-central-supermercados-serra@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:1ª Corrida Central Supermercados 2026
+LOCATION:Serra - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-01-1-corrida-central-supermercados-ser
+ ra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-1-corrida-central-
+ supermercados-serra/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-1-corrida-iz1-telecom-marataizes@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:1ª Corrida IZ1 Telecom 2026
+LOCATION:Marataízes - ES
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/CORRIDA+IZ1+TELECOM+-88108\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-01-1-corrida-iz1-telecom-marataizes/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-1-corrida-iz1-tele
+ com-marataizes/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-20-corrida-faesa-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:20ª Corrida FAESA 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/+20%C2%AA+CORRIDA+FAESA-88171\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2026-11-01-20-corrida-faesa-vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-20-corrida-faesa-v
+ itoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-corrida-mef-2-edicao-abraca-ela-vila-velha@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:CORRIDA MEF - 2ª EDIÇÃO ABRAÇA ELA 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
+ rts.com.br/e/CORRIDA+MEF+-+2%C2%AA+EDI%C3%87%C3%83O+ABRA%C3%87A+ELA-87774\
+ nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-01-c
+ orrida-mef-2-edicao-abraca-ela-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-mef-2-edic
+ ao-abraca-ela-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-corrida-e-caminhada-aabb-mimoso-do-sul@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Corrida e Caminhada AABB Mimoso do Sul 2026
+LOCATION:Mimoso do Sul - ES
+DESCRIPTION:Caminhada · 8km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-11-01-corrida-e-caminhada-aabb-mimoso-do-sul/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-e-caminhad
+ a-aabb-mimoso-do-sul/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-corrida-e-caminhada-sest-senat-sao-mateus@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Corrida e Caminhada SEST SENAT - São Mateus 2026
+LOCATION:São Mateus - ES
+DESCRIPTION:Caminhada · 3km\, 5km\, 10km\nCupons e detalhes: https://www.c
+ uponsdecorrida.com.br/provas/2026-11-01-corrida-e-caminhada-sest-senat-sao
+ -mateus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-e-caminhad
+ a-sest-senat-sao-mateus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-maratona-pedra-azul-domingos-martins@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Maratona Pedra Azul 2026
+LOCATION:Domingos Martins - ES
+DESCRIPTION:Corrida de rua · 42km\, 21km\, 11km\, 6km\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2026-11-01-maratona-pedra-azul-d
+ omingos-martins/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-maratona-pedra-azu
+ l-domingos-martins/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-2-corrida-dare-piuma@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:2ª Corrida Daré 2026
+LOCATION:Piúma - ES
+DESCRIPTION:Corrida de rua · 6km\nInscrição: https://www.ticketsports.co
+ m.br/e/CORRIDA+PADARIA+DAR%C3%89-88086\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-08-2-corrida-dare-piuma/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-2-corrida-dare-piu
+ ma/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-2-corrida-outubro-rosa-novembro-azul-sao-mateus@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:2ª Corrida Outubro Rosa Novembro Azul 2026
+LOCATION:São Mateus - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-2-corrida-outubro-rosa-novembro-azul-sao-m
+ ateus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-2-corrida-outubro-
+ rosa-novembro-azul-sao-mateus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-3-milhas-camelo-pancas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:3 Milhas Camelo 2026
+LOCATION:Pancas - ES
+DESCRIPTION:Corrida de rua · 4.5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-11-08-3-milhas-camelo-pancas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-3-milhas-camelo-pa
+ ncas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-corrida-assai-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Corrida Assaí – Vitória 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/CORRIDA+ASSA%C3%8D+-+VIT%C3%93RIA-88119\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-08-corrida-assai-vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-corrida-assai-vito
+ ria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-corrida-iron-serra@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Corrida Iron 2026
+LOCATION:Serra - ES
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 7km\nCupons e detalhes: https://w
+ ww.cuponsdecorrida.com.br/provas/2026-11-08-corrida-iron-serra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-corrida-iron-serra
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-corrida-da-cidadania-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Corrida da Cidadania 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CORRIDA+DA+CIDADANIA+DE+VIT%C3%93RIA-88678\nCupons e detalhe
+ s: https://www.cuponsdecorrida.com.br/provas/2026-11-08-corrida-da-cidadan
+ ia-vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-corrida-da-cidadan
+ ia-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-dinamus-run-linhares@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Dinamus Run 2026
+LOCATION:Linhares - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-dinamus-run-linhares/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-dinamus-run-linhar
+ es/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-corrida-luzes-da-cidade-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Corrida Luzes da Cidade 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 7km\nInscrição: https://www.ticketsports.co
+ m.br/e/CORRIDA+LUZES+DA+CIDADE+-+A+MAIOR+NIGHT+RUN+DO+ES-87741\nCupons e d
+ etalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-14-corrida-luze
+ s-da-cidade-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-corrida-luzes-da-c
+ idade-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-tri-versao-cariacica@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:TRI-VERSÃO 2026
+LOCATION:Cariacica - ES
+DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
+ TRI-VERS%C3%83O-88566\nCupons e detalhes: https://www.cuponsdecorrida.com.
+ br/provas/2026-11-14-tri-versao-cariacica/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-tri-versao-cariaci
+ ca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-1-corrida-oab-guarapari-5k@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:1ª CORRIDA OAB GUARAPARI 5K 2026
+LOCATION:Guarapari - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/1%C2%AA+CORRIDA+OAB+GUARAPARI+5K-88641\nCupons e detalhes: h
+ ttps://www.cuponsdecorrida.com.br/provas/2026-11-15-1-corrida-oab-guarapar
+ i-5k/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-1-corrida-oab-guar
+ apari-5k/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-rustica-da-aabb-guacui-5-edicao@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:CORRIDA RÚSTICA da AABB GUAÇUÍ - 5ª EDIÇÃO 2026
+LOCATION:Guaçuí - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-corrida-rustica-da-aabb-guacui-5-edicao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-rustica-da
+ -aabb-guacui-5-edicao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-100-da-marinha-de-minas-boa-esperanca@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Corrida 100 da Marinha de Minas 2026
+LOCATION:Boa Esperança - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-15-corrida-100-da-marinha-de-minas-boa
+ -esperanca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-100-da-mar
+ inha-de-minas-boa-esperanca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-da-maior-torcida-mengo-2026-vitoria@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Corrida da Maior Torcida (Mengo) 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 6.8km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-11-15-corrida-da-maior-torcida-mengo-2026-vito
+ ria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-da-maior-t
+ orcida-mengo-2026-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-santander-track-fields-run-series-shopping-vitoria-ii@cupons
+ decorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Santander Track&Fields Run Series - Shopping Vitória II 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-15-santander-track-fields-run-series-s
+ hopping-vitoria-ii/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-santander-track-fi
+ elds-run-series-shopping-vitoria-ii/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-2-corrida-zacimba-gaba-sao-mateus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:2ª Corrida Zacimba Gaba 2026
+LOCATION:São Mateus - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-20-2-corrida-zacimba-gaba-sao-mateus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-2-corrida-zacimba-
+ gaba-sao-mateus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-corrida-cibien-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Corrida Cibien 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 6.5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-11-20-corrida-cibien-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-corrida-cibien-vil
+ a-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-night-run-vitoria-airport@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Night Run Vitória Airport 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nInscrição: https://www.ti
+ cketsports.com.br/e/CORRIDA+NIGHT+RUN+VIT%C3%93RIA+AIRPORT-88403\nCupons e
+  detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-20-night-run-
+ vitoria-airport/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-night-run-vitoria-
+ airport/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-festival-joao-moreno-2026-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:FESTIVAL JOÃO MORENO 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 1km\, 2.5km\, 5km\, 6.2km\, 11km\nCupons e de
+ talhes: https://www.cuponsdecorrida.com.br/provas/2026-11-21-festival-joao
+ -moreno-2026-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-festival-joao-more
+ no-2026-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-13-corrida-tribuna-ruas-da-cidade-vitoria@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:13ª Corrida Tribuna Ruas da Cidade 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-22-13-corrida-tribuna-ruas-da-cidade-v
+ itoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-13-corrida-tribuna
+ -ruas-da-cidade-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-1-corrida-pestalozzi-em-movimento-agua-doce-do-norte@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:1ª Corrida Pestalozzi Em Movimento 2026
+LOCATION:Água Doce do Norte - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-22-1-corrida-pestalozzi-em-movimento-agua-doc
+ e-do-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-pestaloz
+ zi-em-movimento-agua-doce-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-maratona-internacional-es-itapemirim@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Maratona Internacional ES 2026
+LOCATION:Itapemirim - ES
+DESCRIPTION:Corrida de rua · 42km\, 21km\, 8km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-22-maratona-internacional-es-it
+ apemirim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-maratona-internaci
+ onal-es-itapemirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-27-insanity-mountain-skyrunning-forno-grande-vk-castelo@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:Insanity Mountain Skyrunning - Forno Grande - VK 2026
+LOCATION:Castelo - ES
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/INSANITY+MOUNTAIN+FORNO+GRANDE+2026-88078\nCupons e detalhes: https
+ ://www.cuponsdecorrida.com.br/provas/2026-11-27-insanity-mountain-skyrunni
+ ng-forno-grande-vk-castelo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-27-insanity-mountain-
+ skyrunning-forno-grande-vk-castelo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-corrida-solidaria-live-2026-vila-velha@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Corrida Solidária Live 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-11-28-corrida-solidaria-live-2026-v
+ ila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-corrida-solidaria-
+ live-2026-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-insanity-mountain-skyrunning-forno-grande-castelo@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Insanity Mountain Skyrunning - Forno Grande 2026
+LOCATION:Castelo - ES
+DESCRIPTION:Corrida de rua · 55km\, 35km\, 21km\, 12km\nCupons e detalhes:
+  https://www.cuponsdecorrida.com.br/provas/2026-11-28-insanity-mountain-sk
+ yrunning-forno-grande-castelo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-insanity-mountain-
+ skyrunning-forno-grande-castelo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-1-apae-running-baixo-guandu@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:1ª Apae Running 2026
+LOCATION:Baixo Guandu - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-1-apae-running-baixo-guandu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-apae-running-bai
+ xo-guandu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-1-corrida-hero-run-marataizes@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:1ª Corrida Hero Run 2026
+LOCATION:Marataízes - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-1-corrida-hero-run-marataizes/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-corrida-hero-run
+ -marataizes/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-6-desafio-linhares-x-pontal@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:6º Desafio Linhares x Pontal 2026
+LOCATION:Linhares - ES
+DESCRIPTION:Corrida de rua · 50km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-29-6-desafio-linhares-x-pontal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-6-desafio-linhares
+ -x-pontal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-corre-e-confia-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:CORRIDA CORRE E CONFIA 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-29-corrida-corre-e-confia-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-corre-e-co
+ nfia-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-grupo-aguia-branca-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:CORRIDA GRUPO AGUIA BRANCA 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
+ rts.com.br/e/CORRIDA+GRUPO+AGUIA+BRANCA-88345\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-grupo-aguia-branca-vi
+ toria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-grupo-agui
+ a-branca-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-circuito-de-corridas-move-on-etapa-campeonato-estadual-capix
+ aba-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Circuito de Corridas Move On - Etapa Campeonato Estadual Capixaba 2
+ 026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-29-circuito-de-corridas-move-on-etapa-
+ campeonato-estadual-capixaba-vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-circuito-de-corrid
+ as-move-on-etapa-campeonato-estadual-capixaba-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-circuito-do-bem-2026-ibatiba@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Circuito do Bem 2026 - Ibatiba
+LOCATION:Ibatiba - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CIRCUITO+DO+BEM+2026+-88162\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-11-29-circuito-do-bem-2026-ibatiba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-circuito-do-bem-20
+ 26-ibatiba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-grupo-aguia-branca-80-anos-vila-velha@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Corrida Grupo Águia Branca 80 Anos 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-29-corrida-grupo-aguia-branca-80-anos-
+ vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-grupo-agui
+ a-branca-80-anos-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-em-movimento-pela-vida-cachoeiro-de-itapemirim@cupon
+ sdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Corrida em Movimento pela Vida 2026
+LOCATION:Cachoeiro de Itapemirim - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-corrida-em-movimento-pela-vida-cachoeiro-d
+ e-itapemirim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-em-movimen
+ to-pela-vida-cachoeiro-de-itapemirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-insanity-mountain-forno-grande-2026-castelo@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:INSANITY MOUNTAIN FORNO GRANDE 2026
+LOCATION:Castelo - ES
+DESCRIPTION:Corrida de rua · 12km\, 21km\, 35km\, 55km\, 60km\nCupons e de
+ talhes: https://www.cuponsdecorrida.com.br/provas/2026-11-29-insanity-moun
+ tain-forno-grande-2026-castelo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-insanity-mountain-
+ forno-grande-2026-castelo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-porto-saude-track-field-experience-running-linhares@cuponsde
+ corrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Porto Saúde Track&Field Experience Running - Linhares 2026
+LOCATION:Linhares - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-29-porto-saude-track-field-experience-
+ running-linhares/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-porto-saude-track-
+ field-experience-running-linhares/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-1-corrida-fap-edicao-santa-teresa@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:1ª Corrida FAP – Edição Santa Teresa 2026
+LOCATION:Santa Teresa - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-05-1-corrida-fap-edicao-santa-teresa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-1-corrida-fap-edic
+ ao-santa-teresa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-canario-night-run-pedro-canario@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Canário Night Run 2026
+LOCATION:Pedro Canário - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-05-canario-night-run-pedro-canario/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-canario-night-run-
+ pedro-canario/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-iriri-night-run-2-edicao-anchieta@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:IRIRI NIGHT RUN - 2ª EDIÇÃO 2026
+LOCATION:Anchieta - ES
+DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
+ IRIRI+NIGHT+RUN+-+2%C2%AA+EDI%C3%87%C3%83O-88513\nCupons e detalhes: https
+ ://www.cuponsdecorrida.com.br/provas/2026-12-05-iriri-night-run-2-edicao-a
+ nchieta/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-iriri-night-run-2-
+ edicao-anchieta/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-nova-almeida-nigth-run-serra@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Nova Almeida Nigth Run 2026
+LOCATION:Serra - ES
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-05-nova-almeida-nigth-run-serra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-nova-almeida-nigth
+ -run-serra/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-2-corrida-corredores-de-guarapari-2026@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:2ª CORRIDA CORREDORES DE GUARAPARI 2026
+LOCATION:Guarapari - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/2%C2%AA+CORRIDA++CORREDORES+DE+GUARAPARI+2026-88714\nCupons 
+ e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-corrida
+ -corredores-de-guarapari-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-corrida-corredor
+ es-de-guarapari-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-2-edicao-corrida-da-torcida-do-flamengo-itapemirim-es@cupons
+ decorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:2° EDIÇÃO CORRIDA DA TORCIDA DO FLAMENGO ITAPEMIRIM ES 2026
+LOCATION:Itapemirim - ES
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/2%C2%B0+EDI%C3%87%C3%83O+CORRIDA+DA+TORCIDA+DO+FLAMENGO+ITAPEMIRIM+
+ ES-87506\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/202
+ 6-12-06-2-edicao-corrida-da-torcida-do-flamengo-itapemirim-es/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-edicao-corrida-d
+ a-torcida-do-flamengo-itapemirim-es/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-corrida-hospital-sao-camilo-aracruz@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Corrida Hospital São Camilo 2026
+LOCATION:Aracruz - ES
+DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
+ rts.com.br/e/CORRIDA+HOSPITAL+S%C3%83O+CAMILO+-+TODA+LINHA+DE+CHEGADA%2C+M
+ ERECE+UM+NOVO+COME%C3%87O-88456\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-12-06-corrida-hospital-sao-camilo-aracruz/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-corrida-hospital-s
+ ao-camilo-aracruz/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-corrida-solidaria-da-tess-contabilidade-2026-linhares@cupons
+ decorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Corrida Solidária da Tess Contabilidade 2026
+LOCATION:Linhares - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-06-corrida-solidaria-da-tess-contabili
+ dade-2026-linhares/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-corrida-solidaria-
+ da-tess-contabilidade-2026-linhares/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-corrida-do-sesi-cachoeiro-de-itapemirim@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Corrida do SESI - Cachoeiro de Itapemirim 2026
+LOCATION:Cachoeiro de Itapemirim - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-06-corrida-do-sesi-cachoeiro-de-itapem
+ irim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-corrida-do-sesi-ca
+ choeiro-de-itapemirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-grand-premium-brasil-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Grand Premium Brasil 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 15km\, 10km\, 5km\, 3km\nCupons e detalhes: h
+ ttps://www.cuponsdecorrida.com.br/provas/2026-12-06-grand-premium-brasil-v
+ itoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-grand-premium-bras
+ il-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-ii-corrida-e-caminhada-rural-circuito-roda-d-agua-2025-caria
+ cica@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:II Corrida e Caminhada Rural - Circuito Roda D´água 2025 2026
+LOCATION:Cariacica - ES
+DESCRIPTION:Caminhada · 2km\, 7km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-12-06-ii-corrida-e-caminhada-rural-circuito-rod
+ a-d-agua-2025-cariacica/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-ii-corrida-e-camin
+ hada-rural-circuito-roda-d-agua-2025-cariacica/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-ii-corridao-do-pelopes-de-vila-velha-es@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:II Corridão do PELOPES de Vila Velha/ES 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-06-ii-corridao-do-pelopes-de-vila-velha-es/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-ii-corridao-do-pel
+ opes-de-vila-velha-es/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-12-corrida-de-aniversario-diane-ediane-irupi@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Corrida de Aniversário Diane & Ediane 2026
+LOCATION:Irupi - ES
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-12-corrida-de-aniversario-diane-ediane-irupi/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-corrida-de-anivers
+ ario-diane-ediane-irupi/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-1-corrida-do-meio-ambiente-runneran-jacaraipe-2026-serra@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:1ª CORRIDA do MEIO AMBIENTE RUNNERAN JACARAÍPE 2026
+LOCATION:Serra - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-13-1-corrida-do-meio-ambiente-runneran-jacara
+ ipe-2026-serra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-1-corrida-do-meio-
+ ambiente-runneran-jacaraipe-2026-serra/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-2-corrida-das-montanhas-divino-de-sao-lourenco@cuponsdecorri
+ da.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:2ª Corrida das Montanhas 2026
+LOCATION:Divino de São Lourenço - ES
+DESCRIPTION:Corrida de trail · 6km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-12-13-2-corrida-das-montanhas-divino-de-sao-lo
+ urenco/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-2-corrida-das-mont
+ anhas-divino-de-sao-lourenco/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-6-corrida-e-caminhada-natal-solidario-baixo-guandu@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:6ª Corrida e Caminhada Natal Solidário 2026
+LOCATION:Baixo Guandu - ES
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-12-13-6-corrida-e-caminhada-natal-solidario-baixo-gua
+ ndu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-6-corrida-e-caminh
+ ada-natal-solidario-baixo-guandu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corra-pela-natureza-serra@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:CORRA PELA NATUREZA 2026
+LOCATION:Serra - ES
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-13-corra-pela-natureza-serra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corra-pela-naturez
+ a-serra/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-58-anos-do-gae-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Corrida 58 anos do GAE 2026
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-13-corrida-58-anos-do-gae-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-58-anos-do
+ -gae-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-dani-se-vou-correr-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Corrida Dani-se Vou Correr 2026
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CORRIDA+DANI-SE+VOU+CORRER-88405\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-dani-se-vou-correr-v
+ itoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-dani-se-vo
+ u-correr-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-19-imw-night-run-jesus-o-nosso-natal-3-edicao-guarapari@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:IMW Night Run - Jesus o nosso natal 3ª edição 2026
+LOCATION:Guarapari - ES
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\nInscrição: https://www.tickets
+ ports.com.br/e/IMW+Night+Run+-+Jesus+o+nosso+natal+3%C2%AA+edi%C3%A7%C3%A3
+ o-88338\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026
+ -12-19-imw-night-run-jesus-o-nosso-natal-3-edicao-guarapari/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-19-imw-night-run-jesu
+ s-o-nosso-natal-3-edicao-guarapari/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-20-1-corrida-de-vila-valerio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:1ª Corrida de Vila Valério 2026
+LOCATION:Vila Valério - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-20-1-corrida-de-vila-valerio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-1-corrida-de-vila-
+ valerio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-20-circuito-das-estacoes-2026-verao-vitoria@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Circuito das Estações 2026 - Verão - Vitória
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-20-circuito-das-estacoes-2026-verao-vi
+ toria/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-circuito-das-estac
+ oes-2026-verao-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-09-2-corre-siri-corrida-e-caminhada-marataizes@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+SUMMARY:2º CORRE SIRI - Corrida e Caminhada 2027
+LOCATION:Marataízes - ES
+DESCRIPTION:Caminhada · 10km\nCupons e detalhes: https://www.cuponsdecorri
+ da.com.br/provas/2027-01-09-2-corre-siri-corrida-e-caminhada-marataizes/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-09-2-corre-siri-corri
+ da-e-caminhada-marataizes/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-10-allp-fit-run-sao-mateus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:Allp Fit Run 2027
+LOCATION:São Mateus - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2027-01-10-allp-fit-run-sao-mateus/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-10-allp-fit-run-sao-m
+ ateus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-24-corrida-5-milhas-aracruz-interpraias@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+SUMMARY:Corrida 5 Milhas Aracruz Interpraias 2027
+LOCATION:Aracruz - ES
+DESCRIPTION:Corrida de rua · 5 milhas\nInscrição: https://www.ticketspor
+ ts.com.br/e/CORRIDA+5+MILHAS+ARACRUZ+INTERPRAIAS+2027-88447\nCupons e deta
+ lhes: https://www.cuponsdecorrida.com.br/provas/2027-01-24-corrida-5-milha
+ s-aracruz-interpraias/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-24-corrida-5-milhas-a
+ racruz-interpraias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-24-corrida-corre-e-confia-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+SUMMARY:Corrida Corre e Confia 2027
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 4km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/CORRIDA+CORRE+E+CONFIA+-87693\nCupons e detalhes: http
+ s://www.cuponsdecorrida.com.br/provas/2027-01-24-corrida-corre-e-confia-vi
+ la-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-24-corrida-corre-e-co
+ nfia-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-31-corrida-e-caminhada-cristo-nossa-praia-2027-vila-velha@cupon
+ sdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Corrida e Caminhada Cristo Nossa Praia 2027
+LOCATION:Vila Velha - ES
+DESCRIPTION:Caminhada · 5km\nInscrição: https://www.ticketsports.com.br/
+ e/CORRIDA+E+CAMINHADA+CRISTO+NOSSA+PRAIA+2027-88665\nCupons e detalhes: ht
+ tps://www.cuponsdecorrida.com.br/provas/2027-01-31-corrida-e-caminhada-cri
+ sto-nossa-praia-2027-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-corrida-e-caminhad
+ a-cristo-nossa-praia-2027-vila-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-21-cats-run-vila-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270222
+SUMMARY:Cats Run 2027
+LOCATION:Vila Velha - ES
+DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
+ rts.com.br/e/CATS+RUN+ES+2027+-88107\nCupons e detalhes: https://www.cupon
+ sdecorrida.com.br/provas/2027-02-21-cats-run-vila-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-21-cats-run-vila-velh
+ a/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-04-corrida-de-obstaculos-selva-radical-sooretama@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270404
+DTEND;VALUE=DATE:20270405
+SUMMARY:Corrida de Obstáculos Selva Radical 2027
+LOCATION:Sooretama - ES
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-04-04-corrida-de-obstaculos-selva-radical-sooret
+ ama/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-04-corrida-de-obstacu
+ los-selva-radical-sooretama/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-02-trail-race-etapa-rota-imperial-viana@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270502
+DTEND;VALUE=DATE:20270503
+SUMMARY:Trail Race - Etapa Rota Imperial 2027
+LOCATION:Viana - ES
+DESCRIPTION:Corrida de trail · 23km\, 12km\, 7km\nCupons e detalhes: https
+ ://www.cuponsdecorrida.com.br/provas/2027-05-02-trail-race-etapa-rota-impe
+ rial-viana/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-02-trail-race-etapa-r
+ ota-imperial-viana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-09-corrida-maconica-cidade-de-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270509
+DTEND;VALUE=DATE:20270510
+SUMMARY:Corrida Maçônica Cidade de Vitória 2027
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 3km\, 6km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/CORRIDA+MA%C3%87%C3%94NICA+CIDADE+DE+VIT%C3%93RIA+2027
+ -88646\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-
+ 05-09-corrida-maconica-cidade-de-vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-09-corrida-maconica-c
+ idade-de-vitoria/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-07-04-8-corrida-da-laranja-meia-maratona-2027-jeronimo-monteiro@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270704
+DTEND;VALUE=DATE:20270705
+SUMMARY:8ª CORRIDA da LARANJA - MEIA MARATONA 2027
+LOCATION:Jerônimo Monteiro - ES
+DESCRIPTION:Corrida de rua · 21km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-07-04-8-corrida-da-laranja-meia-maratona-2027-j
+ eronimo-monteiro/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-07-04-8-corrida-da-laran
+ ja-meia-maratona-2027-jeronimo-monteiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-28-maratona-de-vitoria-10-5km@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270828
+DTEND;VALUE=DATE:20270829
+SUMMARY:Maratona de Vitória - 10/5km 2027
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2027-08-28-maratona-de-vitoria-10-5km/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-08-28-maratona-de-vitori
+ a-10-5km/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-29-maratona-de-vitoria@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270829
+DTEND;VALUE=DATE:20270830
+SUMMARY:Maratona de Vitória 2027
+LOCATION:Vitória - ES
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\, 42km\nInscrição: https:
+ //www.ticketsports.com.br/e/MARATONA+DE+VIT%C3%93RIA+2027-88251\nCupons e 
+ detalhes: https://www.cuponsdecorrida.com.br/provas/2027-08-29-maratona-de
+ -vitoria/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-08-29-maratona-de-vitori
+ a/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

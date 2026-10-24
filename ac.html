@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Calendário completo de corridas de rua e trail em Acre 2026: datas, distâncias, inscrições, resultados e cupons de desconto.">
+<meta name="description" content="Calendário completo de corridas de rua e trail em Acre 2026: datas, distâncias, inscrições, resultados e cupons de desconto em Rio Branco e mais 1 cidades.">
 <link rel="canonical" href="https://www.cuponsdecorrida.com.br/ac.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cupons de Corrida">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Calendário de Corridas no Acre (AC) 2026 | Cupons de Corrida">
-<meta property="og:description" content="Calendário completo de corridas de rua e trail em Acre 2026: datas, distâncias, inscrições, resultados e cupons de desconto.">
+<meta property="og:description" content="Calendário completo de corridas de rua e trail em Acre 2026: datas, distâncias, inscrições, resultados e cupons de desconto em Rio Branco e mais 1 cidades.">
 <meta property="og:url" content="https://www.cuponsdecorrida.com.br/ac.html">
 <meta property="og:image" content="https://www.cuponsdecorrida.com.br/og-cupons-de-corrida.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Cupons">
 <meta name="mobile-web-app-capable" content="yes">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Cupons de Corrida","url":"https://www.cuponsdecorrida.com.br/","inLanguage":"pt-BR"},{"@type":"Organization","name":"Cupons de Corrida","url":"https://www.cuponsdecorrida.com.br/","logo":"https://www.cuponsdecorrida.com.br/og-cupons-de-corrida.png","email":"contato@cuponsdecorrida.com.br"},{"@type":"WebPage","name":"Calendário de Corridas no Acre (AC) 2026 | Cupons de Corrida","url":"https://www.cuponsdecorrida.com.br/ac.html","description":"Calendário completo de corridas de rua e trail em Acre 2026: datas, distâncias, inscrições, resultados e cupons de desconto."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Cupons de Corrida","url":"https://www.cuponsdecorrida.com.br/","inLanguage":"pt-BR"},{"@type":"Organization","name":"Cupons de Corrida","url":"https://www.cuponsdecorrida.com.br/","logo":"https://www.cuponsdecorrida.com.br/og-cupons-de-corrida.png","email":"contato@cuponsdecorrida.com.br"},{"@type":"WebPage","name":"Calendário de Corridas no Acre (AC) 2026 | Cupons de Corrida","url":"https://www.cuponsdecorrida.com.br/ac.html","description":"Calendário completo de corridas de rua e trail em Acre 2026: datas, distâncias, inscrições, resultados e cupons de desconto em Rio Branco e mais 1 cidades."}]}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P0JZLDPQ7W"></script>
 <script>
@@ -1613,8 +1613,8 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
     <div class="ofertas" id="ofertas-lista"></div>
     <p class="ofertas__nota">Preços das lojas, atualizados todo dia. Links de afiliado: o Cupons de Corrida pode receber uma comissão pela compra, sem custo a mais para você.</p>
   </section>
-  <p class="intro-seo">Calendário de corridas de rua e trail no Acre 2026: <b>0 próximas provas em 0 cidades</b>, com datas, distâncias, inscrições, resultados e cupons de desconto.</p>
-<div id="list"><section class="lista-seo"><h2>Próximas corridas no Acre</h2><ul></ul><p>Lista completa, com filtros por mês, região, distância e tipo, logo acima. As corridas por cidade estão no fim da página.</p></section></div>
+  <p class="intro-seo">Calendário de corridas de rua e trail no Acre 2026: <b>2 próximas provas em 1 cidades</b>, com datas, distâncias, inscrições, resultados e cupons de desconto. Corridas por cidade: <a href="/corridas-em/rio-branco-ac/">Rio Branco</a>.</p>
+<div id="list"><section class="lista-seo"><h2>Próximas corridas no Acre</h2><ul><li><time datetime="2026-11-08">08/11/2026</time> <a href="/provas/2026-11-08-srun-rio-branco-2026/">SRUN - Rio Branco - 2026</a> · <a href="/corridas-em/rio-branco-ac/">Rio Branco</a> · 5km, 10km</li><li><time datetime="2026-11-28">28/11/2026</time> <a href="/provas/2026-11-28-2-circuito-de-corrida-cbvida-rio-branco/">2ª CIRCUITO de CORRIDA CBVIDA</a> · <a href="/corridas-em/rio-branco-ac/">Rio Branco</a> · 5km, 10km</li></ul><p>Lista completa, com filtros por mês, região, distância e tipo, logo acima. As corridas por cidade estão no fim da página.</p></section></div>
 </main>
 
 <dialog class="orgs rs" id="resultados" aria-labelledby="resultados-titulo">
@@ -2811,12 +2811,14 @@ function render(){
     const datas = res.map(r => r.data).sort();
     const que = state.treinos ? "Treinos" : state.anos.size ? "Provas de " + [...state.anos].sort().join(", ")
       : { proximas:"Próximas provas", realizadas:"Provas realizadas", todas:"Todas as provas" }[state.escopo];
-    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : state.uf ? NOMES_UF[state.uf] : (UF ? NOME_ESTADO : "todo o Brasil"));
+    // "em Florianópolis", "na Bahia", "no Paraná", "em todo o Brasil": a preposicao vem de ESTADOS.
+    const onde = state.cidade ? "em " + state.cidade : state.regioes.size ? "em " + [...state.regioes].join(", ")
+      : (state.uf || UF) ? ESTADOS[state.uf || UF].em + " " + NOMES_UF[state.uf || UF] : "em todo o Brasil";
     let periodo = "";
     if (datas.length) periodo = state.escopo === "proximas" && !state.anos.size && !state.meses.size
       ? "de hoje até " + br(datas[datas.length - 1]) : "de " + br(datas[0]) + " a " + br(datas[datas.length - 1]);
     const leg = document.getElementById("stats-legenda");
-    leg.replaceChildren(el("b", { textContent: que }), document.createTextNode(" em " + onde + (periodo ? ", " + periodo : "") + ":"));
+    leg.replaceChildren(el("b", { textContent: que }), document.createTextNode(" " + onde + (periodo ? ", " + periodo : "") + ":"));
   })();
   document.getElementById("s-corridas").textContent = String(nProvas);
   document.getElementById("s-cidades").textContent = String(cidades.size);

@@ -10,8 +10,46 @@ X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\,
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:2026-08-29-corrida-fla-palmas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:CORRIDA FLA 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-29-corrida-fla-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-corrida-fla-palmas
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-m-c-run-palmas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:M&C RUN 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 10km\, 7km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-08-30-m-c-run-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-m-c-run-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-2-corrida-do-bope-palmas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:2ª Corrida do BOPE 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-06-2-corrida-do-bope-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-2-corrida-do-bope-
+ palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-11-corrida-com-elas-abreulandia@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260911
 DTEND;VALUE=DATE:20260912
 SUMMARY:Corrida com Elas 2026
@@ -23,8 +61,34 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-11-corrida-com-elas-a
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-19-porto-run-porto-nacional@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:PORTO RUN 2026
+LOCATION:Porto Nacional - TO
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-19-porto-run-porto-nacional/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-porto-run-porto-na
+ cional/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-celebrando-a-vida-palmas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:CELEBRANDO A VIDA 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-celebrando-a-vida-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-celebrando-a-vida-
+ palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-20-circuito-eco-run-palmas@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Circuito Eco Run - Palmas 2026
@@ -38,7 +102,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-circuito-das-estacoes-primavera-palmas@cuponsdecorrida.com.b
  r
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Circuito das Estações - Primavera 2026
@@ -51,9 +115,37 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-das-estac
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-14-2-ecorun-sitio-novo-do-tocantins@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:2º ECORUN 2026
+LOCATION:Sítio Novo do Tocantins - TO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-14-2-ecorun-sitio-novo-do-tocantins/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-14-2-ecorun-sitio-nov
+ o-do-tocantins/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-corrida-eu-amo-paraiso-paraiso-do-tocantins@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:CORRIDA EU AMO PARAÍSO 2026
+LOCATION:Paraíso do Tocantins - TO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-17-corrida-eu-amo-paraiso-paraiso-do-t
+ ocantins/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-corrida-eu-amo-par
+ aiso-paraiso-do-tocantins/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-18-caminhada-e-corrida-sest-senat-2026-palmas@cuponsdecorrida.c
  om.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Caminhada e Corrida SEST SENAT 2026 - Palmas
@@ -62,6 +154,106 @@ DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
  a.com.br/provas/2026-10-18-caminhada-e-corrida-sest-senat-2026-palmas/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-caminhada-e-corrid
  a-sest-senat-2026-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-maple-love-run-palmas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Maple Love Run 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-07-maple-love-run-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-maple-love-run-pal
+ mas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-corridas-de-montanha-deserto-do-jalapao-2026-mateiros@cupons
+ decorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:CORRIDAS DE MONTANHA - DESERTO DO JALAPAO 2026
+LOCATION:Mateiros - TO
+DESCRIPTION:Corrida de trail\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-11-14-corridas-de-montanha-deserto-do-jalapao-2026-ma
+ teiros/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-corridas-de-montan
+ ha-deserto-do-jalapao-2026-mateiros/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-circuito-das-estacoes-2026-verao-palmas@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Circuito das Estações 2026 - Verão - Palmas
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-22-circuito-das-estacoes-2026-verao-pa
+ lmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-circuito-das-estac
+ oes-2026-verao-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-omega-run-26-augustinopolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:ÔMEGA RUN 26 2026
+LOCATION:Augustinópolis - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-22-omega-run-26-augustinopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-omega-run-26-augus
+ tinopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-8-corrida-da-justica-da-acessibilidade-e-inclusao-tjto-palma
+ s@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:8ª CORRIDA da JUSTIÇA da ACESSIBILIDADE e INCLUSÃO - TJTO 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-11-29-8-corrida-da-justica-da-acess
+ ibilidade-e-inclusao-tjto-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-8-corrida-da-justi
+ ca-da-acessibilidade-e-inclusao-tjto-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-novembro-azul-tocantinopolis-to@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:corrida novembro azul-tocantinopolis-to 2026
+LOCATION:Tocantinópolis - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-29-corrida-novembro-azul-tocantinopolis-to/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-novembro-a
+ zul-tocantinopolis-to/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-1-corrida-natal-solidario-2026-wanderlandia@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:1° CORRIDA NATAL SOLIDÁRIO-2026
+LOCATION:Wanderlândia - TO
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-05-1-corrida-natal-solidario-2026-wanderlandi
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-1-corrida-natal-so
+ lidario-2026-wanderlandia/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

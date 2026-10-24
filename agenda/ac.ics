@@ -9,4 +9,45 @@ X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\,
  com cupons de desconto nas inscrições.
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-09-20-contemvida-day-2026-rio-branco@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Contemvida Day 2026
+LOCATION:Rio Branco - AC
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-contemvida-day-2026-rio-branco/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-contemvida-day-202
+ 6-rio-branco/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-srun-rio-branco-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:SRUN - Rio Branco - 2026
+LOCATION:Rio Branco - AC
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-08-srun-rio-branco-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-srun-rio-branco-20
+ 26/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-2-circuito-de-corrida-cbvida-rio-branco@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:2ª CIRCUITO de CORRIDA CBVIDA 2026
+LOCATION:Rio Branco - AC
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-28-2-circuito-de-corrida-cbvida-rio-br
+ anco/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-2-circuito-de-corr
+ ida-cbvida-rio-branco/
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

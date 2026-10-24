@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-08-30-corrida-lupo-sport-corre-boa-vista@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Corrida Lupo Sport Corre 2026
@@ -23,8 +23,61 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-lupo-sport
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-13-corrida-ifrr-33-anos-4-edicao-boa-vista@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:CORRIDA IFRR 33 ANOS – 4ª EDIÇÃO 2026
+LOCATION:Boa Vista - RR
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-corrida-ifrr-33-anos-4-edicao-boa-vista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-ifrr-33-an
+ os-4-edicao-boa-vista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-umap-run-boa-vista@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:UMAP RUN 2026
+LOCATION:Boa Vista - RR
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-19-umap-run-boa-vista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-umap-run-boa-vista
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-caroebe-pela-saude-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Corrida CAROEBE pela SAÚDE 2026
+LOCATION:Caroebe - RR
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-1-corrida-caroebe-pela-saude-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-caroebe-
+ pela-saude-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-02-aniversario-tatila-run-boa-vista@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261003
+SUMMARY:ANIVERSÁRIO TATILA RUN 2026
+LOCATION:Boa Vista - RR
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-02-aniversario-tatila-run-boa-vista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-02-aniversario-tatila
+ -run-boa-vista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-bemol-run-boa-vista@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Bemol Run 2026

@@ -10,8 +10,23 @@ X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\,
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:2026-08-25-2-corrida-do-padroeiro-sao-maximiliano-valparaiso-de-goias@c
+ uponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260825
+DTEND;VALUE=DATE:20260826
+SUMMARY:2ª Corrida do Padroeiro São Maximiliano 2026
+LOCATION:Valparaíso de Goiás - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-25-2-corrida-do-padroeiro-sao-maximiliano-val
+ paraiso-de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-25-2-corrida-do-padro
+ eiro-sao-maximiliano-valparaiso-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-08-29-corra-por-elas-bela-vista-de-goias@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260829
 DTEND;VALUE=DATE:20260830
 SUMMARY:Corra por Elas 2026
@@ -24,7 +39,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-29-deu-match-2026-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260829
 DTEND;VALUE=DATE:20260830
 SUMMARY:Deu Match 2026
@@ -38,7 +53,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-29-insanity-mountain-chapada-dos-veadeiros-alto-paraiso-de-goia
  s@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260829
 DTEND;VALUE=DATE:20260830
 SUMMARY:Insanity Mountain – Chapada dos Veadeiros 2026
@@ -52,7 +67,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-13-maratona-de-goiania-em-movimento@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:13ª Maratona de Goiânia em Movimento 2026
@@ -67,7 +82,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-15-circuito-anapolino-de-corrida-de-rua-etapa-1-anapolis@cup
  onsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:15° Circuito Anapolino de Corrida de Rua - Etapa 1 2026
@@ -82,7 +97,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-1-corrida-e-caminhada-clinica-daher-piracanjuba@cuponsdecorr
  ida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:1ª Corrida e Caminhada Clínica Daher 2026
@@ -96,7 +111,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-2-corrida-de-rua-oab-anicuns@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:2ª Corrida de Rua OAB Anicuns 2026
@@ -109,7 +124,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-corrida-adesci-agosto-lilas-inhumas@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Corrida ADESCI Agosto Lilás 2026
@@ -123,7 +138,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-corrida-e-caminhada-alemao-fitness-12-anos-ceres@cuponsdecor
  rida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Corrida e Caminhada Alemão Fitness 12 Anos 2026
@@ -137,7 +152,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-06-1-corrida-n-sra-da-piedade-orizona@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:1ª Corrida N Sra Da Piedade 2026
@@ -149,9 +164,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-corrida-n-sra-da
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-06-circuito-goias-5k-senador-canedo@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:CIRCUITO GOIÁS 5K - SENADOR CANEDO 2026
+LOCATION:Senador Canedo - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-circuito-goias-5k-senador-canedo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-circuito-goias-5k-
+ senador-canedo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-06-circuito-das-estacoes-primavera-goiania@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:Circuito das Estações - Primavera 2026
@@ -165,7 +193,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-06-integrato-running-minacu@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:Integrato Running 2026
@@ -178,7 +206,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-07-corrida-costa-atacadao-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260907
 DTEND;VALUE=DATE:20260908
 SUMMARY:Corrida Costa Atacadão - Goiânia 2026
@@ -192,7 +220,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-12-corrida-wm-telecom-aparecida-de-goiania@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260912
 DTEND;VALUE=DATE:20260913
 SUMMARY:Corrida WM Telecom 2026
@@ -204,8 +232,23 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-corrida-wm-telecom
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-13-15-circuito-anapolino-de-corrida-de-rua-6-etapa-anapolis@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:15º Circuito Anapolino de Corrida de Rua - 6 ETAPA 2026
+LOCATION:Anápolis - GO
+DESCRIPTION:Corrida de rua · 21km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-15-circuito-anapolino-de-corrida-de
+ -rua-6-etapa-anapolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-15-circuito-anapol
+ ino-de-corrida-de-rua-6-etapa-anapolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-13-1-corrida-unidos-pela-seguranca-jatai@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:1ª Corrida Unidos pela Segurança 2026
@@ -219,7 +262,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-2-meia-maratona-de-anapolis@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:2ª Meia Maratona de Anápolis 2026
@@ -233,7 +276,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-2-smt-run-corrida-pela-paz-no-transito-morrinhos@cuponsdecor
  rida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:2ª SMT Run - Corrida Pela Paz no Trânsito 2026
@@ -248,7 +291,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-5-circuito-itumbiarense-de-corrida-de-rua-4-etapa-itumbiara@
  cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:5° Circuito Itumbiarense de Corrida de Rua - 4ª Etapa 2026
@@ -261,9 +304,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-5-circuito-itumbia
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-13-copa-saga-2026-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:COPA SAGA 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-copa-saga-2026-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-copa-saga-2026-goi
+ ania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-13-circuito-orgulho-de-viver-etapa-setembro-amarelo-goiania@cup
  onsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Circuito Orgulho De Viver - Etapa Setembro Amarelo 2026
@@ -277,7 +333,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-corrida-aabb-caldas-novas-2@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Corrida AABB Caldas Novas 2026
@@ -290,7 +346,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-laquis-run-catalao@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Laquis Run 2026
@@ -304,7 +360,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-18-1-corrida-de-rua-setembro-amarelo-goianapolis@cuponsdecorrid
  a.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20260919
 SUMMARY:1ª Corrida de Rua Setembro Amarelo 2026
@@ -317,8 +373,23 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-18-1-corrida-de-rua-s
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-19-corre-palmeiras-circuito-do-bem-palmeiras-de-goias@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:CORRE PALMEIRAS CIRCUITO DO BEM 2026
+LOCATION:Palmeiras de Goiás - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-19-corre-palmeiras-circuito-do-bem-palmeiras-
+ de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-corre-palmeiras-ci
+ rcuito-do-bem-palmeiras-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-19-play-run-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20260920
 SUMMARY:Play Run 2026
@@ -331,7 +402,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-13-correndo-pela-vida-aparecida-de-goiania@cuponsdecorrida.c
  om.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:13ª Correndo pela Vida 2026
@@ -345,7 +416,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-1-corrida-de-rua-de-rianapolis@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:1ª Corrida de Rua de Rianápolis 2026
@@ -359,7 +430,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-1-corrida-e-caminhada-rota-da-inclusao-abadia-de-goias@cupon
  sdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:1ª Corrida e Caminhada Rota da Inclusão 2026
@@ -373,7 +444,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-1-corre-palestina-palestina-de-goias@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:1º Corre Palestina 2026
@@ -386,7 +457,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-2-desafio-astros-formosa@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:2º Desafio Astros 2026
@@ -400,7 +471,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-circuito-das-estacoes-primavera-anapolis@cuponsdecorrida.com
  .br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Circuito das Estações - Primavera 2026
@@ -414,7 +485,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-corre-santa-terezinha-de-goias@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Corre+ Santa Terezinha de Goiás 2026
@@ -428,7 +499,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-corrida-da-primavera-2-edicao-goiatuba@cuponsdecorrida.com.b
  r
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Corrida da Primavera - 2ª Edição 2026
@@ -441,7 +512,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-lupo-sport-corre-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Lupo Sport Corre Goiânia 2026
@@ -453,8 +524,23 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-lupo-sport-corre-g
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-20-passos-que-alimentam-cartorio-leandro-felix-caldas-novas@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Passos que alimentam / Cartório Leandro Félix 2026
+LOCATION:Caldas Novas - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-passos-que-alimentam-cartorio-leandro-feli
+ x-caldas-novas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-passos-que-aliment
+ am-cartorio-leandro-felix-caldas-novas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-20-sky-fit-run-2026-senador-canedo@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Sky Fit Run 2026
@@ -466,8 +552,34 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-sky-fit-run-2026-s
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-20-vision-move-run-edeia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:VISION MOVE RUN 2026
+LOCATION:Edéia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-vision-move-run-edeia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-vision-move-run-ed
+ eia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-2-corrida-de-rua-crogo-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:2ª Corrida de Rua CROGO 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-26-2-corrida-de-rua-crogo-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-2-corrida-de-rua-c
+ rogo-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-26-3-corrida-glossy-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
 SUMMARY:3ª Corrida Glossy 2026
@@ -481,7 +593,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-26-7-corrida-e-13-caminhada-unimed-catalao@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
 SUMMARY:7ª Corrida e 13ª Caminhada Unimed Catalão 2026
@@ -493,8 +605,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-7-corrida-e-13-cam
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-26-circuito-goias-trindade@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:CIRCUITO GOIÁS 2026
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-26-circuito-goias-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-circuito-goias-tri
+ ndade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-26-circuito-amor-em-movimento-mineiros@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260926
 DTEND;VALUE=DATE:20260927
 SUMMARY:Circuito Amor em Movimento 2026
@@ -509,7 +634,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-1-corrida-de-rua-duo-gelatto-itumbiara@cuponsdecorrida.com.b
  r
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:1ª Corrida de Rua Duo Gelatto 2026
@@ -523,7 +648,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-2-corrida-da-boa-forma-bonfinopolis@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:2ª Corrida Da Boa Forma 2026
@@ -536,7 +661,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-3-correndo-pela-saude-jatai@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:3ª Correndo pela Saúde 2026
@@ -548,8 +673,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-3-correndo-pela-sa
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-27-3-circuito-da-transparencia-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:3º Circuito da Transparência 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-3-circuito-da-transparencia-goiania
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-3-circuito-da-tran
+ sparencia-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-27-5-corrida-do-somar-goianesia@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:5ª Corrida do Somar 2026
@@ -562,7 +701,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-corrida-radio-educadora-caldas-novas@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Corrida Rádio Educadora 2026
@@ -577,7 +716,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-sl-challenge-run-edicao-primavera-inhumas@cuponsdecorrida.co
  m.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:SL Challenge Run - Edição Primavera 2026
@@ -591,7 +730,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-10-anapolis-night-run-aeroporto@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Anápolis Night Run Aeroporto 2026
@@ -604,7 +743,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-10-burger-run-morrinhos@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Burger Run 2026
@@ -616,8 +755,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-burger-run-morrinh
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-10-corrida-ipasgo-saude-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:CORRIDA IPASGO SAÚDE 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-10-corrida-ipasgo-saude-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-corrida-ipasgo-sau
+ de-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-10-ella-corre-jaragua@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Ella Corre 2026
@@ -629,8 +781,51 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-ella-corre-jaragua
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-10-night-burguer-run-morrinhos@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:NIGHT BURGUER RUN 2026
+LOCATION:Morrinhos - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-10-night-burguer-run-morrinhos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-night-burguer-run-
+ morrinhos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-1-circuito-de-corrida-de-rua-aabb-rubiataba@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:1º CIRCUITO de CORRIDA de RUA AABB RUBIATABA 2026
+LOCATION:Rubiataba - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-1-circuito-de-corrida-de-rua-aabb-rubiatab
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-1-circuito-de-corr
+ ida-de-rua-aabb-rubiataba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-2-corrida-de-rua-monte-alegre-de-goias-2026@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:2ª CORRIDA de RUA – MONTE ALEGRE de GOIÁS 2026
+LOCATION:Monte Alegre de Goiás - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-2-corrida-de-rua-monte-alegre-de-goias-202
+ 6/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-2-corrida-de-rua-m
+ onte-alegre-de-goias-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-2-corrida-de-pontalina@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:2ª Corrida de Pontalina 2026
@@ -643,7 +838,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-4-corrida-do-lago-azul-tres-ranchos@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:4ª Corrida do Lago Azul 2026
@@ -657,7 +852,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-4-corrida-e-caminhada-da-padroeira-caldas-novas@cuponsdecorr
  ida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:4ª Corrida e Caminhada da Padroeira 2026
@@ -670,9 +865,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-4-corrida-e-caminh
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-11-circuito-de-rua-de-novo-gama-31-anos@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:CIRCUITO DE RUA DE NOVO GAMA 31 ANOS 2026
+LOCATION:Novo Gama - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-circuito-de-rua-de-novo-gama-31-anos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-circuito-de-rua-de
+ -novo-gama-31-anos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-circuito-corre-para-jesus-aparecida-de-goiania@cuponsdecorri
  da.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Circuito Corre para Jesus 2026
@@ -687,7 +895,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-copa-vale-dos-pirineus-trail-running-etapa-rainha-pirenopoli
  s@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Copa Vale dos Pirineus Trail Running - Etapa Rainha 2026
@@ -701,7 +909,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-corrida-follow-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Corrida Follow 2026
@@ -714,7 +922,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-corrida-super-run-2026-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Corrida Super Run 2026
@@ -727,7 +935,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-guapo-birthday-run@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Guapó Birthday Run 2026
@@ -739,8 +947,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-guapo-birthday-run
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-12-genese-em-movimento-2026-silvania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261013
+SUMMARY:GENESE EM MOVIMENTO 2026
+LOCATION:Silvânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-12-genese-em-movimento-2026-silvania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-12-genese-em-moviment
+ o-2026-silvania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-12-mercadao-run-itumbiara@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261012
 DTEND;VALUE=DATE:20261013
 SUMMARY:Mercadão Run Itumbiara 2026
@@ -753,7 +974,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-16-corrida-da-sec-economia-goiania@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261016
 DTEND;VALUE=DATE:20261017
 SUMMARY:Corrida da Sec. Economia 2026
@@ -765,9 +986,35 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-16-corrida-da-sec-eco
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-16-econorun-2026-goiania-goias@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:ECONORUN 2026 - GOIÂNIA GOIÁS
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 6km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-16-econorun-2026-goiania-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-16-econorun-2026-goia
+ nia-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-metamorfose-experience-jatai-goias@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:METAMORFOSE EXPERIENCE - JATAÍ GOIÁS 2026
+LOCATION:Jataí - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-17-metamorfose-experience-jatai-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-metamorfose-experi
+ ence-jatai-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-18-1-corrida-do-predestinado-aguas-lindas-de-goias@cuponsdecorr
  ida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:1ª Corrida do Predestinado 2026
@@ -781,7 +1028,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-2-corrida-agrosprint-formosa@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:2ª Corrida AgroSprint 2026
@@ -795,7 +1042,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-2-corrida-vidas-em-movimento-caldas-novas@cuponsdecorrida.co
  m.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:2ª Corrida Vidas em Movimento 2026
@@ -809,7 +1056,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-2-corrida-e-caminhada-outubro-rosa-piracanjuba@cuponsdecorri
  da.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:2ª Corrida e Caminhada Outubro rosa 2026
@@ -822,7 +1069,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-3-corrida-rosa-azul-uruacu@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:3ª Corrida Rosa Azul 2026
@@ -836,7 +1083,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-4-corrida-kids-das-aguas-quentes-caldas-novas@cuponsdecorrid
  a.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:4ª Corrida Kids das Águas Quentes 2026
@@ -850,7 +1097,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-5-circuito-aabb-de-corrida-itapuranga@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:5º Circuito AABB de Corrida 2026
@@ -862,9 +1109,35 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-5-circuito-aabb-de
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-18-aldeia-run-2026-etapa-02-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:ALDEIA RUN 2026 - ETAPA 02
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 8km\, 1km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-18-aldeia-run-2026-etapa-02-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-aldeia-run-2026-et
+ apa-02-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corrida-10-anos-cmoc-brasil-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Corrida 10 anos - CMOC BRASIL 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-corrida-10-anos-cmoc-brasil-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-10-anos-cm
+ oc-brasil-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-18-corrida-57-anos-de-olavo-palmeiras-de-goias@cuponsdecorrida.
  com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Corrida 57 Anos de Olavo 2026
@@ -878,7 +1151,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-meia-maratona-de-goiania-2026@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Meia Maratona de Goiânia 2026
@@ -892,7 +1165,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-nutri-run-2026-minacu@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Nutri + Run 2026
@@ -901,6 +1174,1568 @@ DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2026-10-18-nutri-run-2026-minacu/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-nutri-run-2026-min
  acu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-24-1-corrida-de-rua-integracao-pontalina@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:1ª Corrida de Rua Integração 2026
+LOCATION:Pontalina - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-24-1-corrida-de-rua-integracao-pontalina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-1-corrida-de-rua-i
+ ntegracao-pontalina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-24-corrida-do-servidor-publico-2026-senador-canedo@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:CORRIDA DO SERVIDOR PÚBLICO 2026
+LOCATION:Senador Canedo - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-24-corrida-do-servidor-publico-2026-senador-canedo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-corrida-do-servido
+ r-publico-2026-senador-canedo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-24-corrida-campo-alegre-de-goias@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Corrida Campo Alegre de Goiás 2026
+LOCATION:Campo Alegre de Goiás - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-24-corrida-campo-alegre-de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-corrida-campo-aleg
+ re-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-circuito-itumbiarense-5-etapa-centro-da-saude-bem-estar-itum
+ biara@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:CIRCUITO ITUMBIARENSE 5º ETAPA CENTRO da SAÚDE BEM-ESTAR 2026
+LOCATION:Itumbiara - GO
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-25-circuito-itumbiarense-5-etapa-centr
+ o-da-saude-bem-estar-itumbiara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-circuito-itumbiare
+ nse-5-etapa-centro-da-saude-bem-estar-itumbiara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-cerrado-runner-perfomance-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Cerrado Runner - Perfomance 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-25-cerrado-runner-perfomance-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-cerrado-runner-per
+ fomance-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-vision-move-do-bem-5km-pela-isis-edeia@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Vision Move do Bem - 5km pela Ísis 2026
+LOCATION:Edéia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-25-vision-move-do-bem-5km-pela-isis-edeia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-vision-move-do-bem
+ -5km-pela-isis-edeia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-27-corra-campus-ufg-2026-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+SUMMARY:CORRA CAMPUS UFG 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-27-corra-campus-ufg-2026-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-27-corra-campus-ufg-2
+ 026-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-2-corrida-e-caminhada-dos-servidores-publicos-urutai-goias@c
+ uponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:2ª Corrida e Caminhada dos SERVIDORES PÚBLICOS - Urutaí Goiás 2
+ 026
+LOCATION:Urutaí - GO
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-10-31-2-corrida-e-caminhada-dos-servidores-publicos-u
+ rutai-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-2-corrida-e-caminh
+ ada-dos-servidores-publicos-urutai-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-belas-run-edicao-zero-acucar-rio-verde@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Belas Run - Edição Zero Açúcar 2026
+LOCATION:Rio Verde - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-31-belas-run-edicao-zero-acucar-rio-verde/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-belas-run-edicao-z
+ ero-acucar-rio-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-corrida-carcara-extreme-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Corrida Carcará Extreme 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-31-corrida-carcara-extreme-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-corrida-carcara-ex
+ treme-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-desafio-das-aguas-quentes-trail-run-caldas-novas@cuponsdecor
+ rida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Desafio das Águas Quentes Trail Run 2026
+LOCATION:Caldas Novas - GO
+DESCRIPTION:Corrida de trail · 21km\, 10km\nCupons e detalhes: https://www
+ .cuponsdecorrida.com.br/provas/2026-10-31-desafio-das-aguas-quentes-trail-
+ run-caldas-novas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-desafio-das-aguas-
+ quentes-trail-run-caldas-novas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-mountain-do-chapada-dos-veadeiros-alto-paraiso-de-goias@cupo
+ nsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Mountain Do Chapada dos Veadeiros 2026
+LOCATION:Alto Paraíso de Goiás - GO
+DESCRIPTION:Corrida de rua · 21km\, 14km\, 7km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-10-31-mountain-do-chapada-dos-vead
+ eiros-alto-paraiso-de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-mountain-do-chapad
+ a-dos-veadeiros-alto-paraiso-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-noroeste-run-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Noroeste Run 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-31-noroeste-run-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-noroeste-run-goian
+ ia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-1-corrida-passos-de-fe-sao-luis-de-montes-belos@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:1ª Corrida Passos de Fé 2026
+LOCATION:São Luís de Montes Belos - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-01-1-corrida-passos-de-fe-sao-luis-de-
+ montes-belos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-1-corrida-passos-d
+ e-fe-sao-luis-de-montes-belos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-2-corrida-e-caminhada-de-cumari-go@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:2ª CORRIDA e CAMINHADA de CUMARI-GO 2026
+LOCATION:Cumari - GO
+DESCRIPTION:Caminhada · 7km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-11-01-2-corrida-e-caminhada-de-cumari-go/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-2-corrida-e-caminh
+ ada-de-cumari-go/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-2-corrida-de-rua-de-paranaiguara@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:2ª Corrida de Rua de Paranaiguara 2026
+LOCATION:Paranaiguara - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-01-2-corrida-de-rua-de-paranaiguara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-2-corrida-de-rua-d
+ e-paranaiguara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-aura-run-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Aura Run 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/AURA+RUN+-+2026-87988\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-11-01-aura-run-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-aura-run-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-corrida-missao-5k-aragoiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:CORRIDA MISSÃO 5K - ARAGOIÂNIA 2026
+LOCATION:Aragoiânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-01-corrida-missao-5k-aragoiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-missao-5k-
+ aragoiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-desafio-das-aguas-quentes-run-caldas-novas@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Desafio das Águas Quentes Run 2026
+LOCATION:Caldas Novas - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-01-desafio-das-aguas-quentes-run-caldas-novas
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-desafio-das-aguas-
+ quentes-run-caldas-novas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-meia-maratona-e-corrida-acicer-run-ceres@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Meia Maratona e Corrida ACICER Run 2026
+LOCATION:Ceres - GO
+DESCRIPTION:Corrida de rua · 21km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-01-meia-maratona-e-corrida-acicer-run-
+ ceres/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-meia-maratona-e-co
+ rrida-acicer-run-ceres/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-2-corrida-natunutra-de-bem-estar-senador-canedo@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:2ª Corrida Natunutra de Bem-Estar 2026
+LOCATION:Senador Canedo - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-07-2-corrida-natunutra-de-bem-estar-senador-c
+ anedo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-2-corrida-natunutr
+ a-de-bem-estar-senador-canedo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-2-corrida-viva-bem-silvania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:2ª Corrida Viva Bem 2026
+LOCATION:Silvânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-07-2-corrida-viva-bem-silvania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-2-corrida-viva-bem
+ -silvania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-corrida-madre-germana-2-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Corrida madre germana 2 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-07-corrida-madre-germana-2-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-corrida-madre-germ
+ ana-2-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-1-corrida-passos-pela-vida-campinorte@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:1ª Corrida Passos Pela Vida 2026
+LOCATION:Campinorte - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-1-corrida-passos-pela-vida-campinorte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-1-corrida-passos-p
+ ela-vida-campinorte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-2-niver-run-desafio-da-brutinha-portelandia@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:2º Niver Run - Desafio da Brutinha 2026
+LOCATION:Portelândia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-08-2-niver-run-desafio-da-brutinha-por
+ telandia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-2-niver-run-desafi
+ o-da-brutinha-portelandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-4-corrida-solidaria-sicoob-empresaria-rio-verde@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:4ª Corrida Solidária Sicoob Empresaria 2026
+LOCATION:Rio Verde - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-08-4-corrida-solidaria-sicoob-empresar
+ ia-rio-verde/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-4-corrida-solidari
+ a-sicoob-empresaria-rio-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-4-corrida-e-caminhada-da-primavera-alto-paraiso-de-goias@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:4ª Corrida e Caminhada da Primavera 2026
+LOCATION:Alto Paraíso de Goiás - GO
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-11-08-4-corrida-e-caminhada-da-primavera-alto-paraiso
+ -de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-4-corrida-e-caminh
+ ada-da-primavera-alto-paraiso-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-9-longao-beneficente-de-natal-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:9º Longão Beneficente de Natal 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 18km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-08-9-longao-beneficente-de-natal-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-9-longao-beneficen
+ te-de-natal-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-bom-jesus-fast-run-bom-jesus-de-goias@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Bom Jesus Fast Run 2026
+LOCATION:Bom Jesus de Goiás - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-bom-jesus-fast-run-bom-jesus-de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-bom-jesus-fast-run
+ -bom-jesus-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-circuito-aabb-de-corrida-edeia-2026-corra-pela-isis@cuponsde
+ corrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Circuito AABB de Corrida Edéia 2026 - Corra pela Ísis
+LOCATION:Edéia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-circuito-aabb-de-corrida-edeia-2026-corra-
+ pela-isis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-circuito-aabb-de-c
+ orrida-edeia-2026-corra-pela-isis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-corrida-100-voce-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Corrida 100% Você - Goiânia 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-08-corrida-100-voce-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-corrida-100-voce-g
+ oiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-corrida-pulse-anapolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Corrida Pulse 2026
+LOCATION:Anápolis - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-corrida-pulse-anapolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-corrida-pulse-anap
+ olis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-nova-run-goianesia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Nova Run 2026
+LOCATION:Goianésia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-nova-run-goianesia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-nova-run-goianesia
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-xperience-corre-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Xperience Corre 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-xperience-corre-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-xperience-corre-ca
+ talao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-corrida-de-impacto-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:CORRIDA DE IMPACTO 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 2km\, 5km\, 10km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-11-14-corrida-de-impacto-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-corrida-de-impacto
+ -goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-corrrida-soldado-trindad-trindade@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Corrrida soldado trindad 2026
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-14-corrrida-soldado-trindad-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-corrrida-soldado-t
+ rindad-trindade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-itaguaru-run-experience@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Itaguaru Run Experience 2026
+LOCATION:Itaguaru - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-14-itaguaru-run-experience/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-itaguaru-run-exper
+ ience/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-sunset-food-run-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Sunset Food Run 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-14-sunset-food-run-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-sunset-food-run-go
+ iania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-track-fields-experience-boost-flow-run-goiania@cuponsdecorri
+ da.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Track&Fields Experience - Boost Flow Run 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-14-track-fields-experience-boost-flow-run-goi
+ ania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-track-fields-exper
+ ience-boost-flow-run-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-1-corrida-pela-saude-aparecida-do-rio-doce@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:1ª Corrida pela Saúde 2026
+LOCATION:Aparecida do Rio Doce - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-1-corrida-pela-saude-aparecida-do-rio-doce
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-1-corrida-pela-sau
+ de-aparecida-do-rio-doce/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-2-corrida-da-inclusao-da-policia-civil-de-anapolis@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:2ª Corrida da Inclusão da Polícia Civil de Anápolis 2026
+LOCATION:Anápolis - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-2-corrida-da-inclusao-da-policia-civil-de-
+ anapolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-2-corrida-da-inclu
+ sao-da-policia-civil-de-anapolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corre-niquelandia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Corre Niquelândia 2026
+LOCATION:Niquelândia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-corre-niquelandia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corre-niquelandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-imperio-run-vicentinopolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Corrida Império Run 2026
+LOCATION:Vicentinópolis - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-15-corrida-imperio-run-vicentinopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-imperio-ru
+ n-vicentinopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-natal-sem-fome-lions-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Corrida Natal Sem fome - Lions 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-corrida-natal-sem-fome-lions-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-natal-sem-
+ fome-lions-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-panama-74-anos@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Corrida Panamá 74 Anos 2026
+LOCATION:Panamá - GO
+DESCRIPTION:Corrida de rua · 9km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-corrida-panama-74-anos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-panama-74-
+ anos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-da-policia-civil-de-caiaponia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Corrida da Polícia Civil de Caiapônia 2026
+LOCATION:Caiapônia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-corrida-da-policia-civil-de-caiaponia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-da-policia
+ -civil-de-caiaponia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-novembro-azul-ceres@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Novembro Azul 2026
+LOCATION:Ceres - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-novembro-azul-ceres/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-novembro-azul-cere
+ s/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-rotary-run-2026-mineiros@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Rotary Run 2026
+LOCATION:Mineiros - GO
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-rotary-run-2026-mineiros/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-rotary-run-2026-mi
+ neiros/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-1-corrida-da-atletica-soberana-rota-magna-quirinopolis@cupon
+ sdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:1ª Corrida Da Atlética Soberana - Rota Magna 2026
+LOCATION:Quirinópolis - GO
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-20-1-corrida-da-atletica-soberana-rota-
+ magna-quirinopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-1-corrida-da-atlet
+ ica-soberana-rota-magna-quirinopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-1-corrida-de-cristo-rei-itumbiara@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:1ª Corrida De Cristo Rei 2026
+LOCATION:Itumbiara - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-20-1-corrida-de-cristo-rei-itumbiara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-1-corrida-de-crist
+ o-rei-itumbiara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-move-run-night-edition-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Move Run Night Edition 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-20-move-run-night-edition-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-move-run-night-edi
+ tion-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-2ed-family-run-2026-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:2ed. FAMILY RUN 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/2ed.+FAMILY+RUN+2026-88662\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-21-2ed-family-run-2026-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-2ed-family-run-202
+ 6-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-4-corrida-de-rua-5k-nova-aurora@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:4ª Corrida de Rua - 5K Nova Aurora 2026
+LOCATION:Nova Aurora - GO
+DESCRIPTION:Corrida de rua · 2km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-21-4-corrida-de-rua-5k-nova-aurora/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-4-corrida-de-rua-5
+ k-nova-aurora/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-corrida-das-igrejas-evangeliscas-trindade@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Corrida das Igrejas Evangéliscas 2026
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua · 2km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-21-corrida-das-igrejas-evangeliscas-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-corrida-das-igreja
+ s-evangeliscas-trindade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-corrida-igreja-evangelica-trindade@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Corrida igreja evangélica trindade 2026
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-21-corrida-igreja-evangelica-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-corrida-igreja-eva
+ ngelica-trindade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-2-corrida-iron-fit-itapuranga@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:2ª Corrida Iron Fit 2026
+LOCATION:Itapuranga - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-22-2-corrida-iron-fit-itapuranga/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-2-corrida-iron-fit
+ -itapuranga/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-maratona-de-revezamento-goianesia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Maratona de Revezamento 2026
+LOCATION:Goianésia - GO
+DESCRIPTION:Corrida de rua · 42km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-22-maratona-de-revezamento-goianesia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-maratona-de-reveza
+ mento-goianesia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-rotary-run-2026-hidrolandia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Rotary Run 2026 - Hidrolândia
+LOCATION:Hidrolândia - GO
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-22-rotary-run-2026-hidrolandia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-rotary-run-2026-hi
+ drolandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-27-2-corrida-e-caminhada-fe-em-movimento-jussara@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:2ª Corrida e Caminhada Fé em Movimento 2026
+LOCATION:Jussara - GO
+DESCRIPTION:Caminhada · 7km\, 5km\, 3km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-27-2-corrida-e-caminhada-fe-em-movimen
+ to-jussara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-27-2-corrida-e-caminh
+ ada-fe-em-movimento-jussara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-anabolica-night-run-ceres@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Anabólica Night Run 2026
+LOCATION:Ceres - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-28-anabolica-night-run-ceres/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-anabolica-night-ru
+ n-ceres/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-track-field-elas-em-movimento-run-goiania@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Track&Field Elas em Movimento Run 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-28-track-field-elas-em-movimento-run-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-track-field-elas-e
+ m-movimento-run-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-2-corrida-de-rua-mega-supermercados-santa-helena-de-goias@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:2ª Corrida de Rua Mega Supermercados 2026
+LOCATION:Santa Helena de Goiás - GO
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-2-corrida-de-rua-mega-supermercados-santa-
+ helena-de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-2-corrida-de-rua-m
+ ega-supermercados-santa-helena-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-circuito-zarns-itumbiara@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Circuito Zarns 2026
+LOCATION:Itumbiara - GO
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-29-circuito-zarns-itumbiara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-circuito-zarns-itu
+ mbiara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corre-nova-crixas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Corre Nova Crixás 2026
+LOCATION:Nova Crixás - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-corre-nova-crixas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corre-nova-crixas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-desafio-dos-brutus-6-edicao-senador-canedo@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Desafio dos Brutus - 6ª Edição 2026
+LOCATION:Senador Canedo - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-29-desafio-dos-brutus-6-edicao-senador-canedo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-desafio-dos-brutus
+ -6-edicao-senador-canedo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-divas-correm-padre-bernardo@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Divas Correm 2026
+LOCATION:Padre Bernardo - GO
+DESCRIPTION:Corrida de rua · 3km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-divas-correm-padre-bernardo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-divas-correm-padre
+ -bernardo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-experience-run-2-edicao-pires-do-rio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Experience Run - 2ª Edição 2026
+LOCATION:Pires do Rio - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-experience-run-2-edicao-pires-do-rio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-experience-run-2-e
+ dicao-pires-do-rio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-track-field-cbc-sports-experience-goiania@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Track&Field CBC Sports Experience 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-29-track-field-cbc-sports-experience-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-track-field-cbc-sp
+ orts-experience-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-1-corrida-agro-via-acamargo-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:1ª Corrida Agro Via – Acamargo 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-05-1-corrida-agro-via-acamargo-goiania
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-1-corrida-agro-via
+ -acamargo-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-2-corrida-da-saude-vicentinopolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:2ª Corrida Da Saúde 2026
+LOCATION:Vicentinópolis - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-05-2-corrida-da-saude-vicentinopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-2-corrida-da-saude
+ -vicentinopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-5-desafio-do-jacare-santa-rita-do-araguaia@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:5º Desafio do Jacaré 2026
+LOCATION:Santa Rita do Araguaia - GO
+DESCRIPTION:Corrida de rua · 4km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-05-5-desafio-do-jacare-santa-rita-do-araguaia
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-5-desafio-do-jacar
+ e-santa-rita-do-araguaia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-desafio-da-diow-2-edicao-diorama@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Desafio da Diow - 2ª Edição 2026
+LOCATION:Diorama - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-05-desafio-da-diow-2-edicao-diorama/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-desafio-da-diow-2-
+ edicao-diorama/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-27-corrida-e-caminhada-de-orizona@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:27ª Corrida e Caminhada de Orizona 2026
+LOCATION:Orizona - GO
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-12-06-27-corrida-e-caminhada-de-orizona/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-27-corrida-e-camin
+ hada-de-orizona/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-2-corrida-da-imaculada-novo-gama@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:2ª Corrida da Imaculada 2026
+LOCATION:Novo Gama - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-06-2-corrida-da-imaculada-novo-gama/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-corrida-da-imacu
+ lada-novo-gama/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-2-meia-maratona-santapelle-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:2º Meia Maratona Santapelle 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 21km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-06-2-meia-maratona-santapelle-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-meia-maratona-sa
+ ntapelle-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-7-corrida-dezembro-laranja-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:7ª Corrida Dezembro Laranja 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 21km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-12-06-7-corrida-dezembro-laranja-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-7-corrida-dezembro
+ -laranja-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-circuito-bora-correr-jaragua@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Circuito Bora Correr 2026
+LOCATION:Jaraguá - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-06-circuito-bora-correr-jaragua/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-circuito-bora-corr
+ er-jaragua/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-corre-campestre-2026-rio-verde@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Corre Campestre 2026
+LOCATION:Rio Verde - GO
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-12-06-corre-campestre-2026-rio-ver
+ de/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-corre-campestre-20
+ 26-rio-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-corre-uruacu@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Corre Uruaçu 2026
+LOCATION:Uruaçu - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-06-corre-uruacu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-corre-uruacu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-grand-premium-brasil-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Grand Premium Brasil - Goiania 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 15km\, 10km\, 5km\, 3km\nCupons e detalhes: h
+ ttps://www.cuponsdecorrida.com.br/provas/2026-12-06-grand-premium-brasil-g
+ oiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-grand-premium-bras
+ il-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-rachao-1-ano-corre-acreuna@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Rachão 1 Ano Corre Acreúna 2026
+LOCATION:Acreúna - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-06-rachao-1-ano-corre-acreuna/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-rachao-1-ano-corre
+ -acreuna/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-3-corrida-do-chopp-fsa-formosa@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:3ª Corrida do Chopp FSA 2026
+LOCATION:Formosa - GO
+DESCRIPTION:Corrida de rua · 5.4km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-12-13-3-corrida-do-chopp-fsa-formosa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-3-corrida-do-chopp
+ -fsa-formosa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-circuito-encontro-delas-3-edicao-goiania@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Circuito Encontro Delas - 3º Edição 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-circuito-encontro-delas-3-edicao-go
+ iania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-circuito-encontro-
+ delas-3-edicao-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-circuito-das-estacoes-2026-verao-anapolis@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Circuito das Estações 2026 - Verão - Anápolis
+LOCATION:Anápolis - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-circuito-das-estacoes-2026-verao-an
+ apolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-circuito-das-estac
+ oes-2026-verao-anapolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-bela-vista-em-movimento-bela-vista-de-goias@cuponsde
+ corrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Corrida Bela Vista Em Movimento 2026
+LOCATION:Bela Vista de Goiás - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-corrida-bela-vista-em-movimento-bel
+ a-vista-de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-bela-vista
+ -em-movimento-bela-vista-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-solidaria-bonfinopolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Corrida Solidária 2026
+LOCATION:Bonfinópolis - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-13-corrida-solidaria-bonfinopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-solidaria-
+ bonfinopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-xrunning-2-edicao-caldas-novas@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Corrida XRunning - 2ª Edição 2026
+LOCATION:Caldas Novas - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-corrida-xrunning-2-edicao-caldas-no
+ vas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-xrunning-2
+ -edicao-caldas-novas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-e-caminhada-dezembro-laranja-2026-rialma@cuponsdecor
+ rida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Corrida e Caminhada Dezembro Laranja 2026
+LOCATION:Rialma - GO
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-12-13-corrida-e-caminhada-dezembro-laranja-2026-rialm
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-e-caminhad
+ a-dezembro-laranja-2026-rialma/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-to-saude-track-field-experience-running-cata-catalao@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:to Saúde Track&Field Experience Running - Cata 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-to-saude-track-field-experience-run
+ ning-cata-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-to-saude-track-fie
+ ld-experience-running-cata-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-14-corrrida-soldado-trindad-trindade@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261214
+DTEND;VALUE=DATE:20261215
+SUMMARY:Corrrida soldado trindad 2026
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-14-corrrida-soldado-trindad-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-14-corrrida-soldado-t
+ rindad-trindade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-19-corrida-natal-trindade@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Corrida natal trindade 2026
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua · 3km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-19-corrida-natal-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-19-corrida-natal-trin
+ dade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-20-circuito-das-estacoes-2026-verao-goiania@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Circuito das Estações 2026 - Verão - Goiânia
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-20-circuito-das-estacoes-2026-verao-go
+ iania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-circuito-das-estac
+ oes-2026-verao-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-20-corrida-farmacia-extra-popular-catalao@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Corrida Farmácia Extra Popular 2026
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-20-corrida-farmacia-extra-popular-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-corrida-farmacia-e
+ xtra-popular-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-20-meia-maratona-dos-veteranos-rio-verde@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Meia Maratona dos Veteranos 2026
+LOCATION:Rio Verde - GO
+DESCRIPTION:Corrida de rua · 21km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-20-meia-maratona-dos-veteranos-rio-ver
+ de/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-meia-maratona-dos-
+ veteranos-rio-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-27-5-corrida-rosa-shock-goiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261227
+DTEND;VALUE=DATE:20261228
+SUMMARY:5ª Corrida Rosa Shock 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 21km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-27-5-corrida-rosa-shock-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-27-5-corrida-rosa-sho
+ ck-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-27-rosa-chock-etapa-violencia-contra-a-mulher-goiania@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261227
+DTEND;VALUE=DATE:20261228
+SUMMARY:ROSA CHOCK - ETAPA VIOLÊNCIA CONTRA A MULHER 2026
+LOCATION:Goiânia - GO
+DESCRIPTION:Corrida de rua · 5km\, 21km\nInscrição: https://www.ticketsp
+ orts.com.br/e/ROSA+CHOCK+-+ETAPA+VIOL%C3%8ANCIA+CONTRA+A+MULHER-87024\nCup
+ ons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-27-rosa-
+ chock-etapa-violencia-contra-a-mulher-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-27-rosa-chock-etapa-v
+ iolencia-contra-a-mulher-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-10-track-fileds-experience-cbc-sports-experience-aparecida-de-g
+ oiania@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:Track&Fileds Experience - CBC Sports Experience 2027
+LOCATION:Aparecida de Goiânia - GO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2027-01-10-track-fileds-experience-cbc-sports-experience-apa
+ recida-de-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-10-track-fileds-exper
+ ience-cbc-sports-experience-aparecida-de-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-16-corrida-boa-forma-night-bonfinopolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+SUMMARY:Corrida Boa Forma Night 2027
+LOCATION:Bonfinópolis - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-01-16-corrida-boa-forma-night-bonfinopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-16-corrida-boa-forma-
+ night-bonfinopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-23-corrida-reis-trindade@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:Corrida reis trindade 2027
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua · 3km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-01-23-corrida-reis-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-23-corrida-reis-trind
+ ade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-24-3-corrida-solidaria-anhanguera@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+SUMMARY:3ª Corrida Solidária 2027
+LOCATION:Anhanguera - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-01-24-3-corrida-solidaria-anhanguera/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-24-3-corrida-solidari
+ a-anhanguera/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-29-2-desafio-nucleo-do-cancer-de-corrida-de-rua-jatai@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270129
+DTEND;VALUE=DATE:20270130
+SUMMARY:2º Desafio Núcleo do Câncer de Corrida de Rua 2027
+LOCATION:Jataí - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-01-29-2-desafio-nucleo-do-cancer-de-corrida-de-r
+ ua-jatai/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-29-2-desafio-nucleo-d
+ o-cancer-de-corrida-de-rua-jatai/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-30-meia-maratona-da-chapada-dos-veadeiros-alto-paraiso-de-goias
+ @cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Meia Maratona da Chapada dos Veadeiros 2027
+LOCATION:Alto Paraíso de Goiás - GO
+DESCRIPTION:Corrida de rua · 21km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-01-30-meia-maratona-da-chapada-dos-veadeiros-al
+ to-paraiso-de-goias/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-30-meia-maratona-da-c
+ hapada-dos-veadeiros-alto-paraiso-de-goias/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-31-corrida-5k-prol-saude-mental-2-edicao-catalao@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Corrida 5K - Prol Saúde Mental - 2ª Edição 2027
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-01-31-corrida-5k-prol-saude-mental-2-edicao-cata
+ lao/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-corrida-5k-prol-sa
+ ude-mental-2-edicao-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-31-corrida-pre-carnaval-itapaci@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Corrida Pré Carnaval 2027
+LOCATION:Itapaci - GO
+DESCRIPTION:Corrida de rua · 11km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2027-01-31-corrida-pre-carnaval-itapaci/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-corrida-pre-carnav
+ al-itapaci/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-14-desafio-mamunt-race-brasil-hidrolandia@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270214
+DTEND;VALUE=DATE:20270215
+SUMMARY:Desafio Mamunt Race Brasil 2027
+LOCATION:Hidrolândia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-02-14-desafio-mamunt-race-brasil-hidrolandia/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-14-desafio-mamunt-rac
+ e-brasil-hidrolandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-20-corrida-do-fogo-aniversario-wellington-37ano-trindade@cupons
+ decorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:Corrida do fogo aniversário wellington 37ano 2027
+LOCATION:Trindade - GO
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-02-20-corrida-do-fogo-aniversario-wellington-37a
+ no-trindade/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-20-corrida-do-fogo-an
+ iversario-wellington-37ano-trindade/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-28-4-corrida-e-caminhada-de-goiandira@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:4ª Corrida e Caminhada de Goiandira 2027
+LOCATION:Goiandira - GO
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2027-02-28-4-corrida-e-caminhada-de-goiandira/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-28-4-corrida-e-caminh
+ ada-de-goiandira/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-10-6-night-run-asa-veiculos-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270410
+DTEND;VALUE=DATE:20270411
+SUMMARY:6ª Night Run - Asa Veículos 2027
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-04-10-6-night-run-asa-veiculos-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-10-6-night-run-asa-ve
+ iculos-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-17-3-corrida-bombeiro-civil-aguia-resgate-aparecida-de-goiania@
+ cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+SUMMARY:3ª Corrida Bombeiro Civil – Águia Resgate 2027
+LOCATION:Aparecida de Goiânia - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-04-17-3-corrida-bombeiro-civil-aguia-resgate-apa
+ recida-de-goiania/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-17-3-corrida-bombeiro
+ -civil-aguia-resgate-aparecida-de-goiania/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-15-corrida-do-agro-vianopolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270516
+SUMMARY:Corrida do Agro 2027
+LOCATION:Vianópolis - GO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2027-05-15-corrida-do-agro-vianopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-15-corrida-do-agro-vi
+ anopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-16-3-corrida-da-familia-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270516
+DTEND;VALUE=DATE:20270517
+SUMMARY:3ª Corrida da Família 2027
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2027-05-16-3-corrida-da-familia-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-16-3-corrida-da-famil
+ ia-catalao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-06-20-ibiotec-run-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270620
+DTEND;VALUE=DATE:20270621
+SUMMARY:Ibiotec Run 2027
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-06-20-ibiotec-run-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-06-20-ibiotec-run-catala
+ o/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-07-25-meia-maratona-de-santana-2027-uruacu@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270725
+DTEND;VALUE=DATE:20270726
+SUMMARY:Meia Maratona de Santana 2027
+LOCATION:Uruaçu - GO
+DESCRIPTION:Corrida de rua · 2km\, 5km\, 21km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2027-07-25-meia-maratona-de-santana-2027
+ -uruacu/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-07-25-meia-maratona-de-s
+ antana-2027-uruacu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-24-2-laquis-run-catalao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20271024
+DTEND;VALUE=DATE:20271025
+SUMMARY:2ª Laquis Run 2027
+LOCATION:Catalão - GO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-10-24-2-laquis-run-catalao/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-10-24-2-laquis-run-catal
+ ao/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-08-30-1-corrida-agosto-lilas-morrinhos@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:1ª Corrida Agosto Lilás 2026
@@ -25,7 +25,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-3-corrida-de-rua-tr-performance-caucaia@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:3ª Corrida de Rua TR Performance 2026
@@ -38,9 +38,37 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-3-corrida-de-rua-t
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-08-30-3-corrida-de-rua-tr-perfomance-caucaia@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:3° CORRIDA DE RUA TR PERFOMANCE 2026
+LOCATION:Caucaia - CE
+DESCRIPTION:Corrida de rua · 6km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-08-30-3-corrida-de-rua-tr-perfomance-cauca
+ ia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-3-corrida-de-rua-t
+ r-perfomance-caucaia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-challenge-fortaleza-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Challenge Fortaleza 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-challenge-fortaleza-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-challenge-fortalez
+ a-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-08-30-circuito-sesc-de-corridas-juazeiro-do-norte@cuponsdecorrida.
  com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Circuito Sesc de Corridas - Juazeiro do Norte 2026
@@ -54,7 +82,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-circuito-unitas-run-tiangua@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Circuito Unitas Run 2026
@@ -68,7 +96,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-corrida-so-no-pique-1-edicao-maranguape@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Corrida Só no Pique - 1ª Edição 2026
@@ -81,8 +109,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-so-no-piqu
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-05-42k-terra-da-luz-2026-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:42K TERRA DA LUZ - 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 42km\, 21km\, 7km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-05-42k-terra-da-luz-2026-fortal
+ eza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-42k-terra-da-luz-2
+ 026-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-06-42k-terra-da-luz-fortaleza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:42k Terra da Luz 2026
@@ -95,7 +137,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-06-beach-run-yasmim-running-2026-caucaia@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:Beach Run - Yasmim Running 2026
@@ -109,7 +151,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-06-corrida-e-caminhada-todos-pela-vida-senador-pompeu@cuponsdec
  orrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:Corrida e Caminhada Todos Pela Vida 2026
@@ -122,8 +164,76 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-e-caminhad
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-12-2-la-fit-run-praia-do-prea-cruz@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:2º LA FIT RUN - Praia do Preá 2026
+LOCATION:Cruz - CE
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-12-2-la-fit-run-praia-do-prea-cruz/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-2-la-fit-run-praia
+ -do-prea-cruz/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-4-pernas-pra-que-te-quero-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:4ª PERNAS PRA QUE TE QUERO 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 4km\, 2km\, 0km\nCupons e detalhes: https://w
+ ww.cuponsdecorrida.com.br/provas/2026-09-12-4-pernas-pra-que-te-quero-fort
+ aleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-4-pernas-pra-que-t
+ e-quero-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-e-caminhada-mae-das-dores-aracoiaba-2@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª Corrida e Caminhada Mãe das Dores 2026
+LOCATION:Aracoiaba - CE
+DESCRIPTION:Caminhada · 5km\, 3km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-09-13-1-corrida-e-caminhada-mae-das-dores-araco
+ iaba-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-e-caminh
+ ada-mae-das-dores-aracoiaba-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-fit-ufc-crateus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1º CORRIDA FIT – UFC CRATEÚS 2026
+LOCATION:Crateús - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-1-corrida-fit-ufc-crateus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-fit-ufc-
+ crateus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-2-atacadao-race-acarau@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:2º ATACADÃO RACE 2026
+LOCATION:Acaraú - CE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-2-atacadao-race-acarau/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-2-atacadao-race-ac
+ arau/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-13-3-corrida-samuka-atacadista-aracati@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:3ª Corrida Samuka Atacadista 2026
@@ -138,7 +248,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-3-corrida-e-caminhada-movimenta-parambu@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:3ª Corrida e Caminhada Movimenta Parambu 2026
@@ -151,7 +261,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-i-corrida-supermercado-opcao-barbalha@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:I Corrida Supermercado Opção 2026
@@ -165,7 +275,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-vii-corrida-forca-na-peruca-crato@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:VII Corrida Força na Peruca 2026
@@ -178,9 +288,37 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-vii-corrida-forca-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-19-pacuja-run-2-edicao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:PACUJÁ RUN – 2º EDIÇÃO 2026
+LOCATION:Pacujá - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-19-pacuja-run-2-edicao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-pacuja-run-2-edica
+ o/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-super-sol-2026-tabuleiro-do-norte@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1° CORRIDA SUPER SOL 2026
+LOCATION:Tabuleiro do Norte - CE
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-super-sol-2026-tabu
+ leiro-do-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-super-so
+ l-2026-tabuleiro-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-20-2-corrida-focs-dia-mundial-de-combate-ao-avc-barbalha@cupons
  decorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:2ª Corrida FOCS – Dia Mundial de Combate ao AVC 2026
@@ -195,7 +333,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-2-corrida-universitaria-uninassau-parangaba-fortaleza@cupons
  decorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:2ª Corrida Universitária UNINASSAU Parangaba 2026
@@ -209,7 +347,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-2-ciamo-run-guaraciaba-do-norte@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:2º CIAMO Run 2026
@@ -224,7 +362,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-6-corrida-rustica-de-lagoa-funda-beberibe@cuponsdecorrida.co
  m.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:6ª Corrida Rústica de Lagoa Funda 2026
@@ -237,7 +375,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-corrida-dos-bancarios-fortaleza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Corrida dos Bancários 2026
@@ -250,7 +388,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-1-corrida-unicardio-juazeiro-do-norte@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:1ª Corrida Unicardio 2026
@@ -263,9 +401,37 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-1-corrida-unicardi
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-27-2-corrida-ultra-popular-itapipoca@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:2ª CORRIDA ULTRA POPULAR 2026
+LOCATION:Itapipoca - CE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-2-corrida-ultra-popular-itapipoca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-ultra-po
+ pular-itapipoca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-de-corridas-caixa-etapa-fortaleza@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:CIRCUITO DE CORRIDAS CAIXA - ETAPA FORTALEZA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-circuito-de-corridas-caixa-etapa-fo
+ rtaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-de-corrid
+ as-caixa-etapa-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-27-circuito-sesc-de-corridas-etapa-sobral@cuponsdecorrida.com.b
  r
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Circuito Sesc de Corridas - Etapa Sobral 2026
@@ -280,7 +446,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-circuito-das-estacoes-primavera-fortaleza@cuponsdecorrida.co
  m.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Circuito das Estações - Primavera 2026
@@ -295,7 +461,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-circuito-de-corridas-minibox-run-etapa-fortim@cuponsdecorrid
  a.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Circuito de Corridas Minibox Run - Etapa Fortim 2026
@@ -309,7 +475,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-corrida-christus-75-anos-fortaleza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Corrida Christus 75 anos 2026
@@ -323,7 +489,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-corrida-ximenes-barato-todo-dia-tiangua@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Corrida Ximenes - Barato Todo Dia 2026
@@ -337,7 +503,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-osorio-run-fortaleza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Osório Run 2026
@@ -350,7 +516,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-1-meia-maratona-de-cascavel@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:1ª Meia Maratona De Cascavel 2026
@@ -362,9 +528,23 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-1-meia-maratona-de
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-11-1-meia-maratona-de-cascavel-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:1ª Meia Maratona de Cascavel 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-10-11-1-meia-maratona-de-cascavel-
+ fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-1-meia-maratona-de
+ -cascavel-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-2-corrida-e-caminhada-do-sagrado-fe-em-movimento-russas@cupo
  nsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:2ª Corrida e Caminhada do Sagrado – Fé em Movimento 2026
@@ -378,7 +558,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-2-corrida-fruto-do-bem-missao-velha@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:2º Corrida Fruto do Bem 2026
@@ -391,9 +571,36 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-2-corrida-fruto-do
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-11-30-anos-sitio-barreiras-missao-velha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:30 ANOS SÍTIO BARREIRAS 2026
+LOCATION:Missão Velha - CE
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-11-30-anos-sitio-barreiras-missa
+ o-velha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-30-anos-sitio-barr
+ eiras-missao-velha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-circuito-das-serras-palmacia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:CIRCUITO DAS SERRAS - PALMÁCIA 2026
+LOCATION:Palmácia - CE
+DESCRIPTION:Corrida de rua · 12km\, 8km\, 4km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-11-circuito-das-serras-palmacia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-circuito-das-serra
+ s-palmacia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-circuito-das-serra-etapa-final-palmacia@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Circuito das Serra - Etapa Final 2026
@@ -407,7 +614,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-mika-bday-2026-fortaleza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Mika Bday 2026
@@ -422,7 +629,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-17-3-corrida-e-caminhada-do-tribunal-de-justica-do-ceara-fortal
  eza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:3ª Corrida e Caminhada do Tribunal de Justiça do Ceará 2026
@@ -436,7 +643,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-17-corrida-majorlandia-night-run-aracati@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Corrida Majorlândia Night Run 2026
@@ -450,7 +657,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-19-corrida-unimed-fortaleza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:19ª Corrida Unimed Fortaleza 2026
@@ -464,7 +671,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-1-corrida-santuario-de-fatima-frecheirinha@cuponsdecorrida.c
  om.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:1ª Corrida Santuário de Fátima 2026
@@ -477,9 +684,24 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-1-corrida-santuari
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-18-3-corrida-do-agro-2026-limoeiro-do-norte@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3ª Corrida do Agro 2026
+LOCATION:Limoeiro do Norte - CE
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 2km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-18-3-corrida-do-agro-2026-limoei
+ ro-do-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-corrida-do-agro-
+ 2026-limoeiro-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-18-corrida-outubro-em-movimento-2-edicao-ico@cuponsdecorrida.co
  m.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Corrida Outubro em Movimento - 2ª Edição 2026
@@ -492,7 +714,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-esquadrao-cqp-run-fortaleza@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Esquadrão CQP Run 2026
@@ -501,6 +723,699 @@ DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2026-10-18-esquadrao-cqp-run-fortaleza/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-esquadrao-cqp-run-
  fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-1-corrida-claudinho-auto-pecas-tabuleiro-do-norte@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:1ª Corrida Claudinho Auto Peças 2026
+LOCATION:Tabuleiro do Norte - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-25-1-corrida-claudinho-auto-pecas-tabuleiro-d
+ o-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-1-corrida-claudinh
+ o-auto-pecas-tabuleiro-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-corre-potiretama-solidario@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:CORRE POTIRETAMA SOLIDÁRIO 2026
+LOCATION:Potiretama - CE
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-25-corre-potiretama-solidario/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-corre-potiretama-s
+ olidario/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-front-rosa-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Front Rosa 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-25-front-rosa-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-front-rosa-fortale
+ za/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-corre-da-bia-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:CORRE DA BIA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 4km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-31-corre-da-bia-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-corre-da-bia-forta
+ leza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-1-grande-corrida-de-adrianopolis-granja@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:1ª Grande Corrida de Adrianópolis 2026
+LOCATION:Granja - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-01-1-grande-corrida-de-adrianopolis-granja/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-1-grande-corrida-d
+ e-adrianopolis-granja/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-3-corrida-da-policia-federal-no-ceara-fortaleza@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:3ª CORRIDA da POLÍCIA FEDERAL no CEARÁ 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-01-3-corrida-da-policia-federal-no-ceara-forta
+ leza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-3-corrida-da-polic
+ ia-federal-no-ceara-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-4-corrida-rustica-de-parajuru-beberibe@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:4ª Corrida Rústica de Parajuru 2026
+LOCATION:Beberibe - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-01-4-corrida-rustica-de-parajuru-beberibe/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-4-corrida-rustica-
+ de-parajuru-beberibe/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-corrida-e-caminhada-de-pentecostes-assare@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:CORRIDA E CAMINHADA DE PENTECOSTES 2026
+LOCATION:Assaré - CE
+DESCRIPTION:Caminhada · 4km\, 7km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-01-corrida-e-caminhada-de-pentecostes-assare
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-e-caminhad
+ a-de-pentecostes-assare/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-corrida-vai-bem-etapa-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:CORRIDA VAI BEM - ETAPA FORTALEZA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/CORRIDA+VAI+BEM+-+ETAPA+FORTALEZA-88025\nCupons e deta
+ lhes: https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-vai-bem
+ -etapa-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-vai-bem-et
+ apa-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-mandacarun-2-edicao-madalena@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:MANDACARUN 2ª EDIÇÃO 2026
+LOCATION:Madalena - CE
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-01-mandacarun-2-edicao-madalena/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-mandacarun-2-edica
+ o-madalena/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-taiba-trail-race-sao-goncalo-do-amarante@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:TAÍBA TRAIL RACE 2026
+LOCATION:São Gonçalo do Amarante - CE
+DESCRIPTION:Corrida de trail · 7km\, 14km\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-11-01-taiba-trail-race-sao-goncalo-do-a
+ marante/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-taiba-trail-race-s
+ ao-goncalo-do-amarante/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-1-egs-run-crateus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:1 EGS RUN 2026
+LOCATION:Crateús - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-07-1-egs-run-crateus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-1-egs-run-crateus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-maratoninha-sesc-etapa-juazeiro-ce-2026-juazeiro-do-norte@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:MARATONINHA SESC ETAPA JUAZEIRO-CE 2026
+LOCATION:Juazeiro do Norte - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-07-maratoninha-sesc-etapa-juazeiro-ce-2026-juazeiro-
+ do-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-maratoninha-sesc-e
+ tapa-juazeiro-ce-2026-juazeiro-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-night-run-etapa-1-fortaleza-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Night Run - Etapa 1 - Fortaleza 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-07-night-run-etapa-1-fortaleza-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-night-run-etapa-1-
+ fortaleza-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-1-corrida-pro-vida-2026-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:1ª CORRIDA PRÓ-VIDA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-08-1-corrida-pro-vida-2026-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-1-corrida-pro-vida
+ -2026-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-v-corrida-conectados-pela-cura-hmsvp-barbalha@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:V CORRIDA CONECTADOS PELA CURA - HMSVP 2026
+LOCATION:Barbalha - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-08-v-corrida-conectados-pela-cura-hmsvp-barbalha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-v-corrida-conectad
+ os-pela-cura-hmsvp-barbalha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-14-ultra-imperial-100k-ceara-paracuru@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:ULTRA IMPERIAL 100K CEARÁ 2026
+LOCATION:Paracuru - CE
+DESCRIPTION:Corrida de rua · 100km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-11-14-ultra-imperial-100k-ceara-paracuru/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-ultra-imperial-100
+ k-ceara-paracuru/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-3-iron-day-pacajus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:3º IRON DAY 2026
+LOCATION:Pacajus - CE
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-15-3-iron-day-pacajus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-3-iron-day-pacajus
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-aesp-15-anos-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:CORRIDA AESP - 15 ANOS 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-15-corrida-aesp-15-anos-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-aesp-15-an
+ os-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-maratona-cometa-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:MARATONA COMETA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 2km\, 5km\, 10km\, 21km\, 42km\nInscrição: 
+ https://www.ticketsports.com.br/e/MARATONA+COMETA-87835\nCupons e detalhes
+ : https://www.cuponsdecorrida.com.br/provas/2026-11-15-maratona-cometa-for
+ taleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-maratona-cometa-fo
+ rtaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-track-field-run-series-2026-riomar-fortaleza-ll@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Track&Field Run Series 2026 - Riomar Fortaleza LL
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-15-track-field-run-series-2026-
+ riomar-fortaleza-ll/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-track-field-run-se
+ ries-2026-riomar-fortaleza-ll/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-live-run-xp-fortaleza-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:LIVE! RUN XP Fortaleza 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-20-live-run-xp-fortaleza-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-live-run-xp-fortal
+ eza-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-live-21k-fortaleza-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:LIVE!21K - FORTALEZA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-11-20-live-21k-fortaleza-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-live-21k-fortaleza
+ -2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-9-acao-corrida-e-caminhada-pelo-fim-da-violencia-contra-mulh
+ eres-e-meninas-fort@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:9ª AÇÃO CORRIDA E CAMINHADA PELO FIM DA VIOLÊNCIA CONTRA MULHER
+ ES E MENINAS 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Caminhada\nCupons e detalhes: https://www.cuponsdecorrida.com.b
+ r/provas/2026-11-21-9-acao-corrida-e-caminhada-pelo-fim-da-violencia-contr
+ a-mulheres-e-meninas-fort/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-9-acao-corrida-e-c
+ aminhada-pelo-fim-da-violencia-contra-mulheres-e-meninas-fort/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-1-corrida-e-caminhada-das-gracas-caucaia@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:1ª CORRIDA E CAMINHADA DAS GRAÇAS 2026
+LOCATION:Caucaia - CE
+DESCRIPTION:Caminhada · 2km\, 5km\nInscrição: https://www.ticketsports.c
+ om.br/e/1%C2%AA+CORRIDA+E+CAMINHADA+DAS+GRA%C3%87AS+-88553\nCupons e detal
+ hes: https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-e-cami
+ nhada-das-gracas-caucaia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-e-caminh
+ ada-das-gracas-caucaia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-1-corrida-do-catea-3-anos-de-inclusao-alto-santo@cuponsdecor
+ rida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:1ª CORRIDA do CATEA – 3 ANOS de INCLUSÃO 2026
+LOCATION:Alto Santo - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-22-1-corrida-do-catea-3-anos-de-inclusao-alto
+ -santo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-do-catea
+ -3-anos-de-inclusao-alto-santo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-2-edicao-da-corrida-kids-das-cores-crato@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:2ª edição da Corrida Kids das Cores 2026
+LOCATION:Crato - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-22-2-edicao-da-corrida-kids-das-cores-crato/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-2-edicao-da-corrid
+ a-kids-das-cores-crato/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-3-corrida-samuel-shop-car-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:3ª CORRIDA SAMUEL SHOP CAR 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-22-3-corrida-samuel-shop-car-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-3-corrida-samuel-s
+ hop-car-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-corrida-dos-ventos-2026-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:CORRIDA DOS VENTOS 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-22-corrida-dos-ventos-2026-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-corrida-dos-ventos
+ -2026-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-corrida-nova-beach-run-morada-nova@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Corrida Nova Beach Run 2026
+LOCATION:Morada Nova - CE
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-22-corrida-nova-beach-run-morada-nova/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-corrida-nova-beach
+ -run-morada-nova/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-viii-corrida-da-rodovia-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:VIII CORRIDA DA RODOVIA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-22-viii-corrida-da-rodovia-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-viii-corrida-da-ro
+ dovia-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-1-edicao-da-corrida-de-rua-do-raio-russas@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:1ª Edição da Corrida de Rua do Raio Russas 2026
+LOCATION:Russas - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-1-edicao-da-corrida-de-rua-do-raio-russas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-edicao-da-corrid
+ a-de-rua-do-raio-russas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-sesi-sobral-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:CORRIDA SESI SOBRAL 2026
+LOCATION:Sobral - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-29-corrida-sesi-sobral-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-sesi-sobra
+ l-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-circuito-das-estacoes-2026-verao-fortaleza@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Circuito das Estações 2026 - Verão - Fortaleza
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-29-circuito-das-estacoes-2026-verao-fo
+ rtaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-circuito-das-estac
+ oes-2026-verao-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-gt-run-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:GT RUN 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-29-gt-run-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-gt-run-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-brb-canoa-aracati@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:BRB CANOA 2026
+LOCATION:Aracati - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/BRB+CANOA+-88254\nCupons e detalhes: https://www.cuponsdecor
+ rida.com.br/provas/2026-12-05-brb-canoa-aracati/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-brb-canoa-aracati/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-1-corrida-e-caminhada-da-imaculada-fortaleza@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:1° CORRIDA E CAMINHADA DA IMACULADA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Caminhada · 3km\, 5km\nInscrição: https://www.ticketsports.c
+ om.br/e/1%C2%B0+CORRIDA+E+CAMINHADA+DA+IMACULADA+-88618\nCupons e detalhes
+ : https://www.cuponsdecorrida.com.br/provas/2026-12-06-1-corrida-e-caminha
+ da-da-imaculada-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-1-corrida-e-caminh
+ ada-da-imaculada-fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-2-corrida-do-supermercado-oliveira-ipaumirim@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:2ª CORRIDA do SUPERMERCADO OLIVEIRA 2026
+LOCATION:Ipaumirim - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-06-2-corrida-do-supermercado-oliveira-ipaumir
+ im/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-corrida-do-super
+ mercado-oliveira-ipaumirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-lupo-sport-corre-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:LUPO SPORT CORRE FORTALEZA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
+ LUPO+SPORT+CORRE+FORTALEZA-88559\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-06-lupo-sport-corre-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-lupo-sport-corre-f
+ ortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-roteiro-da-fe-2026-juazeiro-do-norte@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:ROTEIRO DA FÉ 2026
+LOCATION:Juazeiro do Norte - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-06-roteiro-da-fe-2026-juazeiro-do-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-roteiro-da-fe-2026
+ -juazeiro-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-12-2-corre-de-bar-em-bar-paraipaba@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:2° Corre de Bar em Bar 2026
+LOCATION:Paraipaba - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-12-2-corre-de-bar-em-bar-paraipaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-2-corre-de-bar-em-
+ bar-paraipaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-12-avia-no-pace-2026-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:AVIA NO PACE 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-12-12-avia-no-pace-2026-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-avia-no-pace-2026-
+ fortaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-circuito-uninta-run-2026-itapipoca@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:CIRCUITO UNINTA RUN - 2026
+LOCATION:Itapipoca - CE
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\, 21km\nCupons e detalhes: h
+ ttps://www.cuponsdecorrida.com.br/provas/2026-12-13-circuito-uninta-run-20
+ 26-itapipoca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-circuito-uninta-ru
+ n-2026-itapipoca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-assai-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:CORRIDA ASSAÍ - FORTALEZA 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CORRIDA+ASSA%C3%8D+-+FORTALEZA-88120\nCupons e detalhes: htt
+ ps://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-assai-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-assai-fort
+ aleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-meia-maratona-va-e-venca-2026-limoeiro-do-norte@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:MEIA MARATONA VÁ E VENÇA 2026
+LOCATION:Limoeiro do Norte - CE
+DESCRIPTION:Corrida de rua · 6km\, 21km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-meia-maratona-va-e-venca-2026-limoe
+ iro-do-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-meia-maratona-va-e
+ -venca-2026-limoeiro-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-18-ii-corrida-e-caminhada-beneficente-de-sao-sebastiao-carius@c
+ uponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+SUMMARY:II CORRIDA E CAMINHADA BENEFICENTE DE SÃO SEBASTIÃO 2026
+LOCATION:Cariús - CE
+DESCRIPTION:Caminhada · 3km\, 6km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-12-18-ii-corrida-e-caminhada-beneficente-de-sao
+ -sebastiao-carius/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-18-ii-corrida-e-camin
+ hada-beneficente-de-sao-sebastiao-carius/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-26-retro-run-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20261227
+SUMMARY:RETRÔ RUN 2026
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-26-retro-run-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-26-retro-run-fortalez
+ a/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-10-1-corrida-de-rua-do-1-bpm-russas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:1ª CORRIDA de RUA do 1º BPM – RUSSAS 2027
+LOCATION:Russas - CE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-01-10-1-corrida-de-rua-do-1-bpm-russas/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-10-1-corrida-de-rua-d
+ o-1-bpm-russas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-17-ramira-run-2027-fortaleza@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270118
+SUMMARY:RAMIRA RUN 2027
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2027-01-17-ramira-run-2027-fortaleza/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-17-ramira-run-2027-fo
+ rtaleza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-11-maratona-de-fortaleza-2027@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270411
+DTEND;VALUE=DATE:20270412
+SUMMARY:MARATONA DE FORTALEZA - 2027
+LOCATION:Fortaleza - CE
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\, 42km\nInscrição: https:
+ //www.ticketsports.com.br/e/MARATONA+DE+FORTALEZA+-+2027-87035\nCupons e d
+ etalhes: https://www.cuponsdecorrida.com.br/provas/2027-04-11-maratona-de-
+ fortaleza-2027/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-11-maratona-de-fortal
+ eza-2027/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

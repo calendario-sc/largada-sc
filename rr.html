@@ -1662,7 +1662,7 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
 <footer class="foot">
   <div class="wrap">
     <p><b>Cupons de Corrida</b> · <a href="cupons.html">Central de Cupons</a> · <a href="parceiros.html">Seja parceiro</a></p>
-    <p class="foot__cidades"><b>Corridas por cidade:</b> <a href="/corridas-em/boa-vista-rr/">Boa Vista</a> · <a href="/corridas-em/canta-rr/">Cantá</a> · <a href="/corridas-em/rorainopolis-rr/">Rorainópolis</a></p>
+    <p class="foot__cidades"><b>Corridas por cidade:</b> <a href="/corridas-em/boa-vista-rr/">Boa Vista</a> · <a href="/corridas-em/rorainopolis-rr/">Rorainópolis</a> · <a href="/corridas-em/canta-rr/">Cantá</a> · <a href="/corridas-em/caracarai-rr/">Caracaraí</a> · <a href="/corridas-em/caroebe-rr/">Caroebe</a> · <a href="/corridas-em/mucajai-rr/">Mucajaí</a> · <a href="/corridas-em/alto-alegre-rr/">Alto Alegre</a> · <a href="/corridas-em/iracema-rr/">Iracema</a></p>
   </div>
 </footer>
 
@@ -2811,12 +2811,14 @@ function render(){
     const datas = res.map(r => r.data).sort();
     const que = state.treinos ? "Treinos" : state.anos.size ? "Provas de " + [...state.anos].sort().join(", ")
       : { proximas:"Próximas provas", realizadas:"Provas realizadas", todas:"Todas as provas" }[state.escopo];
-    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : state.uf ? NOMES_UF[state.uf] : (UF ? NOME_ESTADO : "todo o Brasil"));
+    // "em Florianópolis", "na Bahia", "no Paraná", "em todo o Brasil": a preposicao vem de ESTADOS.
+    const onde = state.cidade ? "em " + state.cidade : state.regioes.size ? "em " + [...state.regioes].join(", ")
+      : (state.uf || UF) ? ESTADOS[state.uf || UF].em + " " + NOMES_UF[state.uf || UF] : "em todo o Brasil";
     let periodo = "";
     if (datas.length) periodo = state.escopo === "proximas" && !state.anos.size && !state.meses.size
       ? "de hoje até " + br(datas[datas.length - 1]) : "de " + br(datas[0]) + " a " + br(datas[datas.length - 1]);
     const leg = document.getElementById("stats-legenda");
-    leg.replaceChildren(el("b", { textContent: que }), document.createTextNode(" em " + onde + (periodo ? ", " + periodo : "") + ":"));
+    leg.replaceChildren(el("b", { textContent: que }), document.createTextNode(" " + onde + (periodo ? ", " + periodo : "") + ":"));
   })();
   document.getElementById("s-corridas").textContent = String(nProvas);
   document.getElementById("s-cidades").textContent = String(cidades.size);

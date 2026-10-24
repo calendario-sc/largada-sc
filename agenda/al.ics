@@ -10,8 +10,36 @@ X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\,
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:2026-08-29-corrida-de-emancipacao-de-palestina@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:CORRIDA DE EMANCIPAÇÃO DE PALESTINA 2026
+LOCATION:Palestina - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-29-corrida-de-emancipacao-de-palestina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-corrida-de-emancip
+ acao-de-palestina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-corrida-do-supermercado-amigao-sao-miguel-dos-milagres@cupon
+ sdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:CORRIDA DO SUPERMERCADO AMIGAO 2026
+LOCATION:São Miguel dos Milagres - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-corrida-do-supermercado-amigao-sao-miguel-
+ dos-milagres/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-do-superme
+ rcado-amigao-sao-miguel-dos-milagres/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-08-30-parque-shopping-run-maceio@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Parque Shopping Run 2026
@@ -24,7 +52,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-prime-run-2026-delmiro-gouveia@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Prime Run 2026
@@ -36,9 +64,65 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-prime-run-2026-del
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-05-pier-run-2026-marechal-deodoro@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:PIER RUN 2026
+LOCATION:Marechal Deodoro - AL
+DESCRIPTION:Corrida de rua · 7km\, 4km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-05-pier-run-2026-marechal-deodoro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-pier-run-2026-mare
+ chal-deodoro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-2-corrida-da-independencia-paulo-jacinto@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:2ª CORRIDA da INDEPENDÊNCIA 2026
+LOCATION:Paulo Jacinto - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-06-2-corrida-da-independencia-pa
+ ulo-jacinto/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-2-corrida-da-indep
+ endencia-paulo-jacinto/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-circuito-de-corridas-caixa-etapa-maceio@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:CIRCUITO DE CORRIDAS CAIXA - ETAPA MACEIO 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-circuito-de-corridas-caixa-etapa-ma
+ ceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-circuito-de-corrid
+ as-caixa-etapa-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-da-independencia-pilar-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:CORRIDA DA INDEPENDÊNCIA - PILAR 2026
+LOCATION:Pilar - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-corrida-da-independencia-pilar-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-indepen
+ dencia-pilar-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-06-corrida-nossa-senhora-da-penha-2026-sao-sebastiao@cuponsdeco
  rrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:Corrida Nossa Senhora da Penha 2026
@@ -51,8 +135,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-nossa-senh
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-12-corrida-crb-run-2026-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:CORRIDA CRB RUN 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-12-corrida-crb-run-2026-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-corrida-crb-run-20
+ 26-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-12-canions-ultramarathon-xtreme-piranhas@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260912
 DTEND;VALUE=DATE:20260913
 SUMMARY:Canions Ultramarathon Xtreme 2026
@@ -67,7 +164,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-12-corrida-santa-casa-175-anos-em-movimento-pela-vida-maceio@cu
  ponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260912
 DTEND;VALUE=DATE:20260913
 SUMMARY:Corrida Santa Casa – 175 Anos em Movimento pela Vida 2026
@@ -82,7 +179,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-38-corrida-aguinaldo-veloso-borges-pilar@cuponsdecorrida.com
  .br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:38ª Corrida Aguinaldo Veloso Borges 2026
@@ -96,7 +193,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-5-corridao-da-rotam-maceio@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:5ª Corridão da ROTAM 2026
@@ -110,7 +207,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-13-meia-maratona-cdrei-style-2026-arapiraca@cuponsdecorrida.com
  .br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Meia Maratona CDREI STYLE 2026
@@ -123,8 +220,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-meia-maratona-cdre
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-19-corrida-do-azulao-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:CORRIDA DO AZULAO 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-19-corrida-do-azulao-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-corrida-do-azulao-
+ maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-20-meia-maratona-coop-maceio@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Meia Maratona Coop 2026
@@ -136,9 +246,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-meia-maratona-coop
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-27-2-corrida-laranja-arapiraca@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:2ª Corrida Laranja 2026
+LOCATION:Arapiraca - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-2-corrida-laranja-arapiraca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-laranja-
+ arapiraca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-27-circuito-de-corrida-e-caminhada-sest-senat-teotonio-vilela@c
  uponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Circuito de Corrida e Caminhada SEST SENAT - Teotônio Vilela 2026
@@ -151,9 +274,24 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-de-corrid
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-11-1-corrida-porto-dos-corais-porto-de-pedras@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:1ª CORRIDA PORTO dos CORAIS 2026
+LOCATION:Porto de Pedras - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-1-corrida-porto-dos-corais-porto-de-pedras
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-1-corrida-porto-do
+ s-corais-porto-de-pedras/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-3-corrida-guardioes-dos-canions-delmiro-gouveia@cuponsdecorr
  ida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:3ª Corrida Guardiões dos Cânions 2026
@@ -166,9 +304,24 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-3-corrida-guardioe
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-11-movimento-rosa-passos-que-protegem-campestre@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:MOVIMENTO ROSA - PASSOS QUE PROTEGEM 2026
+LOCATION:Campestre - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-movimento-rosa-passos-que-protegem-campest
+ re/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-movimento-rosa-pas
+ sos-que-protegem-campestre/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-11-no-limite-trail-run-etapa-4-cavalhada-cha-preta@cuponsdecorr
  ida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:No Limite Trail Run - Etapa 4 - Cavalhada 2026
@@ -183,7 +336,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-17-corrida-movimento-rosa-por-elas-maceio@cuponsdecorrida.com.b
  r
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Corrida Movimento Rosa Por Elas 2026
@@ -195,8 +348,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-corrida-movimento-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-17-oab-arapiraca-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:OAB ARAPIRACA 2026
+LOCATION:Arapiraca - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-17-oab-arapiraca-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-oab-arapiraca-2026
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-18-9-circuito-permanente-run-maceio@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:9º Circuito Permanente Run 2026
@@ -206,6 +372,847 @@ DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
  ceio/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-9-circuito-permane
  nte-run-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corridinha-para-o-futuro-arapiraca@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Corridinha para o Futuro 2026
+LOCATION:Arapiraca - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-18-corridinha-para-o-futuro-arap
+ iraca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corridinha-para-o-
+ futuro-arapiraca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-24-3-circuito-run-girau-do-ponciano@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:3º CIRCUITO RUN 2026
+LOCATION:Girau do Ponciano - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-24-3-circuito-run-girau-do-ponciano/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-3-circuito-run-gir
+ au-do-ponciano/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-24-night-run-maceio-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Night Run - Maceió - 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-24-night-run-maceio-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-night-run-maceio-2
+ 026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-30-clandestina-ou-travessuras-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:CLANDESTINA OU TRAVESSURAS? 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
+ CLANDESTINA+OU+TRAVESSURAS%3F+-88707\nCupons e detalhes: https://www.cupon
+ sdecorrida.com.br/provas/2026-10-30-clandestina-ou-travessuras-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-30-clandestina-ou-tra
+ vessuras-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-corrida-do-outubro-rosa-e-novembro-azul-2026-sao-miguel-dos-
+ milagres@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:CORRIDA DO OUTUBRO ROSA E NOVEMBRO AZUL 2026
+LOCATION:São Miguel dos Milagres - AL
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/CORRIDA+DO+OUTUBRO+ROSA+E+NOVEMBRO+AZUL+2026-88160\nCupons e detalh
+ es: https://www.cuponsdecorrida.com.br/provas/2026-10-31-corrida-do-outubr
+ o-rosa-e-novembro-azul-2026-sao-miguel-dos-milagres/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-corrida-do-outubro
+ -rosa-e-novembro-azul-2026-sao-miguel-dos-milagres/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-circuito-banco-do-brasil-maceio-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Circuito Banco do Brasil - Maceió - 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 1km\, 5km\, 10km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-31-circuito-banco-do-brasil-mace
+ io-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-circuito-banco-do-
+ brasil-maceio-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-corrida-arena-das-cores-sebrae-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Corrida Arena das Cores - SEBRAE 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 4km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-31-corrida-arena-das-cores-sebrae-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-corrida-arena-das-
+ cores-sebrae-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-2-desafio-santa-lucia-adventure-maceio@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:2º DESAFIO SANTA LÚCIA ADVENTURE 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\nCupons e detalhes: https://www.c
+ uponsdecorrida.com.br/provas/2026-11-01-2-desafio-santa-lucia-adventure-ma
+ ceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-2-desafio-santa-lu
+ cia-adventure-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-aniversario-do-mutum-uniao-dos-palmares@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:ANIVERSÁRIO DO MUTUM 2026
+LOCATION:União dos Palmares - AL
+DESCRIPTION:Corrida de rua · 6km\, 15km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-01-aniversario-do-mutum-uniao-dos-palm
+ ares/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-aniversario-do-mut
+ um-uniao-dos-palmares/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-cactus-run-coruripe@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:CACTUS RUN 2026
+LOCATION:Coruripe - AL
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-01-cactus-run-coruripe/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-cactus-run-corurip
+ e/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-circuito-rosa-e-azul-rk-atalaia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Circuito rosa e azul RK 2026
+LOCATION:Atalaia - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-01-circuito-rosa-e-azul-rk-atalaia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-circuito-rosa-e-az
+ ul-rk-atalaia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-corrida-aguia-2026-craibas@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Corrida Águia 2026
+LOCATION:Craíbas - AL
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-aguia-2026-craibas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-aguia-2026
+ -craibas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-track-field-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Track&Field Maceió 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-01-track-field-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-track-field-maceio
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-10-corrida-trt-19-al-trabalho-seguro-maceio@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:10ª CORRIDA TRT 19ª AL - TRABALHO SEGURO 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 1km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/10%C2%AA+CORRIDA+TRT+19%C2%AA+AL+-+TRABALHO+SEGURO+-87
+ 307\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-
+ 07-10-corrida-trt-19-al-trabalho-seguro-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-10-corrida-trt-19-
+ al-trabalho-seguro-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-princesa-dos-montes-running-cha-preta@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:PRINCESA DOS MONTES RUNNING 2026
+LOCATION:Chã Preta - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-08-princesa-dos-montes-running-cha-preta/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-princesa-dos-monte
+ s-running-cha-preta/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-4-aputrail-2026-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:4ª APUTRAIL 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de trail · 6km\, 12km\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-11-15-4-aputrail-2026-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-4-aputrail-2026-ma
+ ceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-inscricao-corrida-conjunto-barnabe-rio-largo@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:INSCRIÇÃO CORRIDA CONJUNTO BARNABÉ 2026
+LOCATION:Rio Largo - AL
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-15-inscricao-corrida-conjunto-barnabe-rio-largo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-inscricao-corrida-
+ conjunto-barnabe-rio-largo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-2-corrida-nossa-senhora-da-guia-satuba-al@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:2ª CORRIDA NOSSA SENHORA da GUIA – SATUBA/AL 2026
+LOCATION:Satuba - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-20-2-corrida-nossa-senhora-da-guia-satuba-al/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-2-corrida-nossa-se
+ nhora-da-guia-satuba-al/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-circuito-american-run-2026-etapa-ar-e-terra-maceio@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:CIRCUITO AMERICAN RUN 2026 - ETAPA AR E TERRA
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nInscrição: https://www.t
+ icketsports.com.br/e/CIRCUITO+AMERICAN+RUN+2026+-+ETAPA+AR+E+TERRA-74704\n
+ Cupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-20-ci
+ rcuito-american-run-2026-etapa-ar-e-terra-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-circuito-american-
+ run-2026-etapa-ar-e-terra-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-santander-night-run-maceio-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Santander Night Run - Maceió - 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-21-santander-night-run-maceio-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-santander-night-ru
+ n-maceio-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-1-alci-fitness-run-anadia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:1ª ALCI FITNESS RUN 2026
+LOCATION:Anadia - AL
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-22-1-alci-fitness-run-anadia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-alci-fitness-run
+ -anadia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-1-corrida-do-tigre-limoeiro-de-anadia@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:1ª CORRIDA DO TIGRE 2026
+LOCATION:Limoeiro de Anadia - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/1%C2%AA+CORRIDA+DO+TIGRE-88692\nCupons e detalhes: https://w
+ ww.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-do-tigre-limoeiro-de
+ -anadia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-do-tigre
+ -limoeiro-de-anadia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-3-edicao-corrida-avant-atacarejo-palmeira-dos-indios@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:3ª EDIÇÃO CORRIDA AVANT ATACAREJO 2026
+LOCATION:Palmeira dos Índios - AL
+DESCRIPTION:Corrida de rua · 4km\, 6km\, 12km\nInscrição: https://www.ti
+ cketsports.com.br/e/3%C2%AA+EDI%C3%87%C3%83O+CORRIDA+AVANT+ATACAREJO+-8830
+ 8\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11-22
+ -3-edicao-corrida-avant-atacarejo-palmeira-dos-indios/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-3-edicao-corrida-a
+ vant-atacarejo-palmeira-dos-indios/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-gigantes-run-5-sao-sebastiao@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:Gigantes Run 5 2026
+LOCATION:São Sebastião - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-22-gigantes-run-5-sao-sebastiao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-gigantes-run-5-sao
+ -sebastiao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-paris-run-pariconha@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:PARIS RUN 2026
+LOCATION:Pariconha - AL
+DESCRIPTION:Corrida de rua · 35km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-22-paris-run-pariconha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-paris-run-pariconh
+ a/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-corrida-do-homem-novembro-azul-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:CORRIDA DO HOMEM - NOVEMBRO AZUL 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 2km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-28-corrida-do-homem-novembro-azul-macei
+ o/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-corrida-do-homem-n
+ ovembro-azul-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-circuito-record-corretores-de-imoveis-maceio@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Circuito Record Corretores de Imóveis 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\, 10km\nCupons e detalhes: https:
+ //www.cuponsdecorrida.com.br/provas/2026-11-28-circuito-record-corretores-
+ de-imoveis-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-circuito-record-co
+ rretores-de-imoveis-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-28-luau-night-trail-run-quallity-chef-maceio@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:LUAU NIGHT TRAIL RUN QUALLITY CHEF 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de trail · km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-28-luau-night-trail-run-quallity-chef-maceio
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-luau-night-trail-r
+ un-quallity-chef-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-2-corrida-da-imaculada-lagoa-da-canoa@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:2ª Corrida da Imaculada 2026
+LOCATION:Lagoa da Canoa - AL
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\nCupons e detalhes: https://www.c
+ uponsdecorrida.com.br/provas/2026-11-29-2-corrida-da-imaculada-lagoa-da-ca
+ noa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-2-corrida-da-imacu
+ lada-lagoa-da-canoa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-novembro-azul-medradius-maceio@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:CORRIDA NOVEMBRO AZUL - medradius 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\nCupons e detalhes: https://www.c
+ uponsdecorrida.com.br/provas/2026-11-29-corrida-novembro-azul-medradius-ma
+ ceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-novembro-a
+ zul-medradius-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-01-1-corrida-da-padroeira-nossa-senhora-da-conceicao-craibas@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:1° CORRIDA DA PADROEIRA NOSSA SENHORA DA CONCEIÇÃO 2026
+LOCATION:Craíbas - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 15km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-12-01-1-corrida-da-padroeira-nossa
+ -senhora-da-conceicao-craibas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-01-1-corrida-da-padro
+ eira-nossa-senhora-da-conceicao-craibas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-11-corrida-da-emancipacao-de-sao-jose-da-tapera@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:11ª Corrida da Emancipação de São José da Tapera 2026
+LOCATION:São José da Tapera - AL
+DESCRIPTION:Corrida de rua · 4km\, 8km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-12-06-11-corrida-da-emancipacao-de-sao-jos
+ e-da-tapera/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-11-corrida-da-eman
+ cipacao-de-sao-jose-da-tapera/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-21k-milagres-run-sao-miguel-dos-milagres@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:21K MILAGRES RUN 2026
+LOCATION:São Miguel dos Milagres - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nInscrição: https://www.t
+ icketsports.com.br/e/21K+MILAGRES+RUN-88158\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2026-12-06-21k-milagres-run-sao-miguel-dos
+ -milagres/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-21k-milagres-run-s
+ ao-miguel-dos-milagres/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-2-edicao-corrida-prestek-penedo@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:2ª Edição Corrida Prestek 2026
+LOCATION:Penedo - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-06-2-edicao-corrida-prestek-penedo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-2-edicao-corrida-p
+ restek-penedo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-cda-run-taquarana@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:CDA RUN 2026
+LOCATION:Taquarana - AL
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-12-06-cda-run-taquarana/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-cda-run-taquarana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-corrida-sindicatos-dos-bancarios-e-apcef-maceio@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:CORRIDA SINDICATOS DOS BANCÁRIOS e APCEF - MACEIÓ 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
+ CORRIDA+SINDICATOS+DOS+BANC%C3%81RIOS+e+APCEF+-+MACEI%C3%93-87992\nCupons 
+ e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-06-corrida-s
+ indicatos-dos-bancarios-e-apcef-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-corrida-sindicatos
+ -dos-bancarios-e-apcef-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-traipu-run-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:TRAIPU RUN - 2026
+LOCATION:Traipu - AL
+DESCRIPTION:Corrida de rua · 48km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-12-06-traipu-run-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-traipu-run-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-08-37-corrida-da-engenharia-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:37ª CORRIDA DA ENGENHARIA 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\nInscrição: https://www.tickets
+ ports.com.br/e/+37%C2%AA+CORRIDA+DA+ENGENHARIA-88135\nCupons e detalhes: h
+ ttps://www.cuponsdecorrida.com.br/provas/2026-12-08-37-corrida-da-engenhar
+ ia-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-08-37-corrida-da-enge
+ nharia-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-12-fox-summer-run-2026-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:FOX SUMMER RUN 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/FOX+SUMMER+RUN+2026-88556\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-12-fox-summer-run-2026-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-fox-summer-run-202
+ 6-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-circuito-caaal-de-corrida-da-advocacia-2026-etapa-maceio@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:CIRCUITO CAAAL DE CORRIDA DA ADVOCACIA 2026 - ETAPA MACEIÓ
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-13-circuito-caaal-de-corrida-da-advoca
+ cia-2026-etapa-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-circuito-caaal-de-
+ corrida-da-advocacia-2026-etapa-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-da-biblia-igreja-batista-do-pinheiro-2026-maceio@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:CORRIDA DA BÍBLIA IGREJA BATISTA DO PINHEIRO - 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · km\nInscrição: https://www.ticketsports.com
+ .br/e/CORRIDA+DA+B%C3%8DBLIA+IGREJA+BATISTA+DO+PINHEIRO++-+2026-88306\nCup
+ ons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-13-corri
+ da-da-biblia-igreja-batista-do-pinheiro-2026-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-da-biblia-
+ igreja-batista-do-pinheiro-2026-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-corrida-tlc-sagrado-arapiraca@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Corrida TLC Sagrado 2026
+LOCATION:Arapiraca - AL
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\, 10km\nCupons e detalhes: https:
+ //www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-tlc-sagrado-arapira
+ ca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-corrida-tlc-sagrad
+ o-arapiraca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-oxe-triatlo-paraiso-2026-maceio-al@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Ôxe Triatlo Paraíso 2026 - Maceió Al
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de trail · 2.5km\, 5km\, 10km\, 20km\, 40km\nCupons e 
+ detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-13-oxe-triatlo
+ -paraiso-2026-maceio-al/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-oxe-triatlo-parais
+ o-2026-maceio-al/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-20-3-edicao-de-aniversario-do-felipao-trail-run-uniao-dos-palma
+ res@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:3ª EDIÇÃO de ANIVERSÁRIO do FELIPÃO - TRAIL RUN 2026
+LOCATION:União dos Palmares - AL
+DESCRIPTION:Corrida de trail · 61221km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-12-20-3-edicao-de-aniversario-do-felipao-t
+ rail-run-uniao-dos-palmares/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-3-edicao-de-aniver
+ sario-do-felipao-trail-run-uniao-dos-palmares/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-20-uniao-run-2026-arapiraca@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:União Run 2026
+LOCATION:Arapiraca - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-20-uniao-run-2026-arapiraca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-uniao-run-2026-ara
+ piraca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-31-15k-da-virada-2026-maceio-al@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:15K DA VIRADA 2026 - MACEIÓ AL
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 15km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-12-31-15k-da-virada-2026-maceio-al/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-31-15k-da-virada-2026
+ -maceio-al/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-17-2-nobre-run-santana-do-ipanema@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270118
+SUMMARY:2º Nobre Run 2027
+LOCATION:Santana do Ipanema - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2027-01-17-2-nobre-run-santana-do-ipanema/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-17-2-nobre-run-santan
+ a-do-ipanema/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-17-vida-corrida-trail-run-10-anos-de-muita-historia-e-aventura-
+ marechal-deodoro@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270118
+SUMMARY:VIDA CORRIDA - TRAIL RUN - 10 Anos de muita história e aventura 20
+ 27
+LOCATION:Marechal Deodoro - AL
+DESCRIPTION:Corrida de trail · 6km\, 12km\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2027-01-17-vida-corrida-trail-run-10-anos-de
+ -muita-historia-e-aventura-marechal-deodoro/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-17-vida-corrida-trail
+ -run-10-anos-de-muita-historia-e-aventura-marechal-deodoro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-22-2-circuito-da-lua-maragogi@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:2ª CIRCUITO DA LUA 2027
+LOCATION:Maragogi - AL
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/2%C2%AA+CIRCUITO+DA+LUA+-88650\nCupons e detalhes: https://www.cupo
+ nsdecorrida.com.br/provas/2027-01-22-2-circuito-da-lua-maragogi/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-22-2-circuito-da-lua-
+ maragogi/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-31-15k-das-praias-2027-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:15k das PRAIAS - 2027
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 15km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2027-01-31-15k-das-praias-2027-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-15k-das-praias-202
+ 7-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-31-1-circuito-run-visao-nordeste-maragogi-al@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:1º CIRCUITO RUN VISÃO NORDESTE | MARAGOGI\, AL 2027
+LOCATION:Maragogi - AL
+DESCRIPTION:Corrida de rua · 7km\nInscrição: https://www.ticketsports.co
+ m.br/e/1%C2%BA+CIRCUITO+RUN+VIS%C3%83O+NORDESTE+%7C+MARAGOGI%2C+AL-88776\n
+ Cupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-01-31-1-
+ circuito-run-visao-nordeste-maragogi-al/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-1-circuito-run-vis
+ ao-nordeste-maragogi-al/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-31-3-edicao-da-meia-maratona-da-liberdade-uniao-dos-palmares@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:3ª EDIÇÃO da MEIA MARATONA da LIBERDADE 2027
+LOCATION:União dos Palmares - AL
+DESCRIPTION:Corrida de rua · km\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2027-01-31-3-edicao-da-meia-maratona-da-liberdade-unia
+ o-dos-palmares/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-3-edicao-da-meia-m
+ aratona-da-liberdade-uniao-dos-palmares/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-28-circuito-zona-da-mata-trail-run-etapa-murici@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:CIRCUITO ZONA DA MATA - TRAIL RUN - ETAPA MURICI 2027
+LOCATION:Murici - AL
+DESCRIPTION:Corrida de trail · km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-02-28-circuito-zona-da-mata-trail-run-etapa-mur
+ ici/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-28-circuito-zona-da-m
+ ata-trail-run-etapa-murici/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-21-10-milhas-alagoas-2027-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+SUMMARY:10 Milhas Alagoas 2027
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/10+MILHAS+ALAGOAS+2027-86461\nCupons e detalhes: https://www
+ .cuponsdecorrida.com.br/provas/2027-03-21-10-milhas-alagoas-2027-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-21-10-milhas-alagoas-
+ 2027-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-02-ultramaratona-volta-da-lagoa-2027-marechal-deodoro@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270502
+DTEND;VALUE=DATE:20270503
+SUMMARY:ULTRAMARATONA VOLTA DA LAGOA 2027
+LOCATION:Marechal Deodoro - AL
+DESCRIPTION:Corrida de rua · 26km\, 64km\nInscrição: https://www.tickets
+ ports.com.br/e/ULTRAMARATONA+VOLTA+DA+LAGOA+2027-88213\nCupons e detalhes:
+  https://www.cuponsdecorrida.com.br/provas/2027-05-02-ultramaratona-volta-
+ da-lagoa-2027-marechal-deodoro/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-02-ultramaratona-volt
+ a-da-lagoa-2027-marechal-deodoro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-16-meia-maratona-de-maceio-2027@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270516
+DTEND;VALUE=DATE:20270517
+SUMMARY:MEIA MARATONA DE MACEIÓ - 2027
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nInscrição: https://www.t
+ icketsports.com.br/e/MEIA+MARATONA+DE+MACEI%C3%93+-+2027-88057\nCupons e d
+ etalhes: https://www.cuponsdecorrida.com.br/provas/2027-05-16-meia-maraton
+ a-de-maceio-2027/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-16-meia-maratona-de-m
+ aceio-2027/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-07-31-maratona-internacional-de-maceio-2027@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270731
+DTEND;VALUE=DATE:20270801
+SUMMARY:MARATONA INTERNACIONAL DE MACEIÓ 2027
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\, 42km\nInscrição: https:
+ //www.ticketsports.com.br/e/MARATONA+INTERNACIONAL+DE+MACEI%C3%93+2027-880
+ 60\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-07-3
+ 1-maratona-internacional-de-maceio-2027/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-07-31-maratona-internaci
+ onal-de-maceio-2027/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-15-circuito-zona-da-mata-trail-run-branquinha@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270815
+DTEND;VALUE=DATE:20270816
+SUMMARY:CIRCUITO ZONA DA MATA - TRAIL RUN - BRANQUINHA 2027
+LOCATION:Branquinha - AL
+DESCRIPTION:Corrida de trail · km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-08-15-circuito-zona-da-mata-trail-run-branquinh
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-08-15-circuito-zona-da-m
+ ata-trail-run-branquinha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-31-circuito-zona-da-mata-trail-run-uniao-dos-palmares@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:CIRCUITO ZONA DA MATA - TRAIL RUN - UNIÃO DOS PALMARES 2027
+LOCATION:União dos Palmares - AL
+DESCRIPTION:Corrida de trail · km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-10-31-circuito-zona-da-mata-trail-run-uniao-dos
+ -palmares/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-10-31-circuito-zona-da-m
+ ata-trail-run-uniao-dos-palmares/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

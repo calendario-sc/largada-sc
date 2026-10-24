@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-08-27-1-corrida-da-academia-totalfit-labrea@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260827
 DTEND;VALUE=DATE:20260828
 SUMMARY:1ª Corrida da Academia TotalFit 2026
@@ -25,7 +25,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-08-30-bemol-run-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:Bemol Run 2026
@@ -37,7 +37,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-05-caa-aero-run-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260905
 DTEND;VALUE=DATE:20260906
 SUMMARY:CAA Aero Run 2026
@@ -50,7 +50,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-05-circuito-trail-run-2-etapa-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260905
 DTEND;VALUE=DATE:20260906
 SUMMARY:Circuito Trail Run - 2ª Etapa 2026
@@ -65,7 +65,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-06-7-circuito-samel-planos-de-saude-manaus@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:7° Circuito Samel Planos De Saúde 2026
@@ -78,9 +78,24 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-7-circuito-samel-p
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-08-2-corrida-da-padroeira-nossa-senhora-de-nazare-labrea@cupons
+ decorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260908
+DTEND;VALUE=DATE:20260909
+SUMMARY:2º CORRIDA da PADROEIRA NOSSA SENHORA de NAZARÉ 2026
+LOCATION:Lábrea - AM
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-08-2-corrida-da-padroeira-nossa-senhor
+ a-de-nazare-labrea/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-08-2-corrida-da-padro
+ eira-nossa-senhora-de-nazare-labrea/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-12-1-corrida-da-administracao-do-amazonas-manaus@cuponsdecorrid
  a.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260912
 DTEND;VALUE=DATE:20260913
 SUMMARY:1ª Corrida da Administração do Amazonas 2026
@@ -93,8 +108,23 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-1-corrida-da-admin
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-13-1-meia-maratona-de-anavilhanas-novo-airao@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª MEIA MARATONA de ANAVILHANAS 2026
+LOCATION:Novo Airão - AM
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-13-1-meia-maratona-de-anavilhan
+ as-novo-airao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-meia-maratona-de
+ -anavilhanas-novo-airao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-13-7-corrida-tv-lar-iranduba@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:7ª Corrida TV Lar 2026
@@ -106,8 +136,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-7-corrida-tv-lar-i
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-13-corrida-do-6-bis-2026-guajara@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:CORRIDA do - 6º BIS 2026
+LOCATION:Guajará - AM
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-corrida-do-6-bis-2026-guajara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-do-6-bis-2
+ 026-guajara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-13-corrida-do-bob-esponja-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260913
 DTEND;VALUE=DATE:20260914
 SUMMARY:Corrida do Bob Esponja 2026
@@ -119,9 +162,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-do-bob-esp
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-20-5-corrida-nova-era-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:5ª CORRIDA NOVA ERA 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-5-corrida-nova-era-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-5-corrida-nova-era
+ -manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-27-1-corrida-mercantil-real-rio-preto-da-eva@cuponsdecorrida.co
  m.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:1ª Corrida Mercantil Real 2026
@@ -134,7 +190,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-corrida-do-comerciario-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Corrida do Comerciário 2026
@@ -148,7 +204,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-lato-sensu-run-conviver-superar-e-conquistar-manaus@cuponsde
  corrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Lato Sensu Run – Conviver\, Superar e Conquistar 2026
@@ -161,8 +217,23 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-lato-sensu-run-con
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-03-1-corrida-de-rua-sao-francisco-de-assis-coari@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:1ª CORRIDA de RUA SÃO FRANCISCO de ASSIS 2026
+LOCATION:Coari - AM
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-03-1-corrida-de-rua-sao-francisco-de-assis-co
+ ari/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-03-1-corrida-de-rua-s
+ ao-francisco-de-assis-coari/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-10-corrida-e-caminhada-sest-senat-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261011
 SUMMARY:Corrida e Caminhada SEST SENAT Manaus 2026
@@ -176,7 +247,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-11-corrida-do-comerciario-etapa-manacapuru@cuponsdecorrida.com.
  br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261011
 DTEND;VALUE=DATE:20261012
 SUMMARY:Corrida do Comerciário - Etapa Manacapuru 2026
@@ -188,8 +259,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-corrida-do-comerci
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-11-pace-premium-itacoatiara@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:PACE PREMIUM 2026
+LOCATION:Itacoatiara - AM
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-pace-premium-itacoatiara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-pace-premium-itaco
+ atiara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-17-hoka-sunset-run-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:Hoka Sunset Run 2026
@@ -202,7 +286,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-centauro-desbrava-manaus@cuponsdecorrida.com.br
-DTSTAMP:20261024T181340Z
+DTSTAMP:20261024T205626Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Centauro Desbrava 2026
@@ -211,6 +295,384 @@ DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
  ponsdecorrida.com.br/provas/2026-10-18-centauro-desbrava-manaus/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-centauro-desbrava-
  manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-24-iii-corrida-sauim-de-coleira-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:III CORRIDA SAUIM DE COLEIRA 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-24-iii-corrida-sauim-de-coleira-manaus
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-iii-corrida-sauim-
+ de-coleira-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-26-1-corrida-solidaria-do-projeto-vizinhanca-do-bem-humaita@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261027
+SUMMARY:1ª Corrida Solidária do Projeto Vizinhança do Bem 2026
+LOCATION:Humaitá - AM
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-26-1-corrida-solidaria-do-projeto-vizinhanca-do-bem-
+ humaita/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-26-1-corrida-solidari
+ a-do-projeto-vizinhanca-do-bem-humaita/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-ultra-trail-amazonica-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Ultra Trail Amazônica 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de trail · 8km\, 17km\, 22km\, 37km\, 55km\, 80km\, 11
+ 0km\, 160km\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/
+ 2026-10-31-ultra-trail-amazonica-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-ultra-trail-amazon
+ ica-2026-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-bp-run-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:BP RUN 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/BP+RUN+2026-87490\nCupons e detalhes: https://www.cuponsdeco
+ rrida.com.br/provas/2026-11-01-bp-run-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-bp-run-2026-manaus
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-1-corrida-do-profissional-de-educacao-fisica-manaus@cuponsde
+ corrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:1ª CORRIDA DO PROFISSIONAL DE EDUCAÇÃO FÍSICA 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/1%C2%AA+CORRIDA+DO+PROFISSIONAL+DE+EDUCA%C3%87%C3%83O+F%C3%8DSICA-8
+ 8470\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-11
+ -07-1-corrida-do-profissional-de-educacao-fisica-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-1-corrida-do-profi
+ ssional-de-educacao-fisica-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-1-corrida-e-caminhada-da-odontologia-manaus@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:1ª CORRIDA e CAMINHADA da ODONTOLOGIA 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Caminhada · 3km\, 5km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-08-1-corrida-e-caminhada-da-odontologia-mana
+ us/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-1-corrida-e-caminh
+ ada-da-odontologia-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-amazonas-shopping-run-day-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Amazonas Shopping Run Day 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 7km\nInscrição: https://www.ticketsports.co
+ m.br/e/AMAZONAS+SHOPPING+RUN+DAY+2026-86035\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2026-11-08-amazonas-shopping-run-day-2026-
+ manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-amazonas-shopping-
+ run-day-2026-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-10-corrida-da-mulher-amazonica-2026-manaus@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:10ª CORRIDA da MULHER AMAZÔNICA 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-10-corrida-da-mulher-amazonica-2026-manaus
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-10-corrida-da-mulh
+ er-amazonica-2026-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-comepi-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:CORRIDA COMEPI 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CORRIDA+COMEPI+2026-88497\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-15-corrida-comepi-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-comepi-202
+ 6-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-corrida-travessia-de-fatima-reverse-2026-manaus@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:CORRIDA TRAVESSIA DE FÁTIMA REVERSE 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
+ CORRIDA+TRAVESSIA+DE+F%C3%81TIMA+REVERSE+2026-88754\nCupons e detalhes: ht
+ tps://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-travessia-de-fa
+ tima-reverse-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-corrida-travessia-
+ de-fatima-reverse-2026-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-circuito-das-estacoes-2026-verao-manaus@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Circuito das Estações 2026 - Verão - Manaus
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-15-circuito-das-estacoes-2026-verao-ma
+ naus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-circuito-das-estac
+ oes-2026-verao-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-corrida-casa-das-correias-run-cdc-2026-manaus@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:CORRIDA CASA DAS CORREIAS - RUN CDC 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CORRIDA+CASA+DAS+CORREIAS+-+RUN+CDC+2026-88332\nCupons e det
+ alhes: https://www.cuponsdecorrida.com.br/provas/2026-11-20-corrida-casa-d
+ as-correias-run-cdc-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-corrida-casa-das-c
+ orreias-run-cdc-2026-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-20-ii-corrida-da-consciencia-negra-do-amazonas-manaus@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:II CORRIDA DA CONSCIÊNCIA NEGRA DO AMAZONAS 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/II+CORRIDA+DA+CONSCI%C3%8ANCIA+NEGRA+DO+AMAZONAS-86635\nCupons e de
+ talhes: https://www.cuponsdecorrida.com.br/provas/2026-11-20-ii-corrida-da
+ -consciencia-negra-do-amazonas-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-ii-corrida-da-cons
+ ciencia-negra-do-amazonas-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-21-xi-corrida-nema-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:XI CORRIDA NEMA 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 9km\nInscrição: https://www.ticketspo
+ rts.com.br/e/XI+CORRIDA+NEMA+2026-88540\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-21-xi-corrida-nema-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-xi-corrida-nema-20
+ 26-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-fpftech-run-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:FPFtech RUN 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/FPFtech+RUN+2026-88640\nCupons e detalhes: https://www.cuponsdecorr
+ ida.com.br/provas/2026-11-22-fpftech-run-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-fpftech-run-2026-m
+ anaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-circuito-da-longevidade-bradesco-seguros-manaus-2026@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Circuito da Longevidade Bradesco Seguros - Manaus 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-11-29-circuito-da-longevidade-bradesco-se
+ guros-manaus-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-circuito-da-longev
+ idade-bradesco-seguros-manaus-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-santo-remedio-run-challenge-2026-manaus@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:SANTO REMÉDIO RUN CHALLENGE 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/SANTO+REM%C3%89DIO+RUN++CHALLENGE+2026-87904\nCupons e detal
+ hes: https://www.cuponsdecorrida.com.br/provas/2026-11-29-santo-remedio-ru
+ n-challenge-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-santo-remedio-run-
+ challenge-2026-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-corrida-de-natal-da-difusora-fesinha-anzoategui-na-luta-cont
+ ra-o-cancer-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:CORRIDA DE NATAL DA DIFUSORA - FESINHA ANZOATEGUI\, NA LUTA CONTRA 
+ O CÂNCER 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CORRIDA+DE+NATAL+DA+DIFUSORA+-+FESINHA+ANZOATEGUI%2C+NA+LUTA
+ +CONTRA+O+C%C3%82NCER-87497\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-12-05-corrida-de-natal-da-difusora-fesinha-anzoategui
+ -na-luta-contra-o-cancer-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-corrida-de-natal-d
+ a-difusora-fesinha-anzoategui-na-luta-contra-o-cancer-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-hoka-sunset-run-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:HOKA SUNSET RUN 2026 - MANAUS
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5 a 10km\, 11 a 20km\nInscrição: https://ww
+ w.ticketsports.com.br/e/HOKA+SUNSET+RUN+2026+-+MANAUS-85377\nCupons e deta
+ lhes: https://www.cuponsdecorrida.com.br/provas/2026-12-05-hoka-sunset-run
+ -2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-hoka-sunset-run-20
+ 26-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-3-ed-corrida-atacarejo-frinort-beneficente-presidente-figuei
+ redo@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:3ª ED. CORRIDA ATACAREJO FRINORT BENEFICENTE 2026
+LOCATION:Presidente Figueiredo - AM
+DESCRIPTION:Corrida de rua · 6km\nInscrição: https://www.ticketsports.co
+ m.br/e/3%C2%AA+ED.+CORRIDA+ATACAREJO+FRINORT+BENEFICENTE+-88629\nCupons e 
+ detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-13-3-ed-corrid
+ a-atacarejo-frinort-beneficente-presidente-figueiredo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-3-ed-corrida-ataca
+ rejo-frinort-beneficente-presidente-figueiredo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-meia-maratona-do-fogo-2026-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:MEIA MARATONA DO FOGO - 2026
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nInscrição: https://www.t
+ icketsports.com.br/e/MEIA+MARATONA+DO+FOGO+-+2026-88521\nCupons e detalhes
+ : https://www.cuponsdecorrida.com.br/provas/2026-12-13-meia-maratona-do-fo
+ go-2026-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-meia-maratona-do-f
+ ogo-2026-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-18-guajara-night-run-corrida-noturna-de-guajara-mirim-rondonia@
+ cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+SUMMARY:Guajará Night Run - Corrida Noturna de Guajará-Mirim Rondônia 20
+ 26
+LOCATION:Guajará - AM
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-18-guajara-night-run-corrida-noturna-de-guaja
+ ra-mirim-rondonia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-18-guajara-night-run-
+ corrida-noturna-de-guajara-mirim-rondonia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-07-11-corrida-da-mulher-amazonica-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270307
+DTEND;VALUE=DATE:20270308
+SUMMARY:11ª CORRIDA DA MULHER AMAZÔNICA 2027
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5 a 10km\nInscrição: https://www.ticketspor
+ ts.com.br/e/11%C2%AA+CORRIDA+DA+MULHER+AMAZ%C3%94NICA+-88485\nCupons e det
+ alhes: https://www.cuponsdecorrida.com.br/provas/2027-03-07-11-corrida-da-
+ mulher-amazonica-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-07-11-corrida-da-mulh
+ er-amazonica-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-27-maratona-internacional-de-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270327
+DTEND;VALUE=DATE:20270328
+SUMMARY:Maratona Internacional de Manaus 2027
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\, 42km\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2027-03-27-maratona-internaciona
+ l-de-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-27-maratona-internaci
+ onal-de-manaus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-28-corrida-das-cores-da-amazonia-manaus@cuponsdecorrida.com.br
+DTSTAMP:20261024T205626Z
+DTSTART;VALUE=DATE:20270328
+DTEND;VALUE=DATE:20270329
+SUMMARY:CORRIDA DAS CORES DA AMAZÔNIA 2027
+LOCATION:Manaus - AM
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/CORRIDA+DAS+CORES+DA+AMAZ%C3%94NIA-87544\nCupons e detalhes:
+  https://www.cuponsdecorrida.com.br/provas/2027-03-28-corrida-das-cores-da
+ -amazonia-manaus/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-28-corrida-das-cores-
+ da-amazonia-manaus/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
