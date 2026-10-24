@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas em Roraima · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-corrida-lupo-sport-corre-boa-vista@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida Lupo Sport Corre 2026
+LOCATION:Boa Vista - RR
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-corrida-lupo-sport-corre-boa-vista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-lupo-sport
+ -corre-boa-vista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-bemol-run-boa-vista@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Bemol Run 2026
+LOCATION:Boa Vista - RR
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-bemol-run-boa-vista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-bemol-run-boa-vist
+ a/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

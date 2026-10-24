@@ -155,6 +155,8 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
 <main><div class="wrap" id="conteudo"><p class="carregando">Carregando…</p></div></main>
 
 <script>
+// Siglas dos 27 estados, na ordem alfabetica dos nomes.
+const UFS_BR = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RN", "RS", "RJ", "RO", "RR", "SC", "SP", "SE", "TO"];
 (() => {
   const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   const API = LOCAL ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
@@ -215,7 +217,7 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
     const msg = params.get("acesso") === "expirado" ? "O link de acesso venceu. Peça um novo abaixo."
               : params.get("acesso") === "invalido" ? "Esse link de acesso não vale mais. Peça um novo abaixo." : "";
     const vantagens = el("div", { className: "vantagens" }, [
-      ["Atletas de SC, PR, RS, SP, RJ, DF e MG", "Seu cupom aparece para os corredores cadastrados, no calendário e na newsletter."],
+      ["Atletas de todo o Brasil", "Seu cupom aparece para os corredores cadastrados, no calendário e na newsletter."],
       ["Você no controle", "Crie, altere e desligue os cupons quando quiser, pelo seu painel."],
       ["Resultado medido", "Veja quantos atletas pegaram o código de cada cupom."],
     ].map(([b, s]) => el("div", {}, [el("b", { textContent: b }), el("span", { textContent: s })])));
@@ -620,7 +622,7 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
     if (!data || isNaN(new Date(data + "T12:00:00"))) return "Data inválida (use dd/mm/aaaa).";
     if (data < hojeIso()) return "A data já passou.";
     if (!String(p.cidade || "").trim()) return "Falta a cidade.";
-    if (!["SC", "PR", "RS", "SP", "RJ", "DF", "MG"].includes(String(p.uf || "").trim().toUpperCase())) return "UF deve ser SC, PR, RS, SP, RJ, DF ou MG.";
+    if (!UFS_BR.includes(String(p.uf || "").trim().toUpperCase())) return "UF deve ser a sigla de um estado brasileiro (SC, SP, RJ...).";
     const link = String(p.link || "").trim();
     if (link && !/^(https?:\/\/|www\.)/i.test(link)) return "Link deve começar com https://";
     return "";
@@ -698,8 +700,8 @@ table.vendas .n{text-align:right; font-family:var(--f-mono); white-space:nowrap}
       const nome = inp("text", { maxLength: 150, value: p ? p.nome : "", placeholder: "Ex.: Corrida da Lagoa 2027" });
       const data = inp("date", { value: p ? p.data : "", min: hojeIso() });
       const cidade = inp("text", { maxLength: 80, value: p ? p.cidade : e.cidade || "" });
-      const uf = el("select", {}, ["SC", "PR", "RS", "SP", "RJ", "DF", "MG"].map(u => el("option", { value: u, textContent: u })));
-      uf.value = p ? p.uf : (["SC", "PR", "RS", "SP", "RJ", "DF", "MG"].includes(e.uf) ? e.uf : "SC");
+      const uf = el("select", {}, UFS_BR.map(u => el("option", { value: u, textContent: u })));
+      uf.value = p ? p.uf : (UFS_BR.includes(e.uf) ? e.uf : "SC");
       const dist = inp("text", { value: p ? kmTexto(p.distancias) : "", placeholder: "Ex.: 5, 10, 21" });
       const tipo = el("select", {}, [el("option", { value: "", textContent: "—" }), ...TIPOS_PROVA.map(x => el("option", { value: x, textContent: x }))]);
       tipo.value = p ? (p.tipo || "") : "";

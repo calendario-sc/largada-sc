@@ -176,7 +176,7 @@ def publicar():
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return
-    git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "todos.html", "provas-futuras.json")
+    git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "es.html", "ba.html", "pe.html", "ce.html", "go.html", "mt.html", "ms.html", "pa.html", "am.html", "pb.html", "rn.html", "al.html", "se.html", "pi.html", "ma.html", "to.html", "ro.html", "ac.html", "ap.html", "rr.html", "todos.html", "provas-futuras.json")
     git("add", "-A", "provas", "corridas-em", "agenda", "sitemap.xml", "robots.txt", "404.html", "provas.css")
     hoje = datetime.date.today().strftime("%d/%m/%Y")
     git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
@@ -190,7 +190,7 @@ def publicar():
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
         build.build()
-        git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "todos.html", "provas-futuras.json")
+        git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "es.html", "ba.html", "pe.html", "ce.html", "go.html", "mt.html", "ms.html", "pa.html", "am.html", "pb.html", "rn.html", "al.html", "se.html", "pi.html", "ma.html", "to.html", "ro.html", "ac.html", "ap.html", "rr.html", "todos.html", "provas-futuras.json")
         git("add", "-A", "provas", "corridas-em", "agenda", "sitemap.xml", "robots.txt", "404.html", "provas.css")
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
@@ -231,7 +231,7 @@ def publicar_bi():
             mercado.montar(registrar=registrar)
         except Exception as erro:
             registrar(f"minhas corridas: FALHOU ({erro.__class__.__name__}: {erro})")
-        g("add", "corridas/index.html", "corridas/pr.html", "corridas/rs.html", "corridas/sp.html", "corridas/rj.html", "corridas/df.html", "corridas/mg.html", "corridas/todos.html", "cadastro.js", "cupons.html",
+        g("add", "corridas/index.html", "corridas/pr.html", "corridas/rs.html", "corridas/sp.html", "corridas/rj.html", "corridas/df.html", "corridas/mg.html", "corridas/es.html", "corridas/ba.html", "corridas/pe.html", "corridas/ce.html", "corridas/go.html", "corridas/mt.html", "corridas/ms.html", "corridas/pa.html", "corridas/am.html", "corridas/pb.html", "corridas/rn.html", "corridas/al.html", "corridas/se.html", "corridas/pi.html", "corridas/ma.html", "corridas/to.html", "corridas/ro.html", "corridas/ac.html", "corridas/ap.html", "corridas/rr.html", "corridas/todos.html", "cadastro.js", "cupons.html",
           "logo-cupons-de-corrida.png")
         if (pasta / "minhas-corridas" / "dados.json").exists():
             g("add", "minhas-corridas/dados.json")

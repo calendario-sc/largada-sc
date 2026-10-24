@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas no Acre · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+END:VCALENDAR

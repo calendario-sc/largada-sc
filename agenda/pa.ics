@@ -1,0 +1,747 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas no Pará · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-29-7-corrida-da-expofac-castanhal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:7ª Corrida da Expofac 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-29-7-corrida-da-expofac-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-7-corrida-da-expof
+ ac-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-29-corrida-e-caminhada-da-mulher-de-marituba-contra-a-violencia
+ @cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:Corrida e Caminhada da Mulher de Marituba Contra a Violência 2026
+LOCATION:Marituba - PA
+DESCRIPTION:Caminhada · 3.3km\nCupons e detalhes: https://www.cuponsdecorr
+ ida.com.br/provas/2026-08-29-corrida-e-caminhada-da-mulher-de-marituba-con
+ tra-a-violencia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-corrida-e-caminhad
+ a-da-mulher-de-marituba-contra-a-violencia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-1-corrida-e-caminhada-liquida-geral-capanema@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:1ª Corrida e Caminhada Liquida Geral 2026
+LOCATION:Capanema - PA
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-08-30-1-corrida-e-caminhada-liquida-geral-capanema/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-1-corrida-e-caminh
+ ada-liquida-geral-capanema/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-4-corrida-da-transamazonica-novo-repartimento@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:4ª Corrida da Transamazônica 2026
+LOCATION:Novo Repartimento - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-4-corrida-da-transamazonica-novo-repartime
+ nto/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-4-corrida-da-trans
+ amazonica-novo-repartimento/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-circuito-oab-etapa-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Circuito OAB - Etapa Belém 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 16km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-circuito-oab-etapa-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-circuito-oab-etapa
+ -belem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-circuito-das-estacoes-primavera-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 18km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-08-30-circuito-das-estacoes-primav
+ era-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-circuito-das-estac
+ oes-primavera-belem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-corrida-urso-branco-xtreme-pmpa-itaituba@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida Urso Branco Xtreme - PMPA 2026
+LOCATION:Itaituba - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-corrida-urso-branco-xtreme-pmpa-itaituba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-urso-branc
+ o-xtreme-pmpa-itaituba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-eco-trilha-rural-runners-castanhal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Eco Trilha Rural Runners 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 8km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-eco-trilha-rural-runners-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-eco-trilha-rural-r
+ unners-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-ii-corrida-quebrando-o-silencio-santarem@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:II Corrida Quebrando o Silêncio 2026
+LOCATION:Santarém - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-ii-corrida-quebrando-o-silencio-santarem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-ii-corrida-quebran
+ do-o-silencio-santarem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-2-corrida-do-cirio-de-vigia@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:2ª Corrida do Círio de Vigia 2026
+LOCATION:Vigia - PA
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-05-2-corrida-do-cirio-de-vigia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-2-corrida-do-cirio
+ -de-vigia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-sunset-run-d-d-resort-castanhal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:Sunset Run D&D Resort 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-05-sunset-run-d-d-resort-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-sunset-run-d-d-res
+ ort-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-1-corrida-malokas-castanhal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:1ª Corrida Malokas 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-1-corrida-malokas-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-corrida-malokas-
+ castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-1-corrida-de-aniversario-goianesia-runners-goianesia-do-para
+ @cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:1ª Corrida de Aniversário Goianésia Runners 2026
+LOCATION:Goianésia do Pará - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-1-corrida-de-aniversario-goianesia-runners
+ -goianesia-do-para/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-corrida-de-anive
+ rsario-goianesia-runners-goianesia-do-para/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-1-corrida-dos-desbravadores-amigos-da-natureza-paragominas@c
+ uponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:1ª Corrida dos Desbravadores Amigos da Natureza 2026
+LOCATION:Paragominas - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-1-corrida-dos-desbravadores-amigos-da-natu
+ reza-paragominas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-corrida-dos-desb
+ ravadores-amigos-da-natureza-paragominas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-guerra-abaetetuba@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida Guerra 2026
+LOCATION:Abaetetuba - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-corrida-guerra-abaetetuba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-guerra-aba
+ etetuba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-viva-a-viva-santarem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida Viva a Viva 2026
+LOCATION:Santarém - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-corrida-viva-a-viva-santarem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-viva-a-viv
+ a-santarem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-da-amazonia-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida da Amazônia 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-corrida-da-amazonia-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-amazoni
+ a-belem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-de-aniversario-hortifruti-fruto-da-terra-braganca@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida de Aniversário Hortifruti Fruto da Terra 2026
+LOCATION:Bragança - PA
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-corrida-de-aniversario-hortifruti-fruto-da
+ -terra-braganca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-de-anivers
+ ario-hortifruti-fruto-da-terra-braganca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-07-1-corrida-da-padroeira-eldorado-do-carajas@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260907
+DTEND;VALUE=DATE:20260908
+SUMMARY:1ª Corrida da Padroeira 2026
+LOCATION:Eldorado do Carajás - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-07-1-corrida-da-padroeira-eldorado-do-carajas
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-07-1-corrida-da-padro
+ eira-eldorado-do-carajas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-corrida-unprime-run-castanhal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:Corrida Unprime Run 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-12-corrida-unprime-run-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-corrida-unprime-ru
+ n-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-iga-night-neon-fest-igarape-acu@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:Iga Night Neon Fest 2026
+LOCATION:Igarapé-Açu - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-12-iga-night-neon-fest-igarape-acu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-iga-night-neon-fes
+ t-igarape-acu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-b-run-3-edicao-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:+B Run - 3° Edição 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-b-run-3-edicao-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-b-run-3-edicao-bel
+ em/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-pharmapele-santa-izabel-do-para@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª Corrida Pharmapele 2026
+LOCATION:Santa Izabel do Pará - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-1-corrida-pharmapele-santa-izabel-do-para/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-pharmape
+ le-santa-izabel-do-para/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-otica-da-paz-castanhal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª Corrida Ótica da Paz 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-1-corrida-otica-da-paz-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-otica-da
+ -paz-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-2-corrida-do-ouro-itaituba@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:2ª Corrida do Ouro 2026
+LOCATION:Itaituba - PA
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-2-corrida-do-ouro-itaituba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-2-corrida-do-ouro-
+ itaituba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-3-corrida-verao-atalaia-runners-beach-belem@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:3ª Corrida Verão Atalaia Runners Beach 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-3-corrida-verao-atalaia-runners-beach-bele
+ m/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-3-corrida-verao-at
+ alaia-runners-beach-belem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-corrida-da-gente-tailandia@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Corrida da Gente 2026
+LOCATION:Tailândia - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-corrida-da-gente-tailandia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-da-gente-t
+ ailandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-corrida-e-caminhada-do-sesi-santarem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Corrida e Caminhada do SESI - Santarém 2026
+LOCATION:Santarém - PA
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-09-13-corrida-e-caminhada-do-sesi-santarem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-e-caminhad
+ a-do-sesi-santarem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-52-corrida-coronel-fontoura-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:52ª Corrida Coronel Fontoura 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 8km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-19-52-corrida-coronel-fontoura-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-52-corrida-coronel
+ -fontoura-belem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-trilha-da-magia-maracana@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:Trilha da Magia 2026
+LOCATION:Maracanã - PA
+DESCRIPTION:Corrida de rua · 8km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-19-trilha-da-magia-maracana/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-trilha-da-magia-ma
+ racana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-do-curso-de-formacao-de-pracas-maraba@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Corrida do Curso de Formação de Praças 2026
+LOCATION:Marabá - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-1-corrida-do-curso-de-formacao-de-pracas-m
+ araba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-do-curso
+ -de-formacao-de-pracas-maraba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-do-supermercado-economico-sao-miguel-do-guama@cupo
+ nsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Corrida do Supermercado Econômico 2026
+LOCATION:São Miguel do Guamá - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-1-corrida-do-supermercado-economico-sao-mi
+ guel-do-guama/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-do-super
+ mercado-economico-sao-miguel-do-guama/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-3-corrida-drogaria-maxi-popular-castanhal@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:3ª Corrida Drogaria Maxi Popular 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-3-corrida-drogaria-maxi-popular-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-3-corrida-drogaria
+ -maxi-popular-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-mateus-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito Mateus - Belém 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-circuito-mateus-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-mateus-be
+ lem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-sesc-de-corridas-etapa-ananindeua@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito SESC de Corridas - Etapa Ananindeua 2026
+LOCATION:Ananindeua - PA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-circuito-sesc-de-corridas-etapa-ana
+ nindeua/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-sesc-de-c
+ orridas-etapa-ananindeua/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-de-corridas-sesi-etapa-paragominas@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito de Corridas SESI - Etapa Paragominas 2026
+LOCATION:Paragominas - PA
+DESCRIPTION:Corrida de rua · 8km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-circuito-de-corridas-sesi-etapa-paragomina
+ s/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-de-corrid
+ as-sesi-etapa-paragominas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-corrida-quebrando-o-silencio-altamira@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Corrida Quebrando o Silêncio 2026
+LOCATION:Altamira - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-corrida-quebrando-o-silencio-altamira/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-corrida-quebrando-
+ o-silencio-altamira/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-i-corrida-da-policia-militar-8-pelotao-abel-figueiredo@cupon
+ sdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:I Corrida da Polícia Militar 8º Pelotão 2026
+LOCATION:Abel Figueiredo - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-i-corrida-da-policia-militar-8-pelotao-abe
+ l-figueiredo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-i-corrida-da-polic
+ ia-militar-8-pelotao-abel-figueiredo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-belem-night-run-etapa-fogo@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:Belém Night Run - Etapa Fogo 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 7km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-26-belem-night-run-etapa-fogo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-belem-night-run-et
+ apa-fogo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-corrida-do-gelo-ananindeua@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Corrida do Gelo 2026
+LOCATION:Ananindeua - PA
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-corrida-do-gelo-ananindeua/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-do-gelo-an
+ anindeua/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-03-interfit-run-sunset-barcarena@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Interfit Run Sunset 2026
+LOCATION:Barcarena - PA
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-03-interfit-run-sunset-barcarena/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-03-interfit-run-sunse
+ t-barcarena/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-3-corrida-outubro-rosa-ruropolis@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:3ª Corrida Outubro Rosa 2026
+LOCATION:Rurópolis - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-3-corrida-outubro-rosa-ruropolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-3-corrida-outubro-
+ rosa-ruropolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-circuito-sesc-de-corrida-etapa-maraba@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Circuito SESC de Corrida - Etapa Marabá 2026
+LOCATION:Marabá - PA
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-circuito-sesc-de-corrida-etapa-maraba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-circuito-sesc-de-c
+ orrida-etapa-maraba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-corrida-de-rua-nova-ipixuna-run-33-anos@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Corrida de Rua Nova Ipixuna Run 33 Anos 2026
+LOCATION:Nova Ipixuna - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-corrida-de-rua-nova-ipixuna-run-33-anos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-corrida-de-rua-nov
+ a-ipixuna-run-33-anos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-11-corrida-e-caminhada-outubro-rosa-santarem@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:11ª Corrida e Caminhada Outubro Rosa 2026
+LOCATION:Santarém - PA
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-10-17-11-corrida-e-caminhada-outubro-rosa-santarem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-11-corrida-e-camin
+ hada-outubro-rosa-santarem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-3-corrida-da-agrovila-nazare-castanhal@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:3ª Corrida da Agrovila Nazaré 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-3-corrida-da-agrovila-nazare-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-3-corrida-da-agrov
+ ila-nazare-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-41-corrida-do-cirio-1-dia-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:41ª Corrida do Círio - 1º Dia 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-41-corrida-do-cirio-1-dia-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-41-corrida-do-ciri
+ o-1-dia-belem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-8-corrida-dos-medicos-maraba@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:8ª Corrida dos Médicos 2026
+LOCATION:Marabá - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-8-corrida-dos-medicos-maraba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-8-corrida-dos-medi
+ cos-maraba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-ix-corrida-do-romeiro-castanhal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:IX Corrida do Romeiro 2026
+LOCATION:Castanhal - PA
+DESCRIPTION:Corrida de rua · 8km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-ix-corrida-do-romeiro-castanhal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-ix-corrida-do-rome
+ iro-castanhal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-1-corrida-franciscana-800-anos-tailandia@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:1ª Corrida Franciscana 800 Anos 2026
+LOCATION:Tailândia - PA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-1-corrida-franciscana-800-anos-tailandia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-1-corrida-francisc
+ ana-800-anos-tailandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-41-corrida-do-cirio-2-dia-belem@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:41ª Corrida do Círio - 2º Dia 2026
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 10km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-10-18-41-corrida-do-cirio-2-dia-belem/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-41-corrida-do-ciri
+ o-2-dia-belem/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corrida-pela-vida-paragominas@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Corrida pela Vida 2026
+LOCATION:Paragominas - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-corrida-pela-vida-paragominas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-pela-vida-
+ paragominas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-life-run-uruara@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Life Run 2026
+LOCATION:Uruará - PA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-life-run-uruara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-life-run-uruara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-corrida-do-fogo-etapa-braganca@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Corrida do Fogo - Etapa Bragança 2026
+LOCATION:Bragança - PA
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-05-corrida-do-fogo-etapa-braganca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-corrida-do-fogo-et
+ apa-braganca/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

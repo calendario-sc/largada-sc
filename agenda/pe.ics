@@ -1,0 +1,890 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas em Pernambuco · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-29-2-corrida-e-caminhada-do-dia-dos-pais-father-nigth-run-igara
+ ssu@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:2ª Corrida e Caminhada do Dia dos Pais Father Nigth Run 2026
+LOCATION:Igarassu - PE
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-08-29-2-corrida-e-caminhada-do-dia-dos-pais-father-ni
+ gth-run-igarassu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-2-corrida-e-caminh
+ ada-do-dia-dos-pais-father-nigth-run-igarassu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-1-corrida-corpus-academia-araripina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:1ª Corrida Corpus Academia 2026
+LOCATION:Araripina - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-1-corrida-corpus-academia-araripina
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-1-corrida-corpus-a
+ cademia-araripina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-1-corrida-upe-arcoverde@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:1ª Corrida UPE Arcoverde 2026
+LOCATION:Arcoverde - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-1-corrida-upe-arcoverde/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-1-corrida-upe-arco
+ verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-2-corrida-familia-ana-nery-petrolina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:2ª Corrida Família Ana Nery 2026
+LOCATION:Petrolina - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-2-corrida-familia-ana-nery-petrolina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-2-corrida-familia-
+ ana-nery-petrolina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-2-corrida-do-forte-ilha-de-itamaraca@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:2ª Corrida do Forte 2026
+LOCATION:Ilha de Itamaracá - PE
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-2-corrida-do-forte-ilha-de-itamaraca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-2-corrida-do-forte
+ -ilha-de-itamaraca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-3-corrida-acelera-medigral-limoeiro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:3ª Corrida Acelera Medigral 2026
+LOCATION:Limoeiro - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-3-corrida-acelera-medigral-limoeiro
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-3-corrida-acelera-
+ medigral-limoeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-3-corrida-etp-run-goiana@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:3ª Corrida ETP Run 2026
+LOCATION:Goiana - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-3-corrida-etp-run-goiana/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-3-corrida-etp-run-
+ goiana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-cavalcante-run-belo-jardim@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Cavalcante Run 2026
+LOCATION:Belo Jardim - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-cavalcante-run-belo-jardim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-cavalcante-run-bel
+ o-jardim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-corrida-das-mares-paulista@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida das Marés 2026
+LOCATION:Paulista - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-corrida-das-mares-paulista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-das-mares-
+ paulista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-corrida-do-centenario-nossa-sra-dos-remedios-tabira@cuponsde
+ corrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida do Centenário Nossa Sra dos Remédios 2026
+LOCATION:Tabira - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-corrida-do-centenario-nossa-sra-dos-remedi
+ os-tabira/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-do-centena
+ rio-nossa-sra-dos-remedios-tabira/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-sd-running-2-edicao-brejo-da-madre-de-deus@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:SD Running - 2ª Edição 2026
+LOCATION:Brejo da Madre de Deus - PE
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-sd-running-2-edicao-brejo-da-madre-de-deus
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-sd-running-2-edica
+ o-brejo-da-madre-de-deus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-independence-night-run-recife@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:Independence Night Run 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-05-independence-night-run-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-independence-night
+ -run-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-venturosa-run-city-night@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:Venturosa Run City Night 2026
+LOCATION:Venturosa - PE
+DESCRIPTION:Corrida de rua · Resultados desta Corrida\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2026-09-05-venturosa-run-city-ni
+ ght/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-venturosa-run-city
+ -night/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-10-corrida-de-aniversario-dos-amigos-do-asfalto-itapissuma@c
+ uponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:10ª Corrida de Aniversário dos Amigos do Asfalto 2026
+LOCATION:Itapissuma - PE
+DESCRIPTION:Corrida de rua · 8km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-06-10-corrida-de-aniversario-dos-amigos
+ -do-asfalto-itapissuma/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-10-corrida-de-aniv
+ ersario-dos-amigos-do-asfalto-itapissuma/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-e-caminhada-mae-das-dores-aracoiaba@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª Corrida e Caminhada Mãe Das Dores 2026
+LOCATION:Araçoiaba - PE
+DESCRIPTION:Caminhada · 5km\, 3km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-09-13-1-corrida-e-caminhada-mae-das-dores-araco
+ iaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-e-caminh
+ ada-mae-das-dores-aracoiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-6-corrida-gerafitness-cupira@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:6ª Corrida GeraFitness 2026
+LOCATION:Cupira - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-6-corrida-gerafitness-cupira/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-6-corrida-gerafitn
+ ess-cupira/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-circuito-das-estacoes-primavera-recife@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 18km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-das-estacoes-primav
+ era-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-das-estac
+ oes-primavera-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-corre-giba-gravata@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Corre Giba 2026
+LOCATION:Gravatá - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-corre-giba-gravata/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corre-giba-gravata
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-corrida-top-run-2026-olinda@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Corrida Top Run 2026
+LOCATION:Olinda - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-corrida-top-run-2026-olinda/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-top-run-20
+ 26-olinda/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-corrida-do-vinho-2026-lagoa-grande@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Corrida do Vinho 2026
+LOCATION:Lagoa Grande - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-corrida-do-vinho-2026-lagoa-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-do-vinho-2
+ 026-lagoa-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-if-runners-2026-garanhuns@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:IF Runners 2026
+LOCATION:Garanhuns - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-if-runners-2026-garanhuns/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-if-runners-2026-ga
+ ranhuns/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-milharal-run-2026-angelim@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Milharal Run 2026
+LOCATION:Angelim - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-milharal-run-2026-angelim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-milharal-run-2026-
+ angelim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-nysa-running-igarassu@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:NYSA Running 2026
+LOCATION:Igarassu - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-nysa-running-igarassu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-nysa-running-igara
+ ssu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-13-meia-maratona-eu-amo-recife@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:13ª Meia Maratona Eu Amo Recife 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-19-13-meia-maratona-eu-amo-reci
+ fe/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-13-meia-maratona-e
+ u-amo-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-hiper-acao-limoeiro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Corrida Hiper Ação 2026
+LOCATION:Limoeiro - PE
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-1-corrida-hiper-acao-limoeiro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-hiper-ac
+ ao-limoeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-2-corrida-santa-cruz-em-movimento-santa-cruz-do-capibaribe@c
+ uponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:2ª Corrida Santa Cruz em Movimento 2026
+LOCATION:Santa Cruz do Capibaribe - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-2-corrida-santa-cruz-em-movimento-santa-cr
+ uz-do-capibaribe/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-2-corrida-santa-cr
+ uz-em-movimento-santa-cruz-do-capibaribe/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-2-corrida-dos-corretores-de-imoveis-de-pernambuco-recife@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:2ª Corrida dos Corretores de Imóveis de Pernambuco 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-2-corrida-dos-corretores-de-imoveis
+ -de-pernambuco-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-2-corrida-dos-corr
+ etores-de-imoveis-de-pernambuco-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-6-corrida-da-independencia-saire@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:6ª Corrida da Independência 2026
+LOCATION:Sairé - PE
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-6-corrida-da-independencia-saire/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-6-corrida-da-indep
+ endencia-saire/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-6-corrida-e-caminhada-do-livramento-arcoverde@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:6ª Corrida e Caminhada do Livramento 2026
+LOCATION:Arcoverde - PE
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-09-20-6-corrida-e-caminhada-do-livramento-arcoverde/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-6-corrida-e-caminh
+ ada-do-livramento-arcoverde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-asics-run-challenge-2026-etapa-recife@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Asics Run Challenge 2026 - Etapa Recife
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 15km\, 7km\, 4km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-20-asics-run-challenge-2026-etap
+ a-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-asics-run-challeng
+ e-2026-etapa-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-ecc-running-2026-camaragibe@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:ECC Running 2026
+LOCATION:Camaragibe - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-ecc-running-2026-camaragibe/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-ecc-running-2026-c
+ amaragibe/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-running-solidario-santa-cruz-do-capibaribe@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:Running Solidário 2026
+LOCATION:Santa Cruz do Capibaribe - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-26-running-solidario-santa-cruz-do-capibaribe
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-running-solidario-
+ santa-cruz-do-capibaribe/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-1-corrida-e-caminhada-run-visao-nordeste-palmares@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:1ª Corrida e Caminhada Run Visão Nordeste 2026
+LOCATION:Palmares - PE
+DESCRIPTION:Caminhada · 7km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-09-27-1-corrida-e-caminhada-run-visao-nordeste-palmar
+ es/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-1-corrida-e-caminh
+ ada-run-visao-nordeste-palmares/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-2-corrida-da-pedra-do-navio-bom-jardim@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:2ª Corrida da Pedra do Navio 2026
+LOCATION:Bom Jardim - PE
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-2-corrida-da-pedra-do-navio-bom-jardim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-da-pedra
+ -do-navio-bom-jardim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-4-corrida-do-morango-brejo-da-madre-de-deus@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:4ª Corrida do Morango 2026
+LOCATION:Brejo da Madre de Deus - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-4-corrida-do-morango-brejo-da-madre-de-deu
+ s/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-4-corrida-do-moran
+ go-brejo-da-madre-de-deus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-5-corrida-monte-bom-jesus-caruaru@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:5ª Corrida Monte Bom Jesus 2026
+LOCATION:Caruaru - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-5-corrida-monte-bom-jesus-caruaru/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-5-corrida-monte-bo
+ m-jesus-caruaru/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-5-corrida-de-aniversario-abreu-runners-abreu-e-lima@cuponsde
+ corrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:5ª Corrida de Aniversário Abreu Runners 2026
+LOCATION:Abreu e Lima - PE
+DESCRIPTION:Corrida de rua · 9km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-5-corrida-de-aniversario-abreu-runners-abr
+ eu-e-lima/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-5-corrida-de-anive
+ rsario-abreu-runners-abreu-e-lima/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-alpha-run-alianca@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Alpha Run 2026
+LOCATION:Aliança - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-alpha-run-alianca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-alpha-run-alianca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-petrobras-de-saude-e-bem-estar-etapa-recife@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito Petrobras de Saúde e Bem-estar - Etapa Recife 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 7km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-27-circuito-petrobras-de-saude-e-bem-es
+ tar-etapa-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-petrobras
+ -de-saude-e-bem-estar-etapa-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-poeira-na-canela-petrolina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito Poeira na Canela 2026
+LOCATION:Petrolina - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-circuito-poeira-na-canela-petrolina
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-poeira-na
+ -canela-petrolina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-corrida-bemstart-2026-salgueiro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Corrida BemStart 2026
+LOCATION:Salgueiro - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-corrida-bemstart-2026-salgueiro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-bemstart-2
+ 026-salgueiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-corrida-granado-pink-recife@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Corrida Granado Pink 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-corrida-granado-pink-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-granado-pi
+ nk-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-corrida-on-run-paulista@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Corrida On Run 2026
+LOCATION:Paulista - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-corrida-on-run-paulista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-on-run-pau
+ lista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-corrida-da-renascenca-pocao@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Corrida da Renascença 2026
+LOCATION:Poção - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-corrida-da-renascenca-pocao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-da-renasce
+ nca-pocao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-pink-run-2026-bom-conselho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Pink Run 2026
+LOCATION:Bom Conselho - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-pink-run-2026-bom-conselho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-pink-run-2026-bom-
+ conselho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-10-ptr-etapa-serra-negra-bezerros@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:PTR - Etapa Serra Negra 2026
+LOCATION:Bezerros - PE
+DESCRIPTION:Corrida de rua · 42km\, 27km\, 17km\, 7km\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2026-10-10-ptr-etapa-serra-negra
+ -bezerros/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-ptr-etapa-serra-ne
+ gra-bezerros/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-43-cicorre-etapa-parque-da-macaxeira-recife@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:43ª Cicorre – Etapa Parque da Macaxeira 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 8km\, 4km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-11-43-cicorre-etapa-parque-da-macaxeira
+ -recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-43-cicorre-etapa-p
+ arque-da-macaxeira-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-7-corrida-brigadeiro-eduardo-gomes-recife@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:7ª Corrida Brigadeiro Eduardo Gomes 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-7-corrida-brigadeiro-eduardo-gomes-
+ recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-7-corrida-brigadei
+ ro-eduardo-gomes-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-caruaru-series-run-etapa-primavera@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Caruaru Series Run - Etapa Primavera 2026
+LOCATION:Caruaru - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-caruaru-series-run-etapa-primavera/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-caruaru-series-run
+ -etapa-primavera/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-corrida-de-aniversario-do-cr-uniao-clube-igarassu@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Corrida de Aniversário do CR União Clube 2026
+LOCATION:Igarassu - PE
+DESCRIPTION:Corrida de rua · 8km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-11-corrida-de-aniversario-do-cr-uniao-c
+ lube-igarassu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-corrida-de-anivers
+ ario-do-cr-uniao-clube-igarassu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-12-1-corrida-desperta-run-pedra@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261013
+SUMMARY:1ª Corrida Desperta Run 2026
+LOCATION:Pedra - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-12-1-corrida-desperta-run-pedra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-12-1-corrida-desperta
+ -run-pedra/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-12-22-corrida-do-fogo-recife@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261013
+SUMMARY:22ª Corrida do Fogo 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-12-22-corrida-do-fogo-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-12-22-corrida-do-fogo
+ -recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-1-corrida-coopanest-recife@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:1ª Corrida Coopanest 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 7km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-17-1-corrida-coopanest-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-1-corrida-coopanes
+ t-recife/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-8-corrida-noturna-de-araripina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:8ª Corrida Noturna De Araripina 2026
+LOCATION:Araripina - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-17-8-corrida-noturna-de-araripin
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-8-corrida-noturna-
+ de-araripina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-3-afya-run-garanhuns@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3ª Afya Run 2026
+LOCATION:Garanhuns - PE
+DESCRIPTION:Corrida de rua · 12km\, 6km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-3-afya-run-garanhuns/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-afya-run-garanhu
+ ns/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-3-corrida-do-lenco-itapissuma@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3ª Corrida do Lenço 2026
+LOCATION:Itapissuma - PE
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-3-corrida-do-lenco-itapissuma/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-corrida-do-lenco
+ -itapissuma/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-3-drogaria-recife-run@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3ª Drogaria Recife Run 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-3-drogaria-recife-run/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-drogaria-recife-
+ run/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-3-corre-com-elas-bom-conselho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3º Corre com Elas 2026
+LOCATION:Bom Conselho - PE
+DESCRIPTION:Corrida de rua · 6km\, 4km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-18-3-corre-com-elas-bom-conselho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-corre-com-elas-b
+ om-conselho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-6-desafio-fatima-farias-corridas-santa-maria-da-boa-vista@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:6º Desafio Fátima Farias Corridas 2026
+LOCATION:Santa Maria da Boa Vista - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-6-desafio-fatima-farias-corridas-sa
+ nta-maria-da-boa-vista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-6-desafio-fatima-f
+ arias-corridas-santa-maria-da-boa-vista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corrida-de-9-anos-da-equipe-mixuruca-goiana@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Corrida de 9 Anos da Equipe Mixuruca 2026
+LOCATION:Goiana - PE
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-corrida-de-9-anos-da-equipe-mixuruca-goian
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-de-9-anos-
+ da-equipe-mixuruca-goiana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corrida-dos-medicos-2026-petrolandia@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Corrida dos Médicos 2026
+LOCATION:Petrolândia - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-corrida-dos-medicos-2026-petrolandi
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-dos-medico
+ s-2026-petrolandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-i9-run-2026-olinda@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:I9 Run 2026
+LOCATION:Olinda - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-i9-run-2026-olinda/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-i9-run-2026-olinda
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-netshoes-run-recife@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Netshoes Run 2026
+LOCATION:Recife - PE
+DESCRIPTION:Corrida de rua · 15km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-10-18-netshoes-run-recife/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-netshoes-run-recif
+ e/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-pedrosa-run-timbauba@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Pedrosa Run 2026
+LOCATION:Timbaúba - PE
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-18-pedrosa-run-timbauba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-pedrosa-run-timbau
+ ba/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

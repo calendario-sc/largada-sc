@@ -10,6 +10,7 @@ Uso:  python build.py
 
 import datetime
 import shutil
+import comum
 import seo
 import json
 import re
@@ -213,8 +214,10 @@ def completa(pagina, publica=False, uf="SC", seo_info=None):
 
 # Uma pagina por estado: o seletor do cabecalho troca de pagina. Cada uma
 # leva so as provas do seu estado, e a de SC continua sendo a index.
-PAGINAS = [("index.html", "SC"), ("pr.html", "PR"), ("rs.html", "RS"), ("sp.html", "SP"), ("rj.html", "RJ"), ("df.html", "DF"), ("mg.html", "MG"), ("todos.html", "")]
+PAGINAS = [("index.html" if uf == "SC" else uf.lower() + ".html", uf) for uf in comum.UFS] + [("todos.html", "")]
 PAGINAS_HTML = [arquivo for arquivo, _ in PAGINAS]
+# Os estados para o JS do template (nome, preposicoes), na ordem alfabetica dos nomes.
+ESTADOS_JS = json.dumps({u: comum.ESTADOS[u] for u in comum.ORDEM_UF}, ensure_ascii=False)
 
 
 # Titulo, descricao e dados estruturados de cada pagina publica do calendario.
@@ -225,7 +228,27 @@ UF_TITULO = {"SC": ("Calendário de Corridas em SC {ano} | Cupons de Corrida", "
              "RJ": ("Calendário de Corridas no Rio de Janeiro (RJ) {ano} | Cupons de Corrida", "Rio de Janeiro", "/rj.html"),
              "DF": ("Calendário de Corridas em Brasília e no Distrito Federal {ano} | Cupons de Corrida", "Distrito Federal", "/df.html"),
              "MG": ("Calendário de Corridas em Minas Gerais (MG) {ano} | Cupons de Corrida", "Minas Gerais", "/mg.html"),
-             "": ("Corridas de Rua {ano}: SC, PR, RS, SP, RJ, DF e MG | Cupons de Corrida", "Santa Catarina, Paraná, Rio Grande do Sul, São Paulo, Rio de Janeiro, Distrito Federal e Minas Gerais", "/todos.html")}
+             "ES": ("Calendário de Corridas no Espírito Santo (ES) {ano} | Cupons de Corrida", "Espírito Santo", "/es.html"),
+             "BA": ("Calendário de Corridas na Bahia (BA) {ano} | Cupons de Corrida", "Bahia", "/ba.html"),
+             "PE": ("Calendário de Corridas em Pernambuco (PE) {ano} | Cupons de Corrida", "Pernambuco", "/pe.html"),
+             "CE": ("Calendário de Corridas no Ceará (CE) {ano} | Cupons de Corrida", "Ceará", "/ce.html"),
+             "GO": ("Calendário de Corridas em Goiás (GO) {ano} | Cupons de Corrida", "Goiás", "/go.html"),
+             "MT": ("Calendário de Corridas em Mato Grosso (MT) {ano} | Cupons de Corrida", "Mato Grosso", "/mt.html"),
+             "MS": ("Calendário de Corridas em Mato Grosso do Sul (MS) {ano} | Cupons de Corrida", "Mato Grosso do Sul", "/ms.html"),
+             "PA": ("Calendário de Corridas no Pará (PA) {ano} | Cupons de Corrida", "Pará", "/pa.html"),
+             "AM": ("Calendário de Corridas no Amazonas (AM) {ano} | Cupons de Corrida", "Amazonas", "/am.html"),
+             "PB": ("Calendário de Corridas na Paraíba (PB) {ano} | Cupons de Corrida", "Paraíba", "/pb.html"),
+             "RN": ("Calendário de Corridas no Rio Grande do Norte (RN) {ano} | Cupons de Corrida", "Rio Grande do Norte", "/rn.html"),
+             "AL": ("Calendário de Corridas em Alagoas (AL) {ano} | Cupons de Corrida", "Alagoas", "/al.html"),
+             "SE": ("Calendário de Corridas em Sergipe (SE) {ano} | Cupons de Corrida", "Sergipe", "/se.html"),
+             "PI": ("Calendário de Corridas no Piauí (PI) {ano} | Cupons de Corrida", "Piauí", "/pi.html"),
+             "MA": ("Calendário de Corridas no Maranhão (MA) {ano} | Cupons de Corrida", "Maranhão", "/ma.html"),
+             "TO": ("Calendário de Corridas no Tocantins (TO) {ano} | Cupons de Corrida", "Tocantins", "/to.html"),
+             "RO": ("Calendário de Corridas em Rondônia (RO) {ano} | Cupons de Corrida", "Rondônia", "/ro.html"),
+             "AC": ("Calendário de Corridas no Acre (AC) {ano} | Cupons de Corrida", "Acre", "/ac.html"),
+             "AP": ("Calendário de Corridas no Amapá (AP) {ano} | Cupons de Corrida", "Amapá", "/ap.html"),
+             "RR": ("Calendário de Corridas em Roraima (RR) {ano} | Cupons de Corrida", "Roraima", "/rr.html"),
+             "": ("Corridas de Rua {ano} em todo o Brasil | Cupons de Corrida", "todos os estados do Brasil", "/todos.html")}
 
 
 def cabeca_publica(uf, info):
@@ -265,13 +288,12 @@ def abertura_seo(uf, info, provas, hoje):
     e = lambda s: _h.escape(str(s), quote=True)
     ano = datetime.date.today().year
     _, lugar, _ = UF_TITULO[uf]
-    nomes_uf = {"SC": "Santa Catarina", "PR": "Paraná", "RS": "Rio Grande do Sul", "SP": "São Paulo", "RJ": "Rio de Janeiro", "DF": "Distrito Federal", "MG": "Minas Gerais"}
+    nomes_uf = {u: x["nome"] for u, x in comum.ESTADOS.items()}
     futuras = sorted((p for p in provas if p["data"] >= hoje and "Treino" not in (p.get("tags") or [])), key=lambda p: (p["data"], p["nome"]))
     cidades_fut = {(p.get("cidade"), p.get("uf") or "SC") for p in futuras if p.get("cidade")}
     top = [(c, u) for u2, l in (info.get("cidades") or {}).items() if not uf or u2 == uf for c, u, fut, n in l if fut][:12]
     links = ", ".join(f'<a href="/corridas-em/{seo.slug_cidade(c, u)}/">{e(c)}</a>' for c, u in top)
-    em = {"SC": "em Santa Catarina", "PR": "no Paraná", "RS": "no Rio Grande do Sul", "SP": "em São Paulo", "RJ": "no Rio de Janeiro",
-          "DF": "no Distrito Federal", "MG": "em Minas Gerais", "": "em SC, PR, RS, SP, RJ, DF e MG"}[uf]
+    em = (comum.ESTADOS[uf]["em"] + " " + comum.ESTADOS[uf]["nome"]) if uf else "em todo o Brasil"
     abertura = (f'<p class="intro-seo">Calendário de corridas de rua e trail {em} {ano}: <b>{len(futuras)} próximas provas em {len(cidades_fut)} cidades</b>, '
                 f'com datas, distâncias, inscrições, resultados e cupons de desconto'
                 + (f'. Corridas por cidade: {links}.' if links else '.') + '</p>\n')
@@ -299,7 +321,7 @@ def rodape_cidades(uf, info):
 
 def build():
     template = (AQUI / "template.html").read_text(encoding="utf-8")
-    for marcador in ("__DATA__", "__COLETA__", "__BI__", "__FLORIPA__", "__UF__"):
+    for marcador in ("__DATA__", "__COLETA__", "__BI__", "__FLORIPA__", "__UF__", "__ESTADOS__"):
         if marcador not in template:
             raise SystemExit(f"template.html perdeu o marcador {marcador}")
     historico = json.loads((AQUI / "corridas.json").read_text(encoding="utf-8"))
@@ -331,7 +353,7 @@ def build():
         # dono); todas vao para o repositorio privado, se a pasta existir.
         dados_bi = dados_da_pagina(json.loads(json.dumps(provas)), bi=True)
         pagina_bi = (template.replace("__COLETA__", coleta).replace("__DATA__", dados_bi).replace("__BI__", "true")
-                     .replace("__FLORIPA__", floripa).replace("__UF__", uf))
+                     .replace("__FLORIPA__", floripa).replace("__UF__", uf).replace("__ESTADOS__", ESTADOS_JS))
         if arquivo == "index.html":
             (AQUI / "artifact.html").write_text(pagina_bi, encoding="utf-8")
             tamanho = len(pagina_bi)
@@ -357,11 +379,11 @@ def build():
         # Copia: dados_da_pagina tira campos, e a proxima pagina precisa deles.
         dados_pub = dados_da_pagina(json.loads(json.dumps(provas)), bi=False)
         pagina_pub = (publico.replace("__COLETA__", coleta).replace("__DATA__", dados_pub).replace("__BI__", "false")
-                      .replace("__FLORIPA__", "null").replace("__UF__", uf))
+                      .replace("__FLORIPA__", "null").replace("__UF__", uf).replace("__ESTADOS__", ESTADOS_JS))
         pagina_pub = pagina_pub.replace(RODAPE_PUBLICO, RODAPE_PUBLICO.replace("  </div>\n</footer>", rodape_cidades(uf, seo_info) + "  </div>\n</footer>"), 1)
         # SEO (22/10/2026): h1 com o estado, abertura visivel com as cidades e lista estatica das proximas provas.
         _, lugar, _ = UF_TITULO[uf]
-        pagina_pub = pagina_pub.replace('<span class="logo-txt">', f'<span class="h1-seo">Calendário de corridas em {lugar} {datetime.date.today().year}</span><span class="logo-txt">', 1)
+        pagina_pub = pagina_pub.replace('<span class="logo-txt">', f'<span class="h1-seo">Calendário de corridas {comum.ESTADOS[uf]["em"] if uf else "em"} {lugar} {datetime.date.today().year}</span><span class="logo-txt">', 1)
         abertura, lista_estatica = abertura_seo(uf, seo_info, provas, hoje)
         pagina_pub = pagina_pub.replace('<div id="list"></div>', abertura + '<div id="list">' + lista_estatica + '</div>', 1)
         # Os dados das provas vao para um arquivo proprio (dados-<uf>.js): o HTML fica leve para os buscadores

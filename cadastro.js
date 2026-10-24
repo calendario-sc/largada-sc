@@ -4,6 +4,8 @@
    quem ainda nao entrou. O envio vai para
    a API (Cloudflare Worker); o cadastro so vale depois do clique no link do
    e-mail. Na volta, ?cadastro=confirmado|expirado|invalido mostra o aviso. */
+// Os 27 estados, na ordem alfabetica dos nomes (a mesma de comum.ESTADOS).
+const NOMES_UF_CAD = {"AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amazonas", "BA": "Bahia", "CE": "Ceará", "DF": "Distrito Federal", "ES": "Espírito Santo", "GO": "Goiás", "MA": "Maranhão", "MT": "Mato Grosso", "MS": "Mato Grosso do Sul", "MG": "Minas Gerais", "PA": "Pará", "PB": "Paraíba", "PR": "Paraná", "PE": "Pernambuco", "PI": "Piauí", "RN": "Rio Grande do Norte", "RS": "Rio Grande do Sul", "RJ": "Rio de Janeiro", "RO": "Rondônia", "RR": "Roraima", "SC": "Santa Catarina", "SP": "São Paulo", "SE": "Sergipe", "TO": "Tocantins"};
 (() => {
   const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   const API = LOCAL ? "http://localhost:8787" : "https://api.cuponsdecorrida.com.br";
@@ -127,18 +129,17 @@
       el("input", { type: "checkbox", name: "distancias", value: v }), el("span", { textContent: rot })])));
 
     const uf = el("select", { name: "uf", required: true });
-    [["", "UF"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"], ["RJ", "RJ"], ["DF", "DF"], ["MG", "MG"], ["OU", "Outro"]].forEach(([v, t]) =>
+    [["", "UF"], ...Object.keys(NOMES_UF_CAD).map(u => [u, u])].forEach(([v, t]) =>
       uf.append(el("option", { value: v, textContent: t })));
     // A pagina de cada estado (ou da prova) ja sugere o estado dela.
     const daPagina = document.querySelector("[data-cadastro-uf]");
     if (daPagina) uf.value = daPagina.dataset.cadastroUf;
-    else if (/\/pr\.html$/.test(location.pathname)) uf.value = "PR";
-    else if (/\/rs\.html$/.test(location.pathname)) uf.value = "RS";
-    else if (/\/sp\.html$/.test(location.pathname)) uf.value = "SP";
-    else if (/\/rj\.html$/.test(location.pathname)) uf.value = "RJ";
-    else if (/\/df\.html$/.test(location.pathname)) uf.value = "DF";
-    else if (/\/mg\.html$/.test(location.pathname)) uf.value = "MG";
-    else if (!/todos\.html$/.test(location.pathname)) uf.value = "SC";
+    else {
+      // uf.html sugere o estado; a capa (index) e SC; todos.html nao sugere nada.
+      const m = /\/([a-z]{2})\.html$/.exec(location.pathname);
+      if (m && m[1].toUpperCase() in NOMES_UF_CAD) uf.value = m[1].toUpperCase();
+      else if (!/todos\.html$/.test(location.pathname)) uf.value = "SC";
+    }
 
     const erro = el("p", { className: "cad__erro", role: "alert" });
     const enviar = el("button", { className: "cad__enviar", type: "submit", textContent: "Criar meu perfil grátis" });

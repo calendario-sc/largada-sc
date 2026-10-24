@@ -1,0 +1,667 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas na Bahia · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-29-3-night-run-sindicato-dos-bancarios-de-itabuna@cuponsdecorri
+ da.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:3ª Night Run - Sindicato dos Bancários de Itabuna 2026
+LOCATION:Itabuna - BA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-29-3-night-run-sindicato-dos-bancarios-de-ita
+ buna/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-3-night-run-sindic
+ ato-dos-bancarios-de-itabuna/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-3-meia-maratona-aabb-jequie-leo-training@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:3ª Meia Maratona AABB Jequié + Léo Training 2026
+LOCATION:Jequié - BA
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-08-30-3-meia-maratona-aabb-jequie-
+ leo-training/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-3-meia-maratona-aa
+ bb-jequie-leo-training/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-blue-run-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Blue Run Salvador 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-blue-run-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-blue-run-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-circuito-sesc-de-corridas-etapa-vitoria-da-conquista@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Circuito Sesc de Corridas - Etapa Vitória da Conquista 2026
+LOCATION:Vitória da Conquista - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-circuito-sesc-de-corridas-etapa-vit
+ oria-da-conquista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-circuito-sesc-de-c
+ orridas-etapa-vitoria-da-conquista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-ii-corrida-dos-lagos-itajuipe@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:II Corrida dos Lagos 2026
+LOCATION:Itajuípe - BA
+DESCRIPTION:Corrida de rua · 1km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-ii-corrida-dos-lagos-itajuipe/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-ii-corrida-dos-lag
+ os-itajuipe/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-meia-maratona-farol-a-farol-2026-salvador@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Meia Maratona Farol a Farol 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · Diversas\nCupons e detalhes: https://www.cupo
+ nsdecorrida.com.br/provas/2026-08-30-meia-maratona-farol-a-farol-2026-salv
+ ador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-meia-maratona-faro
+ l-a-farol-2026-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-mignon-run-the-taste-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Mignon Run The Taste 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 7.5km\, 4km\nCupons e detalhes: https://www.c
+ uponsdecorrida.com.br/provas/2026-08-30-mignon-run-the-taste-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-mignon-run-the-tas
+ te-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-tr-explore-etapa-queimadas@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:TR Explore - Etapa Queimadas 2026
+LOCATION:Queimadas - BA
+DESCRIPTION:Corrida de rua · Organizador: +Sports\nCupons e detalhes: http
+ s://www.cuponsdecorrida.com.br/provas/2026-08-30-tr-explore-etapa-queimada
+ s/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-tr-explore-etapa-q
+ ueimadas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-2-corrida-rustica-serra-das-lontras-arataca@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:2ª Corrida Rústica Serra das Lontras 2026
+LOCATION:Arataca - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-2-corrida-rustica-serra-das-lontras
+ -arataca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-2-corrida-rustica-
+ serra-das-lontras-arataca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-2-corrida-solidaria-da-transalvador-34-anos@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:2ª Corrida Solidária da Transalvador – 34 Anos 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-2-corrida-solidaria-da-transalvador-34-ano
+ s/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-2-corrida-solidari
+ a-da-transalvador-34-anos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-2-corrida-solidaria-pela-vida-vitoria-da-conquista@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:2ª Corrida Solidária pela Vida 2026
+LOCATION:Vitória da Conquista - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-2-corrida-solidaria-pela-vida-vitor
+ ia-da-conquista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-2-corrida-solidari
+ a-pela-vida-vitoria-da-conquista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-da-pena-porto-seguro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida da Pena 2026
+LOCATION:Porto Seguro - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-corrida-da-pena-porto-seguro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-pena-po
+ rto-seguro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-an-run-alagoinhas-night-run@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:AN Run - Alagoinhas Night Run 2026
+LOCATION:Alagoinhas - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-12-an-run-alagoinhas-night-run/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-an-run-alagoinhas-
+ night-run/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-btr-brou-trail-arraial-d-ajuda-porto-seguro@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:BTR - Brou Trail Arraial D´Ajuda 2026
+LOCATION:Porto Seguro - BA
+DESCRIPTION:Corrida de trail · 21km\, 5km\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-09-12-btr-brou-trail-arraial-d-ajuda-po
+ rto-seguro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-btr-brou-trail-arr
+ aial-d-ajuda-porto-seguro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-asics-run-challenge-etapa-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:ASICS Run Challenge - Etapa Salvador 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 15km\, 7km\, 4km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-13-asics-run-challenge-etapa-sal
+ vador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-asics-run-challeng
+ e-etapa-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-dez-milhas-costa-do-cacau-ilheus@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Dez Milhas Costa do Cacau 2026
+LOCATION:Ilhéus - BA
+DESCRIPTION:Corrida de rua · 16.2km\, 8.1km\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2026-09-13-dez-milhas-costa-do-cacau-ilheu
+ s/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-dez-milhas-costa-d
+ o-cacau-ilheus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-run-fest-2026-lauro-de-freitas@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Run Fest 2026
+LOCATION:Lauro de Freitas - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-run-fest-2026-lauro-de-freitas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-run-fest-2026-laur
+ o-de-freitas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-sisal-candy-run-candeal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Sisal Candy Run 2026
+LOCATION:Candeal - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-sisal-candy-run-candeal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-sisal-candy-run-ca
+ ndeal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-vii-desafio-caesg-cipe-sudoeste-vitoria-da-conquista@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:VII Desafio CAESG – CIPE Sudoeste 2026
+LOCATION:Vitória da Conquista - BA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-vii-desafio-caesg-cipe-sudoeste-vitoria-da
+ -conquista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-vii-desafio-caesg-
+ cipe-sudoeste-vitoria-da-conquista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-xxxix-corrida-da-aguia-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:XXXIX Corrida da Águia 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-xxxix-corrida-da-aguia-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-xxxix-corrida-da-a
+ guia-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-5-corrida-movimenta-casa-nova@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:5ª Corrida Movimenta Casa Nova 2026
+LOCATION:Casa Nova - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-19-5-corrida-movimenta-casa-nova/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-5-corrida-moviment
+ a-casa-nova/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-corrida-vale-do-pati-andarai@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:Corrida Vale do Pati 2026
+LOCATION:Andaraí - BA
+DESCRIPTION:Corrida de rua · 34km\, 21km\, 13km\, 7km\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2026-09-19-corrida-vale-do-pati-
+ andarai/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-corrida-vale-do-pa
+ ti-andarai/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-calmon-run-miguel-calmon@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Corrida Calmon Run 2026
+LOCATION:Miguel Calmon - BA
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-20-1-corrida-calmon-run-miguel-calmon/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-calmon-r
+ un-miguel-calmon/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-sesc-de-corridas-etapa-jequie@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito Sesc de Corridas - Etapa Jequié 2026
+LOCATION:Jequié - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-circuito-sesc-de-corridas-etapa-jeq
+ uie/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-sesc-de-c
+ orridas-etapa-jequie/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-das-estacoes-primavera-salvador@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 18km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-das-estacoes-primav
+ era-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-das-estac
+ oes-primavera-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-corrida-saude-cronica-da-fundacao-jose-silveira-salvador@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Corrida Saúde Cronica da Fundação José Silveira 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-corrida-saude-cronica-da-fundacao-j
+ ose-silveira-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-corrida-saude-cron
+ ica-da-fundacao-jose-silveira-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-meia-maratona-byd-conquista-vitoria-da-conquista@cuponsdecor
+ rida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Meia Maratona BYD Conquista 2026
+LOCATION:Vitória da Conquista - BA
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-20-meia-maratona-byd-conquista-
+ vitoria-da-conquista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-meia-maratona-byd-
+ conquista-vitoria-da-conquista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-muchacho-s-run-2026-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Muchacho's Run 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-muchacho-s-run-2026-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-muchacho-s-run-202
+ 6-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-nordeste-saude-plastic-run-camacari@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Nordeste Saúde Plastic Run 2026
+LOCATION:Camaçari - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-nordeste-saude-plastic-run-camacari
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-nordeste-saude-pla
+ stic-run-camacari/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-revezamento-triacao-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Revezamento TriaÇÃo 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 6.4km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-09-20-revezamento-triacao-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-revezamento-triaca
+ o-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-v-corrida-no-canavial-juazeiro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:V Corrida no Canavial 2026
+LOCATION:Juazeiro - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-v-corrida-no-canavial-juazeiro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-v-corrida-no-canav
+ ial-juazeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-sesc-de-corridas-etapa-eunapolis@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito Sesc de Corridas - Etapa Eunápolis 2026
+LOCATION:Eunápolis - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-circuito-sesc-de-corridas-etapa-eun
+ apolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-sesc-de-c
+ orridas-etapa-eunapolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-ii-meia-maratona-de-paulo-afonso@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:II Meia Maratona de Paulo Afonso 2026
+LOCATION:Paulo Afonso - BA
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-27-ii-meia-maratona-de-paulo-af
+ onso/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-ii-meia-maratona-d
+ e-paulo-afonso/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-maratona-salvador-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Maratona Salvador 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 42km\, 21km\, 10km\, 5km\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2026-09-27-maratona-salvador-202
+ 6/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-maratona-salvador-
+ 2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-bora-run-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Bora Run 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-bora-run-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-bora-run-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-circuito-corrida-da-praia-3-etapa-ilheus@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Circuito Corrida da Praia - 3ª Etapa 2026
+LOCATION:Ilhéus - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-circuito-corrida-da-praia-3-etapa-i
+ lheus/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-circuito-corrida-d
+ a-praia-3-etapa-ilheus/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-ii-corrida-joia-do-sertao-baiano-vitoria-da-conquista@cupons
+ decorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:II Corrida Joia do Sertão Baiano 2026
+LOCATION:Vitória da Conquista - BA
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-ii-corrida-joia-do-sertao-baiano-vitoria-d
+ a-conquista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-ii-corrida-joia-do
+ -sertao-baiano-vitoria-da-conquista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-trek-run-feira-de-santana@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Trek Run 2026
+LOCATION:Feira de Santana - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-trek-run-feira-de-santana/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-trek-run-feira-de-
+ santana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-16-corrida-e-caminhada-o-ano-todo-rosa-salvador@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Corrida e Caminhada O Ano Todo Rosa 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-10-16-corrida-e-caminhada-o-ano-todo-rosa-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-16-corrida-e-caminhad
+ a-o-ano-todo-rosa-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-santander-night-run-2026-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Santander Night Run 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 12km\, 8km\, 4km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-17-santander-night-run-2026-salv
+ ador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-santander-night-ru
+ n-2026-salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-tb-night-run-capim-grosso@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:TB Night Run 2026
+LOCATION:Capim Grosso - BA
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-17-tb-night-run-capim-grosso/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-tb-night-run-capim
+ -grosso/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-trs-chapada-diamantina-palmeiras@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:TRS Chapada Diamantina 2026
+LOCATION:Palmeiras - BA
+DESCRIPTION:Corrida de rua · 21km\, 14km\, 7km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-10-17-trs-chapada-diamantina-palme
+ iras/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-trs-chapada-diaman
+ tina-palmeiras/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-5-corrida-do-leao-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:5ª Corrida do Leão 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-5-corrida-do-leao-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-5-corrida-do-leao-
+ salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-7-corrida-da-independencia-senhor-do-bonfim@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:7ª Corrida da Independência 2026
+LOCATION:Senhor do Bonfim - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-7-corrida-da-independencia-senhor-d
+ o-bonfim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-7-corrida-da-indep
+ endencia-senhor-do-bonfim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corrida-musas-in-move-2026-vitoria-da-conquista@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Corrida Musas in Move 2026
+LOCATION:Vitória da Conquista - BA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-corrida-musas-in-move-2026-vitoria-
+ da-conquista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-musas-in-m
+ ove-2026-vitoria-da-conquista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-corrida-da-primavera-jacobina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Corrida da Primavera 2026
+LOCATION:Jacobina - BA
+DESCRIPTION:Corrida de rua · 6km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-18-corrida-da-primavera-jacobina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-corrida-da-primave
+ ra-jacobina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-xli-corrida-da-asa-salvador@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:XLI Corrida da Asa 2026
+LOCATION:Salvador - BA
+DESCRIPTION:Corrida de rua · 12km\, 6km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-xli-corrida-da-asa-salvador/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-xli-corrida-da-asa
+ -salvador/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

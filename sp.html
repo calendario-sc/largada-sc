@@ -1152,15 +1152,19 @@ body:not(.bi) .top__marca{display:flex; align-items:center; gap:1rem; min-width:
 body:not(.bi) .top__marca h1{font-size:0; line-height:0}
 body:not(.bi) .top__marca h1 .logo{height:3.3rem}
 body:not(.bi) .top__marca .eyebrow{display:grid; margin:0; padding-left:.9rem; border-left:1px solid rgba(255,255,255,.35); font-size:.54rem; line-height:1.75; letter-spacing:.13em; color:rgba(255,255,255,.88); white-space:nowrap; opacity:1}
-body:not(.bi) .top__l1 .uf{margin:0 auto; display:flex; flex-wrap:nowrap; gap:.1rem; padding:.25rem; border-radius:999px; background:rgba(255,255,255,.1); flex:none}
-body:not(.bi) .top__l1 .uf a{border:0; padding:.5rem .8rem; font-size:.64rem; font-weight:600; letter-spacing:.1em; white-space:nowrap}
-@media (max-width:5000px){  /* sete estados: sempre as siglas na barra (nomes por extenso so na fita do celular) */
-  body:not(.bi) .top__l1 .uf a{font-size:0; padding:.5rem .75rem}
-  body:not(.bi) .top__l1 .uf a::before{content:attr(data-uf); font-size:.68rem; letter-spacing:.12em}
-  body:not(.bi) .top__l1 .uf a[data-uf=""]::before{content:"Todos"}
-}
-body:not(.bi) .top__l1 .uf a:hover{background:rgba(255,255,255,.12); color:#FFFFFF}
-body:not(.bi) .top__l1 .uf a[aria-current="page"]{background:#FFC21A; color:#0A2F73; font-weight:700}
+/* Menu de estados: botao com o estado da pagina; abre uma grade com os 27 (e "Todos os estados"). */
+body:not(.bi) .uf-menu{position:relative; margin:0 auto; flex:none}
+body:not(.bi) .uf-menu summary{list-style:none; cursor:pointer; display:flex; align-items:center; gap:.6rem; white-space:nowrap; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; font-weight:600; color:#FFFFFF; padding:.5rem 1rem .5rem 1.1rem; border-radius:999px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.3)}
+body:not(.bi) .uf-menu summary::-webkit-details-marker{display:none}
+body:not(.bi) .uf-menu summary::before{content:"Estado"; font-size:.58rem; font-weight:400; color:#FFC21A}
+body:not(.bi) .uf-menu summary::after{content:""; width:.42rem; height:.42rem; border-right:2px solid #FFC21A; border-bottom:2px solid #FFC21A; transform:rotate(45deg) translate(-.1rem,-.1rem); transition:.15s}
+body:not(.bi) .uf-menu[open] summary{background:rgba(255,255,255,.18)}
+body:not(.bi) .uf-menu[open] summary::after{transform:rotate(-135deg) translate(-.1rem,.1rem)}
+body:not(.bi) .uf-menu .uf{position:absolute; top:calc(100% + .5rem); left:50%; transform:translateX(-50%); z-index:60; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.2rem; width:min(46rem,calc(100vw - 2rem)); margin:0; padding:.6rem; border-radius:1rem; background:#0A2F73; border:1px solid rgba(255,255,255,.2); box-shadow:0 16px 44px rgba(0,0,0,.4)}
+body:not(.bi) .uf-menu .uf a{font-family:inherit; font-size:.86rem; letter-spacing:0; text-transform:none; font-weight:500; padding:.5rem .75rem; border:0; border-radius:.6rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+body:not(.bi) .uf-menu .uf a:hover{background:rgba(255,255,255,.12); color:#FFFFFF}
+body:not(.bi) .uf-menu .uf a[aria-current="page"]{background:#FFC21A; color:#0A2F73; font-weight:700}
+body:not(.bi) .uf-menu .uf a[data-uf=""]{grid-column:1 / -1; text-align:center; margin-top:.3rem; border-top:1px solid rgba(255,255,255,.15); border-radius:0 0 .6rem .6rem; padding-top:.7rem}
 body:not(.bi) .top__l1 .entrar-topo{position:static; display:inline-flex; align-items:center; gap:.55rem; margin-left:auto; padding:.3rem .2rem .3rem .3rem; border:0; background:none; font-size:.86rem; font-weight:700; color:#FFFFFF; white-space:nowrap; flex:none}
 body:not(.bi) .top__l1 .entrar-topo::before{content:""; flex:none; width:2.3rem; height:2.3rem; border-radius:50%; background:rgba(255,255,255,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.4 0-8 2.5-8 5.5V22h16v-2.5c0-3-3.6-5.5-8-5.5Z'/%3E%3C/svg%3E") center/58% no-repeat; background-color:rgba(255,255,255,.16)}
 body:not(.bi) .top__l1 .entrar-topo::after{content:""; width:.9rem; height:.9rem; background:#FFFFFF; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat; opacity:.85}
@@ -1239,7 +1243,6 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
   body:not(.bi) .top__l1 .entrar-topo{font-size:.78rem}
 }
 @media (max-width:1100px){
-  body:not(.bi) .top__l1 .uf a{padding:.5rem .7rem}
   body:not(.bi) .top__dir .stat{min-width:6.6rem; padding:.7rem .7rem .6rem}
   body:not(.bi) .top__dir .stat b{font-size:1.5rem}
   body:not(.bi) .groups #btn-filtros{margin-left:0}
@@ -1258,10 +1261,10 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
   body:not(.bi) .top__l1 .entrar-topo{font-size:.68rem; gap:.3rem; margin-left:auto; padding:.2rem 0}
   body:not(.bi) .top__l1 .entrar-topo::before{width:1.6rem; height:1.6rem}
   body:not(.bi) .top__l1 .entrar-topo::after{width:.7rem; height:.7rem}
-  body:not(.bi) .top__l1 .uf{order:3; flex:1 1 100%; margin:.2rem 0 0; overflow-x:auto; scrollbar-width:none; background:none; padding:0; gap:.3rem}
-  body:not(.bi) .top__l1 .uf::-webkit-scrollbar{display:none}
-  body:not(.bi) .top__l1 .uf a{flex:0 0 auto; border:1px solid rgba(255,255,255,.35); padding:.4rem .7rem; font-size:.64rem}
-  body:not(.bi) .top__l1 .uf a::before{content:none}
+  body:not(.bi) .uf-menu{order:3; flex:1 1 100%; margin:.2rem 0 0}
+  body:not(.bi) .uf-menu summary{justify-content:space-between}
+  body:not(.bi) .uf-menu .uf{position:static; transform:none; width:auto; grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:.4rem}
+  body:not(.bi) .uf-menu .uf a{font-size:.8rem; white-space:normal}
   body:not(.bi) .top__l2{margin-top:1rem; gap:1rem}
   body:not(.bi) .top__titulo{font-size:2.2rem}
   body:not(.bi) .top__sub{font-size:.86rem}
@@ -1483,13 +1486,33 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
     </div>
     <div class="top__dados">
       <nav class="uf" id="uf" aria-label="Estado">
-        <a href="./" data-uf="SC">Santa Catarina</a>
-        <a href="pr.html" data-uf="PR">Paraná</a>
-        <a href="rs.html" data-uf="RS">Rio Grande do Sul</a>
-        <a href="sp.html" data-uf="SP">São Paulo</a>
-        <a href="rj.html" data-uf="RJ">Rio de Janeiro</a>
+        <a href="ac.html" data-uf="AC">Acre</a>
+        <a href="al.html" data-uf="AL">Alagoas</a>
+        <a href="ap.html" data-uf="AP">Amapá</a>
+        <a href="am.html" data-uf="AM">Amazonas</a>
+        <a href="ba.html" data-uf="BA">Bahia</a>
+        <a href="ce.html" data-uf="CE">Ceará</a>
         <a href="df.html" data-uf="DF">Distrito Federal</a>
+        <a href="es.html" data-uf="ES">Espírito Santo</a>
+        <a href="go.html" data-uf="GO">Goiás</a>
+        <a href="ma.html" data-uf="MA">Maranhão</a>
+        <a href="mt.html" data-uf="MT">Mato Grosso</a>
+        <a href="ms.html" data-uf="MS">Mato Grosso do Sul</a>
         <a href="mg.html" data-uf="MG">Minas Gerais</a>
+        <a href="pa.html" data-uf="PA">Pará</a>
+        <a href="pb.html" data-uf="PB">Paraíba</a>
+        <a href="pr.html" data-uf="PR">Paraná</a>
+        <a href="pe.html" data-uf="PE">Pernambuco</a>
+        <a href="pi.html" data-uf="PI">Piauí</a>
+        <a href="rn.html" data-uf="RN">Rio Grande do Norte</a>
+        <a href="rs.html" data-uf="RS">Rio Grande do Sul</a>
+        <a href="rj.html" data-uf="RJ">Rio de Janeiro</a>
+        <a href="ro.html" data-uf="RO">Rondônia</a>
+        <a href="rr.html" data-uf="RR">Roraima</a>
+        <a href="./" data-uf="SC">Santa Catarina</a>
+        <a href="sp.html" data-uf="SP">São Paulo</a>
+        <a href="se.html" data-uf="SE">Sergipe</a>
+        <a href="to.html" data-uf="TO">Tocantins</a>
         <a href="todos.html" data-uf="">Todos os estados</a>
       </nav>
       <p class="top__lugar" id="top-lugar"><small id="lugar-tipo">Estado</small><b id="lugar-nome">Santa Catarina</b></p>
@@ -1666,7 +1689,15 @@ if (!BI) (() => {
   // linha 1: logo + tagline (o eyebrow vira duas linhas), estados, conta
   const eyebrow = marca.querySelector(".eyebrow");
   [...eyebrow.childNodes].forEach(n => { if (n.nodeType === 3) n.textContent = n.textContent.replace(/^\s*[\u00b7\u2022-]\s*/, ""); });
-  const l1 = caixa("top__l1", [caixa("top__marca", [marca.querySelector("h1"), eyebrow]), dados.querySelector(".uf"), top.querySelector(".entrar-topo")]);
+  // estados: menu suspenso com o estado da pagina no botao (27 estados nao cabem como pilulas)
+  const nav = dados.querySelector(".uf"), menuUf = document.createElement("details"), rotuloUf = document.createElement("summary");
+  menuUf.className = "uf-menu";
+  const aqui = location.pathname.replace(/index\.html$/, "");
+  const atual = [...nav.querySelectorAll("a")].find(a => new URL(a.href).pathname.replace(/index\.html$/, "") === aqui);
+  rotuloUf.textContent = atual ? atual.textContent : "Escolha o estado";
+  menuUf.append(rotuloUf, nav);
+  document.addEventListener("click", ev => { if (menuUf.open && !menuUf.contains(ev.target)) menuUf.open = false; });
+  const l1 = caixa("top__l1", [caixa("top__marca", [marca.querySelector("h1"), eyebrow]), menuUf, top.querySelector(".entrar-topo")]);
   // linha 2: titulo e chamadas | estado em destaque, legenda e numeros
   const esq = caixa("top__esq", [marca.querySelector(".top__titulo"), marca.querySelector(".top__sub"), marca.querySelector(".top__ctas")]);
   const dir = caixa("top__dir", [caixa("top__dir__cab", [dados.querySelector(".top__lugar"), dados.querySelector(".stats__legenda")]), dados.querySelector(".stats")]);
@@ -1690,19 +1721,22 @@ if (!BI) (() => {
     busca.append(b);
   }
 })();
-// Estado da pagina: "SC" (index), "PR", "RS", "SP", "RJ", "DF", "MG" (uf.html) ou "" (todos.html, todos).
+// Estado da pagina: "SC" (index), a sigla (uf.html) ou "" (todos.html, todos os estados).
 const UF = "SP";
-const NOMES_UF = { SC:"Santa Catarina", PR:"Paraná", RS:"Rio Grande do Sul", SP:"São Paulo", RJ:"Rio de Janeiro", DF:"Distrito Federal", MG:"Minas Gerais" };
+// Os 27 estados (build.py, de comum.ESTADOS), na ordem alfabetica dos nomes: nome e preposicoes.
+const ESTADOS = {"AC": {"nome": "Acre", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 1}, "AL": {"nome": "Alagoas", "em": "em", "de": "de", "inteiro": "inteira", "foco": 2}, "AP": {"nome": "Amapá", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 3}, "AM": {"nome": "Amazonas", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 4}, "BA": {"nome": "Bahia", "em": "na", "de": "da", "inteiro": "inteira", "foco": 5}, "CE": {"nome": "Ceará", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 6}, "DF": {"nome": "Distrito Federal", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 7}, "ES": {"nome": "Espírito Santo", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 8}, "GO": {"nome": "Goiás", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 9}, "MA": {"nome": "Maranhão", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 10}, "MT": {"nome": "Mato Grosso", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 11}, "MS": {"nome": "Mato Grosso do Sul", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 12}, "MG": {"nome": "Minas Gerais", "em": "em", "de": "de", "inteiro": "inteira", "foco": 13}, "PA": {"nome": "Pará", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 14}, "PB": {"nome": "Paraíba", "em": "na", "de": "da", "inteiro": "inteira", "foco": 15}, "PR": {"nome": "Paraná", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 16}, "PE": {"nome": "Pernambuco", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 17}, "PI": {"nome": "Piauí", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 18}, "RN": {"nome": "Rio Grande do Norte", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 20}, "RS": {"nome": "Rio Grande do Sul", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 21}, "RJ": {"nome": "Rio de Janeiro", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 19}, "RO": {"nome": "Rondônia", "em": "em", "de": "de", "inteiro": "inteira", "foco": 22}, "RR": {"nome": "Roraima", "em": "em", "de": "de", "inteiro": "inteira", "foco": 23}, "SC": {"nome": "Santa Catarina", "em": "em", "de": "de", "inteiro": "inteira", "foco": 24}, "SP": {"nome": "São Paulo", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 25}, "SE": {"nome": "Sergipe", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 26}, "TO": {"nome": "Tocantins", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 27}};
+const ORDEM_UF = Object.keys(ESTADOS);
+const NOMES_UF = Object.fromEntries(ORDEM_UF.map(u => [u, ESTADOS[u].nome]));
 const NOME_ESTADO = UF ? NOMES_UF[UF] : "Todos os estados";
 // Agenda para assinar do estado da pagina (agenda/*.ics, gerada pelo seo.py).
 document.getElementById("btn-agenda").href = "https://calendar.google.com/calendar/r?cid=" +
-  encodeURIComponent("webcal://www.cuponsdecorrida.com.br/agenda/" + ({ SC:"sc", PR:"pr", RS:"rs" }[UF] || "todas") + ".ics");
+  encodeURIComponent("webcal://www.cuponsdecorrida.com.br/agenda/" + (UF ? UF.toLowerCase() : "todas") + ".ics");
 document.querySelectorAll("#uf a").forEach(a => {
   if (a.dataset.uf === UF) a.setAttribute("aria-current", "page");
 });
-document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG";
+document.getElementById("eyebrow-uf").textContent = UF ? NOME_ESTADO : "Todo o Brasil";
 // No BI o titulo da aba diz o estado; no site publico o <title> de SEO (build.py) fica como esta.
-if (BI && UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG");
+if (BI && UF !== "SC") document.title = "Cupons de Corrida · " + (UF ? NOME_ESTADO : "Todo o Brasil");
 // O Raio-X e de Florianopolis: nao cabe na pagina dos outros estados.
 if (UF && UF !== "SC" && document.getElementById("btn-raiox")) document.getElementById("btn-raiox").hidden = true;
 // Liga um evento so se o elemento existe: na pagina publica varios nao existem.
@@ -1844,7 +1878,7 @@ function escolherEstado(uf){
 }
 if (UF) caixaEstado.classList.add("group--oculto");
 else {
-  Object.keys(NOMES_UF).filter(uf => RACES.some(r => (r.uf || "SC") === uf)).forEach(uf => {
+  ORDEM_UF.filter(uf => RACES.some(r => (r.uf || "SC") === uf)).forEach(uf => {
     const b = el("button", { className:"chip", type:"button", textContent:NOMES_UF[uf] });
     b.dataset.uf = uf; b.setAttribute("aria-pressed", "false");
     b.onclick = () => { escolherEstado(uf); render(); };
@@ -2777,7 +2811,7 @@ function render(){
     const datas = res.map(r => r.data).sort();
     const que = state.treinos ? "Treinos" : state.anos.size ? "Provas de " + [...state.anos].sort().join(", ")
       : { proximas:"Próximas provas", realizadas:"Provas realizadas", todas:"Todas as provas" }[state.escopo];
-    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : state.uf ? NOMES_UF[state.uf] : (UF ? NOME_ESTADO : "SC, PR, RS, SP, RJ, DF e MG"));
+    const onde = state.cidade || (state.regioes.size ? [...state.regioes].join(", ") : state.uf ? NOMES_UF[state.uf] : (UF ? NOME_ESTADO : "todo o Brasil"));
     let periodo = "";
     if (datas.length) periodo = state.escopo === "proximas" && !state.anos.size && !state.meses.size
       ? "de hoje até " + br(datas[datas.length - 1]) : "de " + br(datas[0]) + " a " + br(datas[datas.length - 1]);
@@ -2927,7 +2961,7 @@ function mostrarRecorte(){
     && !state.organizador && !state.tipos.size && !state.faixas.size && !state.treinos && !state.q;
   document.getElementById("top-recorte").replaceChildren(
     el("b", { textContent:"Filtro" }),
-    document.createTextNode(descreverRecorte() + (semNada ? " · " + ({ SC:"Santa Catarina inteira", PR:"Paraná inteiro", RS:"Rio Grande do Sul inteiro", SP:"São Paulo inteiro", RJ:"Rio de Janeiro inteiro", DF:"Distrito Federal inteiro", MG:"Minas Gerais inteira" }[UF] || "SC, PR, RS, SP, RJ, DF e MG") : "")));
+    document.createTextNode(descreverRecorte() + (semNada ? " · " + (UF ? NOME_ESTADO + " " + ESTADOS[UF].inteiro : "todo o Brasil") : "")));
 }
 
 function montarOrgs(){
@@ -3212,7 +3246,7 @@ function formularioCupom(c){
   const orgs = el("select", { name:"organizadora" }, [el("option", { value:"", textContent:"Escolha…" })]);
   ordenaPorUso(porOrganizador).forEach(([o]) => orgs.append(el("option", { value:o, textContent:o })));
   orgs.value = c.organizadora || "";
-  const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ["SC", "SC"], ["PR", "PR"], ["RS", "RS"], ["SP", "SP"], ["RJ", "RJ"], ["DF", "DF"], ["MG", "MG"]].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
+  const uf = el("select", { name:"uf" }, [["", "Todos os estados"], ...ORDEM_UF.map(u => [u, u])].map(([v, t2]) => el("option", { value:v, textContent:t2 })));
   uf.value = c.uf || "";
   // Loja ou servico parceiro: aparece na Central de Cupons, por categoria.
   const parceiro = inp("parceiro", "text", c.parceiro, { placeholder:"Ex.: Loja do Corredor", maxLength:120 });
@@ -4945,7 +4979,7 @@ render();
   function aplicar(onde){
     if (aplicado || !onde || !onde.uf) return;
     // Estado: veio de fora do site e esta no outro estado? Vai para a pagina dele.
-    const pagina = { SC:"./", PR:"pr.html", RS:"rs.html", SP:"sp.html", RJ:"rj.html", DF:"df.html", MG:"mg.html" }[onde.uf];
+    const pagina = onde.uf === "SC" ? "./" : (ESTADOS[onde.uf] ? onde.uf.toLowerCase() + ".html" : null);
     const doSite = /(^|\.)cuponsdecorrida\.com\.br$/.test((() => { try { return new URL(document.referrer).hostname; } catch (e) { return ""; } })());
     if (UF && pagina && onde.uf !== UF && !doSite) { aplicado = true; location.replace(pagina); return; }
     if (!REGIOES.includes(onde.regiao)) return;

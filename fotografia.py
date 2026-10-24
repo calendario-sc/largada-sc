@@ -3,7 +3,7 @@
 
 Cada plataforma lista os eventos que fotografou, com data e cidade:
 
-  Foco Radical  API do site, por estado (next-api/home/competitions): SC, PR e RS
+  Foco Radical  API do site, por estado (next-api/home/competitions), os 27 estados
   Banlek        GraphQL (graphql.banlek.com), por estado e categoria
   Fotop         busca por nome (webservices/eventos/nome-eventos)
   Fotto         API do site (api.fotto.com.br/api/galleries), por estado, categoria e periodo
@@ -25,13 +25,13 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comum import UA_NAVEGADOR, mesmo_evento_renomeado, parecidos, sem_acento  # noqa: E402
+from comum import ESTADOS, UA_NAVEGADOR, mesmo_evento_renomeado, parecidos, sem_acento  # noqa: E402
 
 AQUI = Path(__file__).resolve().parent
 PAUSA = 0.4
 FOCO_ESTADO_SC = 24
 # Codigo de cada estado na Foco Radical (ordem alfabetica dos nomes).
-FOCO_ESTADO = {"SC": 24, "PR": 16, "RS": 21, "SP": 25, "RJ": 19, "DF": 7, "MG": 13}
+FOCO_ESTADO = {u: e["foco"] for u, e in ESTADOS.items()}
 FOCO_URL = ("https://www.focoradical.com.br/next-api/home/competitions"
             "?CompetitionSearch%5Bstate%5D={estado}&page={pagina}")
 BANLEK_URL = "https://graphql.banlek.com/graphql"

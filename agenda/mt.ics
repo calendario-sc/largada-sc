@@ -1,0 +1,358 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas em Mato Grosso · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-29-4-corrida-guardiao-centenario-daniel-de-queiroz-cuiaba@cupon
+ sdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:4ª Corrida Guardião Centenário Daniel de Queiroz 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 7.5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-08-29-4-corrida-guardiao-centenario-daniel-de-
+ queiroz-cuiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-4-corrida-guardiao
+ -centenario-daniel-de-queiroz-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-1-corrida-do-avanco-primavera-do-leste@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:1ª Corrida do Avanço 2026
+LOCATION:Primavera do Leste - MT
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-1-corrida-do-avanco-primavera-do-leste/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-1-corrida-do-avanc
+ o-primavera-do-leste/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-1-inspire-long-life-run-lucas-do-rio-verde@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:1º Inspire Long Life Run 2026
+LOCATION:Lucas do Rio Verde - MT
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-1-inspire-long-life-run-lucas-do-rio-verde
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-1-inspire-long-lif
+ e-run-lucas-do-rio-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-2-corrida-universitaria-vereador-ulysses-borges-campo-verde@
+ cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:2ª Corrida Universitária Vereador Ulysses Borges 2026
+LOCATION:Campo Verde - MT
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-2-corrida-universitaria-vereador-ulysses-b
+ orges-campo-verde/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-2-corrida-universi
+ taria-vereador-ulysses-borges-campo-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-3-corrida-flamboyan-esportes-rondonopolis@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:3ª Corrida Flamboyan Esportes 2026
+LOCATION:Rondonópolis - MT
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-3-corrida-flamboyan-esportes-rondonopolis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-3-corrida-flamboya
+ n-esportes-rondonopolis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-28-mini-maratona-da-independencia-guiratinga@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:28ª Mini Maratona da Independência 2026
+LOCATION:Guiratinga - MT
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-05-28-mini-maratona-da-independencia-guiratin
+ ga/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-28-mini-maratona-d
+ a-independencia-guiratinga/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-1-corrida-homens-de-fogo-comodoro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:1ª Corrida Homens de Fogo 2026
+LOCATION:Comodoro - MT
+DESCRIPTION:Corrida de rua · 7km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-06-1-corrida-homens-de-fogo-comodoro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-corrida-homens-d
+ e-fogo-comodoro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-5-trail-run-ride-sorisso-sorriso@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:5º Trail & Run Ride Sorisso 2026
+LOCATION:Sorriso - MT
+DESCRIPTION:Corrida de trail · 14km\, 7km\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-09-06-5-trail-run-ride-sorisso-sorriso/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-5-trail-run-ride-s
+ orisso-sorriso/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-bota-pra-correr-olympikus-chapada-dos-guimaraes@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Bota Pra Correr Olympikus - Chapada dos Guimarães 2026
+LOCATION:Chapada dos Guimarães - MT
+DESCRIPTION:Corrida de rua · 21km\, 19km\, 12km\nCupons e detalhes: https:
+ //www.cuponsdecorrida.com.br/provas/2026-09-06-bota-pra-correr-olympikus-c
+ hapada-dos-guimaraes/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-bota-pra-correr-ol
+ ympikus-chapada-dos-guimaraes/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-2-corrida-corra-pra-vida-cuiaba@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:2ª Corrida Corra pra Vida 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-12-2-corrida-corra-pra-vida-cuiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-2-corrida-corra-pr
+ a-vida-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-2-corrida-do-sao-miguel-arcanjo-campo-verde@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:2ª Corrida do São Miguel Arcanjo 2026
+LOCATION:Campo Verde - MT
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-2-corrida-do-sao-miguel-arcanjo-campo-verd
+ e/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-2-corrida-do-sao-m
+ iguel-arcanjo-campo-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-circuito-das-estacoes-primavera-cuiaba@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 18km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-das-estacoes-primav
+ era-cuiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-das-estac
+ oes-primavera-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-darold-s-extreme-edicao-deserto-lucas-do-rio-verde@cuponsdec
+ orrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Darold’s Extreme – Edição Deserto 2026
+LOCATION:Lucas do Rio Verde - MT
+DESCRIPTION:Corrida de rua · 15km\, 7km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-darold-s-extreme-edicao-deserto-luc
+ as-do-rio-verde/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-darold-s-extreme-e
+ dicao-deserto-lucas-do-rio-verde/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-13-corrida-de-rua-vale-do-juruena-juina@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:13ª Corrida de Rua Vale do Juruena 2026
+LOCATION:Juína - MT
+DESCRIPTION:Corrida de rua · 7.5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-09-19-13-corrida-de-rua-vale-do-juruena-juina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-13-corrida-de-rua-
+ vale-do-juruena-juina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-1-corrida-da-fraternidade-de-mato-grosso-cuiaba@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:1ª Corrida da Fraternidade de Mato Grosso 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-19-1-corrida-da-fraternidade-de-mato-grosso-c
+ uiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-1-corrida-da-frate
+ rnidade-de-mato-grosso-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-8-corrida-florais-dos-lagos-night-run-cuiaba@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:8ª Corrida Florais dos Lagos Night Run 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 8km\, 4km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-19-8-corrida-florais-dos-lagos-night-ru
+ n-cuiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-8-corrida-florais-
+ dos-lagos-night-run-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-11-corrida-dos-ipes-primavera-do-leste@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:11ª Corrida dos Ipês 2026
+LOCATION:Primavera do Leste - MT
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-11-corrida-dos-ipes-primavera-do-le
+ ste/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-11-corrida-dos-ipe
+ s-primavera-do-leste/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-em-prol-dos-animais-de-rua-querencia@cuponsdecorri
+ da.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Corrida em Prol dos Animais de Rua 2026
+LOCATION:Querência - MT
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-1-corrida-em-prol-dos-animais-de-rua-quere
+ ncia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-em-prol-
+ dos-animais-de-rua-querencia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-chapada-21k-chapada-dos-guimaraes@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Chapada 21k 2026
+LOCATION:Chapada dos Guimarães - MT
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-27-chapada-21k-chapada-dos-guim
+ araes/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-chapada-21k-chapad
+ a-dos-guimaraes/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-corrida-sebrae-dos-empreendedores-cuiaba@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Corrida SEBRAE dos Empreendedores 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-corrida-sebrae-dos-empreendedores-cuiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-sebrae-dos
+ -empreendedores-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-corrida-cheia-de-charme-etapa-lua-cuiaba@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Corrida Cheia de Charme - Etapa Lua 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-corrida-cheia-de-charme-etapa-lua-cuiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-corrida-cheia-de-c
+ harme-etapa-lua-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-1-corrida-depende-de-nos-primavera-do-leste@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:1ª Corrida Depende de Nós 2026
+LOCATION:Primavera do Leste - MT
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-1-corrida-depende-de-nos-primavera-do-lest
+ e/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-1-corrida-depende-
+ de-nos-primavera-do-leste/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-3-corrida-dia-do-medico-cuiaba@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3ª Corrida Dia do Médico 2026
+LOCATION:Cuiabá - MT
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-3-corrida-dia-do-medico-cuiaba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-corrida-dia-do-m
+ edico-cuiaba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-4-corrida-rota-do-peixe-passagem-da-conceicao-varzea-grande@
+ cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:4ª Corrida Rota do Peixe - Passagem da Conceição 2026
+LOCATION:Várzea Grande - MT
+DESCRIPTION:Corrida de rua · 7.5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-10-18-4-corrida-rota-do-peixe-passagem-da-conc
+ eicao-varzea-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-4-corrida-rota-do-
+ peixe-passagem-da-conceicao-varzea-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

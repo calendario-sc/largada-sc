@@ -1,0 +1,137 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas no Piauí · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-29-2-corrida-amadora-de-combate-a-violencia-contra-a-mulher-sao
+ -joao-da-serra@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260829
+DTEND;VALUE=DATE:20260830
+SUMMARY:2ª Corrida Amadora de Combate à Violência contra a Mulher 2026
+LOCATION:São João da Serra - PI
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-29-2-corrida-amadora-de-combate-a-violencia-c
+ ontra-a-mulher-sao-joao-da-serra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-29-2-corrida-amadora-
+ de-combate-a-violencia-contra-a-mulher-sao-joao-da-serra/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corredores-teresina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:CorreDores 2026
+LOCATION:Teresina - PI
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-corredores-teresina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corredores-teresin
+ a/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-corrida-carvalho-super-teresina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:Corrida Carvalho Super 2026
+LOCATION:Teresina - PI
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-12-corrida-carvalho-super-teresina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-corrida-carvalho-s
+ uper-teresina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-globo-run-2026-teresina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Globo Run 2026
+LOCATION:Teresina - PI
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 2km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-13-globo-run-2026-teresina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-globo-run-2026-ter
+ esina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-ufpi-em-movimento-teresina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:UFPI em Movimento 2026
+LOCATION:Teresina - PI
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-13-ufpi-em-movimento-teresina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-ufpi-em-movimento-
+ teresina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-das-estacoes-primavera-teresina@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Teresina - PI
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-circuito-das-estacoes-primavera-ter
+ esina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-das-estac
+ oes-primavera-teresina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-10-2-corrida-outubro-rosa-lagoa-do-barro-do-piaui@cuponsdecorri
+ da.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:2ª Corrida Outubro Rosa 2026
+LOCATION:Lagoa do Barro do Piauí - PI
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-10-2-corrida-outubro-rosa-lagoa-do-bar
+ ro-do-piaui/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-2-corrida-outubro-
+ rosa-lagoa-do-barro-do-piaui/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-10-santander-night-run-2026-teresina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Santander Night Run 2026
+LOCATION:Teresina - PI
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-10-santander-night-run-2026-teresina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-santander-night-ru
+ n-2026-teresina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-2-corrida-do-circuito-esportivo-lisbela-sportings-cocal@cupo
+ nsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:2ª Corrida do Circuito Esportivo Lisbela Sportings 2026
+LOCATION:Cocal - PI
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-2-corrida-do-circuito-esportivo-lisbela-sp
+ ortings-cocal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-2-corrida-do-circu
+ ito-esportivo-lisbela-sportings-cocal/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

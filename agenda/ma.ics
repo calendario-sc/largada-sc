@@ -1,0 +1,107 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas no Maranhão · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-corrida-do-soldado-imperatriz@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida do Soldado 2026
+LOCATION:Imperatriz - MA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-corrida-do-soldado-imperatriz/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-do-soldado
+ -imperatriz/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-girl-power-sao-luis@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Girl Power - São Luis 2026
+LOCATION:São Luís - MA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-girl-power-sao-luis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-girl-power-sao-lui
+ s/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-acorda-brasil-etapa-bom-jesus-das-selvas@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito Acorda Brasil - Etapa Bom Jesus das Selvas 2026
+LOCATION:Bom Jesus das Selvas - MA
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-20-circuito-acorda-brasil-etapa-bom-jes
+ us-das-selvas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-acorda-br
+ asil-etapa-bom-jesus-das-selvas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-lencois-maranhenses-trail-santo-amaro-do-maranhao@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:Lençóis Maranhenses Trail 2026
+LOCATION:Santo Amaro do Maranhão - MA
+DESCRIPTION:Corrida de trail · 31km\, 18km\, 9km\nCupons e detalhes: https
+ ://www.cuponsdecorrida.com.br/provas/2026-09-26-lencois-maranhenses-trail-
+ santo-amaro-do-maranhao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-lencois-maranhense
+ s-trail-santo-amaro-do-maranhao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-vascorrida-2026-sao-luis@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Vascorrida 2026
+LOCATION:São Luís - MA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-vascorrida-2026-sao-luis/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-vascorrida-2026-sa
+ o-luis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-apv-run-senador-alexandre-costa@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:APV Run 2026
+LOCATION:Senador Alexandre Costa - MA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-apv-run-senador-alexandre-costa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-apv-run-senador-al
+ exandre-costa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-ii-run-farmarcia-barros-parnarama@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:II Run Farmárcia Barros 2026
+LOCATION:Parnarama - MA
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-ii-run-farmarcia-barros-parnarama/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-ii-run-farmarcia-b
+ arros-parnarama/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

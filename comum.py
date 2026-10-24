@@ -29,12 +29,50 @@ MESES_NOME = {
 
 FAIXAS = ["5k", "10k", "21k", "42k", "ultra"]
 
-# Estados que a coleta cobre. O primeiro e o padrao: cidade sem UF
-# informada e procurada nele antes dos outros.
-UFS = ("SC", "PR", "RS", "SP", "RJ", "DF", "MG")
+# Os 27 estados, na ordem em que a coleta os procura: cidade sem UF informada
+# e procurada no primeiro antes dos outros (SC e a casa do site). Cada um traz
+# o nome, as preposicoes dos textos ("em Santa Catarina", "do Parana"), o genero
+# de "inteiro" e o codigo do estado na Foco Radical (ordem alfabetica dos nomes).
+ESTADOS = {
+    "SC": {"nome": "Santa Catarina", "em": "em", "de": "de", "inteiro": "inteira", "foco": 24},
+    "PR": {"nome": "Paraná", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 16},
+    "RS": {"nome": "Rio Grande do Sul", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 21},
+    "SP": {"nome": "São Paulo", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 25},
+    "RJ": {"nome": "Rio de Janeiro", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 19},
+    "DF": {"nome": "Distrito Federal", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 7},
+    "MG": {"nome": "Minas Gerais", "em": "em", "de": "de", "inteiro": "inteira", "foco": 13},
+    "ES": {"nome": "Espírito Santo", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 8},
+    "BA": {"nome": "Bahia", "em": "na", "de": "da", "inteiro": "inteira", "foco": 5},
+    "PE": {"nome": "Pernambuco", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 17},
+    "CE": {"nome": "Ceará", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 6},
+    "GO": {"nome": "Goiás", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 9},
+    "MT": {"nome": "Mato Grosso", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 11},
+    "MS": {"nome": "Mato Grosso do Sul", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 12},
+    "PA": {"nome": "Pará", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 14},
+    "AM": {"nome": "Amazonas", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 4},
+    "PB": {"nome": "Paraíba", "em": "na", "de": "da", "inteiro": "inteira", "foco": 15},
+    "RN": {"nome": "Rio Grande do Norte", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 20},
+    "AL": {"nome": "Alagoas", "em": "em", "de": "de", "inteiro": "inteira", "foco": 2},
+    "SE": {"nome": "Sergipe", "em": "em", "de": "de", "inteiro": "inteiro", "foco": 26},
+    "PI": {"nome": "Piauí", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 18},
+    "MA": {"nome": "Maranhão", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 10},
+    "TO": {"nome": "Tocantins", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 27},
+    "RO": {"nome": "Rondônia", "em": "em", "de": "de", "inteiro": "inteira", "foco": 22},
+    "AC": {"nome": "Acre", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 1},
+    "AP": {"nome": "Amapá", "em": "no", "de": "do", "inteiro": "inteiro", "foco": 3},
+    "RR": {"nome": "Roraima", "em": "em", "de": "de", "inteiro": "inteira", "foco": 23},
+}
+UFS = tuple(ESTADOS)
 UF_ALVO = UFS[0]
-UF_NOME = {"SC": "santa catarina", "PR": "parana", "RS": "rio grande do sul", "SP": "sao paulo",
-           "RJ": "rio de janeiro", "DF": "distrito federal", "MG": "minas gerais"}
+_sem = lambda s: "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")  # noqa: E731
+# Ordem alfabetica dos nomes, para menus e listas.
+ORDEM_UF = sorted(UFS, key=lambda u: _sem(ESTADOS[u]["nome"]))
+UF_NOME = {u: _sem(e["nome"]).lower() for u, e in ESTADOS.items()}
+
+
+def pagina_uf(uf):
+    """Endereco da pagina do estado: index para SC, uf.html para os outros, todos.html para ''."""
+    return "/" if uf == "SC" else ("/todos.html" if not uf else f"/{uf.lower()}.html")
 # Federacoes cujos permits entram como fonte: FCA (SC) e FAP (PR). Nome de
 # prova escrito pela federacao so vale quando nenhuma outra fonte a tem.
 FEDERACOES = {"fca", "fap"}
@@ -256,6 +294,10 @@ def canonizar_cidade(cidade, uf=None):
 
     from municipios import chave_cidade
     chave = chave_cidade(bruta)
+    # "Vitoria ES", "Salvador BA": a sigla no fim diz o estado, se nenhum foi informado.
+    partes = chave.split()
+    if not uf and len(partes) > 1 and partes[-1].upper() in UFS:
+        uf, chave = partes[-1].upper(), " ".join(partes[:-1])
     for estado in ([uf] if uf else []) + [u for u in UFS if u != uf]:
         apelido = APELIDOS.get(estado, {}).get(chave)
         achada = _indice().get(estado, {}).get(chave_cidade(apelido) if apelido else chave)
@@ -362,6 +404,7 @@ VAZIAS = {
     "a", "as", "o", "os", "de", "da", "do", "das", "dos", "e", "em", "no", "na",
     "nos", "nas", "para", "por", "com", "corrida", "corridas", "caminhada",
     "prova", "etapa", "edicao", "run", "running", "race", "sc", "santa", "pr", "parana", "rs", "sp", "rj", "df", "mg",
+    "es", "ba", "pe", "ce", "go", "mt", "ms", "pa", "am", "pb", "rn", "al", "se", "pi", "ma", "to", "ro", "ac", "ap", "rr",
     "catarina", "2024", "2025", "2026", "2027", "2028",
 }
 

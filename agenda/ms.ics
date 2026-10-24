@@ -1,0 +1,421 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas em Mato Grosso do Sul · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-2-corrida-rustica-da-apae-aral-moreira@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:2ª Corrida Rústica da APAE 2026
+LOCATION:Aral Moreira - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-2-corrida-rustica-da-apae-aral-moreira/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-2-corrida-rustica-
+ da-apae-aral-moreira/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-4-corrida-e-caminhada-inclusiva-aquidauana@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:4ª Corrida e Caminhada Inclusiva 2026
+LOCATION:Aquidauana - MS
+DESCRIPTION:Caminhada · 10km\, 5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-08-30-4-corrida-e-caminhada-inclusiva-aquidaua
+ na/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-4-corrida-e-caminh
+ ada-inclusiva-aquidauana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-corrida-da-independencia-douradina@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:Corrida da Independência 2026
+LOCATION:Douradina - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-05-corrida-da-independencia-douradina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-corrida-da-indepen
+ dencia-douradina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-1-maratona-de-bonito@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:1ª Maratona de Bonito 2026
+LOCATION:Bonito - MS
+DESCRIPTION:Corrida de rua · 42km\, 21km\, 10km\, 5km\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-maratona-de-bonito/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-maratona-de-boni
+ to/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-da-familia-5-edicao-campo-grande@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida da Família- 5ª Edição 2026
+LOCATION:Campo Grande - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-corrida-da-familia-5-edicao-campo-g
+ rande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-familia
+ -5-edicao-campo-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-trail-run-serra-da-bodoquena@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:Trail Run Serra da Bodoquena 2026
+LOCATION:Bodoquena - MS
+DESCRIPTION:Corrida de trail · 42km\, 30km\, 21km\, 12km\nCupons e detalhe
+ s: https://www.cuponsdecorrida.com.br/provas/2026-09-12-trail-run-serra-da
+ -bodoquena/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-trail-run-serra-da
+ -bodoquena/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-apae-tres-lagoas@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª Corrida APAE 2026
+LOCATION:Três Lagoas - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-1-corrida-apae-tres-lagoas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-apae-tre
+ s-lagoas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-santa-teresinha-de-vicentina@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª Corrida Santa Teresinha de Vicentina 2026
+LOCATION:Vicentina - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-1-corrida-santa-teresinha-de-vicentina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-santa-te
+ resinha-de-vicentina/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-2-meia-maratona-de-navirai@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:2ª Meia Maratona de Naviraí 2026
+LOCATION:Naviraí - MS
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-13-2-meia-maratona-de-navirai/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-2-meia-maratona-de
+ -navirai/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-3-corrida-do-profissional-de-educacao-fisica-bela-vista@cupo
+ nsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:3ª Corrida do Profissional de Educação Física 2026
+LOCATION:Bela Vista - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-3-corrida-do-profissional-de-educacao-fisi
+ ca-bela-vista/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-3-corrida-do-profi
+ ssional-de-educacao-fisica-bela-vista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-athenas-run-corrida-da-familia-dourados@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Athenas Run & Corrida da Família 2026
+LOCATION:Dourados - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-athenas-run-corrida-da-familia-dour
+ ados/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-athenas-run-corrid
+ a-da-familia-dourados/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-circuito-pantanal-funec-2-etapa-cobra-corumba@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Circuito Pantanal Funec - 2ª Etapa Cobra 2026
+LOCATION:Corumbá - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-pantanal-funec-2-eta
+ pa-cobra-corumba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-pantanal-
+ funec-2-etapa-cobra-corumba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-5-corrida-pela-vida-colegio-master-campo-grande@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:5ª Corrida pela Vida - Colégio Master 2026
+LOCATION:Campo Grande - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-19-5-corrida-pela-vida-colegio-master-
+ campo-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-5-corrida-pela-vid
+ a-colegio-master-campo-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-7-corrida-do-batalhao-de-choque-campo-grande@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:7ª Corrida do Batalhão de Choque 2026
+LOCATION:Campo Grande - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-19-7-corrida-do-batalhao-de-choque-cam
+ po-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-7-corrida-do-batal
+ hao-de-choque-campo-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-gospel-city-run-jardim@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Gospel City Run 2026
+LOCATION:Jardim - MS
+DESCRIPTION:Corrida de rua · 14km\, 7km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-1-gospel-city-run-jardim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-gospel-city-run-
+ jardim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-2-corrida-elitte-fitness-ponta-pora@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:2ª Corrida Elitte Fitness 2026
+LOCATION:Ponta Porã - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-2-corrida-elitte-fitness-ponta-pora
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-2-corrida-elitte-f
+ itness-ponta-pora/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-de-corrida-cidade-morena-2026-2-etapa-campo-grande@
+ cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito de Corrida Cidade Morena 2026 - 2ª Etapa
+LOCATION:Campo Grande - MS
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-de-corrida-cidade-m
+ orena-2026-2-etapa-campo-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-de-corrid
+ a-cidade-morena-2026-2-etapa-campo-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-1-corrida-da-doacao-dourados@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:1ª Corrida da Doação 2026
+LOCATION:Dourados - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-26-1-corrida-da-doacao-dourados/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-1-corrida-da-doaca
+ o-dourados/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-1-corrida-da-educacao-fisica-campo-grande@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:1ª Corrida da Educação Física 2026
+LOCATION:Campo Grande - MS
+DESCRIPTION:Corrida de rua · 8km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-27-1-corrida-da-educacao-fisica-campo-g
+ rande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-1-corrida-da-educa
+ cao-fisica-campo-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-2-corrida-monster-rio-brilhante@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:2ª Corrida Monster 2026
+LOCATION:Rio Brilhante - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-2-corrida-monster-rio-brilhante/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-monster-
+ rio-brilhante/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-sesc-de-corridas-nos-bairros-etapa-santa-ines-campo
+ -grande@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito SESC de Corridas nos Bairros - Etapa Santa Inês 2026
+LOCATION:Campo Grande - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-circuito-sesc-de-corridas-nos-bairros-etap
+ a-santa-ines-campo-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-sesc-de-c
+ orridas-nos-bairros-etapa-santa-ines-campo-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-corrida-de-rua-gmais-bonito@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Corrida de Rua Gmais 2026
+LOCATION:Bonito - MS
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-corrida-de-rua-gmais-bonito/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-de-rua-gma
+ is-bonito/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-circuito-das-estacoes-primavera-campo-grande@cuponsdecorrida
+ .com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Campo Grande - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-circuito-das-estacoes-primavera-cam
+ po-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-circuito-das-estac
+ oes-primavera-campo-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-corrida-elas-em-movimento-2026-bonito@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Corrida Elas em Movimento 2026
+LOCATION:Bonito - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-corrida-elas-em-movimento-2026-bonito/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-corrida-elas-em-mo
+ vimento-2026-bonito/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-fisiomax-run-movimento-e-saude-corumba@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Fisiomax Run - Movimento é Saúde 2026
+LOCATION:Corumbá - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-fisiomax-run-movimento-e-saude-corumba/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-fisiomax-run-movim
+ ento-e-saude-corumba/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-1-corrida-igp-iguatemi@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:1ª Corrida IGP 2026
+LOCATION:Iguatemi - MS
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-1-corrida-igp-iguatemi/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-1-corrida-igp-igua
+ temi/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-3-meia-maratona-contra-a-polio-tres-lagoas@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3ª Meia Maratona contra a Pólio 2026
+LOCATION:Três Lagoas - MS
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-10-18-3-meia-maratona-contra-a-pol
+ io-tres-lagoas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-meia-maratona-co
+ ntra-a-polio-tres-lagoas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-ii-corrida-pedestre-unimed-aquidauana@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:II Corrida Pedestre Unimed Aquidauana 2026
+LOCATION:Aquidauana - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-ii-corrida-pedestre-unimed-aquidaua
+ na/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-ii-corrida-pedestr
+ e-unimed-aquidauana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-track-fields-experience-unigran-50-anos-dourados@cuponsdecor
+ rida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Track&Fields Experience - Unigran 50 Anos 2026
+LOCATION:Dourados - MS
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-track-fields-experience-unigran-50-
+ anos-dourados/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-track-fields-exper
+ ience-unigran-50-anos-dourados/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

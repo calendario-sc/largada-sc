@@ -1,0 +1,136 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas em Rondônia · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-corrida-fenae-do-pessoal-da-caixa-porto-velho@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida Fenae do Pessoal da Caixa 2026
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-corrida-fenae-do-pessoal-da-caixa-p
+ orto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-fenae-do-p
+ essoal-da-caixa-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-super-liga-2026-5-etapa-porto-velho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Super Liga 2026 - 5º Etapa
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-super-liga-2026-5-etapa-porto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-super-liga-2026-5-
+ etapa-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-1-corrida-do-tre-ro-corrida-contra-a-desinformacao-porto-vel
+ ho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:1ª Corrida do TRE-RO – Corrida Contra a Desinformação 2026
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-05-1-corrida-do-tre-ro-corrida-contra-
+ a-desinformacao-porto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-1-corrida-do-tre-r
+ o-corrida-contra-a-desinformacao-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-6-desafio-no-limite-porto-velho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:6º Desafio No Limite 2026
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-6-desafio-no-limite-porto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-6-desafio-no-limit
+ e-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-corrida-do-6-bis-2026-guajara-mirim@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Corrida do 6º Bis 2026
+LOCATION:Guajará-Mirim - RO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-corrida-do-6-bis-2026-guajara-mirim
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-do-6-bis-2
+ 026-guajara-mirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-porto-saude-track-field-experience-running-porto-velho@cupon
+ sdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Porto Saúde Track&Field Experience Running - Porto Velho 2026
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-porto-saude-track-field-experience-
+ running-porto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-porto-saude-track-
+ field-experience-running-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-funpace-run-experience-porto-velho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Funpace Run Experience 2026
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-funpace-run-experience-porto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-funpace-run-experi
+ ence-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-2-corrida-setembro-cinza-porto-velho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:2ª Corrida Setembro Cinza 2026
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-26-2-corrida-setembro-cinza-porto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-2-corrida-setembro
+ -cinza-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-10-corrida-outubro-rosa-porto-velho@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Corrida Outubro Rosa 2026
+LOCATION:Porto Velho - RO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-10-corrida-outubro-rosa-porto-velho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-10-corrida-outubro-ro
+ sa-porto-velho/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,66 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas no Amapá · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-4-corrida-do-bancario-macapa@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:4ª Corrida do Bancário 2026
+LOCATION:Macapá - AP
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-4-corrida-do-bancario-macapa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-4-corrida-do-banca
+ rio-macapa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-7-corrida-do-cirio-macapa@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:7ª Corrida do Círio 2026
+LOCATION:Macapá - AP
+DESCRIPTION:Corrida de rua · 7km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-12-7-corrida-do-cirio-macapa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-7-corrida-do-cirio
+ -macapa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-6-corrida-e-caminhada-pela-valorizacao-da-vida-macapa@cupons
+ decorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:6ª Corrida e Caminhada pela Valorização da Vida 2026
+LOCATION:Macapá - AP
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-09-26-6-corrida-e-caminhada-pela-valorizacao-da-vida-
+ macapa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-6-corrida-e-caminh
+ ada-pela-valorizacao-da-vida-macapa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-1-corrida-do-comercio-de-santana@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:1ª Corrida do Comércio de Santana 2026
+LOCATION:Santana - AP
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-1-corrida-do-comercio-de-santana/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-1-corrida-do-comer
+ cio-de-santana/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

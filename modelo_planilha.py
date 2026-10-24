@@ -34,7 +34,7 @@ INSTRUCOES = [
     "Como preencher o calendário de provas",
     "",
     "1. Uma prova por linha, na aba Provas. Apague as duas linhas de exemplo.",
-    "2. Nome da prova, data, cidade e UF são obrigatórios. O calendário cobre SC, PR, RS, SP, RJ, DF e MG.",
+    "2. Nome da prova, data, cidade e UF são obrigatórios. O calendário cobre todos os estados do Brasil.",
     "3. Data no formato dd/mm/aaaa (ex.: 17/01/2027). Só provas futuras.",
     "4. Distâncias em km, separadas por vírgula (ex.: 3, 5, 10, 21,1).",
     "5. Tipo: Rua, Trail, Caminhada, Kids, Revezamento, Noturna, Ultra, Duathlon, Triathlon ou Outro.",
@@ -70,7 +70,7 @@ def aba_provas():
     for n, idx in ((2, 2), (3, 3)):
         linhas.append(f'<row r="{n}">' + "".join(celula(f"{col(i)}{n}", c[idx], 2) for i, c in enumerate(COLUNAS) if c[idx]) + "</row>")
     cols = "".join(f'<col min="{i + 1}" max="{i + 1}" width="{c[1]}" customWidth="1" style="3"/>' for i, c in enumerate(COLUNAS))
-    ufs = f'<dataValidation type="list" allowBlank="1" showErrorMessage="1" errorTitle="UF" error="Use SC, PR, RS, SP, RJ, DF ou MG." sqref="D2:D{LINHAS_VALIDADAS}"><formula1>"SC,PR,RS,SP,RJ,DF,MG"</formula1></dataValidation>'
+    ufs = f'<dataValidation type="list" allowBlank="1" showErrorMessage="1" errorTitle="UF" error="Use a sigla do estado (SC, SP, RJ...)." sqref="D2:D{LINHAS_VALIDADAS}"><formula1>"AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MS,MG,PA,PB,PR,PE,PI,RN,RS,RJ,RO,RR,SC,SP,SE,TO"</formula1></dataValidation>'
     tipos = (f'<dataValidation type="list" allowBlank="1" showErrorMessage="1" errorTitle="Tipo" error="Escolha um tipo da lista." '
              f'sqref="F2:F{LINHAS_VALIDADAS}"><formula1>"{",".join(TIPOS)}"</formula1></dataValidation>')
     return ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'

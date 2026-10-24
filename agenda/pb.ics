@@ -1,0 +1,440 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas na Paraíba · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-10-anos-corredores-de-rua-trail-run-sousa@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:10 Anos Corredores de Rua Trail Run 2026
+LOCATION:Sousa - PB
+DESCRIPTION:Corrida de trail · 8km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-08-30-10-anos-corredores-de-rua-trail-run-sous
+ a/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-10-anos-corredores
+ -de-rua-trail-run-sousa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-2-corrida-de-nossa-senhora-daguia-patos@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:2ª Corrida De Nossa Senhora Daguia 2026
+LOCATION:Patos - PB
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-2-corrida-de-nossa-senhora-daguia-patos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-2-corrida-de-nossa
+ -senhora-daguia-patos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-corrida-da-paz-etapa-bayeux@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida da Paz - Etapa Bayeux 2026
+LOCATION:Bayeux - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-corrida-da-paz-etapa-bayeux/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-da-paz-eta
+ pa-bayeux/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-corrida-do-produtor-rural-alagoa-grande@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Corrida do Produtor Rural 2026
+LOCATION:Alagoa Grande - PB
+DESCRIPTION:Corrida de rua · 6km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-08-30-corrida-do-produtor-rural-alagoa-gra
+ nde/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-corrida-do-produto
+ r-rural-alagoa-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-mogeiro-run-2026@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Mogeiro Run 2026
+LOCATION:Mogeiro - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-08-30-mogeiro-run-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-mogeiro-run-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-run-vip-training-2-edicao-sume@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Run Vip Training - 2ª Edição 2026
+LOCATION:Sumé - PB
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-08-30-run-vip-training-2-edicao-sume/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-run-vip-training-2
+ -edicao-sume/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-trilha-do-poeta-2-edicao-sape@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Trilha do Poeta - 2ª Edição 2026
+LOCATION:Sapé - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-trilha-do-poeta-2-edicao-sape/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-trilha-do-poeta-2-
+ edicao-sape/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-2-atacamix-run-sape@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:2ª Atacamix Run 2026
+LOCATION:Sapé - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-2-atacamix-run-sape/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-2-atacamix-run-sap
+ e/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-iii-corrida-da-padroeira-sousa@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:III Corrida da Padroeira 2026
+LOCATION:Sousa - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-iii-corrida-da-padroeira-sousa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-iii-corrida-da-pad
+ roeira-sousa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-live-run-xp-campina-grande@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Live! Run XP - Campina Grande 2026
+LOCATION:Campina Grande - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-live-run-xp-campina-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-live-run-xp-campin
+ a-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-1-cultura-inglesa-run-patos@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:1ª Cultura Inglesa Run 2026
+LOCATION:Patos - PB
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-12-1-cultura-inglesa-run-patos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-1-cultura-inglesa-
+ run-patos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-intense-night-run-pedras-de-fogo@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:Intense Night Run 2026
+LOCATION:Pedras de Fogo - PB
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-12-intense-night-run-pedras-de-fogo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-intense-night-run-
+ pedras-de-fogo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-trun-trail-run-series-etapa-bananeiras@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:TRun - Trail Run Series - Etapa Bananeiras 2026
+LOCATION:Bananeiras - PB
+DESCRIPTION:Corrida de trail · 27km\, 18km\, 10km\nCupons e detalhes: http
+ s://www.cuponsdecorrida.com.br/provas/2026-09-12-trun-trail-run-series-eta
+ pa-bananeiras/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-trun-trail-run-ser
+ ies-etapa-bananeiras/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-circuito-music-run-etapa-rock-joao-pessoa@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Circuito Music Run - Etapa Rock 2026
+LOCATION:João Pessoa - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-circuito-music-run-etapa-rock-joao-
+ pessoa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-music-run
+ -etapa-rock-joao-pessoa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-circuito-sesc-de-corridas-etapa-campina-grande@cuponsdecorri
+ da.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Circuito SESC de Corridas - Etapa Campina Grande 2026
+LOCATION:Campina Grande - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-circuito-sesc-de-corridas-etapa-cam
+ pina-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-sesc-de-c
+ orridas-etapa-campina-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-desafio-uphill-15k-alagoa-grande@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Desafio Uphill 15k 2026
+LOCATION:Alagoa Grande - PB
+DESCRIPTION:Corrida de rua · 15km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-09-13-desafio-uphill-15k-alagoa-grande/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-desafio-uphill-15k
+ -alagoa-grande/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-vi-corrida-da-ultramaratonista-sousa@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:VI Corrida da Ultramaratonista 2026
+LOCATION:Sousa - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-vi-corrida-da-ultramaratonista-sousa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-vi-corrida-da-ultr
+ amaratonista-sousa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-19-corrida-e-caminhada-sest-senat-itabaiana@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:Corrida E Caminhada SEST SENAT Itabaiana 2026
+LOCATION:Itabaiana - PB
+DESCRIPTION:Caminhada · 10km\, 5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-09-19-corrida-e-caminhada-sest-senat-itabaiana
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-19-corrida-e-caminhad
+ a-sest-senat-itabaiana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-1-corrida-do-vigilante-sousa@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:1ª Corrida do Vigilante 2026
+LOCATION:Sousa - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-20-1-corrida-do-vigilante-sousa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-1-corrida-do-vigil
+ ante-sousa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-2-corrida-sem-limites-itabaiana@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:2ª Corrida Sem Limites 2026
+LOCATION:Itabaiana - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-2-corrida-sem-limites-itabaiana/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-2-corrida-sem-limi
+ tes-itabaiana/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-desbrava-run-2026-bayeux@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Desbrava Run 2026
+LOCATION:Bayeux - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\, 2km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-20-desbrava-run-2026-bayeux/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-desbrava-run-2026-
+ bayeux/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-2-corrida-oab-subsecao-guarabira@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:2ª Corrida OAB - Subseção Guarabira 2026
+LOCATION:Guarabira - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-2-corrida-oab-subsecao-guarabira/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-oab-subs
+ ecao-guarabira/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-2-corrida-de-aniversario-saude-10-academia-santa-rita@cupons
+ decorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:2ª Corrida de Aniversário Saúde 10 Academia 2026
+LOCATION:Santa Rita - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-2-corrida-de-aniversario-saude-10-academia
+ -santa-rita/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-de-anive
+ rsario-saude-10-academia-santa-rita/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-das-estacoes-primavera-joao-pessoa@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:João Pessoa - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-circuito-das-estacoes-primavera-joa
+ o-pessoa/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-das-estac
+ oes-primavera-joao-pessoa/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-1-corrida-e-caminhada-da-padroeira-nossa-senhora-do-livramen
+ to-umbuzeiro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:1ª Corrida e Caminhada da Padroeira - Nossa Senhora do Livramento 
+ 2026
+LOCATION:Umbuzeiro - PB
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-10-11-1-corrida-e-caminhada-da-padroeira-nossa-senhor
+ a-do-livramento-umbuzeiro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-1-corrida-e-caminh
+ ada-da-padroeira-nossa-senhora-do-livramento-umbuzeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-3-corrida-pedra-da-turmalina-brejo-do-cruz@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:3ª Corrida Pedra da Turmalina 2026
+LOCATION:Brejo do Cruz - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-3-corrida-pedra-da-turmalina-brejo-do-cruz
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-3-corrida-pedra-da
+ -turmalina-brejo-do-cruz/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-bdp-run-salgado-de-sao-felix@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:BDP Run 2026
+LOCATION:Salgado de São Félix - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-bdp-run-salgado-de-sao-felix/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-bdp-run-salgado-de
+ -sao-felix/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-montadas-run-2-edicao@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Montadas Run - 2ª Edição 2026
+LOCATION:Montadas - PB
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-11-montadas-run-2-edicao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-montadas-run-2-edi
+ cao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-1-corrida-cirio-da-providencia-cajazeiras@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:1ª Corrida Círio da Providência 2026
+LOCATION:Cajazeiras - PB
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-18-1-corrida-cirio-da-providencia-cajaz
+ eiras/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-1-corrida-cirio-da
+ -providencia-cajazeiras/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-5-ultra-maratona-da-cidade-de-patos@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:5ª Ultra Maratona da Cidade de Patos 2026
+LOCATION:Patos - PB
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-18-5-ultra-maratona-da-cidade-de-patos
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-5-ultra-maratona-d
+ a-cidade-de-patos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-7-corrida-e-caminhada-outubro-rosa-patos@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:7ª Corrida e Caminhada Outubro Rosa 2026
+LOCATION:Patos - PB
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-10-18-7-corrida-e-caminhada-outubro-rosa-patos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-7-corrida-e-caminh
+ ada-outubro-rosa-patos/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

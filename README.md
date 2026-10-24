@@ -10,8 +10,7 @@ banco nem build. Qualquer hospedagem estática serve.
 
 `atualizar.py` faz tudo:
 
-1. `scrape.py` coleta as fontes de calendário de Santa Catarina, Paraná, Rio Grande
-   do Sul, São Paulo, Rio de Janeiro, Distrito Federal e Minas Gerais (corridasbr.com.br — calendário e arquivo de resultados —,
+1. `scrape.py` coleta as fontes de calendário dos 27 estados do Brasil (corridasbr.com.br — calendário e arquivo de resultados —,
    ticketsports.com.br, movnow.com.br, atletis.com.br, sympla.com.br,
    blueticket.com.br e os permits das federações, entre outras), funde as provas
    anunciadas em mais de um lugar e acumula em `corridas.json`.

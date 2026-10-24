@@ -1,0 +1,403 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas no Rio Grande do Norte · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-1-corrida-do-agosto-lilas-monte-alegre@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:1ª Corrida do Agosto Lilás 2026
+LOCATION:Monte Alegre - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-1-corrida-do-agosto-lilas-monte-alegre/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-1-corrida-do-agost
+ o-lilas-monte-alegre/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-2-corrida-lilas-de-patu@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:2ª Corrida Lilas de Patú 2026
+LOCATION:Patu - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-08-30-2-corrida-lilas-de-patu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-2-corrida-lilas-de
+ -patu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-2-corrida-nossa-senhora-do-o-serra-negra-do-norte@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:2ª Corrida Nossa Senhora do Ó 2026
+LOCATION:Serra Negra do Norte - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-05-2-corrida-nossa-senhora-do-o-serra-negra-d
+ o-norte/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-2-corrida-nossa-se
+ nhora-do-o-serra-negra-do-norte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-05-4-corrida-da-independencia-sao-jose-do-serido@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:4ª Corrida da Independência 2026
+LOCATION:São José do Seridó - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-05-4-corrida-da-independencia-sao-jose-do-ser
+ ido/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-05-4-corrida-da-indep
+ endencia-sao-jose-do-serido/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-1-corrida-da-independencia-doutor-severiano@cuponsdecorrida.
+ com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:1ª Corrida da Independência 2026
+LOCATION:Doutor Severiano - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-1-corrida-da-independencia-doutor-severian
+ o/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-1-corrida-da-indep
+ endencia-doutor-severiano/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-4-corrida-da-emancipacao-de-upanema@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:4ª Corrida da Emancipação de Upanema 2026
+LOCATION:Upanema - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-4-corrida-da-emancipacao-de-upanema/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-4-corrida-da-emanc
+ ipacao-de-upanema/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-7-corrida-da-liberdade-mossoro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:7ª Corrida da Liberdade 2026
+LOCATION:Mossoró - RN
+DESCRIPTION:Corrida de rua · 14km\, 7km\, 3km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-09-06-7-corrida-da-liberdade-mossor
+ o/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-7-corrida-da-liber
+ dade-mossoro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-de-nossa-senhora-das-dores-tibau-do-sul@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida De Nossa Senhora Das Dores 2026
+LOCATION:Tibau do Sul - RN
+DESCRIPTION:Corrida de rua · 5km\, 2km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-09-06-corrida-de-nossa-senhora-das-dores-t
+ ibau-do-sul/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-de-nossa-s
+ enhora-das-dores-tibau-do-sul/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-ii-corrida-salinas-power-run-goianinha@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:II Corrida Salinas Power Run 2026
+LOCATION:Goianinha - RN
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-12-ii-corrida-salinas-power-run-goiani
+ nha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-ii-corrida-salinas
+ -power-run-goianinha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-1-corrida-de-sao-miguel-arcanjo-lajes@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:1ª Corrida de São Miguel Arcanjo 2026
+LOCATION:Lajes - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-1-corrida-de-sao-miguel-arcanjo-lajes/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-1-corrida-de-sao-m
+ iguel-arcanjo-lajes/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-circuito-banco-do-brasil-etapa-natal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Circuito Banco do Brasil - Etapa Natal 2026
+LOCATION:Natal - RN
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-circuito-banco-do-brasil-etapa-nata
+ l/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-circuito-banco-do-
+ brasil-etapa-natal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-corrida-sao-miguel-2026-jucurutu@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Corrida São Miguel 2026
+LOCATION:Jucurutu - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-13-corrida-sao-miguel-2026-jucurutu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-corrida-sao-miguel
+ -2026-jucurutu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-2-corrida-cervejeira-itaja@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:2ª Corrida Cervejeira 2026
+LOCATION:Itajá - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-26-2-corrida-cervejeira-itaja/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-2-corrida-cervejei
+ ra-itaja/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-2-corrida-e-caminhada-da-esufrn-natal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+SUMMARY:2ª Corrida e Caminhada da ESUFRN 2026
+LOCATION:Natal - RN
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-09-26-2-corrida-e-caminhada-da-esufrn-natal/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-26-2-corrida-e-caminh
+ ada-da-esufrn-natal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-1-corrida-de-sao-benedito-pau-dos-ferros@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:1ª Corrida de São Benedito 2026
+LOCATION:Pau dos Ferros - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-1-corrida-de-sao-benedito-pau-dos-ferros/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-1-corrida-de-sao-b
+ enedito-pau-dos-ferros/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-multsaude-run-santo-antonio@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Multsaúde Run 2026
+LOCATION:Santo Antônio - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-27-multsaude-run-santo-antonio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-multsaude-run-sant
+ o-antonio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-30-5-corrida-da-facisa-ufrn-santa-cruz@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+SUMMARY:5ª Corrida da FACISA/UFRN 2026
+LOCATION:Santa Cruz - RN
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-30-5-corrida-da-facisa-ufrn-santa-cruz
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-30-5-corrida-da-facis
+ a-ufrn-santa-cruz/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-circuito-das-estacoes-primavera-natal@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Natal - RN
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-circuito-das-estacoes-primavera-nat
+ al/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-circuito-das-estac
+ oes-primavera-natal/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-1-corrida-posto-elis-cerro-cora@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:1ª Corrida Posto Elis 2026
+LOCATION:Cerro Corá - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-1-corrida-posto-elis-cerro-cora/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-1-corrida-posto-el
+ is-cerro-cora/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-2-corrida-dos-pernas-bambas-run-portalegre@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:2ª Corrida dos Pernas Bambas Run 2026
+LOCATION:Portalegre - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-2-corrida-dos-pernas-bambas-run-portalegre
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-2-corrida-dos-pern
+ as-bambas-run-portalegre/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-circuito-sesc-de-corridas-etapa-mossoro@cuponsdecorrida.com.
+ br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Circuito Sesc de Corridas - Etapa Mossoró 2026
+LOCATION:Mossoró - RN
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-17-circuito-sesc-de-corridas-etapa-mos
+ soro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-circuito-sesc-de-c
+ orridas-etapa-mossoro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-corrida-atleta-cibazol-guamare@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Corrida Atleta Cibazol 2026
+LOCATION:Guamaré - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-corrida-atleta-cibazol-guamare/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-corrida-atleta-cib
+ azol-guamare/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-festival-21k-de-pipa-tibau-do-sul@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Festival 21k de Pipa 2026
+LOCATION:Tibau do Sul - RN
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-10-17-festival-21k-de-pipa-tibau-d
+ o-sul/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-festival-21k-de-pi
+ pa-tibau-do-sul/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-2-corrida-de-emancipacao-politica-sao-francisco-do-oeste@cup
+ onsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:2ª Corrida de Emancipação Política 2026
+LOCATION:São Francisco do Oeste - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-18-2-corrida-de-emancipacao-politica-sao-fran
+ cisco-do-oeste/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-2-corrida-de-emanc
+ ipacao-politica-sao-francisco-do-oeste/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-3-corrida-girl-power-serrinha@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:3ª Corrida Girl Power 2026
+LOCATION:Serrinha - RN
+DESCRIPTION:Corrida de rua · 6km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-18-3-corrida-girl-power-serrinha/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-3-corrida-girl-pow
+ er-serrinha/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-6-desafio-rosa-e-azul-mossoro@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:6º Desafio Rosa e Azul 2026
+LOCATION:Mossoró - RN
+DESCRIPTION:Corrida de rua · 12km\, 8km\, 4km\nCupons e detalhes: https://
+ www.cuponsdecorrida.com.br/provas/2026-10-18-6-desafio-rosa-e-azul-mossoro
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-6-desafio-rosa-e-a
+ zul-mossoro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-htr-trail-run-etapa-4-nisia-floresta@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:HTR Trail Run - Etapa 4 2026
+LOCATION:Nísia Floresta - RN
+DESCRIPTION:Corrida de trail · 12km\, 6km\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-10-18-htr-trail-run-etapa-4-nisia-flore
+ sta/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-htr-trail-run-etap
+ a-4-nisia-floresta/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-12-4-corrida-de-emancipacao-de-rafael-godeiro@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:4ª Corrida de Emancipação de Rafael Godeiro 2026
+LOCATION:Rafael Godeiro - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-12-12-4-corrida-de-emancipacao-de-rafael-godeiro
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-4-corrida-de-emanc
+ ipacao-de-rafael-godeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

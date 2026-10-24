@@ -1,0 +1,67 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas no Tocantins · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-09-11-corrida-com-elas-abreulandia@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260912
+SUMMARY:Corrida com Elas 2026
+LOCATION:Abreulândia - TO
+DESCRIPTION:Corrida de rua · 3km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-11-corrida-com-elas-abreulandia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-11-corrida-com-elas-a
+ breulandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-circuito-eco-run-palmas@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Circuito Eco Run - Palmas 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-20-circuito-eco-run-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-circuito-eco-run-p
+ almas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-das-estacoes-primavera-palmas@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito das Estações - Primavera 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-27-circuito-das-estacoes-primavera-pal
+ mas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-das-estac
+ oes-primavera-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-caminhada-e-corrida-sest-senat-2026-palmas@cuponsdecorrida.c
+ om.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:Caminhada e Corrida SEST SENAT 2026 - Palmas
+LOCATION:Palmas - TO
+DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-10-18-caminhada-e-corrida-sest-senat-2026-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-caminhada-e-corrid
+ a-sest-senat-2026-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

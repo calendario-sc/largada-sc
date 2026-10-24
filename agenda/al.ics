@@ -1,0 +1,211 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cupons de Corrida//Calendario de corridas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Corridas em Alagoas · Cupons de Corrida
+X-WR-TIMEZONE:America/Sao_Paulo
+X-WR-CALDESC:Calendário de corridas de rua e trail do Cupons de Corrida\, 
+ com cupons de desconto nas inscrições.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-08-30-parque-shopping-run-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Parque Shopping Run 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-parque-shopping-run-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-parque-shopping-ru
+ n-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-30-prime-run-2026-delmiro-gouveia@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:Prime Run 2026
+LOCATION:Delmiro Gouveia - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-08-30-prime-run-2026-delmiro-gouveia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-08-30-prime-run-2026-del
+ miro-gouveia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-nossa-senhora-da-penha-2026-sao-sebastiao@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida Nossa Senhora da Penha 2026
+LOCATION:São Sebastião - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-06-corrida-nossa-senhora-da-penha-2026
+ -sao-sebastiao/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-nossa-senh
+ ora-da-penha-2026-sao-sebastiao/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-canions-ultramarathon-xtreme-piranhas@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:Canions Ultramarathon Xtreme 2026
+LOCATION:Piranhas - AL
+DESCRIPTION:Corrida de rua · 106km\, 10km\, 5km\nCupons e detalhes: https:
+ //www.cuponsdecorrida.com.br/provas/2026-09-12-canions-ultramarathon-xtrem
+ e-piranhas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-canions-ultramarat
+ hon-xtreme-piranhas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-12-corrida-santa-casa-175-anos-em-movimento-pela-vida-maceio@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:Corrida Santa Casa – 175 Anos em Movimento pela Vida 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-12-corrida-santa-casa-175-anos-em-movi
+ mento-pela-vida-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-12-corrida-santa-casa
+ -175-anos-em-movimento-pela-vida-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-38-corrida-aguinaldo-veloso-borges-pilar@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:38ª Corrida Aguinaldo Veloso Borges 2026
+LOCATION:Pilar - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-38-corrida-aguinaldo-veloso-borges-
+ pilar/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-38-corrida-aguinal
+ do-veloso-borges-pilar/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-5-corridao-da-rotam-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:5ª Corridão da ROTAM 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-09-13-5-corridao-da-rotam-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-5-corridao-da-rota
+ m-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-13-meia-maratona-cdrei-style-2026-arapiraca@cuponsdecorrida.com
+ .br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260913
+DTEND;VALUE=DATE:20260914
+SUMMARY:Meia Maratona CDREI STYLE 2026
+LOCATION:Arapiraca - AL
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-13-meia-maratona-cdrei-style-20
+ 26-arapiraca/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-13-meia-maratona-cdre
+ i-style-2026-arapiraca/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-20-meia-maratona-coop-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Meia Maratona Coop 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 21km\, 12km\, 6km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-09-20-meia-maratona-coop-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-meia-maratona-coop
+ -maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-circuito-de-corrida-e-caminhada-sest-senat-teotonio-vilela@c
+ uponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Circuito de Corrida e Caminhada SEST SENAT - Teotônio Vilela 2026
+LOCATION:Teotônio Vilela - AL
+DESCRIPTION:Caminhada · 10km\, 5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-09-27-circuito-de-corrida-e-caminhada-sest-sen
+ at-teotonio-vilela/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-27-circuito-de-corrid
+ a-e-caminhada-sest-senat-teotonio-vilela/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-3-corrida-guardioes-dos-canions-delmiro-gouveia@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:3ª Corrida Guardiões dos Cânions 2026
+LOCATION:Delmiro Gouveia - AL
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-11-3-corrida-guardioes-dos-canions-del
+ miro-gouveia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-3-corrida-guardioe
+ s-dos-canions-delmiro-gouveia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-11-no-limite-trail-run-etapa-4-cavalhada-cha-preta@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+SUMMARY:No Limite Trail Run - Etapa 4 - Cavalhada 2026
+LOCATION:Chã Preta - AL
+DESCRIPTION:Corrida de trail · 12km\, 7km\nCupons e detalhes: https://www.
+ cuponsdecorrida.com.br/provas/2026-10-11-no-limite-trail-run-etapa-4-caval
+ hada-cha-preta/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-11-no-limite-trail-ru
+ n-etapa-4-cavalhada-cha-preta/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-17-corrida-movimento-rosa-por-elas-maceio@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:Corrida Movimento Rosa Por Elas 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-17-corrida-movimento-rosa-por-elas-maceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-17-corrida-movimento-
+ rosa-por-elas-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-18-9-circuito-permanente-run-maceio@cuponsdecorrida.com.br
+DTSTAMP:20261024T181340Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+SUMMARY:9º Circuito Permanente Run 2026
+LOCATION:Maceió - AL
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2026-10-18-9-circuito-permanente-run-ma
+ ceio/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-9-circuito-permane
+ nte-run-maceio/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
