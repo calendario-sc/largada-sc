@@ -139,6 +139,9 @@ h1 em{font-style:normal; color:#FFC21A}
 h1 .logo{display:none; height:clamp(3.1rem,5.6vw,4.3rem); width:auto}
 body:not(.bi) h1 .logo{display:block}
 body:not(.bi) h1 .logo-txt{display:none}
+/* O logo do cabecalho leva a pagina inicial. */
+h1 .logo-link{display:inline-flex; align-items:center; color:inherit; text-decoration:none}
+h1 .logo-link:focus-visible{outline:2px solid #FFC21A; outline-offset:4px; border-radius:6px}
 .lede{margin:.9rem 0 0; max-width:38ch; color:rgba(255,255,255,.85); font-size:1.02rem}
 .lede__link{display:inline-block; margin-top:.35rem; color:#FFC21A; font-weight:600; text-decoration:none; border-bottom:1px solid rgba(255,194,26,.5)}
 .lede__link:hover{border-color:#FFC21A}
@@ -1486,7 +1489,7 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
   <div class="wrap top__inner">
     <div>
       <p class="eyebrow"><span id="eyebrow-uf">Santa Catarina</span> &middot; corridas de rua e trail</p>
-      <h1><img class="logo" src="logo-cupons-de-corrida.png" alt="Cupons de Corrida" width="960" height="221" loading="lazy"><span class="h1-seo">Calendário de corridas no Amazonas 2026</span><span class="logo-txt">Cupons de <em>Corrida</em></span></h1>
+      <h1><a class="logo-link" href="/" title="Página inicial do Cupons de Corrida"><img class="logo" src="logo-cupons-de-corrida.png" alt="Cupons de Corrida" width="960" height="221"><span class="h1-seo">Calendário de corridas no Amazonas 2026</span><span class="logo-txt">Cupons de <em>Corrida</em></span></a></h1>
       <p class="lede">Filtre por mês, região, distância e tipo.</p>
       <p class="top__titulo">Descontos <em>para quem corre</em></p>
       <p class="top__sub"><span>Provas</span><span>Equipamentos</span><span>Lojas</span><span>Viagens</span><span>E muito mais</span></p>
