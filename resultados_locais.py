@@ -253,6 +253,22 @@ def publicar_bi():
         registrar(f"BI: FALHOU ({erro.__class__.__name__}: {erro})")
 
 
+def incentivos():
+    """Leis de Incentivo do BI (Patrocinios): uma vez por semana, dentro do mesmo job (pedido de 25/10/2026).
+    O script do BI decide se ja e hora (7 dias desde a ultima rodada) e publica so os arquivos de Patrocinios.
+    Falha aqui nao derruba o job do calendario."""
+    script = AQUI.parent / "cupons-bi" / "ferramentas" / "atualizar_incentivos.py"
+    if not script.exists():
+        return
+    try:
+        r = subprocess.run([sys.executable, "-X", "utf8", str(script)], cwd=script.parent.parent, capture_output=True,
+                           text=True, encoding="utf-8", errors="replace", timeout=5 * 3600)
+        ultima = [l for l in (r.stdout or "").splitlines() if l.strip()][-1:] or ["sem saida"]
+        registrar("leis de incentivo: " + ultima[0][:200] + ("" if r.returncode == 0 else f" (codigo {r.returncode})"))
+    except Exception as erro:
+        registrar(f"leis de incentivo: FALHOU ({erro.__class__.__name__}: {erro})")
+
+
 def main():
     registrar("== inicio ==")
     try:
@@ -267,6 +283,7 @@ def main():
         except Exception as erro:
             registrar(f"atletas: FALHOU ({erro.__class__.__name__}: {erro})")
         publicar()
+        incentivos()
         return 0
     except Exception as erro:
         registrar(f"FALHOU: {erro.__class__.__name__}: {erro}")
