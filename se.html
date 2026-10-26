@@ -423,6 +423,18 @@ body:not(.bi) .stats__legenda{text-align:right}
 
 /* ---------- resultados: provas realizadas, da mais recente ---------- */
 .rs{width:min(50rem, 100% - 2rem)}
+/* Resultados na propria pagina (27/10/2026): ocupam o lugar do calendario; os filtros do topo continuam valendo. */
+.rs-pagina{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); margin:0 0 1.4rem; padding:0 0 .9rem}
+.rs-pagina[hidden]{display:none}
+.rs-pagina__topo{display:flex; align-items:flex-start; justify-content:space-between; gap:.6rem 1rem; flex-wrap:wrap; padding:1.2rem 1.3rem .7rem}
+.rs-pagina h2{font-family:var(--f-display); font-weight:800; font-size:1.55rem; margin:0; letter-spacing:-.015em}
+.rs-pagina h2 small{display:block; margin-top:.3rem; font-family:var(--f-mono); font-weight:400; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.rs-pagina__resumo{margin:0; padding:.1rem 1.3rem .5rem; font-size:.86rem; color:var(--ink-2)}
+.rs-pagina .rs__busca{padding:0 1.3rem .6rem}
+.rs-pagina .rs__lista{overflow:visible; padding:0 1rem}
+.rs-pagina .rs__mes{top:calc(var(--bar-h, 0px) + var(--bi-barra, 0px))}
+.rs-pagina .rs__item{padding:.65rem .5rem}
+main.results.so-resultados > :not(#resultados){display:none !important}
 .rs__busca{padding:0 1.2rem .6rem}
 .rs__busca input{width:100%; font:inherit; font-size:.92rem; padding:.55rem .75rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); box-sizing:border-box}
 .rs__lista{list-style:none; margin:0; padding:0 .8rem .8rem; overflow-y:auto}
@@ -1623,6 +1635,15 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
     <div class="painel__nums" id="painel-nums"></div>
     <div class="painel__anos" id="painel-anos"></div>
   </section>
+  <section class="rs-pagina" id="resultados" hidden aria-labelledby="resultados-titulo">
+    <div class="rs-pagina__topo">
+      <h2 id="resultados-titulo">Resultados <small id="resultados-recorte"></small></h2>
+      <button class="chip" id="resultados-fechar" type="button">← Voltar ao calendário</button>
+    </div>
+    <div class="rs__busca"><input id="resultados-busca" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade"></div>
+    <p class="rs-pagina__resumo" id="resultados-rodape"></p>
+    <ol class="rs__lista" id="resultados-lista"></ol>
+  </section>
   <p class="count" id="count" role="status" aria-live="polite"></p>
   <section class="ofertas-bloco" id="ofertas" hidden aria-label="Em promoção nas lojas parceiras">
     <div class="ofertas" id="ofertas-lista"></div>
@@ -1632,17 +1653,6 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
 <div id="list"><section class="lista-seo"><h2>Próximas corridas em Sergipe</h2><ul><li><time datetime="2026-10-31">31/10/2026</time> <a href="/provas/2026-10-31-corrida-maratoninha-kids-2026-aracaju/">CORRIDA MARATONINHA KIDS 2026</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · km</li><li><time datetime="2026-11-01">01/11/2026</time> <a href="/provas/2026-11-01-maratona-de-aracaju-2026/">Maratona de Aracaju 2026</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 5km, 10km, 21km, 42km</li><li><time datetime="2026-11-08">08/11/2026</time> <a href="/provas/2026-11-08-2-m-e-v-laranjeiras/">2º M.E.V</a> · <a href="/corridas-em/laranjeiras-se/">Laranjeiras</a> · 2.5km, 5km, 10km, 20km</li><li><time datetime="2026-11-08">08/11/2026</time> <a href="/provas/2026-11-08-3-corrida-beneficente-santa-dulce-dos-pobres-itabaiana/">3ª Corrida Beneficente Santa Dulce dos Pobres</a> · <a href="/corridas-em/itabaiana-se/">Itabaiana</a> · 3km, 5km</li><li><time datetime="2026-11-15">15/11/2026</time> <a href="/provas/2026-11-15-1-corrida-mais-saude-run-rosario-do-catete/">1° Corrida Mais Saúde Run</a> · <a href="/corridas-em/rosario-do-catete-se/">Rosário do Catete</a> · 3km, 6km</li><li><time datetime="2026-11-20">20/11/2026</time> <a href="/provas/2026-11-20-2-corrida-da-farmacia-sa-itaporanga-d-ajuda/">2° Corrida da Farmácia SA</a> · <a href="/corridas-em/itaporanga-d-ajuda-se/">Itaporanga d&#x27;Ajuda</a> · 4km, 8km</li><li><time datetime="2026-11-21">21/11/2026</time> <a href="/provas/2026-11-21-oliver-night-run-itabaiana/">Oliver Night Run</a> · <a href="/corridas-em/itabaiana-se/">Itabaiana</a> · 3km, 6km</li><li><time datetime="2026-11-22">22/11/2026</time> <a href="/provas/2026-11-22-circuito-das-estacoes-2026-verao-aracaju/">Circuito das Estações 2026 - Verão - Aracaju</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 5km, 10km</li><li><time datetime="2026-11-22">22/11/2026</time> <a href="/provas/2026-11-22-corrida-hiper-padre-cicero-2026-caninde-de-sao-francisco/">Corrida Hiper Padre Cícero 2026</a> · <a href="/corridas-em/caninde-de-sao-francisco-se/">Canindé de São Francisco</a> · 3km, 7km</li><li><time datetime="2026-11-28">28/11/2026</time> <a href="/provas/2026-11-28-corrida-electric-run-2026-aracaju/">CORRIDA ELECTRIC RUN 2026</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 2.5km, 5km, 10km</li><li><time datetime="2026-11-28">28/11/2026</time> <a href="/provas/2026-11-28-goncalo-run-japaratuba/">GONÇALO RUN</a> · <a href="/corridas-em/japaratuba-se/">Japaratuba</a> · 5km</li><li><time datetime="2026-12-05">05/12/2026</time> <a href="/provas/2026-12-05-vida-leve-run-aracaju/">Vida Leve Run</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 5km</li><li><time datetime="2026-12-06">06/12/2026</time> <a href="/provas/2026-12-06-corrida-meia-da-conceicao-2026-ano-12-aracaju/">CORRIDA MEIA DA CONCEIÇÃO 2026 - ANO 12</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 3km, 6km, 13km, 21km</li><li><time datetime="2026-12-12">12/12/2026</time> <a href="/provas/2026-12-12-2-corrida-amigos-do-hu-aracaju/">2º Corrida Amigos do HU</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 4km, 8km</li><li><time datetime="2026-12-13">13/12/2026</time> <a href="/provas/2026-12-13-carequinha-run-2026-itabaiana/">Carequinha Run - 2026</a> · <a href="/corridas-em/itabaiana-se/">Itabaiana</a></li><li><time datetime="2026-12-13">13/12/2026</time> <a href="/provas/2026-12-13-smurfs-run-shopping-jardins-aracaju/">SMURFS RUN SHOPPING JARDINS - ARACAJU</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 2.5km, 5km</li><li><time datetime="2026-12-18">18/12/2026</time> <a href="/provas/2026-12-18-1-corrida-ct-powpay-ribeiropolis/">1º Corrida CT Powpay</a> · <a href="/corridas-em/ribeiropolis-se/">Ribeirópolis</a> · 2.5km, 5km</li><li><time datetime="2027-01-17">17/01/2027</time> <a href="/provas/2027-01-17-corrida-da-amizade-11-edicao-itabaiana/">CORRIDA da AMIZADE - 11º EDIÇÃO</a> · <a href="/corridas-em/itabaiana-se/">Itabaiana</a> · 3km, 5km, 10km</li><li><time datetime="2027-05-02">02/05/2027</time> <a href="/provas/2027-05-02-4-corrida-do-turismo-abavse-2027-aracaju/">4ª CORRIDA DO TURISMO - ABAVSE 2027</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 2.5km, 5km, 10km</li><li><time datetime="2027-10-23">23/10/2027</time> <a href="/provas/2027-10-23-corrida-feminina-divas-edicao-halloween-2027-aracaju/">CORRIDA FEMININA DIVAS - EDIÇÃO HALLOWEEN - 2027</a> · <a href="/corridas-em/aracaju-se/">Aracaju</a> · 2.5km, 5km</li></ul><p>Lista completa, com filtros por mês, região, distância e tipo, logo acima. As corridas por cidade estão no fim da página.</p></section></div>
 </main>
 
-<dialog class="orgs rs" id="resultados" aria-labelledby="resultados-titulo">
-  <div class="orgs__caixa">
-    <div class="orgs__topo">
-      <h2 id="resultados-titulo">Resultados <small id="resultados-recorte"></small></h2>
-      <button class="orgs__fechar" id="resultados-fechar" type="button">Fechar</button>
-    </div>
-    <div class="rs__busca"><input id="resultados-busca" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade"></div>
-    <ol class="rs__lista" id="resultados-lista"></ol>
-    <p class="orgs__rodape" id="resultados-rodape"></p>
-  </div>
-</dialog>
 
 <dialog class="orgs camp" id="campeoes" aria-labelledby="campeoes-titulo">
   <div class="orgs__caixa">
@@ -2864,7 +2874,7 @@ function render(){
   if (dialogoFoto && dialogoFoto.open) montarFoto();
   if (dialogoRec.open) montarRecordes();
   if (dialogoCampeoes.open) montarCampeoes();
-  if (dialogoResultados && dialogoResultados.open) montarResultados();
+  if (modoResultados) montarResultados();
   if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
   if (dialogoAssess && dialogoAssess.open) montarAssessorias();
 
@@ -3783,7 +3793,8 @@ fechaNoFundo(dialogoAssess);
    para a mais antiga. Segue os filtros da pagina (estado, regiao, cidade,
    organizadora, tipo, distancia, ano e mes), mas nao o periodo: aqui e
    sempre "realizadas". */
-const dialogoResultados = document.getElementById("resultados");
+const secaoResultados = document.getElementById("resultados");
+let modoResultados = false;
 const buscaResultados = document.getElementById("resultados-busca");
 const LOTE_RESULTADOS = 150;
 let mostrarResultados = LOTE_RESULTADOS;
@@ -3861,7 +3872,7 @@ function montarResultados(){
   if (provas.length > mostrarResultados){
     const mais = el("button", { className:"rs__mais", type:"button",
       textContent:"Mostrar mais " + Math.min(LOTE_RESULTADOS, provas.length - mostrarResultados) + " provas" });
-    mais.onclick = () => { mostrarResultados += LOTE_RESULTADOS; const y = lista.scrollTop; montarResultados(); lista.scrollTop = y; };
+    mais.onclick = () => { mostrarResultados += LOTE_RESULTADOS; montarResultados(); };
     lista.append(el("li", {}, [mais]));
   }
 
@@ -3874,19 +3885,31 @@ function montarResultados(){
     document.createTextNode(" concluintes. Conta quem cruzou a chegada com tempo registrado; resultado parcial não entra na soma."));
 }
 
-ao("btn-resultados", () => {
+// Os resultados aparecem na propria pagina, no lugar do calendario (antes era uma janela por cima).
+function abrirResultados(){
   buscaResultados.value = "";
   mostrarResultados = LOTE_RESULTADOS;
+  modoResultados = true;
+  secaoResultados.hidden = false;
+  secaoResultados.parentElement.classList.add("so-resultados");
+  const b = document.getElementById("btn-resultados"); if (b) b.setAttribute("aria-pressed", "true");
   montarResultados();
-  dialogoResultados.showModal();
-  document.getElementById("resultados-lista").scrollTop = 0;
-});
-ao("resultados-fechar", () => dialogoResultados.close());
+  secaoResultados.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+function fecharResultados(){
+  modoResultados = false;
+  secaoResultados.hidden = true;
+  secaoResultados.parentElement.classList.remove("so-resultados");
+  const b = document.getElementById("btn-resultados"); if (b) b.setAttribute("aria-pressed", "false");
+  listBox.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+const btnResultados = ao("btn-resultados", () => modoResultados ? fecharResultados() : abrirResultados());
+if (btnResultados) btnResultados.removeAttribute("aria-haspopup");
+ao("resultados-fechar", fecharResultados);
 // Link "Resultados" das outras paginas (./#resultados): abre a lista direto.
 if (location.hash === "#resultados" && document.getElementById("btn-resultados"))
   setTimeout(() => document.getElementById("btn-resultados").click(), 0);
 if (buscaResultados) buscaResultados.oninput = () => { mostrarResultados = LOTE_RESULTADOS; montarResultados(); };
-fechaNoFundo(dialogoResultados);
 
 /* ---------- galeria dos campeoes ----------
    atletas/campeoes.json: por prova (or_slug), a lista de distancias com a

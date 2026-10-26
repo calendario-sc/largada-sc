@@ -391,6 +391,18 @@ body:not(.bi) .stats__legenda{text-align:right}
 
 /* ---------- resultados: provas realizadas, da mais recente ---------- */
 .rs{width:min(50rem, 100% - 2rem)}
+/* Resultados na propria pagina (27/10/2026): ocupam o lugar do calendario; os filtros do topo continuam valendo. */
+.rs-pagina{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); margin:0 0 1.4rem; padding:0 0 .9rem}
+.rs-pagina[hidden]{display:none}
+.rs-pagina__topo{display:flex; align-items:flex-start; justify-content:space-between; gap:.6rem 1rem; flex-wrap:wrap; padding:1.2rem 1.3rem .7rem}
+.rs-pagina h2{font-family:var(--f-display); font-weight:800; font-size:1.55rem; margin:0; letter-spacing:-.015em}
+.rs-pagina h2 small{display:block; margin-top:.3rem; font-family:var(--f-mono); font-weight:400; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.rs-pagina__resumo{margin:0; padding:.1rem 1.3rem .5rem; font-size:.86rem; color:var(--ink-2)}
+.rs-pagina .rs__busca{padding:0 1.3rem .6rem}
+.rs-pagina .rs__lista{overflow:visible; padding:0 1rem}
+.rs-pagina .rs__mes{top:calc(var(--bar-h, 0px) + var(--bi-barra, 0px))}
+.rs-pagina .rs__item{padding:.65rem .5rem}
+main.results.so-resultados > :not(#resultados){display:none !important}
 .rs__busca{padding:0 1.2rem .6rem}
 .rs__busca input{width:100%; font:inherit; font-size:.92rem; padding:.55rem .75rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); box-sizing:border-box}
 .rs__lista{list-style:none; margin:0; padding:0 .8rem .8rem; overflow-y:auto}
@@ -1626,6 +1638,15 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
     <div class="painel__nums" id="painel-nums"></div>
     <div class="painel__anos" id="painel-anos"></div>
   </section>
+  <section class="rs-pagina" id="resultados" hidden aria-labelledby="resultados-titulo">
+    <div class="rs-pagina__topo">
+      <h2 id="resultados-titulo">Resultados <small id="resultados-recorte"></small></h2>
+      <button class="chip" id="resultados-fechar" type="button">← Voltar ao calendário</button>
+    </div>
+    <div class="rs__busca"><input id="resultados-busca" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade"></div>
+    <p class="rs-pagina__resumo" id="resultados-rodape"></p>
+    <ol class="rs__lista" id="resultados-lista"></ol>
+  </section>
   <p class="count" id="count" role="status" aria-live="polite"></p>
   <section class="ofertas-bloco" id="ofertas" hidden aria-label="Em promoção nas lojas parceiras">
     <div class="ofertas" id="ofertas-lista"></div>
@@ -1693,17 +1714,6 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
   </div>
 </dialog>
 
-<dialog class="orgs rs" id="resultados" aria-labelledby="resultados-titulo">
-  <div class="orgs__caixa">
-    <div class="orgs__topo">
-      <h2 id="resultados-titulo">Resultados <small id="resultados-recorte"></small></h2>
-      <button class="orgs__fechar" id="resultados-fechar" type="button">Fechar</button>
-    </div>
-    <div class="rs__busca"><input id="resultados-busca" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade"></div>
-    <ol class="rs__lista" id="resultados-lista"></ol>
-    <p class="orgs__rodape" id="resultados-rodape"></p>
-  </div>
-</dialog>
 
 <dialog class="orgs camp" id="campeoes" aria-labelledby="campeoes-titulo">
   <div class="orgs__caixa">
@@ -3016,7 +3026,7 @@ function render(){
   if (dialogoFoto && dialogoFoto.open) montarFoto();
   if (dialogoRec.open) montarRecordes();
   if (dialogoCampeoes.open) montarCampeoes();
-  if (dialogoResultados && dialogoResultados.open) montarResultados();
+  if (modoResultados) montarResultados();
   if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
   if (dialogoAssess && dialogoAssess.open) montarAssessorias();
 
@@ -3935,7 +3945,8 @@ fechaNoFundo(dialogoAssess);
    para a mais antiga. Segue os filtros da pagina (estado, regiao, cidade,
    organizadora, tipo, distancia, ano e mes), mas nao o periodo: aqui e
    sempre "realizadas". */
-const dialogoResultados = document.getElementById("resultados");
+const secaoResultados = document.getElementById("resultados");
+let modoResultados = false;
 const buscaResultados = document.getElementById("resultados-busca");
 const LOTE_RESULTADOS = 150;
 let mostrarResultados = LOTE_RESULTADOS;
@@ -4013,7 +4024,7 @@ function montarResultados(){
   if (provas.length > mostrarResultados){
     const mais = el("button", { className:"rs__mais", type:"button",
       textContent:"Mostrar mais " + Math.min(LOTE_RESULTADOS, provas.length - mostrarResultados) + " provas" });
-    mais.onclick = () => { mostrarResultados += LOTE_RESULTADOS; const y = lista.scrollTop; montarResultados(); lista.scrollTop = y; };
+    mais.onclick = () => { mostrarResultados += LOTE_RESULTADOS; montarResultados(); };
     lista.append(el("li", {}, [mais]));
   }
 
@@ -4026,19 +4037,31 @@ function montarResultados(){
     document.createTextNode(" concluintes. Conta quem cruzou a chegada com tempo registrado; resultado parcial não entra na soma."));
 }
 
-ao("btn-resultados", () => {
+// Os resultados aparecem na propria pagina, no lugar do calendario (antes era uma janela por cima).
+function abrirResultados(){
   buscaResultados.value = "";
   mostrarResultados = LOTE_RESULTADOS;
+  modoResultados = true;
+  secaoResultados.hidden = false;
+  secaoResultados.parentElement.classList.add("so-resultados");
+  const b = document.getElementById("btn-resultados"); if (b) b.setAttribute("aria-pressed", "true");
   montarResultados();
-  dialogoResultados.showModal();
-  document.getElementById("resultados-lista").scrollTop = 0;
-});
-ao("resultados-fechar", () => dialogoResultados.close());
+  secaoResultados.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+function fecharResultados(){
+  modoResultados = false;
+  secaoResultados.hidden = true;
+  secaoResultados.parentElement.classList.remove("so-resultados");
+  const b = document.getElementById("btn-resultados"); if (b) b.setAttribute("aria-pressed", "false");
+  listBox.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+const btnResultados = ao("btn-resultados", () => modoResultados ? fecharResultados() : abrirResultados());
+if (btnResultados) btnResultados.removeAttribute("aria-haspopup");
+ao("resultados-fechar", fecharResultados);
 // Link "Resultados" das outras paginas (./#resultados): abre a lista direto.
 if (location.hash === "#resultados" && document.getElementById("btn-resultados"))
   setTimeout(() => document.getElementById("btn-resultados").click(), 0);
 if (buscaResultados) buscaResultados.oninput = () => { mostrarResultados = LOTE_RESULTADOS; montarResultados(); };
-fechaNoFundo(dialogoResultados);
 
 /* ---------- galeria dos campeoes ----------
    atletas/campeoes.json: por prova (or_slug), a lista de distancias com a

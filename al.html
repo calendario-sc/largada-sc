@@ -423,6 +423,18 @@ body:not(.bi) .stats__legenda{text-align:right}
 
 /* ---------- resultados: provas realizadas, da mais recente ---------- */
 .rs{width:min(50rem, 100% - 2rem)}
+/* Resultados na propria pagina (27/10/2026): ocupam o lugar do calendario; os filtros do topo continuam valendo. */
+.rs-pagina{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); margin:0 0 1.4rem; padding:0 0 .9rem}
+.rs-pagina[hidden]{display:none}
+.rs-pagina__topo{display:flex; align-items:flex-start; justify-content:space-between; gap:.6rem 1rem; flex-wrap:wrap; padding:1.2rem 1.3rem .7rem}
+.rs-pagina h2{font-family:var(--f-display); font-weight:800; font-size:1.55rem; margin:0; letter-spacing:-.015em}
+.rs-pagina h2 small{display:block; margin-top:.3rem; font-family:var(--f-mono); font-weight:400; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.rs-pagina__resumo{margin:0; padding:.1rem 1.3rem .5rem; font-size:.86rem; color:var(--ink-2)}
+.rs-pagina .rs__busca{padding:0 1.3rem .6rem}
+.rs-pagina .rs__lista{overflow:visible; padding:0 1rem}
+.rs-pagina .rs__mes{top:calc(var(--bar-h, 0px) + var(--bi-barra, 0px))}
+.rs-pagina .rs__item{padding:.65rem .5rem}
+main.results.so-resultados > :not(#resultados){display:none !important}
 .rs__busca{padding:0 1.2rem .6rem}
 .rs__busca input{width:100%; font:inherit; font-size:.92rem; padding:.55rem .75rem; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink); box-sizing:border-box}
 .rs__lista{list-style:none; margin:0; padding:0 .8rem .8rem; overflow-y:auto}
@@ -1623,6 +1635,15 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
     <div class="painel__nums" id="painel-nums"></div>
     <div class="painel__anos" id="painel-anos"></div>
   </section>
+  <section class="rs-pagina" id="resultados" hidden aria-labelledby="resultados-titulo">
+    <div class="rs-pagina__topo">
+      <h2 id="resultados-titulo">Resultados <small id="resultados-recorte"></small></h2>
+      <button class="chip" id="resultados-fechar" type="button">← Voltar ao calendário</button>
+    </div>
+    <div class="rs__busca"><input id="resultados-busca" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade"></div>
+    <p class="rs-pagina__resumo" id="resultados-rodape"></p>
+    <ol class="rs__lista" id="resultados-lista"></ol>
+  </section>
   <p class="count" id="count" role="status" aria-live="polite"></p>
   <section class="ofertas-bloco" id="ofertas" hidden aria-label="Em promoção nas lojas parceiras">
     <div class="ofertas" id="ofertas-lista"></div>
@@ -1632,17 +1653,6 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
 <div id="list"><section class="lista-seo"><h2>Próximas corridas em Alagoas</h2><ul><li><time datetime="2026-10-30">30/10/2026</time> <a href="/provas/2026-10-30-clandestina-ou-travessuras-maceio/">CLANDESTINA OU TRAVESSURAS?</a> · <a href="/corridas-em/maceio-al/">Maceió</a></li><li><time datetime="2026-10-31">31/10/2026</time> <a href="/provas/2026-10-31-corrida-do-outubro-rosa-e-novembro-azul-2026-sao-miguel-dos-milagres/">CORRIDA DO OUTUBRO ROSA E NOVEMBRO AZUL 2026</a> · <a href="/corridas-em/sao-miguel-dos-milagres-al/">São Miguel dos Milagres</a> · 5km</li><li><time datetime="2026-10-31">31/10/2026</time> <a href="/provas/2026-10-31-circuito-banco-do-brasil-maceio-2026/">Circuito Banco do Brasil - Maceió - 2026</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 1km, 5km, 10km</li><li><time datetime="2026-10-31">31/10/2026</time> <a href="/provas/2026-10-31-corrida-arena-das-cores-sebrae-maceio/">Corrida Arena das Cores - SEBRAE</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 4km</li><li><time datetime="2026-11-01">01/11/2026</time> <a href="/provas/2026-11-01-2-desafio-santa-lucia-adventure-maceio/">2º DESAFIO SANTA LÚCIA ADVENTURE</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 2.5km, 5km</li><li><time datetime="2026-11-01">01/11/2026</time> <a href="/provas/2026-11-01-aniversario-do-mutum-uniao-dos-palmares/">ANIVERSÁRIO DO MUTUM</a> · <a href="/corridas-em/uniao-dos-palmares-al/">União dos Palmares</a> · 6km, 15km</li><li><time datetime="2026-11-01">01/11/2026</time> <a href="/provas/2026-11-01-cactus-run-coruripe/">CACTUS RUN</a> · <a href="/corridas-em/coruripe-al/">Coruripe</a> · km</li><li><time datetime="2026-11-01">01/11/2026</time> <a href="/provas/2026-11-01-circuito-rosa-e-azul-rk-atalaia/">Circuito rosa e azul RK</a> · <a href="/corridas-em/atalaia-al/">Atalaia</a> · 5km</li><li><time datetime="2026-11-01">01/11/2026</time> <a href="/provas/2026-11-01-corrida-aguia-2026-craibas/">Corrida Águia 2026</a> · <a href="/corridas-em/craibas-al/">Craíbas</a> · 3km, 5km, 10km</li><li><time datetime="2026-11-01">01/11/2026</time> <a href="/provas/2026-11-01-track-field-maceio/">Track&amp;Field Maceió</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km</li><li><time datetime="2026-11-07">07/11/2026</time> <a href="/provas/2026-11-07-10-corrida-trt-19-al-trabalho-seguro-maceio/">10ª CORRIDA TRT 19ª AL - TRABALHO SEGURO</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 1km, 5km, 10km</li><li><time datetime="2026-11-08">08/11/2026</time> <a href="/provas/2026-11-08-princesa-dos-montes-running-cha-preta/">PRINCESA DOS MONTES RUNNING</a> · <a href="/corridas-em/cha-preta-al/">Chã Preta</a> · 5km</li><li><time datetime="2026-11-15">15/11/2026</time> <a href="/provas/2026-11-15-4-aputrail-2026-maceio/">4ª APUTRAIL 2026</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 6km, 12km</li><li><time datetime="2026-11-15">15/11/2026</time> <a href="/provas/2026-11-15-inscricao-corrida-conjunto-barnabe-rio-largo/">INSCRIÇÃO CORRIDA CONJUNTO BARNABÉ</a> · <a href="/corridas-em/rio-largo-al/">Rio Largo</a></li><li><time datetime="2026-11-20">20/11/2026</time> <a href="/provas/2026-11-20-2-corrida-nossa-senhora-da-guia-satuba-al/">2ª CORRIDA NOSSA SENHORA da GUIA – SATUBA/AL</a> · <a href="/corridas-em/satuba-al/">Satuba</a> · 5km</li><li><time datetime="2026-11-20">20/11/2026</time> <a href="/provas/2026-11-20-circuito-american-run-2026-etapa-ar-e-terra-maceio/">CIRCUITO AMERICAN RUN 2026 - ETAPA AR E TERRA</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km, 21km</li><li><time datetime="2026-11-21">21/11/2026</time> <a href="/provas/2026-11-21-santander-night-run-maceio-2026/">Santander Night Run - Maceió - 2026</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km</li><li><time datetime="2026-11-22">22/11/2026</time> <a href="/provas/2026-11-22-1-alci-fitness-run-anadia/">1ª ALCI FITNESS RUN</a> · <a href="/corridas-em/anadia-al/">Anadia</a> · 3km, 5km</li><li><time datetime="2026-11-22">22/11/2026</time> <a href="/provas/2026-11-22-1-corrida-do-tigre-limoeiro-de-anadia/">1ª CORRIDA DO TIGRE</a> · <a href="/corridas-em/limoeiro-de-anadia-al/">Limoeiro de Anadia</a> · 5km, 10km</li><li><time datetime="2026-11-22">22/11/2026</time> <a href="/provas/2026-11-22-3-edicao-corrida-avant-atacarejo-palmeira-dos-indios/">3ª EDIÇÃO CORRIDA AVANT ATACAREJO</a> · <a href="/corridas-em/palmeira-dos-indios-al/">Palmeira dos Índios</a> · 4km, 6km, 12km</li><li><time datetime="2026-11-22">22/11/2026</time> <a href="/provas/2026-11-22-gigantes-run-5-sao-sebastiao/">Gigantes Run 5</a> · <a href="/corridas-em/sao-sebastiao-al/">São Sebastião</a> · 5km, 10km</li><li><time datetime="2026-11-22">22/11/2026</time> <a href="/provas/2026-11-22-paris-run-pariconha/">PARIS RUN</a> · <a href="/corridas-em/pariconha-al/">Pariconha</a> · 35km</li><li><time datetime="2026-11-28">28/11/2026</time> <a href="/provas/2026-11-28-corrida-do-homem-novembro-azul-maceio/">CORRIDA DO HOMEM - NOVEMBRO AZUL</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 2km, 5km</li><li><time datetime="2026-11-28">28/11/2026</time> <a href="/provas/2026-11-28-circuito-record-corretores-de-imoveis-maceio/">Circuito Record Corretores de Imóveis</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 2.5km, 5km, 10km</li><li><time datetime="2026-11-28">28/11/2026</time> <a href="/provas/2026-11-28-luau-night-trail-run-quallity-chef-maceio/">LUAU NIGHT TRAIL RUN QUALLITY CHEF</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · km</li><li><time datetime="2026-11-29">29/11/2026</time> <a href="/provas/2026-11-29-2-corrida-da-imaculada-lagoa-da-canoa/">2ª Corrida da Imaculada</a> · <a href="/corridas-em/lagoa-da-canoa-al/">Lagoa da Canoa</a> · 2.5km, 5km</li><li><time datetime="2026-11-29">29/11/2026</time> <a href="/provas/2026-11-29-corrida-novembro-azul-medradius-maceio/">CORRIDA NOVEMBRO AZUL - medradius</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 2.5km, 5km</li><li><time datetime="2026-12-01">01/12/2026</time> <a href="/provas/2026-12-01-1-corrida-da-padroeira-nossa-senhora-da-conceicao-craibas/">1° CORRIDA DA PADROEIRA NOSSA SENHORA DA CONCEIÇÃO</a> · <a href="/corridas-em/craibas-al/">Craíbas</a> · 5km, 10km, 15km</li><li><time datetime="2026-12-06">06/12/2026</time> <a href="/provas/2026-12-06-11-corrida-da-emancipacao-de-sao-jose-da-tapera/">11ª Corrida da Emancipação de São José da Tapera</a> · <a href="/corridas-em/sao-jose-da-tapera-al/">São José da Tapera</a> · 4km, 8km</li><li><time datetime="2026-12-06">06/12/2026</time> <a href="/provas/2026-12-06-21k-milagres-run-sao-miguel-dos-milagres/">21K MILAGRES RUN</a> · <a href="/corridas-em/sao-miguel-dos-milagres-al/">São Miguel dos Milagres</a> · 5km, 10km, 21km</li><li><time datetime="2026-12-06">06/12/2026</time> <a href="/provas/2026-12-06-2-edicao-corrida-prestek-penedo/">2ª Edição Corrida Prestek</a> · <a href="/corridas-em/penedo-al/">Penedo</a> · 5km</li><li><time datetime="2026-12-06">06/12/2026</time> <a href="/provas/2026-12-06-cda-run-taquarana/">CDA RUN</a> · <a href="/corridas-em/taquarana-al/">Taquarana</a> · 3km, 5km</li><li><time datetime="2026-12-06">06/12/2026</time> <a href="/provas/2026-12-06-corrida-sindicatos-dos-bancarios-e-apcef-maceio/">CORRIDA SINDICATOS DOS BANCÁRIOS e APCEF - MACEIÓ</a> · <a href="/corridas-em/maceio-al/">Maceió</a></li><li><time datetime="2026-12-06">06/12/2026</time> <a href="/provas/2026-12-06-traipu-run-2026/">TRAIPU RUN - 2026</a> · <a href="/corridas-em/traipu-al/">Traipu</a> · 48km</li><li><time datetime="2026-12-08">08/12/2026</time> <a href="/provas/2026-12-08-37-corrida-da-engenharia-maceio/">37ª CORRIDA DA ENGENHARIA</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 2.5km, 5km</li><li><time datetime="2026-12-12">12/12/2026</time> <a href="/provas/2026-12-12-fox-summer-run-2026-maceio/">FOX SUMMER RUN 2026</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km</li><li><time datetime="2026-12-13">13/12/2026</time> <a href="/provas/2026-12-13-circuito-caaal-de-corrida-da-advocacia-2026-etapa-maceio/">CIRCUITO CAAAL DE CORRIDA DA ADVOCACIA 2026 - ETAPA MACEIÓ</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km</li><li><time datetime="2026-12-13">13/12/2026</time> <a href="/provas/2026-12-13-corrida-da-biblia-igreja-batista-do-pinheiro-2026-maceio/">CORRIDA DA BÍBLIA IGREJA BATISTA DO PINHEIRO - 2026</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · km</li><li><time datetime="2026-12-13">13/12/2026</time> <a href="/provas/2026-12-13-corrida-tlc-sagrado-arapiraca/">Corrida TLC Sagrado</a> · <a href="/corridas-em/arapiraca-al/">Arapiraca</a> · 2.5km, 5km, 10km</li><li><time datetime="2026-12-13">13/12/2026</time> <a href="/provas/2026-12-13-oxe-triatlo-paraiso-2026-maceio-al/">Ôxe Triatlo Paraíso 2026 - Maceió Al</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 2.5km, 5km, 10km, 20km, 40km</li><li><time datetime="2026-12-20">20/12/2026</time> <a href="/provas/2026-12-20-3-edicao-de-aniversario-do-felipao-trail-run-uniao-dos-palmares/">3ª EDIÇÃO de ANIVERSÁRIO do FELIPÃO - TRAIL RUN</a> · <a href="/corridas-em/uniao-dos-palmares-al/">União dos Palmares</a> · 61221km</li><li><time datetime="2026-12-20">20/12/2026</time> <a href="/provas/2026-12-20-uniao-run-2026-arapiraca/">União Run 2026</a> · <a href="/corridas-em/arapiraca-al/">Arapiraca</a> · 5km, 10km</li><li><time datetime="2026-12-31">31/12/2026</time> <a href="/provas/2026-12-31-15k-da-virada-2026-maceio-al/">15K DA VIRADA 2026 - MACEIÓ AL</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 15km</li><li><time datetime="2027-01-17">17/01/2027</time> <a href="/provas/2027-01-17-2-nobre-run-santana-do-ipanema/">2º Nobre Run</a> · <a href="/corridas-em/santana-do-ipanema-al/">Santana do Ipanema</a> · 5km, 10km</li><li><time datetime="2027-01-17">17/01/2027</time> <a href="/provas/2027-01-17-vida-corrida-trail-run-10-anos-de-muita-historia-e-aventura-marechal-deodoro/">VIDA CORRIDA - TRAIL RUN - 10 Anos de muita história e aventura</a> · <a href="/corridas-em/marechal-deodoro-al/">Marechal Deodoro</a> · 6km, 12km</li><li><time datetime="2027-01-22">22/01/2027</time> <a href="/provas/2027-01-22-2-circuito-da-lua-maragogi/">2ª CIRCUITO DA LUA</a> · <a href="/corridas-em/maragogi-al/">Maragogi</a> · 5km</li><li><time datetime="2027-01-31">31/01/2027</time> <a href="/provas/2027-01-31-15k-das-praias-2027-maceio/">15k das PRAIAS - 2027</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km, 15km</li><li><time datetime="2027-01-31">31/01/2027</time> <a href="/provas/2027-01-31-1-circuito-run-visao-nordeste-maragogi-al/">1º CIRCUITO RUN VISÃO NORDESTE | MARAGOGI, AL</a> · <a href="/corridas-em/maragogi-al/">Maragogi</a> · 7km</li><li><time datetime="2027-01-31">31/01/2027</time> <a href="/provas/2027-01-31-3-edicao-da-meia-maratona-da-liberdade-uniao-dos-palmares/">3ª EDIÇÃO da MEIA MARATONA da LIBERDADE</a> · <a href="/corridas-em/uniao-dos-palmares-al/">União dos Palmares</a> · km</li><li><time datetime="2027-02-28">28/02/2027</time> <a href="/provas/2027-02-28-circuito-zona-da-mata-trail-run-etapa-murici/">CIRCUITO ZONA DA MATA - TRAIL RUN - ETAPA MURICI</a> · <a href="/corridas-em/murici-al/">Murici</a> · km</li><li><time datetime="2027-03-21">21/03/2027</time> <a href="/provas/2027-03-21-10-milhas-alagoas-2027-maceio/">10 Milhas Alagoas 2027</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km</li><li><time datetime="2027-05-02">02/05/2027</time> <a href="/provas/2027-05-02-ultramaratona-volta-da-lagoa-2027-marechal-deodoro/">ULTRAMARATONA VOLTA DA LAGOA 2027</a> · <a href="/corridas-em/marechal-deodoro-al/">Marechal Deodoro</a> · 26km, 64km</li><li><time datetime="2027-05-16">16/05/2027</time> <a href="/provas/2027-05-16-meia-maratona-de-maceio-2027/">MEIA MARATONA DE MACEIÓ - 2027</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km, 21km</li><li><time datetime="2027-07-31">31/07/2027</time> <a href="/provas/2027-07-31-maratona-internacional-de-maceio-2027/">MARATONA INTERNACIONAL DE MACEIÓ 2027</a> · <a href="/corridas-em/maceio-al/">Maceió</a> · 5km, 10km, 21km, 42km</li><li><time datetime="2027-08-15">15/08/2027</time> <a href="/provas/2027-08-15-circuito-zona-da-mata-trail-run-branquinha/">CIRCUITO ZONA DA MATA - TRAIL RUN - BRANQUINHA</a> · <a href="/corridas-em/branquinha-al/">Branquinha</a> · km</li><li><time datetime="2027-10-31">31/10/2027</time> <a href="/provas/2027-10-31-circuito-zona-da-mata-trail-run-uniao-dos-palmares/">CIRCUITO ZONA DA MATA - TRAIL RUN - UNIÃO DOS PALMARES</a> · <a href="/corridas-em/uniao-dos-palmares-al/">União dos Palmares</a> · km</li></ul><p>Lista completa, com filtros por mês, região, distância e tipo, logo acima. As corridas por cidade estão no fim da página.</p></section></div>
 </main>
 
-<dialog class="orgs rs" id="resultados" aria-labelledby="resultados-titulo">
-  <div class="orgs__caixa">
-    <div class="orgs__topo">
-      <h2 id="resultados-titulo">Resultados <small id="resultados-recorte"></small></h2>
-      <button class="orgs__fechar" id="resultados-fechar" type="button">Fechar</button>
-    </div>
-    <div class="rs__busca"><input id="resultados-busca" type="search" placeholder="Buscar prova ou cidade…" autocomplete="off" aria-label="Buscar prova ou cidade"></div>
-    <ol class="rs__lista" id="resultados-lista"></ol>
-    <p class="orgs__rodape" id="resultados-rodape"></p>
-  </div>
-</dialog>
 
 <dialog class="orgs camp" id="campeoes" aria-labelledby="campeoes-titulo">
   <div class="orgs__caixa">
@@ -2864,7 +2874,7 @@ function render(){
   if (dialogoFoto && dialogoFoto.open) montarFoto();
   if (dialogoRec.open) montarRecordes();
   if (dialogoCampeoes.open) montarCampeoes();
-  if (dialogoResultados && dialogoResultados.open) montarResultados();
+  if (modoResultados) montarResultados();
   if (dialogoRaiox && dialogoRaiox.open) montarRaioX();
   if (dialogoAssess && dialogoAssess.open) montarAssessorias();
 
@@ -3783,7 +3793,8 @@ fechaNoFundo(dialogoAssess);
    para a mais antiga. Segue os filtros da pagina (estado, regiao, cidade,
    organizadora, tipo, distancia, ano e mes), mas nao o periodo: aqui e
    sempre "realizadas". */
-const dialogoResultados = document.getElementById("resultados");
+const secaoResultados = document.getElementById("resultados");
+let modoResultados = false;
 const buscaResultados = document.getElementById("resultados-busca");
 const LOTE_RESULTADOS = 150;
 let mostrarResultados = LOTE_RESULTADOS;
@@ -3861,7 +3872,7 @@ function montarResultados(){
   if (provas.length > mostrarResultados){
     const mais = el("button", { className:"rs__mais", type:"button",
       textContent:"Mostrar mais " + Math.min(LOTE_RESULTADOS, provas.length - mostrarResultados) + " provas" });
-    mais.onclick = () => { mostrarResultados += LOTE_RESULTADOS; const y = lista.scrollTop; montarResultados(); lista.scrollTop = y; };
+    mais.onclick = () => { mostrarResultados += LOTE_RESULTADOS; montarResultados(); };
     lista.append(el("li", {}, [mais]));
   }
 
@@ -3874,19 +3885,31 @@ function montarResultados(){
     document.createTextNode(" concluintes. Conta quem cruzou a chegada com tempo registrado; resultado parcial não entra na soma."));
 }
 
-ao("btn-resultados", () => {
+// Os resultados aparecem na propria pagina, no lugar do calendario (antes era uma janela por cima).
+function abrirResultados(){
   buscaResultados.value = "";
   mostrarResultados = LOTE_RESULTADOS;
+  modoResultados = true;
+  secaoResultados.hidden = false;
+  secaoResultados.parentElement.classList.add("so-resultados");
+  const b = document.getElementById("btn-resultados"); if (b) b.setAttribute("aria-pressed", "true");
   montarResultados();
-  dialogoResultados.showModal();
-  document.getElementById("resultados-lista").scrollTop = 0;
-});
-ao("resultados-fechar", () => dialogoResultados.close());
+  secaoResultados.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+function fecharResultados(){
+  modoResultados = false;
+  secaoResultados.hidden = true;
+  secaoResultados.parentElement.classList.remove("so-resultados");
+  const b = document.getElementById("btn-resultados"); if (b) b.setAttribute("aria-pressed", "false");
+  listBox.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+const btnResultados = ao("btn-resultados", () => modoResultados ? fecharResultados() : abrirResultados());
+if (btnResultados) btnResultados.removeAttribute("aria-haspopup");
+ao("resultados-fechar", fecharResultados);
 // Link "Resultados" das outras paginas (./#resultados): abre a lista direto.
 if (location.hash === "#resultados" && document.getElementById("btn-resultados"))
   setTimeout(() => document.getElementById("btn-resultados").click(), 0);
 if (buscaResultados) buscaResultados.oninput = () => { mostrarResultados = LOTE_RESULTADOS; montarResultados(); };
-fechaNoFundo(dialogoResultados);
 
 /* ---------- galeria dos campeoes ----------
    atletas/campeoes.json: por prova (or_slug), a lista de distancias com a
