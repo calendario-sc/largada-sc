@@ -865,7 +865,9 @@ REVER_CRONO_DIAS = 60
 def nome_da_cronometragem(url):
     """'https://result.racetag.com.br/x' -> 'Racetag'. Dominio desconhecido
     vira o proprio nome do dominio, para nao se perder nada."""
-    limpo = re.sub(r"^https?://(?:www\.)?", "", url.strip().lower())
+    # o link vem do HTML do portal, as vezes com ':' e '/' em entidades (https&#x3a;&#x2f;&#x2f;...)
+    import html as _html
+    limpo = re.sub(r"^https?://(?:www\.)?", "", _html.unescape(url).strip().lower())
     host = limpo.split("/")[0].split("?")[0]
     if any(host == x or host.endswith("." + x) for x in CRONO_IGNORAR):
         return ""
@@ -877,7 +879,23 @@ def nome_da_cronometragem(url):
             return nome
     partes = [x for x in host.split(".") if x not in ("www", "result", "results", "resultado",
                                                        "resultados", "eventos", "evento", "app", "site")]
-    return (partes[0] if partes else host).capitalize()
+    rotulo = partes[0] if partes else host
+    return CRONO_ROTULOS.get(rotulo, rotulo.capitalize())
+
+
+# Dominio sem cadastro em CRONO_DOMINIOS vira o primeiro pedaco do endereco; estes ganham o nome escrito direito.
+CRONO_ROTULOS = {
+    "tvcomrunning": "TV Com Running", "streetracebrasil": "Street Race Brasil", "globalcronometragem": "Global Cronometragem",
+    "incentivoesporte": "Incentivo Esporte", "ravelisports": "Raveli Sports", "sporttimer": "Sport Timer", "resultadorun": "Resultado Run",
+    "foureventos": "Four Eventos", "cronusteccorridas": "Cronus Tec Corridas", "cronoactive": "Crono Active", "cronocorridas": "Crono Corridas",
+    "feraesportes": "Fera Esportes", "figueiredoscronometragem": "Figueiredo's Cronometragem", "cronoschip": "Cronos Chip",
+    "fulltimecrono": "Full Time Crono", "runnerbrasil": "Runner Brasil", "resultadonline": "Resultado Online",
+    "corredoresdorecife": "Corredores do Recife", "tapajosrun": "Tapajós Run", "eventosroraima": "Eventos Roraima",
+    "correparaiba": "Corre Paraíba", "resultadosbrasil": "Resultados Brasil", "cronosantarem": "Crono Santarém",
+    "polesportivo": "Pólo Esportivo", "braziltiming": "Brazil Timing", "norteruneventos": "Norte Run Eventos",
+    "trichipcronometragem": "Trichip Cronometragem", "vqvcorridas": "VQV Corridas", "onsportsoficial": "On Sports",
+    "quedasadventure": "Quedas Adventure", "o2corre": "O2 Corre", "esportecorrida": "Esporte Corrida",
+}
 
 
 def completar_cronometragem(historico, limite=None, registrar=print):
@@ -905,7 +923,8 @@ def completar_cronometragem(historico, limite=None, registrar=print):
         p["cronometragem_em"] = hoje.isoformat()
         achado = OR_FONTE.search(html)
         if achado:
-            url = achado.group(2)
+            import html as _html
+            url = _html.unescape(achado.group(2))
             nome = nome_da_cronometragem(url)
             if nome:
                 p["cronometragem_url"] = url
