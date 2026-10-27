@@ -6,24 +6,24 @@
   roadrunners: 179 provas
   movnow: 33 provas
   atletis: 4 provas
-  sympla: 186 provas
+  sympla: 178 provas
   blueticket: 3 provas
   fca: 0 provas
   corridasbr (PR): 148 provas
   corridasbr/arquivo (PR): 413 provas
-  ticketsports (PR): 68 provas
-  roadrunners (PR): 127 provas
+  ticketsports (PR): 66 provas
+  roadrunners (PR): 128 provas
   corridasbr (RS): 231 provas
   corridasbr/arquivo (RS): 453 provas
   ticketsports (RS): 19 provas
   roadrunners (RS): 109 provas
   corridasbr (SP): 444 provas
   corridasbr/arquivo (SP): 989 provas
-  ticketsports (SP): 236 provas
-  roadrunners (SP): 500 provas
+  ticketsports (SP): 237 provas
+  roadrunners (SP): 499 provas
   corridasbr (RJ): 204 provas
   corridasbr/arquivo (RJ): 339 provas
-  ticketsports (RJ): 95 provas
+  ticketsports (RJ): 94 provas
   roadrunners (RJ): 177 provas
   corridasbr (DF): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (DF): 113 provas
@@ -31,11 +31,11 @@
   roadrunners (DF): 24 provas
   corridasbr (MG): 252 provas
   corridasbr/arquivo (MG): 615 provas
-  ticketsports (MG): 34 provas
-  roadrunners (MG): 167 provas
+  ticketsports (MG): 32 provas
+  roadrunners (MG): 168 provas
   corridasbr (ES): 73 provas
   corridasbr/arquivo (ES): 97 provas
-  ticketsports (ES): 28 provas
+  ticketsports (ES): 29 provas
   roadrunners (ES): 48 provas
   corridasbr (BA): 155 provas
   corridasbr/arquivo (BA): 248 provas
@@ -47,12 +47,12 @@
   roadrunners (PE): 127 provas
   corridasbr (CE): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (CE): 198 provas
-  ticketsports (CE): 7 provas
+  ticketsports (CE): 8 provas
   roadrunners (CE): 45 provas
   corridasbr (GO): 124 provas
   corridasbr/arquivo (GO): 260 provas
   ticketsports (GO): 4 provas
-  roadrunners (GO): 47 provas
+  roadrunners (GO): 48 provas
   corridasbr (MT): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (MT): 119 provas
   ticketsports (MT): 5 provas
@@ -67,7 +67,7 @@
   roadrunners (PA): 81 provas
   corridasbr (AM): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AM): 43 provas
-  ticketsports (AM): 17 provas
+  ticketsports (AM): 16 provas
   roadrunners (AM): 20 provas
   corridasbr (PB): 46 provas
   corridasbr/arquivo (PB): 127 provas
@@ -79,15 +79,15 @@
   roadrunners (RN): 53 provas
   corridasbr (AL): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AL): 97 provas
-  ticketsports (AL): 18 provas
-  roadrunners (AL): 61 provas
+  ticketsports (AL): 17 provas
+  roadrunners (AL): 62 provas
   corridasbr (SE): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (SE): 37 provas
   ticketsports (SE): 9 provas
   roadrunners (SE): 21 provas
   corridasbr (PI): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (PI): 52 provas
-  ticketsports (PI): 4 provas
+  ticketsports (PI): 5 provas
   roadrunners (PI): 13 provas
   corridasbr (MA): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (MA): 41 provas
@@ -122,7 +122,7 @@ datas de ticketeira acertadas pela outra fonte: 4
   ~ 2026-11-08 -> 2026-11-07  Movimento Rosa - 2º Edição [sympla]
   ~ 2026-11-28 -> 2026-11-29  Festival UP! [sympla]
 
-8874 provas distintas depois de fundir as fontes
+8882 provas distintas depois de fundir as fontes
 descartadas (67): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/AL/SE/PI/MA/TO/RO/AC/AP/RR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
@@ -133,20 +133,20 @@ descartadas (67): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/
   - 2026-05-31  Pouso Alegre - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - 2026-06-21  Muzambinho - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - ... e mais 59
-restam 8807 provas
-concluintes: 3464 provas no Open Results, 2659 casadas, 135 com numero novo, 84 provas criadas
+restam 8815 provas
+concluintes: 3464 provas no Open Results, 2663 casadas, 81 com numero novo, 64 provas criadas
 concluintes (chiprun): 2 provas consultadas, 1 preenchidas
-concluintes (link do corridasbr): 26 provas consultadas, 4 preenchidas
-genero: 400 provas consultadas, 386 preenchidas
-organizador: 289 provas consultadas, 149 preenchidas
+concluintes (link do corridasbr): 14 provas consultadas, 2 preenchidas
+genero: 400 provas consultadas, 385 preenchidas
+organizador: 30 provas consultadas, 9 preenchidas
 organizador: 34 provas preenchidas pela FCA
-organizador: 206 provas tiveram a grafia padronizada
-percurso: 29 provas consultadas no arquivo, 18 preenchidas
+organizador: 195 provas tiveram a grafia padronizada
+percurso: 25 provas consultadas no arquivo, 14 preenchidas
 fca: 35 provas juntadas as que ja existiam
 resultados repetidos removidos: 63
-series: 19876 eventos com uma ou mais edicoes | 43 resultados parciais marcados
-historico: 29842 provas (26551 ja realizadas) | 2970 cidades
-novas nesta rodada: 88
+series: 19910 eventos com uma ou mais edicoes | 43 resultados parciais marcados
+historico: 29883 provas (26566 ja realizadas) | 2971 cidades
+novas nesta rodada: 75
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-02-22  Belém - AP Run 2026 - 1ª Etapa
   + 2026-03-01  Boa Vista - Corrida da P.’.A.’.Z - 1ª Edição
@@ -160,17 +160,17 @@ novas nesta rodada: 88
   + 2026-08-02  São João del Rei - 2ª AC Run
   + 2026-08-23  Belém - AP Run 2026 - 4ª Etapa
   + 2026-09-06  Salto - Corrida da Santa
-  + 2026-09-13  Belém - +B Run - 3° Edição
-  + 2026-10-11  São Paulo - CORRIDA RESIDENCIAL SÃO PAULO
+  + 2026-10-25  Serra do Mel - 1ª CORRIDA de RUA – AMIGOS da ESTILOSA BIKE
+  + 2026-10-29  Cuiabá - 3º Treinão AGV - Etapa Cuiabá
 
-futuras que nao apareceram hoje (109) - possivel cancelamento, mantidas no historico:
-  ? 2026-10-26  Humaitá - 1ª Corrida Solidária do Projeto Vizinhança do Bem (visto pela ultima vez em 2026-10-24)
+futuras que nao apareceram hoje (128) - possivel cancelamento, mantidas no historico:
   ? 2026-10-30  Joinville - Corrida São Judas Tadeu (visto pela ultima vez em 2026-10-04)
   ? 2026-10-30  São Paulo - HALLOWAYNES RUN PARTY (visto pela ultima vez em 2026-10-22)
   ? 2026-10-31  Araranguá - Corrida Gremio Fronteira (visto pela ultima vez em 2026-10-01)
   ? 2026-10-31  Barueri - Marias Speed Clube- Edição Especial Outubro Rosa (visto pela ultima vez em 2026-10-22)
   ? 2026-10-31  Elias Fausto - 2ª FBRUN - CIRCUITO PANAMERICANO BY PIRELLI (visto pela ultima vez em 2026-10-24)
   ? 2026-10-31  Feira de Santana - CORRIDA (visto pela ultima vez em 2026-10-24)
+  ? 2026-10-31  Feira de Santana - CORRIDA (visto pela ultima vez em 2026-10-26)
   ? 2026-10-31  Londrina - OUTUBRO ROSA (visto pela ultima vez em 2026-10-22)
   ? 2026-10-31  Nilópolis - 1° Caminhada de Conscientização da Fibromialgia (visto pela ultima vez em 2026-10-24)
   ? 2026-10-31  Salto - 2º CORRIDA HALLOWEW SALTO (visto pela ultima vez em 2026-10-23)
@@ -182,6 +182,6 @@ parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,353,532 bytes)
+artifact.html e index.html gerados (2,354,643 bytes)
 
-RESULTADO: pronto para publicar (coleta de 26/10/2026).
+RESULTADO: pronto para publicar (coleta de 27/10/2026).
