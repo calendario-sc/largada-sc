@@ -1315,29 +1315,33 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
 }
 
 /* ---------- lista em duas colunas no computador (21/10/2026, so no site publico) ----------
-   Cada cartao: data compacta a esquerda; nome, cidade, selos e organizadora ao lado, alinhados no topo;
-   embaixo as distancias a esquerda e, a direita, o botao de inscricao com preco e regulamento.
-   Os titulos de mes e os avisos ocupam a linha inteira. */
+   Cartao compacto (27/10/2026): data estreita a esquerda; nome, cidade, selos, organizadora e distancias
+   no meio, sem linhas vazias; o botao de inscricao com preco e regulamento na coluna da direita, no meio
+   da altura. As fontes (corridasbr, fca...) ficam so no BI. Os titulos de mes e os avisos ocupam a linha inteira. */
 @media (min-width:1000px){
-  body:not(.bi) #list{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem .9rem; align-items:stretch}
+  body:not(.bi) #list{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.55rem .75rem; align-items:stretch}
   body:not(.bi) #list > :not(.race){grid-column:1 / -1}
   body:not(.bi) #list .month-head{margin:1.4rem 0 .1rem}
   /* o titulo do mes rola junto com a lista (preso embaixo da barra de busca ele ficava no meio da tela) */
   body:not(.bi) #list .month-head{position:static}
-  body:not(.bi) #list .race{margin:0; padding:.9rem 1rem .9rem .8rem; border-radius:14px; align-items:start; align-content:start;
-    grid-template-columns:3.6rem minmax(0,1fr) auto; grid-template-rows:auto auto 1fr; gap:.35rem .9rem;
-    grid-template-areas:"date name name" "date meta meta" "date dist acoes"}
-  body:not(.bi) #list .race__date{grid-area:date; align-self:start; padding:.5rem 0 .45rem}
-  body:not(.bi) #list .race__date .d{font-size:1.45rem}
+  body:not(.bi) #list .race{margin:0; padding:.6rem .8rem .6rem .6rem; border-radius:14px; align-items:center; align-content:center;
+    grid-template-columns:3.1rem minmax(0,1fr) auto; grid-template-rows:auto auto auto; gap:.25rem .75rem;
+    grid-template-areas:"date name acoes" "date meta acoes" "date dist acoes"}
+  body:not(.bi) #list .race__date{grid-area:date; align-self:stretch; padding:.35rem 0; border-radius:9px}
+  body:not(.bi) #list .race__date .d{font-size:1.25rem}
+  body:not(.bi) #list .race__date .m{font-size:.58rem; margin-top:.1rem}
+  body:not(.bi) #list .race__date .w{font-size:.54rem}
   body:not(.bi) #list .race__main{display:contents}
-  body:not(.bi) #list .race__name{grid-area:name; font-size:1.05rem; line-height:1.25}
-  body:not(.bi) #list .race__meta{grid-area:meta; margin:0; gap:.35rem .5rem; align-content:start}
-  body:not(.bi) #list .race__meta .fontes{flex-basis:100%; margin:.1rem 0 0}
+  body:not(.bi) #list .race__name{grid-area:name; font-size:1rem; line-height:1.25}
+  body:not(.bi) #list .race__meta{grid-area:meta; margin:0; gap:.2rem .45rem; font-size:.8rem; align-content:start}
+  body:not(.bi) #list .race__meta .org{font-size:.76rem}
+  body:not(.bi) #list .race__meta .fontes{display:none}
   body:not(.bi) #list .galeria{grid-column:2 / -1}
-  body:not(.bi) #list .race__dists{grid-area:dist; justify-content:flex-start; align-self:end; margin:.35rem 0 0}
-  body:not(.bi) #list .race__acoes{grid-area:acoes; align-self:end; justify-self:end; margin:.35rem 0 0; display:grid; grid-template-columns:auto auto;
+  body:not(.bi) #list .race__dists{grid-area:dist; justify-content:flex-start; align-self:start; margin:.15rem 0 0}
+  body:not(.bi) #list .race__dists li{font-size:.7rem; padding:.18rem .42rem}
+  body:not(.bi) #list .race__acoes{grid-area:acoes; align-self:center; justify-self:end; margin:0; display:grid; grid-template-columns:auto auto;
     justify-content:end; justify-items:end; align-items:center; gap:.2rem .4rem; text-align:right; font-size:.78rem}
-  body:not(.bi) #list .race__acoes .inscrever{grid-column:1 / -1; font-size:.86rem; padding:.45rem .9rem}
+  body:not(.bi) #list .race__acoes .inscrever{grid-column:1 / -1; font-size:.8rem; padding:.38rem .75rem}
   body:not(.bi) #list .race__acoes .inscrever:only-child{margin:0}
   body:not(.bi) #list .race__acoes .ticketeira::after{content:" ·"}
   body:not(.bi) #list .race__acoes a:not(.inscrever){grid-column:1 / -1; font-size:.76rem}
@@ -1687,7 +1691,7 @@ body:not(.bi) .groups #btn-filtros{margin-left:1.2rem}
 <footer class="foot">
   <div class="wrap">
     <p><b>Cupons de Corrida</b> · <a href="cupons.html">Central de Cupons</a> · <a href="parceiros.html">Seja parceiro</a></p>
-    <p class="foot__cidades"><b>Corridas por cidade:</b> <a href="/corridas-em/florianopolis-sc/">Florianópolis</a> · <a href="/corridas-em/joinville-sc/">Joinville</a> · <a href="/corridas-em/lages-sc/">Lages</a> · <a href="/corridas-em/ararangua-sc/">Araranguá</a> · <a href="/corridas-em/blumenau-sc/">Blumenau</a> · <a href="/corridas-em/palhoca-sc/">Palhoça</a> · <a href="/corridas-em/timbo-sc/">Timbó</a> · <a href="/corridas-em/criciuma-sc/">Criciúma</a> · <a href="/corridas-em/sao-jose-sc/">São José</a> · <a href="/corridas-em/balneario-camboriu-sc/">Balneário Camboriú</a> · <a href="/corridas-em/jaragua-do-sul-sc/">Jaraguá do Sul</a> · <a href="/corridas-em/chapeco-sc/">Chapecó</a> · <a href="/corridas-em/itajai-sc/">Itajaí</a> · <a href="/corridas-em/penha-sc/">Penha</a> · <a href="/corridas-em/a-definir-sc/">A Definir</a> · <a href="/corridas-em/tubarao-sc/">Tubarão</a> · <a href="/corridas-em/garopaba-sc/">Garopaba</a> · <a href="/corridas-em/porto-belo-sc/">Porto Belo</a> · <a href="/corridas-em/sao-francisco-do-sul-sc/">São Francisco do Sul</a> · <a href="/corridas-em/balneario-rincao-sc/">Balneário Rincão</a> · <a href="/corridas-em/itapema-sc/">Itapema</a> · <a href="/corridas-em/sao-bento-do-sul-sc/">São Bento do Sul</a> · <a href="/corridas-em/imbituba-sc/">Imbituba</a> · <a href="/corridas-em/pomerode-sc/">Pomerode</a> · <a href="/corridas-em/icara-sc/">Içara</a> · <a href="/corridas-em/nova-trento-sc/">Nova Trento</a> · <a href="/corridas-em/acu-sc/">Açu</a> · <a href="/corridas-em/brusque-sc/">Brusque</a> · <a href="/corridas-em/concordia-sc/">Concórdia</a> · <a href="/corridas-em/rio-do-sul-sc/">Rio do Sul</a> · <a href="/corridas-em/rio-negrinho-sc/">Rio Negrinho</a> · <a href="/corridas-em/xanxere-sc/">Xanxerê</a> · <a href="/corridas-em/laguna-sc/">Laguna</a> · <a href="/corridas-em/lauro-muller-sc/">Lauro Müller</a> · <a href="/corridas-em/porto-uniao-sc/">Porto União</a> · <a href="/corridas-em/videira-sc/">Videira</a> · <a href="/corridas-em/camboriu-sc/">Camboriú</a> · <a href="/corridas-em/fraiburgo-sc/">Fraiburgo</a> · <a href="/corridas-em/sideropolis-sc/">Siderópolis</a> · <a href="/corridas-em/sao-lourenco-do-oeste-sc/">São Lourenço do Oeste</a> · <a href="/corridas-em/urubici-sc/">Urubici</a> · <a href="/corridas-em/cocal-do-sul-sc/">Cocal do Sul</a> · <a href="/corridas-em/governador-celso-ramos-sc/">Governador Celso Ramos</a> · <a href="/corridas-em/sao-thome-das-letras-sc/">São Thomé das Letras</a> · <a href="/corridas-em/maravilha-sc/">Maravilha</a> · <a href="/corridas-em/biguacu-sc/">Biguaçu</a> · <a href="/corridas-em/praia-grande-sc/">Praia Grande</a> · <a href="/corridas-em/santa-rosa-do-sul-sc/">Santa Rosa do Sul</a></p>
+    <p class="foot__cidades"><b>Corridas por cidade:</b> <a href="/corridas-em/florianopolis-sc/">Florianópolis</a> · <a href="/corridas-em/joinville-sc/">Joinville</a> · <a href="/corridas-em/lages-sc/">Lages</a> · <a href="/corridas-em/ararangua-sc/">Araranguá</a> · <a href="/corridas-em/blumenau-sc/">Blumenau</a> · <a href="/corridas-em/palhoca-sc/">Palhoça</a> · <a href="/corridas-em/timbo-sc/">Timbó</a> · <a href="/corridas-em/criciuma-sc/">Criciúma</a> · <a href="/corridas-em/sao-jose-sc/">São José</a> · <a href="/corridas-em/balneario-camboriu-sc/">Balneário Camboriú</a> · <a href="/corridas-em/jaragua-do-sul-sc/">Jaraguá do Sul</a> · <a href="/corridas-em/chapeco-sc/">Chapecó</a> · <a href="/corridas-em/itajai-sc/">Itajaí</a> · <a href="/corridas-em/penha-sc/">Penha</a> · <a href="/corridas-em/a-definir-sc/">A Definir</a> · <a href="/corridas-em/tubarao-sc/">Tubarão</a> · <a href="/corridas-em/garopaba-sc/">Garopaba</a> · <a href="/corridas-em/porto-belo-sc/">Porto Belo</a> · <a href="/corridas-em/sao-francisco-do-sul-sc/">São Francisco do Sul</a> · <a href="/corridas-em/balneario-rincao-sc/">Balneário Rincão</a> · <a href="/corridas-em/itapema-sc/">Itapema</a> · <a href="/corridas-em/sao-bento-do-sul-sc/">São Bento do Sul</a> · <a href="/corridas-em/imbituba-sc/">Imbituba</a> · <a href="/corridas-em/pomerode-sc/">Pomerode</a> · <a href="/corridas-em/icara-sc/">Içara</a> · <a href="/corridas-em/nova-trento-sc/">Nova Trento</a> · <a href="/corridas-em/acu-sc/">Açu</a> · <a href="/corridas-em/brusque-sc/">Brusque</a> · <a href="/corridas-em/concordia-sc/">Concórdia</a> · <a href="/corridas-em/rio-do-sul-sc/">Rio do Sul</a> · <a href="/corridas-em/rio-negrinho-sc/">Rio Negrinho</a> · <a href="/corridas-em/xanxere-sc/">Xanxerê</a> · <a href="/corridas-em/laguna-sc/">Laguna</a> · <a href="/corridas-em/lauro-muller-sc/">Lauro Müller</a> · <a href="/corridas-em/porto-uniao-sc/">Porto União</a> · <a href="/corridas-em/videira-sc/">Videira</a> · <a href="/corridas-em/camboriu-sc/">Camboriú</a> · <a href="/corridas-em/fraiburgo-sc/">Fraiburgo</a> · <a href="/corridas-em/sideropolis-sc/">Siderópolis</a> · <a href="/corridas-em/sao-lourenco-do-oeste-sc/">São Lourenço do Oeste</a> · <a href="/corridas-em/urubici-sc/">Urubici</a> · <a href="/corridas-em/cocal-do-sul-sc/">Cocal do Sul</a> · <a href="/corridas-em/governador-celso-ramos-sc/">Governador Celso Ramos</a> · <a href="/corridas-em/sao-thome-das-letras-sc/">São Thomé das Letras</a> · <a href="/corridas-em/biguacu-sc/">Biguaçu</a> · <a href="/corridas-em/maravilha-sc/">Maravilha</a> · <a href="/corridas-em/praia-grande-sc/">Praia Grande</a> · <a href="/corridas-em/santa-rosa-do-sul-sc/">Santa Rosa do Sul</a></p>
   </div>
 </footer>
 
