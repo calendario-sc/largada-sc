@@ -4868,6 +4868,19 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-20-uai-reverse-ultra-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-21-1-eventos-esportivos-ipatinga@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:1 EVENTOS ESPORTIVOS IPATINGA 2026
+LOCATION:Ipatinga - MG
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-21-1-eventos-esportivos-ipatinga/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-21-1-eventos-esportiv
+ os-ipatinga/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-21-1-corrida-noturna-de-alfredo-vasconcelos@cuponsdecorrida.com
  .br
 DTSTAMP:20261027T235747Z
@@ -5396,6 +5409,19 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-24-camisas-terry-fox-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-24-terry-fox-games-2026-mb-betim@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:TERRY FOX GAMES 2026 - MB BETIM
+LOCATION:Betim - MG
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-24-terry-fox-games-2026-mb-betim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-24-terry-fox-games-20
+ 26-mb-betim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-25-ts-academy-in-belo-horizonte-i-25-de-novembro@cuponsdecorrid
  a.com.br
 DTSTAMP:20261027T235747Z
@@ -5567,6 +5593,21 @@ DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
  com.br/provas/2026-11-29-1-corrida-da-academia-rocha-belo-horizonte/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-corrida-da-acade
  mia-rocha-belo-horizonte/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-2-corrida-de-rua-pains-runners-martech-solucoes-digitais@cup
+ onsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:2ª CORRIDA DE RUA PAINS RUNNERS MARTECH SOLUÇÕES DIGITAIS 2026
+LOCATION:Pains - MG
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-29-2-corrida-de-rua-pains-runners-martech-sol
+ ucoes-digitais/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-2-corrida-de-rua-p
+ ains-runners-martech-solucoes-digitais/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5907,9 +5948,9 @@ DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:Festival UP! 2026
 LOCATION:Lima Duarte - MG
-DESCRIPTION:Corrida de rua · 3km\, 7km\, 14km\, 40km\nCupons e detalhes: h
- ttps://www.cuponsdecorrida.com.br/provas/2026-11-29-festival-up-lima-duart
- e/
+DESCRIPTION:Corrida de trail · 3km\, 7km\, 14km\, 40km\nCupons e detalhes:
+  https://www.cuponsdecorrida.com.br/provas/2026-11-29-festival-up-lima-dua
+ rte/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-festival-up-lima-d
  uarte/
 TRANSP:TRANSPARENT
@@ -6775,6 +6816,22 @@ DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2027-01-17-circuito-fs-run-caxambu/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-01-17-circuito-fs-run-ca
  xambu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-17-circuito-do-fogo-15-edicao-belo-horizonte@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270118
+SUMMARY:Circuito do Fogo - 15ª Edição 2027
+LOCATION:Belo Horizonte - MG
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/CIRCUITO+DO+FOGO+-+15%C2%AA+EDI%C3%87%C3%83O-88793\nCu
+ pons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-01-17-circ
+ uito-do-fogo-15-edicao-belo-horizonte/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-17-circuito-do-fogo-1
+ 5-edicao-belo-horizonte/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

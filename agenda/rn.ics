@@ -968,6 +968,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-mulheres-correm-an
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-25-1-corrida-de-rua-amigos-da-estilosa-bike-serra-do-mel@cupons
+ decorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:1ª CORRIDA de RUA – AMIGOS da ESTILOSA BIKE 2026
+LOCATION:Serra do Mel - RN
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-25-1-corrida-de-rua-amigos-da-estilosa-bike-s
+ erra-do-mel/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-1-corrida-de-rua-a
+ migos-da-estilosa-bike-serra-do-mel/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-25-1-corrida-das-criancas-bento-fernandes@cuponsdecorrida.com.b
  r
 DTSTAMP:20261027T235747Z
@@ -1533,6 +1548,21 @@ DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2026-11-29-1-corrida-eu-corredor-parelhas/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-corrida-eu-corre
  dor-parelhas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-1-corrida-com-nossa-senhora-da-conceicao-rio-do-fogo@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:1ª Corrida com nossa senhora da conceição 2026
+LOCATION:Rio do Fogo - RN
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-29-1-corrida-com-nossa-senhora-da-conceicao-rio-do-f
+ ogo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-1-corrida-com-noss
+ a-senhora-da-conceicao-rio-do-fogo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

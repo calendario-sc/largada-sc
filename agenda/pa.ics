@@ -1603,6 +1603,32 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-ap-run-2026-5-etap
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-08-ap-run-2026-5-etapa-belem-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:AP Run 2026 - 5ª Etapa
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 21km\, 10.5km\nCupons e detalhes: https://www
+ .cuponsdecorrida.com.br/provas/2026-11-08-ap-run-2026-5-etapa-belem-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-ap-run-2026-5-etap
+ a-belem-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-ap-run-2026-5-etapa-belem-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:AP Run 2026 - 5ª Etapa
+LOCATION:Belém - PA
+DESCRIPTION:Corrida de rua · 21km\, 10.5km\nCupons e detalhes: https://www
+ .cuponsdecorrida.com.br/provas/2026-11-08-ap-run-2026-5-etapa-belem-2-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-ap-run-2026-5-etap
+ a-belem-2-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-08-corrida-do-cirio-de-icoaraci-belem@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261108
@@ -2657,6 +2683,33 @@ DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
  ponsdecorrida.com.br/provas/2026-12-08-corrida-das-corridas-ananindeua/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-08-corrida-das-corrid
  as-ananindeua/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-08-corrida-das-corridas-ananindeua-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:Corrida das Corridas 2026
+LOCATION:Ananindeua - PA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-08-corrida-das-corridas-ananindeua-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-08-corrida-das-corrid
+ as-ananindeua-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-08-corrida-das-corridas-ananindeua-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:Corrida das Corridas 2026
+LOCATION:Ananindeua - PA
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-08-corrida-das-corridas-ananindeua-2-2
+ /
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-08-corrida-das-corrid
+ as-ananindeua-2-2/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

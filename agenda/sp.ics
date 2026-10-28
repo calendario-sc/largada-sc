@@ -893,6 +893,32 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-santa-s
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-09-06-corrida-da-santa-salto-2-2-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida da Santa 2026
+LOCATION:Salto - SP
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-corrida-da-santa-salto-2-2-2-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-santa-s
+ alto-2-2-2-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-06-corrida-da-santa-salto-2-2-2-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Corrida da Santa 2026
+LOCATION:Salto - SP
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-09-06-corrida-da-santa-salto-2-2-2-2-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-santa-s
+ alto-2-2-2-2-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-09-06-corrida-da-uniao-2026-rio-claro@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20260906
@@ -6907,6 +6933,20 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-sprint-4-edicao-sa
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-24-terry-fox-rn-sertaozinho@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:Terry Fox Rn 2026
+LOCATION:Sertãozinho - SP
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://minhasinscricoes.co
+ m.br/Evento/CorridaTerryFoxRun\nCupons e detalhes: https://www.cuponsdecor
+ rida.com.br/provas/2026-10-24-terry-fox-rn-sertaozinho/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-terry-fox-rn-serta
+ ozinho/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-24-x-periment-run-2-edicao-sorocaba@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261024
@@ -7006,16 +7046,30 @@ UID:2026-10-25-5-edicao-da-corrida-e-caminhada-do-projeto-amigos-contra-o-c
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261025
 DTEND;VALUE=DATE:20261026
-SUMMARY:5ª EDIÇÃO da CORRIDA e CAMINHADA do PROJETO AMIGOS CONTRA o CÂN
- CER - PACC 2026
+SUMMARY:2ª Corrida Estar Bem Aché 2026
+LOCATION:Guarulhos - SP
+DESCRIPTION:Corrida de rua · 9km\, 6km\, 3km\nCupons e detalhes: https://w
+ ww.cuponsdecorrida.com.br/provas/2026-10-25-2-corrida-estar-bem-ache-guaru
+ lhos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-2-corrida-estar-be
+ m-ache-guarulhos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-5-corrida-amigos-contra-o-cancer-ribeirao-preto@cuponsdecorr
+ ida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:5ª Corrida Amigos Contra o Câncer 2026
 LOCATION:Ribeirão Preto - SP
-DESCRIPTION:Caminhada · 8km\, 4km\nInscrição: https://www.ticketsports.c
- om.br/e/5%C2%AA+EDI%C3%87%C3%83O+DA+CORRIDA+E+CAMINHADA+DO+PROJETO+AMIGOS+
- CONTRA+O+C%C3%82NCER+-+PACC-88043\nCupons e detalhes: https://www.cuponsde
- corrida.com.br/provas/2026-10-25-5-edicao-da-corrida-e-caminhada-do-projet
- o-amigos-contra-o-cancer-pacc-ribeirao/
-URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-5-edicao-da-corrid
- a-e-caminhada-do-projeto-amigos-contra-o-cancer-pacc-ribeirao/
+DESCRIPTION:Corrida de rua · 8km\, 4km\nInscrição: https://www.ticketspo
+ rts.com.br/e/5%C2%AA+EDI%C3%87%C3%83O+DA+CORRIDA+E+CAMINHADA+DO+PROJETO+AM
+ IGOS+CONTRA+O+C%C3%82NCER+-+PACC-88043\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-10-25-5-corrida-amigos-contra-o-cancer-rib
+ eirao-preto/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-5-corrida-amigos-c
+ ontra-o-cancer-ribeirao-preto/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -7393,6 +7447,20 @@ DESCRIPTION:Caminhada · 8km\nInscrição: https://www.sympla.com.br/evento
  anca-caicara-corrida-e-caminhada-caminhos-caicara-ilha-comprida/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-x-festanca-caicara
  -corrida-e-caminhada-caminhos-caicara-ilha-comprida/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-27-edicao-tiquatira-5-km-tropa-do-grego-sao-paulo@cuponsdecorri
+ da.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+SUMMARY:EDIÇÃO TIQUATIRA 5 km TROPA DO GREGO 2026
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-27-edicao-tiquatira-5-km-tropa-do-grego-sao-paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-27-edicao-tiquatira-5
+ -km-tropa-do-grego-sao-paulo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -7826,6 +7894,19 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-circuito-transform
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-31-corre-delas-running-ribeirao-preto@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Corre Delas - Running 2026
+LOCATION:Ribeirão Preto - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-31-corre-delas-running-ribeirao-preto/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-corre-delas-runnin
+ g-ribeirao-preto/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-31-dark-run-sao-paulo@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261031
@@ -7987,6 +8068,19 @@ DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2026-10-31-odinrun-5k-mogi-guacu/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-odinrun-5k-mogi-gu
  acu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-pico-sao-jose-dos-campos@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:PICO 2026
+LOCATION:São José dos Campos - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-31-pico-sao-jose-dos-campos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-pico-sao-jose-dos-
+ campos/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -8317,6 +8411,19 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-e-caminhad
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-01-fechados-com-a-verdade-sao-paulo@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:FECHADOS COM A VERDADE 2026
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-01-fechados-com-a-verdade-sao-paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-fechados-com-a-ver
+ dade-sao-paulo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-01-mantiqueira-trail-run-campos-do-jordao@cuponsdecorrida.com.b
  r
 DTSTAMP:20261027T235747Z
@@ -8535,8 +8642,10 @@ DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:18ª Night Run Novo Rio Pinheiros 2026
 LOCATION:São Paulo - SP
-DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
- orrida.com.br/provas/2026-11-07-18-night-run-novo-rio-pinheiros-sao-paulo/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/18%C2%AA++NIGHT+RUN+NOVO+RIO+PINHEIROS-88272\nCupons e detalhes: ht
+ tps://www.cuponsdecorrida.com.br/provas/2026-11-07-18-night-run-novo-rio-p
+ inheiros-sao-paulo/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-18-night-run-novo-
  rio-pinheiros-sao-paulo/
 TRANSP:TRANSPARENT
@@ -8618,6 +8727,21 @@ DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2026-11-07-beer-run-2026-santo-andre/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-beer-run-2026-sant
  o-andre/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-beercrew-running-club-esconderijo-juan-caloto-sao-paulo@cupo
+ nsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Beercrew Running Club: Esconderijo Juan Caloto 2026
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-07-beercrew-running-club-esconderijo-juan-caloto-sao
+ -paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-beercrew-running-c
+ lub-esconderijo-juan-caloto-sao-paulo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -9249,6 +9373,22 @@ DESCRIPTION:Corrida de rua · 6km\nInscrição: https://www.ticketsports.co
  a-joaquim-egidio/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-circuito-de-corrid
  as-dos-distritos-de-campinas-2026-etapa-joaquim-egidio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-circuito-dos-parques-parque-da-juventude-sao-paulo@cuponsdec
+ orrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:CIRCUITO DOS PARQUES - PARQUE DA JUVENTUDE 2026
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua · 5 a 10km\nInscrição: https://www.ticketspor
+ ts.com.br/e/CIRCUITO+DOS+PARQUES+-+PARQUE+DA+JUVENTUDE-88250\nCupons e det
+ alhes: https://www.cuponsdecorrida.com.br/provas/2026-11-08-circuito-dos-p
+ arques-parque-da-juventude-sao-paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-circuito-dos-parqu
+ es-parque-da-juventude-sao-paulo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -10127,9 +10267,9 @@ DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:ROCKY MOUNTAIN GAMES Campos do Jordão 2026
 LOCATION:Campos do Jordão - SP
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 6km\, 10km\, 21km\, 25km\, 40km\,
-  42km\, 50km\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas
- /2026-11-14-rocky-mountain-games-campos-do-jordao-2026/
+DESCRIPTION:Corrida de trail · 3km\, 5km\, 6km\, 10km\, 21km\, 25km\, 40km
+ \, 42km\, 50km\nCupons e detalhes: https://www.cuponsdecorrida.com.br/prov
+ as/2026-11-14-rocky-mountain-games-campos-do-jordao-2026/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-rocky-mountain-gam
  es-campos-do-jordao-2026/
 TRANSP:TRANSPARENT
@@ -10145,6 +10285,21 @@ DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2026-11-14-unifeob-run-sao-joao-da-boa-vista/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-unifeob-run-sao-jo
  ao-da-boa-vista/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-12-se-cuida-no-corre-coragem-cafune-taboao-da-serra@cuponsde
+ corrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:#12 Se Cuida no Corre Coragem + Cafuné 2026
+LOCATION:Taboão da Serra - SP
+DESCRIPTION:Corrida de rua · 4km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-15-12-se-cuida-no-corre-coragem-cafune-taboao
+ -da-serra/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-12-se-cuida-no-cor
+ re-coragem-cafune-taboao-da-serra/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -10227,14 +10382,14 @@ UID:2026-11-15-1-corrida-e-caminhada-panobianco-engenheiro-goulart-robru-no
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
-SUMMARY:1ª CORRIDA E CAMINHADA Panobianco Engenheiro Goulart Robrú Nordes
- tina 2026
+SUMMARY:1ª CORRIDA E CAMINHADA PANOBIANCO - ENGENHEIRO GOULART | ROBRÚ | 
+ NORDESTINA 2026
 LOCATION:São Paulo - SP
 DESCRIPTION:Caminhada\nInscrição: https://www.ticketsports.com.br/e/1%C2%
- AA+CORRIDA+E+CAMINHADA+Panobianco+Engenheiro+Goulart+++Robr%C3%BA+++Nordes
- tina-88746\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2
- 026-11-15-1-corrida-e-caminhada-panobianco-engenheiro-goulart-robru-nordes
- tina-sao-paulo/
+ AA+CORRIDA+E+CAMINHADA+PANOBIANCO+-+ENGENHEIRO+GOULART+%7C+ROBR%C3%9A+%7C+
+ NORDESTINA-88746\nCupons e detalhes: https://www.cuponsdecorrida.com.br/pr
+ ovas/2026-11-15-1-corrida-e-caminhada-panobianco-engenheiro-goulart-robru-
+ nordestina-sao-paulo/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-1-corrida-e-caminh
  ada-panobianco-engenheiro-goulart-robru-nordestina-sao-paulo/
 TRANSP:TRANSPARENT
@@ -11041,6 +11196,36 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-santa-running-etap
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-15-santa-running-etapa-2-0-2026-sao-roque-2-2-2-2-2-2-2-2-2-2-2
+ -2-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:SANTA RUNNING Etapa 2.0 - 2026
+LOCATION:São Roque - SP
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-15-santa-running-etapa-2-0-2026-sao-roq
+ ue-2-2-2-2-2-2-2-2-2-2-2-2-2-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-santa-running-etap
+ a-2-0-2026-sao-roque-2-2-2-2-2-2-2-2-2-2-2-2-2-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-15-santa-running-etapa-2-0-2026-sao-roque-2-2-2-2-2-2-2-2-2-2-2
+ -2-2-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:SANTA RUNNING Etapa 2.0 - 2026
+LOCATION:São Roque - SP
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-11-15-santa-running-etapa-2-0-2026-sao-roq
+ ue-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-santa-running-etap
+ a-2-0-2026-sao-roque-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-15-santander-track-fields-run-series-sao-jose-do-rio-preto@cupo
  nsdecorrida.com.br
 DTSTAMP:20261027T235747Z
@@ -11206,16 +11391,16 @@ UID:2026-11-19-3-etapa-circuito-brasileiro-de-wakeboard-2026-ibiuna-wake-bo
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
-SUMMARY:3ª Etapa - Circuito Brasileiro de Wakeboard 2026 | Ibiúna Wake Bo
- ard Surf
+SUMMARY:3ª ETAPA - CIRCUITO BRASILEIRO DE WAKEBOARD 2026 | IBIÚNA WAKE BO
+ ARD
 LOCATION:Ibiúna - SP
 DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- 3%C2%AA+Etapa+-+Circuito+Brasileiro+de+Wakeboard+2026+%7C+Ibi%C3%BAna+Wake
- +Board++Surf-88735\nCupons e detalhes: https://www.cuponsdecorrida.com.br/
- provas/2026-11-19-3-etapa-circuito-brasileiro-de-wakeboard-2026-ibiuna-wak
- e-board-surf/
+ 3%C2%AA+ETAPA+-+CIRCUITO+BRASILEIRO+DE+WAKEBOARD+2026+%7C+IBI%C3%9ANA+WAKE
+ +BOARD-88735\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas
+ /2026-11-19-3-etapa-circuito-brasileiro-de-wakeboard-2026-ibiuna-wake-boar
+ d/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-19-3-etapa-circuito-b
- rasileiro-de-wakeboard-2026-ibiuna-wake-board-surf/
+ rasileiro-de-wakeboard-2026-ibiuna-wake-board/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -12361,9 +12546,9 @@ SUMMARY:Santander Night Run - São Paulo Etapa 2 - 2026
 LOCATION:São Paulo - SP
 DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
  ponsdecorrida.com.br/provas/2026-11-28-santander-night-run-sao-paulo-etapa
- -2-2026/
+ -2-2026-2/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-santander-night-ru
- n-sao-paulo-etapa-2-2026/
+ n-sao-paulo-etapa-2-2026-2/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -12814,6 +12999,20 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-caminhada-pelo-dia
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-29-ccjsl-caminhada-pelo-dia-de-doar-campinas-sp@cuponsdecorrida
+ .com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:CCJSL - CAMINHADA PELO DIA DE DOAR CAMPINAS/SP 2026
+LOCATION:Campinas - SP
+DESCRIPTION:Caminhada\nCupons e detalhes: https://www.cuponsdecorrida.com.b
+ r/provas/2026-11-29-ccjsl-caminhada-pelo-dia-de-doar-campinas-sp/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-ccjsl-caminhada-pe
+ lo-dia-de-doar-campinas-sp/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-29-circuito-oscar-2026-2027-2-etapa-sao-jose-dos-campos@cuponsd
  ecorrida.com.br
 DTSTAMP:20261027T235747Z
@@ -12843,6 +13042,22 @@ DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
  ulo/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-centenaria
  -sao-paulo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-corrida-do-distrito-de-inovacao-de-sao-paulo@cuponsdecorrida
+ .com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:CORRIDA DO DISTRITO DE INOVAÇÃO DE SÃO PAULO 2026
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/CORRIDA+DO+DISTRITO+DE+INOVA%C3%87%C3%83O+DE+S%C3%83O+
+ PAULO-88294\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/
+ 2026-11-29-corrida-do-distrito-de-inovacao-de-sao-paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-corrida-do-distrit
+ o-de-inovacao-de-sao-paulo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -13367,6 +13582,19 @@ DESCRIPTION:Corrida de rua · 21km\, 15km\, 10km\, 5km\nCupons e detalhes:
  rathon-sao-paulo/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-venus-women-s-half
  -marathon-sao-paulo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-vozes-lilas-piedade@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Vozes Lilás 2026
+LOCATION:Piedade - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-29-vozes-lilas-piedade/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-vozes-lilas-piedad
+ e/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -15671,6 +15899,20 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-12-20-villa-lobos-iii-sa
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-12-24-corrida-de-natal-5km-sao-paulo@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261224
+DTEND;VALUE=DATE:20261225
+SUMMARY:CORRIDA DE NATAL 5KM 2026
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua · 5 a 10km\nInscrição: https://www.ticketspor
+ ts.com.br/e/CORRIDA+DE+NATAL+5KM-88827\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2026-12-24-corrida-de-natal-5km-sao-paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-24-corrida-de-natal-5
+ km-sao-paulo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-12-26-32-night-run-show-sao-paulo@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261226
@@ -15990,13 +16232,13 @@ UID:2027-01-10-sampa-run-5km-sao-paulo@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270110
 DTEND;VALUE=DATE:20270111
-SUMMARY:SAMPA RUN 5KM 2027
+SUMMARY:Sampa Run 2027
 LOCATION:São Paulo - SP
-DESCRIPTION:Corrida de rua · 5 a 10km\nInscrição: https://www.ticketspor
- ts.com.br/e/SAMPA+RUN+5KM-88815\nCupons e detalhes: https://www.cuponsdeco
- rrida.com.br/provas/2027-01-10-sampa-run-5km-sao-paulo/
-URL:https://www.cuponsdecorrida.com.br/provas/2027-01-10-sampa-run-5km-sao-
- paulo/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/SAMPA+RUN+5KM-88815\nCupons e detalhes: https://www.cuponsdecorrida
+ .com.br/provas/2027-01-10-sampa-run-sao-paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-10-sampa-run-sao-paul
+ o/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16214,6 +16456,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2027-01-24-maratona-oficial-d
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-01-24-storm-run-summer-edition-2027-sao-paulo@cuponsdecorrida.com.
+ br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+SUMMARY:STORM RUN SUMMER EDITION 2027
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua · até 4km\, 5 a 10km\nInscrição: https://www
+ .ticketsports.com.br/e/STORM+RUN+SUMMER+EDITION+2027-88713\nCupons e detal
+ hes: https://www.cuponsdecorrida.com.br/provas/2027-01-24-storm-run-summer
+ -edition-2027-sao-paulo/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-24-storm-run-summer-e
+ dition-2027-sao-paulo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-01-24-th-sbt-ferreira-run-aracatuba@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270124
@@ -16327,6 +16585,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2027-01-30-night-music-run-et
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-01-31-1-corrida-e-caminhada-da-esperanca-lutecia-sp@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:1ª CORRIDA e CAMINHADA da ESPERANÇA LUTÉCIA SP 2027
+LOCATION:Lutécia - SP
+DESCRIPTION:Caminhada · 3km\, 5km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-01-31-1-corrida-e-caminhada-da-esperanca-luteci
+ a-sp/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-1-corrida-e-caminh
+ ada-da-esperanca-lutecia-sp/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-01-31-5-pereira-barreto-running@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270131
@@ -16372,14 +16645,14 @@ UID:2027-01-31-meia-maratona-sorvetes-jundiai@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
-SUMMARY:Meia Maratona Sorvetes Jundiaí 2027
+SUMMARY:Meia Maratona Sorvetes Jundia 2027
 LOCATION:Jundiaí - SP
 DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nInscrição: https://www.t
  icketsports.com.br/e/MEIA+MARATONA+SORVETES+JUNDI%C3%81-88777\nCupons e de
  talhes: https://www.cuponsdecorrida.com.br/provas/2027-01-31-meia-maratona
- -sorvetes-jundiai/
+ -sorvetes-jundia-2027-jundiai/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-meia-maratona-sorv
- etes-jundiai/
+ etes-jundia-2027-jundiai/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16416,14 +16689,14 @@ UID:2027-02-07-correndo-com-proposito-mogi-das-cruzes@cuponsdecorrida.com.b
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270207
 DTEND;VALUE=DATE:20270208
-SUMMARY:Correndo com Propósito 2027
+SUMMARY:Correndo pelo Propósito 2027
 LOCATION:Mogi das Cruzes - SP
-DESCRIPTION:Corrida de rua · 10km\, 5.7km\nInscrição: https://www.ticket
- sports.com.br/e/CORRENDO+PELO+PROP%C3%93SITO-88607\nCupons e detalhes: htt
- ps://www.cuponsdecorrida.com.br/provas/2027-02-07-correndo-com-proposito-m
- ogi-das-cruzes/
-URL:https://www.cuponsdecorrida.com.br/provas/2027-02-07-correndo-com-propo
- sito-mogi-das-cruzes/
+DESCRIPTION:Corrida de rua · 5km\, 5.7km\, 10km\nInscrição: https://www.
+ ticketsports.com.br/e/CORRENDO+PELO+PROP%C3%93SITO-88607\nCupons e detalhe
+ s: https://www.cuponsdecorrida.com.br/provas/2027-02-07-correndo-pelo-prop
+ osito-mogi-das-cruzes/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-07-correndo-pelo-prop
+ osito-mogi-das-cruzes/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16432,12 +16705,12 @@ UID:2027-02-14-2-corrida-saude-contra-o-cancer-itatiba@cuponsdecorrida.com.
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270214
 DTEND;VALUE=DATE:20270215
-SUMMARY:2º CORRIDA SAÚDE CONTRA O CÂNCER 2027
+SUMMARY:2ª Corrida Saúde Contra o Câncer 2027
 LOCATION:Itatiba - SP
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- 2%C2%BA+CORRIDA+SA%C3%9ADE+CONTRA+O+C%C3%82NCER-88569\nCupons e detalhes: 
- https://www.cuponsdecorrida.com.br/provas/2027-02-14-2-corrida-saude-contr
- a-o-cancer-itatiba/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
+ orts.com.br/e/2%C2%BA+CORRIDA+SA%C3%9ADE+CONTRA+O+C%C3%82NCER-88569\nCupon
+ s e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-02-14-2-corri
+ da-saude-contra-o-cancer-itatiba/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-02-14-2-corrida-saude-co
  ntra-o-cancer-itatiba/
 TRANSP:TRANSPARENT
@@ -16450,10 +16723,10 @@ DTSTART;VALUE=DATE:20270220
 DTEND;VALUE=DATE:20270221
 SUMMARY:1ª Night Run União e Trabalho 2027
 LOCATION:Viradouro - SP
-DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://www.ticketsp
- orts.com.br/e/1%C2%AA+Night+Run+Uni%C3%A3o+e+Trabalho+-88750\nCupons e det
- alhes: https://www.cuponsdecorrida.com.br/provas/2027-02-20-1-night-run-un
- iao-e-trabalho-viradouro/
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.ti
+ cketsports.com.br/e/1%C2%AA+Night+Run+Uni%C3%A3o+e+Trabalho+-88750\nCupons
+  e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-02-20-1-night-
+ run-uniao-e-trabalho-viradouro/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-02-20-1-night-run-uniao-
  e-trabalho-viradouro/
 TRANSP:TRANSPARENT
@@ -16520,13 +16793,13 @@ UID:2027-02-21-7-meia-maratona-e-7k-uneduvale-avare@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270221
 DTEND;VALUE=DATE:20270222
-SUMMARY:7ª Meia Maratona e 7K Uneduvale 2027
+SUMMARY:7ª Meia Maratona Alecrim e 7K Uneduvale 2027
 LOCATION:Avaré - SP
 DESCRIPTION:Corrida de rua · 21km\, 7km\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2027-02-21-7-meia-maratona-e-7k-uneduvale-avar
- e/
-URL:https://www.cuponsdecorrida.com.br/provas/2027-02-21-7-meia-maratona-e-
- 7k-uneduvale-avare/
+ ponsdecorrida.com.br/provas/2027-02-21-7-meia-maratona-alecrim-e-7k-uneduv
+ ale-avare/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-21-7-meia-maratona-al
+ ecrim-e-7k-uneduvale-avare/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16578,8 +16851,8 @@ DTSTART;VALUE=DATE:20270227
 DTEND;VALUE=DATE:20270228
 SUMMARY:Hota Sunset Run 2027
 LOCATION:Sertãozinho - SP
-DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
- orrida.com.br/provas/2027-02-27-hota-sunset-run-sertaozinho/
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2027-02-27-hota-sunset-run-sertaozinho/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-02-27-hota-sunset-run-se
  rtaozinho/
 TRANSP:TRANSPARENT
@@ -16598,6 +16871,20 @@ URL:https://www.cuponsdecorrida.com.br/provas/2027-02-27-rock-running-2-edi
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-02-27-sao-bernardo-backyard-sao-bernardo-do-campo@cuponsdecorrida.
+ com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:São Bernardo Backyard 2027
+LOCATION:São Bernardo do Campo - SP
+DESCRIPTION:Corrida de trail\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2027-02-27-sao-bernardo-backyard-sao-bernardo-do-campo/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-02-27-sao-bernardo-backy
+ ard-sao-bernardo-do-campo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-02-28-1-corrida-catolica-de-rio-preto-2027-sao-jose-do-rio-preto@c
  uponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
@@ -16605,10 +16892,10 @@ DTSTART;VALUE=DATE:20270228
 DTEND;VALUE=DATE:20270301
 SUMMARY:1ª CORRIDA CATÓLICA DE RIO PRETO 2027
 LOCATION:São José do Rio Preto - SP
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- 1%C2%AA+CORRIDA+CAT%C3%93LICA+DE+RIO+PRETO+2027+-88788\nCupons e detalhes:
-  https://www.cuponsdecorrida.com.br/provas/2027-02-28-1-corrida-catolica-d
- e-rio-preto-2027-sao-jose-do-rio-preto/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/1%C2%AA+CORRIDA+CAT%C3%93LICA+DE+RIO+PRETO+2027+-88788\nCupons e de
+ talhes: https://www.cuponsdecorrida.com.br/provas/2027-02-28-1-corrida-cat
+ olica-de-rio-preto-2027-sao-jose-do-rio-preto/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-02-28-1-corrida-catolica
  -de-rio-preto-2027-sao-jose-do-rio-preto/
 TRANSP:TRANSPARENT
@@ -16634,11 +16921,11 @@ DTSTART;VALUE=DATE:20270228
 DTEND;VALUE=DATE:20270301
 SUMMARY:CIRCUITO OSCAR 2026-2027 - 3ª ETAPA - SÃO JOSÉ 2
 LOCATION:São José dos Campos - SP
-DESCRIPTION:Corrida de rua · até 4km\, 5 a 10km\, 11 a 20km\nInscrição:
-  https://www.ticketsports.com.br/e/CIRCUITO+OSCAR+2026-2027+-+3%C2%AA+ETAP
- A+-+S%C3%83O+JOS%C3%89+2-88708\nCupons e detalhes: https://www.cuponsdecor
- rida.com.br/provas/2027-02-28-circuito-oscar-2026-2027-3-etapa-sao-jose-2-
- sao-jose-dos-campos/
+DESCRIPTION:Corrida de rua · 21km\, 10km\, 5km\nInscrição: https://www.t
+ icketsports.com.br/e/CIRCUITO+OSCAR+2026-2027+-+3%C2%AA+ETAPA+-+S%C3%83O+J
+ OS%C3%89+2-88708\nCupons e detalhes: https://www.cuponsdecorrida.com.br/pr
+ ovas/2027-02-28-circuito-oscar-2026-2027-3-etapa-sao-jose-2-sao-jose-dos-c
+ ampos/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-02-28-circuito-oscar-202
  6-2027-3-etapa-sao-jose-2-sao-jose-dos-campos/
 TRANSP:TRANSPARENT
@@ -16717,9 +17004,9 @@ DTSTART;VALUE=DATE:20270314
 DTEND;VALUE=DATE:20270315
 SUMMARY:COMERCIAL RUN 2027
 LOCATION:Ribeirão Preto - SP
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- COMERCIAL+RUN-88795\nCupons e detalhes: https://www.cuponsdecorrida.com.br
- /provas/2027-03-14-comercial-run-ribeirao-preto/
+DESCRIPTION:Corrida de rua · 5km\nInscrição: https://www.ticketsports.co
+ m.br/e/COMERCIAL+RUN-88795\nCupons e detalhes: https://www.cuponsdecorrida
+ .com.br/provas/2027-03-14-comercial-run-ribeirao-preto/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-03-14-comercial-run-ribe
  irao-preto/
 TRANSP:TRANSPARENT
@@ -16730,14 +17017,14 @@ UID:2027-03-14-maratona-internacional-de-campinas-2027@cuponsdecorrida.com.
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270314
 DTEND;VALUE=DATE:20270315
-SUMMARY:MARATONA INTERNACIONAL DE CAMPINAS 2027
+SUMMARY:MARATONA INTERNACIONAL de CAMPINAS - 2ª EDIÇÃO 2027
 LOCATION:Campinas - SP
-DESCRIPTION:Corrida de rua · 5 a 10km\, 21km\, 42km\nInscrição: https://
- www.ticketsports.com.br/e/MARATONA+INTERNACIONAL+DE+CAMPINAS+2027-88693\nC
- upons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-03-14-mar
- atona-internacional-de-campinas-2027/
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\, 30km\, 42km\nInscrição:
+  https://www.ticketsports.com.br/e/MARATONA+INTERNACIONAL+DE+CAMPINAS+2027
+ -88693\nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-
+ 03-14-maratona-internacional-de-campinas-2-edicao/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-03-14-maratona-internaci
- onal-de-campinas-2027/
+ onal-de-campinas-2-edicao/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16762,12 +17049,28 @@ DTSTART;VALUE=DATE:20270319
 DTEND;VALUE=DATE:20270320
 SUMMARY:INDOMIT COLUMBIA PEDRA DO BAÚ 2027
 LOCATION:São Bento do Sapucaí - SP
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- INDOMIT+COLUMBIA+PEDRA+DO+BA%C3%9A+2027-87146\nCupons e detalhes: https://
- www.cuponsdecorrida.com.br/provas/2027-03-19-indomit-columbia-pedra-do-bau
- -2027-sao-bento-do-sapucai/
+DESCRIPTION:Corrida de rua · 7km\, 12km\, 21km\, 35km\, 50km\, 80km\nInscr
+ ição: https://www.ticketsports.com.br/e/INDOMIT+COLUMBIA+PEDRA+DO+BA%C3%
+ 9A+2027-87146\nCupons e detalhes: https://www.cuponsdecorrida.com.br/prova
+ s/2027-03-19-indomit-columbia-pedra-do-bau-2027-sao-bento-do-sapucai/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-03-19-indomit-columbia-p
  edra-do-bau-2027-sao-bento-do-sapucai/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-21-corrida-contra-a-polio-no-mundo-olimpia@cuponsdecorrida.com.
+ br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+SUMMARY:CORRIDA CONTRA A PÓLIO NO MUNDO 2027
+LOCATION:Olímpia - SP
+DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
+ +CORRIDA+CONTRA+A+P%C3%93LIO+NO+MUNDO-88401\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2027-03-21-corrida-contra-a-polio-no-mundo
+ -olimpia/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-21-corrida-contra-a-p
+ olio-no-mundo-olimpia/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16778,10 +17081,65 @@ DTSTART;VALUE=DATE:20270321
 DTEND;VALUE=DATE:20270322
 SUMMARY:DOWNRUN KIDS - 2ª EDIÇÃO - 21/03/2027
 LOCATION:São Paulo - SP
-DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
- com.br/provas/2027-03-21-downrun-kids-2-edicao-21-03-2027-sao-paulo/
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-03-21-downrun-kids-2-edicao-21-03-2027-sao-paulo
+ /
 URL:https://www.cuponsdecorrida.com.br/provas/2027-03-21-downrun-kids-2-edi
  cao-21-03-2027-sao-paulo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-21-igt23k-2027-igarata@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+SUMMARY:IGT23K 2027
+LOCATION:Igaratá - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2027-03-21-igt23k-2027-igarata/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-21-igt23k-2027-igarat
+ a/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-21-rastro-trail-massaguacu-birigui-sp@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+SUMMARY:RASTRO TRAIL MASSAGUAÇU BIRIGUI SP 2027
+LOCATION:Birigui - SP
+DESCRIPTION:Corrida de trail · 6km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2027-03-21-rastro-trail-massaguacu-birigui-sp/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-21-rastro-trail-massa
+ guacu-birigui-sp/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-28-new-balance-15k-sao-paulo-2027@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270328
+DTEND;VALUE=DATE:20270329
+SUMMARY:NEW BALANCE 15K SÃO PAULO - 2027
+LOCATION:São Paulo - SP
+DESCRIPTION:Corrida de rua · 5 a 10km\, 21km\, 42km\nInscrição: https://
+ www.ticketsports.com.br/e/NEW+BALANCE+15K+S%C3%83O+PAULO+-+2027-88774\nCup
+ ons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-03-28-new-b
+ alance-15k-sao-paulo-2027/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-28-new-balance-15k-sa
+ o-paulo-2027/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-29-2-corrida-mulheres-em-movimento-bauru@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270329
+DTEND;VALUE=DATE:20270330
+SUMMARY:2ª CORRIDA MULHERES em MOVIMENTO 2027
+LOCATION:Bauru - SP
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2027-03-29-2-corrida-mulheres-em-movimento-bauru/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-03-29-2-corrida-mulheres
+ -em-movimento-bauru/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16791,8 +17149,8 @@ DTSTART;VALUE=DATE:20270403
 DTEND;VALUE=DATE:20270404
 SUMMARY:Resta Uma Backyard 2027
 LOCATION:Itupeva - SP
-DESCRIPTION:Corrida de trail\nCupons e detalhes: https://www.cuponsdecorrid
- a.com.br/provas/2027-04-03-resta-uma-backyard-itupeva/
+DESCRIPTION:Corrida de trail · 6.75km\nCupons e detalhes: https://www.cupo
+ nsdecorrida.com.br/provas/2027-04-03-resta-uma-backyard-itupeva/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-04-03-resta-uma-backyard
  -itupeva/
 TRANSP:TRANSPARENT
@@ -16803,11 +17161,12 @@ UID:2027-04-04-corrida-juntos-pelo-autismo-indaiatuba@cuponsdecorrida.com.b
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270404
 DTEND;VALUE=DATE:20270405
-SUMMARY:CORRIDA JUNTOS PELO AUTISMO 2027
+SUMMARY:Corrida juntos pelo autismo 2027
 LOCATION:Indaiatuba - SP
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- CORRIDA+JUNTOS+PELO+AUTISMO-88406\nCupons e detalhes: https://www.cuponsde
- corrida.com.br/provas/2027-04-04-corrida-juntos-pelo-autismo-indaiatuba/
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\nInscrição: https://www.tickets
+ ports.com.br/e/CORRIDA+JUNTOS+PELO+AUTISMO-88406\nCupons e detalhes: https
+ ://www.cuponsdecorrida.com.br/provas/2027-04-04-corrida-juntos-pelo-autism
+ o-indaiatuba/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-04-04-corrida-juntos-pel
  o-autismo-indaiatuba/
 TRANSP:TRANSPARENT
@@ -16835,12 +17194,41 @@ DTSTART;VALUE=DATE:20270411
 DTEND;VALUE=DATE:20270412
 SUMMARY:3ª CORRIDA HISTÓRICA SUPERGUARANI DE AMPARO 2027
 LOCATION:Amparo - SP
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- 3%C2%AA+CORRIDA+HIST%C3%93RICA+SUPERGUARANI+DE+AMPARO-88657\nCupons e deta
- lhes: https://www.cuponsdecorrida.com.br/provas/2027-04-11-3-corrida-histo
- rica-superguarani-de-amparo/
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.ticketsp
+ orts.com.br/e/3%C2%AA+CORRIDA+HIST%C3%93RICA+SUPERGUARANI+DE+AMPARO-88657\
+ nCupons e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-04-11-3
+ -corrida-historica-superguarani-de-amparo/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-04-11-3-corrida-historic
  a-superguarani-de-amparo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-24-1-corrida-casa-rg-presidente-epitacio@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270424
+DTEND;VALUE=DATE:20270425
+SUMMARY:1ª CORRIDA CASA RG PRESIDENTE EPITÁCIO 2027
+LOCATION:Presidente Epitácio - SP
+DESCRIPTION:Corrida de rua · 3km\, 5km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2027-04-24-1-corrida-casa-rg-presidente-epitaci
+ o/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-24-1-corrida-casa-rg-
+ presidente-epitacio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-25-4-triunfo-fast-run-super-5k-10-anos-teodoro-sampaio-sp@cupon
+ sdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270425
+DTEND;VALUE=DATE:20270426
+SUMMARY:4º TRIUNFO FAST RUN SUPER 5K - 10 ANOS - TEODORO SAMPAIO SP 2027
+LOCATION:Teodoro Sampaio - SP
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-04-25-4-triunfo-fast-run-super-5k-10-anos-teodor
+ o-sampaio-sp/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-25-4-triunfo-fast-run
+ -super-5k-10-anos-teodoro-sampaio-sp/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -16866,10 +17254,10 @@ DTSTART;VALUE=DATE:20270502
 DTEND;VALUE=DATE:20270503
 SUMMARY:5º CORRIDA DE ANIVERSÁRIO DE CAMPOS DO JORDÃO 2027
 LOCATION:Campos do Jordão - SP
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- 5%C2%BA+CORRIDA+DE+ANIVERS%C3%81RIO+DE+CAMPOS+DO+JORD%C3%83O-88458\nCupons
-  e detalhes: https://www.cuponsdecorrida.com.br/provas/2027-05-02-5-corrid
- a-de-aniversario-de-campos-do-jordao/
+DESCRIPTION:Corrida de rua · 2.5km\, 5km\, 10km\nInscrição: https://www.
+ ticketsports.com.br/e/5%C2%BA+CORRIDA+DE+ANIVERS%C3%81RIO+DE+CAMPOS+DO+JOR
+ D%C3%83O-88458\nCupons e detalhes: https://www.cuponsdecorrida.com.br/prov
+ as/2027-05-02-5-corrida-de-aniversario-de-campos-do-jordao/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-05-02-5-corrida-de-anive
  rsario-de-campos-do-jordao/
 TRANSP:TRANSPARENT

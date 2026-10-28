@@ -249,6 +249,20 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-25-i-corrida-sertao-r
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-29-1-circuito-outubro-rosa-massape-do-piaui@cuponsdecorrida.com
+ .br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261029
+DTEND;VALUE=DATE:20261030
+SUMMARY:1° CIRCUITO OUTUBRO ROSA 2026
+LOCATION:Massapê do Piauí - PI
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-29-1-circuito-outubro-rosa-massape-do-piaui/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-29-1-circuito-outubro
+ -rosa-massape-do-piaui/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-01-corrida-mulungu-trail-run-2026-caldeirao-grande-do-piaui@cup
  onsdecorrida.com.br
 DTSTAMP:20261027T235747Z
@@ -256,9 +270,10 @@ DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:CORRIDA MULUNGU TRAIL RUN 2026
 LOCATION:Caldeirão Grande do Piauí - PI
-DESCRIPTION:Corrida de trail · 3km\, 8km\nCupons e detalhes: https://www.c
- uponsdecorrida.com.br/provas/2026-11-01-corrida-mulungu-trail-run-2026-cal
- deirao-grande-do-piaui/
+DESCRIPTION:Corrida de trail · 3km\, 8km\nInscrição: https://www.tickets
+ ports.com.br/e/CORRIDA+MULUNGU+TRAIL+RUN+2026-88128\nCupons e detalhes: ht
+ tps://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-mulungu-trail-r
+ un-2026-caldeirao-grande-do-piaui/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-corrida-mulungu-tr
  ail-run-2026-caldeirao-grande-do-piaui/
 TRANSP:TRANSPARENT

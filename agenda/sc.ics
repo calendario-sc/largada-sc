@@ -2689,6 +2689,24 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-1-corrida-hungara-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-24-1-corrida-da-rede-feminina-de-combate-ao-cancer-de-guaramiri
+ m@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+SUMMARY:1ª Corrida da Rede Feminina de Combate ao Câncer de Guaramirim 20
+ 26
+LOCATION:Guaramirim - SC
+DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.mo
+ vnow.com.br/event/221-circuito-marias-run-1a-corrida-da-rede-feminina-de-c
+ ombate-ao-cancer-de-guaramirim\nCupons e detalhes: https://www.cuponsdecor
+ rida.com.br/provas/2026-10-24-1-corrida-da-rede-feminina-de-combate-ao-can
+ cer-de-guaramirim/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-1-corrida-da-rede-
+ feminina-de-combate-ao-cancer-de-guaramirim/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-10-24-1-corrida-e-caminhada-da-rede-feminina-de-combate-ao-cancer-
  sao-francisco-do-su@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
@@ -2739,16 +2757,11 @@ UID:2026-10-24-circuito-maria-s-run-1-corrida-da-rede-feminina-de-combate-a
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
-SUMMARY:Circuito Maria’s Run – 1ª Corrida da Rede Feminina de Combate 
- ao Câncer de Guaramirim 2026
-LOCATION:Guaramirim - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.mo
- vnow.com.br/event/221-circuito-marias-run-1a-corrida-da-rede-feminina-de-c
- ombate-ao-cancer-de-guaramirim\nCupons e detalhes: https://www.cuponsdecor
- rida.com.br/provas/2026-10-24-circuito-maria-s-run-1-corrida-da-rede-femin
- ina-de-combate-ao-cancer-de-guarami/
-URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-circuito-maria-s-r
- un-1-corrida-da-rede-feminina-de-combate-ao-cancer-de-guarami/
+SUMMARY:CORRE AÍ 2026
+LOCATION:Biguaçu - SC
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-10-24-corre-ai-biguacu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-corre-ai-biguacu/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2760,9 +2773,9 @@ SUMMARY:Continente Night Run 2026
 LOCATION:São José - SC
 DESCRIPTION:Corrida de rua · 4km\nInscrição: https://www.ticketsports.co
  m.br/e/CONTINENTE+NIGHT+RUN+2026-86974\nCupons e detalhes: https://www.cup
- onsdecorrida.com.br/provas/2026-10-24-continente-night-run-2026-sao-jose/
+ onsdecorrida.com.br/provas/2026-10-24-continente-night-run-sao-jose/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-continente-night-r
- un-2026-sao-jose/
+ un-sao-jose/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -4432,6 +4445,19 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-3-corrida-e-caminh
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-28-aniversario-1-ano-run7-icara@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:Aniversário 1 ano RUN7 2026
+LOCATION:Içara - SC
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-28-aniversario-1-ano-run7-icara/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-aniversario-1-ano-
+ run7-icara/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-28-dino-parque-run-2026-corrida-e-caminhada-ararangua@cuponsdec
  orrida.com.br
 DTSTAMP:20261027T235747Z
@@ -4763,6 +4789,21 @@ DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
  orrida.com.br/provas/2026-12-05-2-desafio-das-araucarias-campo-ere/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-2-desafio-das-arau
  carias-campo-ere/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-05-6-corrida-etilica-bar-do-pp-balneario-camboriu@cuponsdecorri
+ da.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:6ª Corrida Etílica Bar do PP 2026
+LOCATION:Balneário Camboriú - SC
+DESCRIPTION:Corrida de rua · 1.5km\nCupons e detalhes: https://www.cuponsd
+ ecorrida.com.br/provas/2026-12-05-6-corrida-etilica-bar-do-pp-balneario-ca
+ mboriu/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-6-corrida-etilica-
+ bar-do-pp-balneario-camboriu/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6059,10 +6100,9 @@ DTSTART;VALUE=DATE:20270320
 DTEND;VALUE=DATE:20270321
 SUMMARY:Garopaba Night Run 2027
 LOCATION:Garopaba - SC
-DESCRIPTION:Corrida de rua · 3km\, 5km\, 10km\nInscrição: https://www.bl
- ueticket.com.br/evento/41923/garopaba-night-run-5-edicao-2027\nCupons e de
- talhes: https://www.cuponsdecorrida.com.br/provas/2027-03-20-garopaba-nigh
- t-run/
+DESCRIPTION:Corrida de rua · 5km\, 10km\nInscrição: https://www.bluetick
+ et.com.br/evento/41923/garopaba-night-run-5-edicao-2027\nCupons e detalhes
+ : https://www.cuponsdecorrida.com.br/provas/2027-03-20-garopaba-night-run/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-03-20-garopaba-night-run
  /
 TRANSP:TRANSPARENT
@@ -6180,9 +6220,9 @@ DTSTART;VALUE=DATE:20270404
 DTEND;VALUE=DATE:20270405
 SUMMARY:5ª Corrida dos Anjos 2027
 LOCATION:Itajaí - SC
-DESCRIPTION:Corrida de rua\nInscrição: https://vemcorrer.com/evento/364-5
- d-corrida-dos-anjos-2026\nCupons e detalhes: https://www.cuponsdecorrida.c
- om.br/provas/2027-04-04-5-corrida-dos-anjos-itajai/
+DESCRIPTION:Corrida de rua · 10km\, 5km\nInscrição: https://vemcorrer.co
+ m/evento/364-5d-corrida-dos-anjos-2026\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2027-04-04-5-corrida-dos-anjos-itajai/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-04-04-5-corrida-dos-anjo
  s-itajai/
 TRANSP:TRANSPARENT
@@ -6265,12 +6305,27 @@ UID:2027-04-17-meia-maratona-internacional-de-balneario-camboriu@cuponsdeco
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270417
 DTEND;VALUE=DATE:20270418
-SUMMARY:Meia Maratona Internacional de Balneário Camboriú 2027
+SUMMARY:Meia Maratona Internacional de Balneário Camboriú - Sunset 2027
 LOCATION:Balneário Camboriú - SC
 DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nCupons e detalhes: https:/
  /www.cuponsdecorrida.com.br/provas/2027-04-17-meia-maratona-internacional-
- de-balneario-camboriu/
+ de-balneario-camboriu-sunset/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-04-17-meia-maratona-inte
+ rnacional-de-balneario-camboriu-sunset/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-18-meia-maratona-internacional-de-balneario-camboriu@cuponsdeco
+ rrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270418
+DTEND;VALUE=DATE:20270419
+SUMMARY:Meia Maratona Internacional de Balneário Camboriú 2027
+LOCATION:Balneário Camboriú - SC
+DESCRIPTION:Corrida de rua · 21km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-04-18-meia-maratona-internacional-de-balneario-
+ camboriu/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-04-18-meia-maratona-inte
  rnacional-de-balneario-camboriu/
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -6381,6 +6436,20 @@ URL:https://www.cuponsdecorrida.com.br/provas/2027-05-02-mons-ultra-trail-u
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-05-09-meia-maratona-coracao-de-rondonia-ji@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270509
+DTEND;VALUE=DATE:20270510
+SUMMARY:MEIA MARATONA CORAÇÃO DE RONDÔNIA 2027
+LOCATION:Ji - SC
+DESCRIPTION:Corrida de rua · 5km\, 10km\, 21km\nCupons e detalhes: https:/
+ /www.cuponsdecorrida.com.br/provas/2027-05-09-meia-maratona-coracao-de-ron
+ donia-ji/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-09-meia-maratona-cora
+ cao-de-rondonia-ji/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-05-15-trac-2027-movement-is-trail-antonio-carlos@cuponsdecorrida.c
  om.br
 DTSTAMP:20261027T235747Z
@@ -6424,6 +6493,20 @@ URL:https://www.cuponsdecorrida.com.br/provas/2027-05-22-rico-run-jaragua-d
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-05-22-rio-do-rastro-marathon-25k-lauro-muller@cuponsdecorrida.com.
+ br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270522
+DTEND;VALUE=DATE:20270523
+SUMMARY:Rio do Rastro Marathon - 25k 2027
+LOCATION:Lauro Müller - SC
+DESCRIPTION:Corrida de rua · 25km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2027-05-22-rio-do-rastro-marathon-25k-lauro-muller/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-05-22-rio-do-rastro-mara
+ thon-25k-lauro-muller/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-05-23-3-corrida-e-caminhada-bella-citta-arroio-trinta@cuponsdecorr
  ida.com.br
 DTSTAMP:20261027T235747Z
@@ -6460,13 +6543,13 @@ UID:2027-05-23-rio-do-rastro-marathon-2027-edicao-renascimento-orleans@cupo
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270523
 DTEND;VALUE=DATE:20270524
-SUMMARY:RIO do Rastro Marathon 2027 | Edição Renascimento
+SUMMARY:Rio do Rastro Marathon - 42k 2027
 LOCATION:Orleans - SC
-DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
- com.br/provas/2027-05-23-rio-do-rastro-marathon-2027-edicao-renascimento-o
- rleans/
+DESCRIPTION:Corrida de rua · 42km\, 12km\nCupons e detalhes: https://www.c
+ uponsdecorrida.com.br/provas/2027-05-23-rio-do-rastro-marathon-42k-orleans
+ /
 URL:https://www.cuponsdecorrida.com.br/provas/2027-05-23-rio-do-rastro-mara
- thon-2027-edicao-renascimento-orleans/
+ thon-42k-orleans/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -6768,6 +6851,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2027-08-15-corrida-brisas-202
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-08-22-corrida-brisas-2027-exclusiva-para-mulheres-balneario-cambor
+ iu@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270822
+DTEND;VALUE=DATE:20270823
+SUMMARY:Corrida Brisas 2027 - Exclusiva para Mulheres
+LOCATION:Balneário Camboriú - SC
+DESCRIPTION:Corrida de rua · 15km\, 10km\, 5km\, 3km\nCupons e detalhes: h
+ ttps://www.cuponsdecorrida.com.br/provas/2027-08-22-corrida-brisas-2027-ex
+ clusiva-para-mulheres-balneario-camboriu/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-08-22-corrida-brisas-202
+ 7-exclusiva-para-mulheres-balneario-camboriu/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-08-22-meia-maratona-110-anos-de-chapeco@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270822
@@ -6923,6 +7021,35 @@ DESCRIPTION:Corrida de rua · 13km\, 6.5km\nCupons e detalhes: https://www.
  cuponsdecorrida.com.br/provas/2027-10-17-treze-run-treze-de-maio/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-10-17-treze-run-treze-de
  -maio/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-23-maratona-internacional-de-pomerode-1-dia@cuponsdecorrida.com
+ .br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20271023
+DTEND;VALUE=DATE:20271024
+SUMMARY:Maratona Internacional de Pomerode - 1º Dia 2027
+LOCATION:Pomerode - SC
+DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2027-10-23-maratona-internacional-de-pomerode-1-dia/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-10-23-maratona-internaci
+ onal-de-pomerode-1-dia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-24-maratona-internacional-de-pomerode-2-dia@cuponsdecorrida.com
+ .br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20271024
+DTEND;VALUE=DATE:20271025
+SUMMARY:Maratona Internacional de Pomerode - 2º Dia 2027
+LOCATION:Pomerode - SC
+DESCRIPTION:Corrida de rua · 42km\, 21km\nCupons e detalhes: https://www.c
+ uponsdecorrida.com.br/provas/2027-10-24-maratona-internacional-de-pomerode
+ -2-dia/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-10-24-maratona-internaci
+ onal-de-pomerode-2-dia/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

@@ -2156,13 +2156,13 @@ UID:2026-10-24-night-run-icarai-beach-19-edicao-2026-niteroi-rj@cuponsdecor
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
-SUMMARY:NIGHT RUN ICARAÍ BEACH - 19ª EDIÇÃO 2026 - NITERÓI RJ
+SUMMARY:Night Run Icaraí Beach - 19ª Edição 2026
 LOCATION:Niterói - RJ
 DESCRIPTION:Corrida de rua · 2km\, 4km\nCupons e detalhes: https://www.cup
- onsdecorrida.com.br/provas/2026-10-24-night-run-icarai-beach-19-edicao-202
- 6-niteroi-rj/
+ onsdecorrida.com.br/provas/2026-10-24-night-run-icarai-beach-19-edicao-nit
+ eroi/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-night-run-icarai-b
- each-19-edicao-2026-niteroi-rj/
+ each-19-edicao-niteroi/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -2172,8 +2172,9 @@ DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:Rosas de Aço - 1ª Etapa 2026
 LOCATION:Rio de Janeiro - RJ
-DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
- com.br/provas/2026-10-24-rosas-de-aco-1-etapa-rio-de-janeiro/
+DESCRIPTION:Corrida de rua · Resultados desta Corrida\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2026-10-24-rosas-de-aco-1-etapa-
+ rio-de-janeiro/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-10-24-rosas-de-aco-1-eta
  pa-rio-de-janeiro/
 TRANSP:TRANSPARENT
@@ -2720,6 +2721,21 @@ DESCRIPTION:Caminhada · 5km\nCupons e detalhes: https://www.cuponsdecorrid
  -de-janeiro/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-1-corrida-5-km-e-c
  aminhada-da-aore-aore-run-rio-de-janeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-1-corrida-e-caminhada-da-academia-borny47-arraial-do-cabo@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:1ª CORRIDA e CAMINHADA da ACADEMIA BORNY47 2026
+LOCATION:Arraial do Cabo - RJ
+DESCRIPTION:Caminhada · 3km\, 5km\nCupons e detalhes: https://www.cuponsde
+ corrida.com.br/provas/2026-11-08-1-corrida-e-caminhada-da-academia-borny47
+ -arraial-do-cabo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-1-corrida-e-caminh
+ ada-da-academia-borny47-arraial-do-cabo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -3976,6 +3992,19 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-porto-saude-track-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-22-tambau-run-5km-rio-de-janeiro@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:TAMBAÚ RUN 5km 2026
+LOCATION:Rio de Janeiro - RJ
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-22-tambau-run-5km-rio-de-janeiro/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-tambau-run-5km-rio
+ -de-janeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-28-circuito-cervejeiro-de-corrida-etapa-cabo-frio@cuponsdecorri
  da.com.br
 DTSTAMP:20261027T235747Z
@@ -4106,6 +4135,24 @@ DESCRIPTION:Corrida de rua · 8km\nCupons e detalhes: https://www.cuponsdec
  io-bonito/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-2-corrida-do-proje
  to-atleta-da-vida-real-rio-bonito/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-caminhada-rio-em-niteroi-pelo-fim-da-violencia-contra-mulher
+ es-e-meninas-2026@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:CAMINHADA RIO EM NITERÓI PELO FIM DA VIOLÊNCIA CONTRA MULHERES E 
+ MENINAS 2026
+LOCATION:Niterói - RJ
+DESCRIPTION:Caminhada\nInscrição: https://www.ticketsports.com.br/e/CAMIN
+ HADA+RIO+EM+NITER%C3%93I+PELO+FIM+DA+VIOL%C3%8ANCIA+CONTRA+MULHERES+E+MENI
+ NAS+2026+-88809\nCupons e detalhes: https://www.cuponsdecorrida.com.br/pro
+ vas/2026-11-29-caminhada-rio-em-niteroi-pelo-fim-da-violencia-contra-mulhe
+ res-e-meninas-2026/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-29-caminhada-rio-em-n
+ iteroi-pelo-fim-da-violencia-contra-mulheres-e-meninas-2026/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -4474,6 +4521,22 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-cdl-run-barra-mans
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-12-06-circuito-c-com-etapa-final-sao-jose-sao-jose-do-vale-do-rio-
+ preto@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:CIRCUITO C-COM - ETAPA FINAL SÃO JOSÉ 2026
+LOCATION:São José do Vale do Rio Preto - RJ
+DESCRIPTION:Corrida de rua · 5 a 10km\nInscrição: https://www.ticketspor
+ ts.com.br/e/CIRCUITO+C-COM+-+ETAPA+FINAL+S%C3%83O+JOS%C3%89-88691\nCupons 
+ e detalhes: https://www.cuponsdecorrida.com.br/provas/2026-12-06-circuito-
+ c-com-etapa-final-sao-jose-sao-jose-do-vale-do-rio-preto/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-circuito-c-com-eta
+ pa-final-sao-jose-sao-jose-do-vale-do-rio-preto/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-12-06-cqv-run-familia-2026-mendes@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20261206
@@ -4820,6 +4883,22 @@ DESCRIPTION:Caminhada · 3km\, 5km\nInscrição: https://www.ticketsports.c
  -1-corrida-e-caminhada-da-apae-de-sao-pedro-da-aldeia/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-1-corrida-e-caminh
  ada-da-apae-de-sao-pedro-da-aldeia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-13-1-corrida-e-caminhada-da-academia-borny47-arraial-do-cabo@cu
+ ponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:1ª Corrida e Caminhada da Academia Borny47 2026
+LOCATION:Arraial do Cabo - RJ
+DESCRIPTION:Caminhada · 5km\nInscrição: https://www.ticketsports.com.br/
+ e/1%C2%AA+CORRIDA+E+CAMINHADA+DA+ACADEMIA+BORNY47++++-87929\nCupons e deta
+ lhes: https://www.cuponsdecorrida.com.br/provas/2026-12-13-1-corrida-e-cam
+ inhada-da-academia-borny47-arraial-do-cabo/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-13-1-corrida-e-caminh
+ ada-da-academia-borny47-arraial-do-cabo/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5289,6 +5368,32 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-12-31-go-run-sao-pedro-d
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-12-31-go-run-sao-pedro-da-aldeia-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Go Run 2026
+LOCATION:São Pedro da Aldeia - RJ
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-31-go-run-sao-pedro-da-aldeia-2-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-31-go-run-sao-pedro-d
+ a-aldeia-2-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-31-go-run-sao-pedro-da-aldeia-2-2-2@cuponsdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Go Run 2026
+LOCATION:São Pedro da Aldeia - RJ
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-31-go-run-sao-pedro-da-aldeia-2-2-2/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-31-go-run-sao-pedro-d
+ a-aldeia-2-2-2/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-01-10-biathlon-del-jordao-2027-angra-dos-reis@cuponsdecorrida.com.
  br
 DTSTAMP:20261027T235747Z
@@ -5372,7 +5477,7 @@ DTEND;VALUE=DATE:20270121
 SUMMARY:All Running Summer Run Musal 2027
 LOCATION:Rio de Janeiro - RJ
 DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
- rts.com.br/e/All+Running+summer+run+musal-88743\nCupons e detalhes: https:
+ rts.com.br/e/ALL+RUNNING+SUMMER+RUN+MUSAL-88743\nCupons e detalhes: https:
  //www.cuponsdecorrida.com.br/provas/2027-01-20-all-running-summer-run-musa
  l-rio-de-janeiro/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-01-20-all-running-summer
@@ -5446,7 +5551,7 @@ UID:2027-01-24-gym-run-2027-angra-dos-reis@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270124
 DTEND;VALUE=DATE:20270125
-SUMMARY:GYM RUN 2027
+SUMMARY:Gym Run 2027
 LOCATION:Angra dos Reis - RJ
 DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
  rts.com.br/e/GYM+RUN+2027-88755\nCupons e detalhes: https://www.cuponsdeco
@@ -5480,6 +5585,22 @@ DESCRIPTION:Corrida de rua · 6km\nInscrição: https://www.ticketsports.co
  onsdecorrida.com.br/provas/2027-01-30-summer-night-run-arraial-do-cabo/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-01-30-summer-night-run-a
  rraial-do-cabo/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-31-corrida-de-carnaval-2027-rio-de-janeiro@cuponsdecorrida.com.
+ br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Corrida de carnaval 2027
+LOCATION:Rio de Janeiro - RJ
+DESCRIPTION:Corrida de rua · 3km\, 5km\nInscrição: https://www.ticketspo
+ rts.com.br/e/CORRIDA+DE+CARNAVAL+2027-88744\nCupons e detalhes: https://ww
+ w.cuponsdecorrida.com.br/provas/2027-01-31-corrida-de-carnaval-2027-rio-de
+ -janeiro/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-01-31-corrida-de-carnava
+ l-2027-rio-de-janeiro/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -5535,10 +5656,10 @@ DTSTART;VALUE=DATE:20270221
 DTEND;VALUE=DATE:20270222
 SUMMARY:AREIA BRANCA UPDoWN (16 e 08 kMS) 2027
 LOCATION:Macaé - RJ
-DESCRIPTION:Corrida de rua\nInscrição: https://www.ticketsports.com.br/e/
- AREIA+BRANCA+UPDoWN+(16+e+08+kMS)-86823\nCupons e detalhes: https://www.cu
- ponsdecorrida.com.br/provas/2027-02-21-areia-branca-updown-16-e-08-kms-mac
- ae/
+DESCRIPTION:Corrida de rua · 8km\, 16km\nInscrição: https://www.ticketsp
+ orts.com.br/e/AREIA+BRANCA+UPDoWN+(16+e+08+kMS)-86823\nCupons e detalhes: 
+ https://www.cuponsdecorrida.com.br/provas/2027-02-21-areia-branca-updown-1
+ 6-e-08-kms-macae/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-02-21-areia-branca-updow
  n-16-e-08-kms-macae/
 TRANSP:TRANSPARENT
@@ -5707,6 +5828,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2027-06-06-corrida-copa-delas
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-06-06-corrida-copas-delas-run-rio-de-janeiro@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270606
+DTEND;VALUE=DATE:20270607
+SUMMARY:Corrida Copas Delas Run 2027
+LOCATION:Rio de Janeiro - RJ
+DESCRIPTION:Corrida de rua · 5km\, 3km\nCupons e detalhes: https://www.cup
+ onsdecorrida.com.br/provas/2027-06-06-corrida-copas-delas-run-rio-de-janei
+ ro/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-06-06-corrida-copas-dela
+ s-run-rio-de-janeiro/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-08-01-3-meia-maratona-de-resende@cuponsdecorrida.com.br
 DTSTAMP:20261027T235747Z
 DTSTART;VALUE=DATE:20270801
@@ -5775,6 +5911,23 @@ DESCRIPTION:Corrida de rua · 42km\nCupons e detalhes: https://www.cuponsde
  de/
 URL:https://www.cuponsdecorrida.com.br/provas/2027-08-16-a-muralha-up-and-d
  own-marathon-2027-resende/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-09-12-19-corrida-ecologica-do-sana-maratona-trail-2026-macae@cupon
+ sdecorrida.com.br
+DTSTAMP:20261027T163356Z
+DTSTART;VALUE=DATE:20270912
+DTEND;VALUE=DATE:20270913
+SUMMARY:19ª CORRIDA ECOLÓGICA DO SANA + MARATONA TRAIL 2026 2027
+LOCATION:Macaé - RJ
+DESCRIPTION:Corrida de trail · 3km\, 7km\, 15km\, 42km\nInscrição: https
+ ://www.ticketsports.com.br/e/19%C2%AA+CORRIDA+ECOL%C3%93GICA+DO+SANA+%2B+M
+ ARATONA+TRAIL+2026-88783\nCupons e detalhes: https://www.cuponsdecorrida.c
+ om.br/provas/2027-09-12-19-corrida-ecologica-do-sana-maratona-trail-2026-m
+ acae/
+URL:https://www.cuponsdecorrida.com.br/provas/2027-09-12-19-corrida-ecologi
+ ca-do-sana-maratona-trail-2026-macae/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

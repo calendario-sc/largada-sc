@@ -891,6 +891,21 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-beatrun-halloween-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-15-recover-run-recover-corrida-da-recovery-box-brasilia@cuponsd
+ ecorrida.com.br
+DTSTAMP:20261026T174824Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:RECOVER RUN RECOVER - Corrida da Recovery Box 2026
+LOCATION:Brasília - DF
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-15-recover-run-recover-corrida-da-recovery-box-brasi
+ lia/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-recover-run-recove
+ r-corrida-da-recovery-box-brasilia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-19-summit-abraceo-regional-centro-oeste-brasilia@cuponsdecorrid
  a.com.br
 DTSTAMP:20261027T235747Z
