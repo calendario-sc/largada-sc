@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-09-20-contemvida-day-2026-rio-branco@cuponsdecorrida.com.br
-DTSTAMP:20261025T151508Z
+DTSTAMP:20261028T173450Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Contemvida Day 2026
@@ -24,7 +24,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-08-srun-rio-branco-2026@cuponsdecorrida.com.br
-DTSTAMP:20261025T151508Z
+DTSTAMP:20261028T173450Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:SRUN - Rio Branco - 2026
@@ -38,7 +38,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-28-2-circuito-de-corrida-cbvida-rio-branco@cuponsdecorrida.com.
  br
-DTSTAMP:20261025T151508Z
+DTSTAMP:20261028T173450Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:2ª CIRCUITO de CORRIDA CBVIDA 2026
@@ -48,6 +48,20 @@ DESCRIPTION:Corrida de rua · 5km\, 10km\nCupons e detalhes: https://www.cu
  anco/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-11-28-2-circuito-de-corr
  ida-cbvida-rio-branco/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-seringueiro-de-ferro-2026-rio-branco@cuponsdecorrida.com.br
+DTSTAMP:20261028T173450Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:Seringueiro de Ferro 2026
+LOCATION:Rio Branco - AC
+DESCRIPTION:Corrida de rua · 5km\, 20km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-12-06-seringueiro-de-ferro-2026-rio-branc
+ o/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-seringueiro-de-fer
+ ro-2026-rio-branco/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
