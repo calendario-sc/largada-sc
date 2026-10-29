@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-08-30-m-c-run-palmas@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:M&C RUN 2026
@@ -23,7 +23,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-06-2-corrida-do-bope-palmas@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:2ª Corrida do BOPE 2026
@@ -36,7 +36,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-11-corrida-com-elas-abreulandia@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20260911
 DTEND;VALUE=DATE:20260912
 SUMMARY:Corrida com Elas 2026
@@ -49,7 +49,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-19-porto-run-porto-nacional@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20260919
 DTEND;VALUE=DATE:20260920
 SUMMARY:PORTO RUN 2026
@@ -62,7 +62,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-celebrando-a-vida-palmas@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:CELEBRANDO A VIDA 2026
@@ -75,7 +75,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-20-circuito-eco-run-palmas@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Circuito Eco Run - Palmas 2026
@@ -89,7 +89,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-09-27-circuito-das-estacoes-primavera-palmas@cuponsdecorrida.com.b
  r
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20260927
 DTEND;VALUE=DATE:20260928
 SUMMARY:Circuito das Estações - Primavera 2026
@@ -103,7 +103,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-14-2-ecorun-sitio-novo-do-tocantins@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261014
 DTEND;VALUE=DATE:20261015
 SUMMARY:2º ECORUN 2026
@@ -117,7 +117,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-17-corrida-eu-amo-paraiso-paraiso-do-tocantins@cuponsdecorrida.
  com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:CORRIDA EU AMO PARAÍSO 2026
@@ -132,7 +132,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-18-caminhada-e-corrida-sest-senat-2026-palmas@cuponsdecorrida.c
  om.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261018
 DTEND;VALUE=DATE:20261019
 SUMMARY:Caminhada e Corrida SEST SENAT 2026 - Palmas
@@ -144,8 +144,50 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-10-18-caminhada-e-corrid
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-31-corrida-de-rua-santa-rosa-do-tocantins@cuponsdecorrida.com.b
+ r
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:CORRIDA DE RUA – SANTA ROSA DO TOCANTINS 2026
+LOCATION:Santa Rosa do Tocantins - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-10-31-corrida-de-rua-santa-rosa-do-tocantins/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-corrida-de-rua-san
+ ta-rosa-do-tocantins/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-1-corrida-pace-no-km-sao-miguel-do-tocantins@cuponsdecorrida
+ .com.br
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:1ª CORRIDA PACE no KM 2026
+LOCATION:São Miguel do Tocantins - TO
+DESCRIPTION:Corrida de rua · 5km\nCupons e detalhes: https://www.cuponsdec
+ orrida.com.br/provas/2026-11-01-1-corrida-pace-no-km-sao-miguel-do-tocanti
+ ns/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-01-1-corrida-pace-no-
+ km-sao-miguel-do-tocantins/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-07-7-corrida-de-lizarda-73-anos@cuponsdecorrida.com.br
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:7ª CORRIDA de LIZARDA - 73 ANOS 2026
+LOCATION:Lizarda - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-07-7-corrida-de-lizarda-73-anos/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-7-corrida-de-lizar
+ da-73-anos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-07-maple-love-run-palmas@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261107
 DTEND;VALUE=DATE:20261108
 SUMMARY:Maple Love Run 2026
@@ -157,9 +199,23 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-07-maple-love-run-pal
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-08-2-corrida-pioneiros-de-taquaralto-palmas@cuponsdecorrida.com
+ .br
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:2ª CORRIDA PIONEIROS de TAQUARALTO 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-08-2-corrida-pioneiros-de-taquaralto-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-08-2-corrida-pioneiro
+ s-de-taquaralto-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-14-corridas-de-montanha-deserto-do-jalapao-2026-mateiros@cupons
  decorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261114
 DTEND;VALUE=DATE:20261115
 SUMMARY:CORRIDAS DE MONTANHA - DESERTO DO JALAPAO 2026
@@ -172,9 +228,38 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-11-14-corridas-de-montan
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-15-run-fest-10-anos-moorango-palmas@cuponsdecorrida.com.br
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:RUN FEST 10 ANOS MOORANGO 2026
+LOCATION:Palmas - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-15-run-fest-10-anos-moorango-palmas/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-15-run-fest-10-anos-m
+ oorango-palmas/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-22-1-corrida-movimento-1-aniversario-da-academia-movimento-de-p
+ almeiras-do-tocanti@cuponsdecorrida.com.br
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:1ª CORRIDA MOVIMENTO 1º ANIVERSÁRIO da ACADEMIA MOVIMENTO de PAL
+ MEIRAS do TOCANTINS 2026
+LOCATION:Palmeiras do Tocantins - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-11-22-1-corrida-movimento-1-aniversario-da-academia-mov
+ imento-de-palmeiras-do-tocanti/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-11-22-1-corrida-moviment
+ o-1-aniversario-da-academia-movimento-de-palmeiras-do-tocanti/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-22-circuito-das-estacoes-2026-verao-palmas@cuponsdecorrida.com.
  br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:Circuito das Estações 2026 - Verão - Palmas
@@ -188,7 +273,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-22-omega-run-26-augustinopolis@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261122
 DTEND;VALUE=DATE:20261123
 SUMMARY:ÔMEGA RUN 26 2026
@@ -202,7 +287,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-29-8-corrida-da-justica-da-acessibilidade-e-inclusao-tjto-palma
  s@cuponsdecorrida.com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:8ª CORRIDA da JUSTIÇA da ACESSIBILIDADE e INCLUSÃO - TJTO 2026
@@ -217,7 +302,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-29-corrida-novembro-azul-tocantinopolis-to@cuponsdecorrida.com.
  br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:corrida novembro azul-tocantinopolis-to 2026
@@ -231,7 +316,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-05-1-corrida-natal-solidario-2026-wanderlandia@cuponsdecorrida.
  com.br
-DTSTAMP:20261029T145722Z
+DTSTAMP:20261029T173823Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:1° CORRIDA NATAL SOLIDÁRIO-2026
@@ -241,6 +326,34 @@ DESCRIPTION:Corrida de rua · 6km\nCupons e detalhes: https://www.cuponsdec
  a/
 URL:https://www.cuponsdecorrida.com.br/provas/2026-12-05-1-corrida-natal-so
  lidario-2026-wanderlandia/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-06-trail-cerrado-solidario-miracema-do-tocantins@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:TRAIL CERRADO SOLIDÁRIO 2026
+LOCATION:Miracema do Tocantins - TO
+DESCRIPTION:Corrida de trail\nCupons e detalhes: https://www.cuponsdecorrid
+ a.com.br/provas/2026-12-06-trail-cerrado-solidario-miracema-do-tocantins/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-06-trail-cerrado-soli
+ dario-miracema-do-tocantins/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-12-corrida-e-confraternizacao-natalina-araguaina@cuponsdecorrid
+ a.com.br
+DTSTAMP:20261029T173823Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:CORRIDA E CONFRATERNIZAÇÃO NATALINA 2026
+LOCATION:Araguaína - TO
+DESCRIPTION:Corrida de rua\nCupons e detalhes: https://www.cuponsdecorrida.
+ com.br/provas/2026-12-12-corrida-e-confraternizacao-natalina-araguaina/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-12-12-corrida-e-confrate
+ rnizacao-natalina-araguaina/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

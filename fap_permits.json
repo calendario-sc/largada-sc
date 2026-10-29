@@ -111,6 +111,19 @@
 "largada": "08:00",
 "numero": "357/2026"
 },
+"1-L4cWj4z6Fo7zXS8fUXnigFmWjY_sywO": {
+"arquivo": "680-2026-KM1 - Halloween Operario.pdf",
+"cidade": "Ponta Grossa",
+"data": "2026-10-31",
+"entidade": "MURARO EVENTOS ESPORTIVOS EIRELI",
+"evento": "Halloween Operário",
+"km": [
+5.0
+],
+"largada": "20:00",
+"local": "Rua Padre Nóbrega, Ponta Grossa-PR",
+"numero": "680/2026"
+},
 "1-MCq9Pypuxqqg47XNcpEQONh-c5x-hLB": {
 "arquivo": "395.2026-1ª Fit Life Corre de Rancho Alegre PR.pdf",
 "cidade": "Rancho Alegre",
@@ -2891,6 +2904,20 @@
 "largada": "07:00",
 "numero": "087/2026"
 },
+"1KYEnPeC7VDqg7Mycru8w1D352WC1edm9": {
+"arquivo": "682-2026-Night Run - Pinhais.pdf",
+"cidade": "Pinhais",
+"data": "2026-10-31",
+"entidade": "INSTITUTO ISERBEM",
+"evento": "Night Run - Pinhais",
+"km": [
+10.0,
+5.0
+],
+"largada": "19:00",
+"local": "Parque das Águas, Pinhais-PR",
+"numero": "682/2026"
+},
 "1Kc8cvxrTlyYksmdgn8cFmKj4VpUcAHrD": {
 "arquivo": "213.2026-Circuito Corridas de Ruas - Etapa do Trabalhador.pdf",
 "cidade": "Medianeira",
@@ -3021,6 +3048,19 @@
 ],
 "largada": "08:30",
 "numero": "542/2026"
+},
+"1LFSnIG9Ke-uPvf58wsUWK_roeHD5t0m2": {
+"arquivo": "684-2026-Terry Fox Run Maringá 2026.pdf",
+"cidade": "Maringá",
+"data": "2026-11-01",
+"entidade": "MA FERA ESPORTES LTDA",
+"evento": "Terry Fox Run Maringá 2026",
+"km": [
+5.0
+],
+"largada": "06:30",
+"local": "Praça do antigo Aeroporto (Praça Salgado Filho) Avenida Doutor Gastão Vidigal, na Zona 08, Maringá - PR",
+"numero": "684/2026"
 },
 "1LG_VsTmxHtj43Mhs-N8MNBarmGLsB81e": {
 "arquivo": "552-2026-Circuito De Corrida Das Cores.pdf",
@@ -6853,6 +6893,21 @@
 "largada": "16:00",
 "numero": "316/2026"
 },
+"1m4JSGqETKFw2VCX6omU2gucn7Rx3lFMx": {
+"arquivo": "685-2026-Circuito Unimed Off Road 3 Etapa.pdf",
+"cidade": "",
+"data": "2026-11-01",
+"entidade": "PIAZZALUNGA & ORTIS LTDA",
+"evento": "Circuito Unimed Off Road 3 Etapa",
+"km": [
+21.0,
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "Rua Geraldo Júlio, 1600 (ao lado da Capela - ao fundo do Iapar): Londrina, PR",
+"numero": "685/2026"
+},
 "1mBc0Owlw5F6INNqhYZ8Ax6txynCIF9r6": {
 "arquivo": "437.2026-Circuito SESC de Corridas - Etapa Santo Antônio da Platina.pdf",
 "cidade": "Santo Antônio da Platina",
@@ -8068,6 +8123,19 @@
 "largada": "08:00",
 "numero": "506/2026"
 },
+"1vR2ApXZPAQPHYhjtBlMo5g_GPFAkfoLc": {
+"arquivo": "686-2026-Ebenezer Night Run.pdf",
+"cidade": "Nova Esperança",
+"data": "2026-10-31",
+"entidade": "FERNANDO ALEX FERNANDES PROMOCAO DE EVENTOS",
+"evento": "Circuito Unimed Off Road 3 Etapa",
+"km": [
+5.0
+],
+"largada": "17:00",
+"local": "Rua Romário Martin, Nova Esperança-PR",
+"numero": "686/2026"
+},
 "1vWaVzwTqHogtpfwi7NA8S5KZ3QzDu2eR": {
 "arquivo": "501-2026-Corrida 12 Anos Cidades dos Lagos.pdf",
 "cidade": "Guarapuava",
@@ -8538,6 +8606,19 @@
 "local": "R. Santos Dumont, 2626 - Vila Industrial, Toledo-PR",
 "numero": "657/2026"
 },
+"1ywHdDdh2OgGsRxmVlMTqCHEQSnZOvOrA": {
+"arquivo": "681-2026-Treino Corre Pra Tempo.pdf",
+"cidade": "Ponta Grossa",
+"data": "2026-10-31",
+"entidade": "CAVALI PRO EVENTOS",
+"evento": "Treino Corre Pra Tempo",
+"km": [
+5.0
+],
+"largada": "08:30",
+"local": "Av. Bonifácio Vilela, 1489 - Jardim Carvalho, Ponta Grossa-PR",
+"numero": "681/2026"
+},
 "1z2VtQ6wTCsiNe1pLYtcGCIfBdRai1l5L": {
 "arquivo": "219.2026-1ª COT Prime Run.pdf",
 "cidade": "Arapongas",
@@ -8626,5 +8707,18 @@
 ],
 "largada": "06:30",
 "numero": "298/2026"
+},
+"1zpWSwFLRx2iGw0wjra1TzpMuTHWRzZ3O": {
+"arquivo": "683-2026-Educa Run.pdf",
+"cidade": "Londrina",
+"data": "2026-10-31",
+"entidade": "INSTITUTO PARANAENSE DE ESPORTES E CULTURA",
+"evento": "Educa Run",
+"km": [
+4.8
+],
+"largada": "06:30",
+"local": "Aterro do Lago Igapó, Londrina-PR",
+"numero": "683/2026"
 }
 }
