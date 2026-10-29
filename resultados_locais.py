@@ -176,7 +176,7 @@ def publicar():
     if not git("status", "--porcelain").stdout.strip():
         registrar("nada mudou: nada a publicar")
         return
-    git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "es.html", "ba.html", "pe.html", "ce.html", "go.html", "mt.html", "ms.html", "pa.html", "am.html", "pb.html", "rn.html", "al.html", "se.html", "pi.html", "ma.html", "to.html", "ro.html", "ac.html", "ap.html", "rr.html", "todos.html", "provas-futuras.json")
+    git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "es.html", "ba.html", "pe.html", "ce.html", "go.html", "mt.html", "ms.html", "pa.html", "am.html", "pb.html", "rn.html", "al.html", "se.html", "pi.html", "ma.html", "to.html", "ro.html", "ac.html", "ap.html", "rr.html", "todos.html", "dados-*.js", "provas-futuras.json")
     git("add", "-A", "provas", "corridas-em", "agenda", "sitemap.xml", "robots.txt", "404.html", "provas.css")
     hoje = datetime.date.today().strftime("%d/%m/%Y")
     git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
@@ -190,7 +190,7 @@ def publicar():
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "merge", "-q", "-X", "ours", "origin/main", "-m", "junta coleta local")
         build.build()
-        git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "es.html", "ba.html", "pe.html", "ce.html", "go.html", "mt.html", "ms.html", "pa.html", "am.html", "pb.html", "rn.html", "al.html", "se.html", "pi.html", "ma.html", "to.html", "ro.html", "ac.html", "ap.html", "rr.html", "todos.html", "provas-futuras.json")
+        git("add", "corridas.json", "index.html", "pr.html", "rs.html", "sp.html", "rj.html", "df.html", "mg.html", "es.html", "ba.html", "pe.html", "ce.html", "go.html", "mt.html", "ms.html", "pa.html", "am.html", "pb.html", "rn.html", "al.html", "se.html", "pi.html", "ma.html", "to.html", "ro.html", "ac.html", "ap.html", "rr.html", "todos.html", "dados-*.js", "provas-futuras.json")
         git("add", "-A", "provas", "corridas-em", "agenda", "sitemap.xml", "robots.txt", "404.html", "provas.css")
         git("-c", "user.name=Largada SC", "-c", "user.email=thiagomansur@gmail.com",
             "commit", "-q", "-m", "reconstroi a pagina", checar=False)
@@ -269,6 +269,22 @@ def incentivos():
         registrar(f"leis de incentivo: FALHOU ({erro.__class__.__name__}: {erro})")
 
 
+def argentina():
+    """Mercado argentino do BI: uma vez por semana, dentro do mesmo job (pedido de 29/10/2026).
+    O script do BI decide se ja e hora (7 dias desde a ultima coleta) e publica so o mercado/argentina.json.
+    Falha aqui nao derruba o job do calendario."""
+    script = AQUI.parent / "cupons-bi" / "ferramentas" / "atualizar_argentina.py"
+    if not script.exists():
+        return
+    try:
+        r = subprocess.run([sys.executable, "-X", "utf8", str(script)], cwd=script.parent.parent, capture_output=True,
+                           text=True, encoding="utf-8", errors="replace", timeout=2 * 3600)
+        ultima = [l for l in (r.stdout or "").splitlines() if l.strip()][-1:] or ["sem saida"]
+        registrar("argentina: " + ultima[0][:200] + ("" if r.returncode == 0 else f" (codigo {r.returncode})"))
+    except Exception as erro:
+        registrar(f"argentina: FALHOU ({erro.__class__.__name__}: {erro})")
+
+
 def main():
     registrar("== inicio ==")
     try:
@@ -284,6 +300,7 @@ def main():
             registrar(f"atletas: FALHOU ({erro.__class__.__name__}: {erro})")
         publicar()
         incentivos()
+        argentina()
         return 0
     except Exception as erro:
         registrar(f"FALHOU: {erro.__class__.__name__}: {erro}")
