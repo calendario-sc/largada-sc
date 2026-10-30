@@ -269,20 +269,20 @@ def incentivos():
         registrar(f"leis de incentivo: FALHOU ({erro.__class__.__name__}: {erro})")
 
 
-def argentina():
-    """Mercado argentino do BI: uma vez por semana, dentro do mesmo job (pedido de 29/10/2026).
-    O script do BI decide se ja e hora (7 dias desde a ultima coleta) e publica so o mercado/argentina.json.
+def paises():
+    """Argentina e Uruguai no BI: uma vez por semana, dentro do mesmo job (pedidos de 29 e 30/10/2026).
+    O script do BI decide se ja e hora (7 dias desde a ultima coleta) e publica so o mercado/<pais>.json.
     Falha aqui nao derruba o job do calendario."""
-    script = AQUI.parent / "cupons-bi" / "ferramentas" / "atualizar_argentina.py"
+    script = AQUI.parent / "cupons-bi" / "ferramentas" / "atualizar_paises.py"
     if not script.exists():
         return
     try:
         r = subprocess.run([sys.executable, "-X", "utf8", str(script)], cwd=script.parent.parent, capture_output=True,
-                           text=True, encoding="utf-8", errors="replace", timeout=2 * 3600)
+                           text=True, encoding="utf-8", errors="replace", timeout=4 * 3600)
         ultima = [l for l in (r.stdout or "").splitlines() if l.strip()][-1:] or ["sem saida"]
-        registrar("argentina: " + ultima[0][:200] + ("" if r.returncode == 0 else f" (codigo {r.returncode})"))
+        registrar("paises: " + ultima[0][:200] + ("" if r.returncode == 0 else f" (codigo {r.returncode})"))
     except Exception as erro:
-        registrar(f"argentina: FALHOU ({erro.__class__.__name__}: {erro})")
+        registrar(f"paises: FALHOU ({erro.__class__.__name__}: {erro})")
 
 
 def main():
@@ -300,7 +300,7 @@ def main():
             registrar(f"atletas: FALHOU ({erro.__class__.__name__}: {erro})")
         publicar()
         incentivos()
-        argentina()
+        paises()
         return 0
     except Exception as erro:
         registrar(f"FALHOU: {erro.__class__.__name__}: {erro}")
