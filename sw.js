@@ -1,12 +1,12 @@
 // Service worker do app Cupons de Corrida (PWA).
 // Paginas: rede primeiro, com a copia guardada como reserva (abre offline o que ja foi visto).
 // Arquivos fixos (logo, icones, css, js): cache primeiro. A API e os dados nunca passam pelo cache.
-const VERSAO = "cupons-v3";
+const VERSAO = "cupons-v4";
 const FIXOS = ["/", "/cupons.html", "/cadastro.js", "/logo-cupons-de-corrida.png", "/favicon.svg", "/icone-app-192.png", "/icone-app-512.png", "/offline.html"];
 const SEM_CACHE = /(^https:\/\/api\.)|(^https:\/\/dados\.)|challenges\.cloudflare\.com|googletagmanager|google-analytics|\.json(\?|$)|\.ics(\?|$)/;
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(VERSAO).then(c => c.addAll(FIXOS).catch(() => null)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSAO).then(c => c.addAll(FIXOS.map(u => new Request(u, { cache: "reload" }))).catch(() => null)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", e => {
