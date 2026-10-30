@@ -72,6 +72,7 @@ const NOMES_UF_CAD = {"AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amaz
 .cad .aceite{display:flex; gap:.5rem; align-items:flex-start; font-size:.82rem; line-height:1.4; color:var(--ink-2,#2E3A50)}
 .cad .aceite input{margin-top:.15rem; flex:none}
 .cad .aceite a{color:inherit}
+.cad .autoriza{margin:0; font-size:.8rem; line-height:1.4; color:var(--ink-2,#2E3A50); background:var(--surface-2,#F4F6FA); border-radius:8px; padding:.5rem .65rem}
 .cad .opcional{font-weight:400; color:var(--muted,#5B6880)}
 .cad__enviar{font:inherit; font-weight:700; cursor:pointer; border:0; border-radius:12px; padding:.8rem; background:#FFC21A; color:#0A2F73; font-size:1rem}
 .cad__enviar[disabled]{opacity:.6; cursor:wait}
@@ -157,19 +158,17 @@ const NOMES_UF_CAD = {"AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amaz
         campo("Estado", uf),
       ]),
       el("fieldset", {}, [el("legend", { textContent: "Distâncias que você corre" }), dist]),
-      // Sem caixa a parte para o WhatsApp: quem informa o numero ja sabe para que ele serve
-      // (o texto fica junto do campo) e o aceite e registrado com o numero.
+      // Sem caixa a parte para o WhatsApp: o aviso abaixo do formulario diz para que ele serve
+      // e o aceite e registrado com o numero.
       campo("WhatsApp", el("input", { type: "tel", name: "whatsapp", autocomplete: "tel", placeholder: "(48) 99999-0000", maxLength: 20 }),
-            "(opcional) · ao informar, você aceita receber avisos de cupons e provas pelo WhatsApp"),
+            "(opcional) · para receber cupons e avisos de provas"),
       el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "maiorDeIdade" }),
         el("span", { textContent: "Tenho 18 anos ou mais." })]),
-      // Ja vem marcada: receber os cupons e o proprio motivo do cadastro, e o aceite
-      // definitivo e o clique no link do e-mail de confirmacao.
-      el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaNewsletter", checked: true }),
-        el("span", { textContent: "Quero receber a newsletter e os cupons de desconto por e-mail." })]),
       el("label", { className: "aceite" }, [el("input", { type: "checkbox", name: "aceitaPrivacidade" }),
         el("span", {}, [document.createTextNode("Li e aceito a "),
           el("a", { href: PRIVACIDADE, target: "_blank", rel: "noopener", textContent: "Política de Privacidade" }), document.createTextNode(".")])]),
+      // Regra de 30/10/2026: concluir o cadastro autoriza o envio; quem nao quiser mais sai pelo link das mensagens.
+      el("p", { className: "autoriza", textContent: "Ao criar seu perfil, você autoriza o Cupons de Corrida a enviar cupons, novidades e avisos de provas por e-mail e pelo WhatsApp informado. Para parar de receber, use o link de descadastro das mensagens." }),
       captcha, erro, enviar, cidades,
       el("p", { className: "cad__ja" }, [document.createTextNode("Já tem cadastro? "),
         el("a", { href: RAIZ + "area.html", textContent: "Entre na sua área do atleta" })]),
@@ -196,7 +195,7 @@ const NOMES_UF_CAD = {"AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amaz
         cidade: (f.get("cidade") || "").trim(), uf: f.get("uf") || "",
         distancias: f.getAll("distancias"), whatsapp: (f.get("whatsapp") || "").trim(),
         aceitaWhatsapp: Boolean((f.get("whatsapp") || "").trim()),
-        aceitaNewsletter: f.get("aceitaNewsletter") === "on", aceitaPrivacidade: f.get("aceitaPrivacidade") === "on",
+        aceitaNewsletter: true, aceitaPrivacidade: f.get("aceitaPrivacidade") === "on",
         maiorDeIdade: f.get("maiorDeIdade") === "on",
         origem: location.pathname, turnstile: window.turnstile && widget != null ? window.turnstile.getResponse(widget) : "",
       };
@@ -204,7 +203,6 @@ const NOMES_UF_CAD = {"AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amaz
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(dados.email)) return (erro.textContent = "Informe um e-mail válido.");
       if (dados.cidade.length < 2 || !dados.uf) return (erro.textContent = "Informe sua cidade e o estado.");
       if (!dados.maiorDeIdade) return (erro.textContent = "O cadastro é só para maiores de 18 anos.");
-      if (!dados.aceitaNewsletter) return (erro.textContent = "Para receber os cupons, marque a opção da newsletter.");
       if (!dados.aceitaPrivacidade) return (erro.textContent = "É preciso aceitar a Política de Privacidade.");
       enviar.disabled = true; enviar.textContent = "Enviando…";
       try {

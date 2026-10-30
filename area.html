@@ -412,7 +412,7 @@ async function buscarDados(caminho, opcoes){
     const pintarCategoria = () => { const c = categoriaDaIdade(nascimento.value); categoria.textContent = c ? "Categoria " + c : ""; categoria.hidden = !c; };
     nascimento.oninput = pintarCategoria;
     pintarCategoria();
-    const aceite = el("input", { type: "checkbox", checked: atleta.whatsapp_ok });
+    const aceite = el("input", { type: "checkbox", checked: atleta.whatsapp_ok || !atleta.whatsapp });
     const msg = el("p", { role: "status" });
     const salvar = el("button", { className: "botao", type: "submit", textContent: "Salvar" });
     const form = el("form", { className: "grade" }, [
