@@ -1,126 +1,127 @@
 == coleta ==
 == fontes ==
-  corridasbr: 192 provas
-  corridasbr/arquivo: 391 provas
+  corridasbr: 186 provas
+  corridasbr/arquivo: 399 provas
   ticketsports: 65 provas
-  roadrunners: 184 provas
-  movnow: 35 provas
-  atletis: 3 provas
-  sympla: 164 provas
+  roadrunners: 180 provas
+  movnow: 34 provas
+  atletis: 2 provas
+  sympla: 182 provas
   blueticket: 3 provas
   fca: 0 provas
-  corridasbr (PR): 145 provas
-  corridasbr/arquivo (PR): 427 provas
-  ticketsports (PR): 62 provas
-  roadrunners (PR): 152 provas
-  corridasbr (RS): 226 provas
+  corridasbr (PR): 134 provas
+  corridasbr/arquivo (PR): 430 provas
+  ticketsports (PR): 60 provas
+  roadrunners (PR): 138 provas
+  corridasbr (RS): 210 provas
   corridasbr/arquivo (RS): 463 provas
   ticketsports (RS): 18 provas
-  roadrunners (RS): 150 provas
-  corridasbr (SP): 437 provas
-  corridasbr/arquivo (SP): 1011 provas
-  ticketsports (SP): 217 provas
+  roadrunners (RS): 145 provas
+  corridasbr (SP): 415 provas
+  corridasbr/arquivo (SP): 1013 provas
+  ticketsports (SP): 212 provas
   roadrunners (SP): 500 provas
-  corridasbr (RJ): 205 provas
+  corridasbr (RJ): 198 provas
   corridasbr/arquivo (RJ): 341 provas
-  ticketsports (RJ): 89 provas
-  roadrunners (RJ): 190 provas
+  ticketsports (RJ): 88 provas
+  roadrunners (RJ): 185 provas
   corridasbr (DF): FALHOU (HTTPError: HTTP Error 404: Not Found)
-  corridasbr/arquivo (DF): 117 provas
+  corridasbr/arquivo (DF): 119 provas
   ticketsports (DF): 8 provas
-  roadrunners (DF): 33 provas
-  corridasbr (MG): 253 provas
-  corridasbr/arquivo (MG): 619 provas
+  roadrunners (DF): 30 provas
+  corridasbr (MG): 233 provas
+  corridasbr/arquivo (MG): 622 provas
   ticketsports (MG): 31 provas
-  roadrunners (MG): 234 provas
-  corridasbr (ES): 72 provas
+  roadrunners (MG): 211 provas
+  corridasbr (ES): 65 provas
   corridasbr/arquivo (ES): 101 provas
   ticketsports (ES): 28 provas
-  roadrunners (ES): 53 provas
-  corridasbr (BA): 157 provas
-  corridasbr/arquivo (BA): 253 provas
+  roadrunners (ES): 48 provas
+  corridasbr (BA): 151 provas
+  corridasbr/arquivo (BA): 254 provas
   ticketsports (BA): 23 provas
-  roadrunners (BA): 195 provas
-  corridasbr (PE): 136 provas
+  roadrunners (BA): 187 provas
+  corridasbr (PE): 132 provas
   corridasbr/arquivo (PE): 215 provas
-  ticketsports (PE): 37 provas
-  roadrunners (PE): 160 provas
-  corridasbr (CE): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
+  ticketsports (PE): 38 provas
+  roadrunners (PE): 155 provas
+  corridasbr (CE): 85 provas
   corridasbr/arquivo (CE): 206 provas
   ticketsports (CE): 7 provas
-  roadrunners (CE): 98 provas
-  corridasbr (GO): 123 provas
-  corridasbr/arquivo (GO): 271 provas
+  roadrunners (CE): 86 provas
+  corridasbr (GO): 115 provas
+  corridasbr/arquivo (GO): 273 provas
   ticketsports (GO): 3 provas
-  roadrunners (GO): 64 provas
+  roadrunners (GO): 57 provas
   corridasbr (MT): FALHOU (HTTPError: HTTP Error 404: Not Found)
-  corridasbr/arquivo (MT): 119 provas
+  corridasbr/arquivo (MT): 123 provas
   ticketsports (MT): 4 provas
-  roadrunners (MT): 46 provas
+  roadrunners (MT): 43 provas
   corridasbr (MS): FALHOU (HTTPError: HTTP Error 404: Not Found)
-  corridasbr/arquivo (MS): 97 provas
+  corridasbr/arquivo (MS): 98 provas
   ticketsports (MS): 4 provas
-  roadrunners (MS): 56 provas
-  corridasbr (PA): 133 provas
-  corridasbr/arquivo (PA): 208 provas
+  roadrunners (MS): 52 provas
+  corridasbr (PA): 123 provas
+  corridasbr/arquivo (PA): 212 provas
   ticketsports (PA): 5 provas
-  roadrunners (PA): 108 provas
+  roadrunners (PA): 98 provas
   corridasbr (AM): FALHOU (HTTPError: HTTP Error 404: Not Found)
-  corridasbr/arquivo (AM): 43 provas
-  ticketsports (AM): 16 provas
-  roadrunners (AM): 20 provas
-  corridasbr (PB): 47 provas
+  corridasbr/arquivo (AM): 44 provas
+  ticketsports (AM): 15 provas
+  roadrunners (AM): 19 provas
+  corridasbr (PB): 43 provas
   corridasbr/arquivo (PB): 130 provas
   ticketsports (PB): 7 provas
-  roadrunners (PB): 71 provas
-  corridasbr (RN): 47 provas
+  roadrunners (PB): 67 provas
+  corridasbr (RN): 46 provas
   corridasbr/arquivo (RN): 116 provas
   ticketsports (RN): 4 provas
-  roadrunners (RN): 53 provas
+  roadrunners (RN): 49 provas
   corridasbr (AL): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AL): 101 provas
   ticketsports (AL): 15 provas
-  roadrunners (AL): 62 provas
+  roadrunners (AL): 56 provas
   corridasbr (SE): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (SE): 38 provas
   ticketsports (SE): 7 provas
-  roadrunners (SE): 34 provas
+  roadrunners (SE): 33 provas
   corridasbr (PI): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (PI): 52 provas
-  ticketsports (PI): 4 provas
-  roadrunners (PI): 16 provas
+  ticketsports (PI): 5 provas
+  roadrunners (PI): 14 provas
   corridasbr (MA): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (MA): 42 provas
   ticketsports (MA): 2 provas
-  roadrunners (MA): 81 provas
+  roadrunners (MA): 75 provas
   corridasbr (TO): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (TO): 20 provas
   ticketsports (TO): 1 provas
-  roadrunners (TO): 17 provas
+  roadrunners (TO): 16 provas
   corridasbr (RO): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (RO): 29 provas
   ticketsports (RO): 1 provas
-  roadrunners (RO): 29 provas
+  roadrunners (RO): 27 provas
   corridasbr (AC): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AC): 1 provas
   ticketsports (AC): 1 provas
   roadrunners (AC): 3 provas
   corridasbr (AP): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
-  corridasbr/arquivo (AP): 19 provas
+  corridasbr/arquivo (AP): 21 provas
   ticketsports (AP): 2 provas
-  roadrunners (AP): 9 provas
+  roadrunners (AP): 8 provas
   corridasbr (RR): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (RR): 28 provas
   ticketsports (RR): 0 provas
-  roadrunners (RR): 14 provas
+  roadrunners (RR): 13 provas
   fap: 691 provas
   parceiros: 0 provas
 
-datas de ticketeira acertadas pela outra fonte: 2
+datas de ticketeira acertadas pela outra fonte: 3
   ~ 2026-12-11 -> 2026-12-12  BOI PRETO ULTRA [sympla]
   ~ 2026-11-08 -> 2026-11-07  Movimento Rosa - 2º Edição [sympla]
+  ~ 2026-11-28 -> 2026-11-29  Festival UP! [sympla]
 
-9287 provas distintas depois de fundir as fontes
+9228 provas distintas depois de fundir as fontes
 descartadas (63): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/AL/SE/PI/MA/TO/RO/AC/AP/RR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
@@ -131,22 +132,22 @@ descartadas (63): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/
   - 2026-05-31  Pouso Alegre - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - 2026-06-21  Muzambinho - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - ... e mais 55
-restam 9224 provas
-concluintes: 3364 provas no Open Results, 2539 casadas, 67 com numero novo, 57 provas criadas
+restam 9165 provas
+concluintes: 3715 provas no Open Results, 2790 casadas, 184 com numero novo, 79 provas criadas
 concluintes (chiprun): 2 provas consultadas, 1 preenchidas
-  resultado 2026-10-31 Santander Night Run 2026: FALHOU (ValueError)
+  resultado 2026-11-01 NB 15k: FALHOU (ValueError)
   resultado 2026-10-31 Circuito BB de Corridas de Rua - Maceió: FALHOU (ValueError)
-concluintes (link do corridasbr): 57 provas consultadas, 7 preenchidas
-genero: 72 provas consultadas, 61 preenchidas
-organizador: 80 provas consultadas, 36 preenchidas
+concluintes (link do corridasbr): 51 provas consultadas, 6 preenchidas
+genero: 188 provas consultadas, 173 preenchidas
+organizador: 173 provas consultadas, 99 preenchidas
 organizador: 34 provas preenchidas pela FCA
-organizador: 185 provas tiveram a grafia padronizada
-percurso: 39 provas consultadas no arquivo, 28 preenchidas
+organizador: 190 provas tiveram a grafia padronizada
+percurso: 44 provas consultadas no arquivo, 33 preenchidas
 fca: 35 provas juntadas as que ja existiam
 resultados repetidos removidos: 58
-series: 20451 eventos com uma ou mais edicoes | 44 resultados parciais marcados
-historico: 30572 provas (26870 ja realizadas) | 3037 cidades
-novas nesta rodada: 112
+series: 20536 eventos com uma ou mais edicoes | 44 resultados parciais marcados
+historico: 30673 provas (27148 ja realizadas) | 3038 cidades
+novas nesta rodada: 174
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-02-22  Belém - AP Run 2026 - 1ª Etapa
   + 2026-03-01  Boa Vista - Corrida da P.’.A.’.Z - 1ª Edição
@@ -161,19 +162,19 @@ novas nesta rodada: 112
   + 2026-08-23  Belém - AP Run 2026 - 4ª Etapa
   + 2026-09-06  Salto - Corrida da Santa
   + 2026-09-13  Belém - +B Run - 3° Edição
-  + 2026-10-31  Cascavel - Circuito 5 Praias - 4ª Etapa
+  + 2026-09-27  Pacatuba - 1° Aratanha Run
 
-futuras que nao apareceram hoje (158) - possivel cancelamento, mantidas no historico:
-  ? 2026-11-01  Belo Horizonte - Caminhada para Mulheres (visto pela ultima vez em 2026-10-31)
-  ? 2026-11-01  Camaçari - Corra por alguém (visto pela ultima vez em 2026-10-31)
-  ? 2026-11-01  Curitiba - Track&Field Run Series 2026 - Parkshoppingbarigüi (visto pela ultima vez em 2026-09-25)
-  ? 2026-11-01  Ipatinga - OUTUBRO DO PRIMEIRO PASSO- Camisa TRADICIONAL GG (visto pela ultima vez em 2026-10-31)
-  ? 2026-11-01  Passo Fundo - 1º Treinão Correria Passo Fundo (visto pela ultima vez em 2026-10-31)
-  ? 2026-11-01  Passo Fundo - 3a ETAPA DO CIRCUITO MUNICIPAL DE CORRIDA DE RUA 2026 - DESAFIO UPF (visto pela ultima vez em 2026-10-22)
-  ? 2026-11-01  Prudente de Morais - 2ª Corrida Prudente em Movimento (visto pela ultima vez em 2026-10-22)
-  ? 2026-11-01  São José - 5K Platz Night Run 2026 (visto pela ultima vez em 2026-10-30)
-  ? 2026-11-01  São Paulo - FECHADOS COM A VERDADE (visto pela ultima vez em 2026-10-31)
-  ? 2026-11-01  São Paulo - YOR EXPERIENCE - 1 ANO EM MOVIMENTO (visto pela ultima vez em 2026-10-22)
+futuras que nao apareceram hoje (143) - possivel cancelamento, mantidas no historico:
+  ? 2026-11-02  Betim - LOBO EXPERIENCE (visto pela ultima vez em 2026-10-31)
+  ? 2026-11-05  Itapeva - TREINAMENTO DE CORRIDA (visto pela ultima vez em 2026-10-22)
+  ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-24)
+  ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-28)
+  ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-29)
+  ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-30)
+  ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-31)
+  ? 2026-11-07  Caruaru - 1ª Corrida X-Running (visto pela ultima vez em 2026-10-24)
+  ? 2026-11-07  Caruaru - 1ª Corrida X-Running (visto pela ultima vez em 2026-10-28)
+  ? 2026-11-07  Caruaru - 1ª Corrida X-Running (visto pela ultima vez em 2026-10-29)
 
 cidades sem regiao (adicionar em REGIOES no comum.py): ['265', 'A Definir', 'Açu', 'Barra Grande', 'Brejo Bonito', 'Catolés', 'Dias Dávila', 'Dr. Camargo', 'Estância das Amendoeiras', 'Gracho Cardoso', 'Ji', 'Pariquera', 'Paty dos Alferes', 'Povoado Matolagem Flores', 'Praia Bela', 'Rua Antônio Severo Pinho', 'Rua Manoel Ramires', 'São Caetano', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Treme Run Natal Fantasy', 'Varpa', 'Varzea da Ema', 'Vila Ophélia', 'a 4 km do Centro de Dona Emma']
 
@@ -182,6 +183,6 @@ parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,370,640 bytes)
+artifact.html e index.html gerados (2,374,910 bytes)
 
-RESULTADO: pronto para publicar (coleta de 01/11/2026).
+RESULTADO: pronto para publicar (coleta de 02/11/2026).

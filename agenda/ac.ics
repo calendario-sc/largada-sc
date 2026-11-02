@@ -11,7 +11,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-09-20-contemvida-day-2026-rio-branco@cuponsdecorrida.com.br
-DTSTAMP:20261028T173450Z
+DTSTAMP:20261102T210936Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Contemvida Day 2026
@@ -23,8 +23,36 @@ URL:https://www.cuponsdecorrida.com.br/provas/2026-09-20-contemvida-day-202
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-10-30-1-corrida-do-servidor-brasileia-ac@cuponsdecorrida.com.br
+DTSTAMP:20261102T210936Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:1ª CORRIDA do SERVIDOR - BRASILÉIA - AC 2026
+LOCATION:Brasiléia - AC
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-30-1-corrida-do-servidor-brasileia-ac/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-30-1-corrida-do-servi
+ dor-brasileia-ac/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-31-13-corrida-do-servidor-do-acre-rio-branco@cuponsdecorrida.co
+ m.br
+DTSTAMP:20261102T210936Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:13 CORRIDA DO SERVIDOR DO ACRE - RIO BRANCO 2026
+LOCATION:Rio Branco - AC
+DESCRIPTION:Corrida de rua · 10km\, 5km\nCupons e detalhes: https://www.cu
+ ponsdecorrida.com.br/provas/2026-10-31-13-corrida-do-servidor-do-acre-rio-
+ branco/
+URL:https://www.cuponsdecorrida.com.br/provas/2026-10-31-13-corrida-do-serv
+ idor-do-acre-rio-branco/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-08-srun-rio-branco-2026@cuponsdecorrida.com.br
-DTSTAMP:20261028T173450Z
+DTSTAMP:20261102T210936Z
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:SRUN - Rio Branco - 2026
@@ -38,7 +66,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-28-2-circuito-de-corrida-cbvida-rio-branco@cuponsdecorrida.com.
  br
-DTSTAMP:20261028T173450Z
+DTSTAMP:20261102T210936Z
 DTSTART;VALUE=DATE:20261128
 DTEND;VALUE=DATE:20261129
 SUMMARY:2ª CIRCUITO de CORRIDA CBVIDA 2026
@@ -52,7 +80,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-06-seringueiro-de-ferro-2026-rio-branco@cuponsdecorrida.com.br
-DTSTAMP:20261028T173450Z
+DTSTAMP:20261102T210936Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:Seringueiro de Ferro 2026
