@@ -1,55 +1,55 @@
 == coleta ==
 == fontes ==
-  corridasbr: 189 provas
-  corridasbr/arquivo: 399 provas
+  corridasbr: 192 provas
+  corridasbr/arquivo: 398 provas
   ticketsports: 62 provas
   roadrunners: 188 provas
   movnow: 32 provas
   atletis: 2 provas
-  sympla: 176 provas
+  sympla: 174 provas
   blueticket: 3 provas
   fca: 0 provas
-  corridasbr (PR): 136 provas
+  corridasbr (PR): 140 provas
   corridasbr/arquivo (PR): 430 provas
-  ticketsports (PR): 60 provas
+  ticketsports (PR): 61 provas
   roadrunners (PR): 144 provas
-  corridasbr (RS): 210 provas
+  corridasbr (RS): 213 provas
   corridasbr/arquivo (RS): 463 provas
-  ticketsports (RS): 18 provas
+  ticketsports (RS): 19 provas
   roadrunners (RS): 152 provas
-  corridasbr (SP): 435 provas
+  corridasbr (SP): 443 provas
   corridasbr/arquivo (SP): 1013 provas
-  ticketsports (SP): 213 provas
+  ticketsports (SP): 211 provas
   roadrunners (SP): 500 provas
-  corridasbr (RJ): 204 provas
+  corridasbr (RJ): 211 provas
   corridasbr/arquivo (RJ): 341 provas
-  ticketsports (RJ): 89 provas
+  ticketsports (RJ): 86 provas
   roadrunners (RJ): 194 provas
   corridasbr (DF): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (DF): 119 provas
-  ticketsports (DF): 9 provas
+  ticketsports (DF): 8 provas
   roadrunners (DF): 32 provas
-  corridasbr (MG): 237 provas
+  corridasbr (MG): 252 provas
   corridasbr/arquivo (MG): 622 provas
-  ticketsports (MG): 32 provas
+  ticketsports (MG): 33 provas
   roadrunners (MG): 239 provas
   corridasbr (ES): 66 provas
   corridasbr/arquivo (ES): 101 provas
   ticketsports (ES): 29 provas
   roadrunners (ES): 48 provas
-  corridasbr (BA): 153 provas
+  corridasbr (BA): 158 provas
   corridasbr/arquivo (BA): 254 provas
   ticketsports (BA): 23 provas
   roadrunners (BA): 192 provas
-  corridasbr (PE): 135 provas
+  corridasbr (PE): 138 provas
   corridasbr/arquivo (PE): 215 provas
-  ticketsports (PE): 38 provas
+  ticketsports (PE): 39 provas
   roadrunners (PE): 164 provas
-  corridasbr (CE): 86 provas
+  corridasbr (CE): 89 provas
   corridasbr/arquivo (CE): 206 provas
   ticketsports (CE): 7 provas
   roadrunners (CE): 88 provas
-  corridasbr (GO): 125 provas
+  corridasbr (GO): 140 provas
   corridasbr/arquivo (GO): 273 provas
   ticketsports (GO): 3 provas
   roadrunners (GO): 69 provas
@@ -61,19 +61,19 @@
   corridasbr/arquivo (MS): 98 provas
   ticketsports (MS): 4 provas
   roadrunners (MS): 54 provas
-  corridasbr (PA): 126 provas
+  corridasbr (PA): 127 provas
   corridasbr/arquivo (PA): 212 provas
   ticketsports (PA): 5 provas
   roadrunners (PA): 101 provas
   corridasbr (AM): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AM): 44 provas
-  ticketsports (AM): 16 provas
-  roadrunners (AM): 20 provas
+  ticketsports (AM): 15 provas
+  roadrunners (AM): 21 provas
   corridasbr (PB): 45 provas
   corridasbr/arquivo (PB): 130 provas
   ticketsports (PB): 7 provas
   roadrunners (PB): 68 provas
-  corridasbr (RN): 48 provas
+  corridasbr (RN): 50 provas
   corridasbr/arquivo (RN): 116 provas
   ticketsports (RN): 4 provas
   roadrunners (RN): 52 provas
@@ -92,7 +92,7 @@
   corridasbr (MA): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (MA): 42 provas
   ticketsports (MA): 2 provas
-  roadrunners (MA): 79 provas
+  roadrunners (MA): 81 provas
   corridasbr (TO): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (TO): 20 provas
   ticketsports (TO): 1 provas
@@ -113,16 +113,17 @@
   corridasbr/arquivo (RR): 28 provas
   ticketsports (RR): 0 provas
   roadrunners (RR): 14 provas
-  fap: 693 provas
+  fap: 706 provas
   parceiros: 0 provas
 
-datas de ticketeira acertadas pela outra fonte: 3
+datas de ticketeira acertadas pela outra fonte: 4
   ~ 2026-12-11 -> 2026-12-12  BOI PRETO ULTRA [sympla]
   ~ 2026-11-08 -> 2026-11-07  Movimento Rosa - 2º Edição [sympla]
   ~ 2026-11-28 -> 2026-11-29  Festival UP! [sympla]
+  ~ 2026-11-28 -> 2026-11-29  NUCORRE HALLOWEEN FEST - TREINO [sympla]
 
-9336 provas distintas depois de fundir as fontes
-descartadas (62): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/AL/SE/PI/MA/TO/RO/AC/AP/RR ou nao sao corrida
+9369 provas distintas depois de fundir as fontes
+descartadas (61): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/AL/SE/PI/MA/TO/RO/AC/AP/RR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
@@ -131,21 +132,25 @@ descartadas (62): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/
   - 2026-05-03  João Pessoa - Cangaço Triathlon 2026 [triathlon]
   - 2026-05-31  Pouso Alegre - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - 2026-06-21  Muzambinho - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
-  - ... e mais 54
-restam 9274 provas
-concluintes: 3715 provas no Open Results, 2790 casadas, 67 com numero novo, 59 provas criadas
-concluintes (chiprun): 4 provas consultadas, 3 preenchidas
-concluintes (link do corridasbr): 150 provas consultadas, 2 preenchidas
-genero: 72 provas consultadas, 61 preenchidas
-organizador: 84 provas consultadas, 40 preenchidas
-organizador: 35 provas preenchidas pela FCA
+  - ... e mais 53
+restam 9308 provas
+historico: 2 registros duplicados juntados
+  = 2026-11-29  São Paulo - Circuito Forças da Natureza - Etapa Vulcão  <-  CORRIDAS VIRTUAIS CIRCUITO FORÇAS DA NAT
+  = 2026-12-06  Catalão - 7ª Corrida Dezembro Laranja - 2ª Meia Marato  <-  7ª Corrida Dezembro Laranja
+concluintes: 3715 provas no Open Results, 2788 casadas, 74 com numero novo, 58 provas criadas
+concluintes (chiprun): 2 provas consultadas, 1 preenchidas
+  resultado 2026-01-17 TTT 2026: FALHOU (ValueError)
+concluintes (link do corridasbr): 150 provas consultadas, 3 preenchidas
+genero: 78 provas consultadas, 67 preenchidas
+organizador: 98 provas consultadas, 58 preenchidas
+organizador: 41 provas preenchidas pela FCA
 organizador: 188 provas tiveram a grafia padronizada
-percurso: 25 provas consultadas no arquivo, 14 preenchidas
-fca: 35 provas juntadas as que ja existiam
+percurso: 26 provas consultadas no arquivo, 15 preenchidas
+fca: 36 provas juntadas as que ja existiam
 resultados repetidos removidos: 59
-series: 20668 eventos com uma ou mais edicoes | 44 resultados parciais marcados
-historico: 30843 provas (27174 ja realizadas) | 3052 cidades
-novas nesta rodada: 205
+series: 20719 eventos com uma ou mais edicoes | 44 resultados parciais marcados
+historico: 30909 provas (27191 ja realizadas) | 3056 cidades
+novas nesta rodada: 105
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-02-22  Belém - AP Run 2026 - 1ª Etapa
   + 2026-03-01  Boa Vista - Corrida da P.’.A.’.Z - 1ª Edição
@@ -159,11 +164,10 @@ novas nesta rodada: 205
   + 2026-08-02  São João del Rei - 2ª AC Run
   + 2026-08-23  Belém - AP Run 2026 - 4ª Etapa
   + 2026-09-06  Salto - Corrida da Santa
-  + 2026-11-03  Marechal Floriano - 2ª Corrida Vila Araguaya
-  + 2026-11-07  Almenara - 1ª CORRIDA NIGHT RUN – ALMENARA-MG
+  + 2026-09-13  Belém - +B Run - 3° Edição
+  + 2026-11-04  Guarapuava - Corrida Noturna - Uniguairacá 2026
 
-futuras que nao apareceram hoje (181) - possivel cancelamento, mantidas no historico:
-  ? 2026-11-03  Ariquemes - 2ª EDIÇÃO ARENA CROSS RACE TRAIL 2027 - ETAPA CAVEIRA (visto pela ultima vez em 2026-11-02)
+futuras que nao apareceram hoje (197) - possivel cancelamento, mantidas no historico:
   ? 2026-11-05  Itapeva - TREINAMENTO DE CORRIDA (visto pela ultima vez em 2026-10-22)
   ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-24)
   ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-28)
@@ -171,6 +175,7 @@ futuras que nao apareceram hoje (181) - possivel cancelamento, mantidas no histo
   ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-30)
   ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-10-31)
   ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-11-02)
+  ? 2026-11-07  Caruaru - 1ª CORRIDA X - RUNNING (visto pela ultima vez em 2026-11-03)
   ? 2026-11-07  Caruaru - 1ª Corrida X-Running (visto pela ultima vez em 2026-10-24)
   ? 2026-11-07  Caruaru - 1ª Corrida X-Running (visto pela ultima vez em 2026-10-28)
 
@@ -181,6 +186,6 @@ parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,377,927 bytes)
+artifact.html e index.html gerados (2,378,691 bytes)
 
-RESULTADO: pronto para publicar (coleta de 03/11/2026).
+RESULTADO: pronto para publicar (coleta de 04/11/2026).

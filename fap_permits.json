@@ -852,6 +852,20 @@
 "largada": "06:00",
 "numero": "517/2026"
 },
+"1492Bk1XZfOs91GbfgI5fcq8KtLDAIK2O": {
+"arquivo": "703-2026-3ª Corrida Noturna 3º Bpm Pato Branco PR.pdf",
+"cidade": "Pato Branco",
+"data": "2026-11-07",
+"entidade": "QUEDAS ADVENTURE",
+"evento": "3ª Corrida Noturna 3º Bpm Pato Branco",
+"km": [
+8.0,
+4.0
+],
+"largada": "19:30",
+"local": "Sede do 3º BPM Rua Argentina, 999, Bairro Menino Deus, Pato Branco-PR",
+"numero": "703/2026"
+},
 "14EkTrujcNUkFRcdXb--54N073632UGwg": {
 "arquivo": "601-2026-1ª Corrida Mãe Aparecida .pdf",
 "cidade": "Guarapuava",
@@ -1634,6 +1648,20 @@
 "largada": "07:00",
 "numero": "529/2026"
 },
+"19ZgsCXT-ExLiVss5nkUnIzRzW8wywQ4o": {
+"arquivo": "699-2026-Corrida Arauco.pdf",
+"cidade": "Araucária",
+"data": "2026-11-07",
+"entidade": "NOSSO TIME ASSOCIACAO ESPORTIVA",
+"evento": "Corrida Arauco",
+"km": [
+10.0,
+5.0
+],
+"largada": "20:00",
+"local": "Parque Cachoeira R. Guanabara, 2-74, Araucária-PR",
+"numero": "699/2026"
+},
 "19f51VTe1Q0E8f0empmrhYgxWUQPPGLXQ": {
 "arquivo": "587-2026-2° Desafio Ponte Quebrada .pdf",
 "cidade": "União da Vitória",
@@ -1862,6 +1890,21 @@
 "largada": "07:00",
 "local": "Praça Leonardo Braz de Oliveira, Distrito de Água Boa-PR.",
 "numero": "481/2026"
+},
+"1BgbJm9aR6Dl2h_usftKKHZ7-_L0WSmjr": {
+"arquivo": "710-2026-Meia Maratona The Best Açaí .pdf",
+"cidade": "Londrina",
+"data": "2026-11-08",
+"entidade": "CAPA EVENTOS",
+"evento": "Meia Maratona The Best Açaí",
+"km": [
+21.0,
+10.0,
+5.0
+],
+"largada": "06:00",
+"local": "Aterro do Lago Igapó 2, Londrina - PR",
+"numero": "710/2026"
 },
 "1BoQWF8ZPer2JEDhlaVLlszUYI5xEWn3e": {
 "arquivo": "271.2026-Desafio do Cimentão.pdf",
@@ -2362,6 +2405,20 @@
 "largada": "19:00",
 "local": "Avenida Arapongas, 35 (Praça Mauá), Arapongas-PR",
 "numero": "666/2026"
+},
+"1FVKUzclHwVRXryYFiKbrH8opzPjrtWkL": {
+"arquivo": "701-2026-Eco Run - Catterpillar.pdf",
+"cidade": "Campo Largo",
+"data": "2026-11-08",
+"entidade": "CONEXAO ESPORTIVA & CULTURAL",
+"evento": "Eco Run - Catterpillar",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "Parque Newton Puppi, Campo Largo-PR",
+"numero": "701/2026"
 },
 "1FeyktJGaODSztogeeTsNKyWwzXWQrhrn": {
 "arquivo": "164.2026-2ª Corrida Corra com a Polícia.pdf",
@@ -3570,6 +3627,19 @@
 "largada": "19:00",
 "numero": "505/2026"
 },
+"1OHPItlVR7b644M5pyxwXuDfoHvnDDwF-": {
+"arquivo": "706-2026-Desafio Planalto Norte Trail Run.pdf",
+"cidade": "Antônio Olinto",
+"data": "2026-11-08",
+"entidade": "64.601.697 ALESSANDRO JOSE DESCHK",
+"evento": "Desafio Planalto Norte Trail Run",
+"km": [
+6.0
+],
+"largada": "07:00",
+"local": "Centro de Eventos, Antônio Olinto-PR",
+"numero": "706/2026"
+},
 "1OJx4E9ocXyco-W82ZxrpCAaGPQ18lQfN": {
 "arquivo": "119.2026-Corrida e 2ª Caminhada Mulher em Movimento 2026.pdf",
 "cidade": "Araucária",
@@ -4323,6 +4393,19 @@
 "local": "Trilhas da Ferroeste, sn, Cascavel-PR.",
 "numero": "593/2026"
 },
+"1SiQftURh1hX3BdxlQHP-tNQIsKEzdD98": {
+"arquivo": "705-2026-1ª Corrida Contra Pólio — Rotary Clevelândia.pdf",
+"cidade": "Clevelândia",
+"data": "2026-11-08",
+"entidade": "QUEDAS ADVENTURE",
+"evento": "1ª Corrida Contra Pólio — Rotary Clevelândia",
+"km": [
+5.0
+],
+"largada": "07:30",
+"local": "Praça Getúlio Vargas, Clevelândia-PR",
+"numero": "705/2026"
+},
 "1SmIbgo5Xho0NgEPsdNmoVgId64Bw2PAv": {
 "arquivo": "551-2026-Corrida e Caminhada Sindaruc Bmai.pdf",
 "cidade": "Curitiba",
@@ -4776,6 +4859,19 @@
 "local": "Arena da Baixada, Curitiba-PR",
 "numero": "664/2026"
 },
+"1Wq9Kwhtpv-DBHvaAH5XSvxzCdRNhGsg8": {
+"arquivo": "702-2026-Corrida Noturna - Uniguairacá 2026.pdf",
+"cidade": "Guarapuava",
+"data": "2026-11-04",
+"entidade": "SESG - SOCIEDADE DE EDUCACAO SUPERIOR GUAIRACA LTDA",
+"evento": "Corrida Noturna - Uniguairacá 2026",
+"km": [
+3.0
+],
+"largada": "19:00",
+"local": "Rua XV de novembro, Guarapuava-PR",
+"numero": "702/2026"
+},
 "1WtDfuFcT7VcEZ_FjVjivmszEwMkHUU5w": {
 "arquivo": "625-2026-Yellow Run.pdf",
 "cidade": "Goioerê",
@@ -5178,6 +5274,20 @@
 ],
 "largada": "07:30",
 "numero": "326/2026"
+},
+"1ZYcdcS2VRjDiy7zzJbKg_ECmno0c_LBW": {
+"arquivo": "708-2026-17ª Corrida E Caminhada Ispon.pdf",
+"cidade": "Ponta Grossa",
+"data": "2026-11-08",
+"entidade": "MURARO EVENTOS ESPORTIVOS EIRELI",
+"evento": "17ª Corrida E Caminhada Ispon",
+"km": [
+10.0,
+5.0
+],
+"largada": "07:00",
+"local": "Conservatório Musical Maestro Paulino, Ponta Grossa-PR",
+"numero": "708/2026"
 },
 "1ZZpXsddy9uati4ltUmRcenFaDrxVcf4z": {
 "arquivo": "424.2026-Prova Rústica de Iguatemi.pdf",
@@ -5676,6 +5786,19 @@
 "largada": "07:30",
 "numero": "579/2026"
 },
+"1bWQ61AbQkWLYP2Lo6wo4d4-jSicEs_77": {
+"arquivo": "704-2026-1ª Corrida Pela Paz - Col. Santa Maria.pdf",
+"cidade": "Cascavel",
+"data": "2026-11-07",
+"entidade": "RDG EVENTOS LTDA",
+"evento": "1ª Corrida Pela Paz - Col. Santa Maria",
+"km": [
+6.0
+],
+"largada": "06:00",
+"local": "Colégio Santa Maria R. São Paulo, 2453, Cascavel-PR",
+"numero": "704/2026"
+},
 "1bWbadINe0EhRNlr9YR8KAgcvq0lfoiGO": {
 "arquivo": "011.2026-Force Run.pdf",
 "cidade": "Maringá",
@@ -5774,6 +5897,20 @@
 ],
 "largada": "08:00",
 "numero": "367/2026"
+},
+"1cLHoVe5-0Vfge4W_wm1s-q112vWvblN9": {
+"arquivo": "700-2026-Alçando Voos_ Sonhos Em Movimento.pdf",
+"cidade": "Foz do Iguaçu",
+"data": "2026-11-07",
+"entidade": "ALCANDO VOOS SONHOS EM MOVIMENTO",
+"evento": "Alçando Voos: Sonhos Em Movimento",
+"km": [
+10.0,
+5.0
+],
+"largada": "17:00",
+"local": "Mirante do Vertedouro, Foz do Iguaçu-PR",
+"numero": "700/2026"
 },
 "1cQGvBtMIYobrY0tUD4iGTb5AJbZqDxtw": {
 "arquivo": "256.2026-2ª Corrida da Mulher.pdf",
@@ -7835,6 +7972,20 @@
 "largada": "21:00",
 "numero": "184/2026"
 },
+"1rtf5RV2tI58ITXtPy5TpQT9NWpMz7KVp": {
+"arquivo": "712-2026-IV Corrida Solidária Unifatecie.pdf",
+"cidade": "Paranavaí",
+"data": "2026-11-08",
+"entidade": "FR & RF SAÚDE E PERFORMANCE",
+"evento": "IV Corrida Solidária Unifatecie",
+"km": [
+8.0,
+4.0
+],
+"largada": "07:30",
+"local": "Rua Getúlio Vargas, 1772, Paranavaí-PR",
+"numero": "712/2026"
+},
 "1s0QriAaBXGdznol3SRRLoMX9UUZYjprI": {
 "arquivo": "446.2026-1ª Ivai Run .pdf",
 "cidade": "Ivaí",
@@ -8106,6 +8257,19 @@
 "largada": "23:00",
 "local": "Av. Pref. Erasto Gaertner, 1000 - Bacacheri, Curitiba-PR.",
 "numero": "628/2026"
+},
+"1tgAV2HzkBPkCDPNz4NzhrknsBOvRItSo": {
+"arquivo": "707-2026-1ª Corrida Só Para Eles - Novembro Azul.pdf",
+"cidade": "Francisco Beltrão",
+"data": "2026-11-08",
+"entidade": "ASSOCIACAO BELTRONENSE DE ALTETAS AMADORES - ABAA",
+"evento": "Desafio Planalto Norte Trail Run",
+"km": [
+5.0
+],
+"largada": "07:30",
+"local": "Travessa Frei Deodato - Enfrente a Cobertura da Praça, Francisco Beltrão-PR",
+"numero": "707/2026"
 },
 "1u1TCNk6hpyG6dP71DKJWv7wchSmdDgHR": {
 "arquivo": "264.2026-Meia Maratona Internacional de Curitiba.pdf",
@@ -8675,6 +8839,19 @@
 ],
 "largada": "20:00",
 "numero": "520/2026"
+},
+"1yJywUPkPQmoAlpuIv_GUwS7V76O1Jk92": {
+"arquivo": "709-2026-1ª Corrida Alpha Run Jardim Alegre.pdf",
+"cidade": "Jardim Alegre",
+"data": "2026-11-08",
+"entidade": "LUIS FERNANDO NUCCI PASQUARELLI",
+"evento": "1ª Corrida Alpha Run Jardim Alegre",
+"km": [
+5.0
+],
+"largada": "07:30",
+"local": "Rua Santo Antônio, 319, Jardim Alegre-PR",
+"numero": "709/2026"
 },
 "1yLe-pukjODabs66qBW3t8IKRA-rYIMjf": {
 "arquivo": "696-2026-Sunset Run Ecoparque.pdf",
