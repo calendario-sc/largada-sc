@@ -966,6 +966,21 @@
 "largada": "08:00",
 "numero": "196/2026"
 },
+"14dRECRunuGmaGeAoHhx9QhIPMsdO40Kr": {
+"arquivo": "711-2026-10ª Corrida Da Reforma.pdf",
+"cidade": "Marechal Cândido Rondon",
+"data": "2026-11-08",
+"entidade": "ASSOCIAÇÃO DOS CORREDORES DE MARECHAL CÂNDIDO RONDON",
+"evento": "10ª Corrida Da Reforma",
+"km": [
+21.0,
+10.0,
+5.0
+],
+"largada": "06:30",
+"local": "Rua Ceará - Café Colonial, Marechal Cândido Rondon-PR",
+"numero": "711/2026"
+},
 "14hqKcr4yCHNaumHOcMQVfd2d_5NfW-vi": {
 "arquivo": "051.2026-Meia de Curita 2026.pdf",
 "cidade": "Curitiba",
@@ -3131,6 +3146,19 @@
 "largada": "07:00",
 "numero": "305/2026"
 },
+"1L7nEOdEuDI0XpKawzj866L3dhYmTCeuy": {
+"arquivo": "714-2026-Corrida Noturna.pdf",
+"cidade": "Guarapuava",
+"data": "2026-11-07",
+"entidade": "LMG EVENTOS ESPORTIVOS LTDA",
+"evento": "Corrida Noturna",
+"km": [
+5.0
+],
+"largada": "19:00",
+"local": "Hotel Spaço do Jordão, Guarapuava-PR",
+"numero": "714/2026"
+},
 "1LBeRqC1o-L6GMPWJreUYaznLqI3gwxoo": {
 "arquivo": "542-2026-Discover Trail Palmeira 2026.pdf",
 "cidade": "Palmeira",
@@ -4328,6 +4356,19 @@
 ],
 "largada": "07:00",
 "numero": "005/2026"
+},
+"1SDlHICOlGzxkT8OnIoj6VqZQ68y4_wG3": {
+"arquivo": "713-2026-Health Care Run - 2026.pdf",
+"cidade": "São José dos Pinhais",
+"data": "2026-11-29",
+"entidade": "LIGA RMC DE ESPORTES",
+"evento": "Health Care Run - 2026",
+"km": [
+5.0
+],
+"largada": "08:00",
+"local": "Fábrica Volkswagen - Rua Antônio Singer, 6751, São José dos Pinhais-PR",
+"numero": "713/2026"
 },
 "1SSMhI0tXjPOAbn0hEaNr8tKs1jAjHeHD": {
 "arquivo": "003.2026-168ª Corrida da Lua Cheia.pdf",
