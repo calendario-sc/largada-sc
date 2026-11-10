@@ -339,7 +339,9 @@ def build():
     # em que provas vale o cupom. A chave "data|nome" e a mesma do calendario.
     hoje = datetime.date.today().isoformat()
     futuras = sorted(({"chave": p["data"] + "|" + p["nome"], "data": p["data"], "nome": p["nome"],
-                       "cidade": p.get("cidade") or "", "uf": p.get("uf") or "SC", "org": p.get("organizadores") or []}
+                       "cidade": p.get("cidade") or "", "uf": p.get("uf") or "SC", "org": p.get("organizadores") or [],
+                       # link da inscricao: o painel do Cupom de Corrida (BI, /cupom/) preenche o cupom com ele
+                       **({"insc": insc} if (insc := (p.get("perfil") or {}).get("inscricao") or p.get("inscricao_url")) else {})}
                       for p in historico if p["data"] >= hoje and "Treino" not in (p.get("tags") or [])),
                      key=lambda x: (x["data"], x["nome"]))
     (AQUI / "provas-futuras.json").write_text(json.dumps(futuras, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
