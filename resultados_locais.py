@@ -21,6 +21,7 @@ Uso:  python resultados_locais.py
 
 import datetime
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -60,6 +61,40 @@ def repositorio_limpo():
     mudancas = [l for l in git("status", "--porcelain").stdout.splitlines()
                 if l.strip() and not l[3:].startswith("atletas/")]
     return not mudancas, mudancas
+
+
+# Arquivos que a propria coleta gera (os mesmos do "git add" em publicar e no robo do GitHub).
+GERADOS = re.compile(r"^(corridas\.json|provas-futuras\.json|sitemap\.xml|robots\.txt|404\.html|provas\.css|fap_permits\.json"
+                     r"|coletado_em\.txt|municipios\.json|ultima-coleta\.txt|index\.html|todos\.html|[a-z]{2}\.html|dados-[a-z]+\.js"
+                     r"|(provas|corridas-em|agenda)/.*)$")
+MARCA_STASH = "coleta interrompida"
+
+
+def guardar_coleta_interrompida(mudancas):
+    """Coleta anterior interrompida no meio (o notebook dormiu, 09 e 10/11/2026): se so mudaram arquivos que a
+    propria coleta gera, guarda tudo num stash (nada se perde; a coleta de hoje refaz o trabalho) e segue.
+    Mantem so os 3 stashes mais recentes desse tipo. Qualquer outra mudanca: devolve False e nada e feito."""
+    caminhos = [l[3:].strip().strip('"') for l in mudancas]
+    if not caminhos or not all(GERADOS.match(c) for c in caminhos):
+        return False
+    git("stash", "push", "--include-untracked", "-q", "-m",
+        f"{MARCA_STASH} (guardada em {datetime.datetime.now():%d/%m/%Y %H:%M})")
+    registrar(f"coleta anterior interrompida: {len(caminhos)} arquivos guardados em git stash")
+    antigos = [l.split(":")[0] for l in git("stash", "list").stdout.splitlines() if MARCA_STASH in l][3:]
+    for ref in reversed(antigos):
+        git("stash", "drop", "-q", ref, checar=False)
+    return True
+
+
+def manter_acordado():
+    """Pede ao Windows para nao entrar em espera por inatividade enquanto a coleta roda (vale ate o fim do processo).
+    Fechar a tampa ou mandar dormir continua valendo."""
+    try:
+        import ctypes
+        ES_CONTINUOUS, ES_SYSTEM_REQUIRED = 0x80000000, 0x00000001
+        ctypes.windll.kernel32.SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED)
+    except Exception:
+        pass
 
 
 def coletar():
@@ -287,9 +322,10 @@ def paises():
 
 def main():
     registrar("== inicio ==")
+    manter_acordado()
     try:
         limpo, mudancas = repositorio_limpo()
-        if not limpo:
+        if not limpo and not guardar_coleta_interrompida(mudancas):
             registrar("repositorio com mudancas locais, nada feito: " + "; ".join(mudancas[:5]))
             return 1
         git("pull", "-q", "--ff-only", "origin", "main")
