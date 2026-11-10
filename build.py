@@ -133,7 +133,8 @@ def dados_da_pagina(historico, bi=True):
 
 
 # Pedacos do template que so existem na pagina de BI. O JS tolera a falta
-# deles (ver `ao` e `BI` no template).
+# deles (ver `ao` e `BI` no template). Cupons, empresas, leads e fotos sairam do
+# template em 10/11/2026: ficam no painel adm.cuponsdecorrida.com.br (repositorio cupons-de-corrida).
 SO_BI = [
     r'[ \t]*<button class="chip" id="btn-comparativo"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-ticketeiras"[^\n]*\n',
@@ -141,15 +142,7 @@ SO_BI = [
     r'[ \t]*<button class="chip" id="btn-foto"[^\n]*\n',
     r'[ \t]*<button class="chip" id="btn-raiox"[^\n]*\n',
     r'[ \t]*<a class="chip" id="btn-patrocinios"[^\n]*\n',
-    r'[ \t]*<button class="chip" id="btn-cupons"[^\n]*\n',
-    r'<dialog class="orgs cp" id="cupons".*?</dialog>\n\n',
-    r'[ \t]*<button class="chip" id="btn-empresas"[^\n]*\n',
-    r'<dialog class="orgs cp" id="empresas".*?</dialog>\n\n',
     r'<!-- painel do BI -->.*?</script>\n?',
-    r'[ \t]*<button class="chip" id="btn-fotos"[^\n]*\n',
-    r'<dialog class="orgs cp" id="fotos".*?</dialog>\n\n',
-    r'[ \t]*<button class="chip" id="btn-leads"[^\n]*\n',
-    r'<dialog class="orgs ld" id="leads".*?</dialog>\n\n',
     r'[ \t]*<button class="chip" id="btn-assessorias"[^\n]*\n',
     r'<dialog class="orgs as" id="assess".*?</dialog>\n\n',
     r'<section class="rel" id="rel-assess"[^\n]*\n',
