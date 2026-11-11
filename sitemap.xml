@@ -1092,6 +1092,7 @@
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/junco-do-serido-pb/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/lagoa-grande-mg/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/vicosa-do-ceara-ce/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
+<url><loc>https://www.cuponsdecorrida.com.br/corridas-em/rio-claro-rj/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/cameta-pa/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/rolante-rs/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/ubirata-pr/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
@@ -1280,7 +1281,6 @@
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/queimadas-pb/</loc><lastmod>2026-10-24</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/aguas-de-santa-barbara-sp/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/siqueira-campos-pr/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
-<url><loc>https://www.cuponsdecorrida.com.br/corridas-em/rio-claro-rj/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/cruzeiro-da-fortaleza-mg/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/altinopolis-sp/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/corridas-em/santana-do-riacho-mg/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
@@ -27871,6 +27871,7 @@
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-santa-salto-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2/</loc><lastmod>2026-11-09</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-santa-salto-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2-2/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-uniao-2026-rio-claro/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
+<url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-da-uniao-2026-rio-claro-2/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-das-rosas-2026-brasilia/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-de-aniversario-hortifruti-fruto-da-terra-braganca/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-06-corrida-do-93-aniversario-de-buriti-dos-lopes/</loc><lastmod>2026-10-24</lastmod><priority>0.4</priority></url>
@@ -28676,6 +28677,7 @@
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-do-educador-fisico-mage/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-desafio-ponte-quebrada-uniao-da-vitoria/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-edicao-da-corrida-de-sao-miguel-arcanjo/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
+<url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-intermovimento-a-corrida-do-shopping-interlagos-sao-paulo/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-meia-maratona-terra-das-escolas-itapetininga/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-2-corrida-rodobens-2026-sao-jose-do-rio-preto/</loc><lastmod>2026-10-13</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-3-corrida-das-forcas-de-seguranca-mogi-das-cruzes/</loc><lastmod>2026-10-13</lastmod><priority>0.4</priority></url>
@@ -28810,6 +28812,7 @@
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-corrida-pela-vida-huop-cascavel/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-discover-trail-palmeira-2026/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-dez-milhas-garoto-2026-vila-velha/</loc><lastmod>2026-10-24</lastmod><priority>0.4</priority></url>
+<url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-elfo-runners-5km-sao-paulo/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-extrema-run-4-edicao/</loc><lastmod>2026-10-22</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-eco-run-colegio-gloria-francisco-beltrao/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
 <url><loc>https://www.cuponsdecorrida.com.br/provas/2026-09-27-elas-na-pista-run-cachoeirinha/</loc><lastmod>2026-11-10</lastmod><priority>0.4</priority></url>
