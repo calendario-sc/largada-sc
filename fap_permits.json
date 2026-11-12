@@ -250,6 +250,20 @@
 "largada": "07:00",
 "numero": "444/2026"
 },
+"10RogA80k1olmaNlbZ1eG3LMEOyXiTpt5": {
+"arquivo": "726-2026-Quarta Run - Primavera 2026 - Etapa Final.pdf",
+"cidade": "Cascavel",
+"data": "2026-11-11",
+"entidade": "RDG EVENTOS LTDA",
+"evento": "Quarta Run - Primavera 2026 - Etapa Final",
+"km": [
+8.0,
+4.0
+],
+"largada": "20:00",
+"local": "Lago Municipal de Cascavel, Cascavel-PR",
+"numero": "726/2026"
+},
 "10Xph4-7b82j5IIIEERIcavreCYSldrZg": {
 "arquivo": "535-2026-5º Corrida 7 de Setembro.pdf",
 "cidade": "Itapejara D'Oeste",
@@ -2215,6 +2229,19 @@
 "largada": "17:00",
 "numero": "041/2026"
 },
+"1DYC5ykVy6RpaAI0cWjZqzHDqqrWZ1bP7": {
+"arquivo": "727-2026-Ipiranga Run 5Km.pdf",
+"cidade": "Ipiranga",
+"data": "2026-11-15",
+"entidade": "MUNICÍPIO DE IPIRANGA",
+"evento": "Quarta Run - Primavera 2026 - Etapa Final",
+"km": [
+5.0
+],
+"largada": "07:00",
+"local": "Rua Alcides Ribeiro Macedo, 243, Ipiranga-PR",
+"numero": "727/2026"
+},
 "1DcLmZfBOCJS9n2XxGkKOol_NwBgu4emV": {
 "arquivo": "575-2026-173ª Corrida Da Lua Cheia.pdf",
 "cidade": "Colombo",
@@ -2820,6 +2847,21 @@
 ],
 "largada": "20:00",
 "numero": "048/2026"
+},
+"1IV6Ot_aYylr_w-u4xMzAWiOVJWI6ZPJD": {
+"arquivo": "728-2026-Cascavel Run 75 Anos.pdf",
+"cidade": "Cascavel",
+"data": "2026-11-14",
+"entidade": "RDG EVENTOS LTDA",
+"evento": "Cascavel Run 75 Anos",
+"km": [
+14.0,
+7.5,
+3.0
+],
+"largada": "07:00",
+"local": "Praça da Bíblia, Cascavel-PR",
+"numero": "728/2026"
 },
 "1IVGNXnp1h9A1wLa4KSgfmOKJLiq9c8Tt": {
 "arquivo": "082.2026-Corrida da Mulher .pdf",
@@ -5755,6 +5797,19 @@
 "largada": "07:30",
 "numero": "500/2026"
 },
+"1aamOxsk_B1CsnJu7cuH1oxRX8oHGD_QA": {
+"arquivo": "730-2026-75 Corrida Da Emancipação.pdf",
+"cidade": "Campina Grande do Sul",
+"data": "2026-11-14",
+"entidade": "A L R SILVA SEVENT PRODRUCAO E ARTE",
+"evento": "75 Corrida Da Emancipação",
+"km": [
+5.0
+],
+"largada": "08:00",
+"local": "R. Pres. Humberto de Alencar Castelo Branc, Campina Grande do Sul - PR",
+"numero": "730/2026"
+},
 "1agnb-IooiSDJQfwebiTB_ay3FC-nsOpq": {
 "arquivo": "358.2026-Quarta Run-Inverno.pdf",
 "cidade": "Cascavel",
@@ -8350,6 +8405,19 @@
 ],
 "largada": "07:30",
 "numero": "166/2026"
+},
+"1t7pyYA34NPijqnBVEmXshEN3O0qP4OMa": {
+"arquivo": "729-2026-2º Trail Run Carajá.pdf",
+"cidade": "Juranda",
+"data": "2026-11-15",
+"entidade": "MUNICIPIO DE JURANDA",
+"evento": "2º Trail Run Carajá",
+"km": [
+7.0
+],
+"largada": "07:00",
+"local": "Parque do Lago, Juranda-PR",
+"numero": "729/2026"
 },
 "1t8v_JCp5YHYrJXnxtFq4HlfNR6acSZ0D": {
 "arquivo": "222.2026-Trail Run Brisa do Sol.pdf",
