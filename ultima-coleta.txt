@@ -1,128 +1,127 @@
 == coleta ==
 == fontes ==
-  corridasbr: 182 provas
-  corridasbr/arquivo: 419 provas
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners: 171 provas
+  corridasbr: 178 provas
+  corridasbr/arquivo: 427 provas
+  ticketsports: 55 provas
+  roadrunners: 162 provas
   movnow: 0 provas
-  atletis: 3 provas
-  sympla: 173 provas
+  atletis: 0 provas
+  sympla: 178 provas
   blueticket: FALHOU (HTTPError: HTTP Error 404: Not Found)
   fca: 0 provas
-  corridasbr (PR): 136 provas
-  corridasbr/arquivo (PR): 444 provas
-  ticketsports (PR): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (PR): 138 provas
-  corridasbr (RS): 190 provas
-  corridasbr/arquivo (RS): 487 provas
-  ticketsports (RS): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (RS): 138 provas
-  corridasbr (SP): 429 provas
-  corridasbr/arquivo (SP): 1048 provas
-  ticketsports (SP): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  corridasbr (PR): 131 provas
+  corridasbr/arquivo (PR): 451 provas
+  ticketsports (PR): 57 provas
+  roadrunners (PR): 132 provas
+  corridasbr (RS): 185 provas
+  corridasbr/arquivo (RS): 502 provas
+  ticketsports (RS): 20 provas
+  roadrunners (RS): 134 provas
+  corridasbr (SP): 424 provas
+  corridasbr/arquivo (SP): 1066 provas
+  ticketsports (SP): 211 provas
   roadrunners (SP): 500 provas
-  corridasbr (RJ): 195 provas
-  corridasbr/arquivo (RJ): 356 provas
-  ticketsports (RJ): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (RJ): 177 provas
+  corridasbr (RJ): 192 provas
+  corridasbr/arquivo (RJ): 364 provas
+  ticketsports (RJ): 87 provas
+  roadrunners (RJ): 172 provas
   corridasbr (DF): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (DF): 123 provas
-  ticketsports (DF): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (DF): 35 provas
-  corridasbr (MG): 225 provas
-  corridasbr/arquivo (MG): 643 provas
-  ticketsports (MG): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (MG): 220 provas
-  corridasbr (ES): 63 provas
-  corridasbr/arquivo (ES): 106 provas
-  ticketsports (ES): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (ES): 49 provas
-  corridasbr (BA): 150 provas
-  corridasbr/arquivo (BA): 259 provas
-  ticketsports (BA): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (BA): 185 provas
-  corridasbr (PE): 138 provas
-  corridasbr/arquivo (PE): 221 provas
-  ticketsports (PE): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (PE): 153 provas
+  ticketsports (DF): 8 provas
+  roadrunners (DF): 33 provas
+  corridasbr (MG): 223 provas
+  corridasbr/arquivo (MG): 648 provas
+  ticketsports (MG): 27 provas
+  roadrunners (MG): 211 provas
+  corridasbr (ES): 62 provas
+  corridasbr/arquivo (ES): 107 provas
+  ticketsports (ES): 27 provas
+  roadrunners (ES): 48 provas
+  corridasbr (BA): 159 provas
+  corridasbr/arquivo (BA): 263 provas
+  ticketsports (BA): 17 provas
+  roadrunners (BA): 184 provas
+  corridasbr (PE): 134 provas
+  corridasbr/arquivo (PE): 223 provas
+  ticketsports (PE): 33 provas
+  roadrunners (PE): 147 provas
   corridasbr (CE): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
-  corridasbr/arquivo (CE): 214 provas
-  ticketsports (CE): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (CE): 90 provas
-  corridasbr (GO): 116 provas
-  corridasbr/arquivo (GO): 279 provas
-  ticketsports (GO): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (GO): 68 provas
+  corridasbr/arquivo (CE): 215 provas
+  ticketsports (CE): 6 provas
+  roadrunners (CE): 88 provas
+  corridasbr (GO): 127 provas
+  corridasbr/arquivo (GO): 281 provas
+  ticketsports (GO): 4 provas
+  roadrunners (GO): 61 provas
   corridasbr (MT): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (MT): 127 provas
-  ticketsports (MT): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (MT): 46 provas
+  ticketsports (MT): 3 provas
+  roadrunners (MT): 41 provas
   corridasbr (MS): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (MS): 101 provas
-  ticketsports (MS): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (MS): 45 provas
-  corridasbr (PA): 130 provas
-  corridasbr/arquivo (PA): 221 provas
-  ticketsports (PA): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (PA): 92 provas
+  ticketsports (MS): 4 provas
+  roadrunners (MS): 42 provas
+  corridasbr (PA): 120 provas
+  corridasbr/arquivo (PA): 224 provas
+  ticketsports (PA): 4 provas
+  roadrunners (PA): 88 provas
   corridasbr (AM): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AM): 46 provas
-  ticketsports (AM): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (AM): 19 provas
-  corridasbr (PB): 51 provas
+  ticketsports (AM): 12 provas
+  roadrunners (AM): 18 provas
+  corridasbr (PB): 52 provas
   corridasbr/arquivo (PB): 132 provas
-  ticketsports (PB): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (PB): 70 provas
+  ticketsports (PB): 8 provas
+  roadrunners (PB): 69 provas
   corridasbr (RN): 53 provas
-  corridasbr/arquivo (RN): 119 provas
-  ticketsports (RN): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (RN): 55 provas
+  corridasbr/arquivo (RN): 121 provas
+  ticketsports (RN): 6 provas
+  roadrunners (RN): 54 provas
   corridasbr (AL): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AL): 104 provas
-  ticketsports (AL): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports (AL): 17 provas
   roadrunners (AL): 64 provas
   corridasbr (SE): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (SE): 39 provas
-  ticketsports (SE): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports (SE): 7 provas
   roadrunners (SE): 35 provas
   corridasbr (PI): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (PI): 53 provas
-  ticketsports (PI): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports (PI): 3 provas
   roadrunners (PI): 13 provas
   corridasbr (MA): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (MA): 43 provas
-  ticketsports (MA): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (MA): 78 provas
+  ticketsports (MA): 1 provas
+  roadrunners (MA): 75 provas
   corridasbr (TO): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (TO): 20 provas
-  ticketsports (TO): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (TO): 16 provas
+  ticketsports (TO): 1 provas
+  roadrunners (TO): 15 provas
   corridasbr (RO): FALHOU (HTTPError: HTTP Error 404: Not Found)
-  corridasbr/arquivo (RO): 29 provas
-  ticketsports (RO): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (RO): 31 provas
+  corridasbr/arquivo (RO): 30 provas
+  ticketsports (RO): 1 provas
+  roadrunners (RO): 30 provas
   corridasbr (AC): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AC): 2 provas
-  ticketsports (AC): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports (AC): 1 provas
   roadrunners (AC): 2 provas
   corridasbr (AP): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (AP): 22 provas
-  ticketsports (AP): FALHOU (HTTPError: HTTP Error 403: Forbidden)
+  ticketsports (AP): 1 provas
   roadrunners (AP): 10 provas
   corridasbr (RR): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (RR): 28 provas
-  ticketsports (RR): FALHOU (HTTPError: HTTP Error 403: Forbidden)
-  roadrunners (RR): 14 provas
+  ticketsports (RR): 0 provas
+  roadrunners (RR): 13 provas
   fap: 728 provas
   parceiros: 0 provas
 
-datas de ticketeira acertadas pela outra fonte: 3
+datas de ticketeira acertadas pela outra fonte: 2
   ~ 2026-12-11 -> 2026-12-12  BOI PRETO ULTRA [sympla]
   ~ 2026-11-28 -> 2026-11-29  Festival UP! [sympla]
-  ~ 2026-11-28 -> 2026-11-29  NUCORRE HALLOWEEN FEST - TREINO [sympla]
 
-9345 provas distintas depois de fundir as fontes
-descartadas (27): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/AL/SE/PI/MA/TO/RO/AC/AP/RR ou nao sao corrida
+9405 provas distintas depois de fundir as fontes
+descartadas (56): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/AL/SE/PI/MA/TO/RO/AC/AP/RR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
   - 2026-04-12  Cianorte - 8ª Corrida e Duathlon Rotary Club de Cianort [duathlon]
@@ -131,21 +130,26 @@ descartadas (27): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/
   - 2026-05-03  João Pessoa - Cangaço Triathlon 2026 [triathlon]
   - 2026-05-31  Pouso Alegre - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - 2026-06-21  Muzambinho - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
-  - ... e mais 19
-restam 9318 provas
-concluintes: 3816 provas no Open Results, 3078 casadas, 71 com numero novo, 61 provas criadas
+  - ... e mais 48
+restam 9349 provas
+concluintes: 3616 provas no Open Results, 2919 casadas, 64 com numero novo, 56 provas criadas
 concluintes (chiprun): 2 provas consultadas, 1 preenchidas
+  resultado 2026-11-14 Santander Night Run 2026: FALHOU (ValueError)
+  resultado 2026-11-14 Santander Night Run 2026: FALHOU (ValueError)
+  resultado 2026-11-14 Corrida do Futebol Light - Edição Pelé: FALHOU (IncompleteRead)
+  resultado 2025-10-12 5ª Corrida Trimais Kids: FALHOU (IncompleteRead)
+  resultado 2025-09-25 Corrida de Revezamento CBAT ABRACEO: FALHOU (ValueError)
 concluintes (link do corridasbr): 150 provas consultadas, 3 preenchidas
-genero: 76 provas consultadas, 65 preenchidas
-organizador: 36 provas consultadas, 13 preenchidas
+genero: 69 provas consultadas, 58 preenchidas
+organizador: 86 provas consultadas, 39 preenchidas
 organizador: 35 provas preenchidas pela FCA
-organizador: 22 provas tiveram a grafia padronizada
-percurso: 27 provas consultadas no arquivo, 16 preenchidas
+organizador: 186 provas tiveram a grafia padronizada
+percurso: 26 provas consultadas no arquivo, 15 preenchidas
 fca: 36 provas juntadas as que ja existiam
-resultados repetidos removidos: 61
-series: 21293 eventos com uma ou mais edicoes | 45 resultados parciais marcados
-historico: 31698 provas (28028 ja realizadas) | 3085 cidades
-novas nesta rodada: 80
+resultados repetidos removidos: 56
+series: 21348 eventos com uma ou mais edicoes | 45 resultados parciais marcados
+historico: 31786 provas (28170 ja realizadas) | 3086 cidades
+novas nesta rodada: 124
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-02-22  Belém - AP Run 2026 - 1ª Etapa
   + 2026-03-01  Boa Vista - Corrida da P.’.A.’.Z - 1ª Edição
@@ -159,29 +163,28 @@ novas nesta rodada: 80
   + 2026-08-02  São João del Rei - 2ª AC Run
   + 2026-08-23  Belém - AP Run 2026 - 4ª Etapa
   + 2026-09-06  Salto - Corrida da Santa
-  + 2026-09-13  Belém - +B Run - 3° Edição
-  + 2026-09-26  Lavras - Corrida Cia Bemestar 15 anos
+  + 2026-11-08  Belém - AP Run 2026 - 5ª Etapa
+  + 2026-11-15  São Roque - SANTA RUNNING Etapa 2.0 - 2026
 
-futuras que nao apareceram hoje (350) - possivel cancelamento, mantidas no historico:
-  ? 2026-11-14  Barbalha - 2ª Corrida do Capadócia (visto pela ultima vez em 2026-11-04)
-  ? 2026-11-14  Bragança Paulista - FESTIVAL ESPORTES DE AVENTURA SERRINHA (visto pela ultima vez em 2026-10-20)
-  ? 2026-11-14  Carapicuíba - CORRIDA E CAMINHADA l CLUB AFETO (visto pela ultima vez em 2026-11-13)
-  ? 2026-11-14  Cariacica - TRI-VERSÃO (visto pela ultima vez em 2026-11-04)
-  ? 2026-11-14  Caucaia - DOWNWIND RUN - 14/11 SÁBADO (visto pela ultima vez em 2026-11-13)
-  ? 2026-11-14  Curitiba - EXPERIÊNCIA - ARTE DE CULTIVAR BONSAI (visto pela ultima vez em 2026-10-14)
-  ? 2026-11-14  Fortaleza - Ultra Imperial 100k Ceará (visto pela ultima vez em 2026-11-04)
-  ? 2026-11-14  Indaiatuba - Circuito Vaiê! - Etapa Indaiatuba (visto pela ultima vez em 2026-11-13)
-  ? 2026-11-14  Rio de Janeiro - CORRIDA DO FUTEBOL | ACOMPANHANTES (visto pela ultima vez em 2026-11-13)
-  ? 2026-11-14  Rio de Janeiro - Caminhada SENAI CETIQT (visto pela ultima vez em 2026-11-10)
+futuras que nao apareceram hoje (288) - possivel cancelamento, mantidas no historico:
+  ? 2026-11-15   - TREINÃO DO PEIXÃO 2026 (visto pela ultima vez em 2026-10-14)
+  ? 2026-11-15  Alagoinhas - CAMINHADA dos PACATOES - Bar em Bar Open Bar + Feijoada (visto pela ultima vez em 2026-11-02)
+  ? 2026-11-15  Boa Viagem - 2ª Corrida BV Sports (visto pela ultima vez em 2026-11-04)
+  ? 2026-11-15  Bonito - Meia Maratona Trail Run RD Fitness (visto pela ultima vez em 2026-11-12)
+  ? 2026-11-15  Brasília - RECOVER RUN RECOVER - Corrida da Recovery Box (visto pela ultima vez em 2026-11-14)
+  ? 2026-11-15  Canela - A TRILHA DELAS - Edição especial Parque do Caracol (visto pela ultima vez em 2026-11-05)
+  ? 2026-11-15  Cerquilho - 2ª Descida do Lago Cerquilho (Corrida Maluca) (visto pela ultima vez em 2026-10-22)
+  ? 2026-11-15  Fortaleza - 1º Corrida Das Graças (visto pela ultima vez em 2026-11-04)
+  ? 2026-11-15  Fortaleza - B-Day RUN – 35 Anos em Movimento (visto pela ultima vez em 2026-11-04)
+  ? 2026-11-15  Fortaleza - Lagoa da Parangaba Run - 2ª Edição (visto pela ultima vez em 2026-11-04)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['265', 'A Definir', 'Açu', 'Barra Grande', 'Brejo Bonito', 'Dr. Camargo', 'Estância das Amendoeiras', 'Gracho Cardoso', 'Ji', 'Mato Dentro na cidade de Tremembé', 'Pariquera', 'Paty dos Alferes', 'Piçarras', 'Povoado Matolagem Flores', 'Praia Bela', 'Prefeitura Municipal de Carrapateira', 'Rua Antônio Severo Pinho', 'Rua Manoel Ramires', 'São Caetano', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Treme Run Natal Fantasy', 'Varpa', 'Varzea da Ema', 'Vila Ophélia']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['', '265', 'A Definir', 'Abre Campos', 'Açu', 'Barra Grande', 'Brejo Bonito', 'Dr. Camargo', 'Estância das Amendoeiras', 'Gracho Cardoso', 'Ji', 'Pariquera', 'Paty dos Alferes', 'Povoado Matolagem Flores', 'Praia Bela', 'Prefeitura Municipal de Carrapateira', 'Rua Antônio Severo Pinho', 'Rua Manoel Ramires', 'São Caetano', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Treme Run Natal Fantasy', 'Varpa', 'Varzea da Ema', 'Vila Ophélia']
 
 == perfis ==
-  ticketsports: FALHOU (HTTPError: HTTP Error 403: Forbidden)
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,352,254 bytes)
+artifact.html e index.html gerados (2,353,230 bytes)
 
-RESULTADO: pronto para publicar (coleta de 14/11/2026).
+RESULTADO: pronto para publicar (coleta de 15/11/2026).
