@@ -1,55 +1,55 @@
 == coleta ==
 == fontes ==
-  corridasbr: 162 provas
+  corridasbr: 169 provas
   corridasbr/arquivo: 436 provas
   ticketsports: 51 provas
   roadrunners: 148 provas
   movnow: 0 provas
   atletis: 2 provas
-  sympla: 174 provas
+  sympla: 177 provas
   blueticket: FALHOU (HTTPError: HTTP Error 404: Not Found)
   fca: 0 provas
-  corridasbr (PR): 127 provas
+  corridasbr (PR): 129 provas
   corridasbr/arquivo (PR): 454 provas
-  ticketsports (PR): 56 provas
+  ticketsports (PR): 54 provas
   roadrunners (PR): 133 provas
-  corridasbr (RS): 166 provas
+  corridasbr (RS): 167 provas
   corridasbr/arquivo (RS): 513 provas
   ticketsports (RS): 21 provas
   roadrunners (RS): 127 provas
-  corridasbr (SP): 411 provas
+  corridasbr (SP): 416 provas
   corridasbr/arquivo (SP): 1082 provas
-  ticketsports (SP): 221 provas
+  ticketsports (SP): 215 provas
   roadrunners (SP): 497 provas
-  corridasbr (RJ): 175 provas
+  corridasbr (RJ): 177 provas
   corridasbr/arquivo (RJ): 372 provas
-  ticketsports (RJ): 87 provas
+  ticketsports (RJ): 88 provas
   roadrunners (RJ): 157 provas
   corridasbr (DF): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (DF): 124 provas
-  ticketsports (DF): 7 provas
+  ticketsports (DF): 8 provas
   roadrunners (DF): 31 provas
-  corridasbr (MG): 220 provas
+  corridasbr (MG): 223 provas
   corridasbr/arquivo (MG): 658 provas
   ticketsports (MG): 28 provas
-  roadrunners (MG): 212 provas
+  roadrunners (MG): 211 provas
   corridasbr (ES): 60 provas
   corridasbr/arquivo (ES): 109 provas
   ticketsports (ES): 28 provas
   roadrunners (ES): 44 provas
-  corridasbr (BA): 153 provas
+  corridasbr (BA): 154 provas
   corridasbr/arquivo (BA): 264 provas
-  ticketsports (BA): 16 provas
+  ticketsports (BA): 17 provas
   roadrunners (BA): 177 provas
-  corridasbr (PE): 128 provas
+  corridasbr (PE): 132 provas
   corridasbr/arquivo (PE): 228 provas
-  ticketsports (PE): 31 provas
+  ticketsports (PE): 29 provas
   roadrunners (PE): 138 provas
   corridasbr (CE): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (CE): 219 provas
   ticketsports (CE): 6 provas
   roadrunners (CE): 82 provas
-  corridasbr (GO): 123 provas
+  corridasbr (GO): 129 provas
   corridasbr/arquivo (GO): 289 provas
   ticketsports (GO): 4 provas
   roadrunners (GO): 56 provas
@@ -61,21 +61,21 @@
   corridasbr/arquivo (MS): 105 provas
   ticketsports (MS): 4 provas
   roadrunners (MS): 41 provas
-  corridasbr (PA): 112 provas
+  corridasbr (PA): 115 provas
   corridasbr/arquivo (PA): 228 provas
-  ticketsports (PA): 4 provas
+  ticketsports (PA): 3 provas
   roadrunners (PA): 87 provas
   corridasbr (AM): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AM): 47 provas
-  ticketsports (AM): 11 provas
+  ticketsports (AM): 10 provas
   roadrunners (AM): 15 provas
-  corridasbr (PB): 67 provas
+  corridasbr (PB): 71 provas
   corridasbr/arquivo (PB): 133 provas
   ticketsports (PB): 12 provas
   roadrunners (PB): 74 provas
-  corridasbr (RN): 60 provas
+  corridasbr (RN): 62 provas
   corridasbr/arquivo (RN): 121 provas
-  ticketsports (RN): 4 provas
+  ticketsports (RN): 5 provas
   roadrunners (RN): 51 provas
   corridasbr (AL): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (AL): 105 provas
@@ -83,7 +83,7 @@
   roadrunners (AL): 66 provas
   corridasbr (SE): FALHOU (HTTPError: HTTP Error 404: Not Found)
   corridasbr/arquivo (SE): 39 provas
-  ticketsports (SE): 7 provas
+  ticketsports (SE): 8 provas
   roadrunners (SE): 33 provas
   corridasbr (PI): FALHOU (HTTPError: HTTP Error 500: Internal Server Error)
   corridasbr/arquivo (PI): 53 provas
@@ -113,14 +113,15 @@
   corridasbr/arquivo (RR): 28 provas
   ticketsports (RR): 0 provas
   roadrunners (RR): 14 provas
-  fap: 745 provas
+  fap: 747 provas
   parceiros: 0 provas
 
-datas de ticketeira acertadas pela outra fonte: 2
+datas de ticketeira acertadas pela outra fonte: 3
+  ~ 2027-02-06 -> 2027-02-07  12ª CORRIDA E CAMINHADA DO MORRO CHICO MENDE [sympla]
   ~ 2026-12-11 -> 2026-12-12  BOI PRETO ULTRA [sympla]
   ~ 2026-11-28 -> 2026-11-29  Festival UP! [sympla]
 
-9458 provas distintas depois de fundir as fontes
+9495 provas distintas depois de fundir as fontes
 descartadas (64): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/AL/SE/PI/MA/TO/RO/AC/AP/RR ou nao sao corrida
   - 2026-03-08  Bom Retiro - Corrida para Elas MTB e Run [mtb]
   - 2026-04-12  Brochier - Corrida, Caminhada e Pedal da Expofesta [pedal]
@@ -131,20 +132,21 @@ descartadas (64): fora de SC/PR/RS/SP/RJ/DF/MG/ES/BA/PE/CE/GO/MT/MS/PA/AM/PB/RN/
   - 2026-05-31  Pouso Alegre - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - 2026-06-21  Muzambinho - Circuito de Rua Pedal e Corrida IFSULDEMINAS [pedal]
   - ... e mais 56
-restam 9394 provas
-concluintes: FALHOU (RemoteDisconnected: Remote end closed connection without response)
+restam 9431 provas
+concluintes: 4015 provas no Open Results, 3295 casadas, 73 com numero novo, 59 provas criadas
 concluintes (chiprun): 2 provas consultadas, 1 preenchidas
-  resultado 2026-10-17 Ultra BM 2026: FALHOU (ValueError)
+  resultado 2024-10-19 WTR Campos de Jordão 2024: FALHOU (HTTPError)
 concluintes (link do corridasbr): 150 provas consultadas, 2 preenchidas
-genero: 11 provas consultadas, 0 preenchidas
-organizador: 34 provas consultadas, 11 preenchidas
-organizador: 38 provas preenchidas pela FCA
-organizador: 171 provas tiveram a grafia padronizada
-percurso: 27 provas consultadas no arquivo, 16 preenchidas
+genero: 76 provas consultadas, 65 preenchidas
+organizador: 65 provas consultadas, 22 preenchidas
+organizador: 37 provas preenchidas pela FCA
+organizador: 175 provas tiveram a grafia padronizada
+percurso: 26 provas consultadas no arquivo, 15 preenchidas
 fca: 37 provas juntadas as que ja existiam
-series: 21576 eventos com uma ou mais edicoes | 46 resultados parciais marcados
-historico: 32123 provas (28645 ja realizadas) | 3100 cidades
-novas nesta rodada: 98
+resultados repetidos removidos: 57
+series: 21620 eventos com uma ou mais edicoes | 46 resultados parciais marcados
+historico: 32190 provas (28663 ja realizadas) | 3101 cidades
+novas nesta rodada: 104
   + 2026-01-31  São João da Boa Vista - 60 Run
   + 2026-02-22  Belém - AP Run 2026 - 1ª Etapa
   + 2026-03-01  Boa Vista - Corrida da P.’.A.’.Z - 1ª Edição
@@ -158,28 +160,28 @@ novas nesta rodada: 98
   + 2026-08-02  São João del Rei - 2ª AC Run
   + 2026-08-23  Belém - AP Run 2026 - 4ª Etapa
   + 2026-09-06  Salto - Corrida da Santa
-  + 2026-09-13  Belém - +B Run - 3° Edição
+  + 2026-09-19  Laranjal Paulista - 2ª Night Run - Asilo São Cristóvão
   + 2026-11-08  Belém - AP Run 2026 - 5ª Etapa
 
-futuras que nao apareceram hoje (261) - possivel cancelamento, mantidas no historico:
-  ? 2026-11-18  Santos - SUMMIT CORRE MUITO 2026 (visto pela ultima vez em 2026-11-16)
-  ? 2026-11-18  São Paulo - Corrida Run de quebrada + elMare 5km (visto pela ultima vez em 2026-11-17)
+futuras que nao apareceram hoje (273) - possivel cancelamento, mantidas no historico:
+  ? 2026-11-19  Brasília - SUMMIT ABRACEO REGIONAL CENTRO OESTE (visto pela ultima vez em 2026-11-18)
   ? 2026-11-19  Ibiúna - 3ª ETAPA - CIRCUITO BRASILEIRO DE WAKEBOARD 2026 | IBIÚNA WAKE BOARD (visto pela ultima vez em 2026-11-16)
   ? 2026-11-20  Beberibe - 3ª AD Run (visto pela ultima vez em 2026-11-04)
   ? 2026-11-20  Fortaleza - LIVE!21K - FORTALEZA 2026 (visto pela ultima vez em 2026-10-30)
   ? 2026-11-20  Fortaleza - Med Run (visto pela ultima vez em 2026-11-04)
   ? 2026-11-21  Curitiba - Run & Vibe (visto pela ultima vez em 2026-10-20)
+  ? 2026-11-21  Fortaleza - 9ª AÇÃO CORRIDA E CAMINHADA PELO FIM DA VIOLÊNCIA CONTRA MULHERES E MENINAS (visto pela ultima vez em 2026-11-18)
   ? 2026-11-21  Pouso Alegre - Pousão Night Run (visto pela ultima vez em 2026-10-31)
-  ? 2026-11-21  Trindade - Corrida igreja evangélica trindade (visto pela ultima vez em 2026-11-16)
   ? 2026-11-22  A Definir - TRAIL RUN PARADISE 2026 - ETAPA 6 (visto pela ultima vez em 2026-11-02)
+  ? 2026-11-22  Araraquara - LUPO SPORT CORRE ARARAQUARA (visto pela ultima vez em 2026-11-18)
 
-cidades sem regiao (adicionar em REGIOES no comum.py): ['', '265', 'A Definir', 'Abre Campos', 'Barra Grande', 'Brejo Bonito', 'Dr. Camargo', 'Estância das Amendoeiras', 'Gracho Cardoso', 'Ji', 'Largo do PLANETÁRIO', 'Pariquera', 'Paty dos Alferes', 'Praia Bela', 'Prefeitura Municipal de Carrapateira', 'Rua Antônio Severo Pinho', 'Rua Manoel Ramires', 'São Caetano', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Treme Run Natal Fantasy', 'Varpa', 'Vila Ophélia']
+cidades sem regiao (adicionar em REGIOES no comum.py): ['', '265', 'A Definir', 'Abre Campos', 'Barra Grande', 'Brejo Bonito', 'Estância das Amendoeiras', 'Gracho Cardoso', 'Ji', 'Largo do PLANETÁRIO', 'Pariquera', 'Paty dos Alferes', 'Praia Bela', 'Prefeitura Municipal de Carrapateira', 'Rua Antônio Severo Pinho', 'Rua Manoel Ramires', 'São Caetano', 'São Luis do Paraitinga', 'São Thomé das Letras', 'Treme Run Natal Fantasy', 'Varpa', 'Vila Ophélia']
 
 == perfis ==
 parceiros: 0 provas das organizadoras parceiras no calendario
 perfis revistos: 150
 
 == build ==
-artifact.html e index.html gerados (2,359,545 bytes)
+artifact.html e index.html gerados (2,361,384 bytes)
 
-RESULTADO: pronto para publicar (coleta de 18/11/2026).
+RESULTADO: pronto para publicar (coleta de 19/11/2026).
